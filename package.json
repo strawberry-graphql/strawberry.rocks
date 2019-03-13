@@ -1,9 +1,7 @@
 {
-  "name": "gatsby-typescript-starter-blog",
-  "description": "Gatsby Typescript Starter Blog",
+  "name": "strawberry-graphql",
   "version": "1.0.0",
-  "author": "Frank Ahn <frankahn9@gmail.com>",
-  "license": "MIT",
+  "author": "Patrick Arminio <patrick.arminio@@gmail.com>",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -21,6 +19,7 @@
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.1.11",
     "gatsby-image": "^2.0.29",
+    "gatsby-plugin-favicon": "^3.1.5",
     "gatsby-plugin-google-fonts": "^0.0.4",
     "gatsby-plugin-manifest": "^2.0.18",
     "gatsby-plugin-offline": "^2.0.24",
