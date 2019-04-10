@@ -40,8 +40,11 @@ export default () => (
             inspired by dataclasses.
           </Paragraph>
           <Paragraph>
-            Strawberry is currently being developed, register to the newsletter
-            to be the first to know when it will be released.
+            An initial version of Strawberry has been released on{" "}
+            <a href="https://github.com/strawberry-graphql/strawberry">
+              GitHub
+            </a>
+            . An updated website will be coming soon.
           </Paragraph>
 
           <ButtonLink href="http://eepurl.com/gc9mZ1" target="_blank">
