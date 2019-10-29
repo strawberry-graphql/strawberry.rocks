@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `🍓 Strawberry GraphQL`,
@@ -7,6 +11,17 @@ module.exports = {
   plugins: [
     "gatsby-plugin-mdx",
     "gatsby-plugin-theme-ui",
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "GITHUB",
+        fieldName: "github",
+        url: "https://api.github.com/graphql",
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

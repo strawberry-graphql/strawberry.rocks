@@ -2,17 +2,42 @@
 import { jsx } from "theme-ui";
 import { Link } from "@theme-ui/components";
 
-export const Header: React.SFC = () => (
-  <header
-    sx={{
-      padding: 2,
-    }}
-  >
-    aaaaaaaaa
-    <nav>nav....</nav>
-    <h1>logo</h1>
-    <Link variant="version" href="#!">
-      Hello
-    </Link>
-  </header>
-);
+import { useStaticQuery, graphql } from "gatsby";
+
+export const Header: React.SFC = () => {
+  const { github } = useStaticQuery(graphql`
+    query HeaderQuery {
+      github {
+        repository(owner: "strawberry-graphql", name: "strawberry") {
+          url
+          releases(last: 1) {
+            nodes {
+              tagName
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  return (
+    <header
+      sx={{
+        padding: 2,
+      }}
+    >
+      aaaaaaaaa
+      <nav>
+        <Link>About</Link>
+        <Link>Docs</Link>
+        <Link target="_blank" href={github.repository.url}>
+          Github
+        </Link>
+      </nav>
+      <h1>logo</h1>
+      <Link variant="version" href="#!">
+        {github.repository.releases.nodes[0].tagName}
+      </Link>
+    </header>
+  );
+};
