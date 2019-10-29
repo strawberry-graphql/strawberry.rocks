@@ -5,6 +5,7 @@ module.exports = {
     author: `patrick91`,
   },
   plugins: [
+    "gatsby-plugin-theme-ui",
     {
       resolve: `gatsby-source-filesystem`,
       options: {

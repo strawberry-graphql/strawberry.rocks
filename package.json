@@ -14,6 +14,8 @@
     "typescript"
   ],
   "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@mdx-js/react": "^1.5.1",
     "gatsby": "^2.17.6",
     "gatsby-image": "^2.2.30",
     "gatsby-plugin-favicon": "^3.1.6",
@@ -22,6 +24,7 @@
     "gatsby-plugin-offline": "^3.0.17",
     "gatsby-plugin-react-helmet": "^3.1.13",
     "gatsby-plugin-sharp": "^2.2.34",
+    "gatsby-plugin-theme-ui": "^0.2.43",
     "gatsby-plugin-typescript": "^2.1.15",
     "gatsby-remark-external-links": "0.0.4",
     "gatsby-remark-images": "^3.1.28",
@@ -36,6 +39,7 @@
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
     "styled-components": "^4.4.0",
+    "theme-ui": "^0.2.46",
     "typescript": "^3.6.4"
   },
   "devDependencies": {
@@ -43,6 +47,7 @@
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
     "@types/react-helmet": "^5.0.13",
+    "@types/theme-ui": "^0.2.3",
     "prettier": "^1.18.2"
   },
   "repository": {
