@@ -1,16 +1,18 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import { Link } from "@theme-ui/components";
 
-export const Header = props => (
+export const Header: React.SFC = () => (
   <header
     sx={{
-      // this uses the value from `theme.space[4]`
-      padding: 4,
-      // these use values from `theme.colors`
-      color: "background",
-      backgroundColor: "primary",
+      padding: 2,
     }}
   >
-    {props.children}
+    aaaaaaaaa
+    <nav>nav....</nav>
+    <h1>logo</h1>
+    <Link variant="version" href="#!">
+      Hello
+    </Link>
   </header>
 );

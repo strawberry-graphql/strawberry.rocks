@@ -3,10 +3,12 @@ import * as React from "react";
 import SEO from "../components/seo";
 import { Header } from "../components/header";
 
-export default () => (
+const HomePage = () => (
   <>
-    <Header>ABC</Header>
+    <Header />
     <SEO title="" />
     <h1>Hello world</h1>
   </>
 );
+
+export default HomePage;

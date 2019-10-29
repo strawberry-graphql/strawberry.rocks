@@ -5,6 +5,7 @@ module.exports = {
     author: `patrick91`,
   },
   plugins: [
+    "gatsby-plugin-mdx",
     "gatsby-plugin-theme-ui",
     {
       resolve: `gatsby-source-filesystem`,
@@ -43,7 +44,6 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
