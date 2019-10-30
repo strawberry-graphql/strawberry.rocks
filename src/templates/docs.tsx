@@ -1,15 +1,25 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { Flex, Box } from "@theme-ui/components";
 import SEO from "../components/seo";
 import { Header } from "../components/header";
 
 const DocsPage = ({ data: { file } }: any) => (
   <>
     <Header />
+
     <SEO title={file.childMdx.frontmatter.title} />
 
-    <MDXRenderer>{file.childMdx.body}</MDXRenderer>
+    <Flex>
+      <Box as="aside" p={4} bg="muted" sx={{ flex: "0 0 200px" }}>
+        Sidebar
+      </Box>
+
+      <Box p={4}>
+        <MDXRenderer>{file.childMdx.body}</MDXRenderer>
+      </Box>
+    </Flex>
   </>
 );
 
