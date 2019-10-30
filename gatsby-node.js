@@ -10,7 +10,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         edges {
           node {
             relativePath
-            childMarkdownRemark {
+            childMdx {
               frontmatter {
                 title
                 path
@@ -29,7 +29,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   result.data.allFile.edges.forEach(({ node }) => {
     createPage({
-      path: node.childMarkdownRemark.frontmatter.path,
+      path: node.childMdx.frontmatter.path,
       component: blogPostTemplate,
       context: { relativePath: node.relativePath }, // additional data can be passed via context
     });

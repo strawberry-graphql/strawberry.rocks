@@ -1,3 +1,5 @@
+import prismTheme from "@theme-ui/prism/presets/night-owl-light.json";
+
 export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
@@ -94,6 +96,7 @@ export default {
       code: {
         color: "inherit",
       },
+      ...prismTheme,
     },
     code: {
       fontFamily: "monospace",

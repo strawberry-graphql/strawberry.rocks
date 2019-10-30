@@ -1,24 +1,25 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import SEO from "../components/seo";
 import { Header } from "../components/header";
 
-const HomePage = ({ data: { file } }: any) => (
+const DocsPage = ({ data: { file } }: any) => (
   <>
     <Header />
-    <SEO title={file.childMarkdownRemark.frontmatter.title} />
+    <SEO title={file.childMdx.frontmatter.title} />
 
-    <div dangerouslySetInnerHTML={{ __html: file.childMarkdownRemark.html }} />
+    <MDXRenderer>{file.childMdx.body}</MDXRenderer>
   </>
 );
 
-export default HomePage;
+export default DocsPage;
 
 export const pageQuery = graphql`
   query($relativePath: String!) {
     file(relativePath: { eq: $relativePath }) {
-      childMarkdownRemark {
-        html
+      childMdx {
+        body
         frontmatter {
           title
         }

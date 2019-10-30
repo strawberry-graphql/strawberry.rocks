@@ -9,7 +9,6 @@ module.exports = {
     author: `patrick91`,
   },
   plugins: [
-    "gatsby-plugin-mdx",
     "gatsby-plugin-theme-ui",
     {
       resolve: `gatsby-source-git`,
@@ -18,6 +17,36 @@ module.exports = {
         remote: `https://github.com/strawberry-graphql/strawberry.git`,
         branch: `feature/docs`,
         patterns: `docs/**`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              aliases: { py: "python" },
+              noInlineHighlight: false,
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 500,
+            },
+          },
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: `_blank`,
+              rel: `nofollow noopener noreferrer`,
+            },
+          },
+          `gatsby-remark-responsive-iframe`,
+        ],
       },
     },
     {
@@ -43,27 +72,6 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 500,
-            },
-          },
-          {
-            resolve: `gatsby-remark-external-links`,
-            options: {
-              target: `_blank`,
-              rel: `nofollow noopener noreferrer`,
-            },
-          },
-          `gatsby-remark-responsive-iframe`,
-        ],
       },
     },
     `gatsby-plugin-typescript`,
