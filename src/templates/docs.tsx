@@ -4,6 +4,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Flex, Box } from "@theme-ui/components";
 import SEO from "../components/seo";
 import { Header } from "../components/header";
+import { DocsNavigation } from "../components/docs-navigation";
 
 const DocsPage = ({ data: { file } }: any) => (
   <>
@@ -13,7 +14,7 @@ const DocsPage = ({ data: { file } }: any) => (
 
     <Flex>
       <Box as="aside" p={4} bg="muted" sx={{ flex: "0 0 200px" }}>
-        Sidebar
+        <DocsNavigation />
       </Box>
 
       <Box p={4}>
