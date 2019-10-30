@@ -12,6 +12,15 @@ module.exports = {
     "gatsby-plugin-mdx",
     "gatsby-plugin-theme-ui",
     {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `strawberry-repo`,
+        remote: `https://github.com/strawberry-graphql/strawberry.git`,
+        branch: `feature/docs`,
+        patterns: `docs/**`,
+      },
+    },
+    {
       resolve: "gatsby-source-graphql",
       options: {
         typeName: "GITHUB",
