@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Link } from "@theme-ui/components";
-
 import { useStaticQuery, graphql } from "gatsby";
 
+import { HeaderQuery } from "./__generated__/HeaderQuery";
+
 export const Header: React.SFC = () => {
-  const { github } = useStaticQuery(graphql`
+  const { github } = useStaticQuery<HeaderQuery>(graphql`
     query HeaderQuery {
       github {
         repository(owner: "strawberry-graphql", name: "strawberry") {

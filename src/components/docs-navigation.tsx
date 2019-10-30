@@ -1,13 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Link } from "@theme-ui/components";
-
 import { useStaticQuery, graphql } from "gatsby";
+
+import { DocsNavigationQuery } from "./__generated__/DocsNavigationQuery";
 
 export const DocsNavigation: React.SFC = () => {
   const {
     allFile: { edges },
-  } = useStaticQuery(graphql`
+  } = useStaticQuery<DocsNavigationQuery>(graphql`
     query DocsNavigationQuery {
       allFile(filter: { sourceInstanceName: { eq: "strawberry-repo" } }) {
         edges {

@@ -5,8 +5,9 @@ import { Flex, Box } from "@theme-ui/components";
 import SEO from "../components/seo";
 import { Header } from "../components/header";
 import { DocsNavigation } from "../components/docs-navigation";
+import { DocsPageQuery } from "./__generated__/DocsPageQuery";
 
-const DocsPage = ({ data: { file } }: any) => (
+const DocsPage = ({ data: { file } }: { data: DocsPageQuery }) => (
   <>
     <Header />
 
@@ -27,7 +28,7 @@ const DocsPage = ({ data: { file } }: any) => (
 export default DocsPage;
 
 export const pageQuery = graphql`
-  query($relativePath: String!) {
+  query DocsPageQuery($relativePath: String!) {
     file(relativePath: { eq: $relativePath }) {
       childMdx {
         body

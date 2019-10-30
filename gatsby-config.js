@@ -9,6 +9,10 @@ module.exports = {
     author: `patrick91`,
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-codegen",
+      options: {},
+    },
     "gatsby-plugin-theme-ui",
     {
       resolve: `gatsby-source-git`,
@@ -58,13 +62,6 @@ module.exports = {
         headers: {
           Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
         },
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/docs`,
-        name: `docs`,
       },
     },
     {
