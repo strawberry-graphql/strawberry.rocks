@@ -3,14 +3,14 @@ import prismTheme from "@theme-ui/prism/presets/night-owl-light.json";
 export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
-    body: "Lato, sans-serif",
+    body: "Px Grotesk, sans-serif",
     heading: "inherit",
     monospace: "Menlo, monospace",
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
     body: 400,
-    heading: 700,
+    heading: 400,
     bold: 700,
   },
   lineHeights: {
@@ -21,8 +21,8 @@ export default {
     text: "#000",
     background: "#fff",
     primary: "#f7393d",
-    secondary: "#ff9fa1",
-    muted: "#f6f6f6",
+    secondary: "#FF9FA9",
+    muted: "#FFCED3",
     accent: "#4a65ff",
   },
   links: {
@@ -30,12 +30,32 @@ export default {
       textDecoration: "none",
       color: "black",
       marginRight: 4,
+      backgroundImage: "linear-gradient(red, red)",
+      backgroundPosition: "0% 100%",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "0 2px",
+      transition: "0.15s background-size ease-out",
+      "&:hover": {
+        backgroundSize: "100% 2px",
+      },
     },
     version: {
       textDecoration: "none",
       backgroundColor: "secondary",
       color: "white",
       padding: 2,
+    },
+  },
+  text: {
+    hero: {
+      color: "text",
+      display: "inline",
+      backgroundImage: "linear-gradient(red, red)",
+      backgroundPosition: "0% 100%",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "100% 4px",
+      fontSize: 40,
+      lineHeight: "135.74%",
     },
   },
   styles: {
@@ -98,6 +118,8 @@ export default {
     pre: {
       fontFamily: "monospace",
       overflowX: "auto",
+      padding: 3,
+      height: "100%",
       code: {
         color: "inherit",
       },

@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { Link } from "@theme-ui/components";
 import { useStaticQuery, graphql } from "gatsby";
 
+import { Link } from "./link";
 import { DocsNavigationQuery } from "./__generated__/DocsNavigationQuery";
 
 export const DocsNavigation: React.SFC = () => {

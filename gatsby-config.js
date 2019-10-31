@@ -10,6 +10,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `home`,
+        path: `${__dirname}/content/home/`,
+      },
+    },
+    {
       resolve: "gatsby-plugin-codegen",
       options: {},
     },
