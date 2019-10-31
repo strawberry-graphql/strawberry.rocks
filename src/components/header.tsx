@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { Link } from "@theme-ui/components";
+import { Link, Flex } from "@theme-ui/components";
 import { useStaticQuery, graphql } from "gatsby";
 
 import { HeaderQuery } from "./__generated__/HeaderQuery";
+import { Logo } from "./logo";
 
 export const Header: React.SFC = () => {
   const { github } = useStaticQuery<HeaderQuery>(graphql`
@@ -22,23 +23,32 @@ export const Header: React.SFC = () => {
   `);
 
   return (
-    <header
+    <Flex
+      as="header"
       sx={{
         padding: 2,
+        maxWidth: 1280,
+        margin: 2,
+        marginLeft: "auto",
+        marginRight: "auto",
+        alignItems: "center",
+        justifyContent: "space-between",
       }}
     >
-      aaaaaaaaa
       <nav>
-        <Link>About</Link>
-        <Link>Docs</Link>
-        <Link target="_blank" href={github.repository.url}>
+        <Link variant="nav" href="/docs">
+          Docs
+        </Link>
+        <Link variant="nav" target="_blank" href={github.repository.url}>
           Github
         </Link>
       </nav>
-      <h1>logo</h1>
+      <Link href="/">
+        <Logo height="90" />
+      </Link>
       <Link variant="version" href="#!">
         {github.repository.releases.nodes[0].tagName}
       </Link>
-    </header>
+    </Flex>
   );
 };

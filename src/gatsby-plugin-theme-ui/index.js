@@ -26,6 +26,11 @@ export default {
     accent: "#4a65ff",
   },
   links: {
+    nav: {
+      textDecoration: "none",
+      color: "black",
+      marginRight: 4,
+    },
     version: {
       textDecoration: "none",
       backgroundColor: "secondary",
