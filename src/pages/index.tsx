@@ -9,7 +9,7 @@ import { FlashIcon } from "../components/icons/flash";
 
 const HomePage = () => (
   <>
-    <SEO title="" />
+    <SEO title="A Python library for GraphQL" />
     <Hero />
 
     <Section>
