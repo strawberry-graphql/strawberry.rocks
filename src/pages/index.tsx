@@ -24,7 +24,7 @@ const HomePage = () => (
         sx={{
           my: 6,
           textAlign: "left",
-          gridTemplateColumns: [null, "2fr 7fr 1fr"],
+          gridTemplateColumns: [null, "2fr 7fr 105px"],
         }}
       >
         <Box sx={{ p: 3 }}>
@@ -32,7 +32,7 @@ const HomePage = () => (
         </Box>
         <Box
           sx={{
-            p: 3,
+            py: 3,
             textAlign: "right",
             gridColumnStart: [null, 3],
             gridColumnEnd: [null, 3],
