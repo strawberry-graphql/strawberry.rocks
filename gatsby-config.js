@@ -23,6 +23,13 @@ module.exports = {
     "gatsby-plugin-theme-ui",
     "gatsby-theme-style-guide",
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`karla\:,400,400i,700`],
+        display: "swap",
+      },
+    },
+    {
       resolve: `gatsby-source-git`,
       options: {
         name: `strawberry-repo`,

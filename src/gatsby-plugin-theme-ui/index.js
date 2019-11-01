@@ -3,7 +3,7 @@ import prismTheme from "@theme-ui/prism/presets/night-owl-light.json";
 export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
-    body: "Px Grotesk, sans-serif",
+    body: "Karla, sans-serif",
     heading: "inherit",
     monospace: "Menlo, monospace",
   },
