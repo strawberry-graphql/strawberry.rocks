@@ -19,7 +19,7 @@ const DocsPage = ({ data: { file } }: { data: DocsPageQuery }) => (
       <Box as="aside" p={4} sx={{ flex: "0 0 200px" }}>
         <DocsNavigation />
       </Box>
-      <Box sx={{ p: 4, pb: 6 }}>
+      <Box sx={{ px: 4, pb: 6 }}>
         <MDXRenderer>{file.childMdx.body}</MDXRenderer>
       </Box>
     </Flex>

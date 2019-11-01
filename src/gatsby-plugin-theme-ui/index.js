@@ -69,6 +69,7 @@ export default {
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
+      my: "1em",
       fontSize: 5,
     },
     h2: {
@@ -76,6 +77,7 @@ export default {
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
+      my: "1em",
       fontSize: 4,
     },
     h3: {
@@ -83,6 +85,7 @@ export default {
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
+      my: "1em",
       fontSize: 3,
     },
     h4: {
@@ -90,6 +93,7 @@ export default {
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
+      my: "1em",
       fontSize: 2,
     },
     h5: {
@@ -97,6 +101,7 @@ export default {
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
+      my: "1em",
       fontSize: 1,
     },
     h6: {
@@ -104,6 +109,7 @@ export default {
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
+      my: "1em",
       fontSize: 0,
     },
     p: {

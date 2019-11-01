@@ -8,6 +8,7 @@ const Layout = props => (
     sx={{
       maxWidth: 1200,
       mx: "auto",
+      pb: 6,
     }}
   >
     {props.children}
