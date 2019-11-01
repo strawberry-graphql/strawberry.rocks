@@ -117,6 +117,7 @@ export default {
       fontFamily: "body",
       fontWeight: "body",
       lineHeight: "body",
+      my: "1em",
     },
     a: {
       color: "primary",
