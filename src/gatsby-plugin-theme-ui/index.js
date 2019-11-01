@@ -119,7 +119,6 @@ export default {
       fontFamily: "monospace",
       overflowX: "auto",
       padding: 3,
-      height: "100%",
       code: {
         color: "inherit",
       },

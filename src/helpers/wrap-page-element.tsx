@@ -1,6 +1,9 @@
 import React from "react";
 import { Styled } from "theme-ui";
 import { Global, css } from "@emotion/core";
+import { Header } from "../components/header";
+import { NewsletterSection } from "../components/newsletter-section";
+import { Footer } from "../components/footer";
 
 const reset = css`
   * {
@@ -25,6 +28,13 @@ const reset = css`
 export const wrapPageElement = ({ element }) => (
   <>
     <Global styles={reset} />
-    <Styled.root>{element}</Styled.root>
+    <Styled.root>
+      <Header />
+
+      {element}
+
+      <NewsletterSection />
+      <Footer />
+    </Styled.root>
   </>
 );

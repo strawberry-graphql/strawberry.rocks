@@ -1,20 +1,15 @@
 import * as React from "react";
 
 import SEO from "../components/seo";
-import { Header } from "../components/header";
 import { Hero } from "../components/hero";
 import { Heading, Link, Grid, Box, Text, Flex } from "@theme-ui/components";
 import { Section } from "../components/section";
 import { Features } from "../components/features";
 import { FlashIcon } from "../components/icons/flash";
-import { NewsletterSection } from "../components/newsletter-section";
-import { Footer } from "../components/footer";
 
 const HomePage = () => (
   <>
     <SEO title="" />
-    <Header />
-
     <Hero />
 
     <Section>
@@ -62,10 +57,6 @@ const HomePage = () => (
         </Flex>
       </Grid>
     </Section>
-
-    <NewsletterSection />
-
-    <Footer />
   </>
 );
 

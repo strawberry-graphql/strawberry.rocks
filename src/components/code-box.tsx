@@ -103,6 +103,11 @@ export const CodeBox: React.SFC = ({ children, ...props }) => (
         zIndex: 1,
         overflow: "hidden",
       }}
+      css={`
+        pre {
+          height: 100%;
+        }
+      `}
     >
       <Flex
         sx={{
