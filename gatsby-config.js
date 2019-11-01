@@ -21,6 +21,7 @@ module.exports = {
       options: {},
     },
     "gatsby-plugin-theme-ui",
+    "gatsby-theme-style-guide",
     {
       resolve: `gatsby-source-git`,
       options: {
