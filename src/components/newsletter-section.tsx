@@ -2,6 +2,93 @@
 import { jsx } from "theme-ui";
 import { Box, Heading, Text, Input, Button, Flex } from "@theme-ui/components";
 import { ArrowRightIcon } from "./icons/arrow-right";
+import { useMailchimp } from "react-use-mailchimp";
+import { useState } from "react";
+
+const url =
+  "https://twitter.us4.list-manage.com/subscribe/post?u=4ad955ae4a0b2d7c67f48323e&amp;id=5e44c190e6";
+
+const Loading = () => (
+  <Box
+    sx={{
+      fontSize: 3,
+      animation: "spin 2s linear infinite",
+    }}
+  >
+    🍓
+  </Box>
+);
+
+const Form: React.SFC = () => {
+  const [email, setEmail] = useState("");
+  const [mailchimp, subscribe] = useMailchimp({
+    url,
+  });
+  const { loading, error, data } = mailchimp;
+
+  const canSubmit = email.trim() !== "" && !loading;
+
+  if (data && data.result === "success") {
+    return <Text sx={{ fontSize: 3 }}>🎉 Thanks for subscribing! 🎉</Text>;
+  }
+
+  if (error) {
+    return (
+      <Text
+        sx={{ fontSize: 3 }}
+        dangerouslySetInnerHTML={{ __html: error }}
+      ></Text>
+    );
+  }
+
+  return (
+    <Flex
+      as="form"
+      sx={{
+        height: 58,
+        color: "primary",
+        borderRadius: 40,
+        backgroundColor: "white",
+      }}
+      onSubmit={e => {
+        e.preventDefault();
+        if (!loading) {
+          subscribe({ EMAIL: email });
+        }
+      }}
+    >
+      <Input
+        sx={{
+          color: "primary",
+          p: 3,
+          border: "none",
+          borderTopLeftRadius: 40,
+          borderBottomLeftRadius: 40,
+        }}
+        onChange={e => setEmail(e.target.value)}
+        value={email}
+        type="email"
+        placeholder="my@email.com"
+      />
+      <Button
+        type="submit"
+        disabled={!canSubmit}
+        sx={{
+          borderRadius: "100%",
+          backgroundColor: "muted",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          alignSelf: "center",
+          width: 58,
+          height: 58,
+        }}
+      >
+        {loading ? <Loading /> : <ArrowRightIcon />}
+      </Button>
+    </Flex>
+  );
+};
 
 export const NewsletterSection: React.SFC = () => (
   <Box
@@ -32,45 +119,13 @@ export const NewsletterSection: React.SFC = () => (
         textAlign: "center",
       }}
     >
-      <Heading sx={{ mb: 4 }}>Newsletter</Heading>
-      <Text sx={{ mb: 4 }}>BlaBlaBlaBlaBla</Text>
+      <Heading sx={{ mb: 4 }}>Newsletter 💌</Heading>
+      <Text sx={{ mb: 4 }}>
+        Do you want to receive the latest updates on Strawberry? Subscribe to
+        our newsletter!
+      </Text>
 
-      <Flex
-        as="form"
-        sx={{
-          height: 58,
-          color: "primary",
-          borderRadius: 40,
-          backgroundColor: "white",
-        }}
-      >
-        <Input
-          sx={{
-            color: "primary",
-            p: 3,
-            border: "none",
-            borderTopLeftRadius: 40,
-            borderBottomLeftRadius: 40,
-          }}
-          type="email"
-          placeholder="my@email.com"
-        />
-        <Button
-          type="submit"
-          sx={{
-            borderRadius: "100%",
-            backgroundColor: "muted",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            alignSelf: "center",
-            width: 58,
-            height: 58,
-          }}
-        >
-          <ArrowRightIcon />
-        </Button>
-      </Flex>
+      <Form />
     </Box>
   </Box>
 );

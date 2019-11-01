@@ -47,6 +47,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
+    "react-use-mailchimp": "^0.4.0",
     "styled-components": "^4.4.0",
     "theme-ui": "^0.2.46",
     "typescript": "^3.6.4"
