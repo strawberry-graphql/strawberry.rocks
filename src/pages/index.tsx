@@ -20,7 +20,7 @@ const HomePage = () => (
     <Section>
       <Heading sx={{ mb: 3 }}>Some copy here</Heading>
 
-      <Link href="/docs">View documentation</Link>
+      <Link href="/docs/">View documentation</Link>
 
       <Features />
 

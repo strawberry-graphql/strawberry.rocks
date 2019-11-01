@@ -35,7 +35,7 @@ export const Footer: React.SFC = () => (
     >
       <Logo width="100" />
       <nav>
-        <NavItem href="/docs">Documentation</NavItem>
+        <NavItem href="/docs/">Documentation</NavItem>
       </nav>
       <nav></nav>
       <nav>

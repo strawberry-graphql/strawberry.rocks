@@ -56,7 +56,7 @@ export const Header: React.SFC = () => {
         sx={{ justifyContent: "flex-start", alignItems: "center" }}
         as="nav"
       >
-        <Link variant="nav" href="/docs">
+        <Link variant="nav" href="/docs/">
           Docs
         </Link>
         <Link variant="nav" target="_blank" href={github.repository.url}>
@@ -64,7 +64,11 @@ export const Header: React.SFC = () => {
         </Link>
       </Flex>
       <Flex sx={{ justifyContent: "flex-end", alignItems: "center" }}>
-        <Link variant="version" href="#!">
+        <Link
+          variant="version"
+          target="_blank"
+          href="https://pypi.org/project/strawberry-graphql/"
+        >
           {github.repository.releases.nodes[0].tagName}
         </Link>
       </Flex>
