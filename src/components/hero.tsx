@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { Heading, Flex, Box } from "@theme-ui/components";
+import { Heading, Grid, Box } from "@theme-ui/components";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { CodeBox } from "./code-box";
@@ -20,15 +20,12 @@ export const Hero: React.SFC = () => {
   `);
 
   return (
-    <Flex
+    <Grid
       sx={{
         padding: 2,
         maxWidth: 1240,
-        marginLeft: "auto",
-        marginRight: "auto",
-        alignItems: "flex-start",
-        justifyContent: "space-between",
-        display: ["block", null, "flex"],
+        mx: "auto",
+        gridTemplateColumns: [null, null, "7fr 10fr", "1fr 1fr"],
       }}
     >
       <Box
@@ -37,7 +34,7 @@ export const Hero: React.SFC = () => {
           m: 4,
         }}
       >
-        <Heading variant="hero">
+        <Heading variant="hero" sx={{ fontSize: [5, null, 5, 6] }}>
           Strawberry is a new GraphQL library for Python 3, inspired by
           dataclasses.
         </Heading>
@@ -50,6 +47,6 @@ export const Hero: React.SFC = () => {
       >
         <MDXRenderer>{file.childMdx.body}</MDXRenderer>
       </CodeBox>
-    </Flex>
+    </Grid>
   );
 };
