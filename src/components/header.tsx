@@ -35,7 +35,7 @@ export const Header: React.SFC = () => {
         display: "grid",
         gridGap: 3,
         gridAutoFlow: ["row", "column"],
-        gridTemplateColumns: ["repeat(2, 1fr)", "repeat(3, 1fr)"],
+        gridTemplateColumns: "repeat(3, 1fr)",
       }}
     >
       <Flex
@@ -43,7 +43,7 @@ export const Header: React.SFC = () => {
           alignItems: "center",
           justifyContent: "center",
           gridColumnStart: [1, 2],
-          gridColumnEnd: [3, 3],
+          gridColumnEnd: [4, 3],
           order: [0, 1],
         }}
       >
@@ -53,7 +53,12 @@ export const Header: React.SFC = () => {
       </Flex>
 
       <Flex
-        sx={{ justifyContent: "flex-start", alignItems: "center" }}
+        sx={{
+          justifyContent: "flex-start",
+          alignItems: "center",
+          gridColumnStart: [1, 1],
+          gridColumnEnd: [3, 2],
+        }}
         as="nav"
       >
         <Link variant="nav" href="/docs/">
