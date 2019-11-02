@@ -72,7 +72,7 @@ const Actions = props => (
 
 export const CodeBox: React.SFC = ({ children, ...props }) => (
   <Box {...props} sx={{ position: "relative" }}>
-    <Box sx={{ paddingTop: "70%", minHeight: 500, display: "inline-block" }} />
+    <Box sx={{ paddingTop: "70%", minHeight: 460, display: "inline-block" }} />
     <BackgroundTop
       sx={{
         position: "absolute",
@@ -92,10 +92,10 @@ export const CodeBox: React.SFC = ({ children, ...props }) => (
 
     <Box
       sx={{
-        top: 4,
-        left: 4,
-        bottom: 4,
-        right: 4,
+        top: 3,
+        left: 3,
+        bottom: 3,
+        right: 3,
         borderWidth: 4,
         borderColor: "primary",
         borderStyle: "solid",
@@ -106,10 +106,6 @@ export const CodeBox: React.SFC = ({ children, ...props }) => (
       css={`
         pre {
           height: 100%;
-        }
-
-        .token-line {
-          white-space: nowrap;
         }
       `}
     >
