@@ -22,9 +22,10 @@ const HomePage = () => (
       <Grid
         columns={2}
         sx={{
+          px: 4,
           my: 6,
           textAlign: "left",
-          gridTemplateColumns: [null, "2fr 7fr 105px"],
+          gridTemplateColumns: [null, "2fr 6fr 105px"],
         }}
       >
         <Box sx={{ p: 3 }}>

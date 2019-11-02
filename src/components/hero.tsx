@@ -34,7 +34,7 @@ export const Hero: React.SFC = () => {
           m: 4,
         }}
       >
-        <Heading variant="hero" sx={{ fontSize: [5, null, 5, 6] }}>
+        <Heading variant="hero" sx={{ fontSize: [5, 5, 5, 6] }}>
           Strawberry is a new GraphQL library for Python 3, inspired by
           dataclasses.
         </Heading>
