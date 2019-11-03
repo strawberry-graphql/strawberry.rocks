@@ -2085,6 +2085,11 @@
     "@styled-system/should-forward-prop" "^5.1.2"
     "@styled-system/space" "^5.1.2"
 
+"@theme-ui/match-media@^0.2.46":
+  version "0.2.46"
+  resolved "https://registry.yarnpkg.com/@theme-ui/match-media/-/match-media-0.2.46.tgz#664c73512bae46e21d0bcf2efb9ea124c66d79b4"
+  integrity sha512-YmROxvTPlr3YWuwCgIKndJoCWphZo71UeB6KeVaSCzFLnIT2qjFnT28bORf+td4QvZJL99Gtb2McvscPVeRefw==
+
 "@theme-ui/preset-base@^0.2.44":
   version "0.2.44"
   resolved "https://registry.yarnpkg.com/@theme-ui/preset-base/-/preset-base-0.2.44.tgz#ae8e938288a534f129111a56b1971e1cc12ddc9d"

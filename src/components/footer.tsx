@@ -37,9 +37,10 @@ export const Footer: React.SFC = () => (
         sx={{
           display: "flex",
           justifyContent: ["center", "flex-start"],
+          gridRowStart: [2, 1],
           gridColumnStart: [1, 1],
           gridColumnEnd: [5, 2],
-          mb: 3,
+          mt: [3, 0],
         }}
       >
         <Logo width="100" />
