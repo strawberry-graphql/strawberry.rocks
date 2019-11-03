@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "Patrick Arminio <patrick.arminio@@gmail.com>",
   "scripts": {
+    "postinstall": "cd plugins/gatsby-source-github-contributors && yarn install",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
