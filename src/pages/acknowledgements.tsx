@@ -11,7 +11,7 @@ import {
 import { Link } from "../components/link";
 import { Fragment } from "react";
 
-const IGNORE_LIST = ["dependabot-preview[bot]", "botberry"];
+const IGNORE_LIST = ["dependabot-preview[bot]", "dependabot-bot", "botberry"];
 
 const MemberLink: React.SFC<{
   member: AcknowledgementsPageQuery_allGitHubContributor_nodes;
