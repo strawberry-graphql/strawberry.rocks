@@ -44,10 +44,18 @@ const Nav: React.SFC = () => {
   );
 };
 
+const useSSRResponsiveValue = values => {
+  if (typeof window === "undefined") {
+    return values[0];
+  }
+
+  return useResponsiveValue(values);
+};
+
 export const DocsNavigation: React.SFC = () => {
   const [open, toggleOpen] = useToggle(false);
 
-  const menuType = useResponsiveValue(["overlay", "sidebar"]);
+  const menuType = useSSRResponsiveValue(["overlay", "sidebar"]);
 
   if (menuType == "sidebar") {
     return (
