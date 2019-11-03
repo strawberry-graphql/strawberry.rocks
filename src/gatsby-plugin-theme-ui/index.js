@@ -26,17 +26,26 @@ export default {
     accent: "#4a65ff",
   },
   links: {
+    home: {
+      "&::after": {
+        display: "none",
+      },
+    },
     nav: {
       textDecoration: "none",
-      color: "black",
+      color: "text",
       marginRight: 4,
       backgroundImage: "linear-gradient(red, red)",
       backgroundPosition: "0% 100%",
       backgroundRepeat: "no-repeat",
       backgroundSize: "0 2px",
       transition: "0.15s background-size ease-out",
+      "&.active": {
+        backgroundSize: "100% 2px",
+      },
       "&:hover": {
         backgroundSize: "100% 2px",
+        color: "text",
       },
     },
     version: {
@@ -121,6 +130,14 @@ export default {
     },
     a: {
       color: "primary",
+      "&.active::after": {
+        display: "inline-block",
+        content: "'👈'",
+        ml: 2,
+      },
+      "&:hover": {
+        color: "accent",
+      },
     },
     pre: {
       fontFamily: "monospace",

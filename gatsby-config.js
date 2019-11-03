@@ -17,6 +17,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `acknowledgements`,
+        path: `${__dirname}/content/acknowledgements/`,
+      },
+    },
+    {
       resolve: "gatsby-plugin-codegen",
       options: {},
     },
@@ -79,6 +86,7 @@ module.exports = {
         },
       },
     },
+    `gatsby-source-github-contributors`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,

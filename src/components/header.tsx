@@ -47,7 +47,7 @@ export const Header: React.SFC = () => {
           order: [0, 1],
         }}
       >
-        <Link href="/">
+        <Link variant="home" href="/">
           <Logo height="90" />
         </Link>
       </Flex>
