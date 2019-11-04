@@ -48,7 +48,7 @@ const Form: React.SFC = () => {
         height: 58,
         color: "primary",
         borderRadius: 40,
-        backgroundColor: "white",
+        backgroundColor: "background",
       }}
       onSubmit={e => {
         e.preventDefault();
@@ -103,7 +103,7 @@ export const NewsletterSection: React.SFC = () => (
   >
     <Box
       sx={{
-        background: "black",
+        backgroundColor: "backgroundDark",
         position: "absolute",
         top: "50%",
         bottom: 0,

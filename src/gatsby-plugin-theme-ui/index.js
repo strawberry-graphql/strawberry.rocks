@@ -17,13 +17,28 @@ export default {
     body: 1.5,
     heading: 1.125,
   },
+
+  // useColorSchemeMediaQuery: true,
+
   colors: {
-    text: "#000",
+    text: "#000000",
     background: "#fff",
     primary: "#f7393d",
     secondary: "#FF9FA9",
     muted: "#FFCED3",
     accent: "#4a65ff",
+    backgroundDark: "#000000",
+    textDark: "#ffffff",
+
+    modes: {
+      dark: {
+        text: "#ffffff",
+        background: "#171717",
+        backgroundDark: "#171717",
+        primary: "#f7393d",
+        accent: "#4a65ff",
+      },
+    },
   },
   links: {
     home: {

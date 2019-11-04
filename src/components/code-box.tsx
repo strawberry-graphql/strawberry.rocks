@@ -4,7 +4,6 @@ import { Flex, Box } from "@theme-ui/components";
 
 const BackgroundTop = props => (
   <svg viewBox="0 0 797 275" fill="none" {...props}>
-    <path fill="#fff" d="M0 0h797v275H0z" />
     <path fill="#FFCED3" d="M369 0h167v167H369z" />
     <mask id="prefix__a" fill="#fff">
       <path
@@ -30,9 +29,9 @@ const BackgroundTop = props => (
 const BackgroundBottom = props => (
   <svg viewBox="0 0 797 285" fill="none" {...props}>
     <g clipPath="url(#prefix__clip0)">
-      <path fill="#fff" d="M0 0h797v285H0z" />
       <path stroke="#FF9FA9" strokeWidth={4} d="M327 116h167v167H327z" />
       <path
+        sx={{ transform: "translateX(5px)" }}
         clipRule="evenodd"
         d="M83.25 282.5c45.978 0 83.25-37.272 83.25-83.25S129.228 116 83.25 116 0 153.272 0 199.25s37.272 83.25 83.25 83.25z"
         stroke="#FFCED3"

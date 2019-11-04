@@ -22,8 +22,8 @@ export const Footer: React.SFC = () => (
     sx={{
       py: 5,
       px: 4,
-      backgroundColor: "black",
-      color: "white",
+      backgroundColor: "backgroundDark",
+      color: "textDark",
     }}
   >
     <Grid

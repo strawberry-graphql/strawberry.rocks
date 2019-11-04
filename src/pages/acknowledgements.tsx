@@ -26,7 +26,7 @@ const MemberLink: React.SFC<{
     <Link
       href={link}
       target="_blank"
-      sx={{ color: "black", textDecoration: "none" }}
+      sx={{ color: "text", textDecoration: "none" }}
     >
       {children}
     </Link>
