@@ -2,10 +2,11 @@ import * as React from "react";
 
 import SEO from "../components/seo";
 import { Hero } from "../components/hero";
-import { Heading, Link, Grid, Box, Text, Flex } from "@theme-ui/components";
+import { Heading, Grid, Box, Text, Flex } from "@theme-ui/components";
 import { Section } from "../components/section";
 import { Features } from "../components/features";
 import { FlashIcon } from "../components/icons/flash";
+import { Link } from "../components/link";
 
 const HomePage = () => (
   <>
