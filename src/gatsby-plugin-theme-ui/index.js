@@ -53,6 +53,14 @@ export default {
       backgroundColor: "secondary",
       color: "white",
       padding: 2,
+      "&:hover": {
+        color: "text",
+      },
+    },
+    feature: {
+      "&:hover": {
+        color: "primary",
+      },
     },
   },
   text: {

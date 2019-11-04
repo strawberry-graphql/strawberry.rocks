@@ -20,6 +20,7 @@ const Feature: React.SFC<FeatureProps> = ({
   <Link
     href="#"
     {...props}
+    variant="feature"
     sx={{
       p: 4,
       my: 3,
