@@ -43,7 +43,7 @@ const AcknowledgementsPage = ({ data }: AcknowledgementsPageQuery) => {
       <SEO title="Acknowledgements" />
 
       <Box sx={{ p: 4, pb: 6, maxWidth: 1280, mx: "auto" }}>
-        <Heading sx={{ fontSize: 6, mb: 3 }}>Acknowledgements</Heading>
+        <Heading sx={{ fontSize: [5, 6], mb: 3 }}>Acknowledgements</Heading>
         <Text sx={{ mb: 4 }}>
           We&apos;d like to thank all of our contributors:
         </Text>

@@ -9,7 +9,7 @@ type NavItemProps = {
 };
 
 const NavItem: React.SFC<NavItemProps> = ({ href, children }) => (
-  <Box as="li" sx={{ listStyle: "none" }}>
+  <Box as="li" sx={{ listStyle: "none", whiteSpace: "nowrap" }}>
     <Link sx={{ color: "white" }} href={href}>
       {children}
     </Link>

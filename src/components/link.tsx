@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { Link as ThemeLink } from "@theme-ui/components";
+import { Box, Link as ThemeLink } from "@theme-ui/components";
 import { Link as GatsbyLink } from "gatsby";
 
 import { ExternalIcon } from "./icons/external";
@@ -25,12 +25,14 @@ export const Link: React.SFC<LinkProps> = ({ children, href, ...props }) => {
 
   return (
     <ThemeLink {...props} as={LinkComponent} href={href} to={href}>
-      {children}
+      <Box sx={{ display: "inline-block", mr: isExternal ? 1 : 0 }}>
+        {children}
+      </Box>
 
       {isExternal && (
         <ExternalIcon
           width="1em"
-          sx={{ ml: 2, verticalAlign: "middle", fill: "currentColor" }}
+          sx={{ verticalAlign: "middle", fill: "currentColor" }}
         />
       )}
     </ThemeLink>
