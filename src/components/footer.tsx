@@ -30,7 +30,7 @@ export const Footer: React.SFC = () => (
       sx={{
         mx: "auto",
         maxWidth: 1280,
-        gridTemplateColumns: ["repeat(4, 1fr)", "140px repeat(3, 1fr)"],
+        gridTemplateColumns: ["1fr 1fr", "140px repeat(3, 1fr)"],
       }}
     >
       <Box
@@ -39,7 +39,7 @@ export const Footer: React.SFC = () => (
           justifyContent: ["center", "flex-start"],
           gridRowStart: [2, 1],
           gridColumnStart: [1, 1],
-          gridColumnEnd: [5, 2],
+          gridColumnEnd: [3, 2],
           mt: [3, 0],
         }}
       >
@@ -54,7 +54,7 @@ export const Footer: React.SFC = () => (
         sx={{
           textAlign: "right",
           gridColumnStart: [2, 3],
-          gridColumnEnd: [5, 5],
+          gridColumnEnd: [3, 5],
         }}
       >
         <NavItem href="https://twitter.com/patrick91">Twitter</NavItem>
