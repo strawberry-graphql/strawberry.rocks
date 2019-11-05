@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "camelcase-keys": "^6.1.0",
-    "github-contributors": "^0.4.1",
-    "node-fetch": "^2.6.0"
-  }
-}

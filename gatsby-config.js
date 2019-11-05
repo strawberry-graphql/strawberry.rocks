@@ -86,7 +86,13 @@ module.exports = {
         },
       },
     },
-    `gatsby-source-github-contributors`,
+    {
+      resolve: `gatsby-source-github-contributors`,
+      options: {
+        repo: "strawberry-graphql/strawberry",
+        token: process.env.GITHUB_TOKEN,
+      },
+    },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
