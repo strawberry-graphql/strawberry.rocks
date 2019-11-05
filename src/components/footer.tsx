@@ -6,11 +6,12 @@ import { Link } from "./link";
 
 type NavItemProps = {
   href: string;
+  target?: string;
 };
 
-const NavItem: React.SFC<NavItemProps> = ({ href, children }) => (
+const NavItem: React.SFC<NavItemProps> = ({ href, children, ...props }) => (
   <Box as="li" sx={{ listStyle: "none", whiteSpace: "nowrap" }}>
-    <Link sx={{ color: "white" }} href={href}>
+    <Link sx={{ color: "white" }} href={href} {...props}>
       {children}
     </Link>
   </Box>
@@ -57,8 +58,15 @@ export const Footer: React.SFC = () => (
           gridColumnEnd: [3, 5],
         }}
       >
-        <NavItem href="https://twitter.com/patrick91">Twitter</NavItem>
-        <NavItem href="https://twitter.com/patrick91">Github</NavItem>
+        <NavItem target="_blank" href="https://twitter.com/patrick91">
+          Twitter
+        </NavItem>
+        <NavItem
+          target="_blank"
+          href="https://github.com/strawberry-graphql/strawberry"
+        >
+          Github
+        </NavItem>
       </Box>
     </Grid>
   </Box>
