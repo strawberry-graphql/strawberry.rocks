@@ -14,9 +14,11 @@ const HomePage = () => (
     <Hero />
 
     <Section>
-      <Heading sx={{ mb: 3 }}>Some copy here</Heading>
+      <Heading sx={{ mb: 3 }}>
+        Learn how to create GraphQL API using Strawberry
+      </Heading>
 
-      <Link href="/docs/">View documentation</Link>
+      <Link href="/docs/">View documentation 👉</Link>
 
       <Features />
 
@@ -30,7 +32,7 @@ const HomePage = () => (
         }}
       >
         <Box sx={{ p: 3 }}>
-          <Heading as="h2">Quick & easy information</Heading>
+          <Heading as="h2">Create GraphQL APIs in no time</Heading>
         </Box>
         <Box
           sx={{
@@ -50,12 +52,16 @@ const HomePage = () => (
             gridColumnEnd: [3, 2],
           }}
         >
-          <Text>
-            Text Da del conferentias secundarimente, se como secundo
-            anglo-romanic pro, e sed tote demonstrate. O tamben nostre linguage
-            sed si duo movimento introduction o. Servi celos tu es via, duo ha
-            excellente anteriormente secundarimente. Lingua complete nos ma.
-          </Text>
+          <Box>
+            <Text sx={{ mb: 2 }}>
+              Strawberry&apos;s friendly API allows to create GraphQL API rather
+              quickly, the debug server makes it easy to quickly test and debug.
+            </Text>
+            <Text>
+              <strong>Django</strong> and <strong>ASGI</strong> support allow to
+              have your API deployed in production in matter of minutes
+            </Text>
+          </Box>
         </Flex>
       </Grid>
     </Section>
