@@ -6,7 +6,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const blogPostTemplate = path.resolve(`src/templates/docs.tsx`);
   const result = await graphql(`
     {
-      allFile(filter: { sourceInstanceName: { eq: "strawberry-repo" } }) {
+      allFile(
+        filter: {
+          sourceInstanceName: { eq: "strawberry-repo" }
+          extension: { eq: "md" }
+        }
+      ) {
         edges {
           node {
             relativePath

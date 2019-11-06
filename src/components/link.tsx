@@ -9,14 +9,24 @@ type LinkProps = {
   href: string;
   variant?: string;
   target?: string;
+  partiallyActive?: boolean;
 };
 
-export const Link: React.SFC<LinkProps> = ({ children, href, ...props }) => {
+export const Link: React.SFC<LinkProps> = ({
+  children,
+  href,
+  partiallyActive,
+  ...props
+}) => {
   const isExternal = href.startsWith("http");
   const LinkComponent = isExternal
     ? ThemeLink
-    : ({ ...props }: { to: string }) => (
-        <GatsbyLink activeClassName="active" {...props} />
+    : (props: { to: string }) => (
+        <GatsbyLink
+          activeClassName="active"
+          partiallyActive={partiallyActive}
+          {...props}
+        />
       );
 
   if (props.target == "_blank") {
@@ -25,7 +35,7 @@ export const Link: React.SFC<LinkProps> = ({ children, href, ...props }) => {
 
   return (
     <ThemeLink {...props} as={LinkComponent} href={href} to={href}>
-      <Box sx={{ display: "inline-block", mr: isExternal ? 1 : 0 }}>
+      <Box as="span" sx={{ mr: isExternal ? 1 : 0 }}>
         {children}
       </Box>
 
