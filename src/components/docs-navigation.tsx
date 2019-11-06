@@ -30,17 +30,52 @@ const Nav: React.SFC = () => {
     }
   `);
 
+  console.log(edges);
+
+  const sections = {
+    general: [],
+    concepts: [],
+    features: [],
+  };
+
+  edges.map(({ node }) => {
+    for (const key of Object.keys(sections)) {
+      console.log(
+        key,
+        node.childMdx.frontmatter.path.startsWith(`/docs/${key}`)
+      );
+
+      if (node.childMdx.frontmatter.path.startsWith(`/docs/${key}`)) {
+        sections[key].push(node);
+
+        return;
+      }
+    }
+
+    sections.general.push(node);
+  });
+
   return (
-    <nav>
-      {edges.map(({ node }) => (
-        <Link
-          href={node.childMdx.frontmatter.path}
-          key={node.childMdx.frontmatter.path}
-        >
-          {node.childMdx.frontmatter.title}
-        </Link>
+    <Fragment>
+      {Object.entries(sections).map(([section, nodes]) => (
+        <Fragment key={section}>
+          <h2 sx={{ textTransform: "capitalize" }}>{section}</h2>
+
+          <nav sx={{ mb: 2 }}>
+            {nodes.map(node => (
+              <li
+                sx={{ listStyle: "none" }}
+                key={node.childMdx.frontmatter.path}
+              >
+                <Link href={node.childMdx.frontmatter.path}>
+                  {node.childMdx.frontmatter.title}
+                </Link>
+              </li>
+            ))}
+          </nav>
+        </Fragment>
       ))}
-    </nav>
+    </Fragment>
   );
 };
 
