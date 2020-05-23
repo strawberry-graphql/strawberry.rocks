@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from "gatsby";
 import * as React from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 
 interface SEOProps {
   description?: string;
@@ -12,6 +12,18 @@ interface SEOProps {
 
 const socialImageUrl = "https://strawberry.rocks/social.png";
 
+const DETAILS_QUERY = graphql`
+  query DefaultSEOQuery {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+      }
+    }
+  }
+`;
+
 const SEO: React.SFC<SEOProps> = ({
   description,
   lang,
@@ -20,7 +32,7 @@ const SEO: React.SFC<SEOProps> = ({
   title,
 }): JSX.Element => (
   <StaticQuery
-    query={detailsQuery}
+    query={DETAILS_QUERY}
     render={data => {
       const metaDescription = description || data.site.siteMetadata.description;
       return (
@@ -94,15 +106,3 @@ SEO.defaultProps = {
 };
 
 export default SEO;
-
-const detailsQuery = graphql`
-  query DefaultSEOQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-      }
-    }
-  }
-`;

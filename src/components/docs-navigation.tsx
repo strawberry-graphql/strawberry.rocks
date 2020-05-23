@@ -15,7 +15,12 @@ const Nav: React.SFC = () => {
     allFile: { edges },
   } = useStaticQuery<DocsNavigationQuery>(graphql`
     query DocsNavigationQuery {
-      allFile(filter: { sourceInstanceName: { eq: "strawberry-repo" } }) {
+      allFile(
+        filter: {
+          sourceInstanceName: { eq: "strawberry-repo" }
+          extension: { eq: "md" }
+        }
+      ) {
         edges {
           node {
             childMdx {
@@ -30,8 +35,6 @@ const Nav: React.SFC = () => {
     }
   `);
 
-  console.log(edges);
-
   const sections = {
     general: [],
     concepts: [],
@@ -40,11 +43,6 @@ const Nav: React.SFC = () => {
 
   edges.map(({ node }) => {
     for (const key of Object.keys(sections)) {
-      console.log(
-        key,
-        node.childMdx.frontmatter.path.startsWith(`/docs/${key}`)
-      );
-
       if (node.childMdx.frontmatter.path.startsWith(`/docs/${key}`)) {
         sections[key].push(node);
 
@@ -67,7 +65,7 @@ const Nav: React.SFC = () => {
                 sx={{ listStyle: "none" }}
                 key={node.childMdx.frontmatter.path}
               >
-                <Link href={node.childMdx.frontmatter.path}>
+                <Link href={node.childMdx.frontmatter.path} variant="docs-nav">
                   {node.childMdx.frontmatter.title}
                 </Link>
               </li>

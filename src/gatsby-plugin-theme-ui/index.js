@@ -1,3 +1,6 @@
+const PRIMARY_COLOR = "#f7393d";
+const ACCENT_COLOR = "#4a65ff";
+
 export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
@@ -21,10 +24,10 @@ export default {
   colors: {
     text: "#000000",
     background: "#fff",
-    primary: "#f7393d",
+    primary: PRIMARY_COLOR,
     secondary: "#FF9FA9",
     muted: "#FFCED3",
-    accent: "#4a65ff",
+    accent: ACCENT_COLOR,
     backgroundDark: "#000000",
     textDark: "#ffffff",
 
@@ -48,7 +51,7 @@ export default {
         text: "#ffffff",
         background: "#171717",
         backgroundDark: "#171717",
-        primary: "#f7393d",
+        primary: PRIMARY_COLOR,
         accent: "#4a65ff",
 
         // nightowl theme
@@ -78,7 +81,7 @@ export default {
       textDecoration: "none",
       color: "text",
       marginRight: 4,
-      backgroundImage: "linear-gradient(red, red)",
+      backgroundImage: `linear-gradient(${PRIMARY_COLOR}, ${PRIMARY_COLOR})`,
       backgroundPosition: "0% 100%",
       backgroundRepeat: "no-repeat",
       backgroundSize: "0 2px",
@@ -105,12 +108,21 @@ export default {
         color: "primary",
       },
     },
+    "docs-nav": {
+      color: "primary",
+
+      "&.active::after": {
+        display: "inline-block",
+        content: "'👈'",
+        ml: 2,
+      },
+    },
   },
   text: {
     hero: {
       color: "text",
       display: "inline",
-      backgroundImage: "linear-gradient(red, red)",
+      backgroundImage: `linear-gradient(${PRIMARY_COLOR}, ${PRIMARY_COLOR})`,
       backgroundPosition: "0% 100%",
       backgroundRepeat: "no-repeat",
       backgroundSize: "100% 4px",
@@ -139,6 +151,9 @@ export default {
       fontWeight: "heading",
       my: "1em",
       fontSize: 4,
+      textDecoration: "underline",
+      textDecorationThickness: 2,
+      textDecorationColor: PRIMARY_COLOR,
     },
     h3: {
       color: "text",
@@ -178,22 +193,52 @@ export default {
       fontWeight: "body",
       lineHeight: "body",
       my: "1em",
+      code: {
+        backgroundColor: "muted",
+        padding: 1,
+      },
+    },
+    ul: {
+      my: "1em",
+    },
+    ol: {
+      my: "1em",
+    },
+    li: {
+      listStyle: "inside",
+      "&::marker": {
+        color: "primary",
+      },
+      code: {
+        backgroundColor: "muted",
+        padding: 1,
+      },
     },
     a: {
-      color: "primary",
-      "&.active::after": {
-        display: "inline-block",
-        content: "'👈'",
-        ml: 2,
-      },
+      textDecoration: "underline",
+      textDecorationThickness: 2,
+      textDecorationColor: PRIMARY_COLOR,
+
       "&:hover": {
-        color: "accent",
+        textDecorationColor: ACCENT_COLOR,
+      },
+    },
+    blockquote: {
+      backgroundColor: "prismBackground",
+      borderLeftColor: "accent",
+      borderLeftWidth: 4,
+      borderLeftStyle: "solid",
+      padding: 3,
+      p: {
+        m: 0,
       },
     },
     pre: {
       fontFamily: "monospace",
       overflowX: "auto",
       padding: 3,
+      border: "2px solid",
+      borderColor: "muted",
 
       code: {
         color: "inherit",

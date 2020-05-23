@@ -18,7 +18,7 @@ const HomePage = () => (
         Learn how to create GraphQL API using Strawberry
       </Heading>
 
-      <Link href="/docs/">View documentation 👉</Link>
+      <Link href="/docs/">View documentation</Link>
 
       <Features />
 

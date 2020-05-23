@@ -61,7 +61,7 @@ export const Header: React.SFC = () => {
         }}
         as="nav"
       >
-        <Link variant="nav" href="/docs/">
+        <Link variant="nav" href="/docs/" partiallyActive={true}>
           Docs
         </Link>
         <Link variant="nav" target="_blank" href={github.repository.url}>
