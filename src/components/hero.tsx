@@ -43,6 +43,9 @@ export const Hero: React.SFC = () => {
         sx={{
           flex: "1 1 50%",
           fontSize: 1,
+          pre: {
+            border: "none",
+          },
         }}
       >
         <MDXRenderer>{file.childMdx.body}</MDXRenderer>
