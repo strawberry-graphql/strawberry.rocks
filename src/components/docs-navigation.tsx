@@ -23,6 +23,7 @@ const Nav: React.SFC = () => {
       ) {
         edges {
           node {
+            relativeDirectory
             childMdx {
               frontmatter {
                 title
@@ -35,23 +36,22 @@ const Nav: React.SFC = () => {
     }
   `);
 
-  const sections = {
-    general: [],
-    concepts: [],
-    features: [],
-  };
+  const sections = {};
 
   edges.map(({ node }) => {
-    for (const key of Object.keys(sections)) {
-      if (node.childMdx.frontmatter.path.startsWith(`/docs/${key}`)) {
-        sections[key].push(node);
+    const section = node.relativeDirectory
+      .replace(/^docs\//, "")
+      .split("/")[0]
+      .replace(/^[0-9]+_/, "");
 
-        return;
-      }
+    if (!sections[section]) {
+      sections[section] = [];
     }
 
-    sections.general.push(node);
+    sections[section].push(node);
   });
+
+  console.log(edges);
 
   return (
     <Fragment>
@@ -60,7 +60,7 @@ const Nav: React.SFC = () => {
           <h2 sx={{ textTransform: "capitalize" }}>{section}</h2>
 
           <nav sx={{ mb: 2 }}>
-            {nodes.map(node => (
+            {nodes.map((node) => (
               <li
                 sx={{ listStyle: "none" }}
                 key={node.childMdx.frontmatter.path}
@@ -77,7 +77,7 @@ const Nav: React.SFC = () => {
   );
 };
 
-const useSSRResponsiveValue = values => {
+const useSSRResponsiveValue = (values) => {
   if (typeof window === "undefined") {
     return values[0];
   }
