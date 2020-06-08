@@ -1,5 +1,5 @@
 import { useThemeUI } from "theme-ui";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, useLayoutEffect } from "react";
 
 const defaultBreakpoints = [40, 52, 64].map(function (n) {
   return n + "em";
@@ -69,8 +69,6 @@ const useBreakpointIndex = function (options: Options = {}) {
         window.addEventListener("resize", onResize);
       }
 
-      onResize();
-
       return function () {
         if (typeof window !== "undefined") {
           return window.removeEventListener("resize", onResize);
@@ -79,6 +77,7 @@ const useBreakpointIndex = function (options: Options = {}) {
     },
     [breakpoints, getIndex, value]
   );
+
   return value;
 };
 
