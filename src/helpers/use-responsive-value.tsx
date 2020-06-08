@@ -69,6 +69,8 @@ const useBreakpointIndex = function (options: Options = {}) {
         window.addEventListener("resize", onResize);
       }
 
+      onResize();
+
       return function () {
         if (typeof window !== "undefined") {
           return window.removeEventListener("resize", onResize);

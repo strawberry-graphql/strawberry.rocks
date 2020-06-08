@@ -51,8 +51,6 @@ const Nav: React.SFC = () => {
     sections[section].push(node);
   });
 
-  console.log(edges);
-
   return (
     <Fragment>
       {Object.entries(sections).map(([section, nodes]) => (
