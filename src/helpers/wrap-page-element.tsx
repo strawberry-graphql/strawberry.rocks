@@ -15,6 +15,12 @@ const reset = css`
     color: inherit;
   }
 
+  #wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
   @keyframes spin {
     from {
       transform: rotate(0deg);
@@ -29,12 +35,14 @@ export const wrapPageElement = ({ element }) => (
   <>
     <Global styles={reset} />
     <Styled.root>
-      <Header />
+      <div id="wrap">
+        <Header />
 
-      {element}
+        {element}
 
-      <NewsletterSection />
-      <Footer />
+        <NewsletterSection />
+        <Footer />
+      </div>
     </Styled.root>
   </>
 );

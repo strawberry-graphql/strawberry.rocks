@@ -13,7 +13,7 @@ const HomePage = () => (
     <SEO title="A Python library for GraphQL" />
     <Hero />
 
-    <Section>
+    <Section sx={{ flex: 1 }}>
       <Heading sx={{ mb: 3 }}>
         Learn how to create GraphQL API using Strawberry
       </Heading>

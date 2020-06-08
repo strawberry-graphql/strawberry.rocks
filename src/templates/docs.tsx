@@ -13,8 +13,10 @@ const DocsPage = ({ data: { file } }: { data: DocsPageQuery }) => (
 
     <Flex
       sx={{
+        width: "100%",
         maxWidth: 1200,
         mx: "auto",
+        flex: 1,
       }}
     >
       <DocsNavigation />

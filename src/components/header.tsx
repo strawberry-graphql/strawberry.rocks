@@ -29,6 +29,7 @@ export const Header: React.SFC = () => {
       sx={{
         px: 3,
         py: 2,
+        width: "100%",
         maxWidth: 1280,
         my: 2,
         mx: "auto",
