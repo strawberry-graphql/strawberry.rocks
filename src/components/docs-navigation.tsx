@@ -7,8 +7,8 @@ import { DocsNavigationQuery } from "./__generated__/DocsNavigationQuery";
 import { useToggle } from "../helpers/use-toggle";
 import { NavigationIcon } from "./icons/navigation";
 import { CloseIcon } from "./icons/close";
-import { useResponsiveValue } from "@theme-ui/match-media";
 import { Fragment } from "react";
+import { useResponsiveValue } from "../helpers/use-responsive-value";
 
 const Nav: React.SFC = () => {
   const {
@@ -77,18 +77,10 @@ const Nav: React.SFC = () => {
   );
 };
 
-const useSSRResponsiveValue = (values) => {
-  if (typeof window === "undefined") {
-    return values[0];
-  }
-
-  return useResponsiveValue(values);
-};
-
 export const DocsNavigation: React.SFC = () => {
   const [open, toggleOpen] = useToggle(false);
 
-  const menuType = useSSRResponsiveValue(["overlay", "sidebar"]);
+  const menuType = useResponsiveValue(["overlay", "sidebar"]);
 
   if (menuType == "sidebar") {
     return (
