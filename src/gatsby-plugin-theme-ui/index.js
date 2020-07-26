@@ -117,6 +117,17 @@ export default {
         ml: 2,
       },
     },
+    box: {
+      p: 2,
+      my: 3,
+      textDecoration: "none",
+      border: "2px solid",
+      borderColor: "accent",
+      width: "100%",
+      "&:hover": {
+        backgroundColor: "prismBackground",
+      },
+    },
   },
   text: {
     hero: {
@@ -229,6 +240,7 @@ export default {
       borderLeftWidth: 4,
       borderLeftStyle: "solid",
       padding: 3,
+      my: 3,
       p: {
         m: 0,
       },

@@ -9,21 +9,13 @@ export const EditOnGithub: React.SFC<EditOnGithubProps> = ({
 }) => (
   <Link
     href={`https://github.com/strawberry-graphql/strawberry/tree/master/${relativePath}`}
+    variant="box"
     sx={{
-      p: 2,
-      my: 4,
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       color: "accent",
       textAlign: "left",
-      textDecoration: "none",
-      border: "2px solid",
-      borderColor: "accent",
-      width: "100%",
-      "&:hover": {
-        backgroundColor: "prismBackground",
-      },
     }}
   >
     Edit on Github

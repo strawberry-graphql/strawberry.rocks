@@ -10,12 +10,14 @@ type LinkProps = {
   variant?: string;
   target?: string;
   partiallyActive?: boolean;
+  hideExternalIcon?: boolean;
 };
 
 export const Link: React.SFC<LinkProps> = ({
   children,
   href,
   partiallyActive,
+  hideExternalIcon = false,
   ...props
 }) => {
   const isExternal = href.startsWith("http");
@@ -39,7 +41,7 @@ export const Link: React.SFC<LinkProps> = ({
         {children}
       </Box>
 
-      {isExternal && (
+      {isExternal && !hideExternalIcon && (
         <ExternalIcon
           width="1em"
           sx={{ verticalAlign: "middle", fill: "currentColor" }}
