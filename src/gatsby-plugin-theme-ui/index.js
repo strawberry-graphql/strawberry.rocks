@@ -80,7 +80,7 @@ export default {
     nav: {
       textDecoration: "none",
       color: "text",
-      marginRight: 4,
+      marginRight: [0, 4],
       backgroundImage: `linear-gradient(${PRIMARY_COLOR}, ${PRIMARY_COLOR})`,
       backgroundPosition: "0% 100%",
       backgroundRepeat: "no-repeat",
