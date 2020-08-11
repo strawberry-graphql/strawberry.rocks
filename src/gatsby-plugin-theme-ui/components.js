@@ -22,5 +22,11 @@ export default {
   a: Link,
   AdditionalResources,
   // eslint-disable-next-line react/display-name
-  img: ({ src, ...props }) => <img src={getImageSrc(src)} {...props} />,
+  img: ({ src, ...props }) => (
+    <img
+      sx={{ borderWidth: 2, borderColor: "muted", borderStyle: "solid" }}
+      src={getImageSrc(src)}
+      {...props}
+    />
+  ),
 };
