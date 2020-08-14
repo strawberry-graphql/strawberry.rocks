@@ -33,7 +33,7 @@ const SEO: React.SFC<SEOProps> = ({
 }): JSX.Element => (
   <StaticQuery
     query={DETAILS_QUERY}
-    render={data => {
+    render={(data) => {
       const metaDescription = description || data.site.siteMetadata.description;
       return (
         <Helmet
@@ -93,7 +93,14 @@ const SEO: React.SFC<SEOProps> = ({
                 : []
             )
             .concat(meta)}
-        />
+        >
+          <script
+            async
+            defer
+            data-domain="strawberry.rocks"
+            src="https://plausible.io/js/plausible.js"
+          ></script>
+        </Helmet>
       );
     }}
   />
