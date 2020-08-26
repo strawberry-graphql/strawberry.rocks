@@ -40,7 +40,7 @@ module.exports = {
       resolve: `gatsby-source-git`,
       options: {
         name: `strawberry-repo`,
-        remote: `https://github.com/karina-klinkeviciute/strawberry.git`,
+        remote: `https://github.com/strawberry-graphql/strawberry.git`,
         branch: `documentation-types-enums`,
         patterns: `docs/**`,
       },
