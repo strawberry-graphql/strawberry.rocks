@@ -41,7 +41,7 @@ module.exports = {
       options: {
         name: `strawberry-repo`,
         remote: `https://github.com/strawberry-graphql/strawberry.git`,
-        branch: `documentation-types-enums`,
+        branch: `master`,
         patterns: `docs/**`,
       },
     },
