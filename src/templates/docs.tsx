@@ -2,6 +2,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Flex, Box } from "@theme-ui/components";
+import { Global, css } from "@emotion/core";
 import SEO from "../components/seo";
 import { DocsNavigation } from "../components/docs-navigation";
 import { DocsPageQuery } from "./__generated__/DocsPageQuery";
@@ -10,6 +11,15 @@ import { EditOnGithub } from "../components/edit-on-github";
 const DocsPage = ({ data: { file } }: { data: DocsPageQuery }) => (
   <>
     <SEO title={file.childMdx.frontmatter.title} />
+
+    <Global
+      styles={css`
+        a.anchor.before {
+          position: absolute;
+          left: -1.5rem;
+        }
+      `}
+    />
 
     <Flex
       sx={{

@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config({
   path: `.env`,
 });
@@ -49,6 +50,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [`gatsby-remark-autolink-headers`],
         plugins: [
           {
             resolve: `gatsby-remark-prismjs`,
