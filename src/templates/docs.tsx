@@ -1,5 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Flex, Box } from "@theme-ui/components";
 import { Global, css } from "@emotion/core";
@@ -7,8 +8,13 @@ import SEO from "../components/seo";
 import { DocsNavigation } from "../components/docs-navigation";
 import { DocsPageQuery } from "./__generated__/DocsPageQuery";
 import { EditOnGithub } from "../components/edit-on-github";
+import GraphQLExample from "../components/graphql-example";
 
-const DocsPage = ({ data: { file } }: { data: DocsPageQuery }) => (
+const DocsPage = ({
+  data: { file },
+}: {
+  data: DocsPageQuery;
+}): React.ReactElement => (
   <>
     <SEO title={file.childMdx.frontmatter.title} />
 
@@ -32,7 +38,13 @@ const DocsPage = ({ data: { file } }: { data: DocsPageQuery }) => (
       <DocsNavigation />
 
       <Box sx={{ px: 4, pb: 6 }}>
-        <MDXRenderer>{file.childMdx.body}</MDXRenderer>
+        <MDXProvider
+          components={{
+            GraphQLExample,
+          }}
+        >
+          <MDXRenderer>{file.childMdx.body}</MDXRenderer>
+        </MDXProvider>
 
         <EditOnGithub relativePath={file.relativePath} />
       </Box>

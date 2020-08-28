@@ -20,6 +20,7 @@
     "@theme-ui/components": "^0.3.1",
     "@theme-ui/match-media": "^0.3.1",
     "@theme-ui/prism": "^0.3.0",
+    "dedent": "^0.7.0",
     "gatsby": "^2.24.33",
     "gatsby-image": "^2.4.14",
     "gatsby-plugin-codegen": "^1.2.14",

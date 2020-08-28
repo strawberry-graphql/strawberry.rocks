@@ -250,7 +250,7 @@ export default {
       overflowX: "auto",
       padding: 3,
       border: "2px solid",
-      borderColor: "muted",
+      borderColor: "primary",
 
       code: {
         color: "inherit",
