@@ -98,7 +98,7 @@ const SEO: React.SFC<SEOProps> = ({
             async
             defer
             data-domain="strawberry.rocks"
-            src="https://plausible.io/js/plausible.js"
+            src="https://stats.strawberry.rocks/js/index.js"
           ></script>
         </Helmet>
       );
