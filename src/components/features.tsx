@@ -72,8 +72,8 @@ export const Features: React.SFC = () => (
     <Feature href="/docs/concepts/type-hints" bg="secondary" icon={TypingIcon}>
       Typings
     </Feature>
-    <Feature href="/docs/concept/pythonic" bg="muted" icon={PythonicIcon}>
-      Pythonic API
+    <Feature href="/docs/why" bg="muted" icon={PythonicIcon}>
+      Philosophy
     </Feature>
   </Grid>
 );
