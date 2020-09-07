@@ -1,6 +1,6 @@
 # Strawberry GraphQL website
 
-This is the repo for [https://strawberry.rocks](Strawberry GraphQL). If you want
+This is the repo for [Strawberry GraphQL](https://strawberry.rocks). If you want
 to edit the documentation head to the
 [main repository](https://github.com/strawberry-graphql/strawberry).
 
