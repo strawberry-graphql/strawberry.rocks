@@ -34,21 +34,22 @@ npm install
 ### Configuration
 
 If you want to test a documentation change, you can change the repo where we
-fetch the documentation from in `gatsby-config.js`, find the following object:
+fetch the documentation from by specifying `DOCS_GIT_REMOTE` and
+`DOCS_GIT_BRANCH` in your `.env` file. For example:
 
-```js
-{
-  resolve: `gatsby-source-git`,
-  options: {
-    name: `strawberry-repo`,
-    remote: `https://github.com/strawberry-graphql/strawberry.git`,
-    branch: `master`,
-    patterns: `docs/**`,
-  },
-},
+```env
+DOCS_GIT_REMOTE=https://github.com/strawberry-graphql/strawberry.git
+DOCS_GIT_BRANCH=test-branch
 ```
 
-and change the remote and branch to point to your repository.
+Alternatively you can checkout the [Strawberry](https://github.com/strawberry-graphql/strawberry)
+repo locally and specify it's location in your `.env` file. For example:
+
+```env
+DOCS_LOCAL_LOCATION=../strawberry/docs
+```
+
+*Note:* Make sure the path refers to the `docs` subdirectory in the repo.
 
 ### Running the website
 
