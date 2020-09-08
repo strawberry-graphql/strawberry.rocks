@@ -3,7 +3,6 @@ import { ReactElement } from "react";
 import { jsx } from "theme-ui";
 import { Flex, Box } from "@theme-ui/components";
 import Prism from "@theme-ui/prism";
-import dedent from "dedent";
 
 function Header({ children, ...props }) {
   return (
@@ -42,18 +41,14 @@ function CodeBlock({ language, children, ...props }) {
 
 export default function GraphQLExample({
   query,
-  result,
+  response,
 }: {
   query: string;
-  result: Record<string, unknown>;
+  response: string;
 }): ReactElement {
+  const res = JSON.parse(response);
   return (
-    <Flex
-      sx={{
-        maxWidth: 600,
-        margin: "0 auto",
-      }}
-    >
+    <Flex>
       <Flex
         sx={{
           flex: 1,
@@ -67,7 +62,7 @@ export default function GraphQLExample({
             borderRight: "none",
           }}
         >
-          {dedent(query)}
+          {query}
         </CodeBlock>
       </Flex>
       <Flex
@@ -78,7 +73,7 @@ export default function GraphQLExample({
       >
         <Header>Result</Header>
         <CodeBlock language="graphql">
-          {JSON.stringify(result, null, "  ")}
+          {JSON.stringify(res, null, "  ")}
         </CodeBlock>
       </Flex>
     </Flex>
