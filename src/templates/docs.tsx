@@ -8,7 +8,6 @@ import SEO from "../components/seo";
 import { DocsNavigation } from "../components/docs-navigation";
 import { DocsPageQuery } from "./__generated__/DocsPageQuery";
 import { EditOnGithub } from "../components/edit-on-github";
-import GraphQLExample from "../components/graphql-example";
 
 const DocsPage = ({
   data: { file },
@@ -38,11 +37,7 @@ const DocsPage = ({
       <DocsNavigation />
 
       <Box sx={{ px: 4, pb: 6 }}>
-        <MDXProvider
-          components={{
-            GraphQLExample,
-          }}
-        >
+        <MDXProvider components={{}}>
           <MDXRenderer>{file.childMdx.body}</MDXRenderer>
         </MDXProvider>
 
