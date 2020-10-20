@@ -19,12 +19,13 @@ export default {
     heading: 1.125,
   },
 
-  // useColorSchemeMediaQuery: true,
+  useColorSchemeMediaQuery: true,
 
   colors: {
     text: "#000000",
     background: "#fff",
     primary: PRIMARY_COLOR,
+    codeBoxBorder: PRIMARY_COLOR,
     secondary: "#FF9FA9",
     muted: "#FFCED3",
     accent: ACCENT_COLOR,
@@ -52,12 +53,14 @@ export default {
         background: "#171717",
         backgroundDark: "#171717",
         primary: PRIMARY_COLOR,
+        secondary: PRIMARY_COLOR,
         accent: "#4a65ff",
+        codeBoxBorder: "#FFCED3",
 
         // nightowl theme
 
         prismColor: "#d6deeb",
-        prismBackground: "#171717",
+        prismBackground: "rgb(26, 26, 26)",
         prismChanged: "rgb(162, 191, 252)",
         prismDeleted: "rgba(239, 83, 80, 0.56)",
         prismInserted: "#4a65ff",
@@ -250,7 +253,7 @@ export default {
       overflowX: "auto",
       padding: 3,
       border: "2px solid",
-      borderColor: "primary",
+      borderColor: "codeBoxBorder",
 
       code: {
         color: "inherit",

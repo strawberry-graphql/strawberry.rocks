@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
+import { jsx, useColorMode } from "theme-ui";
 import { Grid } from "@theme-ui/components";
 import { AsyncIcon } from "./icons/async";
 import { ServerIcon } from "./icons/server";
@@ -18,49 +18,56 @@ const Feature: React.SFC<FeatureProps> = ({
   icon: Icon,
   children,
   ...props
-}) => (
-  <Link
-    {...props}
-    variant="feature"
-    sx={{
-      p: 4,
-      my: 3,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "primary",
-      textAlign: "left",
-      textDecoration: "none",
-      transition: "0.2s transform ease-out",
-      "&:hover": {
-        transform: "translate(0, -20px)",
-      },
-    }}
-  >
-    {Icon && (
-      <Icon
+}) => {
+  const [colorMode] = useColorMode();
+
+  const isDarkMode = colorMode == "dark";
+
+  return (
+    <Link
+      {...props}
+      variant="feature"
+      sx={{
+        p: 4,
+        my: 3,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        color: isDarkMode && props.bg == "secondary" ? "muted" : "primary",
+        textAlign: "left",
+        textDecoration: "none",
+        transition: "0.2s transform ease-out",
+        "&:hover": {
+          color: isDarkMode && props.bg == "secondary" ? "muted" : "primary",
+          transform: "translate(0, -20px)",
+        },
+      }}
+    >
+      {Icon && (
+        <Icon
+          sx={{
+            display: "block",
+            my: 2,
+            mx: "auto",
+            fill: isDarkMode && props.bg == "secondary" ? "muted" : "primary",
+            height: 150,
+          }}
+        />
+      )}
+
+      {children}
+
+      <ArrowRightIcon
         sx={{
-          display: "block",
-          my: 2,
-          mx: "auto",
-          fill: "primary",
-          height: 150,
+          ml: 3,
+          top: 10,
+          stroke: isDarkMode && props.bg == "secondary" ? "muted" : "primary",
+          position: "relative",
         }}
       />
-    )}
-
-    {children}
-
-    <ArrowRightIcon
-      sx={{
-        ml: 3,
-        top: 10,
-        position: "relative",
-      }}
-    />
-  </Link>
-);
-
+    </Link>
+  );
+};
 export const Features: React.SFC = () => (
   <Grid columns={[1, 2, 4]} gap={0} sx={{ my: 4, px: [4, 4, 0] }}>
     <Feature href="/docs/concepts/async" bg="secondary" icon={AsyncIcon}>
