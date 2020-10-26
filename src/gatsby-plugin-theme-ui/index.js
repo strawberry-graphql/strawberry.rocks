@@ -32,6 +32,7 @@ export default {
     muted: "#FFCED3",
     accent: ACCENT_COLOR,
     backgroundDark: "#000000",
+    textDark: TEXT_COLOR_LIGHT,
 
     // nightowl theme
 
