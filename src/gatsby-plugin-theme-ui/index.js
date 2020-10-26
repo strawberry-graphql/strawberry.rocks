@@ -1,3 +1,5 @@
+const TEXT_COLOR_DARK = "#000000";
+const TEXT_COLOR_LIGHT = "#ffffff";
 const PRIMARY_COLOR = "#f7393d";
 const ACCENT_COLOR = "#4a65ff";
 
@@ -22,7 +24,7 @@ export default {
   useColorSchemeMediaQuery: true,
 
   colors: {
-    text: "#000000",
+    text: TEXT_COLOR_DARK,
     background: "#fff",
     primary: PRIMARY_COLOR,
     codeBoxBorder: PRIMARY_COLOR,
@@ -30,7 +32,6 @@ export default {
     muted: "#FFCED3",
     accent: ACCENT_COLOR,
     backgroundDark: "#000000",
-    textDark: "#ffffff",
 
     // nightowl theme
 
@@ -49,7 +50,7 @@ export default {
 
     modes: {
       dark: {
-        text: "#ffffff",
+        text: TEXT_COLOR_LIGHT,
         background: "#171717",
         backgroundDark: "#171717",
         primary: PRIMARY_COLOR,
@@ -208,6 +209,7 @@ export default {
       lineHeight: "body",
       my: "1em",
       code: {
+        color: TEXT_COLOR_DARK,
         backgroundColor: "muted",
         padding: 1,
       },
@@ -224,6 +226,7 @@ export default {
         color: "primary",
       },
       code: {
+        color: TEXT_COLOR_DARK,
         backgroundColor: "muted",
         padding: 1,
       },
