@@ -13,8 +13,11 @@ can use [asdf](https://github.com/asdf-vm/asdf) to install it, in case).
 
 You also need a GitHub token, this is used to fetch the list of contributors for
 the repo, you can create one with the following scopes
-`public_repo, read:packages, read:user, repo:status`, by following
-[this guide](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+`public_repo, read:packages, read:user, repo:status`, following
+[this guide](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)
+or by clicking
+[this link](https://github.com/settings/tokens/new?description=Strawberry%20Docs&scopes=repo:status,public_repo,read:user,repo:status,read:packages)
+directly (notice it will ask you for a password).
 
 The token needs to be stored in a `.env` file, like this:
 
