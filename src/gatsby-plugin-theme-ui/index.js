@@ -213,6 +213,7 @@ export default {
         color: TEXT_COLOR_DARK,
         backgroundColor: "muted",
         padding: 1,
+        fontFamily: "body",
       },
     },
     ul: {
@@ -230,6 +231,7 @@ export default {
         color: TEXT_COLOR_DARK,
         backgroundColor: "muted",
         padding: 1,
+        fontFamily: "body",
       },
     },
     a: {
