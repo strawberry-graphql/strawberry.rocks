@@ -64,6 +64,9 @@ const Form: React.SFC = () => {
           border: "none",
           borderTopLeftRadius: 40,
           borderBottomLeftRadius: 40,
+          "&::placeholder": {
+            opacity: 1,
+          },
         }}
         onChange={e => setEmail(e.target.value)}
         value={email}
