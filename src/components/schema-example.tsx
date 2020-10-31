@@ -40,14 +40,13 @@ function CodeBlock({ language, children, extraStyles = {}, ...props }) {
   );
 }
 
-export default function GraphQLExample({
-  query,
-  response,
+export default function SchemaExample({
+  python,
+  schema,
 }: {
-  query: string;
-  response: string;
+  python: string;
+  schema: string;
 }): ReactElement {
-  const res = JSON.parse(response);
   return (
     <Flex>
       <Flex
@@ -56,14 +55,14 @@ export default function GraphQLExample({
           flexDirection: "column",
         }}
       >
-        <Header>Query</Header>
+        <Header>Definition</Header>
         <CodeBlock
-          language="graphql"
+          language="python"
           extraStyles={{
             borderRight: "none",
           }}
         >
-          {query}
+          {python}
         </CodeBlock>
       </Flex>
       <Flex
@@ -72,8 +71,8 @@ export default function GraphQLExample({
           flexDirection: "column",
         }}
       >
-        <Header>Result</Header>
-        <CodeBlock language="json">{JSON.stringify(res, null, "  ")}</CodeBlock>
+        <Header>Schema</Header>
+        <CodeBlock language="graphql">{schema}</CodeBlock>
       </Flex>
     </Flex>
   );

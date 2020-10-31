@@ -5,6 +5,7 @@ import Prism from "@theme-ui/prism";
 import { AdditionalResources } from "../components/additional-resources";
 import { Link } from "../components/link";
 import GraphQLExample from "../components/graphql-example.tsx";
+import SchemaExample from "../components/schema-example.tsx";
 
 const getImageSrc = src => {
   if (src.startsWith("./")) {
@@ -26,6 +27,14 @@ function CustomPrism({ className, children, ...props }) {
       throw new Error("Invalid content for language `graphql+response`");
     }
     return <GraphQLExample query={query} response={response} />;
+  }
+
+  if (language === "python+schema") {
+    const [python, schema] = children.split("---");
+    if (!python || !schema) {
+      throw new Error("Invalid content for language `python+schema`");
+    }
+    return <SchemaExample python={python} schema={schema} />;
   }
 
   return (
