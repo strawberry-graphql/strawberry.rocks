@@ -22,7 +22,7 @@ function Header({ children, ...props }) {
   );
 }
 
-function CodeBlock({ language, children, ...props }) {
+function CodeBlock({ language, children, extraStyles = {}, ...props }) {
   return (
     <Prism
       className={`language-${language}`}
@@ -31,6 +31,7 @@ function CodeBlock({ language, children, ...props }) {
         borderTop: "none",
         maxHeight: "300px",
         overflowY: "auto",
+        ...extraStyles,
       }}
       {...props}
     >
@@ -58,7 +59,7 @@ export default function GraphQLExample({
         <Header>Query</Header>
         <CodeBlock
           language="graphql"
-          sx={{
+          extraStyles={{
             borderRight: "none",
           }}
         >
@@ -72,9 +73,7 @@ export default function GraphQLExample({
         }}
       >
         <Header>Result</Header>
-        <CodeBlock language="graphql">
-          {JSON.stringify(res, null, "  ")}
-        </CodeBlock>
+        <CodeBlock language="json">{JSON.stringify(res, null, "  ")}</CodeBlock>
       </Flex>
     </Flex>
   );
