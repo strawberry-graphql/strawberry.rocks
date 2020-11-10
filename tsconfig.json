@@ -20,7 +20,8 @@
     "baseUrl": ".",
     "paths": {
       "~/components/*": ["./components/*"],
-      "~/content/*": ["./content/*"]
+      "~/content/*": ["./content/*"],
+      "~/github": ["./github"]
     }
   },
   "include": [

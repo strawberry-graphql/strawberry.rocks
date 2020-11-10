@@ -2,40 +2,41 @@
 import { jsx } from "theme-ui";
 import { Text, Box, Flex, Heading } from "@theme-ui/components";
 // import SEO from "../components/seo";
-// import {
-//   AcknowledgementsPageQuery,
-//   AcknowledgementsPageQuery_allGitHubContributor_nodes,
-// } from "./__generated__/AcknowledgementsPageQuery";
 import { Link } from "~/components/link";
 import BaseLayout from "~/components/base-layout";
 import MDXDocument from "~/content/acknowledgements.mdx";
+import { getCollaborators, GithubCollaborator } from "~/github";
 
 const IGNORE_LIST = ["dependabot-preview[bot]", "dependabot-bot", "botberry"];
 
-// const MemberLink: React.SFC<{
-//   member: AcknowledgementsPageQuery_allGitHubContributor_nodes;
-// }> = ({ children, member }) => {
-//   let link = member.url;
+const MemberLink: React.SFC<{
+  member: GithubCollaborator;
+}> = ({ children, member }) => {
+  let link = member.url;
 
-//   if (!link.startsWith("http")) {
-//     link = `http://${link}`;
-//   }
+  if (!link.startsWith("http")) {
+    link = `http://${link}`;
+  }
 
-//   return (
-//     <Link
-//       href={link}
-//       target="_blank"
-//       sx={{ color: "text", textDecoration: "none" }}
-//     >
-//       {children}
-//     </Link>
-//   );
-// };
+  return (
+    <Link
+      href={link}
+      target="_blank"
+      sx={{ color: "text", textDecoration: "none" }}
+    >
+      {children}
+    </Link>
+  );
+};
 
-const AcknowledgementsPage = () => {
-  // const contributors = data.allGitHubContributor.nodes.filter(
-  //   member => !IGNORE_LIST.includes(member.login)
-  // );
+const AcknowledgementsPage = ({
+  collaborators,
+}: {
+  collaborators: GithubCollaborator[];
+}) => {
+  const filteredCollaborators = collaborators.filter(
+    (member) => !IGNORE_LIST.includes(member.login)
+  );
 
   return (
     <BaseLayout>
@@ -47,27 +48,35 @@ const AcknowledgementsPage = () => {
           We&apos;d like to thank all of our contributors:
         </Text>
 
-        {/* <Flex */}
-        {/*   as="ul" */}
-        {/*   sx={{ */}
-        {/*     flexWrap: "wrap", */}
-        {/*     mb: 3, */}
-        {/*   }} */}
-        {/* > */}
-        {/*   {contributors.map((member, index) => ( */}
-        {/*     <Box key={index} as="li" sx={{ flex: "0 0 230px", mb: 2 }}> */}
-        {/*       <MemberLink member={member}> */}
-        {/*         {member.name || member.login} */}
-        {/*       </MemberLink> */}
-        {/*     </Box> */}
-        {/*   ))} */}
-        {/* </Flex> */}
+        <Flex
+          as="ul"
+          sx={{
+            flexWrap: "wrap",
+            mb: 3,
+          }}
+        >
+          {filteredCollaborators.map((member, index) => (
+            <Box key={index} as="li" sx={{ flex: "0 0 230px", mb: 2 }}>
+              <MemberLink member={member}>
+                {member.name || member.login}
+              </MemberLink>
+            </Box>
+          ))}
+        </Flex>
 
         <MDXDocument />
-        {/* <MDXRenderer>{data.file.childMdx.body}</MDXRenderer> */}
       </Box>
     </BaseLayout>
   );
 };
+
+export async function getStaticProps() {
+  const collaborators = await getCollaborators();
+  return {
+    props: {
+      collaborators,
+    },
+  };
+}
 
 export default AcknowledgementsPage;
