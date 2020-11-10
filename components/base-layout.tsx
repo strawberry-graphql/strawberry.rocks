@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Styled } from "theme-ui";
 import { Global, css } from "@emotion/core";
+import Head from "next/head";
 // import { Header } from "./header";
 import { NewsletterSection } from "./newsletter-section";
 import { Footer } from "./footer";
@@ -38,6 +39,12 @@ export default function BaseLayout({
 }) {
   return (
     <>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css?family=Karla:,400,400i,700&amp;display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <Global styles={reset} />
       <Styled.root>
         <div id="wrap">

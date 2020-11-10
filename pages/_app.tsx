@@ -9,10 +9,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link
-          href="https://fonts.googleapis.com/css?family=Karla:,400,400i,700&amp;display=swap"
-          rel="stylesheet"
-        />
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       {/* @ts-ignore components prop is missing in the type definition */}
