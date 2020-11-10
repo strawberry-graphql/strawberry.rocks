@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "author": "Patrick Arminio <patrick.arminio@@gmail.com>",
   "scripts": {
-    "build": "next build",
-    "develop": "next dev",
-    "dev": "next dev",
-    "start": "next start",
+    "build": "node scripts/github-data.js && next build",
+    "develop": "npm run dev",
+    "dev": "node scripts/github-data.js && next dev",
+    "start": "node scripts/github-data.js && next start",
     "format": "prettier --write \"{,!(node_modules|public|coverage|.cache)/**/}*.{js,jsx,ts,tsx,json}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +24,7 @@
     "@theme-ui/match-media": "^0.3.1",
     "@theme-ui/prism": "^0.3.0",
     "dedent": "^0.7.0",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.24.82",
     "gatsby-image": "^2.4.21",
     "gatsby-plugin-codegen": "^1.2.14",

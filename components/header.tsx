@@ -1,29 +1,27 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from "theme-ui";
 import { Box, Flex } from "@theme-ui/components";
-import { useStaticQuery, graphql } from "gatsby";
 
-import { HeaderQuery } from "./__generated__/HeaderQuery";
 import { Logo } from "./logo";
 import { Link } from "./link";
 
-export const Header: React.SFC = () => {
-  const [colorMode, _] = useColorMode();
+import githubData from "../github-data.json";
 
-  const { github } = useStaticQuery<HeaderQuery>(graphql`
-    query HeaderQuery {
-      github {
-        repository(owner: "strawberry-graphql", name: "strawberry") {
-          url
-          releases(last: 1) {
-            nodes {
-              tagName
-            }
-          }
-        }
-      }
-    }
-  `);
+export type GithubRepository = {
+  url: string;
+  releases: {
+    nodes: GithubRelease[];
+  };
+};
+
+type GithubRelease = {
+  tagName: string;
+};
+
+export default function Header() {
+  const [colorMode] = useColorMode();
+
+  const repository: GithubRepository = githubData.repository;
 
   return (
     <Box
@@ -61,10 +59,10 @@ export const Header: React.SFC = () => {
           }}
           as="nav"
         >
-          <Link variant="nav" href="/docs/" partiallyActive={true}>
+          <Link variant="nav" href="/docs/">
             Docs
           </Link>
-          <Link variant="nav" target="_blank" href={github.repository.url}>
+          <Link variant="nav" target="_blank" href={repository.url}>
             Github
           </Link>
           <Link variant="nav" target="_blank" href="https://discord.gg/ZkRTEJQ">
@@ -95,9 +93,9 @@ export const Header: React.SFC = () => {
           target="_blank"
           href="https://pypi.org/project/strawberry-graphql/"
         >
-          {github.repository.releases.nodes[0].tagName}
+          {repository.releases.nodes[0].tagName}
         </Link>
       </Flex>
     </Box>
   );
-};
+}

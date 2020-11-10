@@ -3,9 +3,8 @@ import { jsx } from "theme-ui";
 import { Text, Box, Flex, Heading } from "@theme-ui/components";
 // import SEO from "../components/seo";
 import { Link } from "~/components/link";
-import BaseLayout from "~/components/base-layout";
 import MDXDocument from "~/content/acknowledgements.mdx";
-import { getCollaborators, GithubCollaborator } from "~/github";
+import { githubQuery } from "~/github";
 
 const IGNORE_LIST = ["dependabot-preview[bot]", "dependabot-bot", "botberry"];
 
@@ -39,7 +38,7 @@ const AcknowledgementsPage = ({
   );
 
   return (
-    <BaseLayout>
+    <>
       {/* <SEO title="Acknowledgements" /> */}
 
       <Box sx={{ p: 4, pb: 6, maxWidth: 1280, mx: "auto" }}>
@@ -66,15 +65,45 @@ const AcknowledgementsPage = ({
 
         <MDXDocument />
       </Box>
-    </BaseLayout>
+    </>
   );
 };
 
+const query = `
+  query CollaboratorsQuery($repo: String!, $owner: String!) {
+    repository(name: $repo, owner: $owner) {
+      collaborators(affiliation: ALL) {
+        edges {
+          node {
+            name
+            login
+            websiteUrl
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+
+type GithubCollaborator = {
+  name: string | null;
+  login: string;
+  websiteUrl: string | null;
+  url: string;
+};
+
 export async function getStaticProps() {
-  const collaborators = await getCollaborators();
+  const { repository } = await githubQuery(query, {
+    repo: "strawberry",
+    owner: "strawberry-graphql",
+  });
+
   return {
     props: {
-      collaborators,
+      collaborators: repository.collaborators.edges.map(
+        ({ node }: { node: GithubCollaborator }) => node
+      ),
     },
   };
 }

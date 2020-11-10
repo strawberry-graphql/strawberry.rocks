@@ -1,33 +1,14 @@
 import fetch from "isomorphic-unfetch";
 
 const ENDPOINT = "https://api.github.com/graphql";
-const REPO = "strawberry";
-const OWNER = "strawberry-graphql";
 
-export type GithubCollaborator = {
-  name: string | null;
-  login: string;
-  websiteUrl: string | null;
-  url: string;
-};
-
-export async function getCollaborators(): Promise<GithubCollaborator[]> {
-  const query = `
-    query CollaboratorsQuery($repo: String!, $owner: String!) {
-      repository(name: $repo, owner: $owner) {
-        collaborators(affiliation: ALL) {
-          edges {
-            node {
-              name
-              login
-              websiteUrl
-              url
-            }
-          }
-        }
-      }
-    }
-  `;
+export async function githubQuery(
+  query: string,
+  variables: { [key: string]: string } = {}
+) {
+  if (!process.env.GITHUB_TOKEN) {
+    throw new Error("`GITHUB_TOKEN` is missing from the `.env` file");
+  }
 
   const response = await fetch(ENDPOINT, {
     method: "POST",
@@ -37,10 +18,7 @@ export async function getCollaborators(): Promise<GithubCollaborator[]> {
     },
     body: JSON.stringify({
       query,
-      variables: {
-        repo: REPO,
-        owner: OWNER,
-      },
+      variables,
     }),
   });
 
@@ -51,7 +29,5 @@ export async function getCollaborators(): Promise<GithubCollaborator[]> {
   }
 
   const { data } = await response.json();
-  return data.repository.collaborators.edges.map(
-    ({ node }: { node: GithubCollaborator }) => node
-  );
+  return data;
 }
