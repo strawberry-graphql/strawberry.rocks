@@ -50,7 +50,7 @@ const Form: React.SFC = () => {
         borderRadius: 40,
         backgroundColor: "background",
       }}
-      onSubmit={e => {
+      onSubmit={(e) => {
         e.preventDefault();
         if (!loading) {
           subscribe({ EMAIL: email });
@@ -68,7 +68,7 @@ const Form: React.SFC = () => {
             opacity: 1,
           },
         }}
-        onChange={e => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
         value={email}
         type="email"
         placeholder="my@email.com"

@@ -71,3 +71,5 @@ yarn-error.log
 .yarn-integrity
 
 __generated__/
+
+.next

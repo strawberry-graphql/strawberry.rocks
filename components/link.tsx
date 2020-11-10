@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Box, Link as ThemeLink } from "@theme-ui/components";
-import { Link as GatsbyLink } from "gatsby";
+import NextLink from "next/link";
 
 import { ExternalIcon } from "./icons/external";
 
@@ -9,34 +9,49 @@ type LinkProps = {
   href: string;
   variant?: string;
   target?: string;
-  partiallyActive?: boolean;
   hideExternalIcon?: boolean;
+  rel?: string;
 };
+
+function LinkWrapper({
+  href,
+  isExternal,
+  children,
+  ...rest
+}: {
+  href: string;
+  isExternal: boolean;
+  children: React.ReactNode;
+}) {
+  if (isExternal) {
+    return (
+      <ThemeLink {...rest} href={href}>
+        {children}
+      </ThemeLink>
+    );
+  }
+
+  return (
+    <NextLink href={href} passHref>
+      <ThemeLink {...rest}>{children}</ThemeLink>
+    </NextLink>
+  );
+}
 
 export const Link: React.SFC<LinkProps> = ({
   children,
   href,
-  partiallyActive,
   hideExternalIcon = false,
   ...props
 }) => {
   const isExternal = href.startsWith("http");
-  const LinkComponent = isExternal
-    ? ThemeLink
-    : (props: { to: string }) => (
-        <GatsbyLink
-          activeClassName="active"
-          partiallyActive={partiallyActive}
-          {...props}
-        />
-      );
 
   if (props.target == "_blank") {
-    (props as any).rel = "noopener noreferrer";
+    props.rel = "noopener noreferrer";
   }
 
   return (
-    <ThemeLink {...props} as={LinkComponent} href={href} to={href}>
+    <LinkWrapper isExternal={isExternal} {...props} href={href}>
       <Box as="span" sx={{ mr: isExternal ? 1 : 0 }}>
         {children}
       </Box>
@@ -47,6 +62,6 @@ export const Link: React.SFC<LinkProps> = ({
           sx={{ verticalAlign: "middle", fill: "currentColor" }}
         />
       )}
-    </ThemeLink>
+    </LinkWrapper>
   );
 };

@@ -1,26 +1,26 @@
 import * as React from "react";
-
-import SEO from "../components/seo";
-import { Hero } from "../components/hero";
 import { Heading, Grid, Box, Text, Flex } from "@theme-ui/components";
+
+import BaseLayout from "~/components/base-layout";
+// import SEO from "../components/seo";
+// import { Hero } from "../components/hero";
 import { Section } from "../components/section";
-import { Features } from "../components/features";
+// import { Features } from "../components/features";
 import { FlashIcon } from "../components/icons/flash";
-import { Link } from "../components/link";
+// import { Link } from "../components/link";
 
 const HomePage = () => (
-  <>
-    <SEO title="A Python library for GraphQL" />
-    <Hero />
+  <BaseLayout>
+    {/*   {/1* <SEO title="A Python library for GraphQL" /> *1/} */}
+    {/*   {/1* <Hero /> *1/} */}
 
     <Section sx={{ flex: 1 }}>
       <Heading sx={{ mb: 3 }}>
         Learn how to create GraphQL API using Strawberry
       </Heading>
 
-      <Link href="/docs/">View documentation</Link>
-
-      <Features />
+      {/*     {/1* <Link href="/docs/">View documentation</Link> *1/} */}
+      {/* <Features /> */}
 
       <Grid
         columns={2}
@@ -65,7 +65,7 @@ const HomePage = () => (
         </Flex>
       </Grid>
     </Section>
-  </>
+  </BaseLayout>
 );
 
 export default HomePage;
