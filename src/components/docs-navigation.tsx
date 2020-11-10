@@ -7,8 +7,24 @@ import { DocsNavigationQuery } from "./__generated__/DocsNavigationQuery";
 import { useToggle } from "../helpers/use-toggle";
 import { NavigationIcon } from "./icons/navigation";
 import { CloseIcon } from "./icons/close";
-import { Fragment, useState, useEffect } from "react";
+import { Fragment } from "react";
 import { useResponsiveValue } from "../helpers/use-responsive-value";
+
+const ExperimentalBadge = () => (
+  <Box
+    sx={{
+      fontSize: 0,
+      backgroundColor: "muted",
+      p: 1,
+      borderRadius: "5px",
+      display: "inline-block",
+      color: "black",
+      ml: 1,
+    }}
+  >
+    experimental
+  </Box>
+);
 
 const Nav: React.SFC = () => {
   const {
@@ -28,6 +44,7 @@ const Nav: React.SFC = () => {
               frontmatter {
                 title
                 path
+                experimental
               }
             }
           }
@@ -66,6 +83,10 @@ const Nav: React.SFC = () => {
                 <Link href={node.childMdx.frontmatter.path} variant="docs-nav">
                   {node.childMdx.frontmatter.title}
                 </Link>
+
+                {node.childMdx.frontmatter.experimental && (
+                  <ExperimentalBadge />
+                )}
               </li>
             ))}
           </nav>
