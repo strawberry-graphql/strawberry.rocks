@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Text, Box, Flex, Heading } from "@theme-ui/components";
 // import SEO from "../components/seo";
 // import {
@@ -9,7 +8,7 @@ import { Text, Box, Flex, Heading } from "@theme-ui/components";
 // } from "./__generated__/AcknowledgementsPageQuery";
 import { Link } from "~/components/link";
 import BaseLayout from "~/components/base-layout";
-import MDXDocument from '~/content/acknowledgements.md';
+import MDXDocument from "~/content/acknowledgements.mdx";
 
 const IGNORE_LIST = ["dependabot-preview[bot]", "dependabot-bot", "botberry"];
 
