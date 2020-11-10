@@ -2,16 +2,16 @@ import * as React from "react";
 import { Heading, Grid, Box, Text, Flex } from "@theme-ui/components";
 
 // import SEO from "~/components/seo";
-// import { Hero } from "~/components/hero";
+import { Hero } from "~/components/hero";
 import { Section } from "~/components/section";
-// import { Features } from "~/components/features";
+import { Features } from "~/components/features";
 import { FlashIcon } from "~/components/icons/flash";
 import { Link } from "~/components/link";
 
 const HomePage = () => (
   <>
     {/*   {/1* <SEO title="A Python library for GraphQL" /> *1/} */}
-    {/*   {/1* <Hero /> *1/} */}
+    <Hero />
 
     <Section sx={{ flex: 1 }}>
       <Heading sx={{ mb: 3 }}>
@@ -19,7 +19,7 @@ const HomePage = () => (
       </Heading>
 
       <Link href="/docs/">View documentation</Link>
-      {/* <Features /> */}
+      <Features />
 
       <Grid
         columns={2}

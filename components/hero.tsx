@@ -1,24 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Heading, Grid, Box } from "@theme-ui/components";
-import { useStaticQuery, graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { CodeBox } from "./code-box";
+import MDXDocument from "~/content/home/hello-world.mdx";
 
 export const Hero: React.SFC = () => {
-  const { file } = useStaticQuery(graphql`
-    query HelloWorldSnippetQuery {
-      file(
-        sourceInstanceName: { eq: "home" }
-        relativePath: { eq: "hello-world.md" }
-      ) {
-        childMdx {
-          body
-        }
-      }
-    }
-  `);
-
   return (
     <Grid
       sx={{
@@ -48,7 +34,7 @@ export const Hero: React.SFC = () => {
           },
         }}
       >
-        <MDXRenderer>{file.childMdx.body}</MDXRenderer>
+        <MDXDocument />
       </CodeBox>
     </Grid>
   );

@@ -68,6 +68,7 @@ const Feature: React.SFC<FeatureProps> = ({
     </Link>
   );
 };
+
 export const Features: React.SFC = () => (
   <Grid columns={[1, 2, 4]} gap={0} sx={{ my: 4, px: [4, 4, 0] }}>
     <Feature href="/docs/concepts/async" bg="secondary" icon={AsyncIcon}>
