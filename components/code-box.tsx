@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui";
 import { Flex, Box } from "@theme-ui/components";
 
-const BackgroundTop = props => (
+const BackgroundTop = (props) => (
   <svg viewBox="0 0 797 275" fill="none" {...props}>
     <path fill="#FFCED3" d="M369 0h167v167H369z" />
     <mask id="prefix__a" fill="#fff">
@@ -26,7 +26,7 @@ const BackgroundTop = props => (
   </svg>
 );
 
-const BackgroundBottom = props => (
+const BackgroundBottom = (props) => (
   <svg viewBox="0 0 797 285" fill="none" {...props}>
     <g clipPath="url(#prefix__clip0)">
       <path stroke="#FF9FA9" strokeWidth={4} d="M327 116h167v167H327z" />
@@ -53,7 +53,7 @@ const BackgroundBottom = props => (
   </svg>
 );
 
-const Actions = props => (
+const Actions = (props) => (
   <svg fill="none" viewBox="0 0 76 19" {...props}>
     <path
       d="M1.59 15.5h12.23"
