@@ -41,7 +41,7 @@ async function main() {
   const { data } = await response.json();
 
   fs.writeFileSync(
-    path.join(__dirname, "../", "github-data.json"),
+    path.join(__dirname, "../data/", "github-data.json"),
     JSON.stringify(data)
   );
 }

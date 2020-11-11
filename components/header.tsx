@@ -5,7 +5,7 @@ import { Box, Flex } from "@theme-ui/components";
 import { Logo } from "./logo";
 import { Link } from "./link";
 
-import githubData from "../github-data.json";
+import githubData from "../data/github-data.json";
 
 export type GithubRepository = {
   url: string;

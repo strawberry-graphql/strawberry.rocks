@@ -1,84 +1,36 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { useStaticQuery, graphql } from "gatsby";
+import { Fragment } from "react";
 import { Box, Button } from "@theme-ui/components";
 import { Link } from "./link";
-import { DocsNavigationQuery } from "./__generated__/DocsNavigationQuery";
 import { useToggle } from "../helpers/use-toggle";
 import { NavigationIcon } from "./icons/navigation";
 import { CloseIcon } from "./icons/close";
-import { Fragment, useState, useEffect } from "react";
-import { useResponsiveValue } from "../helpers/use-responsive-value";
 
-const Nav: React.SFC = () => {
-  const {
-    allFile: { edges },
-  } = useStaticQuery<DocsNavigationQuery>(graphql`
-    query DocsNavigationQuery {
-      allFile(
-        filter: {
-          sourceInstanceName: { eq: "strawberry-repo" }
-          extension: { eq: "md" }
-        }
-      ) {
-        edges {
-          node {
-            relativeDirectory
-            childMdx {
-              frontmatter {
-                title
-                path
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  const sections = {};
-
-  edges.map(({ node }) => {
-    const section = node.relativeDirectory
-      .replace(/^docs\//, "")
-      .split("/")[0]
-      .replace(/^[0-9]+_/, "");
-
-    if (!sections[section]) {
-      sections[section] = [];
-    }
-
-    sections[section].push(node);
-  });
-
+function Nav({ data }) {
   return (
-    <Fragment>
-      {Object.entries(sections).map(([section, nodes]) => (
+    <>
+      {[...data.entries()].map(([section, nodes]) => (
         <Fragment key={section}>
           <h2 sx={{ textTransform: "capitalize" }}>{section}</h2>
 
           <nav sx={{ mb: 2 }}>
-            {nodes.map((node) => (
-              <li
-                sx={{ listStyle: "none" }}
-                key={node.childMdx.frontmatter.path}
-              >
-                <Link href={node.childMdx.frontmatter.path} variant="docs-nav">
-                  {node.childMdx.frontmatter.title}
+            {nodes.map(({ title, path }) => (
+              <li sx={{ listStyle: "none" }} key={path}>
+                <Link href={path} variant="docs-nav">
+                  {title}
                 </Link>
               </li>
             ))}
           </nav>
         </Fragment>
       ))}
-    </Fragment>
+    </>
   );
-};
+}
 
-export const DocsNavigation: React.SFC = () => {
+export default function DocsNavigation({ data }) {
   const [open, toggleOpen] = useToggle(false);
-
-  const menuType = useResponsiveValue(["overlay", "sidebar"]);
 
   return (
     <Fragment>
@@ -90,7 +42,7 @@ export const DocsNavigation: React.SFC = () => {
           display: ["none", "block"],
         }}
       >
-        <Nav />
+        <Nav data={data} />
       </Box>
 
       <Fragment>
@@ -108,7 +60,7 @@ export const DocsNavigation: React.SFC = () => {
             display: [open ? "block" : "none", "none"],
           }}
         >
-          <Nav />
+          <Nav data={data} />
         </Box>
 
         <Button
@@ -134,4 +86,4 @@ export const DocsNavigation: React.SFC = () => {
       </Fragment>
     </Fragment>
   );
-};
+}
