@@ -6,7 +6,6 @@ import { Global, css } from "@emotion/core";
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import matter from "gray-matter";
-import globby from "globby";
 
 // import SEO from "../components/seo";
 import DocsNavigation from "~/components/docs-navigation";
@@ -52,10 +51,7 @@ export default function DocsPage({ source, sidebar }) {
 }
 
 async function getDoc(docPath) {
-  const source = await fs.readFile(
-    path.join(process.env.DOCS_LOCAL_LOCATION, docPath),
-    "utf8"
-  );
+  const source = await fs.readFile(docPath, "utf8");
   const { content, data } = matter(source);
   const mdxSource = await renderToString(content, { scope: data });
   return [mdxSource, data];
@@ -66,21 +62,20 @@ export async function getStaticProps(context) {
   const sidebar = new Map(data.sidebar);
   const routeMap = new Map(data.routeMap);
 
-  let docFilePath = null;
+  let route = null;
   if (context.params.slug) {
     // Get index page
-    const route = path.join("/docs", context.params.slug.join("/"));
-    if (routeMap.has(route)) {
-      const routeInfo = routeMap.get(route);
-      docFilePath = routeInfo.filePath;
-    }
+    route = path.join("/docs", context.params.slug.join("/"));
   } else {
-    docFilePath = "index.md";
+    route = "/docs";
   }
 
-  const [source, metadata] = await getDoc(docFilePath);
+  if (!routeMap.has(route)) {
+    // TODO handle 404
+  }
 
-  // TODO handle 404
+  const { filePath } = routeMap.get(route);
+  const [source, metadata] = await getDoc(filePath);
 
   return {
     props: {
@@ -92,64 +87,18 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  // Get all doc files and create a map of url paths to content
-  const allDocs = (
-    await globby(path.posix.join(process.env.DOCS_LOCAL_LOCATION, "/**/*.md"))
-  )
-    .map((filePath) =>
-      filePath.replace(
-        path.posix.join(process.env.DOCS_LOCAL_LOCATION, "/"),
-        ""
-      )
-    )
-    .filter((filePath) => filePath !== "index.md");
-
-  allDocs.sort();
-
-  // Put index file at the front
-  allDocs.unshift("index.md");
-
-  const sidebar = new Map();
-  const routeMap = new Map();
+  const data = await import("../../data/docs.json");
+  const routeMap = new Map(data.routeMap);
 
   const paths = [{ params: { slug: null } }];
 
-  for (const filePath of allDocs) {
-    // Read file contents
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [_, metadata] = await getDoc(filePath);
-
-    // Populate sidebar section
-    let section;
-    if (filePath === "index.md") {
-      section = "docs";
-    } else {
-      section = filePath.split("/")[0].replace(/^[0-9]+_/, "");
-    }
-    if (!sidebar.has(section)) {
-      sidebar.set(section, []);
-    }
-    sidebar.set(section, sidebar.get(section).concat([metadata]));
-
+  for (const [path] of routeMap) {
     paths.push({
       params: {
-        slug: metadata.path.replace("/docs/", "").split("/"),
+        slug: path.replace("/docs/", "").split("/"),
       },
     });
-
-    // Populate route map
-    routeMap.set(metadata.path, {
-      filePath,
-    });
   }
-
-  await fs.writeFile(
-    path.join("data", "docs.json"),
-    JSON.stringify({
-      sidebar: [...sidebar],
-      routeMap: [...routeMap],
-    })
-  );
 
   return {
     paths,

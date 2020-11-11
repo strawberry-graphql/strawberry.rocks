@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui";
 import { Box, Link as ThemeLink } from "@theme-ui/components";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 
 import { ExternalIcon } from "./icons/external";
 
@@ -23,6 +24,8 @@ function LinkWrapper({
   isExternal: boolean;
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+
   if (isExternal) {
     return (
       <ThemeLink {...rest} href={href}>
@@ -31,9 +34,13 @@ function LinkWrapper({
     );
   }
 
+  const isActive = router.asPath === href;
+
   return (
     <NextLink href={href} passHref>
-      <ThemeLink {...rest}>{children}</ThemeLink>
+      <ThemeLink {...rest} className={isActive ? "active" : null}>
+        {children}
+      </ThemeLink>
     </NextLink>
   );
 }
