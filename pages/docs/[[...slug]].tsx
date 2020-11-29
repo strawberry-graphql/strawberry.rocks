@@ -1,5 +1,3 @@
-import { promises as fs } from "fs";
-import path from "path";
 import * as React from "react";
 import { Flex, Box } from "@theme-ui/components";
 import { Global, css } from "@emotion/core";
@@ -9,11 +7,12 @@ import matter from "gray-matter";
 
 // import SEO from "../components/seo";
 import DocsNavigation from "~/components/docs-navigation";
-// import { DocsPageQuery } from "./__generated__/DocsPageQuery";
-// import { EditOnGithub } from "../components/edit-on-github";
+import { GetServerSidePropsContext } from "next";
+import { EditOnGithub } from "~/components/edit-on-github";
 
-export default function DocsPage({ source, sidebar }) {
+export default function DocsPage({ source, sourcePath }) {
   const content = hydrate(source);
+
   return (
     <>
       {/* <SEO title={file.childMdx.frontmatter.title} /> */}
@@ -35,73 +34,33 @@ export default function DocsPage({ source, sidebar }) {
           flex: 1,
         }}
       >
-        <DocsNavigation data={new Map(sidebar)} />
-
         <Box sx={{ px: 4, pb: 6 }}>
-          {content}
-          {/* <MDXProvider components={{}}> */}
-          {/*   <MDXRenderer>{file.childMdx.body}</MDXRenderer> */}
-          {/* </MDXProvider> */}
+          <DocsNavigation data={new Map(undefined)} />
 
-          {/* <EditOnGithub relativePath={file.relativePath} /> */}
+          {content}
+
+          <EditOnGithub relativePath={sourcePath} />
         </Box>
       </Flex>
     </>
   );
 }
 
-async function getDoc(docPath) {
-  const source = await fs.readFile(docPath, "utf8");
-  const { content, data } = matter(source);
-  const mdxSource = await renderToString(content, { scope: data });
-  return [mdxSource, data];
-}
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  console.log(context.params);
 
-export async function getStaticProps(context) {
-  const data = await import("../../data/docs.json");
-  const sidebar = new Map(data.sidebar);
-  const routeMap = new Map(data.routeMap);
+  const params: string[] = (context.params.slug as string[]) || ["index"];
+  const path = "docs/" + params.join("/") + ".md";
 
-  let route = null;
-  if (context.params.slug) {
-    // Get index page
-    route = path.join("/docs", context.params.slug.join("/"));
-  } else {
-    route = "/docs";
-  }
+  const base =
+    "https://raw.githubusercontent.com/strawberry-graphql/strawberry/master/";
 
-  if (!routeMap.has(route)) {
-    // TODO handle 404
-  }
+  const text = await fetch(base + path).then((r) => r.text());
+  const { data, content } = matter(text);
 
-  const { filePath } = routeMap.get(route);
-  const [source, metadata] = await getDoc(filePath);
+  const source = await renderToString(content);
 
   return {
-    props: {
-      source,
-      metadata,
-      sidebar: [...sidebar],
-    },
-  };
-}
-
-export async function getStaticPaths() {
-  const data = await import("../../data/docs.json");
-  const routeMap = new Map(data.routeMap);
-
-  const paths = [{ params: { slug: null } }];
-
-  for (const [path] of routeMap) {
-    paths.push({
-      params: {
-        slug: path.replace("/docs/", "").split("/"),
-      },
-    });
-  }
-
-  return {
-    paths,
-    fallback: false,
+    props: { source, data, sourcePath: path },
   };
 }
