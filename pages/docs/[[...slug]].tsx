@@ -10,6 +10,8 @@ import DocsNavigation from "~/components/docs-navigation";
 import { GetServerSidePropsContext } from "next";
 import { EditOnGithub } from "~/components/edit-on-github";
 
+import docsTree from "../../data/docs-tree.json";
+
 export default function DocsPage({ source, sourcePath }) {
   const content = hydrate(source);
 
@@ -47,10 +49,8 @@ export default function DocsPage({ source, sourcePath }) {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  console.log(context.params);
-
-  const params: string[] = (context.params.slug as string[]) || ["index"];
-  const path = "docs/" + params.join("/") + ".md";
+  const slugParts: string[] = (context.params.slug as string[]) || ["index"];
+  const path = docsTree[slugParts.join("/")];
 
   const base =
     "https://raw.githubusercontent.com/strawberry-graphql/strawberry/master/";

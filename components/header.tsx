@@ -5,6 +5,7 @@ import { Box, Flex } from "@theme-ui/components";
 import { Logo } from "./logo";
 import { Link } from "./link";
 
+// TODO: fetch from GraphQL?
 import githubData from "../data/github-data.json";
 
 export type GithubRepository = {
