@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Box, Grid, Heading } from "@theme-ui/components";
-import { Link as GatsbyLink } from "gatsby";
 import { Link } from "./link";
 import { Fragment } from "react";
 
