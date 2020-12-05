@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 
-export const ArrowRightIcon = props => (
+export const ArrowRightIcon = (props) => (
   <svg
     sx={{
       stroke: "primary",

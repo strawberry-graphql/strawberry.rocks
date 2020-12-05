@@ -1,23 +1,24 @@
-import * as React from "react";
-import { Flex, Box } from "@theme-ui/components";
 import { Global, css } from "@emotion/core";
-import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
+import { Flex, Box } from "@theme-ui/components";
 import matter from "gray-matter";
+import * as React from "react";
 
-// import SEO from "../components/seo";
-import DocsNavigation from "~/components/docs-navigation";
 import { GetServerSidePropsContext } from "next";
+import hydrate from "next-mdx-remote/hydrate";
+import renderToString from "next-mdx-remote/render-to-string";
+
+import DocsNavigation from "~/components/docs-navigation";
 import { EditOnGithub } from "~/components/edit-on-github";
+import { SEO } from "~/components/seo";
 
 import docsTree from "../../data/docs-tree.json";
 
-export default function DocsPage({ source, sourcePath }) {
+export default function DocsPage({ data, source, sourcePath }) {
   const content = hydrate(source);
 
   return (
     <>
-      {/* <SEO title={file.childMdx.frontmatter.title} /> */}
+      <SEO title={data.title} />
 
       <Global
         styles={css`

@@ -1,12 +1,12 @@
 /** @jsx jsx */
-import { jsx, useColorMode } from "theme-ui";
 import { Box, Flex } from "@theme-ui/components";
+import { jsx, useColorMode } from "theme-ui";
 
-import { Logo } from "./logo";
+import githubData from "../data/github-data.json";
 import { Link } from "./link";
+import { Logo } from "./logo";
 
 // TODO: fetch from GraphQL?
-import githubData from "../data/github-data.json";
 
 export type GithubRepository = {
   url: string;
@@ -19,7 +19,7 @@ type GithubRelease = {
   tagName: string;
 };
 
-export default function Header() {
+export const Header = () => {
   const [colorMode] = useColorMode();
 
   const repository: GithubRepository = githubData.repository;
@@ -99,4 +99,4 @@ export default function Header() {
       </Flex>
     </Box>
   );
-}
+};

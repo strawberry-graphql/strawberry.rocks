@@ -1,11 +1,12 @@
 /** @jsx jsx */
-import { jsx, useColorMode } from "theme-ui";
 import { Grid } from "@theme-ui/components";
-import { AsyncIcon } from "./icons/async";
-import { ServerIcon } from "./icons/server";
-import { PythonicIcon } from "./icons/pythonic";
-import { TypingIcon } from "./icons/typing";
+import { jsx, useColorMode } from "theme-ui";
+
 import { ArrowRightIcon } from "./icons/arrow-right";
+import { AsyncIcon } from "./icons/async";
+import { PythonicIcon } from "./icons/pythonic";
+import { ServerIcon } from "./icons/server";
+import { TypingIcon } from "./icons/typing";
 import { Link } from "./link";
 
 type FeatureProps = {

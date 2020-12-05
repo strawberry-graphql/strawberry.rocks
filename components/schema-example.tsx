@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import { ReactElement } from "react";
-import { jsx } from "theme-ui";
 import { Flex, Box } from "@theme-ui/components";
 import Prism from "@theme-ui/prism";
+import { ReactElement } from "react";
+import { jsx } from "theme-ui";
 
 function Header({ children, ...props }) {
   return (

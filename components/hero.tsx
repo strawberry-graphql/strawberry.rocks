@@ -1,8 +1,10 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
 import { Heading, Grid, Box } from "@theme-ui/components";
-import { CodeBox } from "./code-box";
+import { jsx } from "theme-ui";
+
 import MDXDocument from "~/content/home/hello-world.mdx";
+
+import { CodeBox } from "./code-box";
 
 export const Hero: React.SFC = () => {
   return (

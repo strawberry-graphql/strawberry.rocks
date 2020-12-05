@@ -1,10 +1,10 @@
 /** @jsx jsx */
+import Prism from "@theme-ui/prism";
 import { jsx } from "theme-ui";
 
-import Prism from "@theme-ui/prism";
 import { AdditionalResources } from "./additional-resources";
-import { Link } from "./link";
 import GraphQLExample from "./graphql-example.tsx";
+import { Link } from "./link";
 import SchemaExample from "./schema-example.tsx";
 
 const getImageSrc = (src) => {

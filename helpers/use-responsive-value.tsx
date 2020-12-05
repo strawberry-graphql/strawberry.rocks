@@ -1,5 +1,5 @@
-import { useThemeUI } from "theme-ui";
 import { useCallback, useState, useEffect, useLayoutEffect } from "react";
+import { useThemeUI } from "theme-ui";
 
 const defaultBreakpoints = [40, 52, 64].map(function (n) {
   return n + "em";

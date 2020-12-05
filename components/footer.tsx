@@ -1,8 +1,9 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
 import { Box, Grid } from "@theme-ui/components";
-import { Logo } from "./logo";
+import { jsx } from "theme-ui";
+
 import { Link } from "./link";
+import { Logo } from "./logo";
 
 type NavItemProps = {
   href: string;

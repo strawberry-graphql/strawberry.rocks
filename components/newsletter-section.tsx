@@ -1,9 +1,10 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
 import { Box, Heading, Text, Input, Button, Flex } from "@theme-ui/components";
-import { ArrowRightIcon } from "./icons/arrow-right";
-import { useMailchimp } from "react-use-mailchimp";
 import { useState } from "react";
+import { useMailchimp } from "react-use-mailchimp";
+import { jsx } from "theme-ui";
+
+import { ArrowRightIcon } from "./icons/arrow-right";
 
 const url =
   "https://twitter.us4.list-manage.com/subscribe/post?u=4ad955ae4a0b2d7c67f48323e&amp;id=5e44c190e6";

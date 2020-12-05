@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 
-export const FlashIcon = props => (
+export const FlashIcon = (props) => (
   <svg viewBox="0 0 128 197" width={128} height={197} fill="none" {...props}>
     <path
       fillRule="evenodd"

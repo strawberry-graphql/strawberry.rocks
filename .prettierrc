@@ -2,5 +2,7 @@
   "semi": true,
   "singleQuote": false,
   "trailingComma": "es5",
-  "proseWrap": "always"
+  "proseWrap": "always",
+  "importOrder": ["^next", "^~", "^[./]"],
+  "importOrderSeparation": true
 }

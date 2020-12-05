@@ -1,11 +1,12 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
-import { Fragment } from "react";
 import { Box, Button } from "@theme-ui/components";
-import { Link } from "./link";
+import { Fragment } from "react";
+import { jsx } from "theme-ui";
+
 import { useToggle } from "../helpers/use-toggle";
-import { NavigationIcon } from "./icons/navigation";
 import { CloseIcon } from "./icons/close";
+import { NavigationIcon } from "./icons/navigation";
+import { Link } from "./link";
 
 function Nav({ data }) {
   return (

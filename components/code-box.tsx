@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
 import { Flex, Box } from "@theme-ui/components";
+import { jsx } from "theme-ui";
 
 const BackgroundTop = (props) => (
   <svg viewBox="0 0 797 275" fill="none" {...props}>

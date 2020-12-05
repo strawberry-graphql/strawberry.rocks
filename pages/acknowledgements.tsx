@@ -1,8 +1,9 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
 import { Text, Box, Flex, Heading } from "@theme-ui/components";
-// import SEO from "../components/seo";
+import { jsx } from "theme-ui";
+
 import { Link } from "~/components/link";
+import { SEO } from "~/components/seo";
 import MDXDocument from "~/content/acknowledgements.mdx";
 import { githubQuery } from "~/github";
 
@@ -39,7 +40,7 @@ const AcknowledgementsPage = ({
 
   return (
     <>
-      {/* <SEO title="Acknowledgements" /> */}
+      <SEO title="Acknowledgements" />
 
       <Box sx={{ p: 4, pb: 6, maxWidth: 1280, mx: "auto" }}>
         <Heading sx={{ fontSize: [5, 6], mb: 3 }}>Acknowledgements</Heading>

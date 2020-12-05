@@ -1,6 +1,7 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
 import { Box, Link as ThemeLink } from "@theme-ui/components";
+import { jsx } from "theme-ui";
+
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 

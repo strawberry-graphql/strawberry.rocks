@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+
 import { Link } from "./link";
 
 type EditOnGithubProps = { relativePath: string };

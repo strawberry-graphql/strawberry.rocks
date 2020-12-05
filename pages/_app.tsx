@@ -1,19 +1,20 @@
+import { Global, css } from "@emotion/core";
+import NProgress from "nprogress";
 import * as React from "react";
 import { ThemeProvider } from "theme-ui";
-import type { AppProps } from "next/app";
-import Router from "next/router";
-import Head from "next/head";
 import { Styled } from "theme-ui";
-import { Global, css } from "@emotion/core";
 
-import theme from "../theme";
-import components from "~/components/theme-ui";
-import Header from "~/components/header";
-import { NewsletterSection } from "~/components/newsletter-section";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import Router from "next/router";
+
 import { Footer } from "~/components/footer";
+import { Header } from "~/components/header";
+import { NewsletterSection } from "~/components/newsletter-section";
+import components from "~/components/theme-ui";
 
-import NProgress from "nprogress";
 import "../styles/nprogress.css";
+import theme from "../theme";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
