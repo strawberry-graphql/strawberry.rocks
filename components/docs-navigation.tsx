@@ -1,24 +1,27 @@
 /** @jsx jsx */
 import { Box, Button } from "@theme-ui/components";
-import { Fragment } from "react";
+import { Fragment, useCallback, useEffect } from "react";
 import { jsx } from "theme-ui";
 
+import { Router } from "next/router";
+
+import docsNav from "../data/docs-nav.json";
 import { useToggle } from "../helpers/use-toggle";
 import { CloseIcon } from "./icons/close";
 import { NavigationIcon } from "./icons/navigation";
 import { Link } from "./link";
 
-function Nav({ data }) {
+function Nav() {
   return (
     <>
-      {[...data.entries()].map(([section, nodes]) => (
-        <Fragment key={section}>
-          <h2 sx={{ textTransform: "capitalize" }}>{section}</h2>
+      {docsNav.sections.map(({ title, pages }) => (
+        <Fragment key={title}>
+          <h2 sx={{ textTransform: "capitalize" }}>{title}</h2>
 
           <nav sx={{ mb: 2 }}>
-            {nodes.map(({ title, path }) => (
-              <li sx={{ listStyle: "none" }} key={path}>
-                <Link href={path} variant="docs-nav">
+            {pages.map(({ title, slug }) => (
+              <li sx={{ listStyle: "none" }} key={slug}>
+                <Link href={slug} variant="docs-nav">
                   {title}
                 </Link>
               </li>
@@ -30,8 +33,16 @@ function Nav({ data }) {
   );
 }
 
-export default function DocsNavigation({ data }) {
-  const [open, toggleOpen] = useToggle(false);
+export default function DocsNavigation() {
+  const [open, toggleOpen, setOpen] = useToggle(false);
+
+  const closeMenu = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    Router.events.on("routeChangeStart", closeMenu);
+
+    return () => Router.events.on("routeChangeStart", closeMenu);
+  });
 
   return (
     <Fragment>
@@ -43,7 +54,7 @@ export default function DocsNavigation({ data }) {
           display: ["none", "block"],
         }}
       >
-        <Nav data={data} />
+        <Nav />
       </Box>
 
       <Fragment>
@@ -61,7 +72,7 @@ export default function DocsNavigation({ data }) {
             display: [open ? "block" : "none", "none"],
           }}
         >
-          <Nav data={data} />
+          <Nav />
         </Box>
 
         <Button

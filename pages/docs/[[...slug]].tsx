@@ -37,9 +37,8 @@ export default function DocsPage({ data, source, sourcePath }) {
           flex: 1,
         }}
       >
+        <DocsNavigation />
         <Box sx={{ px: 4, pb: 6 }}>
-          <DocsNavigation data={new Map(undefined)} />
-
           {content}
 
           <EditOnGithub relativePath={sourcePath} />
