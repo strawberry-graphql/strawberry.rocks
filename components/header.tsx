@@ -5,6 +5,7 @@ import { jsx, useColorMode } from "theme-ui";
 import githubData from "../data/github-data.json";
 import { Link } from "./link";
 import { Logo } from "./logo";
+import { Search } from "./search";
 
 // TODO: fetch from GraphQL?
 
@@ -89,6 +90,7 @@ export const Header = () => {
           alignItems: "center",
         }}
       >
+        <Search />
         <Link
           variant="version"
           target="_blank"
