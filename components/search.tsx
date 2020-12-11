@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import algoliasearch from "algoliasearch/lite";
+import { scrollIntoViewIfNeeded } from "helpers/scroll";
 import { useToggle } from "helpers/use-toggle";
 import Mousetrap from "mousetrap";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -10,55 +11,10 @@ import {
 } from "react-instantsearch-dom";
 import { Box, Button, Flex, Input, jsx } from "theme-ui";
 
+import Link from "next/link";
+import { Router } from "next/router";
+
 import { SearchIcon } from "./icons/search";
-
-const scrollIntoViewIfNeeded = (element: any) => {
-  const parent = element.parentNode;
-  const parentComputedStyle = window.getComputedStyle(parent, null);
-  const parentBorderTopWidth = parseInt(
-    parentComputedStyle.getPropertyValue("border-top-width")
-  );
-  const parentBorderLeftWidth = parseInt(
-    parentComputedStyle.getPropertyValue("border-left-width")
-  );
-  const overTop = element.offsetTop - parent.offsetTop < parent.scrollTop;
-  const overBottom =
-    element.offsetTop -
-      parent.offsetTop +
-      element.clientHeight -
-      parentBorderTopWidth >
-    parent.scrollTop + parent.clientHeight;
-  const overLeft = element.offsetLeft - parent.offsetLeft < parent.scrollLeft;
-  const overRight =
-    element.offsetLeft -
-      parent.offsetLeft +
-      element.clientWidth -
-      parentBorderLeftWidth >
-    parent.scrollLeft + parent.clientWidth;
-  const alignWithTop = overTop && !overBottom;
-
-  if (overTop || overBottom) {
-    parent.scrollTop =
-      element.offsetTop -
-      parent.offsetTop -
-      parent.clientHeight / 2 -
-      parentBorderTopWidth +
-      element.clientHeight / 2;
-  }
-
-  if (overLeft || overRight) {
-    parent.scrollLeft =
-      element.offsetLeft -
-      parent.offsetLeft -
-      parent.clientWidth / 2 -
-      parentBorderLeftWidth +
-      element.clientWidth / 2;
-  }
-
-  if (overTop || overBottom || overLeft || overRight) {
-    element.scrollIntoView(alignWithTop);
-  }
-};
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
@@ -73,7 +29,13 @@ type HitProps = {
   setSelected: () => void;
 };
 
-const Hit = ({ sectionTitle, title, selected, setSelected }: HitProps) => {
+const Hit = ({
+  sectionTitle,
+  title,
+  slug,
+  selected,
+  setSelected,
+}: HitProps) => {
   const ref = useRef<HTMLDivElement>();
 
   useEffect(() => {
@@ -83,30 +45,27 @@ const Hit = ({ sectionTitle, title, selected, setSelected }: HitProps) => {
   }, [selected]);
 
   return (
-    <Box
-      ref={ref}
-      as="a"
-      sx={{
-        p: 2,
-        mb: 2,
-        backgroundColor: selected ? "muted" : "",
-        display: "block",
-        textDecoration: "none",
-      }}
-      onMouseEnter={setSelected}
-      {...{
-        href: "/TODO",
-      }}
-    >
-      <Box sx={{ fontSize: 1 }}>{sectionTitle}</Box>
-      <Box sx={{ fontWeight: "bold" }}>{title}</Box>
-    </Box>
+    <Link href={`/docs/${slug}`} passHref>
+      <Box
+        ref={ref}
+        as="a"
+        sx={{
+          p: 2,
+          mb: 2,
+          backgroundColor: selected ? "muted" : "",
+          display: "block",
+          textDecoration: "none",
+        }}
+        onMouseEnter={setSelected}
+      >
+        <Box sx={{ fontSize: 1 }}>{sectionTitle}</Box>
+        <Box sx={{ fontWeight: "bold" }}>{title}</Box>
+      </Box>
+    </Link>
   );
 };
 
 const Hits = connectHits(({ hits, selected, setSelected }) => {
-  console.log(hits);
-
   return (
     <Box as="ol" sx={{ overflow: "scroll", p: 3, scrollMargin: 20 }}>
       {hits.map((hit: HitProps & { objectID: string }, index) => (
@@ -187,7 +146,7 @@ const SearchModal = ({ close }: { close: () => void }) => {
           zIndex: 100,
           width: "80%",
           maxWidth: 700,
-          maxHeight: 700,
+          maxHeight: 500,
           height: "80vh",
           backgroundColor: "background",
         }}
@@ -210,6 +169,12 @@ export const Search = () => {
   const [isOpen, toggleOpen, setOpen] = useToggle(false);
 
   const close = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    Router.events.on("routeChangeStart", close);
+
+    return () => Router.events.on("routeChangeStart", close);
+  });
 
   useEffect(() => {
     if (isOpen) {
@@ -236,7 +201,7 @@ export const Search = () => {
   }, [isOpen]);
 
   return (
-    <InstantSearch indexName="docs" searchClient={searchClient} distinct={3}>
+    <InstantSearch indexName="docs" searchClient={searchClient}>
       <Button onClick={toggleOpen}>Open</Button>
       {isOpen && <SearchModal close={() => setOpen(false)} />}
     </InstantSearch>
