@@ -1,8 +1,7 @@
-import { Global, css } from "@emotion/core";
+import { Global, css } from "@emotion/react";
 import NProgress from "nprogress";
 import * as React from "react";
 import { ThemeProvider } from "theme-ui";
-import { Styled } from "theme-ui";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -60,16 +59,14 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme} components={components}>
         <Global styles={reset} />
 
-        <Styled.root>
-          <div id="wrap">
-            <Header />
+        <div id="wrap">
+          <Header />
 
-            <Component {...pageProps} />
+          <Component {...pageProps} />
 
-            <NewsletterSection />
-            <Footer />
-          </div>
-        </Styled.root>
+          <NewsletterSection />
+          <Footer />
+        </div>
       </ThemeProvider>
     </>
   );

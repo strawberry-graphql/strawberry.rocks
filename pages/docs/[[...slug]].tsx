@@ -1,4 +1,4 @@
-import { Global, css } from "@emotion/core";
+import { Global, css } from "@emotion/react";
 import { Flex, Box } from "@theme-ui/components";
 import matter from "gray-matter";
 import * as React from "react";
