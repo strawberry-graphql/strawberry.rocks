@@ -2,7 +2,7 @@
 import algoliasearch from "algoliasearch/lite";
 import { useToggle } from "helpers/use-toggle";
 import Mousetrap from "mousetrap";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   InstantSearch,
   connectSearchBox,
@@ -11,6 +11,54 @@ import {
 import { Box, Button, Flex, Input, jsx } from "theme-ui";
 
 import { SearchIcon } from "./icons/search";
+
+const scrollIntoViewIfNeeded = (element: any) => {
+  const parent = element.parentNode;
+  const parentComputedStyle = window.getComputedStyle(parent, null);
+  const parentBorderTopWidth = parseInt(
+    parentComputedStyle.getPropertyValue("border-top-width")
+  );
+  const parentBorderLeftWidth = parseInt(
+    parentComputedStyle.getPropertyValue("border-left-width")
+  );
+  const overTop = element.offsetTop - parent.offsetTop < parent.scrollTop;
+  const overBottom =
+    element.offsetTop -
+      parent.offsetTop +
+      element.clientHeight -
+      parentBorderTopWidth >
+    parent.scrollTop + parent.clientHeight;
+  const overLeft = element.offsetLeft - parent.offsetLeft < parent.scrollLeft;
+  const overRight =
+    element.offsetLeft -
+      parent.offsetLeft +
+      element.clientWidth -
+      parentBorderLeftWidth >
+    parent.scrollLeft + parent.clientWidth;
+  const alignWithTop = overTop && !overBottom;
+
+  if (overTop || overBottom) {
+    parent.scrollTop =
+      element.offsetTop -
+      parent.offsetTop -
+      parent.clientHeight / 2 -
+      parentBorderTopWidth +
+      element.clientHeight / 2;
+  }
+
+  if (overLeft || overRight) {
+    parent.scrollLeft =
+      element.offsetLeft -
+      parent.offsetLeft -
+      parent.clientWidth / 2 -
+      parentBorderLeftWidth +
+      element.clientWidth / 2;
+  }
+
+  if (overTop || overBottom || overLeft || overRight) {
+    element.scrollIntoView(alignWithTop);
+  }
+};
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
@@ -21,85 +69,162 @@ type HitProps = {
   sectionTitle: string;
   title: string;
   slug: string;
+  selected?: boolean;
+  setSelected: () => void;
 };
 
-const Hit = ({ sectionTitle, title }: HitProps) => (
-  <Box sx={{ mb: 2 }}>
-    <Box sx={{ fontSize: 1 }}>{sectionTitle}</Box>
-    <Box sx={{ fontWeight: "bold" }}>{title}</Box>
-  </Box>
-);
+const Hit = ({ sectionTitle, title, selected, setSelected }: HitProps) => {
+  const ref = useRef<HTMLDivElement>();
 
-const Hits = connectHits(({ hits }) => {
+  useEffect(() => {
+    if (selected && ref.current) {
+      scrollIntoViewIfNeeded(ref.current);
+    }
+  }, [selected]);
+
   return (
-    <Box as="ol" sx={{ overflow: "scroll", p: 3 }}>
-      {hits.map((hit: HitProps & { objectID: string }) => (
-        <Hit key={hit.objectID} {...hit} />
+    <Box
+      ref={ref}
+      as="a"
+      sx={{
+        p: 2,
+        mb: 2,
+        backgroundColor: selected ? "muted" : "",
+        display: "block",
+        textDecoration: "none",
+      }}
+      onMouseEnter={setSelected}
+      {...{
+        href: "/TODO",
+      }}
+    >
+      <Box sx={{ fontSize: 1 }}>{sectionTitle}</Box>
+      <Box sx={{ fontWeight: "bold" }}>{title}</Box>
+    </Box>
+  );
+};
+
+const Hits = connectHits(({ hits, selected, setSelected }) => {
+  console.log(hits);
+
+  return (
+    <Box as="ol" sx={{ overflow: "scroll", p: 3, scrollMargin: 20 }}>
+      {hits.map((hit: HitProps & { objectID: string }, index) => (
+        <Hit
+          key={hit.objectID}
+          {...hit}
+          selected={index === selected}
+          setSelected={() => setSelected(index)}
+        />
       ))}
     </Box>
   );
 });
 
-const SearchBox = connectSearchBox(({ currentRefinement, refine }) => {
+const SearchBox = connectSearchBox(
+  ({ currentRefinement, refine, selectNext, selectPrevious }) => {
+    return (
+      <Flex
+        sx={{
+          borderBottom: "primary",
+          alignItems: "center",
+          mt: 3,
+          mx: 3,
+          flex: "0 0 30px",
+        }}
+      >
+        <SearchIcon sx={{ width: 30, height: 30 }} />
+        <Input
+          id="search-input"
+          className="mousetrap"
+          sx={{ border: "none", outline: "none", px: 0, py: 2 }}
+          type="search"
+          placeholder="Search docs"
+          value={currentRefinement}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowUp") {
+              selectPrevious();
+            } else if (event.key === "ArrowDown") {
+              selectNext();
+            }
+          }}
+          onChange={(event) => refine(event.currentTarget.value)}
+        />
+      </Flex>
+    );
+  }
+);
+
+const SearchModal = ({ close }: { close: () => void }) => {
+  const [selected, setSelected] = useState<number | undefined>(undefined);
+
+  const selectNext = () => setSelected(selected + 1);
+  const selectPrevious = () => setSelected(Math.max(0, selected - 1));
+
   return (
-    <Flex
-      as="form"
-      role="search"
-      {...{ noValidate: true, action: "" }}
+    <Box
+      onClick={close}
       sx={{
-        borderBottom: "primary",
-        alignItems: "center",
-        mt: 3,
-        mx: 3,
+        position: "fixed",
+        background: "rgba(0, 0, 0, 0.3)",
+        zIndex: 10,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
       }}
     >
-      <SearchIcon sx={{ width: 30, height: 30 }} />
-      <Input
-        id="search-input"
-        sx={{ border: "none", outline: "none", px: 0, py: 2 }}
-        type="search"
-        placeholder="Search docs"
-        value={currentRefinement}
-        onChange={(event) => refine(event.currentTarget.value)}
-      />
-    </Flex>
+      <Flex
+        as="form"
+        onClick={(e) => e.stopPropagation()}
+        sx={{
+          flexDirection: "column",
+          position: "fixed",
+          border: "primary",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 100,
+          width: "80%",
+          maxWidth: 700,
+          maxHeight: 700,
+          height: "80vh",
+          backgroundColor: "background",
+        }}
+        role="search"
+        onSubmit={(e) => e.preventDefault()}
+        {...{ noValidate: true, action: "" }}
+      >
+        <SearchBox selectNext={selectNext} selectPrevious={selectPrevious} />
+        <Hits
+          hitComponent={Hit}
+          selected={selected}
+          setSelected={setSelected}
+        />
+      </Flex>
+    </Box>
   );
-});
-
-const SearchModal = () => (
-  <Flex
-    sx={{
-      flexDirection: "column",
-      position: "fixed",
-      border: "primary",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      zIndex: 100,
-      width: "80%",
-      height: "80vh",
-      backgroundColor: "background",
-    }}
-  >
-    <SearchBox />
-    <Hits hitComponent={Hit} />
-  </Flex>
-);
+};
 
 export const Search = () => {
   const [isOpen, toggleOpen, setOpen] = useToggle(false);
 
   const close = useCallback(() => setOpen(false), []);
-  const open = useCallback(() => {
-    setOpen(true);
-  }, []);
 
   useEffect(() => {
-    Mousetrap.bind("command+k", open);
+    if (isOpen) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    Mousetrap.bind("mod+k", toggleOpen);
     Mousetrap.bind("esc", close);
 
     return () => {
-      Mousetrap.unbind("command+k");
+      Mousetrap.unbind("mod+k");
       Mousetrap.unbind("esc");
     };
   }, []);
@@ -111,9 +236,9 @@ export const Search = () => {
   }, [isOpen]);
 
   return (
-    <InstantSearch indexName="docs" searchClient={searchClient}>
+    <InstantSearch indexName="docs" searchClient={searchClient} distinct={3}>
       <Button onClick={toggleOpen}>Open</Button>
-      {isOpen && <SearchModal />}
+      {isOpen && <SearchModal close={() => setOpen(false)} />}
     </InstantSearch>
   );
 };

@@ -8,6 +8,11 @@ const client = algoliasearch(
 );
 const index = client.initIndex("docs");
 
+index.setSettings({
+  distinct: true,
+  attributeForDistinct: "sectionTitle",
+});
+
 const pages = docs.sections.flatMap(({ title, pages }) =>
   pages.map((page) => ({
     sectionTitle: title,
