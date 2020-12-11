@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import algoliasearch from "algoliasearch/lite";
 import { scrollIntoViewIfNeeded } from "helpers/scroll";
+import { useMouseTrap } from "helpers/use-mousetrap";
 import { useToggle } from "helpers/use-toggle";
-import Mousetrap from "mousetrap";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   InstantSearch,
@@ -184,15 +184,8 @@ export const Search = () => {
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    Mousetrap.bind("mod+k", toggleOpen);
-    Mousetrap.bind("esc", close);
-
-    return () => {
-      Mousetrap.unbind("mod+k");
-      Mousetrap.unbind("esc");
-    };
-  }, []);
+  useMouseTrap("mod+k", toggleOpen);
+  useMouseTrap("esc", close);
 
   useEffect(() => {
     if (isOpen) {
