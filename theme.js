@@ -76,6 +76,11 @@ export default {
       },
     },
   },
+
+  borders: {
+    primary: `2px solid var(--theme-ui-colors-primary, ${PRIMARY_COLOR})`,
+  },
+
   links: {
     home: {
       "&::after": {
