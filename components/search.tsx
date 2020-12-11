@@ -202,7 +202,17 @@ export const Search = () => {
 
   return (
     <InstantSearch indexName="docs" searchClient={searchClient}>
-      <Button onClick={toggleOpen}>Open</Button>
+      <Button
+        sx={{
+          display: "flex",
+          background: "None",
+          color: "text",
+          cursor: "pointer",
+        }}
+        onClick={toggleOpen}
+      >
+        <SearchIcon sx={{ width: 30, height: 30 }} /> Search docs
+      </Button>
       {isOpen && <SearchModal close={() => setOpen(false)} />}
     </InstantSearch>
   );
