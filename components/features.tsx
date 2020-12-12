@@ -11,11 +11,11 @@ import { Link } from "./link";
 
 type FeatureProps = {
   bg: string;
-  icon?: React.SFC<any>;
+  icon?: React.FC<any>;
   href: string;
 };
 
-const Feature: React.SFC<FeatureProps> = ({
+const Feature: React.FC<FeatureProps> = ({
   icon: Icon,
   children,
   ...props

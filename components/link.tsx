@@ -24,6 +24,7 @@ function LinkWrapper({
   href: string;
   isExternal: boolean;
   children: React.ReactNode;
+  className?: string;
 }) {
   const router = useRouter();
 
@@ -37,9 +38,15 @@ function LinkWrapper({
 
   const isActive = router.asPath === href;
 
+  let className = rest.className || "";
+
+  if (isActive) {
+    className = `${className} active`;
+  }
+
   return (
     <NextLink href={href} passHref>
-      <ThemeLink {...rest} className={isActive ? "active" : null}>
+      <ThemeLink {...rest} className={className}>
         {children}
       </ThemeLink>
     </NextLink>
