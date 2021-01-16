@@ -12,8 +12,6 @@ import { EditOnGithub } from "~/components/edit-on-github";
 import { SEO } from "~/components/seo";
 import { getDocsToc } from "~/helpers/get-docs-toc";
 
-import docsTree from "../../data/docs-tree.json";
-
 export default function DocsPage({ data, source, sourcePath, docsToc }) {
   const content = hydrate(source);
 
@@ -51,16 +49,21 @@ export default function DocsPage({ data, source, sourcePath, docsToc }) {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const slugParts: string[] = (context.params.slug as string[]) || ["index"];
-  const path = docsTree[slugParts.join("/")];
+  const path = slugParts.join("/");
 
+  // const base =
+  //   "https://raw.githubusercontent.com/strawberry-graphql/strawberry/master/docs/";
+  // TODO: update with master when updated
   const base =
-    "https://raw.githubusercontent.com/strawberry-graphql/strawberry/master/";
+    "https://raw.githubusercontent.com/strawberry-graphql/strawberry/feature/docs-toc/docs/";
 
-  const text = await fetch(base + path).then((r) => r.text());
+  const text = await fetch(`${base}${path}.md`).then((r) => r.text());
   const { data, content } = matter(text);
 
   const source = await renderToString(content);
   const docsToc = await getDocsToc();
+
+  console.log(`${base}${path}.md`, path);
 
   return {
     props: { source, data, sourcePath: path, docsToc },
