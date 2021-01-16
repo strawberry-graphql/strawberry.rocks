@@ -47,6 +47,26 @@ export default function DocsPage({ data, source, sourcePath, docsToc }) {
   );
 }
 
+const getImageSrc = (src: string) => {
+  if (src.startsWith("./")) {
+    return src.replace(
+      "./",
+      // TODO: use correct branch
+      "https://github.com/strawberry-graphql/strawberry/raw/master/docs/"
+    );
+  }
+
+  return src;
+};
+
+const DocsImage = ({ src, ...props }) => (
+  <img
+    sx={{ borderWidth: 2, borderColor: "muted", borderStyle: "solid" }}
+    src={getImageSrc(src)}
+    {...props}
+  />
+);
+
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const slugParts: string[] = (context.params.slug as string[]) || ["index"];
   const path = slugParts.join("/");
@@ -60,7 +80,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const text = await fetch(`${base}${path}.md`).then((r) => r.text());
   const { data, content } = matter(text);
 
-  const source = await renderToString(content);
+  const source = await renderToString(content, {
+    components: { img: DocsImage },
+  });
   const docsToc = await getDocsToc();
 
   return {
