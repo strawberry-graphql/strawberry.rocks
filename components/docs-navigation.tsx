@@ -46,7 +46,7 @@ const getDocsLink = ({ text, href }) => {
 
   return (
     <li sx={{ listStyle: "none" }} key={href}>
-      <Link href={href} variant="docs-nav">
+      <Link href="/docs/[[...slug]]" as={href} variant="docs-nav">
         {text}
       </Link>
       {isExperimental && <ExperimentalBadge />}

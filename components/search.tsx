@@ -45,7 +45,7 @@ const Hit = ({
   }, [selected]);
 
   return (
-    <Link href={`/docs/${slug}`} passHref>
+    <Link href="/docs/[[...slug]]" as={`/docs/${slug}`} passHref>
       <Box
         ref={ref}
         as="a"

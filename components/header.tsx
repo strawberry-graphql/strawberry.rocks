@@ -61,7 +61,7 @@ export const Header = () => {
           }}
           as="nav"
         >
-          <Link variant="nav" href="/docs/">
+          <Link variant="nav" href="/docs" partialMatch>
             Docs
           </Link>
           <Link variant="nav" target="_blank" href={repository.url}>

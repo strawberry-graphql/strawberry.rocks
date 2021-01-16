@@ -63,8 +63,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const source = await renderToString(content);
   const docsToc = await getDocsToc();
 
-  console.log(`${base}${path}.md`, path);
-
   return {
     props: { source, data, sourcePath: path, docsToc },
   };

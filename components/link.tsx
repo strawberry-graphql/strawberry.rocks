@@ -19,10 +19,14 @@ function LinkWrapper({
   href,
   isExternal,
   children,
+  as,
+  partialMatch = false,
   ...rest
 }: {
   href: string;
+  as?: string;
   isExternal: boolean;
+  partialMatch?: boolean;
   children: React.ReactNode;
   className?: string;
 }) {
@@ -36,7 +40,15 @@ function LinkWrapper({
     );
   }
 
-  const isActive = router.asPath === href;
+  const match = (a: string, b: string) => {
+    if (partialMatch && b) {
+      return a.startsWith(b);
+    }
+
+    return a == b;
+  };
+
+  const isActive = match(router.asPath, as) || match(router.asPath, href);
 
   let className = rest.className || "";
 
@@ -45,7 +57,7 @@ function LinkWrapper({
   }
 
   return (
-    <NextLink href={href} passHref>
+    <NextLink href={href} as={as} passHref>
       <ThemeLink {...rest} className={className}>
         {children}
       </ThemeLink>
