@@ -90,7 +90,7 @@ export const Header = () => {
           alignItems: "center",
         }}
       >
-        <Search />
+        {/* <Search /> */}
         <Link
           variant="version"
           target="_blank"
