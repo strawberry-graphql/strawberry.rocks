@@ -13,6 +13,7 @@ type LinkProps = {
   as?: string;
   target?: string;
   hideExternalIcon?: boolean;
+  partialMatch?: boolean;
   rel?: string;
 };
 
