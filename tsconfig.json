@@ -17,6 +17,7 @@
     "paths": {
       "~/components/*": ["./components/*"],
       "~/content/*": ["./content/*"],
+      "~/helpers/*": ["./helpers/*"],
       "~/github": ["./github"]
     }
   },

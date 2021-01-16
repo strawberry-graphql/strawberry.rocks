@@ -10,10 +10,11 @@ import renderToString from "next-mdx-remote/render-to-string";
 import DocsNavigation from "~/components/docs-navigation";
 import { EditOnGithub } from "~/components/edit-on-github";
 import { SEO } from "~/components/seo";
+import { getDocsToc } from "~/helpers/get-docs-toc";
 
 import docsTree from "../../data/docs-tree.json";
 
-export default function DocsPage({ data, source, sourcePath }) {
+export default function DocsPage({ data, source, sourcePath, docsToc }) {
   const content = hydrate(source);
 
   return (
@@ -37,7 +38,7 @@ export default function DocsPage({ data, source, sourcePath }) {
           flex: 1,
         }}
       >
-        <DocsNavigation />
+        <DocsNavigation docs={docsToc} />
         <Box sx={{ px: 4, pb: 6 }}>
           {content}
 
@@ -59,8 +60,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { data, content } = matter(text);
 
   const source = await renderToString(content);
+  const docsToc = await getDocsToc();
 
   return {
-    props: { source, data, sourcePath: path },
+    props: { source, data, sourcePath: path, docsToc },
   };
 }

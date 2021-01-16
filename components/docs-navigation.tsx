@@ -5,35 +5,70 @@ import { jsx } from "theme-ui";
 
 import { Router } from "next/router";
 
-import docsNav from "../data/docs-nav.json";
 import { useToggle } from "../helpers/use-toggle";
 import { CloseIcon } from "./icons/close";
 import { NavigationIcon } from "./icons/navigation";
 import { Link } from "./link";
 
-function Nav() {
+type DocsTree = {
+  [section: string]: {
+    name: string;
+    links: {
+      text: string;
+      href: string;
+    }[];
+  };
+};
+
+const ExperimentalBadge = () => (
+  <Box
+    sx={{
+      fontSize: 0,
+      backgroundColor: "muted",
+      p: 1,
+      borderRadius: "5px",
+      display: "inline-block",
+      color: "black",
+      ml: 1,
+    }}
+  >
+    experimental
+  </Box>
+);
+
+const getDocsLink = ({ text, href }) => {
+  const regex = /\*\*experimental\*\*/g;
+  const isExperimental = text.search(regex) >= 0;
+
+  if (isExperimental) {
+    text = text.replace(regex, "").trim();
+  }
+
+  return (
+    <li sx={{ listStyle: "none" }} key={href}>
+      <Link href={href} variant="docs-nav">
+        {text}
+      </Link>
+      {isExperimental && <ExperimentalBadge />}
+    </li>
+  );
+};
+
+function Nav({ docs }: { docs: DocsTree }) {
   return (
     <>
-      {docsNav.sections.map(({ title, pages }) => (
-        <Fragment key={title}>
-          <h2 sx={{ textTransform: "capitalize" }}>{title}</h2>
+      {Object.values(docs).map(({ name, links }) => (
+        <Fragment key={name}>
+          <h2 sx={{ textTransform: "capitalize" }}>{name}</h2>
 
-          <nav sx={{ mb: 2 }}>
-            {pages.map(({ title, slug }) => (
-              <li sx={{ listStyle: "none" }} key={slug}>
-                <Link href={slug} variant="docs-nav">
-                  {title}
-                </Link>
-              </li>
-            ))}
-          </nav>
+          <nav sx={{ mb: 2 }}>{links.map(getDocsLink)}</nav>
         </Fragment>
       ))}
     </>
   );
 }
 
-export default function DocsNavigation() {
+export default function DocsNavigation({ docs }: { docs: DocsTree }) {
   const [open, toggleOpen, setOpen] = useToggle(false);
 
   const closeMenu = useCallback(() => setOpen(false), []);
@@ -54,7 +89,7 @@ export default function DocsNavigation() {
           display: ["none", "block"],
         }}
       >
-        <Nav />
+        <Nav docs={docs} />
       </Box>
 
       <Fragment>
@@ -72,7 +107,7 @@ export default function DocsNavigation() {
             display: [open ? "block" : "none", "none"],
           }}
         >
-          <Nav />
+          <Nav docs={docs} />
         </Box>
 
         <Button
