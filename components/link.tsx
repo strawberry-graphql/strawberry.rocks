@@ -10,6 +10,7 @@ import { ExternalIcon } from "./icons/external";
 type LinkProps = {
   href: string;
   variant?: string;
+  as?: string;
   target?: string;
   hideExternalIcon?: boolean;
   rel?: string;

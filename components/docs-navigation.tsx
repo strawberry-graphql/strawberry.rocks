@@ -44,6 +44,10 @@ const getDocsLink = ({ text, href }) => {
     text = text.replace(regex, "").trim();
   }
 
+  if (href === "/docs/index") {
+    href = "/docs";
+  }
+
   return (
     <li sx={{ listStyle: "none" }} key={href}>
       <Link href="/docs/[[...slug]]" as={href} variant="docs-nav">
