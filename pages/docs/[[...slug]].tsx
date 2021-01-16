@@ -1,7 +1,8 @@
+/** @jsx jsx */
 import { Global, css } from "@emotion/react";
 import { Flex, Box } from "@theme-ui/components";
 import matter from "gray-matter";
-import * as React from "react";
+import { jsx } from "theme-ui";
 
 import { GetServerSidePropsContext } from "next";
 import hydrate from "next-mdx-remote/hydrate";
@@ -12,8 +13,33 @@ import { EditOnGithub } from "~/components/edit-on-github";
 import { SEO } from "~/components/seo";
 import { getDocsToc } from "~/helpers/get-docs-toc";
 
+const DocsImage = ({ src, ...props }) => (
+  <img
+    sx={{
+      borderWidth: 2,
+      maxWidth: "100%",
+      borderColor: "muted",
+      borderStyle: "solid",
+    }}
+    src={getImageSrc(src)}
+    {...props}
+  />
+);
+
+const DocsLink = ({ children, href, ...props }) => {
+  href = href.replace(/.md$/, "");
+
+  return (
+    <a href={href} {...props}>
+      {children}
+    </a>
+  );
+};
+
+const components = { img: DocsImage, a: DocsLink };
+
 export default function DocsPage({ data, source, sourcePath, docsToc }) {
-  const content = hydrate(source);
+  const content = hydrate(source, { components });
 
   return (
     <>
@@ -59,14 +85,6 @@ const getImageSrc = (src: string) => {
   return src;
 };
 
-const DocsImage = ({ src, ...props }) => (
-  <img
-    sx={{ borderWidth: 2, borderColor: "muted", borderStyle: "solid" }}
-    src={getImageSrc(src)}
-    {...props}
-  />
-);
-
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const slugParts: string[] = (context.params.slug as string[]) || ["index"];
   const path = slugParts.join("/");
@@ -81,7 +99,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { data, content } = matter(text);
 
   const source = await renderToString(content, {
-    components: { img: DocsImage },
+    components,
   });
   const docsToc = await getDocsToc();
 
