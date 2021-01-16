@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { Global, css } from "@emotion/react";
+import { anchorLinks } from "@hashicorp/remark-plugins";
 import { Flex, Box } from "@theme-ui/components";
 import matter from "gray-matter";
 import { jsx } from "theme-ui";
@@ -27,7 +28,7 @@ const DocsImage = ({ src, ...props }) => (
 );
 
 const DocsLink = ({ children, href, ...props }) => {
-  href = href.replace(/.md$/, "");
+  href = href ? href.replace(/.md$/, "") : "";
 
   return (
     <a href={href} {...props}>
@@ -100,6 +101,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const source = await renderToString(content, {
     components,
+    mdxOptions: {
+      remarkPlugins: [anchorLinks],
+    },
   });
   const docsToc = await getDocsToc();
 

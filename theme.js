@@ -156,9 +156,16 @@ export default {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
+      ".__permalink-h": {
+        position: "absolute",
+        left: "-1.5rem",
+        color: "red",
+        textDecoration: "none",
+      },
     },
     h1: {
       color: "text",
+      position: "relative",
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
@@ -167,6 +174,7 @@ export default {
     },
     h2: {
       color: "text",
+      position: "relative",
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
