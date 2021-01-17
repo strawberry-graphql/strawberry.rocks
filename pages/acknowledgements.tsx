@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { Text, Box, Flex, Heading, Paragraph } from "@theme-ui/components";
+import GitHub from "github-base";
 import { jsx } from "theme-ui";
 
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
-import { githubQuery } from "~/github";
 
 const IGNORE_LIST = ["dependabot-preview[bot]", "dependabot-bot", "botberry"];
 
@@ -131,7 +131,8 @@ const AcknowledgementsPage = ({
 const query = `
   query CollaboratorsQuery($repo: String!, $owner: String!) {
     repository(name: $repo, owner: $owner) {
-      collaborators(affiliation: ALL) {
+      # TODO: increase this when we get more collaborators
+      collaborators(affiliation: ALL, first: 100) {
         edges {
           node {
             name
@@ -152,17 +153,46 @@ type GithubCollaborator = {
   url: string;
 };
 
-export async function getStaticProps() {
-  const { repository } = await githubQuery(query, {
-    repo: "strawberry",
-    owner: "strawberry-graphql",
+const fetchContributors = async () => {
+  const github = new GitHub({
+    token: process.env.GITHUB_TOKEN,
   });
 
+  const contributors: any[] = (
+    await github
+      .paged(`/repos/:strawberry-graphql/strawberry/contributors`)
+      .then((res: any) => res.pages)
+  )
+    .flat()
+    .map((page: any) => page.body)
+    .flat();
+  const logins: string[] = contributors.map((node) => node.login);
+
+  const profiles = await Promise.all(
+    logins.map((login) =>
+      github.get(`/users/${login}`).then((res: any) => res.body)
+    )
+  );
+
+  const loginToProfile = Object.fromEntries(
+    profiles.map((profile) => [profile.login, profile])
+  );
+
+  return contributors.map((node) => {
+    const profile = loginToProfile[node.login];
+
+    return {
+      name: profile.name,
+      login: profile.login,
+      url: profile.blog || profile.html_url,
+    };
+  });
+};
+
+export async function getStaticProps() {
   return {
     props: {
-      collaborators: repository.collaborators.edges.map(
-        ({ node }: { node: GithubCollaborator }) => node
-      ),
+      collaborators: await fetchContributors(),
     },
   };
 }

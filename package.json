@@ -33,6 +33,7 @@
     "algoliasearch": "^4.8.3",
     "dedent": "^0.7.0",
     "dotenv": "^8.2.0",
+    "github-base": "^1.0.0",
     "globby": "^11.0.1",
     "gray-matter": "^4.0.2",
     "isomorphic-unfetch": "^3.1.0",
