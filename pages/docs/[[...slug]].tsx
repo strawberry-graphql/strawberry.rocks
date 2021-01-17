@@ -73,8 +73,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     components,
     provider: {
       component: ThemeProvider,
-      components,
-      theme,
+      props: {
+        components,
+        theme,
+      },
     },
     mdxOptions: {
       remarkPlugins: [anchorLinks],
