@@ -1,6 +1,6 @@
 import algoliasearch from "algoliasearch";
 
-import docs from "../data/docs-nav.json";
+const docs = { sections: [] };
 
 const client = algoliasearch(
   process.env.ALGOLIA_APP_ID,
