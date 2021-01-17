@@ -1,6 +1,0 @@
-{
-  "repository": {
-    "url": "https://github.com/strawberry-graphql/strawberry",
-    "releases": { "nodes": [{ "tagName": "0.44.2" }] }
-  }
-}

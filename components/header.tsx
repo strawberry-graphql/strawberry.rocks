@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { Box, Flex } from "@theme-ui/components";
+import { useEffect, useState } from "react";
 import { jsx, useColorMode } from "theme-ui";
 
-import githubData from "../data/github-data.json";
 import { Link } from "./link";
 import { Logo } from "./logo";
-import { Search } from "./search";
 
 // TODO: fetch from GraphQL?
 
@@ -22,8 +21,21 @@ type GithubRelease = {
 
 export const Header = () => {
   const [colorMode] = useColorMode();
+  const [latestVersion, setLatestVersion] = useState(null);
 
-  const repository: GithubRepository = githubData.repository;
+  useEffect(() => {
+    fetch(
+      "https://api.github.com/repos/strawberry-graphql/strawberry/releases/latest",
+      {
+        headers: {
+          "content-type": "application/json",
+        },
+        method: "GET",
+      }
+    )
+      .then((x) => x.json())
+      .then((x) => setLatestVersion(x.tag_name));
+  }, []);
 
   return (
     <Box
@@ -64,10 +76,18 @@ export const Header = () => {
           <Link variant="nav" href="/docs" partialMatch>
             Docs
           </Link>
-          <Link variant="nav" target="_blank" href={repository.url}>
+          <Link
+            variant="nav"
+            target="_blank"
+            href="https://github.com/strawberry-graphql/strawberry"
+          >
             Github
           </Link>
-          <Link variant="nav" target="_blank" href="https://discord.gg/ZkRTEJQ">
+          <Link
+            variant="nav"
+            target="_blank"
+            href="https://strawberry.rocks/discord"
+          >
             <svg
               viewBox="0 0 800 272.1"
               sx={{
@@ -91,13 +111,15 @@ export const Header = () => {
         }}
       >
         {/* <Search /> */}
-        <Link
-          variant="version"
-          target="_blank"
-          href="https://pypi.org/project/strawberry-graphql/"
-        >
-          {repository.releases.nodes[0].tagName}
-        </Link>
+        {latestVersion && (
+          <Link
+            variant="version"
+            target="_blank"
+            href="https://pypi.org/project/strawberry-graphql/"
+          >
+            {latestVersion}
+          </Link>
+        )}
       </Flex>
     </Box>
   );
