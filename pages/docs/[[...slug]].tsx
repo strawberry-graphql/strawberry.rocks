@@ -4,6 +4,7 @@ import { anchorLinks } from "@hashicorp/remark-plugins";
 import { Flex, Box } from "@theme-ui/components";
 import matter from "gray-matter";
 import { jsx } from "theme-ui";
+import { ThemeProvider } from "theme-ui";
 
 import { GetServerSidePropsContext } from "next";
 import hydrate from "next-mdx-remote/hydrate";
@@ -13,32 +14,10 @@ import DocsNavigation from "~/components/docs-navigation";
 import { EditOnGithub } from "~/components/edit-on-github";
 import { ExperimentalWarning } from "~/components/experimental-warning";
 import { SEO } from "~/components/seo";
+import components from "~/components/theme-ui";
 import { getDocsToc } from "~/helpers/get-docs-toc";
 
-const DocsImage = ({ src, ...props }) => (
-  <img
-    sx={{
-      borderWidth: 2,
-      maxWidth: "100%",
-      borderColor: "muted",
-      borderStyle: "solid",
-    }}
-    src={getImageSrc(src)}
-    {...props}
-  />
-);
-
-const DocsLink = ({ children, href, ...props }) => {
-  href = href ? href.replace(/.md$/, "") : "";
-
-  return (
-    <a href={href} {...props}>
-      {children}
-    </a>
-  );
-};
-
-const components = { img: DocsImage, a: DocsLink };
+import theme from "../../theme";
 
 export default function DocsPage({ data, source, sourcePath, docsToc }) {
   const content = hydrate(source, { components });
@@ -77,18 +56,6 @@ export default function DocsPage({ data, source, sourcePath, docsToc }) {
   );
 }
 
-const getImageSrc = (src: string) => {
-  if (src.startsWith("./")) {
-    return src.replace(
-      "./",
-      // TODO: use correct branch
-      "https://github.com/strawberry-graphql/strawberry/raw/master/docs/"
-    );
-  }
-
-  return src;
-};
-
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const slugParts: string[] = (context.params.slug as string[]) || ["index"];
   const path = slugParts.join("/");
@@ -104,6 +71,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const source = await renderToString(content, {
     components,
+    provider: {
+      component: ThemeProvider,
+      components,
+      theme,
+    },
     mdxOptions: {
       remarkPlugins: [anchorLinks],
     },

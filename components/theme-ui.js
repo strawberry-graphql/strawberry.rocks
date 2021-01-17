@@ -4,13 +4,23 @@ import { jsx } from "theme-ui";
 
 import { AdditionalResources } from "./additional-resources";
 import GraphQLExample from "./graphql-example.tsx";
-import { Link } from "./link";
 import SchemaExample from "./schema-example.tsx";
+
+const DocsLink = ({ children, href, ...props }) => {
+  href = href ? href.replace(/.md$/, "") : "";
+
+  return (
+    <a href={href} {...props}>
+      {children}
+    </a>
+  );
+};
 
 const getImageSrc = (src) => {
   if (src.startsWith("./")) {
     return src.replace(
       "./",
+      // TODO: use correct branch
       "https://github.com/strawberry-graphql/strawberry/raw/master/docs/"
     );
   }
@@ -18,8 +28,23 @@ const getImageSrc = (src) => {
   return src;
 };
 
+const DocsImage = ({ src, ...props }) => (
+  <img
+    sx={{
+      borderWidth: 2,
+      maxWidth: "100%",
+      borderColor: "muted",
+      borderStyle: "solid",
+    }}
+    src={getImageSrc(src)}
+    {...props}
+  />
+);
+
 function CustomPrism({ className, children, ...props }) {
-  const [language] = className.replace(/language-/, "").split(" ");
+  const [language] = className
+    ? className.replace(/language-/, "").split(" ")
+    : "";
 
   if (language === "graphql+response") {
     const [query, response] = children.split("---");
@@ -38,7 +63,7 @@ function CustomPrism({ className, children, ...props }) {
   }
 
   return (
-    <Prism className={className} {...props}>
+    <Prism className={className || ""} {...props}>
       {children}
     </Prism>
   );
@@ -47,14 +72,7 @@ function CustomPrism({ className, children, ...props }) {
 export default {
   pre: (props) => props.children,
   code: CustomPrism,
-  a: Link,
+  a: DocsLink,
   AdditionalResources,
-  // eslint-disable-next-line react/display-name
-  img: ({ src, ...props }) => (
-    <img
-      sx={{ borderWidth: 2, borderColor: "muted", borderStyle: "solid" }}
-      src={getImageSrc(src)}
-      {...props}
-    />
-  ),
+  img: DocsImage,
 };
