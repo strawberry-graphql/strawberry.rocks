@@ -11,6 +11,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 
 import DocsNavigation from "~/components/docs-navigation";
 import { EditOnGithub } from "~/components/edit-on-github";
+import { ExperimentalWarning } from "~/components/experimental-warning";
 import { SEO } from "~/components/seo";
 import { getDocsToc } from "~/helpers/get-docs-toc";
 
@@ -65,6 +66,8 @@ export default function DocsPage({ data, source, sourcePath, docsToc }) {
       >
         <DocsNavigation docs={docsToc} />
         <Box sx={{ px: 4, pb: 6 }}>
+          {data.experimental && <ExperimentalWarning />}
+
           {content}
 
           <EditOnGithub relativePath={sourcePath} />
