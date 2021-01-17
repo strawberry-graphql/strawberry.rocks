@@ -4,8 +4,7 @@
       "next/babel",
       {
         "preset-react": {
-          "runtime": "classic",
-          "importSource": "theme-ui"
+          "runtime": "classic"
         }
       }
     ]

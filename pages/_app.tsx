@@ -1,6 +1,7 @@
+/** @jsx jsx */
 import { Global, css } from "@emotion/react";
 import NProgress from "nprogress";
-import * as React from "react";
+import { jsx } from "theme-ui";
 import { ThemeProvider } from "theme-ui";
 
 import type { AppProps } from "next/app";
