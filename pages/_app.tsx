@@ -46,7 +46,11 @@ const reset = css`
   }
 `;
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps,
+  latestVersion,
+}: AppProps & { latestVersion: string }) {
   return (
     <>
       <Head>
@@ -61,7 +65,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Global styles={reset} />
 
         <div id="wrap">
-          <Header />
+          <Header latestVersion={latestVersion} />
 
           <Component {...pageProps} />
 
@@ -72,3 +76,22 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+App.getInitialProps = async () => {
+  const latestVersion = await fetch(
+    "https://api.github.com/repos/strawberry-graphql/strawberry/releases/latest",
+    {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Token ${process.env.GITHUB_TOKEN}`,
+      },
+      method: "GET",
+    }
+  )
+    .then((x) => x.json())
+    .then((x) => x.tag_name);
+
+  return {
+    latestVersion,
+  };
+};

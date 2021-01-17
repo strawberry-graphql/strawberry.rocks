@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { Text, Box, Flex, Heading, Paragraph } from "@theme-ui/components";
-import GitHub from "github-base";
 import { jsx } from "theme-ui";
 
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
+import { getGithub } from "~/helpers/github";
 
 const IGNORE_LIST = ["dependabot-preview[bot]", "dependabot-bot", "botberry"];
 
@@ -154,9 +154,7 @@ type GithubCollaborator = {
 };
 
 const fetchContributors = async () => {
-  const github = new GitHub({
-    token: process.env.GITHUB_TOKEN,
-  });
+  const github = getGithub();
 
   const contributors: any[] = (
     await github

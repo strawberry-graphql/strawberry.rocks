@@ -19,23 +19,8 @@ type GithubRelease = {
   tagName: string;
 };
 
-export const Header = () => {
+export const Header = ({ latestVersion }: { latestVersion: string }) => {
   const [colorMode] = useColorMode();
-  const [latestVersion, setLatestVersion] = useState(null);
-
-  useEffect(() => {
-    fetch(
-      "https://api.github.com/repos/strawberry-graphql/strawberry/releases/latest",
-      {
-        headers: {
-          "content-type": "application/json",
-        },
-        method: "GET",
-      }
-    )
-      .then((x) => x.json())
-      .then((x) => setLatestVersion(x.tag_name));
-  }, []);
 
   return (
     <Box
