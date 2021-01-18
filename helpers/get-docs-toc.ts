@@ -9,9 +9,12 @@ const isList = (token: Token): token is Tokens.List => {
   return token.type === "list";
 };
 
-export const getDocsToc = async () => {
-  const docsTocUrl =
-    "https://raw.githubusercontent.com/strawberry-graphql/strawberry/feature/docs-toc/docs/README.md";
+export const getDocsToc = async ({
+  branch = "master",
+}: {
+  branch?: string;
+}) => {
+  const docsTocUrl = `https://raw.githubusercontent.com/strawberry-graphql/strawberry/${branch}/docs/README.md`;
 
   const text = await fetch(docsTocUrl).then((r) => r.text());
 

@@ -49,7 +49,7 @@ export default function DocsPage({ data, source, sourcePath, docsToc }) {
 
           {content}
 
-          <EditOnGithub relativePath={sourcePath} />
+          <EditOnGithub path={sourcePath} />
         </Box>
       </Flex>
     </>
@@ -58,15 +58,13 @@ export default function DocsPage({ data, source, sourcePath, docsToc }) {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const slugParts: string[] = (context.params.slug as string[]) || ["index"];
-  const path = slugParts.join("/");
+  const filename = slugParts.join("/");
 
-  // const base =
-  //   "https://raw.githubusercontent.com/strawberry-graphql/strawberry/master/docs/";
-  // TODO: update with master when updated
-  const base =
-    "https://raw.githubusercontent.com/strawberry-graphql/strawberry/feature/docs-toc/docs/";
+  const branch = "master";
+  const base = `https://raw.githubusercontent.com/strawberry-graphql/strawberry/`;
+  const path = `${branch}/docs/${filename}.md`;
 
-  const text = await fetch(`${base}${path}.md`).then((r) => r.text());
+  const text = await fetch(`${base}${path}`).then((r) => r.text());
   const { data, content } = matter(text);
 
   const source = await renderToString(content, {
@@ -82,7 +80,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       remarkPlugins: [anchorLinks],
     },
   });
-  const docsToc = await getDocsToc();
+  const docsToc = await getDocsToc({ branch });
 
   return {
     props: { source, data, sourcePath: path, docsToc },

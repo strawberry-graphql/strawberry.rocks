@@ -3,13 +3,11 @@ import { jsx } from "theme-ui";
 
 import { Link } from "./link";
 
-type EditOnGithubProps = { relativePath: string };
+type EditOnGithubProps = { path: string };
 
-export const EditOnGithub: React.SFC<EditOnGithubProps> = ({
-  relativePath,
-}) => (
+export const EditOnGithub: React.FC<EditOnGithubProps> = ({ path }) => (
   <Link
-    href={`https://github.com/strawberry-graphql/strawberry/tree/master/${relativePath}`}
+    href={`https://github.com/strawberry-graphql/strawberry/tree/${path}`}
     variant="box"
     sx={{
       display: "flex",
