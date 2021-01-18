@@ -16,18 +16,6 @@ const DocsLink = ({ children, href, ...props }) => {
   );
 };
 
-const getImageSrc = (src) => {
-  if (src.startsWith("./")) {
-    return src.replace(
-      "./",
-      // TODO: use correct branch
-      "https://github.com/strawberry-graphql/strawberry/raw/master/docs/"
-    );
-  }
-
-  return src;
-};
-
 const DocsImage = ({ src, ...props }) => (
   <img
     sx={{
@@ -36,7 +24,7 @@ const DocsImage = ({ src, ...props }) => (
       borderColor: "muted",
       borderStyle: "solid",
     }}
-    src={getImageSrc(src)}
+    src={src}
     {...props}
   />
 );

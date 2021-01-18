@@ -3,8 +3,10 @@ import { Global, css } from "@emotion/react";
 import { anchorLinks } from "@hashicorp/remark-plugins";
 import { Flex, Box } from "@theme-ui/components";
 import matter from "gray-matter";
+import { dirname, join } from "path";
 import { jsx } from "theme-ui";
 import { ThemeProvider } from "theme-ui";
+import visit from "unist-util-visit";
 
 import { GetServerSidePropsContext } from "next";
 import hydrate from "next-mdx-remote/hydrate";
@@ -85,7 +87,26 @@ const getPrInformation = async (id: number) => {
 type DocsSource = {
   pr: null | number;
   branch: string;
+  repo: string;
   base: string;
+};
+
+const fixImagePathsPlugin = ({
+  docsSource,
+  path,
+}: {
+  docsSource: DocsSource;
+  path: string;
+}) => () => (tree, file) => {
+  visit(tree, "image", (node) => {
+    const url = node.url as string;
+
+    if (url.startsWith(".")) {
+      const updatedPath = join("docs", dirname(path), node.url as string);
+
+      node.url = `https://github.com/${docsSource.repo}/raw/${docsSource.branch}/${u}`;
+    }
+  });
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -94,6 +115,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const docsSource: DocsSource = {
     branch: "master",
     pr: null,
+    repo: "strawberry-graphql/strawberry",
     base: `https://raw.githubusercontent.com/strawberry-graphql/strawberry/`,
   };
 
@@ -104,13 +126,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       docsSource.branch = prInfo.branch;
       docsSource.pr = prInfo.pr;
       docsSource.base = `https://raw.githubusercontent.com/${prInfo.repo}/`;
+      docsSource.repo = prInfo.repo;
 
       slugParts = slugParts.slice(2);
     }
   }
 
-  const filename = slugParts.join("/");
-  const path = `${docsSource.branch}/docs/${filename}.md`;
+  const filename = slugParts.join("/") + ".md";
+  const path = `${docsSource.branch}/docs/${filename}`;
 
   const text = await fetch(`${docsSource.base}${path}`).then((r) => r.text());
   const { data, content } = matter(text);
@@ -125,7 +148,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       },
     },
     mdxOptions: {
-      remarkPlugins: [anchorLinks],
+      remarkPlugins: [
+        fixImagePathsPlugin({ docsSource, path: filename }),
+        anchorLinks,
+      ],
     },
   });
   const docsToc = await getDocsToc(docsSource);
