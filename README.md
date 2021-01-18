@@ -45,21 +45,12 @@ DOCS_GIT_REMOTE=https://github.com/strawberry-graphql/strawberry.git
 DOCS_GIT_BRANCH=test-branch
 ```
 
-Alternatively you can checkout the [Strawberry](https://github.com/strawberry-graphql/strawberry)
-repo locally and specify it's location in your `.env` file. For example:
-
-```env
-DOCS_LOCAL_LOCATION=../strawberry/docs
-```
-
-*Note:* Make sure the path refers to the `docs` subdirectory in the repo.
-
 ### Running the website
 
 To run the website, you can use npm:
 
 ```sh
-npm run start
+npm run dev
 ```
 
-This should start the server on [http://localhost:8000](http://localhost:8000)
+This should start the server on [http://localhost:3000](http://localhost:3000)
