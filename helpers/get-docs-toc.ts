@@ -9,12 +9,22 @@ const isList = (token: Token): token is Tokens.List => {
   return token.type === "list";
 };
 
+const getLinkHref = (href: string, pr: null | number) => {
+  const replacement = pr ? `/docs/pr/${pr}/` : "/docs/";
+
+  return href.replace(/^\.\//, replacement).replace(/\.md$/, "");
+};
+
 export const getDocsToc = async ({
-  branch = "master",
+  branch,
+  base,
+  pr,
 }: {
-  branch?: string;
+  pr: null | number;
+  branch: string;
+  base: string;
 }) => {
-  const docsTocUrl = `https://raw.githubusercontent.com/strawberry-graphql/strawberry/${branch}/docs/README.md`;
+  const docsTocUrl = `${base}/${branch}/docs/README.md`;
 
   const text = await fetch(docsTocUrl).then((r) => r.text());
 
@@ -50,7 +60,7 @@ export const getDocsToc = async ({
       );
 
       sections[currentSection].links = links.map((link) => ({
-        href: link.href.replace(/^\.\//, "/docs/").replace(/\.md$/, ""),
+        href: getLinkHref(link.href, pr),
         text: link.text,
       }));
     }

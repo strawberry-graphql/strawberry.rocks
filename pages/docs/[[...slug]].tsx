@@ -16,6 +16,7 @@ import { ExperimentalWarning } from "~/components/experimental-warning";
 import { SEO } from "~/components/seo";
 import components from "~/components/theme-ui";
 import { getDocsToc } from "~/helpers/get-docs-toc";
+import { getGithub } from "~/helpers/github";
 
 import theme from "../../theme";
 
@@ -56,15 +57,62 @@ export default function DocsPage({ data, source, sourcePath, docsToc }) {
   );
 }
 
+const isPR = (slugParts: string[]) => {
+  return (
+    slugParts.length > 2 &&
+    slugParts[0] === "pr" &&
+    !isNaN(parseInt(slugParts[1], 10))
+  );
+};
+
+const getPrInformation = async (id: number) => {
+  const github = getGithub();
+
+  const data = await github
+    .get(`/repos/strawberry-graphql/strawberry/pulls/${id}`)
+    .then((res) => res.body);
+
+  return {
+    pr: id,
+    branch: data.head.ref,
+    repo: data.head.repo.full_name,
+    safeToPreview:
+      data.state === "open" &&
+      data.labels.find((label) => label.name === "ok-to-preview") !== undefined,
+  };
+};
+
+type DocsSource = {
+  pr: null | number;
+  branch: string;
+  base: string;
+};
+
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const slugParts: string[] = (context.params.slug as string[]) || ["index"];
+  let slugParts: string[] = (context.params.slug as string[]) || ["index"];
+
+  const docsSource: DocsSource = {
+    branch: "master",
+    pr: null,
+    base: `https://raw.githubusercontent.com/strawberry-graphql/strawberry/`,
+  };
+
+  if (isPR(slugParts)) {
+    const prInfo = await getPrInformation(parseInt(slugParts[1], 10));
+
+    if (prInfo.safeToPreview) {
+      docsSource.branch = prInfo.branch;
+      docsSource.pr = prInfo.pr;
+      docsSource.base = `https://raw.githubusercontent.com/${prInfo.repo}/`;
+
+      slugParts = slugParts.slice(2);
+    }
+  }
+
   const filename = slugParts.join("/");
+  const path = `${docsSource.branch}/docs/${filename}.md`;
 
-  const branch = "master";
-  const base = `https://raw.githubusercontent.com/strawberry-graphql/strawberry/`;
-  const path = `${branch}/docs/${filename}.md`;
-
-  const text = await fetch(`${base}${path}`).then((r) => r.text());
+  const text = await fetch(`${docsSource.base}${path}`).then((r) => r.text());
   const { data, content } = matter(text);
 
   const source = await renderToString(content, {
@@ -80,7 +128,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       remarkPlugins: [anchorLinks],
     },
   });
-  const docsToc = await getDocsToc({ branch });
+  const docsToc = await getDocsToc(docsSource);
 
   return {
     props: { source, data, sourcePath: path, docsToc },
