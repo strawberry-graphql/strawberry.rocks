@@ -78,7 +78,7 @@ export const Features: React.SFC = () => (
     <Feature href="/docs/features/server" bg="muted" icon={ServerIcon}>
       Built-in server
     </Feature>
-    <Feature href="/docs/concepts/typing" bg="secondary" icon={TypingIcon}>
+    <Feature href="/docs/concepts/typings" bg="secondary" icon={TypingIcon}>
       Typings
     </Feature>
     <Feature href="/docs/general/why" bg="muted" icon={PythonicIcon}>
