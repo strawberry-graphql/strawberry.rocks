@@ -50,6 +50,7 @@ export const Footer: React.SFC = () => (
       <nav>
         <NavItem href="/docs/">Documentation</NavItem>
         <NavItem href="/acknowledgements/">Acknowledgements</NavItem>
+        <NavItem href="/code-of-conduct/">Code of Conduct</NavItem>
       </nav>
       <Box
         as="nav"
