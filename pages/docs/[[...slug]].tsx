@@ -104,7 +104,7 @@ const fixImagePathsPlugin = ({
     if (url.startsWith(".")) {
       const updatedPath = join("docs", dirname(path), node.url as string);
 
-      node.url = `https://github.com/${docsSource.repo}/raw/${docsSource.branch}/${u}`;
+      node.url = `https://github.com/${docsSource.repo}/raw/${docsSource.branch}/${updatedPath}`;
     }
   });
 };
