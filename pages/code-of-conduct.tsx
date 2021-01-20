@@ -20,7 +20,7 @@ export default function CodeOfConductPage({ data, source }) {
 
   return (
     <>
-      <SEO title={data.title} />
+      <SEO title="Code of Conduct" />
 
       <Global
         styles={css`
