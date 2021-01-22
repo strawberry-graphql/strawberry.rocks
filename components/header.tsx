@@ -68,11 +68,7 @@ export const Header = ({ latestVersion }: { latestVersion: string }) => {
           >
             Github
           </Link>
-          <Link
-            variant="nav"
-            target="_blank"
-            href="https://strawberry.rocks/discord"
-          >
+          <Link variant="nav" target="_blank" href="/discord">
             <svg
               viewBox="0 0 800 272.1"
               sx={{

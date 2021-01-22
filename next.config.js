@@ -12,5 +12,14 @@ const withMDX = require("@next/mdx")({
 module.exports = withTM(
   withMDX({
     pageExtensions: ["js", "jsx", "tsx", "md", "mdx"],
+    async redirects() {
+      return [
+        {
+          source: "/discord",
+          destination: "https://discord.gg/3uQ2PaY",
+          permanent: true,
+        },
+      ];
+    },
   })
 );
