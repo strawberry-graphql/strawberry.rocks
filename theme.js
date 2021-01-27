@@ -355,5 +355,24 @@ export default {
     img: {
       maxWidth: "100%",
     },
+    hr: {
+      border: "none",
+      borderBottomStyle: "solid",
+      borderBottomWidth: 1,
+      borderColor: "primary",
+      my: 5,
+      textAlign: "center",
+      height: 0,
+      overflow: "visible",
+
+      "&:after": {
+        content: '"🍓"',
+        background: "white",
+        display: "inline-block",
+        position: "relative",
+        top: "-0.78em",
+        padding: "0 0 0 5px",
+      },
+    },
   },
 };
