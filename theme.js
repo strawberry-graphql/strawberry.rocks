@@ -30,6 +30,7 @@ export default {
     codeBoxBorder: PRIMARY_COLOR,
     secondary: "#FF9FA9",
     muted: "#FFCED3",
+    mutedLight: "#e9ecfc",
     accent: ACCENT_COLOR,
     backgroundDark: "#000000",
     textDark: TEXT_COLOR_LIGHT,
@@ -336,11 +337,20 @@ export default {
     },
     th: {
       textAlign: "left",
+      borderWidth: 1,
+      p: 2,
       borderBottomStyle: "solid",
     },
     td: {
       textAlign: "left",
+      borderWidth: 1,
+      p: 2,
       borderBottomStyle: "solid",
+    },
+    tr: {
+      "&:nth-child(even)": {
+        backgroundColor: "mutedLight",
+      },
     },
     img: {
       maxWidth: "100%",
