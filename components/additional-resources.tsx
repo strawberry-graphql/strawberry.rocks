@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import { Box, Grid, Heading } from "@theme-ui/components";
 import { Fragment } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box, Grid, Heading } from "theme-ui";
 
 import { Link } from "./link";
 
@@ -16,7 +15,7 @@ type Props = {
   graphqlDocs: string;
 };
 
-const ResourceLink: React.SFC<LinkProps> = ({ title, href }) => (
+const ResourceLink: React.FC<LinkProps> = ({ title, href }) => (
   <Link
     href={href}
     hideExternalIcon={true}
@@ -37,7 +36,7 @@ const ResourceLink: React.SFC<LinkProps> = ({ title, href }) => (
   </Link>
 );
 
-export const AdditionalResources: React.SFC<Props> = ({
+export const AdditionalResources: React.FC<Props> = ({
   spec,
   graphqlDocs,
   title,

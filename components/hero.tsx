@@ -1,12 +1,11 @@
 /** @jsx jsx */
-import { Heading, Grid, Box } from "@theme-ui/components";
-import { jsx } from "theme-ui";
+import { jsx, Heading, Grid, Box } from "theme-ui";
 
 import MDXDocument from "~/content/home/hello-world.mdx";
 
 import { CodeBox } from "./code-box";
 
-export const Hero: React.SFC = () => {
+export const Hero = (): jsx.JSX.Element => {
   return (
     <Grid
       sx={{

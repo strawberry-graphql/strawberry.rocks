@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import { Box, Button } from "@theme-ui/components";
 import { Fragment, useCallback, useEffect } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box, Button } from "theme-ui";
 
 import { Router } from "next/router";
 
@@ -36,7 +35,7 @@ const ExperimentalBadge = () => (
   </Box>
 );
 
-const getDocsLink = ({ text, href }) => {
+const getDocsLink = ({ text, href }: { text: string; href: string }) => {
   const regex = /\*\*experimental\*\*/g;
   const isExperimental = text.search(regex) >= 0;
 

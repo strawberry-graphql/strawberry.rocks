@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import { Grid } from "@theme-ui/components";
-import { jsx, useColorMode } from "theme-ui";
+import { jsx, useColorMode, Grid } from "theme-ui";
 
 import { ArrowRightIcon } from "./icons/arrow-right";
 import { AsyncIcon } from "./icons/async";
@@ -70,7 +69,7 @@ const Feature: React.FC<FeatureProps> = ({
   );
 };
 
-export const Features: React.SFC = () => (
+export const Features = (): jsx.JSX.Element => (
   <Grid columns={[1, 2, 4]} gap={0} sx={{ my: 4, px: [4, 4, 0] }}>
     <Feature href="/docs/concepts/async" bg="secondary" icon={AsyncIcon}>
       Async
