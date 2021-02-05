@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Flex, Box } from "@theme-ui/components";
+import { Flex, Box, BoxProps } from "@theme-ui/components";
 import { jsx } from "theme-ui";
 
 const BackgroundTop = (props) => (
@@ -69,7 +69,10 @@ const Actions = (props) => (
   </svg>
 );
 
-export const CodeBox: React.SFC = ({ children, ...props }) => (
+export const CodeBox: React.FunctionComponent<BoxProps> = ({
+  children,
+  ...props
+}) => (
   <Box {...props} sx={{ position: "relative" }}>
     <Box sx={{ paddingTop: "70%", minHeight: 420, display: "inline-block" }} />
     <BackgroundTop

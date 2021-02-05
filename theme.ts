@@ -1,9 +1,11 @@
+import { Theme } from "theme-ui";
+
 const TEXT_COLOR_DARK = "#000000";
 const TEXT_COLOR_LIGHT = "#ffffff";
 const PRIMARY_COLOR = "#f7393d";
 const ACCENT_COLOR = "#4a65ff";
 
-export default {
+const theme: Readonly<Theme> = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body: "Karla, sans-serif",
@@ -376,3 +378,5 @@ export default {
     },
   },
 };
+
+export default theme;

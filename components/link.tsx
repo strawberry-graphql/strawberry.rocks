@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { Box, Link as ThemeLink } from "@theme-ui/components";
-import { jsx } from "theme-ui";
+import { jsx, ThemeUIStyleObject } from "theme-ui";
 
 import NextLink from "next/link";
 import { useRouter } from "next/router";
@@ -15,6 +15,7 @@ type LinkProps = {
   hideExternalIcon?: boolean;
   partialMatch?: boolean;
   rel?: string;
+  sx?: ThemeUIStyleObject;
 };
 
 function LinkWrapper({
