@@ -1,13 +1,18 @@
 /** @jsx jsx */
-import Prism from "@theme-ui/prism";
+import { MDXProviderComponents } from "@theme-ui/mdx";
+import Prism, { ThemeUIPrismProps } from "@theme-ui/prism";
 import GithubSlugger from "github-slugger";
-import { jsx } from "theme-ui";
+import { jsx, ThemeUICSSObject, ImageProps } from "theme-ui";
 
 import { AdditionalResources } from "./additional-resources";
-import GraphQLExample from "./graphql-example.tsx";
-import SchemaExample from "./schema-example.tsx";
+import GraphQLExample from "./graphql-example";
+import SchemaExample from "./schema-example";
 
-const DocsLink = ({ children, href, ...props }) => {
+const DocsLink: React.FC<{ href?: string }> = ({
+  children,
+  href,
+  ...props
+}) => {
   href = href ? href.replace(/.md$/, "") : "";
 
   return (
@@ -17,7 +22,7 @@ const DocsLink = ({ children, href, ...props }) => {
   );
 };
 
-const DocsImage = ({ src, ...props }) => (
+const DocsImage = ({ src, ...props }: ImageProps) => (
   <img
     sx={{
       borderWidth: 2,
@@ -30,11 +35,14 @@ const DocsImage = ({ src, ...props }) => (
   />
 );
 
-const CustomTH = ({ children, ...props }) => {
+const CustomTH: React.FC<JSX.IntrinsicElements["th"]> = ({
+  children,
+  ...props
+}) => {
   const slugger = GithubSlugger();
   const slug = slugger.slug(children);
 
-  const styles = {
+  const styles: ThemeUICSSObject = {
     textAlign: "left",
     p: 2,
     borderBottom: "1px solid currentColor",
@@ -60,11 +68,15 @@ const CustomTH = ({ children, ...props }) => {
   );
 };
 
-const CustomPrism = ({ className, children, ...props }) => {
-  const [language] = className
+const CustomPrism = ({
+  className,
+  children,
+  ...props
+}: ThemeUIPrismProps): jsx.JSX.Element => {
+  const [language]: string[] = className
     ? className.replace(/language-/, "").split(" ")
-    : "";
-
+    : [""];
+  console.log("language", language);
   if (language === "graphql+response") {
     const [query, response] = children.split("---");
     if (!query || !response) {
@@ -88,7 +100,7 @@ const CustomPrism = ({ className, children, ...props }) => {
   );
 };
 
-export default {
+const theme: MDXProviderComponents = {
   pre: (props) => props.children,
   code: CustomPrism,
   th: CustomTH,
@@ -96,3 +108,5 @@ export default {
   AdditionalResources,
   img: DocsImage,
 };
+
+export default theme;
