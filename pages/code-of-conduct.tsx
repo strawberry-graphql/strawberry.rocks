@@ -5,7 +5,7 @@ import { Box } from "@theme-ui/components";
 import matter from "gray-matter";
 import { jsx, ThemeProvider } from "theme-ui";
 
-import { GetServerSideProps, NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import { MdxRemote } from "next-mdx-remote/types";
@@ -21,7 +21,7 @@ type Props = {
   sourcePath: string;
 };
 
-const CodeOfConductPage: NextPage<Props> = ({ data, source }) => {
+const CodeOfConductPage: NextPage<Props> = ({ source }) => {
   const content = hydrate(source, { components });
 
   return (
@@ -52,7 +52,7 @@ const CodeOfConductPage: NextPage<Props> = ({ data, source }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const path =
     "https://raw.githubusercontent.com/strawberry-graphql/strawberry/master/CODE_OF_CONDUCT.md";
 
@@ -75,6 +75,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
   return {
     props: { source, data, sourcePath: path },
+    revalidate: 30,
   };
 };
 

@@ -1,6 +1,6 @@
 import { Heading, Grid, Box, Text, Flex } from "@theme-ui/components";
 
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 
 import { Features } from "~/components/features";
 import { Hero } from "~/components/hero";
@@ -68,5 +68,9 @@ const HomePage: NextPage = () => (
     </Section>
   </>
 );
+
+export const getStaticProps: GetStaticProps = async () => {
+  return { props: {}, revalidate: 30 };
+};
 
 export default HomePage;
