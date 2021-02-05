@@ -76,7 +76,6 @@ const CustomPrism = ({
   const [language]: string[] = className
     ? className.replace(/language-/, "").split(" ")
     : [""];
-  console.log("language", language);
   if (language === "graphql+response") {
     const [query, response] = children.split("---");
     if (!query || !response) {
