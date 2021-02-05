@@ -2,13 +2,15 @@
 import { Text, Box, Flex, Heading, Paragraph } from "@theme-ui/components";
 import { jsx } from "theme-ui";
 
+import { GetStaticProps, NextPage } from "next";
+
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
 import { getGithub } from "~/helpers/github";
 
 const IGNORE_LIST = ["dependabot-preview[bot]", "dependabot-bot", "botberry"];
 
-const MemberLink: React.SFC<{
+const MemberLink: React.FC<{
   member: GithubCollaborator;
 }> = ({ children, member }) => {
   let link = member.url;
@@ -28,11 +30,11 @@ const MemberLink: React.SFC<{
   );
 };
 
-const AcknowledgementsPage = ({
-  collaborators,
-}: {
+type Props = {
   collaborators: GithubCollaborator[];
-}) => {
+};
+
+const AcknowledgementsPage: NextPage<Props> = ({ collaborators }) => {
   const filteredCollaborators = collaborators.filter(
     (member) => !IGNORE_LIST.includes(member.login)
   );
@@ -149,11 +151,11 @@ const query = `
 type GithubCollaborator = {
   name: string | null;
   login: string;
-  websiteUrl: string | null;
+  // websiteUrl: string | null;
   url: string;
 };
 
-const fetchContributors = async () => {
+const fetchContributors: () => Promise<GithubCollaborator[]> = async () => {
   const github = getGithub();
 
   const contributors: any[] = (
@@ -187,12 +189,12 @@ const fetchContributors = async () => {
   });
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       collaborators: await fetchContributors(),
     },
   };
-}
+};
 
 export default AcknowledgementsPage;

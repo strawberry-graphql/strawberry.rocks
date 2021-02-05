@@ -3,19 +3,25 @@ import { Global, css } from "@emotion/react";
 import { anchorLinks } from "@hashicorp/remark-plugins";
 import { Box } from "@theme-ui/components";
 import matter from "gray-matter";
-import { jsx } from "theme-ui";
-import { ThemeProvider } from "theme-ui";
+import { jsx, ThemeProvider } from "theme-ui";
 
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
+import { MdxRemote } from "next-mdx-remote/types";
 
 import { SEO } from "~/components/seo";
 import components from "~/components/theme-ui";
 
 import theme from "../theme";
 
-export default function CodeOfConductPage({ data, source }) {
+type Props = {
+  source: MdxRemote.Source;
+  data: { [key: string]: any };
+  sourcePath: string;
+};
+
+const CodeOfConductPage: NextPage<Props> = ({ data, source }) => {
   const content = hydrate(source, { components });
 
   return (
@@ -44,13 +50,13 @@ export default function CodeOfConductPage({ data, source }) {
       </Box>
     </>
   );
-}
+};
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const path =
     "https://raw.githubusercontent.com/strawberry-graphql/strawberry/master/CODE_OF_CONDUCT.md";
 
-  const text = await fetch(path).then((r) => r.text());
+  const text: string = await fetch(path).then((r) => r.text());
   const { data, content } = matter(text);
 
   const source = await renderToString(content, {
@@ -70,4 +76,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: { source, data, sourcePath: path },
   };
-}
+};
+
+export default CodeOfConductPage;
