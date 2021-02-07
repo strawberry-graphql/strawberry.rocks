@@ -24,6 +24,7 @@ const theme: Readonly<Theme> = {
   },
 
   useColorSchemeMediaQuery: true,
+  useLocalStorage: false,
 
   colors: {
     text: TEXT_COLOR_DARK,
