@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, useColorMode, Box, Flex } from "theme-ui";
+import { jsx, Box, Flex } from "theme-ui";
 
 import { Link } from "./link";
 import { Logo } from "./logo";
@@ -20,8 +20,6 @@ type GithubRelease = {
 export const Header: React.FC<{ latestVersion: string }> = ({
   latestVersion,
 }) => {
-  const [colorMode] = useColorMode();
-
   return (
     <Box
       as="header"
@@ -74,7 +72,7 @@ export const Header: React.FC<{ latestVersion: string }> = ({
               sx={{
                 height: 30,
                 verticalAlign: "middle",
-                fill: colorMode === "dark" ? "white" : "black",
+                fill: "text",
               }}
             >
               <path d="M142.8 120.1c-5.7 0-10.2 4.9-10.2 11s4.6 11 10.2 11c5.7 0 10.2-4.9 10.2-11s-4.6-11-10.2-11zM106.3 120.1c-5.7 0-10.2 4.9-10.2 11s4.6 11 10.2 11c5.7 0 10.2-4.9 10.2-11 .1-6.1-4.5-11-10.2-11z" />
