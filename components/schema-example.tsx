@@ -1,44 +1,23 @@
 /** @jsx jsx */
-import { Flex, Box } from "@theme-ui/components";
-import Prism from "@theme-ui/prism";
-import { ReactElement } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Flex, Box, BoxProps } from "theme-ui";
 
-function Header({ children, ...props }) {
-  return (
-    <Box
-      sx={{
-        backgroundColor: "primary",
-        padding: 1,
-        color: "#fff",
-        paddingLeft: 2,
-        fontSize: 12,
-        fontFamily: "monospace",
-      }}
-      {...props}
-    >
-      {children}
-    </Box>
-  );
-}
+import { CodeBlock } from "./code-block";
 
-function CodeBlock({ language, children, extraStyles = {}, ...props }) {
-  return (
-    <Prism
-      className={`language-${language}`}
-      sx={{
-        flex: 1,
-        borderTop: "none",
-        maxHeight: "300px",
-        overflowY: "auto",
-        ...extraStyles,
-      }}
-      {...props}
-    >
-      {children}
-    </Prism>
-  );
-}
+const Header: React.FC<BoxProps> = ({ children, ...props }) => (
+  <Box
+    sx={{
+      backgroundColor: "primary",
+      padding: 1,
+      color: "#fff",
+      paddingLeft: 2,
+      fontSize: 12,
+      fontFamily: "monospace",
+    }}
+    {...props}
+  >
+    {children}
+  </Box>
+);
 
 export default function SchemaExample({
   python,
@@ -46,7 +25,7 @@ export default function SchemaExample({
 }: {
   python: string;
   schema: string;
-}): ReactElement {
+}): jsx.JSX.Element {
   return (
     <Flex>
       <Flex

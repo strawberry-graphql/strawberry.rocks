@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import { ReactSVGFC } from "types/react-svg";
 
-export const ArrowRightIcon = (props) => (
+export const ArrowRightIcon: ReactSVGFC = (props) => (
   <svg
     sx={{
       stroke: "primary",

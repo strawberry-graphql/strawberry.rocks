@@ -4,13 +4,14 @@ import { anchorLinks } from "@hashicorp/remark-plugins";
 import { Flex, Box } from "@theme-ui/components";
 import matter from "gray-matter";
 import { dirname, join } from "path";
-import { jsx } from "theme-ui";
-import { ThemeProvider } from "theme-ui";
+import { jsx, ThemeProvider } from "theme-ui";
+import { ReturnedPromiseResolvedType } from "types/utility";
 import visit from "unist-util-visit";
 
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
+import { MdxRemote } from "next-mdx-remote/types";
 
 import DocsNavigation from "~/components/docs-navigation";
 import { EditOnGithub } from "~/components/edit-on-github";
@@ -22,7 +23,14 @@ import { getGithub } from "~/helpers/github";
 
 import theme from "../../theme";
 
-export default function DocsPage({ data, source, sourcePath, docsToc }) {
+type Props = {
+  source: MdxRemote.Source;
+  data: { [key: string]: any };
+  sourcePath: string;
+  docsToc: ReturnedPromiseResolvedType<typeof getDocsToc>;
+};
+
+const DocsPage: NextPage<Props> = ({ data, source, sourcePath, docsToc }) => {
   const content = hydrate(source, { components });
 
   return (
@@ -57,7 +65,7 @@ export default function DocsPage({ data, source, sourcePath, docsToc }) {
       </Flex>
     </>
   );
-}
+};
 
 const isPR = (slugParts: string[]) => {
   return (
@@ -109,7 +117,9 @@ const fixImagePathsPlugin = ({
   });
 };
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
+export const getServerSideProps: GetServerSideProps<Props> = async (
+  context
+) => {
   let slugParts: string[] = (context.params.slug as string[]) || ["index"];
 
   const docsSource: DocsSource = {
@@ -132,10 +142,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
   }
 
-  const filename = slugParts.join("/") + ".md";
+  const filename: string = slugParts.join("/") + ".md";
   const path = `${docsSource.branch}/docs/${filename}`;
 
-  const text = await fetch(`${docsSource.base}${path}`).then((r) => r.text());
+  const text: string = await fetch(`${docsSource.base}${path}`).then((r) =>
+    r.text()
+  );
   const { data, content } = matter(text);
 
   const source = await renderToString(content, {
@@ -159,4 +171,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: { source, data, sourcePath: path, docsToc },
   };
-}
+};
+
+export default DocsPage;

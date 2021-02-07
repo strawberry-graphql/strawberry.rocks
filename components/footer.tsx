@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import { Box, Grid } from "@theme-ui/components";
-import { jsx } from "theme-ui";
+import { jsx, Box, Grid } from "theme-ui";
 
 import { Link } from "./link";
 import { Logo } from "./logo";
@@ -10,7 +9,7 @@ type NavItemProps = {
   target?: string;
 };
 
-const NavItem: React.SFC<NavItemProps> = ({ href, children, ...props }) => (
+const NavItem: React.FC<NavItemProps> = ({ href, children, ...props }) => (
   <Box as="li" sx={{ listStyle: "none", whiteSpace: "nowrap" }}>
     <Link sx={{ color: "white" }} href={href} {...props}>
       {children}
@@ -18,7 +17,7 @@ const NavItem: React.SFC<NavItemProps> = ({ href, children, ...props }) => (
   </Box>
 );
 
-export const Footer: React.SFC = () => (
+export const Footer = (): jsx.JSX.Element => (
   <Box
     as="footer"
     sx={{

@@ -1,7 +1,5 @@
 /** @jsx jsx */
-import { Box, Flex } from "@theme-ui/components";
-import { useEffect, useState } from "react";
-import { jsx, useColorMode } from "theme-ui";
+import { jsx, useColorMode, Box, Flex } from "theme-ui";
 
 import { Link } from "./link";
 import { Logo } from "./logo";
@@ -19,7 +17,9 @@ type GithubRelease = {
   tagName: string;
 };
 
-export const Header = ({ latestVersion }: { latestVersion: string }) => {
+export const Header: React.FC<{ latestVersion: string }> = ({
+  latestVersion,
+}) => {
   const [colorMode] = useColorMode();
 
   return (

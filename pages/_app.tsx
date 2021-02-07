@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { Global, css } from "@emotion/react";
 import NProgress from "nprogress";
-import { jsx } from "theme-ui";
-import { ThemeProvider } from "theme-ui";
+import { jsx, ThemeProvider } from "theme-ui";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -60,7 +59,6 @@ export default function App({
           rel="stylesheet"
         />
       </Head>
-      {/* @ts-ignore components prop is missing in the type definition */}
       <ThemeProvider theme={theme} components={components}>
         <Global styles={reset} />
 

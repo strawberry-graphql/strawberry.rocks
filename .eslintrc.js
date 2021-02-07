@@ -1,10 +1,10 @@
 module.exports = {
   parser: "@typescript-eslint/parser",
   extends: [
-    "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
   ],
   parserOptions: {
     ecmaVersion: 2018,
@@ -26,6 +26,7 @@ module.exports = {
         ignoreRestSiblings: true,
       },
     ],
+    "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
   },
   settings: {

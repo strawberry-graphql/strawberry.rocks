@@ -1,15 +1,14 @@
 /** @jsx jsx */
-import { Box, Heading, Text, Input, Button, Flex } from "@theme-ui/components";
 import { useState } from "react";
 import { useMailchimp } from "react-use-mailchimp";
-import { jsx } from "theme-ui";
+import { jsx, Box, Heading, Text, Input, Button, Flex } from "theme-ui";
 
 import { ArrowRightIcon } from "./icons/arrow-right";
 
 const url =
   "https://twitter.us4.list-manage.com/subscribe/post?u=4ad955ae4a0b2d7c67f48323e&amp;id=5e44c190e6";
 
-const Loading = () => (
+const Loading = (): jsx.JSX.Element => (
   <Box
     sx={{
       fontSize: 3,
@@ -20,7 +19,7 @@ const Loading = () => (
   </Box>
 );
 
-const Form: React.SFC = () => {
+const Form: React.FC = () => {
   const [email, setEmail] = useState("");
   const [mailchimp, subscribe] = useMailchimp({
     url,
@@ -94,7 +93,7 @@ const Form: React.SFC = () => {
   );
 };
 
-export const NewsletterSection: React.SFC = () => (
+export const NewsletterSection = (): jsx.JSX.Element => (
   <Box
     sx={{
       p: 5,

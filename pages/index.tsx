@@ -1,5 +1,6 @@
 import { Heading, Grid, Box, Text, Flex } from "@theme-ui/components";
-import * as React from "react";
+
+import { NextPage } from "next";
 
 import { Features } from "~/components/features";
 import { Hero } from "~/components/hero";
@@ -8,9 +9,7 @@ import { Link } from "~/components/link";
 import { Section } from "~/components/section";
 import { SEO } from "~/components/seo";
 
-// import SEO from "~/components/seo";
-
-const HomePage = () => (
+const HomePage: NextPage = () => (
   <>
     <SEO title="A Python library for GraphQL" />
 

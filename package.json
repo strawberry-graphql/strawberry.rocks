@@ -10,7 +10,8 @@
     "update-algolia": "ts-node --project scripts/tsconfig.json -r dotenv/config scripts/update-algolia.ts dotenv_config_path=.env.local",
     "format": "prettier --write \"{,!(.next|node_modules|public|coverage|.cache)/**/}*.{js,jsx,ts,tsx,json}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --watch --noEmit"
   },
   "keywords": [
     "strawberry-graphql",

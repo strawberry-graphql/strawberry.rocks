@@ -1,10 +1,9 @@
 /** @jsx jsx */
-import { Box } from "@theme-ui/components";
-import { jsx } from "theme-ui";
+import { jsx, Box } from "theme-ui";
 
 import { Link } from "./link";
 
-export const ExperimentalWarning = () => (
+export const ExperimentalWarning = (): jsx.JSX.Element => (
   <Box
     sx={{
       backgroundColor: "prismBackground",

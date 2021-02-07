@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import { Box, Link as ThemeLink } from "@theme-ui/components";
-import { jsx, ThemeUIStyleObject } from "theme-ui";
+import { jsx, ThemeUIStyleObject, Box, Link as ThemeLink } from "theme-ui";
 
 import NextLink from "next/link";
 import { useRouter } from "next/router";
@@ -18,21 +17,14 @@ type LinkProps = {
   sx?: ThemeUIStyleObject;
 };
 
-function LinkWrapper({
-  href,
-  isExternal,
-  children,
-  as,
-  partialMatch = false,
-  ...rest
-}: {
+const LinkWrapper: React.FC<{
   href: string;
   as?: string;
   isExternal: boolean;
   partialMatch?: boolean;
   children: React.ReactNode;
   className?: string;
-}) {
+}> = ({ href, isExternal, children, as, partialMatch = false, ...rest }) => {
   const router = useRouter();
 
   if (isExternal) {
@@ -66,9 +58,9 @@ function LinkWrapper({
       </ThemeLink>
     </NextLink>
   );
-}
+};
 
-export const Link: React.SFC<LinkProps> = ({
+export const Link: React.FC<LinkProps> = ({
   children,
   href,
   hideExternalIcon = false,
