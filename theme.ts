@@ -4,6 +4,7 @@ const TEXT_COLOR_DARK = "#000000";
 const TEXT_COLOR_LIGHT = "#ffffff";
 const PRIMARY_COLOR = "#f7393d";
 const ACCENT_COLOR = "#4a65ff";
+const MUTED_COLOR = "#ffced3";
 
 const theme: Readonly<Theme> = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
@@ -32,11 +33,13 @@ const theme: Readonly<Theme> = {
     primary: PRIMARY_COLOR,
     codeBoxBorder: PRIMARY_COLOR,
     secondary: "#FF9FA9",
-    muted: "#FFCED3",
+    muted: MUTED_COLOR,
     mutedLight: "#e9ecfc",
     accent: ACCENT_COLOR,
     backgroundDark: "#000000",
     textDark: TEXT_COLOR_LIGHT,
+    featureColor: PRIMARY_COLOR,
+    featureColorSecondary: PRIMARY_COLOR,
 
     // nightowl theme
 
@@ -61,7 +64,8 @@ const theme: Readonly<Theme> = {
         primary: PRIMARY_COLOR,
         secondary: PRIMARY_COLOR,
         accent: "#4a65ff",
-        codeBoxBorder: "#FFCED3",
+        codeBoxBorder: MUTED_COLOR,
+        featureColorSecondary: MUTED_COLOR,
 
         // nightowl theme
 

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, useColorMode, Grid } from "theme-ui";
+import { jsx, Grid, LinkProps } from "theme-ui";
 
 import { ArrowRightIcon } from "./icons/arrow-right";
 import { AsyncIcon } from "./icons/async";
@@ -9,20 +9,17 @@ import { TypingIcon } from "./icons/typing";
 import { Link } from "./link";
 
 type FeatureProps = {
-  bg: string;
   icon?: React.FC<any>;
   href: string;
-};
+} & Pick<LinkProps, "bg">;
 
 const Feature: React.FC<FeatureProps> = ({
   icon: Icon,
   children,
   ...props
 }) => {
-  const [colorMode] = useColorMode();
-
-  const isDarkMode = colorMode == "dark";
-
+  const featureColor: string =
+    props.bg === "secondary" ? "featureColorSecondary" : "featureColor";
   return (
     <Link
       {...props}
@@ -33,12 +30,12 @@ const Feature: React.FC<FeatureProps> = ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        color: isDarkMode && props.bg == "secondary" ? "muted" : "primary",
+        color: featureColor,
         textAlign: "left",
         textDecoration: "none",
         transition: "0.2s transform ease-out",
-        "&:hover": {
-          color: isDarkMode && props.bg == "secondary" ? "muted" : "primary",
+        "&:hover,&:focus": {
+          color: featureColor,
           transform: "translate(0, -20px)",
         },
       }}
@@ -49,7 +46,7 @@ const Feature: React.FC<FeatureProps> = ({
             display: "block",
             my: 2,
             mx: "auto",
-            fill: isDarkMode && props.bg == "secondary" ? "muted" : "primary",
+            fill: featureColor,
             height: 150,
           }}
         />
@@ -61,7 +58,7 @@ const Feature: React.FC<FeatureProps> = ({
         sx={{
           ml: 3,
           top: 10,
-          stroke: isDarkMode && props.bg == "secondary" ? "muted" : "primary",
+          stroke: featureColor,
           position: "relative",
         }}
       />
