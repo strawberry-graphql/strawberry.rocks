@@ -38,7 +38,7 @@
     "globby": "^11.0.1",
     "gray-matter": "^4.0.2",
     "isomorphic-unfetch": "^3.1.0",
-    "marked": "^1.2.6",
+    "marked": "^2.0.0",
     "marksy": "^8.0.0",
     "mousetrap": "^1.6.5",
     "next": "^10.0.5",
