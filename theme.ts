@@ -66,6 +66,7 @@ const theme: Readonly<Theme> = {
         accent: "#4a65ff",
         codeBoxBorder: MUTED_COLOR,
         featureColorSecondary: MUTED_COLOR,
+        mutedLight: "#383838",
 
         // nightowl theme
 
