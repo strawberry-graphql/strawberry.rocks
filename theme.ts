@@ -375,7 +375,7 @@ const theme: Readonly<Theme> = {
 
       "&:after": {
         content: '"🍓"',
-        background: "white",
+        backgroundColor: "background",
         display: "inline-block",
         position: "relative",
         top: "-0.78em",
