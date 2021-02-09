@@ -5,7 +5,6 @@ import { Flex, Box } from "@theme-ui/components";
 import matter from "gray-matter";
 import { dirname, join } from "path";
 import { jsx, ThemeProvider } from "theme-ui";
-import { ReturnedPromiseResolvedType } from "types/utility";
 import visit from "unist-util-visit";
 
 import { GetServerSideProps, NextPage } from "next";
@@ -20,6 +19,7 @@ import { SEO } from "~/components/seo";
 import components from "~/components/theme-ui";
 import { getDocsToc } from "~/helpers/get-docs-toc";
 import { getGithub } from "~/helpers/github";
+import { ReturnedPromiseResolvedType } from "~/types/utility";
 
 import theme from "../../theme";
 

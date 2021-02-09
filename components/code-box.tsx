@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Flex, Box, BoxProps } from "theme-ui";
-import { ReactSVGFC } from "types/react-svg";
+
+import { ReactSVGFC } from "~/types/react-svg";
 
 const BackgroundTop: ReactSVGFC = (props) => (
   <svg viewBox="0 0 797 275" fill="none" {...props}>

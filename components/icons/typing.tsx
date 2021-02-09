@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { ReactSVGFC } from "types/react-svg";
+
+import { ReactSVGFC } from "~/types/react-svg";
 
 export const TypingIcon: ReactSVGFC = (props) => (
   <svg viewBox="0 0 88 88" width={88} height={88} {...props}>

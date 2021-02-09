@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { ReactSVGFC } from "types/react-svg";
+
+import { ReactSVGFC } from "~/types/react-svg";
 
 export const ServerIcon: ReactSVGFC = (props) => (
   <svg viewBox="0 0 94 57" width={94} height={57} fill="none" {...props}>

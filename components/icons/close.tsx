@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { ReactSVGFC } from "types/react-svg";
+
+import { ReactSVGFC } from "~/types/react-svg";
 
 export const CloseIcon: ReactSVGFC = (props) => (
   <svg viewBox="0 0 100 100" {...props}>

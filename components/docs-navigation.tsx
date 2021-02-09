@@ -4,7 +4,8 @@ import { jsx, Box, Button } from "theme-ui";
 
 import { Router } from "next/router";
 
-import { useToggle } from "../helpers/use-toggle";
+import { useToggle } from "~/helpers/use-toggle";
+
 import { CloseIcon } from "./icons/close";
 import { NavigationIcon } from "./icons/navigation";
 import { Link } from "./link";

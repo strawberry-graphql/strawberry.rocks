@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { ReactSVGFC } from "types/react-svg";
+
+import { ReactSVGFC } from "~/types/react-svg";
 
 export const AsyncIcon: ReactSVGFC = (props) => (
   <svg viewBox="0 0 75 75" width={75} height={75} fill="none" {...props}>
