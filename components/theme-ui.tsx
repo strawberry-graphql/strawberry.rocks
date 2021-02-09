@@ -35,11 +35,11 @@ const DocsImage = ({ src, ...props }: ImageProps) => (
   />
 );
 
-const CustomTH: React.FC<JSX.IntrinsicElements["th"]> = ({
+const CustomTH = ({
   children,
   ...props
-}) => {
-  const slugger = GithubSlugger();
+}: ThemeUIPrismProps): jsx.JSX.Element => {
+  const slugger = new GithubSlugger();
   const slug = slugger.slug(children);
 
   const styles: ThemeUICSSObject = {
