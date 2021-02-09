@@ -6,6 +6,7 @@
     "build": "next build",
     "develop": "npm run dev",
     "dev": "next dev",
+    "dev:inspect": "NODE_OPTIONS='--inspect' next dev",
     "start": "next start",
     "update-algolia": "ts-node --project scripts/tsconfig.json -r dotenv/config scripts/update-algolia.ts dotenv_config_path=.env.local",
     "format": "prettier --write \"{,!(.next|node_modules|public|coverage|.cache)/**/}*.{js,jsx,ts,tsx,json}\"",
