@@ -129,8 +129,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       collaborators: await fetchContributors(),
-      revalidate: 30,
     },
+    revalidate: 30,
   };
 };
 
