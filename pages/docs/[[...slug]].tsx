@@ -34,7 +34,7 @@ import theme from "../../theme";
 type Props = {
   source?: MdxRemote.Source;
   data?: { [key: string]: any };
-  editPath: string;
+  editPath?: string;
   docsToc: ReturnedPromiseResolvedType<typeof fetchTableOfContents>;
   version: string;
 };
@@ -106,7 +106,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("getStaticProps:", error);
-    return { notFound: true, revalidate: 30, props: { docsToc } };
+    return { notFound: true, revalidate: 30 };
   }
 };
 
@@ -150,7 +150,7 @@ const DocsPage: NextPage<Props> = ({
 
           {content}
 
-          <EditOnGithub path={editPath} />
+          {editPath && <EditOnGithub path={editPath} />}
         </Box>
       </Flex>
     </>
