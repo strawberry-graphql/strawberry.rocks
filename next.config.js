@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const withTM = require("next-transpile-modules")(["react-use-mailchimp"]);
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
