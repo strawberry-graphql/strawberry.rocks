@@ -24,7 +24,6 @@ type Props = {
 const CodeOfConductPage: NextPage<Props> = ({ source, version }) => {
   const content = hydrate(source, {
     components,
-    provider,
   });
 
   return (
@@ -38,7 +37,7 @@ const CodeOfConductPage: NextPage<Props> = ({ source, version }) => {
           }
         `}
       />
-      <Header latestVersion={version} />
+      <Header version={version} />
 
       <Box
         sx={{

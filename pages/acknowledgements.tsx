@@ -39,7 +39,7 @@ const AcknowledgementsPage: NextPage<Props> = ({ collaborators, version }) => {
   return (
     <>
       <SEO title="Acknowledgements" />
-      <Header latestVersion={version} />
+      <Header version={version} />
       <Box sx={{ p: 4, pb: 6, maxWidth: 1280, mx: "auto" }}>
         <Heading sx={{ fontSize: [5, 6], mb: 3 }}>Acknowledgements</Heading>
         <Text sx={{ mb: 4 }} as="p">

@@ -1,4 +1,6 @@
+/** @jsx jsx */
 import { Heading, Grid, Box, Text, Flex } from "@theme-ui/components";
+import { jsx } from "theme-ui";
 
 import { GetStaticProps, NextPage } from "next";
 
@@ -14,7 +16,7 @@ import { fetchLatestRelease } from "~/lib/api";
 const HomePage: NextPage<{ version: string }> = ({ version }) => (
   <>
     <SEO title="A Python library for GraphQL" />
-    <Header latestVersion={version} />
+    <Header version={version} />
     <Hero />
 
     <Section sx={{ flex: 1 }}>

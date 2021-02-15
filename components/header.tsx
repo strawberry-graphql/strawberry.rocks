@@ -4,8 +4,9 @@ import { jsx, Box, Flex } from "theme-ui";
 import { Link } from "./link";
 import { Logo } from "./logo";
 
-export const Header: React.FC<{ latestVersion: string }> = ({
-  latestVersion,
+export const Header: React.FC<{ version?: string; versionHref?: string }> = ({
+  version,
+  versionHref,
 }) => {
   return (
     <Box
@@ -77,13 +78,16 @@ export const Header: React.FC<{ latestVersion: string }> = ({
         }}
       >
         {/* <Search /> */}
-        {latestVersion && (
+        {version && (
           <Link
             variant="version"
             target="_blank"
-            href={`https://pypi.org/project/strawberry-graphql/${latestVersion}`}
+            href={
+              versionHref ??
+              `https://pypi.org/project/strawberry-graphql/${version}`
+            }
           >
-            {latestVersion}
+            {version}
           </Link>
         )}
       </Flex>

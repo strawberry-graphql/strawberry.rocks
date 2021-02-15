@@ -74,27 +74,39 @@ export const fetchContributors: () => Promise<
   ).then((resolve) => resolve.filter(isCollaborator));
 };
 
-// TODO: implement usage.
 export const fetchPullRequest = async (
   pull_number: number,
   owner = OWNER,
   repo = REPO
-) => {
+): Promise<{
+  pull_number: number;
+  owner: string;
+  repo: string;
+  branch: string;
+  html_url: string;
+}> => {
   try {
     const pull = await octokit.request(
       "GET /repos/{owner}/{repo}/pulls/{pull_number}",
       { owner, repo, pull_number }
     );
+
+    const safeToPreview: boolean =
+      pull.data.state === "open" &&
+      pull.data.labels.find((label) => label.name === "ok-to-preview") !==
+        undefined;
+
+    if (!safeToPreview) {
+      // TODO: we might want to show a message to the users that a pull request needs the label of "ok-to-preview" instead of throwing an error which 404s.
+      throw new Error("not safe to preview");
+    }
+
     return {
       pull_number: pull.data.number,
-      owner: pull.data.user?.login,
+      owner: pull.data.head.user.login,
       repo: pull.data.head.repo.name,
       branch: pull.data.head.ref,
-      pull,
-      safeToPreview:
-        pull.data.state === "open" &&
-        pull.data.labels.find((label) => label.name === "ok-to-preview") !==
-          undefined,
+      html_url: pull.data.html_url,
     };
   } catch (error) {
     // eslint-disable-next-line no-console

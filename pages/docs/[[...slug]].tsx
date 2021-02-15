@@ -1,23 +1,14 @@
 /** @jsx jsx */
-import { Global, css } from "@emotion/react";
 import { anchorLinks } from "@hashicorp/remark-plugins";
-import { Flex, Box } from "@theme-ui/components";
 import matter from "gray-matter";
-import { jsx } from "theme-ui";
 
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import hydrate from "next-mdx-remote/hydrate";
+import { GetStaticPaths, GetStaticProps } from "next";
 import renderToString from "next-mdx-remote/render-to-string";
-import { MdxRemote } from "next-mdx-remote/types";
 
-import DocsNavigation from "~/components/docs-navigation";
-import { EditOnGithub } from "~/components/edit-on-github";
-import { ExperimentalWarning } from "~/components/experimental-warning";
-import { Header } from "~/components/header";
-import { SEO } from "~/components/seo";
+import DocsPage, { DocsPageProps } from "~/components/doc";
 import components from "~/components/theme-ui";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
-import { DUMMY_CONTENT, provider } from "~/helpers/next-mdx-remote";
+import { provider } from "~/helpers/next-mdx-remote";
 import {
   fetchFile,
   fetchLatestRelease,
@@ -27,43 +18,21 @@ import {
   REF,
   REPO,
 } from "~/lib/api";
-import { ReturnedPromiseResolvedType } from "~/types/utility";
-
-type Props = {
-  source?: MdxRemote.Source;
-  data?: { [key: string]: any };
-  editPath?: string;
-  docsToc: ReturnedPromiseResolvedType<typeof fetchTableOfContents>;
-  version: string;
-};
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  /**
-   * Get repo to query against.
-   * REF / BRANCH
-   * OWNER
-   * REPO
-   */
-  // TODO write util function to get REF, OWNER, REPO
   const ref = (await fetchLatestRelease()) ?? REF;
   const paths = await fetchTableOfContentsPaths(ref);
 
   return { paths, fallback: true };
 };
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const slug: string[] =
+export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
+  params,
+}) => {
+  const slugs: string[] =
     params != null && Array.isArray(params.slug) && params.slug.length > 0
       ? params.slug
       : ["index"];
-
-  /**
-   * Get repo to query against.
-   * REF / BRANCH
-   * OWNER
-   * REPO
-   */
-  // TODO write util function to get REF, OWNER, REPO
 
   /**
    * Get table of contents navigation data.
@@ -78,7 +47,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     /**
      * Get doc content from markdown file.
      */
-    const filename: string = slug.join("/") + ".md";
+    const filename: string = slugs.join("/") + ".md";
     const text = await fetchFile(`docs/${filename}`, owner, repo, ref);
 
     const { data, content } = matter(text);
@@ -101,53 +70,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     console.error("getStaticProps:", error);
     return { notFound: true, revalidate: 30 };
   }
-};
-
-const DocsPage: NextPage<Props> = ({
-  data,
-  source,
-  editPath,
-  docsToc,
-  version,
-}) => {
-  /**
-   * Need fallback DUMMY_CONTENT as this errors if source is undefined.
-   * https://github.com/hashicorp/next-mdx-remote/issues/73#issuecomment-747085961
-   */
-  const content = hydrate(source ?? DUMMY_CONTENT, { components, provider });
-
-  return (
-    <>
-      <SEO title={data?.title} />
-
-      <Global
-        styles={css`
-          a.anchor.before {
-            position: absolute;
-            left: -1.5rem;
-          }
-        `}
-      />
-      <Header latestVersion={version} />
-      <Flex
-        sx={{
-          width: "100%",
-          maxWidth: 1200,
-          mx: "auto",
-          flex: 1,
-        }}
-      >
-        {docsToc && <DocsNavigation docs={docsToc} />}
-        <Box sx={{ px: 4, pb: 6 }}>
-          {data?.experimental && <ExperimentalWarning />}
-
-          {content}
-
-          {editPath && <EditOnGithub path={editPath} />}
-        </Box>
-      </Flex>
-    </>
-  );
 };
 
 export default DocsPage;
