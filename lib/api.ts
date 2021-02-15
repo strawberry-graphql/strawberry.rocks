@@ -224,3 +224,18 @@ export const fetchTableOfContentsPaths = async (
   });
   return paramSlugs;
 };
+
+export const fetchCodeOfConduct = async (
+  owner = OWNER,
+  repo = REPO
+): Promise<string> => {
+  return await octokit
+    .request("GET /repos/{owner}/{repo}/community/code_of_conduct", {
+      owner,
+      repo,
+      mediaType: {
+        previews: ["scarlet-witch"],
+      },
+    })
+    .then((response) => response.data.body);
+};

@@ -3,7 +3,7 @@ import { Global, css } from "@emotion/react";
 import { anchorLinks } from "@hashicorp/remark-plugins";
 import { Flex, Box } from "@theme-ui/components";
 import matter from "gray-matter";
-import { jsx, ThemeProvider } from "theme-ui";
+import { jsx } from "theme-ui";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import hydrate from "next-mdx-remote/hydrate";
@@ -17,7 +17,7 @@ import { Header } from "~/components/header";
 import { SEO } from "~/components/seo";
 import components from "~/components/theme-ui";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
-import { DUMMY_CONTENT } from "~/helpers/next-mdx-remote";
+import { DUMMY_CONTENT, provider } from "~/helpers/next-mdx-remote";
 import {
   fetchFile,
   fetchLatestRelease,
@@ -28,8 +28,6 @@ import {
   REPO,
 } from "~/lib/api";
 import { ReturnedPromiseResolvedType } from "~/types/utility";
-
-import theme from "../../theme";
 
 type Props = {
   source?: MdxRemote.Source;
@@ -86,13 +84,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     const { data, content } = matter(text);
     const source = await renderToString(content, {
       components,
-      provider: {
-        component: ThemeProvider,
-        props: {
-          components,
-          theme,
-        },
-      },
+      scope: data,
+      provider,
       mdxOptions: {
         remarkPlugins: [fixImagePathsPlugin(filename, ref), anchorLinks],
       },
@@ -121,11 +114,11 @@ const DocsPage: NextPage<Props> = ({
    * Need fallback DUMMY_CONTENT as this errors if source is undefined.
    * https://github.com/hashicorp/next-mdx-remote/issues/73#issuecomment-747085961
    */
-  const content = hydrate(source ?? DUMMY_CONTENT, { components });
+  const content = hydrate(source ?? DUMMY_CONTENT, { components, provider });
 
   return (
     <>
-      {data && <SEO title={data.title} />}
+      <SEO title={data?.title} />
 
       <Global
         styles={css`
