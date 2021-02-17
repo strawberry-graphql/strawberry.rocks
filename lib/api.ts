@@ -74,11 +74,15 @@ export const fetchContributors: () => Promise<
   ).then((resolve) => resolve.filter(isCollaborator));
 };
 
-export const fetchPullRequest = async (
-  pull_number: number,
+export const fetchPullRequest = async ({
+  pull_number,
   owner = OWNER,
-  repo = REPO
-): Promise<{
+  repo = REPO,
+}: {
+  pull_number: number;
+  owner?: string;
+  repo?: string;
+}): Promise<{
   pull_number: number;
   owner: string;
   repo: string;
@@ -115,19 +119,24 @@ export const fetchPullRequest = async (
   }
 };
 
-export const fetchFile = async (
-  path: string,
+export const fetchFile = async ({
+  filename,
   owner = OWNER,
   repo = REPO,
-  ref = REF
-): Promise<string> => {
+  ref = REF,
+}: {
+  filename: string;
+  owner?: string;
+  repo?: string;
+  ref?: string;
+}): Promise<string> => {
   try {
     const file = await octokit.request(
       "GET /repos/{owner}/{repo}/contents/{path}",
       {
+        path: filename,
         owner,
         repo,
-        path,
         ref,
       }
     );
@@ -168,16 +177,26 @@ const getMDLinks = (items: Tokens.ListItem[]): Tokens.Link[] =>
       .filter(isLink)
   );
 
-export const fetchTableOfContents = async (
-  prefix: string,
+export const fetchTableOfContents = async ({
+  prefix,
   ref = REF,
   owner = OWNER,
-  repo = REPO
-): Promise<DocsTree | null> => {
+  repo = REPO,
+}: {
+  prefix: string;
+  ref?: string;
+  owner?: string;
+  repo?: string;
+}): Promise<DocsTree | null> => {
   try {
     const sections: DocsTree = {};
 
-    const text = await fetchFile("docs/README.md", owner, repo, ref);
+    const text = await fetchFile({
+      filename: "docs/README.md",
+      owner,
+      repo,
+      ref,
+    });
 
     const tokens = marked.lexer(text);
 
@@ -211,12 +230,21 @@ export const fetchTableOfContents = async (
   }
 };
 
-export const fetchTableOfContentsPaths = async (
+export const fetchTableOfContentsPaths = async ({
   ref = REF,
   owner = OWNER,
-  repo = REPO
-): Promise<{ params: { slug: string[] } }[]> => {
-  const text = await fetchFile("docs/README.md", owner, repo, ref);
+  repo = REPO,
+}: {
+  ref?: string;
+  owner?: string;
+  repo?: string;
+}): Promise<{ params: { slug: string[] } }[]> => {
+  const text = await fetchFile({
+    filename: "docs/README.md",
+    owner,
+    repo,
+    ref,
+  });
   const tokens = marked.lexer(text);
 
   const paramSlugs: { params: { slug: string[] } }[] = [
@@ -237,11 +265,14 @@ export const fetchTableOfContentsPaths = async (
   return paramSlugs;
 };
 
-export const fetchCodeOfConduct = async (
+export const fetchCodeOfConduct = async ({
   owner = OWNER,
-  repo = REPO
-): Promise<string> => {
-  return await octokit
+  repo = REPO,
+}: {
+  owner?: string;
+  repo?: string;
+} = {}): Promise<string> =>
+  await octokit
     .request("GET /repos/{owner}/{repo}/community/code_of_conduct", {
       owner,
       repo,
@@ -250,4 +281,3 @@ export const fetchCodeOfConduct = async (
       },
     })
     .then((response) => response.data.body);
-};

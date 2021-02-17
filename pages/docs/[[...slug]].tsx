@@ -21,7 +21,7 @@ import {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const ref = (await fetchLatestRelease()) ?? REF;
-  const paths = await fetchTableOfContentsPaths(ref);
+  const paths = await fetchTableOfContentsPaths({ ref });
 
   return { paths, fallback: true };
 };
@@ -41,14 +41,19 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const owner = OWNER;
   const repo = REPO;
 
-  const docsToc = await fetchTableOfContents("/docs/", ref);
+  const docsToc = await fetchTableOfContents({ prefix: "/docs/", ref });
 
   try {
     /**
      * Get doc content from markdown file.
      */
     const filename: string = slugs.join("/") + ".md";
-    const text = await fetchFile(`docs/${filename}`, owner, repo, ref);
+    const text = await fetchFile({
+      filename: `docs/${filename}`,
+      owner,
+      repo,
+      ref,
+    });
 
     const { data, content } = matter(text);
     const source = await renderToString(content, {

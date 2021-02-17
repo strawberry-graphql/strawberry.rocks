@@ -56,21 +56,26 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       repo,
       pull_number,
       html_url,
-    } = await fetchPullRequest(pullNumber);
+    } = await fetchPullRequest({ pull_number: pullNumber });
 
-    const docsToc = await fetchTableOfContents(
-      `/docs/pr/${pull_number}/`,
-      branch,
+    const docsToc = await fetchTableOfContents({
+      prefix: `/docs/pr/${pull_number}/`,
+      ref: branch,
       owner,
-      repo
-    );
+      repo,
+    });
 
     /**
      * Shift slugs as we dont need the PR number for the filename.
      */
     const filename: string = slugs.shift() && slugs.join("/") + ".md";
 
-    const text = await fetchFile(`docs/${filename}`, owner, repo, branch);
+    const text = await fetchFile({
+      filename: `docs/${filename}`,
+      owner,
+      repo,
+      ref: branch,
+    });
 
     const { data, content } = matter(text);
     const source = await renderToString(content, {
