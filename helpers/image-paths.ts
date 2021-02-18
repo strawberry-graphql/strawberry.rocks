@@ -3,12 +3,17 @@ import visit from "unist-util-visit";
 
 import { OWNER, REF, REPO } from "~/lib/api";
 
-export const fixImagePathsPlugin = (
-  path: string,
+export const fixImagePathsPlugin = ({
+  path,
   ref = REF,
   owner = OWNER,
-  repo = REPO
-) => () => (tree) => {
+  repo = REPO,
+}: {
+  path: string;
+  ref?: string;
+  owner?: string;
+  repo?: string;
+}) => () => (tree) => {
   visit(tree, "image", (node) => {
     const url = node.url as string;
 

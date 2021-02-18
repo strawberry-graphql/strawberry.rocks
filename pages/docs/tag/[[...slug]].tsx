@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       provider,
       mdxOptions: {
         remarkPlugins: [
-          fixImagePathsPlugin(filename, tag, owner, repo),
+          fixImagePathsPlugin({ path: filename, ref: tag, owner, repo }),
           anchorLinks,
         ],
       },
