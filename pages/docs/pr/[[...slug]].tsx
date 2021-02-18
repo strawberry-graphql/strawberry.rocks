@@ -36,7 +36,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     /**
      * Redirect if no pull request number.
      */
-    // TODO: Could show message to users to submit a pull request instead?
     return { redirect: { destination: "/docs", permanent: true } };
   }
   const slugs: string[] = slug.length > 1 ? slug : [...slug, "index"];
