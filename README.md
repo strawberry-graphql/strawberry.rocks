@@ -54,3 +54,13 @@ npm run dev
 ```
 
 This should start the server on [http://localhost:3000](http://localhost:3000)
+
+### Debugging 
+
+To run the website in debug mode:
+
+```sh
+npm run dev:inspect
+```
+
+See next.js docs on the different ways to [connect to the debugger](https://nextjs.org/docs/advanced-features/debugging#step-2-connect-to-the-debugger).
