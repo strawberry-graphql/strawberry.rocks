@@ -7,7 +7,7 @@ type EditOnGithubProps = { path: string };
 
 export const EditOnGithub: React.FC<EditOnGithubProps> = ({ path }) => (
   <Link
-    href={`https://github.com/strawberry-graphql/strawberry/tree/${path}`}
+    href={`${path}`}
     variant="box"
     sx={{
       display: "flex",

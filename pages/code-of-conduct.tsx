@@ -10,24 +10,24 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import { MdxRemote } from "next-mdx-remote/types";
 
+import { Header } from "~/components/header";
 import { SEO } from "~/components/seo";
 import components from "~/components/theme-ui";
+import { fetchLatestRelease } from "~/lib/api";
 
 import theme from "../theme";
 
 type Props = {
   source: MdxRemote.Source;
-  data: { [key: string]: any };
-  sourcePath: string;
+  version: string;
 };
 
-const CodeOfConductPage: NextPage<Props> = ({ source }) => {
+const CodeOfConductPage: NextPage<Props> = ({ source, version }) => {
   const content = hydrate(source, { components });
 
   return (
     <>
       <SEO title="Code of Conduct" />
-
       <Global
         styles={css`
           a.anchor.before {
@@ -36,6 +36,7 @@ const CodeOfConductPage: NextPage<Props> = ({ source }) => {
           }
         `}
       />
+      <Header latestVersion={version} />
 
       <Box
         sx={{
@@ -57,7 +58,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     "https://raw.githubusercontent.com/strawberry-graphql/strawberry/master/CODE_OF_CONDUCT.md";
 
   const text: string = await fetch(path).then((r) => r.text());
-  const { data, content } = matter(text);
+  const { content } = matter(text);
 
   const source = await renderToString(content, {
     components,
@@ -74,7 +75,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   });
 
   return {
-    props: { source, data, sourcePath: path },
+    props: {
+      source,
+      version: await fetchLatestRelease(),
+    },
     revalidate: 30,
   };
 };

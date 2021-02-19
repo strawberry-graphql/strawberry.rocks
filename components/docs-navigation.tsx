@@ -10,7 +10,7 @@ import { CloseIcon } from "./icons/close";
 import { NavigationIcon } from "./icons/navigation";
 import { Link } from "./link";
 
-type DocsTree = {
+export type DocsTree = {
   [section: string]: {
     name: string;
     links: {

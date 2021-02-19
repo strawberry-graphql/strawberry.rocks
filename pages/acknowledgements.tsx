@@ -4,9 +4,10 @@ import { jsx } from "theme-ui";
 
 import { GetStaticProps, NextPage } from "next";
 
+import { Header } from "~/components/header";
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
-import { fetchContributors } from "~/lib/api";
+import { fetchContributors, fetchLatestRelease } from "~/lib/api";
 import { GithubCollaborator } from "~/types/api";
 
 const MemberLink: React.FC<{
@@ -31,13 +32,14 @@ const MemberLink: React.FC<{
 
 type Props = {
   collaborators: GithubCollaborator[];
+  version: string;
 };
 
-const AcknowledgementsPage: NextPage<Props> = ({ collaborators }) => {
+const AcknowledgementsPage: NextPage<Props> = ({ collaborators, version }) => {
   return (
     <>
       <SEO title="Acknowledgements" />
-
+      <Header latestVersion={version} />
       <Box sx={{ p: 4, pb: 6, maxWidth: 1280, mx: "auto" }}>
         <Heading sx={{ fontSize: [5, 6], mb: 3 }}>Acknowledgements</Heading>
         <Text sx={{ mb: 4 }} as="p">
@@ -54,7 +56,7 @@ const AcknowledgementsPage: NextPage<Props> = ({ collaborators }) => {
           {collaborators.map((member, index) => (
             <Box key={index} as="li" sx={{ flex: "0 0 230px", mb: 2 }}>
               <MemberLink member={member}>
-                {member.name || member.login}
+                {member.name ?? member.login}
               </MemberLink>
             </Box>
           ))}
@@ -129,6 +131,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       collaborators: await fetchContributors(),
+      version: await fetchLatestRelease(),
     },
     revalidate: 30,
   };

@@ -4,19 +4,6 @@ import { jsx, Box, Flex } from "theme-ui";
 import { Link } from "./link";
 import { Logo } from "./logo";
 
-// TODO: fetch from GraphQL?
-
-export type GithubRepository = {
-  url: string;
-  releases: {
-    nodes: GithubRelease[];
-  };
-};
-
-type GithubRelease = {
-  tagName: string;
-};
-
 export const Header: React.FC<{ latestVersion: string }> = ({
   latestVersion,
 }) => {
@@ -94,7 +81,7 @@ export const Header: React.FC<{ latestVersion: string }> = ({
           <Link
             variant="version"
             target="_blank"
-            href="https://pypi.org/project/strawberry-graphql/"
+            href={`https://pypi.org/project/strawberry-graphql/${latestVersion}`}
           >
             {latestVersion}
           </Link>
