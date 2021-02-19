@@ -92,28 +92,34 @@ export const fetchPullRequest = async ({
   try {
     const pull = await octokit
       .graphql<PullRequestQuery>(
-        /* GraphQL*/
-        `query pullRequest($owner: String!,$repo:String!,$pull_number:Int!) {
-          repository(owner:$owner,name:$repo) {
-            pullRequest(number:$pull_number) {
-              state
-              number
-              headRepositoryOwner {
-                login
-              }
-              repository {
-                name
-              }
-              headRefName
-              url
-              labels(first: 10) {
-                nodes {
+        /* GraphQL */
+        `
+          query pullRequest(
+            $owner: String!
+            $repo: String!
+            $pull_number: Int!
+          ) {
+            repository(owner: $owner, name: $repo) {
+              pullRequest(number: $pull_number) {
+                state
+                number
+                headRepositoryOwner {
+                  login
+                }
+                repository {
                   name
+                }
+                headRefName
+                url
+                labels(first: 10) {
+                  nodes {
+                    name
+                  }
                 }
               }
             }
           }
-        }`,
+        `,
         { owner, repo, pull_number }
       )
       .then((response) => response.repository?.pullRequest);
@@ -156,16 +162,18 @@ export const fetchFile = async ({
   try {
     const text = await octokit
       .graphql<FileQuery>(
-        /* GraphQL*/
-        `query file($owner:String!,$repo:String!,$filename:String!) {
-          repository(owner:$owner,name:$repo) {
-            object(expression: $filename) {
-              ... on Blob {
-                text
+        /* GraphQL */
+        `
+          query file($owner: String!, $repo: String!, $filename: String!) {
+            repository(owner: $owner, name: $repo) {
+              object(expression: $filename) {
+                ... on Blob {
+                  text
+                }
               }
             }
           }
-        }`,
+        `,
         {
           owner,
           repo,
@@ -188,14 +196,16 @@ export const fetchLatestRelease = async (): Promise<string | undefined> => {
   try {
     const latest = await octokit
       .graphql<LatestReleaseQuery>(
-        /* GraphQL*/
-        `query latestRelease($owner: String!,$repo:String!) {
-          repository(owner:$owner,name:$repo) {
-            latestRelease {
-              tagName
+        /* GraphQL */
+        `
+          query latestRelease($owner: String!, $repo: String!) {
+            repository(owner: $owner, name: $repo) {
+              latestRelease {
+                tagName
+              }
             }
           }
-        }`,
+        `,
         { owner: OWNER, repo: REPO }
       )
       .then((response) => response.repository);
@@ -310,17 +320,19 @@ export const fetchTableOfContentsPaths = async ({
 export const fetchCodeOfConduct = async () =>
   await octokit
     .graphql<CodeOfConductQuery>(
-      /* GraphQL*/
-      `query codeOfConduct($owner: String!,$repo:String!) {
-        repository(owner:$owner,name:$repo) {
-          codeOfConduct {
-            body
-          }
-          latestRelease {
-            tagName
+      /* GraphQL */
+      `
+        query codeOfConduct($owner: String!, $repo: String!) {
+          repository(owner: $owner, name: $repo) {
+            codeOfConduct {
+              body
+            }
+            latestRelease {
+              tagName
+            }
           }
         }
-      }`,
+      `,
       { owner: OWNER, repo: REPO }
     )
     .then((response) => response.repository);

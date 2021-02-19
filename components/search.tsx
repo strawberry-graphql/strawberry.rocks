@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /** @jsx jsx */
 import algoliasearch from "algoliasearch/lite";
 import { useCallback, useEffect, useRef, useState } from "react";

@@ -6,6 +6,7 @@ export const useMouseTrap = (keys: string, callback: () => void) => {
     Mousetrap.bind(keys, callback);
 
     return () => {
+      // @ts-ignore
       Mousetrap.unbind(keys, callback);
     };
   });

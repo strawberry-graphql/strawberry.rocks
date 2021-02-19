@@ -1,7 +1,10 @@
 import { dirname, join } from "path";
+import { Node } from "unist";
 import visit from "unist-util-visit";
 
 import { OWNER, REF, REPO } from "~/lib/api";
+
+import { isString } from "./type-guards";
 
 export const fixImagePathsPlugin = ({
   path,
@@ -13,9 +16,9 @@ export const fixImagePathsPlugin = ({
   ref?: string;
   owner?: string;
   repo?: string;
-}) => () => (tree) => {
+}) => () => (tree: Node) => {
   visit(tree, "image", (node) => {
-    const url = node.url as string;
+    const url = isString(node.url) ? node.url : "";
 
     if (url.startsWith(".")) {
       const updatedPath = join("docs", dirname(path), node.url as string);
