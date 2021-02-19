@@ -3,3 +3,7 @@ export type GithubCollaborator = {
   login: string;
   url: string;
 };
+
+export type TableOfContentsPath = {
+  params: { slug: string[] };
+}[];

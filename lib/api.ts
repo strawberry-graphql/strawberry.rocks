@@ -13,7 +13,13 @@ import {
   isString,
   isTextWithTokens,
 } from "~/helpers/type-guards";
-import { GithubCollaborator } from "~/types/api";
+import { GithubCollaborator, TableOfContentsPath } from "~/types/api";
+import {
+  CodeOfConductQuery,
+  FileQuery,
+  LatestReleaseQuery,
+  PullRequestQuery,
+} from "~/types/graphql";
 
 const customOctokit = Octokit.plugin(paginateRest);
 
@@ -82,22 +88,39 @@ export const fetchPullRequest = async ({
   pull_number: number;
   owner?: string;
   repo?: string;
-}): Promise<{
-  pull_number: number;
-  owner: string;
-  repo: string;
-  branch: string;
-  html_url: string;
-}> => {
+}) => {
   try {
-    const pull = await octokit.request(
-      "GET /repos/{owner}/{repo}/pulls/{pull_number}",
-      { owner, repo, pull_number }
-    );
+    const pull = await octokit
+      .graphql<PullRequestQuery>(
+        /* GraphQL*/
+        `query pullRequest($owner: String!,$repo:String!,$pull_number:Int!) {
+          repository(owner:$owner,name:$repo) {
+            pullRequest(number:$pull_number) {
+              state
+              number
+              headRepositoryOwner {
+                login
+              }
+              repository {
+                name
+              }
+              headRefName
+              url
+              labels(first: 10) {
+                nodes {
+                  name
+                }
+              }
+            }
+          }
+        }`,
+        { owner, repo, pull_number }
+      )
+      .then((response) => response.repository?.pullRequest);
 
     const safeToPreview: boolean =
-      pull.data.state === "open" &&
-      pull.data.labels.find((label) => label.name === "ok-to-preview") !==
+      pull?.state === "OPEN" &&
+      pull?.labels?.nodes?.find((label) => label?.name === "ok-to-preview") !==
         undefined;
 
     if (!safeToPreview) {
@@ -106,11 +129,11 @@ export const fetchPullRequest = async ({
     }
 
     return {
-      pull_number: pull.data.number,
-      owner: pull.data.head.user.login,
-      repo: pull.data.head.repo.name,
-      branch: pull.data.head.ref,
-      html_url: pull.data.html_url,
+      pull_number: pull?.number,
+      owner: pull?.headRepositoryOwner?.login,
+      repo: pull?.repository?.name,
+      branch: pull?.headRefName,
+      html_url: pull?.url,
     };
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -129,21 +152,31 @@ export const fetchFile = async ({
   owner?: string;
   repo?: string;
   ref?: string;
-}): Promise<string> => {
+}) => {
   try {
-    const file = await octokit.request(
-      "GET /repos/{owner}/{repo}/contents/{path}",
-      {
-        path: filename,
-        owner,
-        repo,
-        ref,
-      }
-    );
-
-    // @ts-ignore
-    const content = Buffer.from(file.data.content, "base64");
-    return content.toString();
+    const text = await octokit
+      .graphql<FileQuery>(
+        /* GraphQL*/
+        `query file($owner:String!,$repo:String!,$filename:String!) {
+          repository(owner:$owner,name:$repo) {
+            object(expression: $filename) {
+              ... on Blob {
+                text
+              }
+            }
+          }
+        }`,
+        {
+          owner,
+          repo,
+          filename: `${ref}:${filename}`,
+        }
+      )
+      .then((response) => response.repository?.object?.text);
+    if (text == null) {
+      throw new Error("no text");
+    }
+    return text;
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("fetchFile:", error);
@@ -151,17 +184,23 @@ export const fetchFile = async ({
   }
 };
 
-export const fetchLatestRelease = async (): Promise<string> => {
+export const fetchLatestRelease = async (): Promise<string | undefined> => {
   try {
-    const latest = await octokit.request(
-      "GET /repos/{owner}/{repo}/releases/latest",
-      {
-        owner: OWNER,
-        repo: REPO,
-      }
-    );
+    const latest = await octokit
+      .graphql<LatestReleaseQuery>(
+        /* GraphQL*/
+        `query latestRelease($owner: String!,$repo:String!) {
+          repository(owner:$owner,name:$repo) {
+            latestRelease {
+              tagName
+            }
+          }
+        }`,
+        { owner: OWNER, repo: REPO }
+      )
+      .then((response) => response.repository);
 
-    return latest.data.tag_name;
+    return latest?.latestRelease?.tagName;
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("fetchLatestRelease", error);
@@ -238,18 +277,21 @@ export const fetchTableOfContentsPaths = async ({
   ref?: string;
   owner?: string;
   repo?: string;
-}): Promise<{ params: { slug: string[] } }[]> => {
+}): Promise<TableOfContentsPath> => {
   const text = await fetchFile({
     filename: "docs/README.md",
     owner,
     repo,
     ref,
   });
-  const tokens = marked.lexer(text);
 
-  const paramSlugs: { params: { slug: string[] } }[] = [
-    { params: { slug: [] } },
-  ];
+  const paramSlugs: TableOfContentsPath = [{ params: { slug: [] } }];
+
+  if (text == null) {
+    return paramSlugs;
+  }
+
+  const tokens = marked.lexer(text);
 
   tokens.forEach((token) => {
     if (isList(token)) {
@@ -265,19 +307,20 @@ export const fetchTableOfContentsPaths = async ({
   return paramSlugs;
 };
 
-export const fetchCodeOfConduct = async ({
-  owner = OWNER,
-  repo = REPO,
-}: {
-  owner?: string;
-  repo?: string;
-} = {}): Promise<string> =>
+export const fetchCodeOfConduct = async () =>
   await octokit
-    .request("GET /repos/{owner}/{repo}/community/code_of_conduct", {
-      owner,
-      repo,
-      mediaType: {
-        previews: ["scarlet-witch"],
-      },
-    })
-    .then((response) => response.data.body);
+    .graphql<CodeOfConductQuery>(
+      /* GraphQL*/
+      `query codeOfConduct($owner: String!,$repo:String!) {
+        repository(owner:$owner,name:$repo) {
+          codeOfConduct {
+            body
+          }
+          latestRelease {
+            tagName
+          }
+        }
+      }`,
+      { owner: OWNER, repo: REPO }
+    )
+    .then((response) => response.repository);

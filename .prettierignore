@@ -7,3 +7,4 @@ package-lock.json
 coverage
 .github
 *.snap
+types/graphql.d.ts

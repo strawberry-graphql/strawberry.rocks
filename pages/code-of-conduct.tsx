@@ -14,11 +14,11 @@ import { Header } from "~/components/header";
 import { SEO } from "~/components/seo";
 import components from "~/components/theme-ui";
 import { provider } from "~/helpers/next-mdx-remote";
-import { fetchCodeOfConduct, fetchLatestRelease } from "~/lib/api";
+import { fetchCodeOfConduct } from "~/lib/api";
 
 type Props = {
   source: MdxRemote.Source;
-  version: string;
+  version?: string;
 };
 
 const CodeOfConductPage: NextPage<Props> = ({ source, version }) => {
@@ -56,9 +56,15 @@ const CodeOfConductPage: NextPage<Props> = ({ source, version }) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   try {
-    const text: string = await fetchCodeOfConduct();
+    const response = await fetchCodeOfConduct();
 
-    const { content } = matter(text);
+    const body = response?.codeOfConduct?.body;
+    const version = response?.latestRelease?.tagName;
+
+    if (body == null) {
+      throw Error("no code of conduct body to show");
+    }
+    const { content } = matter(body);
 
     const source = await renderToString(content, {
       components,
@@ -71,7 +77,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     return {
       props: {
         source,
-        version: await fetchLatestRelease(),
+        version,
       },
       revalidate: 30,
     };

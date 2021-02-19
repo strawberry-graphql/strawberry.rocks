@@ -32,7 +32,7 @@ const MemberLink: React.FC<{
 
 type Props = {
   collaborators: GithubCollaborator[];
-  version: string;
+  version?: string;
 };
 
 const AcknowledgementsPage: NextPage<Props> = ({ collaborators, version }) => {

@@ -13,7 +13,11 @@ import { Section } from "~/components/section";
 import { SEO } from "~/components/seo";
 import { fetchLatestRelease } from "~/lib/api";
 
-const HomePage: NextPage<{ version: string }> = ({ version }) => (
+type Props = {
+  version?: string;
+};
+
+const HomePage: NextPage<Props> = ({ version }) => (
   <>
     <SEO title="A Python library for GraphQL" />
     <Header version={version} />
@@ -73,7 +77,7 @@ const HomePage: NextPage<{ version: string }> = ({ version }) => (
   </>
 );
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   return { props: { version: await fetchLatestRelease() }, revalidate: 30 };
 };
 

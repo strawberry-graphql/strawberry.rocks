@@ -30,7 +30,7 @@ const getPullRequestNumber = (slug: string[]): number | null => {
 export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   params,
 }) => {
-  const { slug } = params;
+  const slug = params?.slug;
 
   if (slug == null || !Array.isArray(slug) || !slug.length) {
     /**
@@ -67,7 +67,11 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     /**
      * Shift slugs as we dont need the PR number for the filename.
      */
-    const filename: string = slugs.shift() && slugs.join("/") + ".md";
+    const filename = slugs.shift() && `${slugs.join("/")}.md`;
+
+    if (filename == null) {
+      throw new Error("no filename");
+    }
 
     const text = await fetchFile({
       filename: `docs/${filename}`,
