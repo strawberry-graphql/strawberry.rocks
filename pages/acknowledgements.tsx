@@ -6,9 +6,8 @@ import { GetStaticProps, NextPage } from "next";
 
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
-import { getGithub } from "~/helpers/github";
-
-const IGNORE_LIST = ["dependabot-preview[bot]", "dependabot-bot", "botberry"];
+import { fetchContributors } from "~/lib/api";
+import { GithubCollaborator } from "~/types/api";
 
 const MemberLink: React.FC<{
   member: GithubCollaborator;
@@ -35,10 +34,6 @@ type Props = {
 };
 
 const AcknowledgementsPage: NextPage<Props> = ({ collaborators }) => {
-  const filteredCollaborators = collaborators.filter(
-    (member) => !IGNORE_LIST.includes(member.login)
-  );
-
   return (
     <>
       <SEO title="Acknowledgements" />
@@ -56,7 +51,7 @@ const AcknowledgementsPage: NextPage<Props> = ({ collaborators }) => {
             mb: 3,
           }}
         >
-          {filteredCollaborators.map((member, index) => (
+          {collaborators.map((member, index) => (
             <Box key={index} as="li" sx={{ flex: "0 0 230px", mb: 2 }}>
               <MemberLink member={member}>
                 {member.name || member.login}
@@ -128,65 +123,6 @@ const AcknowledgementsPage: NextPage<Props> = ({ collaborators }) => {
       </Box>
     </>
   );
-};
-
-const query = `
-  query CollaboratorsQuery($repo: String!, $owner: String!) {
-    repository(name: $repo, owner: $owner) {
-      # TODO: increase this when we get more collaborators
-      collaborators(affiliation: ALL, first: 100) {
-        edges {
-          node {
-            name
-            login
-            websiteUrl
-            url
-          }
-        }
-      }
-    }
-  }
-`;
-
-type GithubCollaborator = {
-  name: string | null;
-  login: string;
-  // websiteUrl: string | null;
-  url: string;
-};
-
-const fetchContributors: () => Promise<GithubCollaborator[]> = async () => {
-  const github = getGithub();
-
-  const contributors: any[] = (
-    await github
-      .paged(`/repos/:strawberry-graphql/strawberry/contributors`)
-      .then((res: any) => res.pages)
-  )
-    .flat()
-    .map((page: any) => page.body)
-    .flat();
-  const logins: string[] = contributors.map((node) => node.login);
-
-  const profiles = await Promise.all(
-    logins.map((login) =>
-      github.get(`/users/${login}`).then((res: any) => res.body)
-    )
-  );
-
-  const loginToProfile = Object.fromEntries(
-    profiles.map((profile) => [profile.login, profile])
-  );
-
-  return contributors.map((node) => {
-    const profile = loginToProfile[node.login];
-
-    return {
-      name: profile.name,
-      login: profile.login,
-      url: profile.blog || profile.html_url,
-    };
-  });
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {

@@ -76,6 +76,7 @@ export default function App({
 }
 
 App.getInitialProps = async () => {
+  // TODO: Refactor this as it fails on client side as it doesnt have the GITHUB_TOKEN. Which is a good thing for security.
   const latestVersion = await fetch(
     "https://api.github.com/repos/strawberry-graphql/strawberry/releases/latest",
     {
