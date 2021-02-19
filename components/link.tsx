@@ -46,7 +46,7 @@ const LinkWrapper: React.FC<{
   const isActive: boolean =
     (as != null && match(router.asPath, as)) || match(router.asPath, href);
 
-  let className = rest.className || "";
+  let className = rest.className ?? "";
 
   if (isActive) {
     className = `${className} active`;

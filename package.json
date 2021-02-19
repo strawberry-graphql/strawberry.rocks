@@ -15,7 +15,8 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --watch --noEmit",
     "codegen": "graphql-codegen --config codegen.yml",
-    "codegen:watch": "npm run codegen -- --watch"
+    "codegen:watch": "npm run codegen -- --watch",
+    "lint": "eslint --cache --ext .js,.ts,.tsx ."
   },
   "keywords": [
     "strawberry-graphql",
