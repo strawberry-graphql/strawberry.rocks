@@ -34,7 +34,7 @@
     "@mdx-js/react": "^1.6.22",
     "@next/mdx": "^10.0.5",
     "@octokit/core": "^3.2.5",
-    "@octokit/plugin-paginate-rest": "^2.9.1",
+    "@octokit/plugin-paginate-rest": "^2.10.0",
     "@theme-ui/components": "^0.6.0-alpha.6",
     "@theme-ui/match-media": "^0.6.0-alpha.6",
     "@theme-ui/prism": "^0.6.0-alpha.6",
