@@ -8,7 +8,6 @@ import Head from "next/head";
 import Router from "next/router";
 
 import { Footer } from "~/components/footer";
-import { Header } from "~/components/header";
 import { NewsletterSection } from "~/components/newsletter-section";
 import components from "~/components/theme-ui";
 
@@ -45,11 +44,7 @@ const reset = css`
   }
 `;
 
-export default function App({
-  Component,
-  pageProps,
-  latestVersion,
-}: AppProps & { latestVersion: string }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -63,8 +58,6 @@ export default function App({
         <Global styles={reset} />
 
         <div id="wrap">
-          <Header latestVersion={latestVersion} />
-
           <Component {...pageProps} />
 
           <NewsletterSection />
@@ -74,22 +67,3 @@ export default function App({
     </>
   );
 }
-
-App.getInitialProps = async () => {
-  const latestVersion = await fetch(
-    "https://api.github.com/repos/strawberry-graphql/strawberry/releases/latest",
-    {
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Token ${process.env.GITHUB_TOKEN}`,
-      },
-      method: "GET",
-    }
-  )
-    .then((x) => x.json())
-    .then((x) => x.tag_name);
-
-  return {
-    latestVersion,
-  };
-};

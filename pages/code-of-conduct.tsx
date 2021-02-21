@@ -3,31 +3,32 @@ import { Global, css } from "@emotion/react";
 import { anchorLinks } from "@hashicorp/remark-plugins";
 import { Box } from "@theme-ui/components";
 import matter from "gray-matter";
-import { jsx, ThemeProvider } from "theme-ui";
+import { jsx } from "theme-ui";
 
-import { GetServerSideProps, NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import { MdxRemote } from "next-mdx-remote/types";
 
+import { Header } from "~/components/header";
 import { SEO } from "~/components/seo";
 import components from "~/components/theme-ui";
-
-import theme from "../theme";
+import { provider } from "~/helpers/next-mdx-remote";
+import { fetchCodeOfConduct } from "~/lib/api";
 
 type Props = {
   source: MdxRemote.Source;
-  data: { [key: string]: any };
-  sourcePath: string;
+  version?: string;
 };
 
-const CodeOfConductPage: NextPage<Props> = ({ data, source }) => {
-  const content = hydrate(source, { components });
+const CodeOfConductPage: NextPage<Props> = ({ source, version }) => {
+  const content = hydrate(source, {
+    components,
+  });
 
   return (
     <>
       <SEO title="Code of Conduct" />
-
       <Global
         styles={css`
           a.anchor.before {
@@ -36,6 +37,7 @@ const CodeOfConductPage: NextPage<Props> = ({ data, source }) => {
           }
         `}
       />
+      <Header version={version} />
 
       <Box
         sx={{
@@ -52,30 +54,38 @@ const CodeOfConductPage: NextPage<Props> = ({ data, source }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const path =
-    "https://raw.githubusercontent.com/strawberry-graphql/strawberry/master/CODE_OF_CONDUCT.md";
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  try {
+    const response = await fetchCodeOfConduct();
 
-  const text: string = await fetch(path).then((r) => r.text());
-  const { data, content } = matter(text);
+    const body = response?.codeOfConduct?.body;
+    const version = response?.latestRelease?.tagName;
 
-  const source = await renderToString(content, {
-    components,
-    provider: {
-      component: ThemeProvider,
-      props: {
-        components,
-        theme,
+    if (body == null) {
+      throw Error("no code of conduct body to show");
+    }
+    const { content } = matter(body);
+
+    const source = await renderToString(content, {
+      components,
+      provider,
+      mdxOptions: {
+        remarkPlugins: [anchorLinks],
       },
-    },
-    mdxOptions: {
-      remarkPlugins: [anchorLinks],
-    },
-  });
+    });
 
-  return {
-    props: { source, data, sourcePath: path },
-  };
+    return {
+      props: {
+        source,
+        version,
+      },
+      revalidate: 30,
+    };
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("code-of-conduct", error);
+    return { notFound: true };
+  }
 };
 
 export default CodeOfConductPage;

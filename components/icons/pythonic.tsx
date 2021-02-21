@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { ReactSVGFC } from "types/react-svg";
+
+import { ReactSVGFC } from "~/types/react-svg";
 
 export const PythonicIcon: ReactSVGFC = (props) => (
   <svg viewBox="0 0 84 84" width={84} height={84} fill="none" {...props}>

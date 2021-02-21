@@ -5,7 +5,7 @@ interface SEOProps {
   lang?: string;
   meta?: any[];
   keywords?: string[];
-  title: string;
+  title?: string;
 }
 
 const socialImageUrl = "https://strawberry.rocks/social.png";

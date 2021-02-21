@@ -1,18 +1,26 @@
+/** @jsx jsx */
 import { Heading, Grid, Box, Text, Flex } from "@theme-ui/components";
+import { jsx } from "theme-ui";
 
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 
 import { Features } from "~/components/features";
+import { Header } from "~/components/header";
 import { Hero } from "~/components/hero";
 import { FlashIcon } from "~/components/icons/flash";
 import { Link } from "~/components/link";
 import { Section } from "~/components/section";
 import { SEO } from "~/components/seo";
+import { fetchLatestRelease } from "~/lib/api";
 
-const HomePage: NextPage = () => (
+type Props = {
+  version?: string;
+};
+
+const HomePage: NextPage<Props> = ({ version }) => (
   <>
     <SEO title="A Python library for GraphQL" />
-
+    <Header version={version} />
     <Hero />
 
     <Section sx={{ flex: 1 }}>
@@ -68,5 +76,9 @@ const HomePage: NextPage = () => (
     </Section>
   </>
 );
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  return { props: { version: await fetchLatestRelease() }, revalidate: 30 };
+};
 
 export default HomePage;

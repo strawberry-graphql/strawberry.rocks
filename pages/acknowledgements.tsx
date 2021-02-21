@@ -4,11 +4,11 @@ import { jsx } from "theme-ui";
 
 import { GetStaticProps, NextPage } from "next";
 
+import { Header } from "~/components/header";
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
-import { getGithub } from "~/helpers/github";
-
-const IGNORE_LIST = ["dependabot-preview[bot]", "dependabot-bot", "botberry"];
+import { fetchContributors, fetchLatestRelease } from "~/lib/api";
+import { GithubCollaborator } from "~/types/api";
 
 const MemberLink: React.FC<{
   member: GithubCollaborator;
@@ -32,17 +32,14 @@ const MemberLink: React.FC<{
 
 type Props = {
   collaborators: GithubCollaborator[];
+  version?: string;
 };
 
-const AcknowledgementsPage: NextPage<Props> = ({ collaborators }) => {
-  const filteredCollaborators = collaborators.filter(
-    (member) => !IGNORE_LIST.includes(member.login)
-  );
-
+const AcknowledgementsPage: NextPage<Props> = ({ collaborators, version }) => {
   return (
     <>
       <SEO title="Acknowledgements" />
-
+      <Header version={version} />
       <Box sx={{ p: 4, pb: 6, maxWidth: 1280, mx: "auto" }}>
         <Heading sx={{ fontSize: [5, 6], mb: 3 }}>Acknowledgements</Heading>
         <Text sx={{ mb: 4 }} as="p">
@@ -56,10 +53,10 @@ const AcknowledgementsPage: NextPage<Props> = ({ collaborators }) => {
             mb: 3,
           }}
         >
-          {filteredCollaborators.map((member, index) => (
+          {collaborators.map((member, index) => (
             <Box key={index} as="li" sx={{ flex: "0 0 230px", mb: 2 }}>
               <MemberLink member={member}>
-                {member.name || member.login}
+                {member.name ?? member.login}
               </MemberLink>
             </Box>
           ))}
@@ -130,70 +127,13 @@ const AcknowledgementsPage: NextPage<Props> = ({ collaborators }) => {
   );
 };
 
-const query = `
-  query CollaboratorsQuery($repo: String!, $owner: String!) {
-    repository(name: $repo, owner: $owner) {
-      # TODO: increase this when we get more collaborators
-      collaborators(affiliation: ALL, first: 100) {
-        edges {
-          node {
-            name
-            login
-            websiteUrl
-            url
-          }
-        }
-      }
-    }
-  }
-`;
-
-type GithubCollaborator = {
-  name: string | null;
-  login: string;
-  // websiteUrl: string | null;
-  url: string;
-};
-
-const fetchContributors: () => Promise<GithubCollaborator[]> = async () => {
-  const github = getGithub();
-
-  const contributors: any[] = (
-    await github
-      .paged(`/repos/:strawberry-graphql/strawberry/contributors`)
-      .then((res: any) => res.pages)
-  )
-    .flat()
-    .map((page: any) => page.body)
-    .flat();
-  const logins: string[] = contributors.map((node) => node.login);
-
-  const profiles = await Promise.all(
-    logins.map((login) =>
-      github.get(`/users/${login}`).then((res: any) => res.body)
-    )
-  );
-
-  const loginToProfile = Object.fromEntries(
-    profiles.map((profile) => [profile.login, profile])
-  );
-
-  return contributors.map((node) => {
-    const profile = loginToProfile[node.login];
-
-    return {
-      name: profile.name,
-      login: profile.login,
-      url: profile.blog || profile.html_url,
-    };
-  });
-};
-
 export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       collaborators: await fetchContributors(),
+      version: await fetchLatestRelease(),
     },
+    revalidate: 30,
   };
 };
 

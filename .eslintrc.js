@@ -1,9 +1,11 @@
 module.exports = {
+  root: true,
   parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
   extends: [
     "plugin:react/recommended",
-    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
     "prettier/@typescript-eslint",
   ],
   parserOptions: {
@@ -12,6 +14,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    project: "tsconfig.json",
   },
   rules: {
     "@typescript-eslint/explicit-function-return-type": "off",
@@ -26,6 +29,9 @@ module.exports = {
         ignoreRestSiblings: true,
       },
     ],
+    "@typescript-eslint/prefer-optional-chain": "warn",
+    "@typescript-eslint/prefer-nullish-coalescing": ["warn"],
+    "no-console": "warn",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
   },

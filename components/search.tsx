@@ -1,8 +1,7 @@
+// @ts-nocheck
+
 /** @jsx jsx */
 import algoliasearch from "algoliasearch/lite";
-import { scrollIntoViewIfNeeded } from "helpers/scroll";
-import { useMouseTrap } from "helpers/use-mousetrap";
-import { useToggle } from "helpers/use-toggle";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   InstantSearch,
@@ -13,6 +12,10 @@ import { Box, Button, Flex, Input, jsx } from "theme-ui";
 
 import Link from "next/link";
 import { Router } from "next/router";
+
+import { scrollIntoViewIfNeeded } from "~/helpers/scroll";
+import { useMouseTrap } from "~/helpers/use-mousetrap";
+import { useToggle } from "~/helpers/use-toggle";
 
 import { SearchIcon } from "./icons/search";
 

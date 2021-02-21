@@ -1,0 +1,10 @@
+.next
+.now
+.vercel
+.env
+package.json
+package-lock.json
+coverage
+.github
+*.snap
+types/graphql.d.ts
