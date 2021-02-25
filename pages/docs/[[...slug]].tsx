@@ -10,9 +10,8 @@ import components from "~/components/theme-ui";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { provider } from "~/helpers/next-mdx-remote";
 import {
-  fetchFile,
+  fetchDocPage,
   fetchLatestRelease,
-  fetchTableOfContents,
   fetchTableOfContentsPaths,
   OWNER,
   REF,
@@ -41,21 +40,21 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const owner = OWNER;
   const repo = REPO;
 
-  const docsToc = await fetchTableOfContents({ prefix: "/docs/", ref });
-
   try {
     /**
      * Get doc content from markdown file.
      */
     const filename: string = slugs.join("/") + ".md";
-    const text = await fetchFile({
+
+    const { page, tableContent: docsToc } = await fetchDocPage({
+      prefix: "/docs/",
       filename: `docs/${filename}`,
       owner,
       repo,
       ref,
     });
 
-    const { data, content } = matter(text);
+    const { data, content } = matter(page);
     const source = await renderToString(content, {
       components,
       scope: data,
@@ -71,12 +70,12 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     const editPath = `https://github.com/${owner}/${repo}/edit/${REF}/docs/${filename}`;
     return {
       props: { source, data, editPath, docsToc, version: ref },
-      revalidate: 30,
+      revalidate: 60,
     };
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("getStaticProps:", error);
-    return { notFound: true, revalidate: 30 };
+    return { notFound: true, revalidate: 60 };
   }
 };
 

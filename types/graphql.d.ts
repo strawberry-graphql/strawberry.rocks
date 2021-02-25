@@ -19060,3 +19060,13 @@ export type CodeOfConductQueryVariables = Exact<{
 
 
 export type CodeOfConductQuery = { repository?: Maybe<{ codeOfConduct?: Maybe<Pick<CodeOfConduct, 'body'>>, latestRelease?: Maybe<Pick<Release, 'tagName'>> }> };
+
+export type DocPageQueryVariables = Exact<{
+  owner: Scalars['String'];
+  repo: Scalars['String'];
+  filename: Scalars['String'];
+  tablecontent: Scalars['String'];
+}>;
+
+
+export type DocPageQuery = { repository?: Maybe<{ object?: Maybe<Pick<Blob, 'text'>>, tableOfContents?: Maybe<Pick<Blob, 'text'>> }> };

@@ -11,13 +11,13 @@ This repo only contains the template and design of the website.
 **This shows the latest released version and not the master branch docs.**
 #### `https://strawberry.rocks/docs`
 
-Shows the latest [release](https://github.com/strawberry-graphql/strawberry/releases) from [Strawberry Graphql Repo]. These pages are rendered at build time and revalidated after 30 seconds. When a new release of Strawberry Graphql is done then the site should update [Strawberry GraphQL](https://strawberry.rocks) site by itself. Not requiring a re-deployment. 
+Shows the latest [release](https://github.com/strawberry-graphql/strawberry/releases) from [Strawberry Graphql Repo]. These pages are rendered at build time and revalidated after 60 seconds. When a new release of Strawberry Graphql is done then the site should update [Strawberry GraphQL](https://strawberry.rocks) site by itself. Not requiring a re-deployment. 
 
 ### Pull Requests
 
 #### `https://strawberry.rocks/docs/pr/:pull-request-number`
 
-Pull requests on [Strawberry Graphql Repo] with a label of [ok-to-preview](https://github.com/strawberry-graphql/strawberry/pulls?q=is%3Apr+is%3Aopen+label%3Aok-to-preview) can be viewed. Theses are rendered on-demand and cached. They will be revalidated after 30 seconds.
+Pull requests on [Strawberry Graphql Repo] with a label of [ok-to-preview](https://github.com/strawberry-graphql/strawberry/pulls?q=is%3Apr+is%3Aopen+label%3Aok-to-preview) can be viewed. Theses are rendered on-demand and cached. They will be revalidated after 60 seconds.
 
 ### Version Releases
 

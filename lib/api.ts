@@ -1,25 +1,20 @@
 import { Octokit } from "@octokit/core";
 import { paginateRest } from "@octokit/plugin-paginate-rest";
-import marked, { Tokens } from "marked";
+import marked from "marked";
 
 import { DocsTree } from "~/components/docs-navigation";
-import { addHrefPrefix, urlToSlugs } from "~/helpers/params";
-import {
-  isCollaborator,
-  isHeading,
-  isLink,
-  isList,
-  isListItemWithTokens,
-  isString,
-  isTextWithTokens,
-} from "~/helpers/type-guards";
+import { urlToSlugs } from "~/helpers/params";
+import { isCollaborator, isList, isString } from "~/helpers/type-guards";
 import { GithubCollaborator, TableOfContentsPath } from "~/types/api";
 import {
   CodeOfConductQuery,
+  DocPageQuery,
   FileQuery,
   LatestReleaseQuery,
   PullRequestQuery,
 } from "~/types/graphql";
+
+import { getDocTree, getMDLinks } from "./doc-tree";
 
 const customOctokit = Octokit.plugin(paginateRest);
 
@@ -218,14 +213,6 @@ export const fetchLatestRelease = async (): Promise<string | undefined> => {
   }
 };
 
-const getMDLinks = (items: Tokens.ListItem[]): Tokens.Link[] =>
-  items.filter(isListItemWithTokens).flatMap((item) =>
-    item.tokens
-      .filter(isTextWithTokens)
-      .flatMap((t) => t.tokens)
-      .filter(isLink)
-  );
-
 export const fetchTableOfContents = async ({
   prefix,
   ref = REF,
@@ -238,40 +225,13 @@ export const fetchTableOfContents = async ({
   repo?: string;
 }): Promise<DocsTree | null> => {
   try {
-    const sections: DocsTree = {};
-
     const text = await fetchFile({
       filename: "docs/README.md",
       owner,
       repo,
       ref,
     });
-
-    const tokens = marked.lexer(text);
-
-    let currentSection = "Docs";
-
-    tokens.forEach((token) => {
-      if (isHeading(token) && token.depth === 2) {
-        currentSection = token.text;
-      }
-
-      if (isList(token)) {
-        if (typeof sections[currentSection] === "undefined") {
-          sections[currentSection] = {
-            name: currentSection,
-            links: [],
-          };
-        }
-
-        const links: Tokens.Link[] = getMDLinks(token.items);
-        sections[currentSection].links = links.map((link) => ({
-          href: addHrefPrefix(link.href, prefix),
-          text: link.text,
-        }));
-      }
-    });
-    return sections;
+    return getDocTree(text, prefix);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("fetchTableOfContents", error);
@@ -336,3 +296,67 @@ export const fetchCodeOfConduct = async () =>
       { owner: OWNER, repo: REPO }
     )
     .then((response) => response.repository);
+
+export const fetchDocPage = async ({
+  prefix,
+  filename,
+  owner = OWNER,
+  repo = REPO,
+  ref = REF,
+}: {
+  prefix: string;
+  filename: string;
+  owner?: string;
+  repo?: string;
+  ref?: string;
+}) => {
+  try {
+    const response = await octokit.graphql<DocPageQuery>(
+      /* GraphQL */
+      `
+        query docPage(
+          $owner: String!
+          $repo: String!
+          $filename: String!
+          $tablecontent: String!
+        ) {
+          repository(owner: $owner, name: $repo) {
+            object(expression: $filename) {
+              ... on Blob {
+                text
+              }
+            }
+            tableOfContents: object(expression: $tablecontent) {
+              ... on Blob {
+                text
+              }
+            }
+          }
+        }
+      `,
+      {
+        owner,
+        repo,
+        filename: `${ref}:${filename}`,
+        tablecontent: `${ref}:docs/README.md`,
+      }
+    );
+
+    const pageText = response.repository?.object?.text;
+    const tableContentText = response.repository?.tableOfContents?.text;
+    if (pageText == null) {
+      throw new Error("no pageText");
+    }
+    return {
+      page: pageText,
+      tableContent:
+        tableContentText != null
+          ? await getDocTree(tableContentText, prefix)
+          : null,
+    };
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("fetchFile:", error);
+    throw error;
+  }
+};

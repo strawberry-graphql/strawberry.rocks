@@ -78,7 +78,7 @@ const HomePage: NextPage<Props> = ({ version }) => (
 );
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  return { props: { version: await fetchLatestRelease() }, revalidate: 30 };
+  return { props: { version: await fetchLatestRelease() }, revalidate: 60 };
 };
 
 export default HomePage;
