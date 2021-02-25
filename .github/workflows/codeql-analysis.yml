@@ -1,0 +1,33 @@
+name: "CodeQL scanning"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 15 * * 0'
+
+jobs:
+  CodeQL-Build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: javascript
+
+    - name: build
+      run: |
+        npm ci
+        npm run build
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1

@@ -2,6 +2,10 @@
   "name": "strawberry-graphql",
   "version": "1.0.0",
   "author": "Patrick Arminio <patrick.arminio@@gmail.com>",
+  "engines": {
+    "node": "14.x",
+    "npm": "7.x"
+  },
   "scripts": {
     "prebuild": "npm run codegen && npm run type-check",
     "build": "next build",

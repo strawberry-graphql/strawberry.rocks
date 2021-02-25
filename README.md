@@ -27,7 +27,7 @@ Pull requests on [Strawberry Graphql Repo] with a label of [ok-to-preview](https
 
 ## How to setup the project
 
-Make sure to have `nodejs 12.18.0` (exact version shouldn't matter too much, you
+Make sure to have `nodejs 14.16.0` (exact version shouldn't matter too much, you
 can use [asdf](https://github.com/asdf-vm/asdf) to install it, in case).
 
 You also need a GitHub token, this is used to fetch the list of contributors for
