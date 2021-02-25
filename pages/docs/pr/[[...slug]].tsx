@@ -9,7 +9,7 @@ import DocsPage, { DocsPageProps } from "~/components/doc";
 import components from "~/components/theme-ui";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { provider } from "~/helpers/next-mdx-remote";
-import { fetchFile, fetchPullRequest, fetchTableOfContents } from "~/lib/api";
+import { fetchDocPage, fetchPullRequest } from "~/lib/api";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   /**
@@ -57,13 +57,6 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       html_url,
     } = await fetchPullRequest({ pull_number: pullNumber });
 
-    const docsToc = await fetchTableOfContents({
-      prefix: `/docs/pr/${pull_number}/`,
-      ref: branch,
-      owner,
-      repo,
-    });
-
     /**
      * Shift slugs as we dont need the PR number for the filename.
      */
@@ -73,14 +66,15 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       throw new Error("no filename");
     }
 
-    const text = await fetchFile({
+    const { page, tableContent: docsToc } = await fetchDocPage({
+      prefix: `/docs/pr/${pull_number}/`,
       filename: `docs/${filename}`,
       owner,
       repo,
       ref: branch,
     });
 
-    const { data, content } = matter(text);
+    const { data, content } = matter(page);
     const source = await renderToString(content, {
       components,
       scope: data,
