@@ -70,12 +70,12 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     const editPath = `https://github.com/${owner}/${repo}/edit/${REF}/docs/${filename}`;
     return {
       props: { source, data, editPath, docsToc, version: ref },
-      revalidate: 30,
+      revalidate: 60,
     };
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("getStaticProps:", error);
-    return { notFound: true, revalidate: 30 };
+    return { notFound: true, revalidate: 60 };
   }
 };
 
