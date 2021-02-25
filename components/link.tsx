@@ -53,7 +53,7 @@ const LinkWrapper: React.FC<{
   }
 
   return (
-    <NextLink href={href} as={as} passHref>
+    <NextLink prefetch={false} href={href} as={as} passHref>
       <ThemeLink {...rest} className={className}>
         {children}
       </ThemeLink>
