@@ -30,7 +30,7 @@
     "typescript"
   ],
   "dependencies": {
-    "@emotion/babel-plugin": "^11.1.2",
+    "@emotion/babel-plugin": "^11.2.0",
     "@emotion/react": "^11.1.2",
     "@hashicorp/remark-plugins": "^3.1.1",
     "@mdx-js/loader": "^1.6.22",
