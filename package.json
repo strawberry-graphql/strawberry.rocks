@@ -55,7 +55,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "react-instantsearch-dom": "^6.8.2",
+    "react-instantsearch-dom": "^6.10.3",
     "react-use-mailchimp": "^0.4.0",
     "theme-ui": "^0.6.0-alpha.6",
     "ts-node": "^9.1.1",
