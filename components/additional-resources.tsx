@@ -15,7 +15,7 @@ type Props = {
   graphqlDocs: string;
 };
 
-const ResourceLink: React.FC<LinkProps> = ({ title, href }) => (
+const ResourceLink = ({ title, href }: LinkProps) => (
   <Link
     href={href}
     hideExternalIcon={true}
@@ -36,11 +36,7 @@ const ResourceLink: React.FC<LinkProps> = ({ title, href }) => (
   </Link>
 );
 
-export const AdditionalResources: React.FC<Props> = ({
-  spec,
-  graphqlDocs,
-  title,
-}) => {
+export const AdditionalResources = ({ spec, graphqlDocs, title }: Props) => {
   return (
     <Fragment>
       <Heading sx={{ mt: 4 }}>Additional resources</Heading>

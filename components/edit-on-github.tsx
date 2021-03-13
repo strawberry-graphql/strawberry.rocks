@@ -5,7 +5,7 @@ import { Link } from "./link";
 
 type EditOnGithubProps = { path: string };
 
-export const EditOnGithub: React.FC<EditOnGithubProps> = ({ path }) => (
+export const EditOnGithub = ({ path }: EditOnGithubProps) => (
   <Link
     href={path}
     variant="box"

@@ -7,9 +7,10 @@ import { Logo } from "./logo";
 type NavItemProps = {
   href: string;
   target?: string;
+  children: React.ReactNode;
 };
 
-const NavItem: React.FC<NavItemProps> = ({ href, children, ...props }) => (
+const NavItem = ({ href, children, ...props }: NavItemProps) => (
   <Box as="li" sx={{ listStyle: "none", whiteSpace: "nowrap" }}>
     <Link sx={{ color: "white" }} href={href} {...props}>
       {children}

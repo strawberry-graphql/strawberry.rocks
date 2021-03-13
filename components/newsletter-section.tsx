@@ -19,7 +19,7 @@ const Loading = (): jsx.JSX.Element => (
   </Box>
 );
 
-const Form: React.FC = () => {
+const Form = () => {
   const [email, setEmail] = useState("");
   const [mailchimp, subscribe] = useMailchimp({
     url,

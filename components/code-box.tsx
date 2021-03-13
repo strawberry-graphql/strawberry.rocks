@@ -70,7 +70,7 @@ const Actions: ReactSVGFC = (props) => (
   </svg>
 );
 
-export const CodeBox: React.FC<BoxProps> = ({ children, ...props }) => (
+export const CodeBox = ({ children, ...props }: BoxProps) => (
   <Box {...props} sx={{ position: "relative" }}>
     <Box sx={{ paddingTop: "70%", minHeight: 420, display: "inline-block" }} />
     <BackgroundTop

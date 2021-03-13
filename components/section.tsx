@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box, BoxProps } from "theme-ui";
 
-export const Section: React.FC<BoxProps> = ({ children, ...props }) => (
+export const Section = ({ children, ...props }: BoxProps) => (
   <Box {...props}>
     <Box
       sx={{
