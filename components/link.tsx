@@ -15,16 +15,24 @@ type LinkProps = {
   partialMatch?: boolean;
   rel?: string;
   sx?: ThemeUIStyleObject;
+  children?: React.ReactNode;
 };
 
-const LinkWrapper: React.FC<{
+const LinkWrapper = ({
+  href,
+  isExternal,
+  children,
+  as,
+  partialMatch = false,
+  ...rest
+}: {
   href: string;
   as?: string;
   isExternal: boolean;
   partialMatch?: boolean;
   children: React.ReactNode;
   className?: string;
-}> = ({ href, isExternal, children, as, partialMatch = false, ...rest }) => {
+}) => {
   const router = useRouter();
 
   if (isExternal) {
@@ -61,12 +69,12 @@ const LinkWrapper: React.FC<{
   );
 };
 
-export const Link: React.FC<LinkProps> = ({
+export const Link = ({
   children,
   href,
   hideExternalIcon = false,
   ...props
-}) => {
+}: LinkProps) => {
   const isExternal = href.startsWith("http");
 
   if (props.target == "_blank") {

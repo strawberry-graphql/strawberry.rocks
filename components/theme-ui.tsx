@@ -8,10 +8,13 @@ import { AdditionalResources } from "./additional-resources";
 import GraphQLExample from "./graphql-example";
 import SchemaExample from "./schema-example";
 
-const DocsLink: React.FC<{ href?: string }> = ({
+const DocsLink = ({
   children,
   href,
   ...props
+}: {
+  href?: string;
+  children: React.ReactNode;
 }) => {
   href = href ? href.replace(/.md$/, "") : "";
 

@@ -3,7 +3,7 @@ import { jsx, Flex, Box, BoxProps } from "theme-ui";
 
 import { CodeBlock } from "./code-block";
 
-const Header: React.FC<BoxProps> = ({ children, ...props }) => (
+const Header = ({ children, ...props }: BoxProps) => (
   <Box
     sx={{
       backgroundColor: "primary",

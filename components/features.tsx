@@ -11,13 +11,10 @@ import { Link } from "./link";
 type FeatureProps = {
   icon?: React.FC<any>;
   href: string;
+  children: React.ReactNode;
 } & Pick<LinkProps, "bg">;
 
-const Feature: React.FC<FeatureProps> = ({
-  icon: Icon,
-  children,
-  ...props
-}) => {
+const Feature = ({ icon: Icon, children, ...props }: FeatureProps) => {
   const featureColor: string =
     props.bg === "secondary" ? "featureColorSecondary" : "featureColor";
   return (

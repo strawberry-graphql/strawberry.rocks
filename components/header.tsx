@@ -4,9 +4,12 @@ import { jsx, Box, Flex } from "theme-ui";
 import { Link } from "./link";
 import { Logo } from "./logo";
 
-export const Header: React.FC<{ version?: string; versionHref?: string }> = ({
+export const Header = ({
   version,
   versionHref,
+}: {
+  version?: string;
+  versionHref?: string;
 }) => {
   return (
     <Box

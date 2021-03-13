@@ -10,9 +10,13 @@ import { SEO } from "~/components/seo";
 import { fetchContributors, fetchLatestRelease } from "~/lib/api";
 import { GithubCollaborator } from "~/types/api";
 
-const MemberLink: React.FC<{
+const MemberLink = ({
+  children,
+  member,
+}: {
   member: GithubCollaborator;
-}> = ({ children, member }) => {
+  children: React.ReactNode;
+}) => {
   let link = member.url;
 
   if (!link.startsWith("http")) {
