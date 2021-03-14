@@ -25,7 +25,7 @@ const octokit = new customOctokit({
 export const OWNER = "strawberry-graphql";
 export const REPO = "strawberry";
 // default branch to query against.
-export const REF = "master";
+export const REF = "main";
 /**
  * Contributor username/login to ignore as they are bots.
  */
