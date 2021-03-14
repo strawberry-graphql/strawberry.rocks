@@ -4,6 +4,8 @@ import Prism, { ThemeUIPrismProps } from "@theme-ui/prism";
 import GithubSlugger from "github-slugger";
 import { jsx, ThemeUICSSObject, ImageProps } from "theme-ui";
 
+import Image from "next/image";
+
 import { AdditionalResources } from "./additional-resources";
 import GraphQLExample from "./graphql-example";
 import SchemaExample from "./schema-example";
@@ -26,14 +28,12 @@ const DocsLink = ({
 };
 
 const DocsImage = ({ src, ...props }: ImageProps) => (
-  <img
-    sx={{
-      borderWidth: 2,
-      maxWidth: "100%",
-      borderColor: "muted",
-      borderStyle: "solid",
-    }}
-    src={src}
+  <Image
+    layout="responsive"
+    width="100%"
+    height="auto"
+    objectFit="contain"
+    src={src ?? ""}
     {...props}
   />
 );

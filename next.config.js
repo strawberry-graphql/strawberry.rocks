@@ -19,5 +19,8 @@ module.exports = withTM(
         },
       ];
     },
+    images: {
+      domains: ["github.com", "raw.githubusercontent.com"],
+    },
   })
 );
