@@ -107,6 +107,7 @@ export const CodeBox = ({ children, ...props }: BoxProps) => (
         pre {
           height: 100%;
           word-wrap: normal;
+          border: none;
 
           /* fixes bad wrap on safari */
 

@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .heading-underline {
+    background-size: 100% 4px;
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .nav-underline {
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    transition: 0.15s background-size ease-out;
+    background-size: 0 2px;
+  }
+
+  .nav-underline.active {
+    background-size: 100% 2px;
+  }
+
+  .nav-underline:hover {
+    background-size: 100% 2px;
+  }
+}

@@ -1,6 +1,4 @@
-/** @jsx jsx */
 import { Fragment, useCallback, useEffect } from "react";
-import { jsx, Box, Button } from "theme-ui";
 
 import { Router } from "next/router";
 
@@ -21,19 +19,9 @@ export type DocsTree = {
 };
 
 const ExperimentalBadge = () => (
-  <Box
-    sx={{
-      fontSize: 0,
-      backgroundColor: "muted",
-      p: 1,
-      borderRadius: "5px",
-      display: "inline-block",
-      color: "black",
-      ml: 1,
-    }}
-  >
+  <span className="text-xs bg-red-200 inline-block rounded p-1 ml-1">
     experimental
-  </Box>
+  </span>
 );
 
 const getDocsLink = ({ text, href }: { text: string; href: string }) => {
@@ -49,8 +37,8 @@ const getDocsLink = ({ text, href }: { text: string; href: string }) => {
   }
 
   return (
-    <li sx={{ listStyle: "none" }} key={href}>
-      <Link href="/docs/[[...slug]]" as={href} variant="docs-nav">
+    <li className="list-none" key={href}>
+      <Link href="/docs/[[...slug]]" as={href} className="text-red-500">
         {text}
       </Link>
       {isExperimental && <ExperimentalBadge />}
@@ -63,9 +51,9 @@ function Nav({ docs }: { docs: DocsTree }) {
     <>
       {Object.values(docs).map(({ name, links }) => (
         <Fragment key={name}>
-          <h2 sx={{ textTransform: "capitalize" }}>{name}</h2>
+          <h2 className="capitalize font-bold text-xl mb-2">{name}</h2>
 
-          <nav sx={{ mb: 2 }}>{links.map(getDocsLink)}</nav>
+          <nav className="mb-4">{links.map(getDocsLink)}</nav>
         </Fragment>
       ))}
     </>
@@ -85,55 +73,25 @@ export default function DocsNavigation({ docs }: { docs: DocsTree }) {
 
   return (
     <Fragment>
-      <Box
-        sx={{
-          px: 3,
-          py: 4,
-          flex: "0 0 200px",
-          display: ["none", "block"],
-        }}
-      >
+      <div className="hidden md:block w-60 px-6 py-8">
         <Nav docs={docs} />
-      </Box>
+      </div>
 
       <Fragment>
-        <Box
-          sx={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            height: "100vh",
-            overflowX: "scroll",
-            backgroundColor: "background",
-            zIndex: 1,
-            p: 4,
-            display: [open ? "block" : "none", "none"],
-          }}
+        <div
+          className={`fixed ${
+            open ? "" : "hidden"
+          } md:hidden top-0 left-0 right-0 h-screen overflow-x-scroll bg-white z-10 p-8`}
         >
           <Nav docs={docs} />
-        </Box>
+        </div>
 
-        <Button
-          sx={{
-            position: "fixed",
-            bottom: 4,
-            right: 4,
-            zIndex: 2,
-            fill: "primary",
-            backgroundColor: "muted",
-            borderRadius: "100%",
-            width: 70,
-            height: 70,
-            p: "10px",
-            cursor: "pointer",
-            boxShadow: "0 0 20px rgba(0, 0, 0, 0.3)",
-            display: ["block", "none"],
-          }}
+        <button
+          className="fixed md:hidden bottom-8 w-16 h-16 focus:outline-none right-8 z-10 fill-current text-red-500 bg-red-200 p-2 rounded-full cursor-pointer shadow-xl"
           onClick={toggleOpen}
         >
           {open ? <CloseIcon /> : <NavigationIcon />}
-        </Button>
+        </button>
       </Fragment>
     </Fragment>
   );

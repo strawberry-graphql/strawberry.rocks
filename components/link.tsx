@@ -1,20 +1,17 @@
-/** @jsx jsx */
-import { jsx, ThemeUIStyleObject, Box, Link as ThemeLink } from "theme-ui";
-
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
 import { ExternalIcon } from "./icons/external";
 
-type LinkProps = {
+export type LinkProps = {
   href: string;
   variant?: string;
+  className?: string;
   as?: string;
   target?: string;
   hideExternalIcon?: boolean;
   partialMatch?: boolean;
   rel?: string;
-  sx?: ThemeUIStyleObject;
   children?: React.ReactNode;
 };
 
@@ -37,9 +34,9 @@ const LinkWrapper = ({
 
   if (isExternal) {
     return (
-      <ThemeLink {...rest} href={href}>
+      <a {...rest} href={href}>
         {children}
-      </ThemeLink>
+      </a>
     );
   }
 
@@ -62,9 +59,9 @@ const LinkWrapper = ({
 
   return (
     <NextLink prefetch={false} href={href} as={as} passHref>
-      <ThemeLink {...rest} className={className}>
+      <a {...rest} className={className}>
         {children}
-      </ThemeLink>
+      </a>
     </NextLink>
   );
 };
@@ -83,14 +80,12 @@ export const Link = ({
 
   return (
     <LinkWrapper isExternal={isExternal} {...props} href={href}>
-      <Box as="span" sx={{ mr: isExternal ? 1 : 0 }}>
-        {children}
-      </Box>
+      <span className={isExternal ? "mr-2" : ""}>{children}</span>
 
       {isExternal && !hideExternalIcon && (
         <ExternalIcon
           width="1em"
-          sx={{ verticalAlign: "middle", fill: "currentColor" }}
+          className="inline align-middle fill-current"
         />
       )}
     </LinkWrapper>
