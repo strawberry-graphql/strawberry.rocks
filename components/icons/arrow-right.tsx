@@ -1,6 +1,4 @@
-import { ReactSVGFC } from "~/types/react-svg";
-
-export const ArrowRightIcon: ReactSVGFC = (props) => (
+export const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     className="stroke-current text-red-500"
     viewBox="0 0 22 17"

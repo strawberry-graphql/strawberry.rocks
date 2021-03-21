@@ -20,11 +20,7 @@ const MemberLink = ({
   }
 
   return (
-    <Link
-      href={link}
-      target="_blank"
-      sx={{ color: "text", textDecoration: "none" }}
-    >
+    <Link href={link} target="_blank">
       {children}
     </Link>
   );

@@ -1,6 +1,4 @@
-import { ReactSVGFC } from "~/types/react-svg";
-
-export const Logo: ReactSVGFC = (props) => (
+export const Logo = (props: React.SVGProps<SVGSVGElement>) => (
   <svg fill="none" viewBox="0 0 1952 2357" {...props}>
     <path
       d="M811 809c-120 0-237-40-334-113-88-66-237-194-249-311a127 127 0 0130-98c24-28 58-44 101-47l13-1c77 0 177 43 272 114-7-88 18-153 71-175h1c9-4 18-6 28-7h5c56 0 99 58 131 125C935 143 1027 7 1124 0h7c14 0 28 3 41 9 136 59 78 330 29 464a576 576 0 01-292 324l-9 5-10 1a524 524 0 01-79 6z"
