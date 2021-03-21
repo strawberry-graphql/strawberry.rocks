@@ -1,3 +1,5 @@
+import cx from "classnames";
+
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
@@ -11,6 +13,7 @@ export type LinkProps = {
   target?: string;
   hideExternalIcon?: boolean;
   partialMatch?: boolean;
+  underline?: boolean;
   rel?: string;
   children?: React.ReactNode;
 };
@@ -21,24 +24,19 @@ const LinkWrapper = ({
   children,
   as,
   partialMatch = false,
+  underline = false,
+  className,
   ...rest
 }: {
   href: string;
   as?: string;
   isExternal: boolean;
   partialMatch?: boolean;
+  underline?: boolean;
   children: React.ReactNode;
   className?: string;
 }) => {
   const router = useRouter();
-
-  if (isExternal) {
-    return (
-      <a {...rest} href={href}>
-        {children}
-      </a>
-    );
-  }
 
   const match = (a: string, b: string) => {
     if (partialMatch && b) {
@@ -49,12 +47,20 @@ const LinkWrapper = ({
   };
 
   const isActive: boolean =
-    (as != null && match(router.asPath, as)) || match(router.asPath, href);
+    (as != null && match(router?.asPath, as)) || match(router?.asPath, href);
 
-  let className = rest.className ?? "";
+  className = cx(className, {
+    active: isActive,
+    underline: underline,
+    "whitespace-nowrap": !underline,
+  });
 
-  if (isActive) {
-    className = `${className} active`;
+  if (isExternal) {
+    return (
+      <a {...rest} href={href} className={className}>
+        {children}
+      </a>
+    );
   }
 
   return (

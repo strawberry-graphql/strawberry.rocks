@@ -8,6 +8,5 @@
         }
       }
     ]
-  ],
-  "plugins": ["@emotion/babel-plugin"]
+  ]
 }

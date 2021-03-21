@@ -6,7 +6,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import DocsPage, { DocsPageProps } from "~/components/doc";
-import components from "~/components/theme-ui";
+import components from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { provider } from "~/helpers/next-mdx-remote";
 import { fetchDocPage, fetchPullRequest } from "~/lib/api";

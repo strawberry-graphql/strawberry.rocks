@@ -1,6 +1,4 @@
-/** @jsx jsx */
 import { Fragment } from "react";
-import { jsx, Box, Grid, Heading } from "theme-ui";
 
 import { Link } from "./link";
 
@@ -19,32 +17,22 @@ const ResourceLink = ({ title, href }: LinkProps) => (
   <Link
     href={href}
     hideExternalIcon={true}
-    variant="box"
     target="_blank"
-    sx={{
-      p: 3,
-    }}
+    className="p-6 border-2 border-blue-600 w-full hover:bg-gray-50 mb-6"
   >
-    <Box
-      sx={{
-        fontWeight: "bold",
-        color: "accent",
-      }}
-    >
-      {title}
-    </Box>
+    <div className="font-bold text-blue-600">{title}</div>
   </Link>
 );
 
 export const AdditionalResources = ({ spec, graphqlDocs, title }: Props) => {
   return (
     <Fragment>
-      <Heading sx={{ mt: 4 }}>Additional resources</Heading>
-      <Grid sx={{ my: 3 }} columns={[1, 2]}>
+      <h2 className="mt-8 font-bold text-2xl">Additional resources</h2>
+      <div className="grid md:grid-cols-2 md:space-x-8 my-6">
         <ResourceLink href={spec} title="Read the GraphQL spec" />
 
         <ResourceLink href={graphqlDocs} title={`${title} on GraphQL.org`} />
-      </Grid>
+      </div>
     </Fragment>
   );
 };

@@ -1,9 +1,6 @@
-/** @jsx jsx */
-import { jsx, Flex, Box, BoxProps } from "theme-ui";
+import { ReactNode } from "react";
 
-import { ReactSVGFC } from "~/types/react-svg";
-
-const BackgroundTop: ReactSVGFC = (props) => (
+const BackgroundTop = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 797 275" fill="none" {...props}>
     <path fill="#FFCED3" d="M369 0h167v167H369z" />
     <mask id="prefix__a" fill="#fff">
@@ -27,7 +24,7 @@ const BackgroundTop: ReactSVGFC = (props) => (
   </svg>
 );
 
-const BackgroundBottom: ReactSVGFC = (props) => (
+const BackgroundBottom = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 797 285" fill="none" {...props}>
     <g clipPath="url(#prefix__clip0)">
       <path stroke="#FF9FA9" strokeWidth={4} d="M327 116h167v167H327z" />
@@ -54,7 +51,7 @@ const BackgroundBottom: ReactSVGFC = (props) => (
   </svg>
 );
 
-const Actions: ReactSVGFC = (props) => (
+const Actions = (props: React.SVGProps<SVGSVGElement>) => (
   <svg fill="none" viewBox="0 0 76 19" {...props}>
     <path
       d="M1.59 15.5h12.23"
@@ -70,69 +67,16 @@ const Actions: ReactSVGFC = (props) => (
   </svg>
 );
 
-export const CodeBox = ({ children, ...props }: BoxProps) => (
-  <Box {...props} sx={{ position: "relative" }}>
-    <Box sx={{ paddingTop: "70%", minHeight: 420, display: "inline-block" }} />
-    <BackgroundTop
-      sx={{
-        position: "absolute",
-        left: 0,
-        right: 0,
-        top: 0,
-      }}
-    />
-    <BackgroundBottom
-      sx={{
-        position: "absolute",
-        left: 0,
-        right: 0,
-        bottom: 0,
-      }}
-    />
+export const CodeBox = ({ children }: { children: ReactNode }) => (
+  <div className="relative text-sm inline-block aspect-w-5 aspect-h-4">
+    <BackgroundTop className="absolute top-0 right-0 left-0" />
+    <BackgroundBottom className="absolute right-0 bottom-0 left-0" />
 
-    <Box
-      sx={{
-        top: 3,
-        left: 3,
-        bottom: 3,
-        right: 3,
-        borderWidth: 4,
-        borderColor: "primary",
-        borderStyle: "solid",
-        position: "absolute",
-        zIndex: 1,
-        overflow: "hidden",
-      }}
-      css={`
-        pre {
-          height: 100%;
-          word-wrap: normal;
-          border: none;
-
-          /* fixes bad wrap on safari */
-
-          span {
-            display: inline;
-          }
-
-          .plain:only-child {
-            display: inline-block;
-          }
-        }
-      `}
-    >
-      <Flex
-        sx={{
-          padding: 3,
-          alignItems: "center",
-          justifyContent: "flex-end",
-          height: 50,
-          backgroundColor: "primary",
-        }}
-      >
+    <div className="p-6">
+      <div className="p-4 flex items-center justify-end h-12 bg-red-500">
         <Actions height="18" />
-      </Flex>
+      </div>
       {children}
-    </Box>
-  </Box>
+    </div>
+  </div>
 );

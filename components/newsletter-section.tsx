@@ -1,23 +1,12 @@
-/** @jsx jsx */
 import { useState } from "react";
 import { useMailchimp } from "react-use-mailchimp";
-import { jsx, Box, Heading, Text, Input, Button, Flex } from "theme-ui";
 
 import { ArrowRightIcon } from "./icons/arrow-right";
 
 const url =
   "https://twitter.us4.list-manage.com/subscribe/post?u=4ad955ae4a0b2d7c67f48323e&amp;id=5e44c190e6";
 
-const Loading = (): jsx.JSX.Element => (
-  <Box
-    sx={{
-      fontSize: 3,
-      animation: "spin 2s linear infinite",
-    }}
-  >
-    🍓
-  </Box>
-);
+const Loading = () => <div className="animate-spin">🍓</div>;
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -29,27 +18,21 @@ const Form = () => {
   const canSubmit = email.trim() !== "" && !loading;
 
   if (data && data.result === "success") {
-    return <Text sx={{ fontSize: 3 }}>🎉 Thanks for subscribing! 🎉</Text>;
+    return <p className="font-bold text-xl">🎉 Thanks for subscribing! 🎉</p>;
   }
 
   if (error) {
     return (
-      <Text
-        sx={{ fontSize: 3 }}
+      <p
+        className="font-bold text-xl"
         dangerouslySetInnerHTML={{ __html: error }}
-      ></Text>
+      />
     );
   }
 
   return (
-    <Flex
-      as="form"
-      sx={{
-        height: 58,
-        color: "primary",
-        borderRadius: 40,
-        backgroundColor: "background",
-      }}
+    <form
+      className="h-14 flex bg-white rounded-full"
       onSubmit={(e) => {
         e.preventDefault();
         if (!loading) {
@@ -57,78 +40,35 @@ const Form = () => {
         }
       }}
     >
-      <Input
-        sx={{
-          color: "primary",
-          p: 3,
-          border: "none",
-          borderTopLeftRadius: 40,
-          borderBottomLeftRadius: 40,
-          "&::placeholder": {
-            opacity: 1,
-          },
-        }}
+      <input
+        className="w-full h-14 px-8 border-none rounded-full outline-none"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         type="email"
         placeholder="my@email.com"
       />
-      <Button
+      <button
         type="submit"
         disabled={!canSubmit}
-        sx={{
-          borderRadius: "100%",
-          backgroundColor: "muted",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          alignSelf: "center",
-          width: 58,
-          height: 58,
-        }}
+        className="flex rounded-full items-center justify-center self-center w-14 h-14 p-4 bg-red-300"
       >
         {loading ? <Loading /> : <ArrowRightIcon />}
-      </Button>
-    </Flex>
+      </button>
+    </form>
   );
 };
 
-export const NewsletterSection = (): jsx.JSX.Element => (
-  <Box
-    sx={{
-      p: 5,
-      backgroundColor: "primary",
-      color: "white",
-      borderTopRightRadius: "50vh",
-      borderBottomRightRadius: "50vh",
-      position: "relative",
-    }}
-  >
-    <Box
-      sx={{
-        backgroundColor: "backgroundDark",
-        position: "absolute",
-        top: "50%",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: -1,
-      }}
-    />
-    <Box
-      sx={{
-        mx: "auto",
-        maxWidth: 440,
-        textAlign: "center",
-      }}
-    >
-      <Heading sx={{ mb: 4 }}>Newsletter 💌</Heading>
-      <Text sx={{ mb: 4 }}>
+export const NewsletterSection = () => (
+  <div className="p-10 bg-red-500 text-white relative rounded-r-full">
+    <div className="bg-black absolute inset-y-2/4 bottom-0 left-0 right-0 -z-10" />
+    <div className="mx-auto max-w-md text-center">
+      <h1 className="font-bold text-2xl mb-6">Newsletter 💌</h1>
+      <p className="mb-8">
         Do you want to receive the latest updates on Strawberry? Subscribe to
         our newsletter!
-      </Text>
+      </p>
 
       <Form />
-    </Box>
-  </Box>
+    </div>
+  </div>
 );

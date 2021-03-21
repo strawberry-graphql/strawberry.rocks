@@ -1,10 +1,6 @@
-import { ThemeProvider } from "theme-ui";
-
 import { MdxRemote } from "next-mdx-remote/types";
 
-import components from "~/components/theme-ui";
-
-import theme from "../theme";
+import components from "~/components/mdx";
 
 /**
  * Fallback content for next-mdx-remote hydrate.
@@ -18,9 +14,8 @@ export const DUMMY_CONTENT = {
 };
 
 export const provider: MdxRemote.Provider = {
-  component: ThemeProvider,
+  component: ({ children }: any) => children,
   props: {
-    components,
-    theme,
+    // components,
   },
 };

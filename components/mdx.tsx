@@ -1,12 +1,10 @@
-/** @jsx jsx */
-import { MDXProviderComponents } from "@theme-ui/mdx";
-import Prism, { ThemeUIPrismProps } from "@theme-ui/prism";
+import cx from "classnames";
 import GithubSlugger from "github-slugger";
-import { jsx, ThemeUICSSObject, ImageProps } from "theme-ui";
 
 import { AdditionalResources } from "./additional-resources";
-import GraphQLExample from "./graphql-example";
-import SchemaExample from "./schema-example";
+import { CodeBlock } from "./code-block";
+import { GraphQLExample } from "./graphql-example";
+import { SchemaExample } from "./schema-example";
 
 const DocsLink = ({
   children,
@@ -14,58 +12,40 @@ const DocsLink = ({
   ...props
 }: {
   href?: string;
+  className?: string;
   children: React.ReactNode;
 }) => {
   href = href ? href.replace(/.md$/, "") : "";
 
   return (
-    <a href={href} {...props}>
+    <a
+      href={href}
+      {...props}
+      className={cx(props.className, {
+        underline: !href.startsWith("#") && href,
+      })}
+    >
       {children}
     </a>
   );
 };
 
-const DocsImage = ({ src, ...props }: ImageProps) => (
-  <img
-    sx={{
-      borderWidth: 2,
-      maxWidth: "100%",
-      borderColor: "muted",
-      borderStyle: "solid",
-    }}
-    src={src}
-    {...props}
-  />
+const DocsImage = ({ src, ...props }: { src: string }) => (
+  <img className="border-2 border-red-500 max-w-full" src={src} {...props} />
 );
 
-const CustomTH = ({
-  children,
-  ...props
-}: ThemeUIPrismProps): jsx.JSX.Element => {
+const CustomTH = ({ children, ...props }: { children: string }) => {
   const slugger = new GithubSlugger();
   const slug = slugger.slug(children);
 
-  const styles: ThemeUICSSObject = {
-    textAlign: "left",
-    p: 2,
-    borderBottom: "1px solid currentColor",
-  };
-
-  switch (slug) {
-    case "parameter-name":
-      styles.width = 150;
-      break;
-    case "type":
-      styles.width = 220;
-
-      break;
-    case "default":
-      styles.width = 80;
-      break;
-  }
-
   return (
-    <th {...props} sx={styles}>
+    <th
+      {...props}
+      className={cx("text-left", "p-4", "border-b", "border-current", "w-20", {
+        "w-36": slug === "parameter-name",
+        "w-56": slug === "type",
+      })}
+    >
       {children}
     </th>
   );
@@ -74,8 +54,10 @@ const CustomTH = ({
 const CustomPrism = ({
   className,
   children,
-  ...props
-}: ThemeUIPrismProps): jsx.JSX.Element => {
+}: {
+  className: string;
+  children: string;
+}) => {
   const [language]: string[] = className
     ? className.replace(/language-/, "").split(" ")
     : [""];
@@ -95,15 +77,11 @@ const CustomPrism = ({
     return <SchemaExample python={python} schema={schema} />;
   }
 
-  return (
-    <Prism className={className || ""} {...props}>
-      {children}
-    </Prism>
-  );
+  return <CodeBlock language={language}>{children}</CodeBlock>;
 };
 
-const theme: MDXProviderComponents = {
-  pre: (props) => props.children,
+const theme = {
+  pre: (props: any) => props.children,
   code: CustomPrism,
   th: CustomTH,
   a: DocsLink,

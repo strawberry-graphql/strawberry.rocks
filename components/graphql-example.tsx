@@ -1,61 +1,35 @@
-/** @jsx jsx */
-import { jsx, Flex, Box, BoxProps } from "theme-ui";
+import { ReactNode } from "react";
 
 import { CodeBlock } from "./code-block";
 
-const Header = ({ children, ...props }: BoxProps) => (
-  <Box
-    sx={{
-      backgroundColor: "primary",
-      padding: 1,
-      color: "#fff",
-      paddingLeft: 2,
-      fontSize: 12,
-      fontFamily: "monospace",
-    }}
-    {...props}
-  >
+const Header = ({ children, ...props }: { children: ReactNode }) => (
+  <div className="p-2 px-4 text-sm bg-red-500 font-mono text-white" {...props}>
     {children}
-  </Box>
+  </div>
 );
 
-const GraphQLExample = ({
+export const GraphQLExample = ({
   query,
   response,
 }: {
   query: string;
   response: string;
-}): jsx.JSX.Element => {
+}) => {
   const res = JSON.parse(response);
   return (
-    <Flex>
-      <Flex
-        sx={{
-          flex: 1,
-          flexDirection: "column",
-        }}
-      >
+    <div className="flex">
+      <div className="flex flex-1 flex-col">
         <Header>Query</Header>
-        <CodeBlock
-          language="graphql"
-          extraStyles={{
-            borderRight: "none",
-          }}
-        >
+        <CodeBlock language="graphql" className="flex-1 border-r-0">
           {query}
         </CodeBlock>
-      </Flex>
-      <Flex
-        sx={{
-          flex: 1,
-          flexDirection: "column",
-        }}
-      >
+      </div>
+      <div className="flex flex-1 flex-col">
         <Header>Result</Header>
-        <CodeBlock language="json">{JSON.stringify(res, null, "  ")}</CodeBlock>
-      </Flex>
-    </Flex>
+        <CodeBlock language="json" className="flex-1">
+          {JSON.stringify(res, null, "  ")}
+        </CodeBlock>
+      </div>
+    </div>
   );
 };
-
-export default GraphQLExample;

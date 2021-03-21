@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer utilities {
+  .underline {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: theme("colors.red.500");
+  }
+
   .heading-underline {
     background-size: 100% 4px;
     background-position: 0% 100%;

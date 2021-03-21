@@ -1,7 +1,3 @@
-/** @jsx jsx */
-import { Text, Box, Flex, Heading, Paragraph } from "@theme-ui/components";
-import { jsx } from "theme-ui";
-
 import { GetStaticProps, NextPage } from "next";
 
 import { Header } from "~/components/header";
@@ -43,90 +39,92 @@ const AcknowledgementsPage: NextPage<Props> = ({ collaborators, version }) => {
   return (
     <>
       <SEO title="Acknowledgements" />
-      <Header version={version} />
-      <Box sx={{ p: 4, pb: 6, maxWidth: 1280, mx: "auto" }}>
-        <Heading sx={{ fontSize: [5, 6], mb: 3 }}>Acknowledgements</Heading>
-        <Text sx={{ mb: 4 }} as="p">
-          We&apos;d like to thank all of our contributors:
-        </Text>
 
-        <Flex
-          as="ul"
-          sx={{
-            flexWrap: "wrap",
-            mb: 3,
-          }}
-        >
+      <Header version={version} />
+
+      <div className="mx-auto w-full max-w-7xl p-8 pb-12">
+        <h1 className="text-5xl mb-4">Acknowledgements</h1>
+        <p className="mb-8">We&apos;d like to thank all of our contributors:</p>
+
+        <ul className="flex mb-6 flex-wrap">
           {collaborators.map((member, index) => (
-            <Box key={index} as="li" sx={{ flex: "0 0 230px", mb: 2 }}>
+            <li key={index} className="w-56 mb-4 list-disc">
               <MemberLink member={member}>
                 {member.name ?? member.login}
               </MemberLink>
-            </Box>
+            </li>
           ))}
-        </Flex>
+        </ul>
 
-        <Box>
-          <Heading sx={{ my: 4 }}>
+        <div>
+          <p className="my-8">
             In addition we&apos;d like to thank also the following people:
-          </Heading>
+          </p>
           <ul>
             <li>
-              <Link href="https://twitter.com/druguinni">Orlando Festa</Link>{" "}
+              <Link href="https://twitter.com/druguinni" underline>
+                Orlando Festa
+              </Link>{" "}
               for the fantastic work on the Strawberry logo.
             </li>
 
             <li>
-              <Link href="https://twitter.com/BijlsmaLotte">Lotte Bijlsma</Link>{" "}
+              <Link href="https://twitter.com/BijlsmaLotte" underline>
+                Lotte Bijlsma
+              </Link>{" "}
               for the amazing design of this website.
             </li>
           </ul>
 
-          <Heading sx={{ mt: 4, mb: 2 }}>Icons:</Heading>
-          <Paragraph sx={{ mb: 3 }}>
+          <h2 className="mt-8 mb-4 text-3xl">Icons:</h2>
+          <p className="mb-6">
             We are using icons from{" "}
-            <Link href="https://thenounproject.com">The Noun Project</Link>.
-            Here&apos;s the list of icons we used on this website:
-          </Paragraph>
+            <Link href="https://thenounproject.com" underline>
+              The Noun Project
+            </Link>
+            . Here&apos;s the list of icons we used on this website:
+          </p>
 
           <ul>
             <li>
               Async by{" "}
-              <Link href="https://thenounproject.com/t.rostilov/">
+              <Link href="https://thenounproject.com/t.rostilov/" underline>
                 Timofey Rostilov
               </Link>
             </li>
             <li>
               Server by{" "}
-              <Link href="https://thenounproject.com/clea.doltz/">
+              <Link href="https://thenounproject.com/clea.doltz/" underline>
                 Clea Doltz
               </Link>
             </li>
             <li>
               Python by{" "}
-              <Link href="https://thenounproject.com/priyokumoro5/">
+              <Link href="https://thenounproject.com/priyokumoro5/" underline>
                 Zaenal Abidin
               </Link>
             </li>
             <li>
               Boxes by{" "}
-              <Link href="https://thenounproject.com/iconsbazaar89/">
+              <Link href="https://thenounproject.com/iconsbazaar89/" underline>
                 Icons Bazaar
               </Link>
             </li>
             <li>
               Navigation by{" "}
-              <Link href="https://thenounproject.com/Flatart/">Flatart</Link>
+              <Link href="https://thenounproject.com/Flatart/" underline>
+                Flatart
+              </Link>
             </li>
             <li>
               Close by{" "}
-              <Link href="https://thenounproject.com/landan/">
+              <Link href="https://thenounproject.com/landan/" underline>
                 Landan Lloyd
               </Link>
             </li>
           </ul>
-        </Box>
-      </Box>
+        </div>
+      </div>
     </>
   );
 };

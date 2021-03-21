@@ -1,6 +1,3 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui";
-
 import { ReactSVGFC } from "~/types/react-svg";
 
 export const ExternalIcon: ReactSVGFC = (props) => (
