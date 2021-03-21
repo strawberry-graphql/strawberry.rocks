@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { CodeBlock } from "./code-block";
 
 const BackgroundTop = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 797 275" fill="none" {...props}>
@@ -29,7 +29,6 @@ const BackgroundBottom = (props: React.SVGProps<SVGSVGElement>) => (
     <g clipPath="url(#prefix__clip0)">
       <path stroke="#FF9FA9" strokeWidth={4} d="M327 116h167v167H327z" />
       <path
-        sx={{ transform: "translateX(5px)" }}
         clipRule="evenodd"
         d="M83.25 282.5c45.978 0 83.25-37.272 83.25-83.25S129.228 116 83.25 116 0 153.272 0 199.25s37.272 83.25 83.25 83.25z"
         stroke="#FFCED3"
@@ -67,7 +66,7 @@ const Actions = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const CodeBox = ({ children }: { children: ReactNode }) => (
+export const CodeBox = ({ code }: { code: string }) => (
   <div className="relative text-sm inline-block aspect-w-5 aspect-h-4">
     <BackgroundTop className="absolute top-0 right-0 left-0" />
     <BackgroundBottom className="absolute right-0 bottom-0 left-0" />
@@ -76,7 +75,10 @@ export const CodeBox = ({ children }: { children: ReactNode }) => (
       <div className="p-4 flex items-center justify-end h-12 bg-red-500">
         <Actions height="18" />
       </div>
-      {children}
+
+      <CodeBlock language="python" className="border-4">
+        {code}
+      </CodeBlock>
     </div>
   </div>
 );

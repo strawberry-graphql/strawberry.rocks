@@ -1,4 +1,3 @@
-import { CodeBlock } from "./code-block";
 import { CodeBox } from "./code-box";
 
 const code = `
@@ -27,9 +26,7 @@ export const Hero = () => {
           dataclasses.
         </h1>
       </div>
-      <CodeBox>
-        <CodeBlock language="python">{code}</CodeBlock>
-      </CodeBox>
+      <CodeBox code={code} />
     </div>
   );
 };
