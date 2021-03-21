@@ -1,5 +1,6 @@
 import cx from "classnames";
 import GithubSlugger from "github-slugger";
+import { createElement, ReactNode } from "react";
 
 import { AdditionalResources } from "./additional-resources";
 import { CodeBlock } from "./code-block";
@@ -80,8 +81,42 @@ const CustomPrism = ({
   return <CodeBlock language={language}>{children}</CodeBlock>;
 };
 
+// eslint-disable-next-line react/display-name
+const heading = (level: 1 | 2 | 3 | 4 | 5 | 6) => ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
+  return createElement(`h${level}`, {
+    className: cx("font-medium my-8", {
+      "text-3xl": level === 1,
+      "text-2xl": level === 2,
+      "text-xl": level >= 3,
+      underline: level > 1,
+    }),
+    children,
+  });
+};
+
+const Paragraph = ({ children }: { children: ReactNode }) => (
+  <p className="mb-4">{children}</p>
+);
+
+const UnorderedList = ({ children }: { children: ReactNode }) => (
+  <ul className="mb-4 list-disc list-inside">{children}</ul>
+);
+
 const theme = {
-  pre: (props: any) => props.children,
+  h1: heading(1),
+  h2: heading(2),
+  h3: heading(3),
+  h4: heading(4),
+  h5: heading(5),
+  h6: heading(6),
+  p: Paragraph,
+  ul: UnorderedList,
+  // eslint-disable-next-line react/display-name
+  pre: (props: any) => <div className="mb-4">{props.children}</div>,
   code: CustomPrism,
   th: CustomTH,
   a: DocsLink,
