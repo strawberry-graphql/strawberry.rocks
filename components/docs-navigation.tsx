@@ -19,7 +19,7 @@ export type DocsTree = {
 };
 
 const ExperimentalBadge = () => (
-  <span className="text-xs bg-red-200 inline-block rounded p-1 ml-1">
+  <span className="text-black text-xs bg-red-200 inline-block rounded p-1 ml-1">
     experimental
   </span>
 );

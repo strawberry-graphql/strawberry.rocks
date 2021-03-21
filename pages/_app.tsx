@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <div>
+      <div className="bg-white dark:bg-gray-900 text-black dark:text-white">
         <Component {...pageProps} />
 
         <NewsletterSection />

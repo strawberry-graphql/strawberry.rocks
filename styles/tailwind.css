@@ -1,39 +1,9 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
-
-@layer utilities {
-  .underline {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-decoration-color: theme("colors.red.500");
-  }
-
-  .heading-underline {
-    background-size: 100% 4px;
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-  }
-
-  .nav-underline {
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    transition: 0.15s background-size ease-out;
-    background-size: 0 2px;
-  }
-
-  .nav-underline.active {
-    background-size: 100% 2px;
-  }
-
-  .nav-underline:hover {
-    background-size: 100% 2px;
-  }
-}
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #403f53;
+  @apply dark:text-white dark:bg-gray-900 bg-white;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
@@ -52,22 +22,6 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: #fbfbfb;
-}
-
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
-  text-shadow: none;
-  background: #fbfbfb;
-}
-
 @media print {
   code[class*="language-"],
   pre[class*="language-"] {
@@ -82,8 +36,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  color: white;
-  background: #fbfbfb;
+  @apply dark:text-white dark:bg-gray-800;
 }
 
 :not(pre) > code[class*="language-"] {
@@ -157,7 +110,7 @@ pre[class*="language-"] {
 .token.class-name,
 .token.atrule,
 .token.attr-value {
-  color: rgb(17, 17, 17);
+  @apply dark:text-white;
 }
 
 .token.regex,
@@ -173,4 +126,35 @@ pre[class*="language-"] {
 
 .token.italic {
   font-style: italic;
+}
+
+@tailwind utilities;
+
+@layer utilities {
+  .underline {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: theme("colors.red.500");
+  }
+
+  .heading-underline {
+    background-size: 100% 4px;
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .nav-underline {
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    transition: 0.15s background-size ease-out;
+    background-size: 0 2px;
+  }
+
+  .nav-underline.active {
+    background-size: 100% 2px;
+  }
+
+  .nav-underline:hover {
+    background-size: 100% 2px;
+  }
 }

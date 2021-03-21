@@ -1,7 +1,7 @@
 import { Link } from "./link";
 
 export const ExperimentalWarning = () => (
-  <div className="bg-gray-50 border-l-4 border-red-500 p-6 my-6">
+  <div className="bg-gray-50 dark:bg-gray-800 border-l-4 border-red-500 p-6 my-6">
     <div className="font-bold mb-2">Caution:</div>
 
     <p className="mb-4">
