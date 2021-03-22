@@ -40,7 +40,7 @@
     "@octokit/core": "^3.2.5",
     "@octokit/plugin-paginate-rest": "^2.11.0",
     "@theme-ui/components": "^0.6.0-alpha.6",
-    "@theme-ui/match-media": "^0.6.0-alpha.6",
+    "@theme-ui/match-media": "^0.6.0",
     "@theme-ui/prism": "^0.6.0-alpha.7",
     "algoliasearch": "^4.8.5",
     "dotenv": "^8.2.0",
