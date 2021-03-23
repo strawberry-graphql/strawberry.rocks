@@ -161,3 +161,16 @@ pre[class*="language-"] {
     background-size: 100% 2px;
   }
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply relative;
+}
+
+.__permalink-h {
+  @apply text-red-500 absolute top-0 -left-6 no-underline;
+}
