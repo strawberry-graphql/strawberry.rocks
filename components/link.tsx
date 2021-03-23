@@ -50,8 +50,7 @@ const LinkWrapper = ({
     (as != null && match(router?.asPath, as)) || match(router?.asPath, href);
 
   className = cx(className, {
-    active: isActive,
-    underline: underline,
+    underline: underline || isActive,
     "whitespace-nowrap": !underline,
   });
 
