@@ -32,7 +32,7 @@ const Form = () => {
 
   return (
     <form
-      className="h-14 flex bg-white rounded-full"
+      className="h-14 flex bg-white dark:bg-gray-900 rounded-full"
       onSubmit={(e) => {
         e.preventDefault();
         if (!loading) {
@@ -41,7 +41,7 @@ const Form = () => {
       }}
     >
       <input
-        className="w-full h-14 px-8 border-none rounded-full outline-none"
+        className="w-full h-14 px-8 border-none rounded-full outline-none dark:bg-gray-900"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         type="email"
@@ -50,9 +50,13 @@ const Form = () => {
       <button
         type="submit"
         disabled={!canSubmit}
-        className="flex rounded-full items-center justify-center self-center w-14 h-14 p-4 bg-red-300"
+        className="flex rounded-full items-center justify-center self-center w-14 h-14 p-4 bg-red-300 dark:bg-red-700"
       >
-        {loading ? <Loading /> : <ArrowRightIcon />}
+        {loading ? (
+          <Loading />
+        ) : (
+          <ArrowRightIcon className="text-red-500 dark:text-white stroke-current" />
+        )}
       </button>
     </form>
   );
