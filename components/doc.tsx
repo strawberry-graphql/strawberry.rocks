@@ -46,7 +46,7 @@ const DocsPage: NextPage<DocsPageProps> = ({
 
       <main className="flex mx-auto w-full max-w-7xl flex-1">
         {docsToc && <DocsNavigation docs={docsToc} />}
-        <div className="px-8 pb-12 w-full">
+        <div className="px-8 pb-12 w-0 flex-1">
           {data?.experimental && <ExperimentalWarning />}
 
           {!isFallback && content}

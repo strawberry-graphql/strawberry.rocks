@@ -74,8 +74,10 @@ export default function DocsNavigation({ docs }: { docs: DocsTree }) {
 
   return (
     <Fragment>
-      <div className="hidden md:block w-60 px-6 py-8">
-        <Nav docs={docs} />
+      <div className="hidden md:flex md:flex-shrink-0 md:flex-col px-6 py-8">
+        <div className="w-36">
+          <Nav docs={docs} />
+        </div>
       </div>
 
       <Fragment>

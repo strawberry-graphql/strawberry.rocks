@@ -141,11 +141,7 @@ const Separator = () => (
 const Pre = ({ children }: { children: ReactNode }) => {
   const props = (children as ReactElement)?.props;
 
-  return (
-    <pre className="max-w-full mb-4 overflow-x-scroll">
-      <CustomPrism {...props} />
-    </pre>
-  );
+  return <CustomPrism {...props} />;
 };
 
 const Code = ({ children }: { children: ReactNode }) => (
