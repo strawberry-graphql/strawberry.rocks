@@ -1,6 +1,6 @@
 import cx from "classnames";
 import GithubSlugger from "github-slugger";
-import { createElement, ReactNode } from "react";
+import { createElement, ReactChild, ReactElement, ReactNode } from "react";
 
 import { AdditionalResources } from "./additional-resources";
 import { CodeBlock } from "./code-block";
@@ -34,23 +34,6 @@ const DocsLink = ({
 const DocsImage = ({ src, ...props }: { src: string }) => (
   <img className="border-2 border-red-500 max-w-full" src={src} {...props} />
 );
-
-const CustomTH = ({ children, ...props }: { children: string }) => {
-  const slugger = new GithubSlugger();
-  const slug = slugger.slug(children);
-
-  return (
-    <th
-      {...props}
-      className={cx("text-left", "p-4", "border-b", "border-current", "w-20", {
-        "w-36": slug === "parameter-name",
-        "w-56": slug === "type",
-      })}
-    >
-      {children}
-    </th>
-  );
-};
 
 const CustomPrism = ({
   className,
@@ -106,6 +89,69 @@ const UnorderedList = ({ children }: { children: ReactNode }) => (
   <ul className="mb-4 list-disc list-inside">{children}</ul>
 );
 
+const TableHeader = ({ children, ...props }: { children: string }) => {
+  const slugger = new GithubSlugger();
+  const slug = slugger.slug(children);
+
+  return (
+    <th
+      {...props}
+      className={cx("text-left", "p-2", "border-b", "border-current", {
+        "w-full": slug === "description",
+        "whitespace-nowrap": slug === "parameter-name" || slug === "type",
+        "pr-8": slug === "parameter-name" || slug === "type",
+      })}
+    >
+      {children}
+    </th>
+  );
+};
+
+const TableCell = ({ children, ...props }: { children: string }) => {
+  return (
+    <td
+      {...props}
+      className={cx("text-left", "p-2", "border-b", "border-current", "w-20")}
+    >
+      {children}
+    </td>
+  );
+};
+
+const TableRow = ({ children }: { children: ReactNode }) => (
+  <tr className="even:bg-indigo-100 dark:even:bg-indigo-900">{children}</tr>
+);
+
+const Table = ({ children }: { children: ReactNode }) => (
+  <div className="max-w-full mb-4 overflow-x-scroll">
+    <table className="w-full border-collapse">{children}</table>
+  </div>
+);
+
+const Separator = () => (
+  <div className="my-16 relative text-center">
+    <hr className="border-t border-red-500" />
+
+    <span className="absolute -top-6 text-lg p-2 bg-white dark:bg-gray-900">
+      🍓
+    </span>
+  </div>
+);
+
+const Pre = ({ children }: { children: ReactNode }) => {
+  const props = (children as ReactElement)?.props;
+
+  return (
+    <pre className="max-w-full mb-4 overflow-x-scroll">
+      <CustomPrism {...props} />
+    </pre>
+  );
+};
+
+const Code = ({ children }: { children: ReactNode }) => (
+  <code className="p-2 ">{children}</code>
+);
+
 const theme = {
   h1: heading(1),
   h2: heading(2),
@@ -115,10 +161,14 @@ const theme = {
   h6: heading(6),
   p: Paragraph,
   ul: UnorderedList,
+  table: Table,
+  th: TableHeader,
+  td: TableCell,
+  tr: TableRow,
+  hr: Separator,
   // eslint-disable-next-line react/display-name
-  pre: (props: any) => <div className="mb-4">{props.children}</div>,
-  code: CustomPrism,
-  th: CustomTH,
+  pre: Pre,
+  inlineCode: Code,
   a: DocsLink,
   AdditionalResources,
   img: DocsImage,
