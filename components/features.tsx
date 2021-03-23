@@ -18,7 +18,7 @@ const Feature = ({ icon: Icon, children, ...props }: FeatureProps) => {
     <Link
       {...props}
       className={cx(
-        "bg-red-300 even:bg-red-200 dark:bg-red-600 even:dark:bg-red-800",
+        "bg-red-300 even:bg-red-200 dark:bg-red-500 even:dark:bg-red-700",
         "p-8 text-red-500 dark:text-white transition-transform",
         "flex justify-center items-center transform",
         "lg:hover:translate-y-4"
