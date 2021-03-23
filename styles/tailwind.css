@@ -1,9 +1,12 @@
 @tailwind base;
 @tailwind components;
 
-code[class*="language-"],
 pre[class*="language-"] {
   @apply dark:text-white dark:bg-gray-900 bg-white;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
