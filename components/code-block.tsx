@@ -24,6 +24,7 @@ export const CodeBlock = ({
     value={children}
     className={cx(
       "font-mono overflow-x-auto border-2 border-red-500 p-6",
+      "bg-white dark:text-white dark:bg-gray-800",
       className
     )}
   />
