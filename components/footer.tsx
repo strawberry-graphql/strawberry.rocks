@@ -16,7 +16,7 @@ const NavItem = ({ href, children, ...props }: NavItemProps) => (
 );
 
 export const Footer = () => (
-  <footer className="bg-black text-white py-12 px-8 dark:bg-gray-900">
+  <footer className="bg-black text-white py-12 px-8 dark:bg-gray-800">
     <div className="grid mx-auto w-full max-w-7xl grid-cols-2">
       <div className="flex justify-center md:justify-start row-start-2 md:row-start-1 col-start-1 col-end-3 md:col-end-2 mt-6 md:mt-0">
         <Logo width="100" />

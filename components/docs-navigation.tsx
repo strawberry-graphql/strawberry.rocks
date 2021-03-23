@@ -84,7 +84,7 @@ export default function DocsNavigation({ docs }: { docs: DocsTree }) {
         <div
           className={`fixed ${
             open ? "" : "hidden"
-          } md:hidden top-0 left-0 right-0 h-screen overflow-x-scroll bg-white dark:bg-gray-900 z-10 p-8`}
+          } md:hidden top-0 left-0 right-0 h-screen overflow-x-scroll bg-white dark:bg-gray-800 z-10 p-8`}
         >
           <Nav docs={docs} />
         </div>

@@ -132,7 +132,7 @@ const Separator = () => (
   <div className="my-16 relative text-center">
     <hr className="border-t border-red-500" />
 
-    <span className="absolute -top-6 text-lg p-2 bg-white dark:bg-gray-900">
+    <span className="absolute -top-6 text-lg p-2 bg-white dark:bg-gray-800">
       🍓
     </span>
   </div>

@@ -2,7 +2,7 @@
 @tailwind components;
 
 pre[class*="language-"] {
-  @apply dark:text-white dark:bg-gray-900 bg-white;
+  @apply dark:text-white dark:bg-gray-800 bg-white;
 }
 
 code[class*="language-"],
@@ -163,7 +163,7 @@ pre[class*="language-"] {
 }
 
 p > code {
-  @apply bg-red-200;
+  @apply bg-red-200 dark:text-gray-900;
 }
 
 h1,

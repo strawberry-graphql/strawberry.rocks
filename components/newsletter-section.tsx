@@ -32,7 +32,7 @@ const Form = () => {
 
   return (
     <form
-      className="h-14 flex bg-white dark:bg-gray-900 rounded-full"
+      className="h-14 flex bg-white dark:bg-gray-800 rounded-full"
       onSubmit={(e) => {
         e.preventDefault();
         if (!loading) {
@@ -41,7 +41,7 @@ const Form = () => {
       }}
     >
       <input
-        className="w-full h-14 px-8 border-none rounded-full outline-none dark:bg-gray-900"
+        className="w-full h-14 px-8 border-none rounded-full outline-none dark:bg-gray-800"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         type="email"
