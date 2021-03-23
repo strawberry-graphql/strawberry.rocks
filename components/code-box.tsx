@@ -67,11 +67,11 @@ const Actions = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export const CodeBox = ({ code }: { code: string }) => (
-  <div className="relative text-sm inline-block aspect-w-5 aspect-h-4">
+  <div className="relative text-sm inline-block">
     <BackgroundTop className="absolute top-0 right-0 left-0" />
     <BackgroundBottom className="absolute right-0 bottom-0 left-0" />
 
-    <div className="p-6">
+    <div className="p-6 relative z-10">
       <div className="p-4 flex items-center justify-end h-12 bg-red-500">
         <Actions height="18" />
       </div>
