@@ -141,11 +141,15 @@ const Separator = () => (
 const Pre = ({ children }: { children: ReactNode }) => {
   const props = (children as ReactElement)?.props;
 
-  return <CustomPrism {...props} />;
+  return (
+    <div className="mb-8">
+      <CustomPrism {...props} />
+    </div>
+  );
 };
 
 const Code = ({ children }: { children: ReactNode }) => (
-  <code className="p-2 ">{children}</code>
+  <code className="p-1">{children}</code>
 );
 
 const theme = {
