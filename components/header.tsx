@@ -4,6 +4,7 @@ import { Logo } from "./logo";
 const NavLink = ({ children, ...props }: LinkProps) => (
   <Link
     className="nav-underline bg-gradient-to-r from-red-500 to-red-500 no-underline"
+    activeClass="active"
     {...props}
   >
     {children}

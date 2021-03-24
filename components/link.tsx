@@ -7,13 +7,13 @@ import { ExternalIcon } from "./icons/external";
 
 export type LinkProps = {
   href: string;
-  variant?: string;
   className?: string;
   as?: string;
   target?: string;
   hideExternalIcon?: boolean;
   partialMatch?: boolean;
   underline?: boolean;
+  activeClass?: string;
   rel?: string;
   children?: React.ReactNode;
 };
@@ -26,16 +26,9 @@ const LinkWrapper = ({
   partialMatch = false,
   underline = false,
   className,
+  activeClass = "underline",
   ...rest
-}: {
-  href: string;
-  as?: string;
-  isExternal: boolean;
-  partialMatch?: boolean;
-  underline?: boolean;
-  children: React.ReactNode;
-  className?: string;
-}) => {
+}: LinkProps & { isExternal: boolean }) => {
   const router = useRouter();
 
   const match = (a: string, b: string) => {
@@ -50,7 +43,8 @@ const LinkWrapper = ({
     (as != null && match(router?.asPath, as)) || match(router?.asPath, href);
 
   className = cx(className, {
-    underline: underline || isActive,
+    underline: underline,
+    [activeClass]: isActive,
     "whitespace-nowrap": !underline,
   });
 
