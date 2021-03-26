@@ -1,9 +1,4 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui";
-
-import { ReactSVGFC } from "~/types/react-svg";
-
-export const FlashIcon: ReactSVGFC = (props) => (
+export const FlashIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 128 197" width={128} height={197} fill="none" {...props}>
     <path
       fillRule="evenodd"

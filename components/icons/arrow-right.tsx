@@ -1,13 +1,6 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui";
-
-import { ReactSVGFC } from "~/types/react-svg";
-
-export const ArrowRightIcon: ReactSVGFC = (props) => (
+export const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    sx={{
-      stroke: "primary",
-    }}
+    className="stroke-current text-red-500"
     viewBox="0 0 22 17"
     width={22}
     height={17}

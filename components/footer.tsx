@@ -1,6 +1,3 @@
-/** @jsx jsx */
-import { jsx, Box, Grid } from "theme-ui";
-
 import { Link } from "./link";
 import { Logo } from "./logo";
 
@@ -11,55 +8,25 @@ type NavItemProps = {
 };
 
 const NavItem = ({ href, children, ...props }: NavItemProps) => (
-  <Box as="li" sx={{ listStyle: "none", whiteSpace: "nowrap" }}>
-    <Link sx={{ color: "white" }} href={href} {...props}>
+  <li className="list-none whitespace-nowrap">
+    <Link href={href} {...props} className="underline">
       {children}
     </Link>
-  </Box>
+  </li>
 );
 
-export const Footer = (): jsx.JSX.Element => (
-  <Box
-    as="footer"
-    sx={{
-      py: 5,
-      px: 4,
-      backgroundColor: "backgroundDark",
-      color: "textDark",
-    }}
-  >
-    <Grid
-      sx={{
-        mx: "auto",
-        maxWidth: 1280,
-        gridTemplateColumns: ["1fr 1fr", "140px repeat(3, 1fr)"],
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: ["center", "flex-start"],
-          gridRowStart: [2, 1],
-          gridColumnStart: [1, 1],
-          gridColumnEnd: [3, 2],
-          mt: [3, 0],
-        }}
-      >
+export const Footer = () => (
+  <footer className="bg-black text-white py-12  dark:bg-gray-800">
+    <div className="grid mx-auto w-full max-w-7xl px-8 grid-cols-2 md:flex">
+      <div className="flex justify-center md:justify-start row-start-2 md:row-start-1 col-start-1 col-end-3 md:col-end-2 mt-6 md:mt-0">
         <Logo width="100" />
-      </Box>
-      <nav>
+      </div>
+      <nav className="md:ml-10">
         <NavItem href="/docs/">Documentation</NavItem>
         <NavItem href="/acknowledgements/">Acknowledgements</NavItem>
         <NavItem href="/code-of-conduct/">Code of Conduct</NavItem>
       </nav>
-      <Box
-        as="nav"
-        sx={{
-          textAlign: "right",
-          gridColumnStart: [2, 3],
-          gridColumnEnd: [3, 5],
-        }}
-      >
+      <nav className="text-right col-start-2 col-end-3 md:ml-auto">
         <NavItem target="_blank" href="https://twitter.com/patrick91">
           Twitter
         </NavItem>
@@ -69,7 +36,7 @@ export const Footer = (): jsx.JSX.Element => (
         >
           Github
         </NavItem>
-      </Box>
-    </Grid>
-  </Box>
+      </nav>
+    </div>
+  </footer>
 );

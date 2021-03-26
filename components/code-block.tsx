@@ -1,27 +1,31 @@
-/** @jsx jsx */
-import Prism, { ThemeUIPrismProps } from "@theme-ui/prism";
-import { jsx, ThemeUIStyleObject } from "theme-ui";
+import cx from "classnames";
+import Refractor from "react-refractor";
+import graphql from "refractor/lang/graphql";
+import json from "refractor/lang/json";
+import markdown from "refractor/lang/markdown";
+import python from "refractor/lang/python";
+
+Refractor.registerLanguage(python);
+Refractor.registerLanguage(graphql);
+Refractor.registerLanguage(markdown);
+Refractor.registerLanguage(json);
 
 export const CodeBlock = ({
   language,
   children,
-  extraStyles = {},
-  ...props
-}: Omit<ThemeUIPrismProps, "className"> & {
+  className,
+}: {
   language: string;
-  extraStyles?: ThemeUIStyleObject;
-}): jsx.JSX.Element => (
-  <Prism
-    className={`language-${language}`}
-    sx={{
-      flex: 1,
-      borderTop: "none",
-      maxHeight: "300px",
-      overflowY: "auto",
-      ...extraStyles,
-    }}
-    {...props}
-  >
-    {children}
-  </Prism>
+  children: string;
+  className?: string;
+}) => (
+  <Refractor
+    language={language || "markdown"}
+    value={children}
+    className={cx(
+      "font-mono overflow-x-auto border-2 border-red-500 p-6",
+      "bg-white dark:text-white dark:bg-gray-800",
+      className
+    )}
+  />
 );

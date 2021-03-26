@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Grid, LinkProps } from "theme-ui";
+import cx from "classnames";
 
 import { ArrowRightIcon } from "./icons/arrow-right";
 import { AsyncIcon } from "./icons/async";
@@ -12,70 +11,43 @@ type FeatureProps = {
   icon?: React.FC<any>;
   href: string;
   children: React.ReactNode;
-} & Pick<LinkProps, "bg">;
+};
 
 const Feature = ({ icon: Icon, children, ...props }: FeatureProps) => {
-  const featureColor: string =
-    props.bg === "secondary" ? "featureColorSecondary" : "featureColor";
   return (
     <Link
       {...props}
-      variant="feature"
-      sx={{
-        p: 4,
-        my: 3,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        color: featureColor,
-        textAlign: "left",
-        textDecoration: "none",
-        transition: "0.2s transform ease-out",
-        "&:hover,&:focus": {
-          color: featureColor,
-          transform: "translate(0, -20px)",
-        },
-      }}
-    >
-      {Icon && (
-        <Icon
-          sx={{
-            display: "block",
-            my: 2,
-            mx: "auto",
-            fill: featureColor,
-            height: 150,
-          }}
-        />
+      className={cx(
+        "bg-red-300 even:bg-red-200 dark:bg-red-500 even:dark:bg-red-700",
+        "p-8 text-red-500 dark:text-white transition-transform",
+        "flex justify-center items-center transform",
+        "lg:hover:translate-y-4"
       )}
+    >
+      {Icon && <Icon className="fill-current block my-4 h-36 mx-auto" />}
 
-      {children}
+      <span className="flex space-x-3 items-center">
+        <span>{children}</span>
 
-      <ArrowRightIcon
-        sx={{
-          ml: 3,
-          top: 10,
-          stroke: featureColor,
-          position: "relative",
-        }}
-      />
+        <ArrowRightIcon className="stroke-current inline-block" />
+      </span>
     </Link>
   );
 };
 
-export const Features = (): jsx.JSX.Element => (
-  <Grid columns={[1, 2, 4]} gap={0} sx={{ my: 4, px: [4, 4, 0] }}>
-    <Feature href="/docs/concepts/async" bg="secondary" icon={AsyncIcon}>
+export const Features = () => (
+  <div className="my-20 grid gap-4 px-8 lg:px-0 md:grid-cols-2 lg:gap-0 lg:grid-cols-4">
+    <Feature href="/docs/concepts/async" icon={AsyncIcon}>
       Async
     </Feature>
-    <Feature href="/docs/features/server" bg="muted" icon={ServerIcon}>
+    <Feature href="/docs/features/server" icon={ServerIcon}>
       Built-in server
     </Feature>
-    <Feature href="/docs/concepts/typings" bg="secondary" icon={TypingIcon}>
+    <Feature href="/docs/concepts/typings" icon={TypingIcon}>
       Typings
     </Feature>
-    <Feature href="/docs/general/why" bg="muted" icon={PythonicIcon}>
+    <Feature href="/docs/general/why" icon={PythonicIcon}>
       Philosophy
     </Feature>
-  </Grid>
+  </div>
 );

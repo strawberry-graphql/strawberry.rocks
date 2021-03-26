@@ -1,6 +1,3 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui";
-
 import { Link } from "./link";
 
 type EditOnGithubProps = { path: string };
@@ -8,14 +5,7 @@ type EditOnGithubProps = { path: string };
 export const EditOnGithub = ({ path }: EditOnGithubProps) => (
   <Link
     href={path}
-    variant="box"
-    sx={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "accent",
-      textAlign: "left",
-    }}
+    className="mt-12 border-2 border-blue-600 p-4 hover:bg-gray-50 text-blue-600 flex items-center justify-center dark:border-blue-300 dark:text-blue-300 dark:hover:bg-blue-900"
   >
     Edit on Github
   </Link>

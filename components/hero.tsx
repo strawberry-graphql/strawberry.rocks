@@ -1,42 +1,32 @@
-/** @jsx jsx */
-import { jsx, Heading, Grid, Box } from "theme-ui";
-
-import MDXDocument from "~/content/home/hello-world.mdx";
-
 import { CodeBox } from "./code-box";
 
-export const Hero = (): jsx.JSX.Element => {
+const code = `
+import strawberry
+
+@strawberry.type
+class User:
+    name: str
+    age: int
+
+@strawberry.type
+class Query:
+    @strawberry.field
+    def user(self) -> User:
+        return User(name="Patrick", age=100)
+
+schema = strawberry.Schema(query=Query)
+`.trim();
+
+export const Hero = () => {
   return (
-    <Grid
-      sx={{
-        padding: 2,
-        maxWidth: 1240,
-        mx: "auto",
-        gridTemplateColumns: [null, null, "7fr 10fr", "1fr 1fr"],
-      }}
-    >
-      <Box
-        sx={{
-          flex: "0 0 400px",
-          m: 4,
-        }}
-      >
-        <Heading variant="hero" sx={{ fontSize: [5, 5, 5, 6] }}>
+    <div className="grid md:grid-cols-2 max-w-7xl mx-auto">
+      <div className="m-12">
+        <h1 className="inline text-3xl lg:text-5xl lg:leading-relaxed heading-underline bg-gradient-to-r from-red-500 to-red-500">
           Strawberry is a new GraphQL library for Python 3, inspired by
           dataclasses.
-        </Heading>
-      </Box>
-      <CodeBox
-        sx={{
-          flex: "1 1 50%",
-          fontSize: 1,
-          pre: {
-            border: "none",
-          },
-        }}
-      >
-        <MDXDocument />
-      </CodeBox>
-    </Grid>
+        </h1>
+      </div>
+      <CodeBox code={code} />
+    </div>
   );
 };

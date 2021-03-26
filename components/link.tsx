@@ -1,20 +1,20 @@
-/** @jsx jsx */
-import { jsx, ThemeUIStyleObject, Box, Link as ThemeLink } from "theme-ui";
+import cx from "classnames";
 
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
 import { ExternalIcon } from "./icons/external";
 
-type LinkProps = {
+export type LinkProps = {
   href: string;
-  variant?: string;
+  className?: string;
   as?: string;
   target?: string;
   hideExternalIcon?: boolean;
   partialMatch?: boolean;
+  underline?: boolean;
+  activeClass?: string;
   rel?: string;
-  sx?: ThemeUIStyleObject;
   children?: React.ReactNode;
 };
 
@@ -24,24 +24,12 @@ const LinkWrapper = ({
   children,
   as,
   partialMatch = false,
+  underline = false,
+  className,
+  activeClass = "underline",
   ...rest
-}: {
-  href: string;
-  as?: string;
-  isExternal: boolean;
-  partialMatch?: boolean;
-  children: React.ReactNode;
-  className?: string;
-}) => {
+}: LinkProps & { isExternal: boolean }) => {
   const router = useRouter();
-
-  if (isExternal) {
-    return (
-      <ThemeLink {...rest} href={href}>
-        {children}
-      </ThemeLink>
-    );
-  }
 
   const match = (a: string, b: string) => {
     if (partialMatch && b) {
@@ -52,19 +40,27 @@ const LinkWrapper = ({
   };
 
   const isActive: boolean =
-    (as != null && match(router.asPath, as)) || match(router.asPath, href);
+    (as != null && match(router?.asPath, as)) || match(router?.asPath, href);
 
-  let className = rest.className ?? "";
+  className = cx(className, {
+    underline: underline,
+    [activeClass]: isActive,
+    "whitespace-nowrap": !underline,
+  });
 
-  if (isActive) {
-    className = `${className} active`;
+  if (isExternal) {
+    return (
+      <a {...rest} href={href} className={className}>
+        {children}
+      </a>
+    );
   }
 
   return (
     <NextLink prefetch={false} href={href} as={as} passHref>
-      <ThemeLink {...rest} className={className}>
+      <a {...rest} className={className}>
         {children}
-      </ThemeLink>
+      </a>
     </NextLink>
   );
 };
@@ -83,14 +79,12 @@ export const Link = ({
 
   return (
     <LinkWrapper isExternal={isExternal} {...props} href={href}>
-      <Box as="span" sx={{ mr: isExternal ? 1 : 0 }}>
-        {children}
-      </Box>
+      <span className={isExternal ? "mr-2" : ""}>{children}</span>
 
       {isExternal && !hideExternalIcon && (
         <ExternalIcon
           width="1em"
-          sx={{ verticalAlign: "middle", fill: "currentColor" }}
+          className="inline align-middle fill-current"
         />
       )}
     </LinkWrapper>

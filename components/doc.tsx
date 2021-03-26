@@ -1,8 +1,3 @@
-/** @jsx jsx */
-import { Global, css } from "@emotion/react";
-import { Flex, Box } from "@theme-ui/components";
-import { jsx } from "theme-ui";
-
 import { NextPage } from "next";
 import hydrate from "next-mdx-remote/hydrate";
 import { MdxRemote } from "next-mdx-remote/types";
@@ -12,8 +7,8 @@ import DocsNavigation from "~/components/docs-navigation";
 import { EditOnGithub } from "~/components/edit-on-github";
 import { ExperimentalWarning } from "~/components/experimental-warning";
 import { Header } from "~/components/header";
+import components from "~/components/mdx";
 import { SEO } from "~/components/seo";
-import components from "~/components/theme-ui";
 import { DUMMY_CONTENT } from "~/helpers/next-mdx-remote";
 import { fetchTableOfContents } from "~/lib/api";
 import { ReturnedPromiseResolvedType } from "~/types/utility";
@@ -47,32 +42,18 @@ const DocsPage: NextPage<DocsPageProps> = ({
     <>
       <SEO title={data?.title} />
 
-      <Global
-        styles={css`
-          a.anchor.before {
-            position: absolute;
-            left: -1.5rem;
-          }
-        `}
-      />
       <Header version={version} versionHref={versionHref} />
-      <Flex
-        sx={{
-          width: "100%",
-          maxWidth: 1200,
-          mx: "auto",
-          flex: 1,
-        }}
-      >
+
+      <main className="flex mx-auto w-full max-w-7xl flex-1 text-lg">
         {docsToc && <DocsNavigation docs={docsToc} />}
-        <Box sx={{ px: 4, pb: 6 }}>
+        <div className="px-8 pb-12 w-0 flex-1">
           {data?.experimental && <ExperimentalWarning />}
 
           {!isFallback && content}
 
           {editPath && <EditOnGithub path={editPath} />}
-        </Box>
-      </Flex>
+        </div>
+      </main>
     </>
   );
 };
