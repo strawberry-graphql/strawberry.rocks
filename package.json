@@ -36,7 +36,7 @@
     "@mdx-js/react": "^1.6.22",
     "@next/mdx": "^10.0.5",
     "@octokit/core": "^3.2.5",
-    "@octokit/plugin-paginate-rest": "^2.11.0",
+    "@octokit/plugin-paginate-rest": "^2.13.3",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "algoliasearch": "^4.8.5",
     "classnames": "^2.2.6",
