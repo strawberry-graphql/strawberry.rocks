@@ -40,7 +40,7 @@ export const Features = () => (
     <Feature href="/docs/concepts/async" icon={AsyncIcon}>
       Async
     </Feature>
-    <Feature href="/docs/guidesF/server" icon={ServerIcon}>
+    <Feature href="/docs/guides/server" icon={ServerIcon}>
       Built-in server
     </Feature>
     <Feature href="/docs/concepts/typings" icon={TypingIcon}>
