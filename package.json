@@ -63,7 +63,7 @@
     "@graphql-codegen/cli": "^1.21.3",
     "@graphql-codegen/typescript": "^1.21.1",
     "@graphql-codegen/typescript-operations": "^1.17.14",
-    "@octokit/graphql-schema": "^10.25.1",
+    "@octokit/graphql-schema": "^10.36.0",
     "@tailwindcss/jit": "^0.1.18",
     "@trivago/prettier-plugin-sort-imports": "^2.0.2",
     "@types/classnames": "^2.2.11",
