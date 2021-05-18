@@ -46,7 +46,7 @@
     "marked": "^2.0.3",
     "mousetrap": "^1.6.5",
     "next": "^10.2.0",
-    "next-mdx-remote": "^2.1.4",
+    "next-mdx-remote": "^3.0.2",
     "next-transpile-modules": "^6.0.0",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
