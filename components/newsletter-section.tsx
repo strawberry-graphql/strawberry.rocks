@@ -41,7 +41,7 @@ const Form = () => {
       }}
     >
       <input
-        className="w-full h-14 px-8 border-none rounded-full outline-none dark:bg-gray-800"
+        className="w-full h-14 px-8 border-none rounded-full outline-none text-black dark:bg-gray-800 dark:text-white"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         type="email"
