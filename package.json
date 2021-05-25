@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.4",
-    "@graphql-codegen/typescript": "^1.21.1",
+    "@graphql-codegen/typescript": "^1.22.0",
     "@graphql-codegen/typescript-operations": "^1.17.16",
     "@octokit/graphql-schema": "^10.36.0",
     "@tailwindcss/jit": "^0.1.18",
@@ -74,7 +74,7 @@
     "@types/node": "^15.0.2",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.2",
+    "@types/react-dom": "^17.0.5",
     "@types/react-helmet": "^6.1.1",
     "@types/refractor": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
