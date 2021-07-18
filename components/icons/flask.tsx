@@ -1,6 +1,6 @@
 export const FlaskIcon = () => {
   return (
-    <div className="flex justify-center items-center icon-hover">
+    <div className="flex justify-center items-center icon-integration">
       {/*?xml version="1.0" encoding="UTF-8" standalone="no"?*/}
       <svg
         width="130"

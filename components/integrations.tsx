@@ -1,53 +1,62 @@
+import cx from "classnames";
 import React from "react";
 
 import { AioHttpIcon } from "./icons/aiohttp";
+import { ArrowRightIcon } from "./icons/arrow-right";
 import { DjangoIcon } from "./icons/django";
 import { FastApiIcon } from "./icons/fastapi";
 import { FlaskIcon } from "./icons/flask";
+import { PydanticIcon } from "./icons/pydantic";
 import { SanicIcon } from "./icons/sanic";
+import { Link } from "./link";
 
-export function Integrations() {
+type FeatureProps = {
+  icon?: React.FC<any>;
+  href: string;
+  children: React.ReactNode;
+};
+
+const Feature = ({ icon: Icon, children, ...props }: FeatureProps) => {
   return (
-    <div>
-      <p className="mt-12 mb-6 font-bold text-xl text-center">
-        Integrations for all the most popular Python development frameworks
-      </p>{" "}
-      <p>
-        Discover how to integrate Strawberry GraphQL with the most used
-        frameworks in Python for web development
-      </p>
-      <div className="grid-cards my-20 grid gap-4 px-8 lg:px-0 md:grid-cols-2 lg:gap-0 lg:grid-cols-4">
-        <div className="box-frameworks font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800 border-4 language-python">
-          <a href="https://strawberry.rocks/docs/integrations/flask">
-            <FlaskIcon />
-            <h1 className=" txt-hover-framework">Flask</h1>
-          </a>
-        </div>
-        <div className="box-frameworks font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800 border-4 language-python">
-          <a href="https://strawberry.rocks/docs/integrations/django">
-            <DjangoIcon />
-            <h1 className="mt-3 txt-hover-framework">Django</h1>
-          </a>
-        </div>
-        <div className="box-frameworks font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800 border-4 language-python">
-          <a href="https://strawberry.rocks/docs/integrations/fastapi">
-            <FastApiIcon />
-            <h1 className="mt-3 txt-hover-framework">FastAPI</h1>
-          </a>
-        </div>
-        <a href="/docs/integrations/sanic">
-          <div className="box-frameworks font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800 border-4 language-python">
-            <SanicIcon />
-            <h1 className="mt-3 txt-hover-framework">Sanic</h1>
-          </div>
-        </a>
-        <div className="box-frameworks font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800 border-4">
-          <a href="https://strawberry.rocks/docs/integrations/aiohttp">
-            <AioHttpIcon />
-            <h1 className="mt-3 txt-hover-framework">AIOHTTP</h1>
-          </a>
-        </div>
-      </div>
-    </div>
+    <Link
+      {...props}
+      className={cx(
+        "bg-red-300 even:bg-red-200 dark:bg-red-500 even:dark:bg-red-700",
+        "p-8 text-red-500 dark:text-white transition-transform",
+        "flex justify-center items-center transform",
+        "lg:hover:translate-y-4"
+      )}
+    >
+      {Icon && <Icon className="fill-current block my-4 h-36 mx-auto" />}
+
+      <span className="flex space-x-3 items-center text-center">
+        <span>{children}</span>
+
+        <ArrowRightIcon className="stroke-current inline-block mt-4" />
+      </span>
+    </Link>
   );
-}
+};
+
+export const Integrations = () => (
+  <div className="my-20 grid gap-4 px-8 lg:px-0 md:grid-cols-2 lg:gap-0 lg:grid-cols-4">
+    <Feature href="/docs/integrations/flask" icon={FlaskIcon}>
+      <p className="mt-4">Flask</p>
+    </Feature>
+    <Feature href="/docs/integrations/django" icon={DjangoIcon}>
+      <p className="mt-4">Django</p>
+    </Feature>
+    <Feature href="/docs/integrations/fastapi" icon={FastApiIcon}>
+      <p className="mt-4">FastAPI</p>
+    </Feature>
+    <Feature href="/docs/integrations/sanic" icon={SanicIcon}>
+      <p className="mt-4">Sanic</p>
+    </Feature>
+    <Feature href="/docs/integrations/aiohttp" icon={AioHttpIcon}>
+      <p className="mt-4">AIOHTTP</p>
+    </Feature>
+    <Feature href="/docs/integrations/pydantic" icon={PydanticIcon}>
+      <p className="mt-4">Pydantic</p>
+    </Feature>
+  </div>
+);

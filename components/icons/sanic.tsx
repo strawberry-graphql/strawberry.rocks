@@ -1,6 +1,6 @@
 export const SanicIcon = () => {
   return (
-    <div className="flex justify-center items-center icon-hover">
+    <div className="flex justify-center items-center icon-integration">
       <svg
         id="svg"
         version="1.1"

@@ -4,10 +4,10 @@ import { Features } from "~/components/features";
 import { Header } from "~/components/header";
 import { Hero } from "~/components/hero";
 import { FlashIcon } from "~/components/icons/flash";
+import { Integrations } from "~/components/integrations";
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
 import { fetchLatestRelease } from "~/lib/api";
-import { Integrations } from "~/components/integrations";
 
 type Props = {
   version?: string;
@@ -23,13 +23,10 @@ const HomePage: NextPage<Props> = ({ version }) => (
       <p className="mt-12 mb-6 font-bold text-xl">
         Learn how to create GraphQL API using Strawberry
       </p>
-
       <Link href="/docs/" className="text-red-500 text-lg" underline>
         View documentation 📝
       </Link>
-
       <Features />
-
       <div className="flex px-8 mt-32 my-24 text-left space-x-10">
         <div className="w-96 text-xl font-bold">
           Create GraphQL APIs in no time
@@ -49,8 +46,14 @@ const HomePage: NextPage<Props> = ({ version }) => (
           <FlashIcon className="w-24 h-40" />
         </div>
       </div>
+      <p className="mt-12 mb-6 font-bold text-xl text-center">
+        Integrations for all the most popular Python development frameworks
+      </p>{" "}
+      <p>
+        Discover how to integrate Strawberry GraphQL with the most used
+        frameworks in Python for web development
+      </p>
       <Integrations />
-
     </div>
   </>
 );

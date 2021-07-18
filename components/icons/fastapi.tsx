@@ -1,6 +1,6 @@
 export const FastApiIcon = () => {
   return (
-    <div className="flex justify-center items-center  icon-hover">
+    <div className="flex justify-center items-center  icon-integration">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
