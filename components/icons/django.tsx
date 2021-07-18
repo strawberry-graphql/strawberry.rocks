@@ -1,7 +1,6 @@
 export const DjangoIcon = () => {
   return (
     <div className="flex justify-center items-center icon-hover">
-      {/*?xml version="1.0" encoding="UTF-8"?*/}
       <svg
         width="120"
         height="120"
