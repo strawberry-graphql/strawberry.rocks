@@ -41,7 +41,7 @@ export function Integrations() {
             <h1 className="mt-3 txt-hover-framework">Sanic</h1>
           </div>
         </a>
-        <div className="box-frameworks font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800 border-4 language-python">
+        <div className="box-frameworks font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800 border-4">
           <a href="https://strawberry.rocks/docs/integrations/aiohttp">
             <AioHttpIcon />
             <h1 className="mt-3 txt-hover-framework">AIOHTTP</h1>
