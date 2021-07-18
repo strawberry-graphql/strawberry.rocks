@@ -7,6 +7,7 @@ import { FlashIcon } from "~/components/icons/flash";
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
 import { fetchLatestRelease } from "~/lib/api";
+import { Integrations } from "~/components/integrations";
 
 type Props = {
   version?: string;
@@ -48,6 +49,8 @@ const HomePage: NextPage<Props> = ({ version }) => (
           <FlashIcon className="w-24 h-40" />
         </div>
       </div>
+      <Integrations />
+
     </div>
   </>
 );

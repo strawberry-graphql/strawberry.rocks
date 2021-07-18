@@ -1,0 +1,36 @@
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 10px;
+}
+.box-frameworks {
+  --tw-border-opacity: 1;
+  border-color: rgba(239, 68, 68, var(--tw-border-opacity));
+  transition: 0.5s;
+  cursor: pointer;
+}
+.box-frameworks:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(0, 0, 0, var(--tw-border-opacity));
+  transition: 0.5s;
+}
+.icon-hover {
+  fill: black;
+  transition: 0.5s;
+}
+.box-frameworks:hover .icon-hover {
+  transition: 0.5s;
+  --tw-border-opacity: 1;
+  fill: rgba(239, 68, 68, var(--tw-border-opacity));
+}
+
+.txt-hover-framework {
+  transition: 0.5s;
+  --tw-border-opacity: 1;
+}
+
+.box-frameworks:hover .txt-hover-framework {
+  transition: 0.5s;
+  --tw-border-opacity: 1;
+  color: rgba(239, 68, 68, var(--tw-border-opacity));
+}

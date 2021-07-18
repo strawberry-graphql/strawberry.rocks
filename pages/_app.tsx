@@ -9,6 +9,7 @@ import { NewsletterSection } from "~/components/newsletter-section";
 
 import "../styles/nprogress.css";
 import "../styles/tailwind.css";
+import "../styles/integrations.css";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
