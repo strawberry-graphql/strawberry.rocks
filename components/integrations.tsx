@@ -29,7 +29,7 @@ const Feature = ({ icon: Icon, children, ...props }: FeatureProps) => {
     >
       {Icon && <Icon className="fill-current block my-4 h-36 mx-auto" />}
 
-      <span className="flex space-x-3 items-center text-center">
+      <span className="space-x-3 flex justify-center items-center">
         <span>{children}</span>
 
         <ArrowRightIcon className="stroke-current inline-block mt-4" />
