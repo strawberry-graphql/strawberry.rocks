@@ -4,7 +4,6 @@ import { Features } from "~/components/features";
 import { Header } from "~/components/header";
 import { Hero } from "~/components/hero";
 import { FlashIcon } from "~/components/icons/flash";
-import { Integrations } from "~/components/integrations";
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
 import { fetchLatestRelease } from "~/lib/api";
@@ -46,14 +45,6 @@ const HomePage: NextPage<Props> = ({ version }) => (
           <FlashIcon className="w-24 h-40" />
         </div>
       </div>
-      <p className="mt-12 mb-6 font-bold text-xl text-center">
-        Integrations for all the most popular Python development frameworks
-      </p>{" "}
-      <p>
-        Discover how to integrate Strawberry GraphQL with the most used
-        frameworks in Python for web development
-      </p>
-      <Integrations />
     </div>
   </>
 );

@@ -14,18 +14,21 @@ const NavLink = ({ children, ...props }: LinkProps) => (
 export const Header = ({
   version,
   versionHref,
+  showLogo = true,
 }: {
   version?: string;
   versionHref?: string;
+  showLogo?: boolean;
 }) => {
   return (
     <header className="px-8 py-4 md:flex mx-auto w-full max-w-7xl justify-between md:items-center">
-      <div className="flex items-center justify-center mb-8">
-        <Link href="/">
-          <Logo height="90" />
-        </Link>
-      </div>
-
+      {showLogo ? (
+        <div className="flex items-center justify-center mb-8">
+          <Link href="/">
+            <Logo height="90" />
+          </Link>
+        </div>
+      ) : null}
       <div className="flex order-none md:order-first flex-1 items-center">
         <nav className="flex w-full md:w-auto justify-center md:justify-items-start space-x-10">
           <NavLink href="/docs" partialMatch>
