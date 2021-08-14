@@ -12,6 +12,7 @@ import { SEO } from "~/components/seo";
 import { DUMMY_CONTENT } from "~/helpers/next-mdx-remote";
 import { fetchTableOfContents } from "~/lib/api";
 import { ReturnedPromiseResolvedType } from "~/types/utility";
+import { FeedbackForm } from "./feedback-form";
 
 export type DocsPageProps = {
   source?: MdxRemote.Source;
@@ -50,6 +51,8 @@ const DocsPage: NextPage<DocsPageProps> = ({
           {data?.experimental && <ExperimentalWarning />}
 
           {!isFallback && content}
+
+          <FeedbackForm />
 
           {editPath && <EditOnGithub path={editPath} />}
         </div>
