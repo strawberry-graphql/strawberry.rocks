@@ -1,13 +1,57 @@
+import { useState } from "react";
+
 import { useToggle } from "~/helpers/use-toggle";
+
+const Success = () => (
+  <div>
+    <h1 className="font-bold text-3xl text-center mb-2">Thank you!</h1>
+
+    <div className="aspect-w-4 aspect-h-3 relative">
+      <iframe
+        src="https://giphy.com/embed/ddj3fbm2jsDCw"
+        width="100%"
+        height="100%"
+        frameBorder="0"
+        className="absolute"
+        allowFullScreen
+      ></iframe>
+    </div>
+  </div>
+);
 
 export const FeedbackForm = () => {
   const [textareaVisibile, _, setTextareaVisibile] = useToggle(false);
+  const [{ loading, error, success }, setApi] = useState({
+    loading: false,
+    error: false,
+    success: false,
+  });
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const form = e.target as HTMLFormElement;
+
+    const data = Object.fromEntries(new FormData(form));
+    data.url = window.location.href;
+
+    // TODO: send api request
+    setApi({ loading: true, error: false, success: false });
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setApi({ loading: false, error: false, success: true });
+  };
+
+  if (success) {
+    return <Success />;
+  }
 
   return (
     <div className="mt-8 border-t pt-8">
       <h1 className="font-bold text-center mb-2">Was this helpful?</h1>
 
-      <form onChange={() => setTextareaVisibile(true)}>
+      <form onChange={() => setTextareaVisibile(true)} onSubmit={submit}>
         <nav className="list-none flex justify-center space-x-4 mb-4">
           <li>
             <label className="cursor-pointer">
@@ -76,15 +120,27 @@ export const FeedbackForm = () => {
 
               <textarea
                 id="feedback"
+                name="feedback"
                 className="border w-full p-4 dark:text-white dark:bg-gray-700 "
                 required
                 placeholder="Feedback..."
               ></textarea>
             </div>
 
+            {error && (
+              <p className="text-red-500">
+                Something went wrong. Please try again.
+              </p>
+            )}
             <div className="flex justify-end">
-              <button className="border-2 border-blue-600 p-4 hover:bg-gray-50 text-blue-600 flex items-center justify-center dark:border-blue-300 dark:text-blue-300 dark:hover:bg-blue-900">
-                Send
+              <button
+                disabled={loading}
+                className="border-2 border-blue-600 p-4 hover:bg-gray-50 text-blue-600 flex items-center justify-center dark:border-blue-300 dark:text-blue-300 dark:hover:bg-blue-900 disabled:border-gray-500 disabled:text-gray-500"
+              >
+                {loading ? "Sending feedback" : "Send"}
+                {loading && (
+                  <span className="inline-block ml-2 animate-bounce">🍓</span>
+                )}
               </button>
             </div>
           </div>
