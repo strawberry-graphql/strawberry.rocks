@@ -27,7 +27,7 @@ export const Footer = () => (
         <NavItem href="/code-of-conduct/">Code of Conduct</NavItem>
       </nav>
       <nav className="text-right col-start-2 col-end-3 md:ml-auto">
-        <NavItem target="_blank" href="https://twitter.com/patrick91">
+        <NavItem target="_blank" href="https://twitter.com/strawberry_gql">
           Twitter
         </NavItem>
         <NavItem
