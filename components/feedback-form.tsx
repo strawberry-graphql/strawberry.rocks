@@ -2,19 +2,47 @@ import { useState } from "react";
 
 import { useToggle } from "~/helpers/use-toggle";
 
+const sendFeedback = async ({
+  sentiment,
+  feedback,
+  url,
+}: {
+  sentiment: string;
+  feedback: string;
+  url: string;
+}) => {
+  const request = await fetch("https://api.strawberry.rocks/graphql", {
+    method: "post",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      query:
+        "mutation ($input: SendFeedbackInput!) { sendFeedback(input: $input) }",
+      variables: { input: { feedback, sentiment, url } },
+    }),
+  });
+
+  const response = await request.json();
+
+  if (response.errors) {
+    throw new Error(JSON.stringify(response.errors));
+  }
+};
+
 const Success = () => (
   <div>
     <h1 className="font-bold text-3xl text-center mb-2">Thank you!</h1>
 
-    <div className="aspect-w-4 aspect-h-3 relative">
-      <iframe
-        src="https://giphy.com/embed/ddj3fbm2jsDCw"
-        width="100%"
-        height="100%"
-        frameBorder="0"
-        className="absolute"
-        allowFullScreen
-      ></iframe>
+    <div className="md:max-w-2xl m-auto">
+      <div className="aspect-w-4 aspect-h-3 relative">
+        <iframe
+          src="https://giphy.com/embed/ddj3fbm2jsDCw"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          className="absolute"
+          allowFullScreen
+        ></iframe>
+      </div>
     </div>
   </div>
 );
@@ -38,9 +66,15 @@ export const FeedbackForm = () => {
     // TODO: send api request
     setApi({ loading: true, error: false, success: false });
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    setApi({ loading: false, error: false, success: true });
+    try {
+      await sendFeedback(
+        data as { feedback: string; sentiment: string; url: string }
+      );
+      setApi({ loading: false, error: false, success: true });
+    } catch (e) {
+      console.error(e);
+      setApi({ loading: false, error: true, success: false });
+    }
   };
 
   if (success) {
