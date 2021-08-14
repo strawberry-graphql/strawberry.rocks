@@ -45,8 +45,7 @@ export const SEO = ({
         name: "twitter:card",
       },
       {
-        // TODO: maybe in future we'll have a strawberry twitter account
-        content: "patrick91",
+        content: "strawberry_gql",
         name: "twitter:creator",
       },
       {
