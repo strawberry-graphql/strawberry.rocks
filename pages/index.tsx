@@ -22,13 +22,10 @@ const HomePage: NextPage<Props> = ({ version }) => (
       <p className="mt-12 mb-6 font-bold text-xl">
         Learn how to create GraphQL API using Strawberry
       </p>
-
       <Link href="/docs/" className="text-red-500 text-lg" underline>
         View documentation 📝
       </Link>
-
       <Features />
-
       <div className="flex px-8 mt-32 my-24 text-left space-x-10">
         <div className="w-96 text-xl font-bold">
           Create GraphQL APIs in no time

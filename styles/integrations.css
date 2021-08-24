@@ -1,0 +1,8 @@
+.icon-integration {
+  fill: #ef4444;
+}
+@media (prefers-color-scheme: dark) {
+  .icon-integration {
+    fill: white;
+  }
+}
