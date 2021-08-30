@@ -1,6 +1,6 @@
 overwrite: true
 schema: ./node_modules/@octokit/graphql-schema/schema.graphql
-documents: 
+documents:
   - "./lib/*.ts"
 generates:
   ./types/graphql.d.ts:
