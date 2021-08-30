@@ -60,7 +60,7 @@
         "typescript": "^4.2.4"
     },
     "devDependencies": {
-        "@graphql-codegen/cli": "^1.21.4",
+        "@graphql-codegen/cli": "^2.1.1",
         "@graphql-codegen/typescript": "^1.22.0",
         "@graphql-codegen/typescript-operations": "^1.17.16",
         "@octokit/graphql-schema": "^10.36.0",
