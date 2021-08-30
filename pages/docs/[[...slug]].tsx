@@ -11,6 +11,7 @@ import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { provider } from "~/helpers/next-mdx-remote";
 import {
   fetchDocPage,
+  fetchLatestRelease,
   fetchTableOfContentsPaths,
   OWNER,
   REF,
@@ -38,6 +39,8 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   const ref = REF;
   const owner = OWNER;
   const repo = REPO;
+
+  const version = await fetchLatestRelease();
 
   try {
     /**
@@ -68,7 +71,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
     const editPath = `https://github.com/${owner}/${repo}/edit/${REF}/docs/${filename}`;
     return {
-      props: { source, data, editPath, docsToc, version: ref },
+      props: { source, data, editPath, docsToc, version },
       revalidate: 60,
     };
   } catch (error) {
