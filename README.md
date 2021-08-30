@@ -9,21 +9,32 @@ This repo only contains the template and design of the website.
 ## Docs
 
 **This shows the latest released version and not the master branch docs.**
+
 #### `https://strawberry.rocks/docs`
 
-Shows the latest [release](https://github.com/strawberry-graphql/strawberry/releases) from [Strawberry Graphql Repo]. These pages are rendered at build time and revalidated after 60 seconds. When a new release of Strawberry Graphql is done then the site should update [Strawberry GraphQL](https://strawberry.rocks) site by itself. Not requiring a re-deployment. 
+Shows the latest
+[release](https://github.com/strawberry-graphql/strawberry/releases) from
+[Strawberry Graphql Repo]. These pages are rendered at build time and
+revalidated after 60 seconds. When a new release of Strawberry Graphql is done
+then the site should update [Strawberry GraphQL](https://strawberry.rocks) site
+by itself. Not requiring a re-deployment.
 
 ### Pull Requests
 
 #### `https://strawberry.rocks/docs/pr/:pull-request-number`
 
-Pull requests on [Strawberry Graphql Repo] with a label of [ok-to-preview](https://github.com/strawberry-graphql/strawberry/pulls?q=is%3Apr+is%3Aopen+label%3Aok-to-preview) can be viewed. Theses are rendered on-demand and cached. They will be revalidated after 60 seconds.
+Pull requests on [Strawberry Graphql Repo] with a label of
+[ok-to-preview](https://github.com/strawberry-graphql/strawberry/pulls?q=is%3Apr+is%3Aopen+label%3Aok-to-preview)
+can be viewed. Theses are rendered on-demand and cached. They will be
+revalidated after 60 seconds.
 
 ### Version Releases
 
 #### `https://strawberry.rocks/docs/tag/:release-tag`
 
-[Releases](https://github.com/strawberry-graphql/strawberry/releases) of Strawberry Graphql can be viewed. Theses are rendered on-demand and cached. But are not revalidated on the server unless a new deployment is done.
+[Releases](https://github.com/strawberry-graphql/strawberry/releases) of
+Strawberry Graphql can be viewed. Theses are rendered on-demand and cached. But
+are not revalidated on the server unless a new deployment is done.
 
 ## How to setup the project
 
@@ -65,7 +76,8 @@ This should start the server on [http://localhost:3000](http://localhost:3000)
 
 ### GraphQL TypeScript Typings
 
-We generate the TypeScript typings for any GraphQL queries using. 
+We generate the TypeScript typings for any GraphQL queries using.
+
 - [@octokit/graphql-schema](https://github.com/octokit/graphql-schema)
 - [GraphQL Code Generator](https://graphql-code-generator.com/)
 
@@ -78,11 +90,12 @@ npm run codegen
 ```
 
 Any new GraphQL query will need a comment before it to generate theses typings.
+
 ```ts
-/* GraphQL */ `query GoesHere {}`
+/* GraphQL */ `query GoesHere {}`;
 ```
 
-### Debugging 
+### Debugging
 
 To run the website in debug mode:
 
@@ -90,7 +103,7 @@ To run the website in debug mode:
 npm run dev:inspect
 ```
 
-See next.js docs on the different ways to [connect to the debugger](https://nextjs.org/docs/advanced-features/debugging#step-2-connect-to-the-debugger).
+See next.js docs on the different ways to
+[connect to the debugger](https://nextjs.org/docs/advanced-features/debugging#step-2-connect-to-the-debugger).
 
-
-[Strawberry Graphql Repo]: https://github.com/strawberry-graphql/strawberry/
+[strawberry graphql repo]: https://github.com/strawberry-graphql/strawberry/

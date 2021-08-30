@@ -11,7 +11,6 @@ import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { provider } from "~/helpers/next-mdx-remote";
 import {
   fetchDocPage,
-  fetchLatestRelease,
   fetchTableOfContentsPaths,
   OWNER,
   REF,
@@ -19,7 +18,7 @@ import {
 } from "~/lib/api";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const ref = (await fetchLatestRelease()) ?? REF;
+  const ref = REF;
   const paths = await fetchTableOfContentsPaths({ ref });
 
   return { paths, fallback: true };
@@ -36,7 +35,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   /**
    * Get table of contents navigation data.
    */
-  const ref = (await fetchLatestRelease()) ?? REF;
+  const ref = REF;
   const owner = OWNER;
   const repo = REPO;
 
