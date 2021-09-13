@@ -49,13 +49,8 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     return { notFound: true };
   }
   try {
-    const {
-      branch,
-      owner,
-      repo,
-      pull_number,
-      html_url,
-    } = await fetchPullRequest({ pull_number: pullNumber });
+    const { branch, owner, repo, pull_number, html_url } =
+      await fetchPullRequest({ pull_number: pullNumber });
 
     /**
      * Shift slugs as we dont need the PR number for the filename.
