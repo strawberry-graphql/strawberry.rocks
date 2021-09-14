@@ -65,21 +65,19 @@ const CustomPrism = ({
 };
 
 // eslint-disable-next-line react/display-name
-const heading = (level: 1 | 2 | 3 | 4 | 5 | 6) => ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
-  return createElement(`h${level}`, {
-    className: cx("font-medium my-8", {
-      "text-3xl": level === 1,
-      "text-2xl": level === 2,
-      "text-xl": level >= 3,
-      underline: level > 1,
-    }),
-    children,
-  });
-};
+const heading =
+  (level: 1 | 2 | 3 | 4 | 5 | 6) =>
+  ({ children }: { children: ReactNode }) => {
+    return createElement(`h${level}`, {
+      className: cx("font-medium my-8", {
+        "text-3xl": level === 1,
+        "text-2xl": level === 2,
+        "text-xl": level >= 3,
+        underline: level > 1,
+      }),
+      children,
+    });
+  };
 
 const Paragraph = ({ children }: { children: ReactNode }) => (
   <p className="mb-4">{children}</p>
