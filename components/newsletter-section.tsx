@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMailchimp } from "react-use-mailchimp";
+import { useMailchimp } from "../helpers/use-mailchimp";
 
 import { ArrowRightIcon } from "./icons/arrow-right";
 
