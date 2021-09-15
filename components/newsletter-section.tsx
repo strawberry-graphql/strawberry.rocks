@@ -25,7 +25,7 @@ const Form = () => {
     return (
       <p
         className="font-bold text-xl"
-        dangerouslySetInnerHTML={{ __html: error }}
+        dangerouslySetInnerHTML={{ __html: error.toString() }}
       />
     );
   }

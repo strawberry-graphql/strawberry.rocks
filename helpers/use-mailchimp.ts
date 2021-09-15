@@ -13,12 +13,18 @@ const getDefaultState = () => ({
   data: null,
 });
 
-export const useMailchimp = ({ url }: { url: string }) => {
-  const [state, setState] = useState<{
-    error: null | Error;
-    loading: boolean;
-    data: null | string;
-  }>(getDefaultState);
+type State = {
+  error: null | Error;
+  loading: boolean;
+  data: null | {result: string};
+};
+
+export const useMailchimp: (options: {url: string}) => [
+  State,
+  (data: { EMAIL: string }) => void,
+  () => void
+] = ({ url }: { url: string }) => {
+  const [state, setState] = useState<State>(getDefaultState);
 
   const reset = () => {
     setState(getDefaultState());
