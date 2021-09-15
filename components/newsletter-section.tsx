@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMailchimp } from "react-use-mailchimp";
+import { useMailchimp } from "../helpers/use-mailchimp";
 
 import { ArrowRightIcon } from "./icons/arrow-right";
 
@@ -25,7 +25,7 @@ const Form = () => {
     return (
       <p
         className="font-bold text-xl"
-        dangerouslySetInnerHTML={{ __html: error }}
+        dangerouslySetInnerHTML={{ __html: error.toString() }}
       />
     );
   }
