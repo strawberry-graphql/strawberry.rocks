@@ -2,33 +2,29 @@ import { anchorLinks } from "@hashicorp/remark-plugins";
 import matter from "gray-matter";
 
 import { GetStaticProps, NextPage } from "next";
-import hydrate from "next-mdx-remote/hydrate";
-import renderToString from "next-mdx-remote/render-to-string";
-import { MdxRemote } from "next-mdx-remote/types";
+import { MDXRemote } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 
 import { Header } from "~/components/header";
 import components from "~/components/mdx";
 import { SEO } from "~/components/seo";
-import { provider } from "~/helpers/next-mdx-remote";
 import { fetchCodeOfConduct } from "~/lib/api";
 
 type Props = {
-  source: MdxRemote.Source;
+  source: any;
   version?: string;
 };
 
 const CodeOfConductPage: NextPage<Props> = ({ source, version }) => {
-  const content = hydrate(source, {
-    components,
-  });
-
   return (
     <>
       <SEO title="Code of Conduct" />
 
       <Header version={version} />
 
-      <div className="mx-auto w-full max-w-7xl p-8 pb-12">{content}</div>
+      <div className="mx-auto w-full max-w-7xl p-8 pb-12">
+        <MDXRemote {...source} components={components} />
+      </div>
     </>
   );
 };
@@ -45,9 +41,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     }
     const { content } = matter(body);
 
-    const source = await renderToString(content, {
-      components,
-      provider,
+    const source = await serialize(content, {
       mdxOptions: {
         remarkPlugins: [anchorLinks],
       },
