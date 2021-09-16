@@ -3,12 +3,11 @@ import { anchorLinks } from "@hashicorp/remark-plugins";
 import matter from "gray-matter";
 
 import { GetStaticPaths, GetStaticProps } from "next";
-import renderToString from "next-mdx-remote/render-to-string";
+import { serialize } from "next-mdx-remote/serialize";
 
 import DocsPage, { DocsPageProps } from "~/components/doc";
 import components from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
-import { provider } from "~/helpers/next-mdx-remote";
 import { fetchDocPage, fetchPullRequest } from "~/lib/api";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -70,10 +69,8 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     });
 
     const { data, content } = matter(page);
-    const source = await renderToString(content, {
-      components,
+    const source = await serialize(content, {
       scope: data,
-      provider,
       mdxOptions: {
         remarkPlugins: [
           fixImagePathsPlugin({ path: filename, ref: branch, owner, repo }),
