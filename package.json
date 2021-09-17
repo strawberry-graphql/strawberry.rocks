@@ -34,7 +34,7 @@
         "@mdx-js/loader": "^1.6.22",
         "@mdx-js/mdx": "^1.6.22",
         "@mdx-js/react": "^1.6.22",
-        "@next/mdx": "^10.2.0",
+        "@next/mdx": "^11.1.2",
         "@octokit/core": "^3.4.0",
         "@octokit/plugin-paginate-rest": "^2.16.3",
         "@tailwindcss/aspect-ratio": "^0.2.0",
