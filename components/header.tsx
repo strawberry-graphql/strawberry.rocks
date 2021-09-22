@@ -76,7 +76,6 @@ export const Header = ({
           </Link>
         )}
       </div>
-
     </header>
   );
 };
