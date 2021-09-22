@@ -74,8 +74,14 @@ function Nav({ docs }: { docs: DocsTree }) {
         }
 
         return (
-          <a href={section.href} className="flex justify-between" key={section.href}>
-            <h2 className="capitalize font-bold text-xl mb-2">{section.text}</h2>
+          <a
+            href={section.href}
+            className="flex justify-between"
+            key={section.href}
+          >
+            <h2 className="capitalize font-bold text-xl mb-2">
+              {section.text}
+            </h2>
             <span>&gt;</span>
           </a>
         );
