@@ -1,3 +1,4 @@
+import "@docsearch/css/dist/style.css";
 import NProgress from "nprogress";
 
 import type { AppProps } from "next/app";

@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 
+:root {
+  --docsearch-primary-color: rgb(239, 68, 68);
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
