@@ -1,3 +1,5 @@
+import { DocSearch } from "@docsearch/react";
+
 import { Link, LinkProps } from "./link";
 import { Logo } from "./logo";
 
@@ -47,9 +49,20 @@ export const Header = ({
             </svg>
           </NavLink>
         </nav>
+        <div className="mr-4 md:hidden">
+          <DocSearch
+            apiKey="8ee41ea246aba5e4949e7a56b3b5cdba"
+            indexName="strawberry"
+          />
+        </div>
       </div>
       <div className="hidden md:flex justify-end items-center flex-1">
-        {/* <Search /> */}
+        <div className="mr-4">
+          <DocSearch
+            apiKey="8ee41ea246aba5e4949e7a56b3b5cdba"
+            indexName="strawberry"
+          />
+        </div>
         {version && (
           <Link
             className="no-underline bg-red-500 p-2 text-white hover:bg-red-300 hover:text-black"
@@ -63,6 +76,7 @@ export const Header = ({
           </Link>
         )}
       </div>
+
     </header>
   );
 };
