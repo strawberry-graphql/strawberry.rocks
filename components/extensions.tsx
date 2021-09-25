@@ -15,6 +15,7 @@ import { FeedbackForm } from "./feedback-form";
 
 type ExtensionSummary = {
   href: string;
+  searchString: string;
   data: {
     title: string;
     summary: string;
@@ -40,45 +41,23 @@ const ExtensionsPage: NextPage<ExtensionsPageProps> = ({
   version,
   versionHref,
 }) => {
-  const searchIndex = useRef<SearchDocument[] | null>(null);
-
   const [searchState, setSearchState] = useState<{
-    isReady: boolean;
     query: string;
     results: ExtensionSummary[];
   }>({
-    isReady: false,
     query: "",
     results: extensions,
   });
-
-  useEffect(() => {
-    // Build a simple index which just generates a string with all the search
-    // parameters
-    searchIndex.current = extensions.map((extension) => ({
-      index: [
-        extension.data.title.toLowerCase(),
-        extension.data.summary.toLowerCase(),
-        extension.data.tags.toLowerCase().split(",").join(" "),
-      ].join(" "),
-      extension,
-    }));
-
-    setSearchState((state) => ({
-      ...state,
-      isReady: true,
-    }));
-  }, []);
 
   function updateSearchQuery(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
 
     let results: ExtensionSummary[] = [];
     // Perform search
-    if (searchIndex.current && value.length > 0) {
-      for (const searchDocument of searchIndex.current) {
-        if (searchDocument.index.indexOf(value.toLowerCase()) > -1) {
-          results.push(searchDocument.extension);
+    if (value.length > 0) {
+      for (const extension of extensions) {
+        if (extension.searchString.indexOf(value.toLowerCase()) > -1) {
+          results.push(extension);
         }
       }
     } else {
@@ -122,15 +101,13 @@ const ExtensionsPage: NextPage<ExtensionsPageProps> = ({
             .
           </p>
 
-          {searchState.isReady ? (
-            <input
-              className="focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2 border-gray-300 border-b"
-              placeholder="Find an extension..."
-              type="text"
-              value={searchState.query}
-              onChange={updateSearchQuery}
-            />
-          ) : null}
+          <input
+            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2 border-gray-300 border-b"
+            placeholder="Find an extension..."
+            type="text"
+            value={searchState.query}
+            onChange={updateSearchQuery}
+          />
 
           <ul className="list-none">
             {searchState.results.map((extension) => (
