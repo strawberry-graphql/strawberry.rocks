@@ -9,6 +9,7 @@ import { GithubCollaborator, TableOfContentsPath } from "~/types/api";
 import {
   CodeOfConductQuery,
   DocPageQuery,
+  ExtensionsPageQuery,
   FileQuery,
   LatestReleaseQuery,
   PullRequestQuery,
@@ -348,6 +349,77 @@ export const fetchDocPage = async ({
     }
     return {
       page: pageText,
+      tableContent:
+        tableContentText != null
+          ? await getDocTree(tableContentText, prefix)
+          : null,
+    };
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("fetchFile:", error);
+    throw error;
+  }
+};
+
+export const fetchExtensions = async ({
+  prefix,
+  owner = OWNER,
+  repo = REPO,
+  ref = REF,
+}: {
+  prefix: string;
+  owner?: string;
+  repo?: string;
+  ref?: string;
+}) => {
+  try {
+    const response = await octokit.graphql<ExtensionsPageQuery>(
+      /* GraphQL */
+      `
+        query extensionsPage(
+          $owner: String!
+          $repo: String!
+          $filename: String!
+          $tablecontent: String!
+        ) {
+          repository(owner: $owner, name: $repo) {
+            object(expression: $filename) {
+              ... on Tree {
+                entries {
+                  name
+                  path
+                  type
+                  object {
+                    ... on Blob {
+                      text
+                    }
+                  }
+                }
+              }
+            }
+            tableOfContents: object(expression: $tablecontent) {
+              ... on Blob {
+                text
+              }
+            }
+          }
+        }
+      `,
+      {
+        owner,
+        repo,
+        filename: `${ref}:docs/extensions`,
+        tablecontent: `${ref}:docs/README.md`,
+      }
+    );
+
+    const extensions = response.repository?.object?.entries;
+    if (extensions == null) {
+      throw new Error("no extensions");
+    }
+    const tableContentText = response.repository?.tableOfContents?.text;
+    return {
+      extensions,
       tableContent:
         tableContentText != null
           ? await getDocTree(tableContentText, prefix)

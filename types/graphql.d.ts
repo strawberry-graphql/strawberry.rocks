@@ -21066,3 +21066,19 @@ export type DocPageQueryVariables = Exact<{
 
 
 export type DocPageQuery = { repository?: Maybe<{ object?: Maybe<Pick<Blob, 'text'>>, tableOfContents?: Maybe<Pick<Blob, 'text'>> }> };
+
+export type ExtensionsPageQuery = {
+  repository?: Maybe<{
+    object?: {
+      entries: {
+        name: string;
+        path: string;
+        type: string;
+        object: {
+          text: string;
+        };
+      }[],
+    },
+    tableOfContents?: Maybe<Pick<Blob, 'text'>>
+  }>
+};

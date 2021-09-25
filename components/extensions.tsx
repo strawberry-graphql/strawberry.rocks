@@ -10,17 +10,14 @@ import components from "~/components/mdx";
 import { SEO } from "~/components/seo";
 import { fetchTableOfContents } from "~/lib/api";
 import { ReturnedPromiseResolvedType } from "~/types/utility";
+import { ExtensionDocData } from "~/types/extensions";
 
 import { FeedbackForm } from "./feedback-form";
 
 type ExtensionSummary = {
   href: string;
   searchString: string;
-  data: {
-    title: string;
-    summary: string;
-    tags: string;
-  };
+  data: ExtensionDocData;
 };
 
 export type ExtensionsPageProps = {
