@@ -47,7 +47,11 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
     const extensionData = [];
 
     for (const extensionPage of extensions) {
-      if (!extensionPage || !extensionPage.object || !extensionPage.object.text) {
+      if (
+        !extensionPage ||
+        !extensionPage.object ||
+        !extensionPage.object.text
+      ) {
         continue;
       }
 
