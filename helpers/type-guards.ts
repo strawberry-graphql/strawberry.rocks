@@ -2,6 +2,7 @@ import { Tokens } from "marked";
 
 import { GithubCollaborator } from "~/types/api";
 import { TokenListItem, TokenText } from "~/types/marked";
+import { ExtensionDocData } from "~/types/extensions";
 
 export const isString = (x: any): x is string => {
   return typeof x === "string";
@@ -29,4 +30,10 @@ export const isLink = (token: any): token is Tokens.Link => {
 
 export const isListItemWithTokens = (token: any): token is TokenListItem => {
   return token?.type === "list_item" && token?.tokens != null;
+};
+
+export const extensionDataIsComplete = (data: {
+  [key: string]: any;
+}): data is ExtensionDocData => {
+  return !!data.title && !!data.summary && data.tags;
 };

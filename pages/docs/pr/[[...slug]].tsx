@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
    * We want to render PR pages on demand and not at build time.
    * So paths is an empty array.
    */
-  return { paths: [], fallback: true };
+  return { paths: [], fallback: "blocking" };
 };
 
 const getPullRequestNumber = (slug: string[]): number | null => {

@@ -1,6 +1,6 @@
 import marked, { Tokens } from "marked";
 
-import { DocsTree } from "~/components/docs-navigation";
+import { DocsTree, Section } from "~/components/docs-navigation";
 import { addHrefPrefix } from "~/helpers/params";
 import {
   isHeading,
@@ -26,6 +26,15 @@ export function getDocTree(text: string, prefix: string) {
 
   tokens.forEach((token) => {
     if (isHeading(token) && token.depth === 2) {
+      if (isLink(token.tokens[0])) {
+        const link: Tokens.Link = token.tokens[0];
+        const sectionName = link.text;
+
+        sections[sectionName] = {
+          href: addHrefPrefix(link.href, prefix),
+          text: link.text,
+        };
+      }
       currentSection = token.text;
     }
 
@@ -38,7 +47,7 @@ export function getDocTree(text: string, prefix: string) {
       }
 
       const links: Tokens.Link[] = getMDLinks(token.items);
-      sections[currentSection].links = links.map((link) => ({
+      (sections[currentSection] as Section).links = links.map((link) => ({
         href: addHrefPrefix(link.href, prefix),
         text: link.text,
       }));

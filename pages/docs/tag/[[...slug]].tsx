@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
    * We want to render tag pages on demand and not at build time.
    * So paths is an empty array.
    */
-  return { paths: [], fallback: true };
+  return { paths: [], fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps<DocsPageProps> = async ({

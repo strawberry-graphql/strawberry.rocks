@@ -9,15 +9,26 @@ import { CloseIcon } from "./icons/close";
 import { NavigationIcon } from "./icons/navigation";
 import { Link } from "./link";
 
-export type DocsTree = {
-  [section: string]: {
-    name: string;
-    links: {
-      text: string;
-      href: string;
-    }[];
-  };
+export type Section = {
+  name: string;
+  links: {
+    text: string;
+    href: string;
+  }[];
 };
+
+export type SectionLink = {
+  href: string;
+  text: string;
+};
+
+export type DocsTree = {
+  [section: string]: Section | SectionLink;
+};
+
+function isSection(section: any): section is Section {
+  return section.name !== undefined;
+}
 
 const ExperimentalBadge = () => (
   <span className="text-black text-xs bg-red-200 inline-block rounded p-1 ml-1">
@@ -50,13 +61,31 @@ const getDocsLink = ({ text, href }: { text: string; href: string }) => {
 function Nav({ docs }: { docs: DocsTree }) {
   return (
     <>
-      {Object.values(docs).map(({ name, links }) => (
-        <Fragment key={name}>
-          <h2 className="capitalize font-bold text-xl mb-2">{name}</h2>
+      {Object.values(docs).map((section) => {
+        if (isSection(section)) {
+          const { name, links } = section;
+          return (
+            <Fragment key={name}>
+              <h2 className="capitalize font-bold text-xl mb-2">{name}</h2>
 
-          <nav className="mb-4">{links.map(getDocsLink)}</nav>
-        </Fragment>
-      ))}
+              <nav className="mb-4">{links.map(getDocsLink)}</nav>
+            </Fragment>
+          );
+        }
+
+        return (
+          <a
+            href={section.href}
+            className="flex justify-between"
+            key={section.href}
+          >
+            <h2 className="capitalize font-bold text-xl mb-2">
+              {section.text}
+            </h2>
+            <span>&gt;</span>
+          </a>
+        );
+      })}
     </>
   );
 }
