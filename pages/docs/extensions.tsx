@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
       ref,
     });
 
-    const extensionData = []
+    const extensionData = [];
 
     for (const extensionPage of extensions) {
       if (extensionPage.name.startsWith("_")) {

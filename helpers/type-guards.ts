@@ -32,6 +32,8 @@ export const isListItemWithTokens = (token: any): token is TokenListItem => {
   return token?.type === "list_item" && token?.tokens != null;
 };
 
-export const extensionDataIsComplete = (data: { [key: string]: any }): data is ExtensionDocData => {
-  return (!!data.title && !!data.summary && data.tags);
+export const extensionDataIsComplete = (data: {
+  [key: string]: any;
+}): data is ExtensionDocData => {
+  return !!data.title && !!data.summary && data.tags;
 };

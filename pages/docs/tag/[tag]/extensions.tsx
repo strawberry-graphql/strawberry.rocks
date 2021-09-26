@@ -10,11 +10,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import ExtensionsPage, { ExtensionsPageProps } from "~/components/extensions";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { urlToSlugs } from "~/helpers/params";
-import {
-  fetchExtensions,
-  OWNER,
-  REPO,
-} from "~/lib/api";
+import { fetchExtensions, OWNER, REPO } from "~/lib/api";
 import { getDocTree } from "~/lib/doc-tree";
 import { extensionDataIsComplete } from "~/helpers/type-guards";
 import { createExtensionSearchString } from "~/helpers/extensions";
@@ -53,7 +49,7 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
       ref: tag,
     });
 
-    const extensionData = []
+    const extensionData = [];
 
     for (const extensionPage of extensions) {
       if (extensionPage.name.startsWith("_")) {

@@ -27,7 +27,7 @@ export function getDocTree(text: string, prefix: string) {
   tokens.forEach((token) => {
     if (isHeading(token) && token.depth === 2) {
       if (isLink(token.tokens[0])) {
-        const link: Tokens.Link = token.tokens[0]
+        const link: Tokens.Link = token.tokens[0];
         const sectionName = link.text;
 
         sections[sectionName] = {
