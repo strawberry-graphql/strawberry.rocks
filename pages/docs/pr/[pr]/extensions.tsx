@@ -60,6 +60,10 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
     const extensionData = [];
 
     for (const extensionPage of extensions) {
+      if (!extensionPage || !extensionPage.object || !extensionPage.object.text) {
+        continue;
+      }
+
       if (extensionPage.name.startsWith("_")) {
         continue;
       }
