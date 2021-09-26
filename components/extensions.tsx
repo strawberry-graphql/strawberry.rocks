@@ -88,7 +88,7 @@ const ExtensionsPage: NextPage<ExtensionsPageProps> = ({
 
           <p className="mb-4">
             If you can't find what you need here you can also build your own
-            custom extensions based on a standard interface. More details{" "}
+            custom extension based on a standard interface. More details{" "}
             <Link
               href="/docs/guides/custom-extensions"
               className="text-red-500 text-lg"

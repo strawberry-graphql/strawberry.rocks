@@ -12,6 +12,7 @@ import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { urlToSlugs } from "~/helpers/params";
 import {
   fetchExtensions,
+  fetchPullRequest,
   OWNER,
   REPO,
 } from "~/lib/api";
@@ -30,27 +31,35 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
   params,
 }) => {
-  const tag = params?.tag;
+  const pr = params?.pr;
 
-  if (tag == null || Array.isArray(tag) || !tag.length) {
+  if (pr == null || Array.isArray(pr) || !pr.length) {
     /**
      * Redirect if no tag string.
      */
     return { redirect: { destination: "/docs", permanent: true } };
   }
 
-  const owner = OWNER;
-  const repo = REPO;
+  const pullNumber = parseInt(pr, 10);
+  if (isNaN(pullNumber)) {
+    /**
+     * 404 if provided pull request number is not valid. Saves a query.
+     */
+    return { notFound: true };
+  }
 
   try {
+    const { branch, owner, repo, pull_number, html_url } =
+      await fetchPullRequest({ pull_number: pullNumber });
+
     /**
      * Get extensions
      */
     const { extensions, tableContent: docsToc } = await fetchExtensions({
-      prefix: `/docs/tag/${tag}/`,
+      prefix: `/docs/pr/${pull_number}/`,
       owner,
       repo,
-      ref: tag,
+      ref: branch,
     });
 
     const extensionData = []
@@ -67,7 +76,7 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
       }
 
       extensionData.push({
-        href: `/docs/tag/${tag}/extensions/${urlToSlugs(extensionPage.name)}`,
+        href: `/docs/pr/${pull_number}/extensions/${urlToSlugs(extensionPage.name)}`,
         searchString: createExtensionSearchString(data),
         data,
       });
@@ -77,14 +86,15 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
       props: {
         docsToc,
         extensions: extensionData,
-        version: `${tag}`,
+        version: `PR ${pull_number}`,
+        versionHref: html_url,
       },
-      revalidate: false,
+      revalidate: 5,
     };
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("getStaticProps:", error);
-    return { notFound: true, revalidate: false };
+    return { notFound: true, revalidate: 5 };
   }
 };
 
