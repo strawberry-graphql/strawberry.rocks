@@ -43,7 +43,7 @@ const ExtensionsPage: NextPage<ExtensionsPageProps> = ({
     results: ExtensionSummary[];
   }>({
     query: "",
-    results: extensions,
+    results: extensions || [],
   });
 
   function updateSearchQuery(event: React.ChangeEvent<HTMLInputElement>) {
