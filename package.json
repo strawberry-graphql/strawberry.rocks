@@ -39,7 +39,7 @@
         "@octokit/core": "^3.4.0",
         "@octokit/plugin-paginate-rest": "^2.16.3",
         "@tailwindcss/aspect-ratio": "^0.2.0",
-        "algoliasearch": "^4.9.1",
+        "algoliasearch": "^4.10.5",
         "classnames": "^2.3.1",
         "dotenv": "^10.0.0",
         "github-slugger": "^1.4.0",
