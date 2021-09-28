@@ -15,6 +15,7 @@ import {
   REF,
   REPO,
 } from "~/lib/api";
+import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const ref = REF;
@@ -58,6 +59,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
     const source = await serialize(content, {
       scope: data,
       mdxOptions: {
+        rehypePlugins: [RehypeHighlightCode],
         remarkPlugins: [
           fixImagePathsPlugin({ path: filename, ref }),
           anchorLinks,

@@ -5,6 +5,16 @@
   --docsearch-primary-color: rgb(239, 68, 68);
 }
 
+
+
+.code-dimmed-line {
+  opacity: 0.5;
+}
+
+.code-highlighted-line {
+  opacity: 1;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;

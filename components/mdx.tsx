@@ -3,7 +3,6 @@ import GithubSlugger from "github-slugger";
 import { createElement, ReactChild, ReactElement, ReactNode } from "react";
 
 import { AdditionalResources } from "./additional-resources";
-import { CodeBlock } from "./code-block";
 import { GraphQLExample } from "./graphql-example";
 import { SchemaExample } from "./schema-example";
 
@@ -35,34 +34,34 @@ const DocsImage = ({ src, ...props }: { src: string }) => (
   <img className="border-2 border-red-500 max-w-full" src={src} {...props} />
 );
 
-const CustomPrism = ({
-  className,
-  children,
-}: {
-  className: string;
-  children: string;
-}) => {
-  const [language]: string[] = className
-    ? className.replace(/language-/, "").split(" ")
-    : [""];
-  if (language === "graphql+response") {
-    const [query, response] = children.split("---");
-    if (!query || !response) {
-      throw new Error("Invalid content for language `graphql+response`");
-    }
-    return <GraphQLExample query={query} response={response} />;
-  }
+// const CustomPrism = ({
+//   className,
+//   children,
+// }: {
+//   className: string;
+//   children: string;
+// }) => {
+//   const [language]: string[] = className
+//     ? className.replace(/language-/, "").split(" ")
+//     : [""];
+//   if (language === "graphql+response") {
+//     const [query, response] = children.split("---");
+//     if (!query || !response) {
+//       throw new Error("Invalid content for language `graphql+response`");
+//     }
+//     return <GraphQLExample query={query} response={response} />;
+//   }
 
-  if (language === "python+schema") {
-    const [python, schema] = children.split("---");
-    if (!python || !schema) {
-      throw new Error("Invalid content for language `python+schema`");
-    }
-    return <SchemaExample python={python} schema={schema} />;
-  }
+//   if (language === "python+schema") {
+//     const [python, schema] = children.split("---");
+//     if (!python || !schema) {
+//       throw new Error("Invalid content for language `python+schema`");
+//     }
+//     return <SchemaExample python={python} schema={schema} />;
+//   }
 
-  return <CodeBlock language={language}>{children}</CodeBlock>;
-};
+//   return <CodeBlock language={language}>{children}</CodeBlock>;
+// };
 
 // eslint-disable-next-line react/display-name
 const heading =
@@ -137,12 +136,10 @@ const Separator = () => (
 );
 
 const Pre = ({ children }: { children: ReactNode }) => {
-  const props = (children as ReactElement)?.props;
-
   return (
-    <div className="mb-8">
-      <CustomPrism {...props} />
-    </div>
+    <pre className="mb-8 font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800">
+      {children}
+    </pre>
   );
 };
 

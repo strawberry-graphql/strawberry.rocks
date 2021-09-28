@@ -1,6 +1,6 @@
 import { dirname, join } from "path";
 import { Node } from "unist";
-import visit from "unist-util-visit";
+import { visit } from "unist-util-visit";
 
 import { OWNER, REF, REPO } from "~/lib/api";
 
@@ -20,7 +20,7 @@ export const fixImagePathsPlugin =
   }) =>
   () =>
   (tree: Node) => {
-    visit(tree, "image", (node) => {
+    visit(tree, "image", (node: Node) => {
       const url = isString(node.url) ? node.url : "";
 
       if (url.startsWith(".")) {

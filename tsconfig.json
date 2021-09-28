@@ -28,6 +28,9 @@
             "~/helpers/*": [
                 "./helpers/*"
             ],
+            "~/rehype-plugins/*": [
+                "./rehype-plugins/*"
+            ],
             "~/lib/*": [
                 "./lib/*"
             ],
