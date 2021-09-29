@@ -5,14 +5,20 @@
   --docsearch-primary-color: rgb(239, 68, 68);
 }
 
-
-
 .code-dimmed-line {
   opacity: 0.5;
 }
 
 .code-highlighted-line {
   opacity: 1;
+}
+
+.code-highlighted-word {
+  position: relative;
+  background-color: rgba(239, 68, 68, 0.4);
+  border-radius: 2px;
+  padding: 4px;
+  margin: -4px;
 }
 
 code[class*="language-"],

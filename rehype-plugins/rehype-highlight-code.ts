@@ -9,7 +9,7 @@ import markdown from "refractor/lang/markdown";
 import python from "refractor/lang/python";
 import parse from "rehype-parse";
 import { Plugin, unified } from "unified";
-import { visit } from "unist-util-visit";
+import { Parent, visit } from "unist-util-visit";
 
 refractor.register(python);
 refractor.register(graphql);
@@ -67,11 +67,92 @@ const highlightLines = (root: Root, lines: number[]) => {
       type: "element",
       tagName: "div",
       properties: {
+        dataLine: lineNumber,
         className: className,
       },
       children,
     };
   }) as typeof root.children;
+
+  return root;
+};
+
+const highlightWords = (root: Root, words: string[]) => {
+  if (words.length === 0) {
+    return root;
+  }
+
+  // @ts-ignore
+  root.children = root.children.flatMap((node) => {
+    if (node.type === "text") {
+      const initial = node.value;
+
+      const start: string[] = [];
+      const end: string[] = [];
+
+      while (node.value.match(/^[ \"]/)) {
+        const char = node.value[0];
+        node.value = node.value.slice(1);
+        start.push(char);
+      }
+
+      while (node.value.match(/[ \"]$/)) {
+        const char = node.value[node.value.length - 1];
+        node.value = node.value.slice(0, -1);
+        // we are adding things from the end so we always need
+        // to add each char at the beginning of the array
+        end.unshift(char);
+      }
+
+      const middle = (node.value as string)
+        .split(" ")
+        .flatMap((word) => {
+          if (words.includes(word.replace(/"/g, ""))) {
+            return [
+              {
+                type: "element",
+                tagName: "span",
+                properties: {
+                  className: "code-highlighted-word",
+                },
+                children: [
+                  {
+                    type: "text",
+                    value: word,
+                  },
+                ],
+              },
+              { type: "text", value: " " },
+            ];
+          }
+
+          return [
+            { type: "text", value: word },
+            { type: "text", value: " " },
+          ];
+        })
+        .slice(0, -1);
+
+      return [
+        ...start.map((text) => ({
+          type: "text",
+          value: text,
+        })),
+        ...middle,
+        ...end.map((text) => ({
+          type: "text",
+          value: text,
+        })),
+      ];
+    }
+
+    if (node.children) {
+      // @ts-ignore
+      return highlightWords(node, words);
+    }
+
+    return node;
+  });
 
   return root;
 };
@@ -100,13 +181,18 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
         ? rangeParser(properties.line)
         : [];
 
+      const wordsToHighlight = properties.highlight
+        ? (properties.highlight as string).split(",")
+        : [];
+
       // @ts-ignore
       const html = toHtml(root);
       const hast = unified()
         .use(parse, { emitParseErrors: true, fragment: true })
         .parse(html);
 
-      const result = highlightLines(hast, linesToHighlight);
+      let result = highlightLines(hast, linesToHighlight);
+      result = highlightWords(result, wordsToHighlight);
       // TODO: highlight word somehow
 
       node.children = result.children;
