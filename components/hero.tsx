@@ -26,7 +26,8 @@ export const Hero = () => {
           dataclasses.
         </h1>
       </div>
-      <CodeBox code={code} />
+
+        <CodeBox code={code} />
     </div>
   );
 };
