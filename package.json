@@ -60,6 +60,7 @@
         "react-refractor": "^2.1.4",
         "refractor": "^4.2.1",
         "rehype-parse": "^8.0.3",
+        "remark-toc": "^8.0.0",
         "to-querystring": "^1.1.1",
         "ts-node": "^10.2.1",
         "typescript": "^4.4.3",

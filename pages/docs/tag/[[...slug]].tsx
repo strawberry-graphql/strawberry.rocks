@@ -8,6 +8,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import DocsPage, { DocsPageProps } from "~/components/doc";
 import components from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
+import { serializePage } from "~/helpers/mdx";
 import { fetchDocPage, OWNER, REPO } from "~/lib/api";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -54,15 +55,12 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       ref: tag,
     });
 
-    const { data, content } = matter(page);
-    const source = await serialize(content, {
-      scope: data,
-      mdxOptions: {
-        remarkPlugins: [
-          fixImagePathsPlugin({ path: filename, ref: tag, owner, repo }),
-          anchorLinks,
-        ],
-      },
+    const { source, data } = await serializePage({
+      page,
+      filename,
+      ref: tag,
+      owner,
+      repo,
     });
 
     return {
