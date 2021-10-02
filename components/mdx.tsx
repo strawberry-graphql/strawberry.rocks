@@ -183,8 +183,18 @@ const CodeNotes = ({
   );
 };
 
-const BaseBlock = ({ heading, color, children}: { heading: string, color: string, children: ReactNode }) => (
-  <div className={`border-l-4 border-${color}-500 shadow-sm mb-4 overflow-auto`}>
+const BaseBlock = ({
+  heading,
+  color,
+  children,
+}: {
+  heading: string;
+  color: string;
+  children: ReactNode;
+}) => (
+  <div
+    className={`border-l-4 border-${color}-500 shadow-sm mb-4 overflow-auto`}
+  >
     <div className={`bg-${color}-100 py-2 px-3 mb-2 font-bold`}>{heading}</div>
     <blockquote className="px-3">{children}</blockquote>
   </div>
