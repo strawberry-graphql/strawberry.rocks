@@ -25,10 +25,8 @@ export const serializePage = async ({
   const source = await serialize(content, {
     scope: data,
     mdxOptions: {
-      rehypePlugins: [RehypeHighlightCode, RehypeTOC({ onlyLinks: true })],
-      remarkPlugins: [
-        fixImagePathsPlugin({ path: filename, ref }),
-      ],
+      rehypePlugins: [RehypeHighlightCode, RehypeTOC({ onlyLinks: !data.toc })],
+      remarkPlugins: [fixImagePathsPlugin({ path: filename, ref })],
     },
   });
 

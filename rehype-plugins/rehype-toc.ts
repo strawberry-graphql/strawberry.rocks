@@ -113,23 +113,25 @@ export const RehypeTOC =
 
       visit(tree, "element", collectAndAddLinksToHeaders);
 
-      // find the first h1 and add the toc after it
-      let didAddToc = false;
+      if (!options.onlyLinks) {
+        // find the first h1 and add the toc after it
+        let didAddToc = false;
 
-      visit(tree, "element", (node, index, parent) => {
-        if (didAddToc) {
-          return;
-        }
+        visit(tree, "element", (node, index, parent) => {
+          if (didAddToc) {
+            return;
+          }
 
-        if (node.tagName === "h1" && index !== null) {
-          parent.children.splice(
-            index + 1,
-            0,
-            getTableOfContentsList(root, { level: 0, title: node })
-          );
+          if (node.tagName === "h1" && index !== null) {
+            parent.children.splice(
+              index + 1,
+              0,
+              getTableOfContentsList(root, { level: 0, title: node })
+            );
 
-          didAddToc = true;
-        }
-      });
+            didAddToc = true;
+          }
+        });
+      }
     };
   };
