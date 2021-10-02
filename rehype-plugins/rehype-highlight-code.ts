@@ -9,7 +9,7 @@ import markdown from "refractor/lang/markdown";
 import python from "refractor/lang/python";
 import parse from "rehype-parse";
 import { Plugin, unified } from "unified";
-import { Parent, visit } from "unist-util-visit";
+import { visit } from "unist-util-visit";
 
 refractor.register(python);
 refractor.register(graphql);
@@ -193,7 +193,6 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
 
       let result = highlightLines(hast, linesToHighlight);
       result = highlightWords(result, wordsToHighlight);
-      // TODO: highlight word somehow
 
       node.children = result.children;
     }

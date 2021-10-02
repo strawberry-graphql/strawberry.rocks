@@ -82,8 +82,10 @@ const Paragraph = ({ children }: { children: ReactNode }) => (
   <p className="mb-4">{children}</p>
 );
 
-const UnorderedList = ({ children }: { children: ReactNode }) => (
-  <ul className="mb-4 list-disc list-inside">{children}</ul>
+const UnorderedList = ({ children, ...props }: { children: ReactNode }) => (
+  <ul className="mb-4 list-disc list-inside" {...props}>
+    {children}
+  </ul>
 );
 
 const TableHeader = ({ children, ...props }: { children: string }) => {

@@ -21,6 +21,17 @@
   margin: -4px;
 }
 
+ul ul[data-toc="true"] {
+  margin-left: 1em;
+  margin-bottom: 0;
+}
+
+.toc-link {
+  position: relative;
+  background-color: rgba(239, 68, 68, 0.2);
+  padding: 1px;;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;

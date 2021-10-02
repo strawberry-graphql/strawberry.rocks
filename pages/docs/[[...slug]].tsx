@@ -1,13 +1,8 @@
 /** @jsx jsx */
-import { anchorLinks } from "@hashicorp/remark-plugins";
-import matter from "gray-matter";
-import remarkToc from "remark-toc";
-
 import { GetStaticPaths, GetStaticProps } from "next";
-import { serialize } from "next-mdx-remote/serialize";
 
 import DocsPage, { DocsPageProps } from "~/components/doc";
-import { fixImagePathsPlugin } from "~/helpers/image-paths";
+
 import { serializePage } from "~/helpers/mdx";
 import {
   fetchDocPage,
@@ -17,7 +12,7 @@ import {
   REF,
   REPO,
 } from "~/lib/api";
-import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
+
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const ref = REF;

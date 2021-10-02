@@ -1,10 +1,9 @@
-import { anchorLinks } from "@hashicorp/remark-plugins";
 import matter from "gray-matter";
-import remarkToc from "remark-toc";
 
 import { serialize } from "next-mdx-remote/serialize";
 
 import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
+import { RehypeTOC } from "~/rehype-plugins/rehype-toc";
 
 import { fixImagePathsPlugin } from "./image-paths";
 
@@ -26,11 +25,9 @@ export const serializePage = async ({
   const source = await serialize(content, {
     scope: data,
     mdxOptions: {
-      rehypePlugins: [RehypeHighlightCode],
+      rehypePlugins: [RehypeHighlightCode, RehypeTOC({ onlyLinks: true })],
       remarkPlugins: [
         fixImagePathsPlugin({ path: filename, ref }),
-        anchorLinks,
-        remarkToc,
       ],
     },
   });
