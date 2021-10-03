@@ -10,11 +10,8 @@ const Header = ({ children, ...props }: { children: ReactNode }) => (
 
 export const SplitCodeView = ({
   leftHeader,
-  leftLanguage,
-  leftCode,
   rightHeader,
-  rightLanguage,
-  rightCode,
+  children,
 }: {
   leftHeader: string;
   leftLanguage: string;
@@ -22,20 +19,17 @@ export const SplitCodeView = ({
   rightLanguage: string;
   rightHeader: string;
   rightCode: string;
+  children: ReactNode[];
 }) => {
   return (
-    <div className="md:flex">
+    <div className="md:flex mb-8">
       <div className="flex md:w-1/2 flex-col">
         <Header>{leftHeader}</Header>
-        <CodeBlock language={leftLanguage} className="flex-1 md:border-r-0">
-          {leftCode}
-        </CodeBlock>
+        <div className="flex-1 md:border-r-0">{children[0]}</div>
       </div>
       <div className="flex md:w-1/2 flex-col">
         <Header>{rightHeader}</Header>
-        <CodeBlock language={rightLanguage} className="flex-1">
-          {rightCode}
-        </CodeBlock>
+        <div className="flex-1">{children[1]}</div>
       </div>
     </div>
   );

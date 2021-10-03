@@ -1,21 +1,13 @@
 import cx from "classnames";
 import GithubSlugger from "github-slugger";
-import {
-  createElement,
-  ReactChild,
-  ReactElement,
-  ReactNode,
-  useContext,
-  useRef,
-} from "react";
+import { createElement, ReactNode, useContext } from "react";
 import { createPortal } from "react-dom";
 
 import { useHover } from "~/helpers/use-hover";
 
 import { AdditionalResources } from "./additional-resources";
 import { NotesContext } from "./code-notes";
-import { GraphQLExample } from "./graphql-example";
-import { SchemaExample } from "./schema-example";
+import { SplitCodeView } from "./split-code-view";
 
 const DocsLink = ({
   children,
@@ -44,35 +36,6 @@ const DocsLink = ({
 const DocsImage = ({ src, ...props }: { src: string }) => (
   <img className="border-2 border-red-500 max-w-full" src={src} {...props} />
 );
-
-// const CustomPrism = ({
-//   className,
-//   children,
-// }: {
-//   className: string;
-//   children: string;
-// }) => {
-//   const [language]: string[] = className
-//     ? className.replace(/language-/, "").split(" ")
-//     : [""];
-//   if (language === "graphql+response") {
-//     const [query, response] = children.split("---");
-//     if (!query || !response) {
-//       throw new Error("Invalid content for language `graphql+response`");
-//     }
-//     return <GraphQLExample query={query} response={response} />;
-//   }
-
-//   if (language === "python+schema") {
-//     const [python, schema] = children.split("---");
-//     if (!python || !schema) {
-//       throw new Error("Invalid content for language `python+schema`");
-//     }
-//     return <SchemaExample python={python} schema={schema} />;
-//   }
-
-//   return <CodeBlock language={language}>{children}</CodeBlock>;
-// };
 
 // eslint-disable-next-line react/display-name
 const heading =
@@ -148,7 +111,13 @@ const Separator = () => (
   </div>
 );
 
-const Pre = ({ children }: { children: ReactNode }) => {
+const Pre = ({
+  children,
+  ...props
+}: {
+  children: ReactNode;
+  className?: string;
+}) => {
   const ctx = useContext(NotesContext);
 
   const { ref } = useHover({
@@ -168,7 +137,10 @@ const Pre = ({ children }: { children: ReactNode }) => {
   return (
     <pre
       ref={ref}
-      className="mb-8 font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800"
+      className={cx(
+        "mb-8 font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800 ",
+        props.className
+      )}
     >
       {children}
     </pre>
@@ -202,7 +174,6 @@ const CodeNotes = ({
       style={{
         top: boundingBox.top + window.scrollY + boundingBox.height + 4 + "px",
         left: boundingBox.left + "px",
-
       }}
       {...props}
     >
@@ -233,6 +204,7 @@ const theme = {
   AdditionalResources,
   img: DocsImage,
   CodeNotes,
+  SplitCodeView,
 };
 
 export default theme;

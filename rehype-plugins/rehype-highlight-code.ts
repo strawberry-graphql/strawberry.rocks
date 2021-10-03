@@ -1,5 +1,11 @@
 import { toHtml } from "hast-util-to-html";
-import { Node, Text, Element, Comment } from "hast-util-to-html/lib/types";
+import {
+  Node,
+  Text,
+  Element,
+  Comment,
+  DocType,
+} from "hast-util-to-html/lib/types";
 import { Root, toString } from "hast-util-to-string";
 import rangeParser from "parse-numeric-range";
 import { refractor } from "refractor";
@@ -11,7 +17,6 @@ import parse from "rehype-parse";
 import { Plugin, unified } from "unified";
 import { visit } from "unist-util-visit";
 import { visitParents } from "unist-util-visit-parents";
-import { inspect } from "util";
 
 refractor.register(python);
 refractor.register(graphql);
@@ -47,6 +52,10 @@ const highlightLines = (root: Root, lines: number[]) => {
       currentGroup.push(node);
     }
   });
+
+  if (currentGroup.length > 0) {
+    lineGroups.push(currentGroup);
+  }
 
   root.children = lineGroups.map((children, index) => {
     const lineNumber = index + 1;
@@ -249,8 +258,8 @@ const highlight = (
     .parse(html);
 
   let result = highlightLines(hast, options.linesToHighlight);
-  result = findNotes(result);
-  result = highlightWords(result, options.wordsToHighlight);
+  // result = findNotes(result);
+  // result = highlightWords(result, options.wordsToHighlight);
 
   return result;
 };
@@ -272,17 +281,19 @@ const createPre = ({
   text,
   linesToHighlight,
   wordsToHighlight,
+  classNames = "",
 }: {
   language: string;
   text: string;
   linesToHighlight: number[];
   wordsToHighlight: string[];
+  classNames?: string;
 }) => {
   return {
     type: "element",
     tagName: "pre",
     properties: {
-      className: "language-" + language,
+      className: classNames + " h-full language-" + language,
     },
     children: [
       {
@@ -298,6 +309,26 @@ const createPre = ({
         }).children,
       },
     ],
+  };
+};
+
+const createSplitCodeView = ({
+  children,
+  leftHeader,
+  rightHeader,
+}: {
+  children: (Element | Text | DocType | Comment)[];
+  leftHeader: string;
+  rightHeader: string;
+}) => {
+  return {
+    type: "element",
+    tagName: "SplitCodeView",
+    properties: {
+      leftHeader,
+      rightHeader,
+    },
+    children,
   };
 };
 
@@ -333,21 +364,30 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
         const [firstLanguage, secondLanguage] = lang
           .split("+")
           .map(normalizeLanguage);
-        const [firstText, secondText] = text.split(/^---$/m);
+        const [firstText, secondText] = text
+          .split(/^---$/m)
+          .map((x) => x.trim());
 
         parentNode.tagName = "div";
         parentNode.children = [
-          createPre({
-            language: firstLanguage,
-            text: firstText,
-            linesToHighlight,
-            wordsToHighlight,
-          }),
-          createPre({
-            language: secondLanguage,
-            text: secondText,
-            linesToHighlight,
-            wordsToHighlight,
+          createSplitCodeView({
+            leftHeader: firstLanguage,
+            rightHeader: secondLanguage,
+            children: [
+              createPre({
+                language: firstLanguage,
+                text: firstText,
+                linesToHighlight,
+                wordsToHighlight,
+                classNames: "md:border-r-0",
+              }),
+              createPre({
+                language: secondLanguage,
+                text: secondText,
+                linesToHighlight,
+                wordsToHighlight,
+              }),
+            ],
           }),
         ];
       } else {
