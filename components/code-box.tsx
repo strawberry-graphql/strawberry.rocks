@@ -67,7 +67,7 @@ const Actions = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export const CodeBox = ({ code }: { code: string }) => (
-  <div className="relative text-sm inline-block">
+  <div className="relative text-sm inline-block overflow-hidden">
     <BackgroundTop className="absolute top-0 right-0 left-0" />
     <BackgroundBottom className="absolute right-0 bottom-0 left-0" />
 
