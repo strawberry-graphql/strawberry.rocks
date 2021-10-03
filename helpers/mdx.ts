@@ -26,7 +26,9 @@ export const serializePage = async ({
     scope: data,
     mdxOptions: {
       rehypePlugins: [RehypeHighlightCode, RehypeTOC({ onlyLinks: !data.toc })],
-      remarkPlugins: [fixImagePathsPlugin({ path: filename, ref, owner, repo })],
+      remarkPlugins: [
+        fixImagePathsPlugin({ path: filename, ref, owner, repo }),
+      ],
     },
   });
 

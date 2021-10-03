@@ -309,7 +309,7 @@ const createPre = ({
   linesToHighlight: number[];
   wordsToHighlight: string[];
   classNames?: string;
-}) : Element => {
+}): Element => {
   return {
     type: "element",
     tagName: "pre",
@@ -338,7 +338,7 @@ const createSplitCodeView = ({
   leftHeader,
   rightHeader,
 }: {
-  children: (Element | Text  | Comment)[];
+  children: (Element | Text | Comment)[];
   leftHeader: string;
   rightHeader: string;
 }) => {

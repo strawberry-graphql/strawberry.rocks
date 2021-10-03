@@ -26,10 +26,7 @@ export const SplitCodeView = ({
         <Header>{leftHeader}</Header>
 
         {React.cloneElement(children[0], {
-          className: cx(
-            "flex-1 md:border-r-0",
-            children[0].props.className
-          ),
+          className: cx("flex-1 md:border-r-0", children[0].props.className),
         })}
       </div>
       <div className="flex md:w-1/2 flex-col">

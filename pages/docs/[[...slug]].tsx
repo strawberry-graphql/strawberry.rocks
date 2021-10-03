@@ -13,7 +13,6 @@ import {
   REPO,
 } from "~/lib/api";
 
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const ref = REF;
   const paths = await fetchTableOfContentsPaths({ ref });
