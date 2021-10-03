@@ -258,8 +258,8 @@ const highlight = (
     .parse(html);
 
   let result = highlightLines(hast, options.linesToHighlight);
-  // result = findNotes(result);
-  // result = highlightWords(result, options.wordsToHighlight);
+  result = findNotes(result);
+  result = highlightWords(result, options.wordsToHighlight);
 
   return result;
 };
