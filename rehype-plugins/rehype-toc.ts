@@ -1,8 +1,6 @@
-import { slug } from "github-slugger";
-import { toHtml } from "hast-util-to-html";
-import { Node } from "hast-util-to-html/lib/types";
-import { Element, Root, toString } from "hast-util-to-string";
-import { Plugin, unified } from "unified";
+import GithubSlugger from "github-slugger";
+import { Element, toString } from "hast-util-to-string";
+import { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
 type TocItem = {
@@ -57,6 +55,8 @@ export const RehypeTOC =
   (options: { onlyLinks?: boolean } = {}) =>
   (): Plugin => {
     return (tree) => {
+      const slugger = new GithubSlugger();
+
       const root: TocItem = {
         level: 0,
         children: [],
@@ -74,7 +74,7 @@ export const RehypeTOC =
         if (!node.properties?.id) {
           node.properties = {
             ...node.properties,
-            id: slug(text),
+            id: slugger.slug(text),
           };
 
           node.children = [
