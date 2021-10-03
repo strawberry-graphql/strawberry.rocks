@@ -1,5 +1,5 @@
 import { toHtml } from "hast-util-to-html";
-import { Node } from "hast-util-to-html/lib/types";
+import { Node, Text, Element, Comment } from "hast-util-to-html/lib/types";
 import { Root, toString } from "hast-util-to-string";
 import rangeParser from "parse-numeric-range";
 import { refractor } from "refractor";
@@ -10,6 +10,8 @@ import python from "refractor/lang/python";
 import parse from "rehype-parse";
 import { Plugin, unified } from "unified";
 import { visit } from "unist-util-visit";
+import { visitParents } from "unist-util-visit-parents";
+import { inspect } from "util";
 
 refractor.register(python);
 refractor.register(graphql);
@@ -85,8 +87,6 @@ const highlightWords = (root: Root, words: string[]) => {
   // @ts-ignore
   root.children = root.children.flatMap((node) => {
     if (node.type === "text") {
-      const initial = node.value;
-
       const start: string[] = [];
       const end: string[] = [];
 
@@ -157,6 +157,81 @@ const highlightWords = (root: Root, words: string[]) => {
   return root;
 };
 
+const findNotes = (root: Root) => {
+  // iterate through the lines of the root node
+
+  visitParents(root, "text", (node, ancestors) => {
+    if (node.value === "^") {
+      let parent = ancestors[ancestors.length - 1];
+
+      let i = 0;
+      let index = -1;
+
+      while (parent.children.length === 1) {
+        let previous = parent;
+        parent = ancestors[ancestors.length - 1 - i];
+        i += 1;
+
+        // @ts-ignore
+        index = parent.children.indexOf(previous);
+      }
+
+      if (index === -1) {
+        return;
+      }
+
+      const startIndex = index;
+
+      if (toString(parent.children[++index]) !== "[") {
+        return;
+      }
+
+      const noteId = toString(parent.children[++index]);
+
+      if (toString(parent.children[++index]) !== "]") {
+        return;
+      }
+
+      if (toString(parent.children[++index]) !== "(") {
+        return;
+      }
+
+      while (
+        parent.children.length > index &&
+        toString(parent.children[index]) !== ")"
+      ) {
+        index += 1;
+      }
+
+      if (index === parent.children.length) {
+        return;
+      }
+
+      const wrapper: Element = {
+        type: "element",
+        tagName: "span",
+        properties: {
+          className: "code-note",
+          title: noteId,
+        },
+        children: [{ type: "text", value: "lol" }],
+      };
+
+      parent.children.splice(startIndex, 5);
+
+      const endIndex = index - 5;
+
+      // @ts-ignore
+      wrapper.children = parent.children.splice(startIndex, endIndex);
+      wrapper.children.pop()
+
+      parent.children.splice(startIndex, endIndex, wrapper);
+    }
+  });
+
+  return root;
+};
+
 export const RehypeHighlightCode: Plugin = (options = {}) => {
   return (tree) => {
     visit(tree, "element", visitor);
@@ -192,6 +267,7 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
         .parse(html);
 
       let result = highlightLines(hast, linesToHighlight);
+      result = findNotes(result);
       result = highlightWords(result, wordsToHighlight);
 
       node.children = result.children;

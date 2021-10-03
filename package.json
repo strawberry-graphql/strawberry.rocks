@@ -68,7 +68,8 @@
         "unist-util-is": "^5.1.1",
         "unist-util-map": "^3.0.0",
         "unist-util-reduce": "^0.2.2",
-        "unist-util-visit": "^4.1.0"
+        "unist-util-visit": "^4.1.0",
+        "unist-util-visit-parents": "^5.1.0"
     },
     "devDependencies": {
         "@graphql-codegen/cli": "^2.2.0",
