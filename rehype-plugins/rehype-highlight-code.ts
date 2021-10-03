@@ -223,13 +223,82 @@ const findNotes = (root: Root) => {
 
       // @ts-ignore
       wrapper.children = parent.children.splice(startIndex, endIndex);
-      wrapper.children.pop()
+      wrapper.children.pop();
 
       parent.children.splice(startIndex, endIndex, wrapper);
     }
   });
 
   return root;
+};
+
+const highlight = (
+  text: string,
+  language: string,
+  options: {
+    linesToHighlight: number[];
+    wordsToHighlight: string[];
+  }
+) => {
+  const root = refractor.highlight(text, language);
+
+  // @ts-ignore
+  const html = toHtml(root);
+  const hast = unified()
+    .use(parse, { emitParseErrors: true, fragment: true })
+    .parse(html);
+
+  let result = highlightLines(hast, options.linesToHighlight);
+  result = findNotes(result);
+  result = highlightWords(result, options.wordsToHighlight);
+
+  return result;
+};
+
+const normalizeLanguage = (language: string) => {
+  if (language === "response") {
+    return "json";
+  }
+
+  if (language === "schema") {
+    return "graphql";
+  }
+
+  return language;
+};
+
+const createPre = ({
+  language,
+  text,
+  linesToHighlight,
+  wordsToHighlight,
+}: {
+  language: string;
+  text: string;
+  linesToHighlight: number[];
+  wordsToHighlight: string[];
+}) => {
+  return {
+    type: "element",
+    tagName: "pre",
+    properties: {
+      className: "language-" + language,
+    },
+    children: [
+      {
+        type: "element",
+        tagName: "code",
+        properties: {
+          className: "language-" + language,
+          generatedBy: "rehype-highlight-code",
+        },
+        children: highlight(text, language, {
+          linesToHighlight,
+          wordsToHighlight,
+        }).children,
+      },
+    ],
+  };
 };
 
 export const RehypeHighlightCode: Plugin = (options = {}) => {
@@ -241,16 +310,14 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
     if (parentNode.tagName === "pre" && node.tagName === "code") {
       const properties = node.properties as any;
 
-      // syntax highlight
-      const lang = properties.className
-        ? properties.className[0].split("-")[1]
-        : "md";
-
-      if (lang == "python+schema") {
+      if (properties.generatedBy === "rehype-highlight-code") {
         return;
       }
 
-      let root = refractor.highlight(toString(node), lang);
+      // syntax highlight
+      const lang = properties.className
+        ? (properties.className[0] as string).split("-")[1]
+        : "md";
 
       const linesToHighlight = properties.line
         ? rangeParser(properties.line)
@@ -260,17 +327,37 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
         ? (properties.highlight as string).split(",")
         : [];
 
-      // @ts-ignore
-      const html = toHtml(root);
-      const hast = unified()
-        .use(parse, { emitParseErrors: true, fragment: true })
-        .parse(html);
+      const text = toString(node);
 
-      let result = highlightLines(hast, linesToHighlight);
-      result = findNotes(result);
-      result = highlightWords(result, wordsToHighlight);
+      if (lang.includes("+")) {
+        const [firstLanguage, secondLanguage] = lang
+          .split("+")
+          .map(normalizeLanguage);
+        const [firstText, secondText] = text.split(/^---$/m);
 
-      node.children = result.children;
+        parentNode.tagName = "div";
+        parentNode.children = [
+          createPre({
+            language: firstLanguage,
+            text: firstText,
+            linesToHighlight,
+            wordsToHighlight,
+          }),
+          createPre({
+            language: secondLanguage,
+            text: secondText,
+            linesToHighlight,
+            wordsToHighlight,
+          }),
+        ];
+      } else {
+        const result = highlight(text, lang, {
+          linesToHighlight,
+          wordsToHighlight,
+        });
+
+        node.children = result.children;
+      }
     }
   }
 };
