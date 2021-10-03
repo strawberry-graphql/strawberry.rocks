@@ -14,7 +14,6 @@
 }
 
 .code-highlighted-word, .code-note {
-  position: relative;
   background-color: rgba(239, 68, 68, 0.4);
   /* padding: 4px; */
   /* margin: -4px; */

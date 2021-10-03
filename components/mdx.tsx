@@ -8,6 +8,7 @@ import {
   useContext,
   useRef,
 } from "react";
+import { createPortal } from "react-dom";
 
 import { useHover } from "~/helpers/use-hover";
 
@@ -185,17 +186,29 @@ const CodeNotes = ({
   children: ReactNode;
   id: string;
 }) => {
-  const ctx = useContext(NotesContext);
+  const { currentNote } = useContext(NotesContext);
 
-  return (
+  if (currentNote === null) {
+    return null;
+  }
+
+  const boundingBox = currentNote.element.getBoundingClientRect();
+
+  return createPortal(
     <div
-      className={cx("my-4", {
-        "font-bold text-6xl": ctx.currentNote?.id === props.id,
+      className={cx("absolute p-4 border-2 border-red-500 bg-gray-100", {
+        hidden: currentNote.id !== props.id,
       })}
+      style={{
+        top: boundingBox.top + window.scrollY + boundingBox.height + 4 + "px",
+        left: boundingBox.left + "px",
+
+      }}
       {...props}
     >
       <p className="text-gray-600">{children}</p>
-    </div>
+    </div>,
+    currentNote.element
   );
 };
 

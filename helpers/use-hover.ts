@@ -20,6 +20,14 @@ export const useHover = ({
     }
   };
   const handleMouseOut = (event: MouseEvent) => {
+    if (
+      selector &&
+      event.target &&
+      (event.target as HTMLElement).matches(selector)
+    ) {
+      return;
+    }
+
     onMouseOut();
   };
 
