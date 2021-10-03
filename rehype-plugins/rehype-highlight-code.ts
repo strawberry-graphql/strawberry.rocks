@@ -1,11 +1,5 @@
 import { toHtml } from "hast-util-to-html";
-import {
-  Node,
-  Text,
-  Element,
-  Comment,
-  DocType,
-} from "hast-util-to-html/lib/types";
+import { Node, Text, Element, Comment } from "hast-util-to-html/lib/types";
 import { Root, toString } from "hast-util-to-string";
 import rangeParser from "parse-numeric-range";
 import { refractor } from "refractor";
@@ -27,27 +21,39 @@ const highlightLines = (root: Root, lines: number[]) => {
   let currentGroup: typeof root.children = [];
   const lineGroups: typeof currentGroup[] = [];
 
-  root.children.forEach((node) => {
-    if (node.type === "text") {
-      if (node.value.startsWith("\n")) {
-        while (node.value.startsWith("\n")) {
-          lineGroups.push(currentGroup);
-          currentGroup = [];
-          node.value = node.value.slice(1);
-        }
+  const addToGroups = (node: Text) => {
+    if (node.value.startsWith("\n")) {
+      while (node.value.startsWith("\n")) {
+        lineGroups.push(currentGroup);
+        currentGroup = [];
+        node.value = node.value.slice(1);
+      }
 
-        currentGroup.push(node);
-      } else if (node.value.endsWith("\n")) {
-        currentGroup.push(node);
+      currentGroup.push(node);
+    } else if (node.value.endsWith("\n")) {
+      currentGroup.push(node);
 
-        while (node.value.endsWith("\n")) {
-          lineGroups.push(currentGroup);
-          currentGroup = [];
-          node.value = node.value.slice(0, -1);
-        }
+      while (node.value.endsWith("\n")) {
+        lineGroups.push(currentGroup);
+        currentGroup = [];
+        node.value = node.value.slice(0, -1);
+      }
+    } else {
+      if (node.value.includes("\n")) {
+        const parts = node.value.split(/(\n)/g);
+
+        parts.forEach((part) => {
+          addToGroups({ value: part, type: "text" });
+        });
       } else {
         currentGroup.push(node);
       }
+    }
+  };
+
+  root.children.forEach((node) => {
+    if (node.type === "text") {
+      addToGroups(node);
     } else {
       currentGroup.push(node);
     }
@@ -276,24 +282,39 @@ const normalizeLanguage = (language: string) => {
   return language;
 };
 
+const getHeader = (language: string) => {
+  if (language === "response") {
+    return "Response";
+  }
+
+  if (language === "schema") {
+    return "Schema";
+  }
+
+  if (language === "graphql") {
+    return "Query";
+  }
+
+  return language.charAt(0).toUpperCase() + language.slice(1);
+};
+
 const createPre = ({
   language,
   text,
   linesToHighlight,
   wordsToHighlight,
-  classNames = "",
 }: {
   language: string;
   text: string;
   linesToHighlight: number[];
   wordsToHighlight: string[];
   classNames?: string;
-}) => {
+}) : Element => {
   return {
     type: "element",
     tagName: "pre",
     properties: {
-      className: classNames + " h-full language-" + language,
+      className: "language-" + language,
     },
     children: [
       {
@@ -307,7 +328,7 @@ const createPre = ({
           linesToHighlight,
           wordsToHighlight,
         }).children,
-      },
+      } as Element,
     ],
   };
 };
@@ -317,7 +338,7 @@ const createSplitCodeView = ({
   leftHeader,
   rightHeader,
 }: {
-  children: (Element | Text | DocType | Comment)[];
+  children: (Element | Text  | Comment)[];
   leftHeader: string;
   rightHeader: string;
 }) => {
@@ -364,6 +385,7 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
         const [firstLanguage, secondLanguage] = lang
           .split("+")
           .map(normalizeLanguage);
+        const [firstHeader, secondHeader] = lang.split("+").map(getHeader);
         const [firstText, secondText] = text
           .split(/^---$/m)
           .map((x) => x.trim());
@@ -371,15 +393,14 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
         parentNode.tagName = "div";
         parentNode.children = [
           createSplitCodeView({
-            leftHeader: firstLanguage,
-            rightHeader: secondLanguage,
+            leftHeader: firstHeader,
+            rightHeader: secondHeader,
             children: [
               createPre({
                 language: firstLanguage,
                 text: firstText,
                 linesToHighlight,
                 wordsToHighlight,
-                classNames: "md:border-r-0",
               }),
               createPre({
                 language: secondLanguage,
