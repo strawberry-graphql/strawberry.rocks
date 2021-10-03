@@ -1,8 +1,18 @@
 import cx from "classnames";
 import GithubSlugger from "github-slugger";
-import { createElement, ReactChild, ReactElement, ReactNode } from "react";
+import {
+  createElement,
+  ReactChild,
+  ReactElement,
+  ReactNode,
+  useContext,
+  useRef,
+} from "react";
+
+import { useHover } from "~/helpers/use-hover";
 
 import { AdditionalResources } from "./additional-resources";
+import { NotesContext } from "./code-notes";
 import { GraphQLExample } from "./graphql-example";
 import { SchemaExample } from "./schema-example";
 
@@ -138,16 +148,56 @@ const Separator = () => (
 );
 
 const Pre = ({ children }: { children: ReactNode }) => {
+  const ctx = useContext(NotesContext);
+
+  const { ref } = useHover({
+    selector: ".code-note",
+    onMouseOver: (el) => {
+      const noteId = el.dataset.noteId;
+
+      if (noteId) {
+        ctx.setCurrentNote({ id: noteId, element: el });
+      }
+    },
+    onMouseOut: () => {
+      ctx.setCurrentNote(null);
+    },
+  });
+
   return (
-    <pre className="mb-8 font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800">
+    <pre
+      ref={ref}
+      className="mb-8 font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800"
+    >
       {children}
     </pre>
   );
 };
 
-const Code = ({ children }: { children: ReactNode }) => (
-  <code className="p-1">{children}</code>
-);
+const Code = ({ children }: { children: ReactNode }) => {
+  return <code className="p-1">{children}</code>;
+};
+
+const CodeNotes = ({
+  children,
+  ...props
+}: {
+  children: ReactNode;
+  id: string;
+}) => {
+  const ctx = useContext(NotesContext);
+
+  return (
+    <div
+      className={cx("my-4", {
+        "font-bold text-6xl": ctx.currentNote?.id === props.id,
+      })}
+      {...props}
+    >
+      <p className="text-gray-600">{children}</p>
+    </div>
+  );
+};
 
 const theme = {
   h1: heading(1),
@@ -169,6 +219,7 @@ const theme = {
   a: DocsLink,
   AdditionalResources,
   img: DocsImage,
+  CodeNotes,
 };
 
 export default theme;

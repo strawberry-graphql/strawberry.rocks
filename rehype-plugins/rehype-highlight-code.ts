@@ -212,9 +212,9 @@ const findNotes = (root: Root) => {
         tagName: "span",
         properties: {
           className: "code-note",
-          title: noteId,
+          dataNoteId: noteId,
         },
-        children: [{ type: "text", value: "lol" }],
+        children: [],
       };
 
       parent.children.splice(startIndex, 5);
