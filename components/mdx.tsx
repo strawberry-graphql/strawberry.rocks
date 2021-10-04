@@ -183,6 +183,53 @@ const CodeNotes = ({
   );
 };
 
+const BaseBlock = ({
+  heading,
+  color,
+  children,
+}: {
+  heading: string;
+  color: "green" | "blue" | "yellow";
+  children: ReactNode;
+}) => (
+  <div
+    className={cx("border-l-4 shadow-sm mb-4 overflow-auto", {
+      "border-green-500": color === "green",
+      "border-blue-500": color === "blue",
+      "border-yellow-500": color === "yellow",
+    })}
+  >
+    <div
+      className={cx("py-2 px-3 mb-2 font-bold", {
+        "bg-green-100": color === "green",
+        "bg-blue-100": color === "blue",
+        "bg-yellow-100": color === "yellow",
+      })}
+    >
+      {heading}
+    </div>
+    <blockquote className="px-3">{children}</blockquote>
+  </div>
+);
+
+const NoteBlock = ({ children }: { children: ReactNode }) => (
+  <BaseBlock color="blue" heading="📝 Note">
+    {children}
+  </BaseBlock>
+);
+
+const TipBlock = ({ children }: { children: ReactNode }) => (
+  <BaseBlock color="green" heading="💡 Tip">
+    {children}
+  </BaseBlock>
+);
+
+const WarningBlock = ({ children }: { children: ReactNode }) => (
+  <BaseBlock color="yellow" heading="⚠️ Warning">
+    {children}
+  </BaseBlock>
+);
+
 const theme = {
   h1: heading(1),
   h2: heading(2),
@@ -205,6 +252,9 @@ const theme = {
   img: DocsImage,
   CodeNotes,
   SplitCodeView,
+  Note: NoteBlock,
+  Tip: TipBlock,
+  Warning: WarningBlock,
 };
 
 export default theme;
