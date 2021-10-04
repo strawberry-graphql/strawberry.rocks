@@ -1,3 +1,6 @@
+import { use } from "marked";
+import { useState } from "react";
+
 import { NextPage } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { useRouter } from "next/router";
@@ -11,6 +14,7 @@ import { SEO } from "~/components/seo";
 import { fetchTableOfContents } from "~/lib/api";
 import { ReturnedPromiseResolvedType } from "~/types/utility";
 
+import { Note, NotesContext } from "./code-notes";
 import { FeedbackForm } from "./feedback-form";
 
 export type DocsPageProps = {
@@ -31,6 +35,7 @@ const DocsPage: NextPage<DocsPageProps> = ({
   versionHref,
 }) => {
   const { isFallback } = useRouter();
+  const [note, setCurrentNote] = useState<Note | null>(null);
 
   return (
     <>
@@ -43,7 +48,14 @@ const DocsPage: NextPage<DocsPageProps> = ({
         <div className="px-8 pb-12 w-0 flex-1">
           {data?.experimental && <ExperimentalWarning />}
 
-          {!isFallback && <MDXRemote {...source} components={components} />}
+          <NotesContext.Provider
+            value={{
+              currentNote: note,
+              setCurrentNote,
+            }}
+          >
+            {!isFallback && <MDXRemote {...source} components={components} />}
+          </NotesContext.Provider>
 
           <FeedbackForm />
 

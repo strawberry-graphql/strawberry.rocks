@@ -1,12 +1,9 @@
 /** @jsx jsx */
-import { anchorLinks } from "@hashicorp/remark-plugins";
-import matter from "gray-matter";
-
 import { GetStaticPaths, GetStaticProps } from "next";
-import { serialize } from "next-mdx-remote/serialize";
 
 import DocsPage, { DocsPageProps } from "~/components/doc";
-import { fixImagePathsPlugin } from "~/helpers/image-paths";
+
+import { serializePage } from "~/helpers/mdx";
 import {
   fetchDocPage,
   fetchLatestRelease,
@@ -54,15 +51,12 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       ref,
     });
 
-    const { data, content } = matter(page);
-    const source = await serialize(content, {
-      scope: data,
-      mdxOptions: {
-        remarkPlugins: [
-          fixImagePathsPlugin({ path: filename, ref }),
-          anchorLinks,
-        ],
-      },
+    const { source, data } = await serializePage({
+      page,
+      filename,
+      ref,
+      repo,
+      owner,
     });
 
     const editPath = `https://github.com/${owner}/${repo}/edit/${REF}/docs/${filename}`;

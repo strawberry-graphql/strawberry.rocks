@@ -1,11 +1,13 @@
 import cx from "classnames";
 import GithubSlugger from "github-slugger";
-import { createElement, ReactChild, ReactElement, ReactNode } from "react";
+import { createElement, ReactNode, useContext } from "react";
+import { createPortal } from "react-dom";
+
+import { useHover } from "~/helpers/use-hover";
 
 import { AdditionalResources } from "./additional-resources";
-import { CodeBlock } from "./code-block";
-import { GraphQLExample } from "./graphql-example";
-import { SchemaExample } from "./schema-example";
+import { NotesContext } from "./code-notes";
+import { SplitCodeView } from "./split-code-view";
 
 const DocsLink = ({
   children,
@@ -35,35 +37,6 @@ const DocsImage = ({ src, ...props }: { src: string }) => (
   <img className="border-2 border-red-500 max-w-full" src={src} {...props} />
 );
 
-const CustomPrism = ({
-  className,
-  children,
-}: {
-  className: string;
-  children: string;
-}) => {
-  const [language]: string[] = className
-    ? className.replace(/language-/, "").split(" ")
-    : [""];
-  if (language === "graphql+response") {
-    const [query, response] = children.split("---");
-    if (!query || !response) {
-      throw new Error("Invalid content for language `graphql+response`");
-    }
-    return <GraphQLExample query={query} response={response} />;
-  }
-
-  if (language === "python+schema") {
-    const [python, schema] = children.split("---");
-    if (!python || !schema) {
-      throw new Error("Invalid content for language `python+schema`");
-    }
-    return <SchemaExample python={python} schema={schema} />;
-  }
-
-  return <CodeBlock language={language}>{children}</CodeBlock>;
-};
-
 // eslint-disable-next-line react/display-name
 const heading =
   (level: 1 | 2 | 3 | 4 | 5 | 6) =>
@@ -83,8 +56,10 @@ const Paragraph = ({ children }: { children: ReactNode }) => (
   <p className="mb-4">{children}</p>
 );
 
-const UnorderedList = ({ children }: { children: ReactNode }) => (
-  <ul className="mb-4 list-disc list-inside">{children}</ul>
+const UnorderedList = ({ children, ...props }: { children: ReactNode }) => (
+  <ul className="mb-4 list-disc list-inside" {...props}>
+    {children}
+  </ul>
 );
 
 const TableHeader = ({ children, ...props }: { children: string }) => {
@@ -136,19 +111,77 @@ const Separator = () => (
   </div>
 );
 
-const Pre = ({ children }: { children: ReactNode }) => {
-  const props = (children as ReactElement)?.props;
+const Pre = ({
+  children,
+  ...props
+}: {
+  children: ReactNode;
+  className?: string;
+}) => {
+  const ctx = useContext(NotesContext);
+
+  const { ref } = useHover({
+    selector: ".code-note",
+    onMouseOver: (el) => {
+      const noteId = el.dataset.noteId;
+
+      if (noteId) {
+        ctx.setCurrentNote({ id: noteId, element: el });
+      }
+    },
+    onMouseOut: () => {
+      ctx.setCurrentNote(null);
+    },
+  });
 
   return (
-    <div className="mb-8">
-      <CustomPrism {...props} />
-    </div>
+    <pre
+      ref={ref}
+      className={cx(
+        "mb-8 font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800 ",
+        props.className
+      )}
+    >
+      {children}
+    </pre>
   );
 };
 
-const Code = ({ children }: { children: ReactNode }) => (
-  <code className="p-1">{children}</code>
-);
+const Code = ({ children }: { children: ReactNode }) => {
+  return <code className="p-1">{children}</code>;
+};
+
+const CodeNotes = ({
+  children,
+  ...props
+}: {
+  children: ReactNode;
+  id: string;
+}) => {
+  const { currentNote } = useContext(NotesContext);
+
+  if (currentNote === null) {
+    return null;
+  }
+
+  const boundingBox = currentNote.element.getBoundingClientRect();
+
+  return createPortal(
+    <div
+      className={cx("absolute p-4 border-2 border-red-500 bg-gray-100", {
+        hidden: currentNote.id !== props.id,
+      })}
+      style={{
+        top: boundingBox.top + window.scrollY + boundingBox.height + 4 + "px",
+        left: boundingBox.left + "px",
+      }}
+      {...props}
+    >
+      <p className="text-gray-600">{children}</p>
+    </div>,
+    currentNote.element
+  );
+};
 
 const theme = {
   h1: heading(1),
@@ -170,6 +203,8 @@ const theme = {
   a: DocsLink,
   AdditionalResources,
   img: DocsImage,
+  CodeNotes,
+  SplitCodeView,
 };
 
 export default theme;

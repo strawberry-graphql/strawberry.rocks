@@ -1,13 +1,5 @@
-const withMDX = require("@next/mdx")({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
-});
-
-module.exports = withMDX({
-  pageExtensions: ["js", "jsx", "tsx", "md", "mdx"],
+module.exports = {
+  pageExtensions: ["js", "jsx", "tsx"],
   async redirects() {
     return [
       {
@@ -17,4 +9,4 @@ module.exports = withMDX({
       },
     ];
   },
-});
+};

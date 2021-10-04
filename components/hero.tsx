@@ -27,7 +27,7 @@ export const Hero = () => {
         </h1>
       </div>
 
-        <CodeBox code={code} />
+      <CodeBox code={code} />
     </div>
   );
 };
