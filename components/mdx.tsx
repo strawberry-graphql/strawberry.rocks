@@ -189,31 +189,43 @@ const BaseBlock = ({
   children,
 }: {
   heading: string;
-  color: string;
+  color: "green" | "blue" | "yellow";
   children: ReactNode;
 }) => (
   <div
-    className={`border-l-4 border-${color}-500 shadow-sm mb-4 overflow-auto`}
+    className={cx("border-l-4 shadow-sm mb-4 overflow-auto", {
+      "border-green-500": color === "green",
+      "border-blue-500": color === "blue",
+      "border-yellow-500": color === "yellow",
+    })}
   >
-    <div className={`bg-${color}-100 py-2 px-3 mb-2 font-bold`}>{heading}</div>
+    <div
+      className={cx("py-2 px-3 mb-2 font-bold", {
+        "bg-green-100": color === "green",
+        "bg-blue-100": color === "blue",
+        "bg-yellow-100": color === "yellow",
+      })}
+    >
+      {heading}
+    </div>
     <blockquote className="px-3">{children}</blockquote>
   </div>
 );
 
 const NoteBlock = ({ children }: { children: ReactNode }) => (
-  <BaseBlock color="blue" heading="Note">
+  <BaseBlock color="blue" heading="📝 Note">
     {children}
   </BaseBlock>
 );
 
 const TipBlock = ({ children }: { children: ReactNode }) => (
-  <BaseBlock color="green" heading="Tip">
+  <BaseBlock color="green" heading="💡 Tip">
     {children}
   </BaseBlock>
 );
 
 const WarningBlock = ({ children }: { children: ReactNode }) => (
-  <BaseBlock color="yellow" heading="Warning">
+  <BaseBlock color="yellow" heading="⚠️ Warning">
     {children}
   </BaseBlock>
 );
