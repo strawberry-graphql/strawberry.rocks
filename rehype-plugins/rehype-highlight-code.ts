@@ -43,7 +43,7 @@ const highlightLines = (root: Root, lines: number[]) => {
         const parts = node.value.split(/(\n)/g);
 
         parts.forEach((part) => {
-          addToGroups({ value: part, type: "text" });
+          addToGroups({ value: part || " ", type: "text" });
         });
       } else {
         currentGroup.push(node);

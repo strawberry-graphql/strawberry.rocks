@@ -49,6 +49,10 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
+details {
+  cursor: pointer;
+}
+
 @media print {
   code[class*="language-"],
   pre[class*="language-"] {

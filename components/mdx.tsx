@@ -41,11 +41,19 @@ const DocsImage = ({ src, ...props }: { src: string }) => (
 const heading =
   (level: 1 | 2 | 3 | 4 | 5 | 6) =>
   ({ children }: { children: ReactNode }) => {
+    if (level >= 4) {
+      // Any levels that are h4 and above have different styles
+      return createElement(`h${level}`, {
+        className: cx("mt-8 mb-4 text-md font-bold"),
+        children,
+      });
+    }
+
     return createElement(`h${level}`, {
-      className: cx("font-medium my-8", {
+      className: cx("my-8", {
         "text-3xl": level === 1,
         "text-2xl": level === 2,
-        "text-xl": level >= 3,
+        "text-xl": level === 3,
         underline: level > 1,
       }),
       children,
@@ -208,7 +216,7 @@ const BaseBlock = ({
     >
       {heading}
     </div>
-    <blockquote className="px-3">{children}</blockquote>
+    <div className="px-3">{children}</div>
   </div>
 );
 
