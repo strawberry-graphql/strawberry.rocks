@@ -1,6 +1,6 @@
 import cx from "classnames";
 import GithubSlugger from "github-slugger";
-import { createElement, ReactNode, useContext } from "react";
+import { createElement, ReactNode, useContext, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 import { useHover } from "~/helpers/use-hover";
@@ -176,21 +176,33 @@ const CodeNotes = ({
   children: ReactNode;
   id: string;
 }) => {
-  const { currentNote } = useContext(NotesContext);
+  const { currentNote, setCurrentNote } = useContext(NotesContext);
 
   if (currentNote === null) {
     return null;
   }
 
+  useEffect(() => {
+    const removeNote = () => {
+      setCurrentNote(null);
+    };
+
+    window.addEventListener("scroll", removeNote);
+
+    return () => {
+      window.removeEventListener("scroll", removeNote);
+    };
+  }, []);
+
   const boundingBox = currentNote.element.getBoundingClientRect();
 
   return createPortal(
     <div
-      className={cx("absolute p-4 border-2 border-red-500 bg-gray-100", {
+      className={cx("fixed p-4 border-2 border-red-500 bg-gray-100", {
         hidden: currentNote.id !== props.id,
       })}
       style={{
-        top: boundingBox.top + window.scrollY + boundingBox.height + 4 + "px",
+        top: boundingBox.top + boundingBox.height + 4 + "px",
         left: boundingBox.left + "px",
       }}
       {...props}
