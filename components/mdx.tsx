@@ -7,6 +7,7 @@ import { useHover } from "~/helpers/use-hover";
 
 import { AdditionalResources } from "./additional-resources";
 import { NotesContext } from "./code-notes";
+import { CopyToClipboard } from "./copy-to-clipboard";
 import { SplitCodeView } from "./split-code-view";
 
 const DocsLink = ({
@@ -142,14 +143,23 @@ const Pre = ({
     },
   });
 
+  const getCode = () => {
+    return ref.current.querySelector("code").innerText;
+  };
+
   return (
     <pre
       ref={ref}
       className={cx(
-        "mb-8 font-mono overflow-x-auto border-2 border-red-500 p-6 bg-white dark:text-white dark:bg-gray-800 ",
+        "mb-8 font-mono overflow-x-auto border-2 border-red-500 p-6",
+        "bg-white dark:text-white dark:bg-gray-800",
+        "relative",
         props.className
       )}
     >
+      <div className="absolute top-3 right-3">
+        <CopyToClipboard getText={getCode} />
+      </div>
       {children}
     </pre>
   );
