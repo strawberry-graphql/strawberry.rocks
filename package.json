@@ -102,7 +102,7 @@
         "graphql": "^15.6.1",
         "postcss": "^8.3.8",
         "prettier": "^2.4.1",
-        "tailwindcss": "^2.2.7"
+        "tailwindcss": "^2.2.16"
     },
     "repository": {
         "type": "git",
