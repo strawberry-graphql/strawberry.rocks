@@ -157,7 +157,7 @@ const Pre = ({
         props.className
       )}
     >
-      <div className="absolute top-3 right-3">
+      <div className="absolute top-3 right-3 z-10">
         <CopyToClipboard getText={getCode} />
       </div>
       {children}

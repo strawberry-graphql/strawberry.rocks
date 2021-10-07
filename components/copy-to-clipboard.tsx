@@ -17,7 +17,7 @@ export const CopyToClipboard = ({ getText }: { getText: () => string }) => {
   };
 
   return (
-    <button onClick={handleCopy} className="bg-white p-3">
+    <button onClick={handleCopy} className="bg-white p-2 border-2">
       {copied ? (
         <span className="text-green-500 flex">
           Copied
