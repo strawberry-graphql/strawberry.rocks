@@ -87,7 +87,13 @@ const highlightLines = (root: Root, lines: number[]) => {
         dataLine: lineNumber,
         className: className,
       },
-      children,
+      children: [
+        {
+          type: "element",
+          tagName: "span",
+          children,
+        },
+      ],
     };
   }) as typeof root.children;
 
