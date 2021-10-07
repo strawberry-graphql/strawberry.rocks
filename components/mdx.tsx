@@ -260,6 +260,12 @@ const WarningBlock = ({ children }: { children: ReactNode }) => (
   </BaseBlock>
 );
 
+const BlockQuote = ({ children }: { children: ReactNode }) => (
+  <blockquote className="border-l-4 border-gray-300 pt-2 px-3 overflow-auto italic opacity-80 mb-4">
+    {children}
+  </blockquote>
+);
+
 const theme = {
   h1: heading(1),
   h2: heading(2),
@@ -278,6 +284,7 @@ const theme = {
   pre: Pre,
   inlineCode: Code,
   a: DocsLink,
+  blockquote: BlockQuote,
   AdditionalResources,
   img: DocsImage,
   CodeNotes,
