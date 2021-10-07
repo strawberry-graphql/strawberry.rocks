@@ -11,6 +11,24 @@
 
 .code-highlighted-line {
   opacity: 1;
+  position: relative;
+}
+
+.code-highlighted-line span {
+  position: relative;
+  z-index: 1;
+}
+
+.code-highlighted-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1px;
+  bottom: 1px;
+  z-index: 0;
+  display: block;
+  @apply bg-yellow-100;
 }
 
 .code-highlighted-word,
