@@ -1,19 +1,19 @@
 /** @jsx jsx */
-import path from "path";
-import fs from "fs";
 import { anchorLinks } from "@hashicorp/remark-plugins";
+import fs from "fs";
 import matter from "gray-matter";
+import path from "path";
 
 import { GetStaticPaths, GetStaticProps } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 
 import ExtensionsPage, { ExtensionsPageProps } from "~/components/extensions";
+import { createExtensionSearchString } from "~/helpers/extensions";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { urlToSlugs } from "~/helpers/params";
+import { extensionDataIsComplete } from "~/helpers/type-guards";
 import { fetchExtensions, fetchPullRequest, OWNER, REPO } from "~/lib/api";
 import { getDocTree } from "~/lib/doc-tree";
-import { extensionDataIsComplete } from "~/helpers/type-guards";
-import { createExtensionSearchString } from "~/helpers/extensions";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   /**

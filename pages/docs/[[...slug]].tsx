@@ -2,7 +2,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 
 import DocsPage, { DocsPageProps } from "~/components/doc";
-
 import { serializePage } from "~/helpers/mdx";
 import {
   fetchDocPage,

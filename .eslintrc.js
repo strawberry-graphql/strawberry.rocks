@@ -17,6 +17,7 @@ module.exports = {
   },
   rules: {
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/ban-ts-comment": "off",
@@ -30,7 +31,7 @@ module.exports = {
     ],
     "@typescript-eslint/prefer-optional-chain": "warn",
     "@typescript-eslint/prefer-nullish-coalescing": ["warn"],
-    "no-console": "warn",
+    "no-console": ["error", { allow: ["warn", "error"] }],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
   },

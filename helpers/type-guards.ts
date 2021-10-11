@@ -1,8 +1,8 @@
 import { Tokens } from "marked";
 
 import { GithubCollaborator } from "~/types/api";
-import { TokenListItem, TokenText } from "~/types/marked";
 import { ExtensionDocData } from "~/types/extensions";
+import { TokenListItem, TokenText } from "~/types/marked";
 
 export const isString = (x: any): x is string => {
   return typeof x === "string";

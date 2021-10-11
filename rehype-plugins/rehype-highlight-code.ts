@@ -189,7 +189,7 @@ const findNotes = (root: Root) => {
       let index = -1;
 
       while (parent.children.length === 1) {
-        let previous = parent;
+        const previous = parent;
         parent = ancestors[ancestors.length - 1 - i];
         i += 1;
 
@@ -364,7 +364,7 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
     visit(tree, "element", visitor);
   };
 
-  function visitor(node: Node, index: Number, parentNode: Node) {
+  function visitor(node: Node, index: number, parentNode: Node) {
     if (parentNode.tagName === "pre" && node.tagName === "code") {
       const properties = node.properties as any;
 

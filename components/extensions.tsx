@@ -1,16 +1,14 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 
 import { NextPage } from "next";
-import { useRouter } from "next/router";
 
 import DocsNavigation from "~/components/docs-navigation";
 import { Header } from "~/components/header";
 import { Link } from "~/components/link";
-import components from "~/components/mdx";
 import { SEO } from "~/components/seo";
 import { fetchTableOfContents } from "~/lib/api";
-import { ReturnedPromiseResolvedType } from "~/types/utility";
 import { ExtensionDocData } from "~/types/extensions";
+import { ReturnedPromiseResolvedType } from "~/types/utility";
 
 import { FeedbackForm } from "./feedback-form";
 
@@ -87,8 +85,8 @@ const ExtensionsPage: NextPage<ExtensionsPageProps> = ({
           </p>
 
           <p className="mb-4">
-            If you can't find what you need here you can also build your own
-            custom extension based on a standard interface. More details{" "}
+            If you can&apos;t find what you need here you can also build your
+            own custom extension based on a standard interface. More details{" "}
             <Link
               href="/docs/guides/custom-extensions"
               className="text-red-500 text-lg"

@@ -38,27 +38,33 @@ const DocsImage = ({ src, ...props }: { src: string }) => (
   <img className="border-2 border-red-500 max-w-full" src={src} {...props} />
 );
 
-// eslint-disable-next-line react/display-name
 const heading =
   (level: 1 | 2 | 3 | 4 | 5 | 6) =>
+  // eslint-disable-next-line react/display-name
   ({ children }: { children: ReactNode }) => {
     if (level >= 4) {
       // Any levels that are h4 and above have different styles
-      return createElement(`h${level}`, {
-        className: cx("mt-8 mb-4 text-md font-bold"),
-        children,
-      });
+      return createElement(
+        `h${level}`,
+        {
+          className: cx("mt-8 mb-4 text-md font-bold"),
+        },
+        children
+      );
     }
 
-    return createElement(`h${level}`, {
-      className: cx("my-8", {
-        "text-3xl": level === 1,
-        "text-2xl": level === 2,
-        "text-xl": level === 3,
-        underline: level > 1,
-      }),
-      children,
-    });
+    return createElement(
+      `h${level}`,
+      {
+        className: cx("my-8", {
+          "text-3xl": level === 1,
+          "text-2xl": level === 2,
+          "text-xl": level === 3,
+          underline: level > 1,
+        }),
+      },
+      children
+    );
   };
 
 const Paragraph = ({ children }: { children: ReactNode }) => (

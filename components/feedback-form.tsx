@@ -48,6 +48,7 @@ const Success = () => (
 );
 
 export const FeedbackForm = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [textareaVisibile, _, setTextareaVisibile] = useToggle(false);
   const [{ loading, error, success }, setApi] = useState({
     loading: false,

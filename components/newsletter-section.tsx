@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useMailchimp } from "../helpers/use-mailchimp";
 
+import { useMailchimp } from "../helpers/use-mailchimp";
 import { ArrowRightIcon } from "./icons/arrow-right";
 
 const url =
