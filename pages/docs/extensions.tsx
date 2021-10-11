@@ -33,58 +33,48 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
 
   const version = await fetchLatestRelease();
 
-  try {
-    /**
-     * Get extensions
-     */
-    const { extensions, tableContent: docsToc } = await fetchExtensions({
-      prefix: `/docs/`,
-      owner,
-      repo,
-      ref,
-    });
+  /**
+   * Get extensions
+   */
+  const { extensions, tableContent: docsToc } = await fetchExtensions({
+    prefix: `/docs/`,
+    owner,
+    repo,
+    ref,
+  });
 
-    const extensionData = [];
+  const extensionData = [];
 
-    for (const extensionPage of extensions) {
-      if (
-        !extensionPage ||
-        !extensionPage.object ||
-        !extensionPage.object.text
-      ) {
-        continue;
-      }
-
-      if (extensionPage.name.startsWith("_")) {
-        continue;
-      }
-
-      const { data, content } = matter(extensionPage.object.text);
-
-      if (!extensionDataIsComplete(data)) {
-        continue;
-      }
-
-      extensionData.push({
-        href: `extensions/${urlToSlugs(extensionPage.name)}`,
-        searchString: createExtensionSearchString(data),
-        data,
-      });
+  for (const extensionPage of extensions) {
+    if (!extensionPage || !extensionPage.object || !extensionPage.object.text) {
+      continue;
     }
 
-    return {
-      props: {
-        docsToc,
-        extensions: extensionData,
-        version,
-      },
-      revalidate: 60,
-    };
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("getStaticProps:", error);
-    return { notFound: true, revalidate: 60 };
+    if (extensionPage.name.startsWith("_")) {
+      continue;
+    }
+
+    const { data, content } = matter(extensionPage.object.text);
+
+    if (!extensionDataIsComplete(data)) {
+      continue;
+    }
+
+    extensionData.push({
+      href: `extensions/${urlToSlugs(extensionPage.name)}`,
+      searchString: createExtensionSearchString(data),
+      data,
+    });
   }
+
+  return {
+    props: {
+      docsToc,
+      extensions: extensionData,
+      version,
+    },
+    revalidate: 60,
+  };
 };
 
 export default ExtensionsPage;
