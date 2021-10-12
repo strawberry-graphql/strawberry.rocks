@@ -131,7 +131,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       collaborators: await fetchContributors(),
       version: await fetchLatestRelease(),
     },
-    revalidate: 60,
+    revalidate: 60 * 60,
   };
 };
 

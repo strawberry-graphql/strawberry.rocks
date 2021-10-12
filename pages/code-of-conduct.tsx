@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         source,
         version,
       },
-      revalidate: 60,
+      revalidate: 60 * 60,
     };
   } catch (error) {
     // eslint-disable-next-line no-console

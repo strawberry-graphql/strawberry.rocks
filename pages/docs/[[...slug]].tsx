@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   return {
     props: { source, data, editPath, docsToc, version },
-    revalidate: 60,
+    revalidate: 5 * 60,
   };
 };
 

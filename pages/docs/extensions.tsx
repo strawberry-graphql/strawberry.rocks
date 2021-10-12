@@ -1,25 +1,19 @@
 /** @jsx jsx */
-import { anchorLinks } from "@hashicorp/remark-plugins";
-import fs from "fs";
 import matter from "gray-matter";
-import path from "path";
 
-import { GetStaticPaths, GetStaticProps } from "next";
-import { serialize } from "next-mdx-remote/serialize";
+import { GetStaticProps } from "next";
 
 import ExtensionsPage, { ExtensionsPageProps } from "~/components/extensions";
 import { createExtensionSearchString } from "~/helpers/extensions";
-import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { urlToSlugs } from "~/helpers/params";
 import { extensionDataIsComplete } from "~/helpers/type-guards";
 import {
   fetchExtensions,
   fetchLatestRelease,
   OWNER,
-  REPO,
   REF,
+  REPO,
 } from "~/lib/api";
-import { getDocTree } from "~/lib/doc-tree";
 
 export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
   params,
@@ -73,7 +67,7 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
       extensions: extensionData,
       version,
     },
-    revalidate: 60,
+    revalidate: 5 * 60,
   };
 };
 
