@@ -93,7 +93,7 @@ function Nav({ docs }: { docs: DocsTree }) {
 export default function DocsNavigation({ docs }: { docs: DocsTree }) {
   const [open, toggleOpen, setOpen] = useToggle(false);
 
-  const closeMenu = useCallback(() => setOpen(false), []);
+  const closeMenu = useCallback(() => setOpen(false), [setOpen]);
 
   useEffect(() => {
     Router.events.on("routeChangeStart", closeMenu);

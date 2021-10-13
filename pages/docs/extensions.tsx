@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
       continue;
     }
 
-    const { data, content } = matter(extensionPage.object.text);
+    const { data } = matter(extensionPage.object.text);
 
     if (!extensionDataIsComplete(data)) {
       continue;

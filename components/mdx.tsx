@@ -3,6 +3,8 @@ import GithubSlugger from "github-slugger";
 import { createElement, ReactNode, useContext, useEffect } from "react";
 import { createPortal } from "react-dom";
 
+import Image from "next/image";
+
 import { useHover } from "~/helpers/use-hover";
 
 import { AdditionalResources } from "./additional-resources";
@@ -35,7 +37,7 @@ const DocsLink = ({
 };
 
 const DocsImage = ({ src, ...props }: { src: string }) => (
-  <img className="border-2 border-red-500 max-w-full" src={src} {...props} />
+  <Image className="border-2 border-red-500 max-w-full" src={src} {...props} />
 );
 
 const heading =
@@ -184,10 +186,6 @@ const CodeNotes = ({
 }) => {
   const { currentNote, setCurrentNote } = useContext(NotesContext);
 
-  if (currentNote === null) {
-    return null;
-  }
-
   useEffect(() => {
     const removeNote = () => {
       setCurrentNote(null);
@@ -198,7 +196,11 @@ const CodeNotes = ({
     return () => {
       window.removeEventListener("scroll", removeNote);
     };
-  }, []);
+  }, [setCurrentNote]);
+
+  if (currentNote === null) {
+    return null;
+  }
 
   const boundingBox = currentNote.element.getBoundingClientRect();
 

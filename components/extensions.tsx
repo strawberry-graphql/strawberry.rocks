@@ -25,11 +25,6 @@ export type ExtensionsPageProps = {
   versionHref?: string;
 };
 
-type SearchDocument = {
-  index: string;
-  extension: ExtensionSummary;
-};
-
 const ExtensionsPage: NextPage<ExtensionsPageProps> = ({
   docsToc,
   extensions,
