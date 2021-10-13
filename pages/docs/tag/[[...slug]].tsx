@@ -1,13 +1,7 @@
 /** @jsx jsx */
-import { anchorLinks } from "@hashicorp/remark-plugins";
-import matter from "gray-matter";
-
 import { GetStaticPaths, GetStaticProps } from "next";
-import { serialize } from "next-mdx-remote/serialize";
 
 import DocsPage, { DocsPageProps } from "~/components/doc";
-import components from "~/components/mdx";
-import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { serializePage } from "~/helpers/mdx";
 import { fetchDocPage, OWNER, REPO } from "~/lib/api";
 
