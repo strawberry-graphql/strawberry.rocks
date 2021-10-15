@@ -1,7 +1,7 @@
 module.exports = {
   pageExtensions: ["js", "jsx", "tsx"],
   images: {
-    domains: ['strawberry.rock', 'github.com'],
+    domains: ["strawberry.rock", "github.com"],
   },
   async redirects() {
     return [
