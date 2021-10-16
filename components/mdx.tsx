@@ -239,9 +239,9 @@ const BaseBlock = ({
   >
     <div
       className={cx("py-2 px-3 mb-2 font-bold", {
-        "bg-green-100": color === "green",
-        "bg-blue-100": color === "blue",
-        "bg-yellow-100": color === "yellow",
+        "bg-green-100 dark:bg-green-500": color === "green",
+        "bg-blue-100 dark:bg-blue-500": color === "blue",
+        "bg-yellow-100 dark:bg-yellow-500": color === "yellow",
       })}
     >
       {heading}
