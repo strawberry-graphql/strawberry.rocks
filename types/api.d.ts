@@ -4,6 +4,6 @@ export type GithubCollaborator = {
   url: string;
 };
 
-export type TableOfContentsPath = {
+export type PagePath = {
   params: { slug: string[] };
 }[];

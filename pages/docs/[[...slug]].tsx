@@ -7,6 +7,7 @@ import {
   fetchDocPage,
   fetchLatestRelease,
   fetchTableOfContentsPaths,
+  fetchExtensionsPaths,
   OWNER,
   REF,
   REPO,
@@ -14,7 +15,11 @@ import {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const ref = REF;
-  const paths = await fetchTableOfContentsPaths({ ref });
+  const [pagePaths, extensionPaths] = await Promise.all([
+    fetchTableOfContentsPaths({ ref }),
+    fetchExtensionsPaths({ ref }),
+  ]);
+  const paths = pagePaths.concat(extensionPaths);
 
   return { paths, fallback: true };
 };
