@@ -92,7 +92,7 @@ const ExtensionsPage: NextPage<ExtensionsPageProps> = ({
           </p>
 
           <input
-            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2 border-gray-300 border-b"
+            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2 border-gray-300 border-b dark:bg-gray-700"
             placeholder="Find an extension..."
             type="text"
             value={searchState.query}
@@ -109,7 +109,7 @@ const ExtensionsPage: NextPage<ExtensionsPageProps> = ({
               >
                 <li
                   key={extension.data.title}
-                  className="flex px-4 py-6 justify-between items-center"
+                  className="flex px-4 py-6 justify-between items-center whitespace-normal"
                 >
                   <div>
                     <h4 className="font-mono font-medium text-xl mb-2">
@@ -120,7 +120,7 @@ const ExtensionsPage: NextPage<ExtensionsPageProps> = ({
                       <div className="">
                         {extension.data.tags.split(",").map((tag) => (
                           <span
-                            className="bg-gray-100 rounded-md p-2 text-xs mr-2"
+                            className="bg-gray-100 rounded-md p-2 text-xs mr-2 dark:bg-gray-700 dark:text-gray-300"
                             key={tag}
                           >
                             {tag}
