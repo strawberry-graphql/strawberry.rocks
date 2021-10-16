@@ -30,7 +30,12 @@ export const REF = "main";
 /**
  * Contributor username/login to ignore as they are bots.
  */
-const IGNORE_LIST = ["dependabot-preview[bot]", "dependabot-bot", "botberry"];
+const IGNORE_LIST = [
+  "dependabot-preview[bot]",
+  "dependabot-bot",
+  "dependabot[bot]",
+  "botberry",
+];
 
 /**
  * fetchContributors uses the GitHub REST API for contributors as the GraphQL

@@ -39,7 +39,7 @@ const AcknowledgementsPage: NextPage<Props> = ({ collaborators, version }) => {
       <Header version={version} />
 
       <div className="mx-auto w-full max-w-7xl p-8 pb-12">
-        <h1 className="text-5xl mb-4">Acknowledgements</h1>
+        <h1 className="text-4xl md:text-5xl mb-4">Acknowledgements</h1>
         <p className="mb-8">We&apos;d like to thank all of our contributors:</p>
 
         <ul className="flex mb-6 flex-wrap">
