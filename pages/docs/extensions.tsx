@@ -27,48 +27,58 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
 
   const version = await fetchLatestRelease();
 
-  /**
-   * Get extensions
-   */
-  const { extensions, tableContent: docsToc } = await fetchExtensions({
-    prefix: `/docs/`,
-    owner,
-    repo,
-    ref,
-  });
-
-  const extensionData = [];
-
-  for (const extensionPage of extensions) {
-    if (!extensionPage || !extensionPage.object || !extensionPage.object.text) {
-      continue;
-    }
-
-    if (extensionPage.name.startsWith("_")) {
-      continue;
-    }
-
-    const { data } = matter(extensionPage.object.text);
-
-    if (!extensionDataIsComplete(data)) {
-      continue;
-    }
-
-    extensionData.push({
-      href: `extensions/${urlToSlugs(extensionPage.name)}`,
-      searchString: createExtensionSearchString(data),
-      data,
+  try {
+    /**
+     * Get extensions
+     */
+    const { extensions, tableContent: docsToc } = await fetchExtensions({
+      prefix: `/docs/`,
+      owner,
+      repo,
+      ref,
     });
-  }
 
-  return {
-    props: {
-      docsToc,
-      extensions: extensionData,
-      version,
-    },
-    revalidate: 5 * 60,
-  };
+    const extensionData = [];
+
+    for (const extensionPage of extensions) {
+      if (
+        !extensionPage ||
+        !extensionPage.object ||
+        !extensionPage.object.text
+      ) {
+        continue;
+      }
+
+      if (extensionPage.name.startsWith("_")) {
+        continue;
+      }
+
+      const { data } = matter(extensionPage.object.text);
+
+      if (!extensionDataIsComplete(data)) {
+        continue;
+      }
+
+      extensionData.push({
+        href: `extensions/${urlToSlugs(extensionPage.name)}`,
+        searchString: createExtensionSearchString(data),
+        data,
+      });
+    }
+
+    return {
+      props: {
+        docsToc,
+        extensions: extensionData,
+        version,
+      },
+      revalidate: 5 * 60,
+    };
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("getStaticProps:", error);
+    return { notFound: true, revalidate: 60 };
+  }
 };
 
 export default ExtensionsPage;

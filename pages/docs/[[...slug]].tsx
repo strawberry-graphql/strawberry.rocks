@@ -41,33 +41,38 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
 
   const version = await fetchLatestRelease();
 
-  /**
-   * Get doc content from markdown file.
-   */
-  const filename: string = slugs.join("/") + ".md";
+  try {
+    /**
+     * Get doc content from markdown file.
+     */
+    const filename: string = slugs.join("/") + ".md";
 
-  const { page, tableContent: docsToc } = await fetchDocPage({
-    prefix: "/docs/",
-    filename: `docs/${filename}`,
-    owner,
-    repo,
-    ref,
-  });
+    const { page, tableContent: docsToc } = await fetchDocPage({
+      prefix: "/docs/",
+      filename: `docs/${filename}`,
+      owner,
+      repo,
+      ref,
+    });
 
-  const { source, data } = await serializePage({
-    page,
-    filename,
-    ref,
-    repo,
-    owner,
-  });
+    const { source, data } = await serializePage({
+      page,
+      filename,
+      ref,
+      repo,
+      owner,
+    });
 
-  const editPath = `https://github.com/${owner}/${repo}/edit/${REF}/docs/${filename}`;
-
-  return {
-    props: { source, data, editPath, docsToc, version },
-    revalidate: 5 * 60,
-  };
+    const editPath = `https://github.com/${owner}/${repo}/edit/${REF}/docs/${filename}`;
+    return {
+      props: { source, data, editPath, docsToc, version },
+      revalidate: 5 * 60,
+    };
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("getStaticProps:", error);
+    return { notFound: true, revalidate: 60 };
+  }
 };
 
 export default DocsPage;
