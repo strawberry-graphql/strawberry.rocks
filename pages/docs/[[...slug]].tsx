@@ -11,6 +11,7 @@ import {
   OWNER,
   REF,
   REPO,
+  DocPageNotFound,
 } from "~/lib/api";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -71,7 +72,11 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("getStaticProps:", error);
-    return { notFound: true, revalidate: 60 };
+    if (error instanceof DocPageNotFound) {
+      return { notFound: true, revalidate: 60 };
+    }
+
+    throw error;
   }
 };
 

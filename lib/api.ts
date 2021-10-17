@@ -363,6 +363,15 @@ export const fetchCodeOfConduct = async () =>
     )
     .then((response) => response.repository);
 
+export class DocPageNotFound extends Error {
+  filename: string;
+
+  constructor(message: string, filename: string) {
+    super(message);
+    this.filename = filename;
+  }
+}
+
 export const fetchDocPage = async ({
   prefix,
   filename,
@@ -411,7 +420,7 @@ export const fetchDocPage = async ({
     const pageText = response.repository?.object?.text;
     const tableContentText = response.repository?.tableOfContents?.text;
     if (pageText == null) {
-      throw new Error("no pageText");
+      throw new DocPageNotFound("no pageText", filename);
     }
     return {
       page: pageText,
