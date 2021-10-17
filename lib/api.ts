@@ -5,7 +5,7 @@ import marked from "marked";
 import { DocsTree } from "~/components/docs-navigation";
 import { urlToSlugs } from "~/helpers/params";
 import { isCollaborator, isList, isString } from "~/helpers/type-guards";
-import { GithubCollaborator, TableOfContentsPath } from "~/types/api";
+import { GithubCollaborator, PagePath } from "~/types/api";
 import {
   CodeOfConductQuery,
   DocPageQuery,
@@ -252,7 +252,7 @@ export const fetchTableOfContentsPaths = async ({
   ref?: string;
   owner?: string;
   repo?: string;
-}): Promise<TableOfContentsPath> => {
+}): Promise<PagePath> => {
   const text = await fetchFile({
     filename: "docs/README.md",
     owner,
@@ -260,7 +260,7 @@ export const fetchTableOfContentsPaths = async ({
     ref,
   });
 
-  const paramSlugs: TableOfContentsPath = [{ params: { slug: [] } }];
+  const paramSlugs: PagePath = [{ params: { slug: [] } }];
 
   if (text == null) {
     return paramSlugs;
@@ -282,6 +282,72 @@ export const fetchTableOfContentsPaths = async ({
   return paramSlugs;
 };
 
+export const fetchExtensionsPaths = async ({
+  ref = REF,
+  owner = OWNER,
+  repo = REPO,
+}: {
+  ref?: string;
+  owner?: string;
+  repo?: string;
+}): Promise<PagePath> => {
+  try {
+    const response = await octokit.graphql<ExtensionsPageQuery>(
+      /* GraphQL */
+      `
+        query extensionsPages(
+          $owner: String!
+          $repo: String!
+          $filename: String!
+        ) {
+          repository(owner: $owner, name: $repo) {
+            object(expression: $filename) {
+              ... on Tree {
+                entries {
+                  name
+                  path
+                }
+              }
+            }
+          }
+        }
+      `,
+      {
+        owner,
+        repo,
+        filename: `${ref}:docs/extensions`,
+      }
+    );
+
+    const extensions = response.repository?.object?.entries;
+    if (extensions == null) {
+      throw new Error("no extensions");
+    }
+    const paramSlugs: PagePath = [];
+    extensions.forEach((extension) => {
+      if (!extension.path) {
+        return;
+      }
+
+      if (extension.name.startsWith("_")) {
+        return;
+      }
+
+      paramSlugs.push({
+        params: {
+          slug: urlToSlugs(extension.path).slice(1),
+        },
+      });
+    });
+
+    return paramSlugs;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("fetchExtensions:", error);
+    throw error;
+  }
+};
+
 export const fetchCodeOfConduct = async () =>
   await octokit
     .graphql<CodeOfConductQuery>(
@@ -301,6 +367,15 @@ export const fetchCodeOfConduct = async () =>
       { owner: OWNER, repo: REPO }
     )
     .then((response) => response.repository);
+
+export class DocPageNotFound extends Error {
+  filename: string;
+
+  constructor(message: string, filename: string) {
+    super(message);
+    this.filename = filename;
+  }
+}
 
 export const fetchDocPage = async ({
   prefix,
@@ -350,7 +425,7 @@ export const fetchDocPage = async ({
     const pageText = response.repository?.object?.text;
     const tableContentText = response.repository?.tableOfContents?.text;
     if (pageText == null) {
-      throw new Error("no pageText");
+      throw new DocPageNotFound("no pageText", filename);
     }
     return {
       page: pageText,
