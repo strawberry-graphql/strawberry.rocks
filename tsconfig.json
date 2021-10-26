@@ -1,51 +1,52 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
-        ],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "baseUrl": ".",
-        "paths": {
-            "~/components/*": [
-                "./components/*"
-            ],
-            "~/content/*": [
-                "./content/*"
-            ],
-            "~/helpers/*": [
-                "./helpers/*"
-            ],
-            "~/rehype-plugins/*": [
-                "./rehype-plugins/*"
-            ],
-            "~/lib/*": [
-                "./lib/*"
-            ],
-            "~/types/*": [
-                "./types/*"
-            ]
-        }
-    },
-    "include": [
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx"
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-    "exclude": [
-        "node_modules",
-        ".next"
-    ]
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "~/components/*": [
+        "./components/*"
+      ],
+      "~/content/*": [
+        "./content/*"
+      ],
+      "~/helpers/*": [
+        "./helpers/*"
+      ],
+      "~/rehype-plugins/*": [
+        "./rehype-plugins/*"
+      ],
+      "~/lib/*": [
+        "./lib/*"
+      ],
+      "~/types/*": [
+        "./types/*"
+      ]
+    },
+    "incremental": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next"
+  ]
 }

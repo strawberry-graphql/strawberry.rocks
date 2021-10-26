@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import matter from "gray-matter";
 
 import { GetStaticPaths, GetStaticProps } from "next";
