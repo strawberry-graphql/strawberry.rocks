@@ -21482,6 +21482,15 @@ export type LatestReleaseQueryVariables = Exact<{
 
 export type LatestReleaseQuery = { repository?: Maybe<{ latestRelease?: Maybe<Pick<Release, 'tagName'>> }> };
 
+export type ExtensionsPagesQueryVariables = Exact<{
+  owner: Scalars['String'];
+  repo: Scalars['String'];
+  filename: Scalars['String'];
+}>;
+
+
+export type ExtensionsPagesQuery = { repository?: Maybe<{ object?: Maybe<{ entries?: Maybe<Array<Pick<TreeEntry, 'name' | 'path'>>> }> }> };
+
 export type CodeOfConductQueryVariables = Exact<{
   owner: Scalars['String'];
   repo: Scalars['String'];
