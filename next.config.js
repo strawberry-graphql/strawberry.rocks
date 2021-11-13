@@ -1,4 +1,5 @@
 module.exports = {
+  reactStrictMode: true,
   pageExtensions: ["js", "jsx", "tsx"],
   images: {
     domains: ["strawberry.rock", "github.com"],
