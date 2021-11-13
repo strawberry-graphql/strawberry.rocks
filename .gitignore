@@ -74,3 +74,6 @@ __generated__/
 
 .next
 /.vscode
+
+# Typescript build cache
+tsconfig.tsbuildinfo
