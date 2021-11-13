@@ -1,4 +1,7 @@
-module.exports = {
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "tsx"],
@@ -15,3 +18,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;
