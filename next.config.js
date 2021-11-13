@@ -1,4 +1,5 @@
 module.exports = {
+  swcMinify: true,
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "tsx"],
   images: {
