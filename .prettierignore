@@ -8,3 +8,5 @@ coverage
 .github
 *.snap
 types/graphql.d.ts
+.eslintrc.json
+tsconfig.json
