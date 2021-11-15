@@ -1,7 +1,12 @@
-module.exports = {
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+  swcMinify: true,
+  reactStrictMode: true,
   pageExtensions: ["js", "jsx", "tsx"],
   images: {
-    domains: ["strawberry.rock", "github.com"],
+    domains: ["strawberry.rocks", "github.com"],
   },
   async redirects() {
     return [
@@ -13,3 +18,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;
