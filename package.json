@@ -30,7 +30,7 @@
     ],
     "dependencies": {
         "@docsearch/react": "^3.0.0-alpha.41",
-        "@hashicorp/remark-plugins": "^3.2.1",
+        "@hashicorp/remark-plugins": "^3.3.1",
         "@heroicons/react": "^1.0.5",
         "@octokit/core": "^3.5.1",
         "@octokit/plugin-paginate-rest": "^2.17.0",
