@@ -43,42 +43,43 @@ const IGNORE_LIST = [
  * support for paginatated responses. So if we ever get above 100 contributors
  * this should handle querying more pages for us.
  */
-export const fetchContributors: () => Promise<GithubCollaborator[]> =
-  async () => {
-    const contributors: string[] = await octokit.paginate(
-      "GET /repos/{owner}/{repo}/contributors",
-      { owner: OWNER, repo: REPO, per_page: 100 },
-      (response) =>
-        response.data
-          .filter((member) =>
-            isString(member.login) ? !IGNORE_LIST.includes(member.login) : false
-          )
-          .map((member) => member.login)
-          .filter(isString)
-    );
+export const fetchContributors: () => Promise<
+  GithubCollaborator[]
+> = async () => {
+  const contributors: string[] = await octokit.paginate(
+    "GET /repos/{owner}/{repo}/contributors",
+    { owner: OWNER, repo: REPO, per_page: 100 },
+    (response) =>
+      response.data
+        .filter((member) =>
+          isString(member.login) ? !IGNORE_LIST.includes(member.login) : false
+        )
+        .map((member) => member.login)
+        .filter(isString)
+  );
 
-    /**
-     * Get a contributors name & blog. If the request errors then return undefined
-     *  and filter item.
-     */
-    return Promise.all(
-      contributors.map(async (username) => {
-        try {
-          const { data } = await octokit.request("GET /users/{username}", {
-            username,
-          });
+  /**
+   * Get a contributors name & blog. If the request errors then return undefined
+   *  and filter item.
+   */
+  return Promise.all(
+    contributors.map(async (username) => {
+      try {
+        const { data } = await octokit.request("GET /users/{username}", {
+          username,
+        });
 
-          return {
-            name: data.name,
-            login: data.login,
-            url: data.blog ?? data.html_url,
-          };
-        } catch {
-          return;
-        }
-      })
-    ).then((resolve) => resolve.filter(isCollaborator));
-  };
+        return {
+          name: data.name,
+          login: data.login,
+          url: data.blog ?? data.html_url,
+        };
+      } catch {
+        return;
+      }
+    })
+  ).then((resolve) => resolve.filter(isCollaborator));
+};
 
 export const fetchPullRequest = async ({
   pull_number,
