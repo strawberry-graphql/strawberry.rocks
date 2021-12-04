@@ -4,6 +4,7 @@ import { createElement, ReactNode, useContext, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 import Image from "next/image";
+import type { ImageProps } from "next/image";
 
 import { useHover } from "~/helpers/use-hover";
 
@@ -36,7 +37,8 @@ const DocsLink = ({
   );
 };
 
-const DocsImage = ({ src, ...props }: { src: string }) => (
+const DocsImage = ({ src, ...props }: { src: string } & ImageProps) => (
+  // eslint-disable-next-line jsx-a11y/alt-text
   <Image className="border-2 border-red-500 max-w-full" src={src} {...props} />
 );
 

@@ -2,7 +2,6 @@ import "@docsearch/css/dist/style.css";
 import NProgress from "nprogress";
 
 import type { AppProps } from "next/app";
-import Head from "next/head";
 import Router from "next/router";
 
 import { Footer } from "~/components/footer";
@@ -20,7 +19,6 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <div className="dark:bg-gray-800 text-black dark:text-white">
         <Component {...pageProps} />
-
         <NewsletterSection />
         <Footer />
       </div>
