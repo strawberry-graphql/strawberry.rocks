@@ -7,7 +7,7 @@
         "npm": "7.x"
     },
     "scripts": {
-        "prebuild": "npm run codegen && npm run type-check",
+        "prebuild": "npm run codegen",
         "build": "next build",
         "develop": "npm run dev",
         "dev": "next dev",
