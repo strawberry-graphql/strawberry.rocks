@@ -11,6 +11,11 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Karla:,400,400i,700&amp;display=swap"
             rel="stylesheet"
           />
+          <link
+            rel="preconnect"
+            href="https://HTUQW2U430-dsn.algolia.net"
+            crossOrigin="true"
+          />
         </Head>
         <body>
           <Main />
