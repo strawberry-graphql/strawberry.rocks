@@ -52,7 +52,7 @@ export const Header = ({
         <div className="flex w-full justify-center mt-4 sm:mt-0 sm:w-auto md:hidden">
           <DocSearch
             appId="HTUQW2U430"
-            apiKey="f9cabece25612e2ee9a4169a4afe2227"
+            apiKey="bccc4f8ec45c035730f43b9443f099a6"
             indexName="strawberry"
           />
         </div>
@@ -61,7 +61,7 @@ export const Header = ({
         <div className="mr-4">
           <DocSearch
             appId="HTUQW2U430"
-            apiKey="f9cabece25612e2ee9a4169a4afe2227"
+            apiKey="bccc4f8ec45c035730f43b9443f099a6"
             indexName="strawberry"
           />
         </div>
