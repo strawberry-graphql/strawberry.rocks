@@ -51,7 +51,7 @@ export const Header = ({
         </nav>
         <div className="flex w-full justify-center mt-4 sm:mt-0 sm:w-auto md:hidden">
           <DocSearch
-            apiKey="8ee41ea246aba5e4949e7a56b3b5cdba"
+            apiKey="f9cabece25612e2ee9a4169a4afe2227"
             indexName="strawberry"
           />
         </div>
@@ -59,7 +59,7 @@ export const Header = ({
       <div className="hidden md:flex justify-end items-center flex-1">
         <div className="mr-4">
           <DocSearch
-            apiKey="8ee41ea246aba5e4949e7a56b3b5cdba"
+            apiKey="f9cabece25612e2ee9a4169a4afe2227"
             indexName="strawberry"
           />
         </div>
