@@ -82,7 +82,7 @@
         "eslint-plugin-prettier": "^4.0.0",
         "graphql": "^15.8.0",
         "prettier": "2.5.1",
-        "tailwindcss": "^3.0.1"
+        "tailwindcss": "^3.0.6"
     },
     "repository": {
         "type": "git",
