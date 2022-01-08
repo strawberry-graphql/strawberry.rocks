@@ -113,14 +113,14 @@ export default function DocsNavigation({ docs }: { docs: DocsTree }) {
         <div
           className={`fixed ${
             open ? "" : "hidden"
-          } md:hidden top-0 left-0 right-0 h-screen overflow-x-scroll bg-white dark:bg-gray-800 z-10 p-8`}
+          } md:hidden top-0 left-0 right-0 h-screen overflow-x-scroll bg-white dark:bg-gray-800 z-50 p-8`}
         >
           <Nav docs={docs} />
         </div>
 
         <button
           className={cx(
-            "fixed md:hidden bottom-8 w-16 h-16 focus:outline-none right-8 z-10",
+            "fixed md:hidden bottom-8 w-16 h-16 focus:outline-none right-8 z-50",
             "fill-current text-red-500 bg-red-200 dark:bg-red-500 dark:text-white p-2 rounded-full cursor-pointer shadow-xl"
           )}
           onClick={toggleOpen}
