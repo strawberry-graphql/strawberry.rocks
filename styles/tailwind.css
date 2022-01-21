@@ -12,6 +12,7 @@
 .code-highlighted-line {
   opacity: 1;
   position: relative;
+  @apply w-fit;
 }
 
 .code-highlighted-line span {
@@ -28,7 +29,7 @@
   bottom: 1px;
   z-index: 0;
   display: block;
-  @apply bg-yellow-100;
+  @apply bg-yellow-100 dark:bg-sky-300/10;
 }
 
 .code-highlighted-word,
