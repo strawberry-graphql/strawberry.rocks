@@ -12,7 +12,7 @@
 .code-highlighted-line {
   opacity: 1;
   position: relative;
-  @apply w-fit;
+  @apply w-fit min-w-[0.625rem];
 }
 
 .code-highlighted-line span {
