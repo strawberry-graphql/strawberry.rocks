@@ -22,7 +22,7 @@ const DocsLink = ({
   className?: string;
   children: React.ReactNode;
 }) => {
-  href = href ? href.replace(/.md$/, "") : "";
+  href = href ? href.replace(/.md(#.*)?$/, "$1") : "";
 
   return (
     <a
