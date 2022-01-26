@@ -84,7 +84,9 @@ export const FeedbackForm = () => {
 
   return (
     <div className="mt-8 border-t pt-8">
-      <h1 className="font-bold text-center mb-2">Was this helpful? How could we improve it?</h1>
+      <h1 className="font-bold text-center mb-2">
+        Was this helpful? How could we improve it?
+      </h1>
 
       <form onChange={() => setTextareaVisibile(true)} onSubmit={submit}>
         <nav className="list-none flex justify-center space-x-4 mb-4">
