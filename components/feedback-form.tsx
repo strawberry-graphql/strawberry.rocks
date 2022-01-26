@@ -85,7 +85,7 @@ export const FeedbackForm = () => {
   return (
     <div className="mt-8 border-t pt-8">
       <h1 className="font-bold text-center mb-2">
-        Was this helpful? How could we improve it?
+        Was this helpful? What can we improve?
       </h1>
 
       <form onChange={() => setTextareaVisibile(true)} onSubmit={submit}>
