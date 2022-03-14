@@ -11,6 +11,7 @@ import { useHover } from "~/helpers/use-hover";
 import { AdditionalResources } from "./additional-resources";
 import { NotesContext } from "./code-notes";
 import { CopyToClipboard } from "./copy-to-clipboard";
+import { FaqDetails } from "./faq-details";
 import { SplitCodeView } from "./split-code-view";
 
 const DocsLink = ({
@@ -302,6 +303,7 @@ const theme = {
   Note: NoteBlock,
   Tip: TipBlock,
   Warning: WarningBlock,
+  FaqDetails,
 };
 
 export default theme;

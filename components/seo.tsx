@@ -73,7 +73,7 @@ export const SEO = ({
         ))}
       </Head>
       <Script
-        src="https://stats.strawberry.rocks/js/index.js"
+        src="/js/script.js"
         data-domain="strawberry.rocks"
         strategy="lazyOnload"
       />

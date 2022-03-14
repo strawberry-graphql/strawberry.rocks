@@ -2,6 +2,7 @@ import matter from "gray-matter";
 
 import { serialize } from "next-mdx-remote/serialize";
 
+import { FaqPlugin } from "~/rehype-plugins/faq-plugin";
 import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
 import { RehypeTOC } from "~/rehype-plugins/rehype-toc";
 
@@ -22,14 +23,20 @@ export const serializePage = async ({
 }) => {
   const { data, content } = matter(page);
 
+  const plugins = [
+    RehypeHighlightCode,
+    RehypeTOC({ onlyLinks: !data.toc }),
+    fixImagePathsPlugin({ path: filename, ref, owner, repo }),
+  ];
+
+  if (data.faq) {
+    plugins.push(FaqPlugin);
+  }
+
   const source = await serialize(content, {
     scope: data,
     mdxOptions: {
-      rehypePlugins: [
-        RehypeHighlightCode,
-        RehypeTOC({ onlyLinks: !data.toc }),
-        fixImagePathsPlugin({ path: filename, ref, owner, repo }),
-      ],
+      rehypePlugins: plugins,
     },
   });
 

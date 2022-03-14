@@ -83,7 +83,7 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
       },
       revalidate: 5,
     };
-  } catch {
+  } catch (e) {
     return { notFound: true, revalidate: 5 };
   }
 };
