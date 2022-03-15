@@ -11565,7 +11565,10 @@ export type PackageTag = Node & {
 export enum PackageType {
   /** A debian package. */
   Debian = 'DEBIAN',
-  /** A docker image. */
+  /**
+   * A docker image.
+   * @deprecated DOCKER will be removed from this enum as this type will be migrated to only be used by the Packages REST API. Removal on 2021-06-21 UTC.
+   */
   Docker = 'DOCKER',
   /** A maven package. */
   Maven = 'MAVEN',
@@ -16476,7 +16479,10 @@ export type RepositoryInvitationOrder = {
 export enum RepositoryInvitationOrderField {
   /** Order repository invitations by creation time */
   CreatedAt = 'CREATED_AT',
-  /** Order repository invitations by invitee login */
+  /**
+   * Order repository invitations by invitee login
+   * @deprecated `INVITEE_LOGIN` is no longer a valid field value. Repository invitations can now be associated with an email, not only an invitee. Removal on 2020-10-01 UTC.
+   */
   InviteeLogin = 'INVITEE_LOGIN'
 }
 
@@ -21473,7 +21479,7 @@ export type FileQueryVariables = Exact<{
 }>;
 
 
-export type FileQuery = { repository?: Maybe<{ object?: Maybe<Pick<Blob, 'text'>> }> };
+export type FileQuery = { repository?: Maybe<{ object?: Maybe<Pick<Blob, 'text'> | {}> }> };
 
 export type LatestReleaseQueryVariables = Exact<{
   owner: Scalars['String'];
@@ -21490,7 +21496,7 @@ export type ExtensionsPagesQueryVariables = Exact<{
 }>;
 
 
-export type ExtensionsPagesQuery = { repository?: Maybe<{ object?: Maybe<{ entries?: Maybe<Array<Pick<TreeEntry, 'name' | 'path'>>> }> }> };
+export type ExtensionsPagesQuery = { repository?: Maybe<{ object?: Maybe<{ entries?: Maybe<Array<Pick<TreeEntry, 'name' | 'path'>>> } | {}> }> };
 
 export type CodeOfConductQueryVariables = Exact<{
   owner: Scalars['String'];
@@ -21508,7 +21514,7 @@ export type DocPageQueryVariables = Exact<{
 }>;
 
 
-export type DocPageQuery = { repository?: Maybe<{ object?: Maybe<Pick<Blob, 'text'>>, tableOfContents?: Maybe<Pick<Blob, 'text'>> }> };
+export type DocPageQuery = { repository?: Maybe<{ object?: Maybe<Pick<Blob, 'text'> | {}>, tableOfContents?: Maybe<Pick<Blob, 'text'> | {}> }> };
 
 export type ExtensionsPageQueryVariables = Exact<{
   owner: Scalars['String'];
@@ -21520,5 +21526,5 @@ export type ExtensionsPageQueryVariables = Exact<{
 
 export type ExtensionsPageQuery = { repository?: Maybe<{ object?: Maybe<{ entries?: Maybe<Array<(
         Pick<TreeEntry, 'name' | 'path' | 'type'>
-        & { object?: Maybe<Pick<Blob, 'text'>> }
-      )>> }>, tableOfContents?: Maybe<Pick<Blob, 'text'>> }> };
+        & { object?: Maybe<Pick<Blob, 'text'> | {}> }
+      )>> } | {}>, tableOfContents?: Maybe<Pick<Blob, 'text'> | {}> }> };
