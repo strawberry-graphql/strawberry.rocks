@@ -21479,7 +21479,10 @@ export type FileQueryVariables = Exact<{
 }>;
 
 
-export type FileQuery = { repository?: Maybe<{ object?: Maybe<Pick<Blob, 'text'> | {}> }> };
+export type FileQuery = { repository?: Maybe<{ object?: Maybe<(
+      { __typename: 'Blob' }
+      & Pick<Blob, 'text'>
+    ) | {}> }> };
 
 export type LatestReleaseQueryVariables = Exact<{
   owner: Scalars['String'];
@@ -21496,7 +21499,10 @@ export type ExtensionsPagesQueryVariables = Exact<{
 }>;
 
 
-export type ExtensionsPagesQuery = { repository?: Maybe<{ object?: Maybe<{ entries?: Maybe<Array<Pick<TreeEntry, 'name' | 'path'>>> } | {}> }> };
+export type ExtensionsPagesQuery = { repository?: Maybe<{ object?: Maybe<(
+      { __typename: 'Tree' }
+      & { entries?: Maybe<Array<Pick<TreeEntry, 'name' | 'path'>>> }
+    ) | {}> }> };
 
 export type CodeOfConductQueryVariables = Exact<{
   owner: Scalars['String'];
@@ -21514,7 +21520,13 @@ export type DocPageQueryVariables = Exact<{
 }>;
 
 
-export type DocPageQuery = { repository?: Maybe<{ object?: Maybe<Pick<Blob, 'text'> | {}>, tableOfContents?: Maybe<Pick<Blob, 'text'> | {}> }> };
+export type DocPageQuery = { repository?: Maybe<{ object?: Maybe<(
+      { __typename: 'Blob' }
+      & Pick<Blob, 'text'>
+    ) | {}>, tableOfContents?: Maybe<(
+      { __typename: 'Blob' }
+      & Pick<Blob, 'text'>
+    ) | {}> }> };
 
 export type ExtensionsPageQueryVariables = Exact<{
   owner: Scalars['String'];
@@ -21524,7 +21536,17 @@ export type ExtensionsPageQueryVariables = Exact<{
 }>;
 
 
-export type ExtensionsPageQuery = { repository?: Maybe<{ object?: Maybe<{ entries?: Maybe<Array<(
-        Pick<TreeEntry, 'name' | 'path' | 'type'>
-        & { object?: Maybe<Pick<Blob, 'text'> | {}> }
-      )>> } | {}>, tableOfContents?: Maybe<Pick<Blob, 'text'> | {}> }> };
+export type ExtensionsPageQuery = { repository?: Maybe<{ object?: Maybe<(
+      { __typename: 'Tree' }
+      & { entries?: Maybe<Array<(
+        { __typename: 'TreeEntry' }
+        & Pick<TreeEntry, 'name' | 'path' | 'type'>
+        & { object?: Maybe<(
+          { __typename: 'Blob' }
+          & Pick<Blob, 'text'>
+        ) | {}> }
+      )>> }
+    ) | {}>, tableOfContents?: Maybe<(
+      { __typename: 'Blob' }
+      & Pick<Blob, 'text'>
+    ) | {}> }> };
