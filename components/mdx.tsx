@@ -177,7 +177,7 @@ const Pre = ({
 };
 
 const Code = ({ children }: { children: ReactNode }) => {
-  return <code className="p-1">{children}</code>;
+  return <code className="p-1 break-words">{children}</code>;
 };
 
 const CodeNotes = ({
