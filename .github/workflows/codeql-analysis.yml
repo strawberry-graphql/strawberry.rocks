@@ -28,6 +28,7 @@ jobs:
       uses: github/codeql-action/init@v1
       with:
         languages: javascript
+        config-file: ./.github/codeql/codeql-config.yml
     - uses: actions/cache@v2.1.7
       with:
         path: ${{ github.workspace }}/.next/cache
