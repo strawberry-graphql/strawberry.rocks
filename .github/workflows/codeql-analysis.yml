@@ -3,10 +3,18 @@ name: "CodeQL scanning"
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '**/*.md'
   pull_request:
     branches: [main]
+    paths-ignore:
+      - '**/*.md'
   schedule:
     - cron: '0 15 * * 0'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   CodeQL-Build:
@@ -15,13 +23,20 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2.4.0
-
+      uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version-file: ".node-version"
+        cache: "npm"
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
         languages: javascript
-
+        config-file: ./.github/codeql/codeql-config.yml
+    - uses: actions/cache@v2.1.7
+      with:
+        path: ${{ github.workspace }}/.next/cache
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
     - name: build
       run: |
         npm ci
