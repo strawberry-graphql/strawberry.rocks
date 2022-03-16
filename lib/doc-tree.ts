@@ -3,11 +3,13 @@ import marked, { Tokens } from "marked";
 import { DocsTree, Section } from "~/components/docs-navigation";
 import { addHrefPrefix } from "~/helpers/params";
 import {
+  isBlob,
   isHeading,
   isLink,
   isList,
   isListItemWithTokens,
   isTextWithTokens,
+  isTree,
 } from "~/helpers/type-guards";
 
 export const getMDLinks = (items: Tokens.ListItem[]): Tokens.Link[] =>
@@ -55,3 +57,10 @@ export function getDocTree(text: string, prefix: string) {
   });
   return sections;
 }
+
+export const getTreeEntries = (
+  obj: Record<string, unknown> | null | undefined
+) => (isTree(obj) ? obj?.entries : null);
+
+export const getBlobText = (obj: Record<string, unknown> | null | undefined) =>
+  isBlob(obj) ? obj.text : null;

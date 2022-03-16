@@ -7,6 +7,7 @@ import { createExtensionSearchString } from "~/helpers/extensions";
 import { urlToSlugs } from "~/helpers/params";
 import { extensionDataIsComplete } from "~/helpers/type-guards";
 import { fetchExtensions, fetchPullRequest } from "~/lib/api";
+import { getBlobText } from "~/lib/doc-tree";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   /**
@@ -53,11 +54,8 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
     const extensionData = [];
 
     for (const extensionPage of extensions) {
-      if (
-        !extensionPage ||
-        !extensionPage.object ||
-        !extensionPage.object.text
-      ) {
+      const text = getBlobText(extensionPage.object);
+      if (text == null) {
         continue;
       }
 
@@ -65,7 +63,7 @@ export const getStaticProps: GetStaticProps<ExtensionsPageProps> = async ({
         continue;
       }
 
-      const { data } = matter(extensionPage.object.text);
+      const { data } = matter(text);
 
       if (!extensionDataIsComplete(data)) {
         continue;

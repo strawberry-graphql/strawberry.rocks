@@ -15,7 +15,12 @@ import {
   PullRequestQuery,
 } from "~/types/graphql";
 
-import { getDocTree, getMDLinks } from "./doc-tree";
+import {
+  getBlobText,
+  getDocTree,
+  getMDLinks,
+  getTreeEntries,
+} from "./doc-tree";
 
 const customOctokit = Octokit.plugin(paginateRest);
 
@@ -169,6 +174,7 @@ export const fetchFile = async ({
             repository(owner: $owner, name: $repo) {
               object(expression: $filename) {
                 ... on Blob {
+                  __typename
                   text
                 }
               }
@@ -181,7 +187,7 @@ export const fetchFile = async ({
           filename: `${ref}:${filename}`,
         }
       )
-      .then((response) => response.repository?.object?.text);
+      .then((response) => getBlobText(response.repository?.object));
     if (text == null) {
       throw new Error("no text");
     }
@@ -304,6 +310,7 @@ export const fetchExtensionsPaths = async ({
           repository(owner: $owner, name: $repo) {
             object(expression: $filename) {
               ... on Tree {
+                __typename
                 entries {
                   name
                   path
@@ -320,7 +327,7 @@ export const fetchExtensionsPaths = async ({
       }
     );
 
-    const extensions = response.repository?.object?.entries;
+    const extensions = getTreeEntries(response.repository?.object);
     if (extensions == null) {
       throw new Error("no extensions");
     }
@@ -404,11 +411,13 @@ export const fetchDocPage = async ({
           repository(owner: $owner, name: $repo) {
             object(expression: $filename) {
               ... on Blob {
+                __typename
                 text
               }
             }
             tableOfContents: object(expression: $tablecontent) {
               ... on Blob {
+                __typename
                 text
               }
             }
@@ -423,8 +432,8 @@ export const fetchDocPage = async ({
       }
     );
 
-    const pageText = response.repository?.object?.text;
-    const tableContentText = response.repository?.tableOfContents?.text;
+    const pageText = getBlobText(response.repository?.object);
+    const tableContentText = getBlobText(response.repository?.tableOfContents);
     if (pageText == null) {
       throw new DocPageNotFound("no pageText", filename);
     }
@@ -466,12 +475,15 @@ export const fetchExtensions = async ({
           repository(owner: $owner, name: $repo) {
             object(expression: $filename) {
               ... on Tree {
+                __typename
                 entries {
+                  __typename
                   name
                   path
                   type
                   object {
                     ... on Blob {
+                      __typename
                       text
                     }
                   }
@@ -480,6 +492,7 @@ export const fetchExtensions = async ({
             }
             tableOfContents: object(expression: $tablecontent) {
               ... on Blob {
+                __typename
                 text
               }
             }
@@ -494,11 +507,11 @@ export const fetchExtensions = async ({
       }
     );
 
-    const extensions = response.repository?.object?.entries;
+    const extensions = getTreeEntries(response.repository?.object);
     if (extensions == null) {
       throw new Error("no extensions");
     }
-    const tableContentText = response.repository?.tableOfContents?.text;
+    const tableContentText = getBlobText(response.repository?.tableOfContents);
     return {
       extensions,
       tableContent:

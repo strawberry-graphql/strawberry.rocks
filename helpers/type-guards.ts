@@ -2,7 +2,9 @@ import { Tokens } from "marked";
 
 import { GithubCollaborator } from "~/types/api";
 import { ExtensionDocData } from "~/types/extensions";
+import { Blob, ExtensionsPageQuery } from "~/types/graphql";
 import { TokenListItem, TokenText } from "~/types/marked";
+import { ExcludeEmpty } from "~/types/utility";
 
 export const isString = (x: any): x is string => {
   return typeof x === "string";
@@ -36,4 +38,16 @@ export const extensionDataIsComplete = (data: {
   [key: string]: any;
 }): data is ExtensionDocData => {
   return !!data.title && !!data.summary && data.tags;
+};
+
+export const isBlob = (obj: any): obj is Blob => {
+  return Object.keys(obj).length > 0 && obj.__typename === "Blob";
+};
+
+export const isTree = (
+  obj: any
+): obj is ExcludeEmpty<
+  NonNullable<ExtensionsPageQuery["repository"]>["object"]
+> => {
+  return Object.keys(obj).length > 0 && obj.__typename === "Tree";
 };
