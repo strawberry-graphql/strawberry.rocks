@@ -1,5 +1,5 @@
 import { Root, toString } from "hast-util-to-string";
-import h from "hastscript";
+import { h } from "hastscript";
 import { Plugin } from "unified";
 
 export const FaqPlugin: Plugin = () => {
@@ -13,10 +13,6 @@ export const FaqPlugin: Plugin = () => {
     for (const element of rootChildren) {
       if (element.type === "element" && element.tagName === "h2") {
         const heading = element.children[0];
-
-        // currentDetail = {
-        //   type: ""
-        // }
 
         currentDetail = h("FaqDetails", {}, [
           h("summary", { className: "my-8 text-2xl" }, toString(heading)),
