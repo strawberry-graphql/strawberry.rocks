@@ -65,7 +65,7 @@
     },
     "devDependencies": {
         "@graphql-codegen/cli": "2.6.2",
-        "@graphql-codegen/typescript": "2.4.7",
+        "@graphql-codegen/typescript": "2.4.8",
         "@graphql-codegen/typescript-operations": "2.3.4",
         "@octokit/graphql-schema": "10.73.0",
         "@trivago/prettier-plugin-sort-imports": "3.2.0",
