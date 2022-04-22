@@ -39,6 +39,7 @@ const IGNORE_LIST = [
   "dependabot-preview[bot]",
   "dependabot-bot",
   "dependabot[bot]",
+  "precommit-ci[bot]",
   "botberry",
 ];
 

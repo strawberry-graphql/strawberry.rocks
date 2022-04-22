@@ -5,16 +5,15 @@ import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
 import { fetchContributors, fetchLatestRelease } from "~/lib/api";
 import { GithubCollaborator } from "~/types/api";
+import sponsors from "~/data/sponsors.json";
 
-const MemberLink = ({
+const SponsorLink = ({
   children,
-  member,
+  link,
 }: {
-  member: GithubCollaborator;
+  link: string;
   children: React.ReactNode;
 }) => {
-  let link = member.url;
-
   if (!link.startsWith("http")) {
     link = `http://${link}`;
   }
@@ -40,14 +39,24 @@ const AcknowledgementsPage: NextPage<Props> = ({ collaborators, version }) => {
 
       <div className="mx-auto w-full max-w-7xl p-8 pb-12">
         <h1 className="text-4xl md:text-5xl mb-4">Acknowledgements</h1>
-        <p className="mb-8">We&apos;d like to thank all of our contributors:</p>
+        <p className="mb-8">We&apos;d like to thank all of our sponsors:</p>
+        <ul className="flex mb-6 flex-wrap">
+          {sponsors.map((sponsor, index) => (
+            <li key={index} className="w-56 mb-4 list-disc">
+              <SponsorLink link={sponsor.url}>{sponsor.name}</SponsorLink>
+            </li>
+          ))}
+        </ul>
+        <p className="mb-8">And all of our contributors:</p>
 
         <ul className="flex mb-6 flex-wrap">
           {collaborators.map((member, index) => (
             <li key={index} className="w-56 mb-4 list-disc">
-              <MemberLink member={member}>
+              <SponsorLink
+                link={member.url || `https://github.com/${member.login}`}
+              >
                 {member.name ?? member.login}
-              </MemberLink>
+              </SponsorLink>
             </li>
           ))}
         </ul>

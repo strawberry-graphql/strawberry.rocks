@@ -4,6 +4,7 @@ import { Features } from "~/components/features";
 import { Header } from "~/components/header";
 import { Hero } from "~/components/hero";
 import { FlashIcon } from "~/components/icons/flash";
+import { Sponsors } from "~/components/sponsors";
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
 import { fetchLatestRelease } from "~/lib/api";
@@ -48,6 +49,8 @@ const HomePage: NextPage<Props> = ({ version }) => (
           <FlashIcon className="w-24 h-40" />
         </div>
       </div>
+
+      <Sponsors />
     </div>
   </>
 );
