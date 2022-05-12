@@ -83,7 +83,7 @@ export const FeedbackForm = () => {
   }
 
   return (
-    <div className="mt-8 border-t pt-8">
+    <div className="mt-8 border-t pt-8" id="feedback-form">
       <h1 className="font-bold text-center mb-2">
         Was this helpful? What can we improve?
       </h1>
