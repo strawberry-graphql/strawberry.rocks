@@ -46,12 +46,13 @@ const DocsImage = ({ src, ...props }: { src: string } & ImageProps) => (
 const heading =
   (level: 1 | 2 | 3 | 4 | 5 | 6) =>
   // eslint-disable-next-line react/display-name
-  ({ children }: { children: ReactNode }) => {
+  ({ children, ...props }: { children: ReactNode }) => {
     if (level >= 4) {
       // Any levels that are h4 and above have different styles
       return createElement(
         `h${level}`,
         {
+          ...props,
           className: cx("mt-8 mb-4 text-md font-bold"),
         },
         children
