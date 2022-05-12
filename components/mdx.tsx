@@ -62,6 +62,7 @@ const heading =
     return createElement(
       `h${level}`,
       {
+        ...props,
         className: cx("my-8", {
           "text-3xl": level === 1,
           "text-2xl": level === 2,
