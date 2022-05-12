@@ -44,7 +44,7 @@ const DocsPage: NextPage<DocsPageProps> = ({
 
       <main className="flex mx-auto w-full max-w-7xl flex-1 text-lg">
         {docsToc && <DocsNavigation docs={docsToc} />}
-        <div className="px-8 pb-12 w-0 flex-1">
+        <div className="px-8 pb-12 w-0 flex-1" id="docs-content">
           {data?.experimental && <ExperimentalWarning />}
 
           <NotesContext.Provider
