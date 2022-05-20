@@ -14,19 +14,29 @@ export const Sponsors = () => {
             rel="noopener noreferrer"
             className="flex flex-col items-center justify-center mb-8"
           >
-            <Image
-              src={sponsor.image.url}
-              width={sponsor.image.width}
-              height={sponsor.image.height}
-              alt={sponsor.name}
-            />
+            <span className="hidden dark:inline">
+              <Image
+                src={sponsor.image.urlDark}
+                width={sponsor.image.width}
+                height={sponsor.image.height}
+                alt={sponsor.name}
+              />
+            </span>
+            <span className="dark:hidden">
+              <Image
+                src={sponsor.image.url}
+                width={sponsor.image.width}
+                height={sponsor.image.height}
+                alt={sponsor.name}
+              />
+            </span>
             <p className="text-center text-sm">{sponsor.name}</p>
           </a>
         ))}
 
         <a
           href="https://opencollective.com/strawberry-graphql"
-          className="flex flex-col items-center justify-center mb-8 text-xl hover:bg-slate-100"
+          className="flex flex-col items-center justify-center mb-8 text-xl hover:bg-slate-100 dark:hover:text-black"
         >
           Become a sponsor ✨
         </a>
