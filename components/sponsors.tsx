@@ -6,7 +6,7 @@ export const Sponsors = () => {
     <div className="flex flex-col items-center justify-center">
       <h2 className="text-center text-3xl font-bold">Sponsors</h2>
       <div className="grid grid-cols-4 mt-8">
-        {sponsors.map((sponsor) => (
+        {sponsors.filter(sponsor => sponsor.highlight).map((sponsor) => (
           <a
             key={sponsor.name}
             href={sponsor.url}
