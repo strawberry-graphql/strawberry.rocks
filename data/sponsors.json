@@ -1,36 +1,36 @@
 [
-  {
-    "name": "JWP Consulting GK",
-    "url": "https://www.jwpconsulting.net",
-    "image": {
-      "url": "/sponsors/jwp-consulting.png",
-      "urlDark": "/sponsors/jwp-consulting.png",
-      "width": "570",
-      "height": "512"
+    {
+        "name": "JWP Consulting GK",
+        "url": "https://www.jwpconsulting.net",
+        "image": {
+            "url": "/sponsors/jwp-consulting.png",
+            "urlDark": "/sponsors/jwp-consulting.png",
+            "width": "570",
+            "height": "512"
+        },
+        "highlight": true
     },
-    "highlight": true
-  },
-  {
-    "name": "ExoFlare",
-    "url": "https://www.exoflare.com/open-source/?utm_source=strawberry&utm_campaign=open_source",
-    "image": {
-      "url": "/sponsors/exoflare.png",
-      "urlDark": "/sponsors/exoflare_dark.png",
-      "width": "512",
-      "height": "512"
+    {
+        "name": "ExoFlare",
+        "url": "https://www.exoflare.com/open-source/?utm_source=strawberry&utm_campaign=open_source",
+        "image": {
+            "url": "/sponsors/exoflare.png",
+            "urlDark": "/sponsors/exoflare_dark.png",
+            "width": "512",
+            "height": "512"
+        },
+        "highlight": true
     },
-    "highlight": true
-  },
-  {
-    "name": "Moritz Ulmer",
-    "url": "https://github.com/moritz89",
-    "image": null,
-    "highlight": false
-  },
-  {
-    "name": "Luis Matheus",
-    "url": "https://github.com/lmatheus",
-    "image": null,
-    "highlight": false
-  }
+    {
+        "name": "Moritz Ulmer",
+        "url": "https://github.com/moritz89",
+        "image": null,
+        "highlight": false
+    },
+    {
+        "name": "Luis Matheus",
+        "url": "https://github.com/lmatheus",
+        "image": null,
+        "highlight": false
+    }
 ]
