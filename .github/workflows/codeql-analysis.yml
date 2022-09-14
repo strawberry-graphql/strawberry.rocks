@@ -42,7 +42,7 @@ jobs:
         key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}
     - name: build
       run: |
-        pnpm ci
+        pnpm install --frozen-lockfile
         pnpm run build
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
