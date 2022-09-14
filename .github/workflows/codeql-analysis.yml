@@ -24,7 +24,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v3.4.1
       with:
         node-version-file: ".node-version"
         cache: "pnpm"
@@ -36,11 +36,11 @@ jobs:
     - uses: actions/cache@v2.1.7
       with:
         path: ${{ github.workspace }}/.next/cache
-        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}
     - name: build
       run: |
-        npm ci
-        npm run build
+        pnpm ci
+        pnpm run build
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
