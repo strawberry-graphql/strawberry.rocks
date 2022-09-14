@@ -27,7 +27,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version-file: ".node-version"
-        cache: "npm"
+        cache: "pnpm"
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
