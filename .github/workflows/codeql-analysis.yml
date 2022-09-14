@@ -32,7 +32,7 @@ jobs:
         node-version-file: ".node-version"
         cache: "pnpm"
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v1
+      uses: github/codeql-action/init@v2
       with:
         languages: javascript
         config-file: ./.github/codeql/codeql-config.yml
@@ -48,4 +48,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
+      uses: github/codeql-action/analyze@v2
