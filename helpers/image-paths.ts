@@ -1,5 +1,6 @@
 import { Text } from "hast-util-to-html/lib/types";
 import { dirname, join } from "path";
+// @ts-ignore
 import { Node } from "unist";
 import { visit } from "unist-util-visit";
 

@@ -61,7 +61,7 @@ We are using npm to manage dependencies, so can install the dependencies by
 running
 
 ```sh
-npm install
+pnpm install
 ```
 
 ### Running the website
@@ -69,7 +69,7 @@ npm install
 To run the website, you can use npm:
 
 ```sh
-npm run dev
+pnpm run dev
 ```
 
 This should start the server on [http://localhost:3000](http://localhost:3000)
@@ -86,7 +86,7 @@ Outputted to [`./types/graphql.d.ts`](./types/graphql.d.ts)
 To update them run.
 
 ```sh
-npm run codegen
+pnpm run codegen
 ```
 
 Any new GraphQL query will need a comment before it to generate theses typings.
@@ -100,7 +100,7 @@ Any new GraphQL query will need a comment before it to generate theses typings.
 To run the website in debug mode:
 
 ```sh
-npm run dev:inspect
+pnpm run dev:inspect
 ```
 
 See next.js docs on the different ways to
