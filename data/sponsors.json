@@ -32,5 +32,16 @@
         "url": "https://github.com/lmatheus",
         "image": null,
         "highlight": false
+    },
+    {
+        "name": "Moving Content AG",
+        "url": "https://www.linkedin.com/company/moving-content-ag/about/",
+        "image": {
+            "url": "/sponsors/moving-content.jpeg",
+            "urlDark": "/sponsors/moving-content.jpeg",
+            "width": "512",
+            "height": "512"
+        },
+        "highlight": false
     }
 ]
