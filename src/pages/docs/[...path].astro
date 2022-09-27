@@ -1,0 +1,19 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { path: "asd/asd" },
+    },
+  ];
+}
+
+const { path } = Astro.params;
+---
+
+<Layout title="Strawberry docs">
+  <main>
+    <h1>The docs for {path}</h1>
+  </main>
+</Layout>
