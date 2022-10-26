@@ -5,8 +5,8 @@
         "image": {
             "url": "/sponsors/jwp-consulting.png",
             "urlDark": "/sponsors/jwp-consulting.png",
-            "width": "570",
-            "height": "512"
+            "width": 570,
+            "height": 512
         },
         "highlight": true
     },
@@ -16,8 +16,8 @@
         "image": {
             "url": "/sponsors/exoflare.png",
             "urlDark": "/sponsors/exoflare_dark.png",
-            "width": "512",
-            "height": "512"
+            "width": 512,
+            "height": 512
         },
         "highlight": true
     },
@@ -39,8 +39,8 @@
         "image": {
             "url": "/sponsors/moving-content.jpeg",
             "urlDark": "/sponsors/moving-content.jpeg",
-            "width": "512",
-            "height": "512"
+            "width": 512,
+            "height": 512
         },
         "highlight": false
     }
