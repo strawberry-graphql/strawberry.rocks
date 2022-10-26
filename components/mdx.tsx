@@ -306,7 +306,9 @@ const theme = {
   Tip: TipBlock,
   Warning: WarningBlock,
   FaqDetails,
-  Examples: ({ children }) => <div className="mb-8">aaaaaaaaaaa {children}</div>,
+  Examples: ({ children }) => (
+    <div className="mb-8">aaaaaaaaaaa {children}</div>
+  ),
 };
 
 export default theme;
