@@ -1,7 +1,15 @@
-import { DocSearch } from "@docsearch/react";
+import dynamic from "next/dynamic";
+// import { DocSearch } from "@docsearch/react";
 
 import { Link, LinkProps } from "./link";
 import { Logo } from "./logo";
+
+const DocSearch = dynamic(
+  async () => (await import("@docsearch/react")).DocSearch,
+  {
+    ssr: false,
+  }
+);
 
 const NavLink = ({ children, ...props }: LinkProps) => (
   <Link

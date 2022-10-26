@@ -1,7 +1,7 @@
 import matter from "gray-matter";
 
 import { serialize } from "next-mdx-remote/serialize";
-
+import remarkComment from "remark-comment";
 import { FaqPlugin } from "~/rehype-plugins/faq-plugin";
 import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
 import { RehypeTOC } from "~/rehype-plugins/rehype-toc";
@@ -36,6 +36,7 @@ export const serializePage = async ({
   const source = await serialize(content, {
     scope: data,
     mdxOptions: {
+      remarkPlugins: [remarkComment],
       rehypePlugins: plugins,
     },
   });
