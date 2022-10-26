@@ -1,5 +1,6 @@
 import { anchorLinks } from "@hashicorp/remark-plugins";
 import matter from "gray-matter";
+import remarkComment from "remark-comment";
 
 import { GetStaticProps, NextPage } from "next";
 import { MDXRemote } from "next-mdx-remote";
@@ -43,7 +44,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
     const source = await serialize(content, {
       mdxOptions: {
-        remarkPlugins: [anchorLinks],
+        remarkPlugins: [anchorLinks, remarkComment],
       },
     });
 

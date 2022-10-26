@@ -328,7 +328,7 @@ const createPre = ({
         tagName: "code",
         properties: {
           className: "language-" + language,
-          generatedBy: "rehype-highlight-code",
+          // generatedBy: "rehype-highlight-code",
         },
         children: highlight(text, language, {
           linesToHighlight,

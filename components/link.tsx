@@ -57,10 +57,14 @@ const LinkWrapper = ({
   }
 
   return (
-    <NextLink prefetch={false} href={href} as={as} passHref>
-      <a {...rest} className={className}>
-        {children}
-      </a>
+    <NextLink
+      prefetch={false}
+      href={href}
+      as={as}
+      className={className}
+      {...rest}
+    >
+      {children}
     </NextLink>
   );
 };

@@ -32,6 +32,18 @@ export const fixImagePathsPlugin =
       return url;
     };
 
+    visit(tree, "mdxJsxFlowElement", (node) => {
+      if (node.name === "img") {
+        node.attributes = node.attributes.map((attr: any) => {
+          if (attr.name === "src") {
+            attr.value = getUrl(attr.value as string);
+          }
+
+          return attr;
+        });
+      }
+    });
+
     visit(tree, "jsx", (node: Text) => {
       if (node.value.includes("<img")) {
         const [, src] = node.value.split("src=");
