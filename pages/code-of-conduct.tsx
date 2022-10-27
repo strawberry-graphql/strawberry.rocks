@@ -10,6 +10,7 @@ import { Header } from "~/components/header";
 import components from "~/components/mdx";
 import { SEO } from "~/components/seo";
 import { fetchCodeOfConduct } from "~/lib/api";
+import { RehypeTOC } from "~/rehype-plugins/rehype-toc";
 
 type Props = {
   source: any;
@@ -44,7 +45,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
     const source = await serialize(content, {
       mdxOptions: {
-        remarkPlugins: [anchorLinks, remarkComment],
+        remarkPlugins: [RehypeTOC({ onlyLinks: true }), remarkComment],
       },
     });
 
