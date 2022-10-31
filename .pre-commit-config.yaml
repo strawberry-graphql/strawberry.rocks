@@ -29,3 +29,5 @@ repos:
     hooks:
       - id: prettier
         files: \.(css|less|scss|ts|tsx|graphql|gql|js|jsx|md|yml|yaml)$
+        additional_dependencies:
+        -   '@trivago/prettier-plugin-sort-imports'
