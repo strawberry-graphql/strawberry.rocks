@@ -4,5 +4,6 @@
   "trailingComma": "es5",
   "proseWrap": "always",
   "importOrder": ["^next", "^~", "^[./]"],
-  "importOrderSeparation": true
+  "importOrderSeparation": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }

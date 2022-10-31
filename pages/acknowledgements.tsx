@@ -3,9 +3,9 @@ import { GetStaticProps, NextPage } from "next";
 import { Header } from "~/components/header";
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
+import sponsors from "~/data/sponsors.json";
 import { fetchContributors, fetchLatestRelease } from "~/lib/api";
 import { GithubCollaborator } from "~/types/api";
-import sponsors from "~/data/sponsors.json";
 
 const SponsorLink = ({
   children,

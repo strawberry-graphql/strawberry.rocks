@@ -4,9 +4,9 @@ import { Features } from "~/components/features";
 import { Header } from "~/components/header";
 import { Hero } from "~/components/hero";
 import { FlashIcon } from "~/components/icons/flash";
-import { Sponsors } from "~/components/sponsors";
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";
+import { Sponsors } from "~/components/sponsors";
 import { fetchLatestRelease } from "~/lib/api";
 
 type Props = {

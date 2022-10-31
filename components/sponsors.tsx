@@ -1,5 +1,6 @@
-import sponsors from "~/data/sponsors.json";
 import Image from "next/image";
+
+import sponsors from "~/data/sponsors.json";
 
 export const Sponsors = () => {
   return (

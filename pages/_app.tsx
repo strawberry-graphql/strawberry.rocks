@@ -1,8 +1,8 @@
 import "@docsearch/css/dist/style.css";
+import { Analytics } from "@vercel/analytics/react";
 import NProgress from "nprogress";
 
 import type { AppProps } from "next/app";
-import { Analytics } from "@vercel/analytics/react";
 import Router from "next/router";
 
 import { Footer } from "~/components/footer";
