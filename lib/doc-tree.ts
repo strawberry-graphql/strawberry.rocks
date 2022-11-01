@@ -1,4 +1,4 @@
-import marked, { Tokens } from "marked";
+import { marked } from "marked";
 
 import { DocsTree, Section } from "~/components/docs-navigation";
 import { addHrefPrefix } from "~/helpers/params";
@@ -12,16 +12,19 @@ import {
   isTree,
 } from "~/helpers/type-guards";
 
-export const getMDLinks = (items: Tokens.ListItem[]): Tokens.Link[] =>
+export const getMDLinks = (
+  items: marked.Tokens.ListItem[]
+): marked.Tokens.Link[] =>
   items.filter(isListItemWithTokens).flatMap((item) =>
     item.tokens
       .filter(isTextWithTokens)
-      .flatMap((t) => t.tokens)
+      .flatMap((t: any) => t.tokens)
       .filter(isLink)
   );
 
 export function getDocTree(text: string, prefix: string) {
   const sections: DocsTree = {};
+
   const tokens = marked.lexer(text);
 
   let currentSection = "Docs";
@@ -29,7 +32,7 @@ export function getDocTree(text: string, prefix: string) {
   tokens.forEach((token) => {
     if (isHeading(token) && token.depth === 2) {
       if (isLink(token.tokens[0])) {
-        const link: Tokens.Link = token.tokens[0];
+        const link: marked.Tokens.Link = token.tokens[0];
         const sectionName = link.text;
 
         sections[sectionName] = {
@@ -48,7 +51,7 @@ export function getDocTree(text: string, prefix: string) {
         };
       }
 
-      const links: Tokens.Link[] = getMDLinks(token.items);
+      const links: marked.Tokens.Link[] = getMDLinks(token.items);
       (sections[currentSection] as Section).links = links.map((link) => ({
         href: addHrefPrefix(link.href, prefix),
         text: link.text,

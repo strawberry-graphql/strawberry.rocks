@@ -1,4 +1,7 @@
-import { DuplicateIcon, CheckCircleIcon } from "@heroicons/react/outline";
+import {
+  DocumentDuplicateIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
 export const CopyToClipboard = ({ getText }: { getText: () => string }) => {
@@ -24,7 +27,7 @@ export const CopyToClipboard = ({ getText }: { getText: () => string }) => {
           <CheckCircleIcon className="ml-2 h-6 w-6" />
         </span>
       ) : (
-        <DuplicateIcon className="h-6 w-6 text-gray-800" />
+        <DocumentDuplicateIcon className="h-6 w-6 text-gray-800" />
       )}
     </button>
   );
