@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/core";
 import { paginateRest } from "@octokit/plugin-paginate-rest";
-import marked from "marked";
+import { marked } from "marked";
 
 import { DocsTree } from "~/components/docs-navigation";
 import { urlToSlugs } from "~/helpers/params";

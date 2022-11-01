@@ -1,4 +1,4 @@
-import { Tokens } from "marked";
+import { marked } from "marked";
 
 import { GithubCollaborator } from "~/types/api";
 import { ExtensionDocData } from "~/types/extensions";
@@ -14,11 +14,11 @@ export const isCollaborator = (x: any): x is GithubCollaborator => {
   return x?.login != null;
 };
 
-export const isHeading = (token: any): token is Tokens.Heading => {
+export const isHeading = (token: any): token is marked.Tokens.Heading => {
   return token.type === "heading";
 };
 
-export const isList = (token: any): token is Tokens.List => {
+export const isList = (token: any): token is marked.Tokens.List => {
   return token?.type === "list";
 };
 
@@ -26,7 +26,7 @@ export const isTextWithTokens = (token: any): token is TokenText => {
   return token?.type === "text" && token?.tokens != null;
 };
 
-export const isLink = (token: any): token is Tokens.Link => {
+export const isLink = (token: any): token is marked.Tokens.Link => {
   return token?.type === "link" && token?.tokens != null;
 };
 
