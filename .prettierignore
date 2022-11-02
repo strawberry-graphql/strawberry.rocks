@@ -10,3 +10,4 @@ coverage
 types/graphql.d.ts
 .eslintrc.json
 tsconfig.json
+pnpm-lock.yaml
