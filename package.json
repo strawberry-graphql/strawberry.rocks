@@ -33,7 +33,7 @@
         "@docsearch/js": "3.3.0",
         "@docsearch/react": "3.3.0",
         "@hashicorp/remark-plugins": "4.0.1",
-        "@heroicons/react": "2.0.12",
+        "@heroicons/react": "2.0.13",
         "@octokit/core": "4.1.0",
         "@octokit/plugin-paginate-rest": "5.0.1",
         "@tailwindcss/aspect-ratio": "0.4.2",
