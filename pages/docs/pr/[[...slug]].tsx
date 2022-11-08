@@ -41,51 +41,49 @@ export const getStaticProps: GetStaticProps<DocsPageProps> = async ({
      */
     return { notFound: true };
   }
-  try {
-    const { branch, owner, repo, pull_number, html_url } =
-      await fetchPullRequest({ pull_number: pullNumber });
 
-    /**
-     * Shift slugs as we dont need the PR number for the filename.
-     */
-    const filename = slugs.shift() && `${slugs.join("/")}.md`;
+  const { branch, owner, repo, pull_number, html_url } = await fetchPullRequest(
+    { pull_number: pullNumber }
+  );
 
-    if (filename == null) {
-      throw new Error("no filename");
-    }
+  /**
+   * Shift slugs as we dont need the PR number for the filename.
+   */
+  const filename = slugs.shift() && `${slugs.join("/")}.md`;
 
-    const { page, tableContent: docsToc } = await fetchDocPage({
-      prefix: `/docs/pr/${pull_number}/`,
-      filename: `docs/${filename}`,
-      owner,
-      repo,
-      ref: branch,
-    });
-
-    const { data, source } = await serializePage({
-      page,
-      ref: branch,
-      owner,
-      repo,
-      filename,
-    });
-
-    const editPath = `https://github.com/${owner}/${repo}/edit/${branch}/docs/${filename}`;
-
-    return {
-      props: {
-        docsToc,
-        source,
-        data,
-        editPath,
-        version: `PR ${pull_number}`,
-        versionHref: html_url,
-      },
-      revalidate: 5,
-    };
-  } catch (e) {
-    return { notFound: true, revalidate: 5 };
+  if (filename == null) {
+    throw new Error("no filename");
   }
+
+  const { page, tableContent: docsToc } = await fetchDocPage({
+    prefix: `/docs/pr/${pull_number}/`,
+    filename: `docs/${filename}`,
+    owner,
+    repo,
+    ref: branch,
+  });
+
+  const { data, source } = await serializePage({
+    page,
+    ref: branch,
+    owner,
+    repo,
+    filename,
+  });
+
+  const editPath = `https://github.com/${owner}/${repo}/edit/${branch}/docs/${filename}`;
+
+  return {
+    props: {
+      docsToc,
+      source,
+      data,
+      editPath,
+      version: `PR ${pull_number}`,
+      versionHref: html_url,
+    },
+    revalidate: 5,
+  };
 };
 
 export default DocsPage;
