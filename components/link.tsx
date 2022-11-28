@@ -43,7 +43,7 @@ const LinkWrapper = ({
   };
 
   // TODO: fix this
-  const isActive: boolean = false;
+  const isActive = false;
 
   className = cx(className, {
     underline: underline,
