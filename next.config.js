@@ -1,6 +1,10 @@
 /**
  * @type {import('next').NextConfig}
  */
+
+const { join } = require("path");
+const { symlink, access } = require("fs/promises");
+
 const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
@@ -11,15 +15,55 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  webpack: (config) => {
-    const experiments = config.experiments || {};
-    config.experiments = { ...experiments, asyncWebAssembly: true };
-    config.output.assetModuleFilename = "static/[hash][ext]";
-    config.output.publicPath = "/_next/";
+  webpack: (config, { isServer }) => {
+    config.experiments = Object.assign(config.experiments || {}, {
+      asyncWebAssembly: true,
+    });
+
     config.module.rules.push({
-      test: /\.wasm/,
+      test: /\.wasm$/,
       type: "webassembly/async",
     });
+
+    // TODO: cleanup -> track https://github.com/vercel/next.js/issues/25852
+    if (isServer) {
+      config.output.webassemblyModuleFilename =
+        "./../static/wasm/[modulehash].wasm";
+    } else {
+      config.output.webassemblyModuleFilename = "static/wasm/[modulehash].wasm";
+    }
+
+    config.plugins.push(
+      new (class {
+        apply(compiler) {
+          compiler.hooks.afterEmit.tapPromise(
+            "SymlinkWebpackPlugin",
+            async (compiler) => {
+              if (isServer) {
+                const from = join(compiler.options.output.path, "../static");
+                const to = join(compiler.options.output.path, "static");
+
+                try {
+                  await access(from);
+                  console.log(`${from} already exists`);
+                  return;
+                } catch (error) {
+                  if (error.code === "ENOENT") {
+                    // No link exists
+                  } else {
+                    throw error;
+                  }
+                }
+
+                await symlink(to, from, "junction");
+                console.log(`created symlink ${from} -> ${to}`);
+              }
+            }
+          );
+        }
+      })()
+    );
+
     return config;
   },
   async rewrites() {
