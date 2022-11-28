@@ -1,8 +1,9 @@
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import * as wasm from "rusty-docs";
 
-import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-
+import { FeedbackForm } from "~/components/feedback-form";
+import { Header } from "~/components/header";
 import components from "~/components/mdx";
 
 const code = `
@@ -65,11 +66,22 @@ def type(
 export default async function Page() {
   const content = wasm.get_markdown(code);
 
-  const source = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [],
-    },
-  });
+  const version = "0.0.0";
+  const versionHref = "/";
 
-  return <MDXRemote {...source} components={components} />;
+  return (
+    <>
+      <Header version={version} versionHref={versionHref} />
+
+      <main className="flex mx-auto w-full max-w-7xl flex-1 text-lg">
+        <div className="px-8 pb-12 w-0 flex-1" id="docs-content">
+          <ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
+            {content}
+          </ReactMarkdown>
+
+          <FeedbackForm />
+        </div>
+      </main>
+    </>
+  );
 }

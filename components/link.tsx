@@ -1,7 +1,9 @@
+"use client";
+
 import cx from "classnames";
 
 import NextLink from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 import { ExternalIcon } from "./icons/external";
 
@@ -32,6 +34,12 @@ const LinkWrapper = ({
   const router = useRouter();
 
   const match = (a: string, b: string) => {
+    // TODO: a is undefined
+
+    if (!a) {
+      return false;
+    }
+
     if (partialMatch && b) {
       return a.startsWith(b);
     }

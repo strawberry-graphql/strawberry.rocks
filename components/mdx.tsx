@@ -1,19 +1,14 @@
-"use client";
-
 import cx from "classnames";
 import GithubSlugger from "github-slugger";
-import { createElement, ReactNode, useContext, useEffect } from "react";
-import { createPortal } from "react-dom";
+import { createElement, ReactNode } from "react";
 
 import Image from "next/image";
 import type { ImageProps } from "next/image";
 
-import { useHover } from "~/helpers/use-hover";
-
 import { AdditionalResources } from "./additional-resources";
-import { NotesContext } from "./code-notes";
-import { CopyToClipboard } from "./copy-to-clipboard";
+import { CodeNotes } from "./code-notes";
 import { FaqDetails } from "./faq-details";
+import { Pre } from "./pre";
 import { SplitCodeView } from "./split-code-view";
 
 const DocsLink = ({
@@ -135,97 +130,8 @@ const Separator = () => (
   </div>
 );
 
-const Pre = ({
-  children,
-  ...props
-}: {
-  children: ReactNode;
-  className?: string;
-}) => {
-  const ctx = useContext(NotesContext);
-
-  const { ref } = useHover({
-    selector: ".code-note",
-    onMouseOver: (el) => {
-      const noteId = el.dataset.noteId;
-
-      if (noteId) {
-        ctx.setCurrentNote({ id: noteId, element: el });
-      }
-    },
-    onMouseOut: () => {
-      ctx.setCurrentNote(null);
-    },
-  });
-
-  const getCode = () => {
-    return ref.current.querySelector("code").innerText;
-  };
-
-  return (
-    <pre
-      ref={ref}
-      className={cx(
-        "mb-8 font-mono overflow-x-auto border-2 border-red-500 p-6",
-        "bg-white dark:text-white dark:bg-gray-800",
-        "relative",
-        props.className
-      )}
-    >
-      <div className="absolute top-3 right-3 z-10">
-        <CopyToClipboard getText={getCode} />
-      </div>
-      {children}
-    </pre>
-  );
-};
-
 const Code = ({ children }: { children: ReactNode }) => {
   return <code className="p-1 break-words">{children}</code>;
-};
-
-const CodeNotes = ({
-  children,
-  ...props
-}: {
-  children: ReactNode;
-  id: string;
-}) => {
-  const { currentNote, setCurrentNote } = useContext(NotesContext);
-
-  useEffect(() => {
-    const removeNote = () => {
-      setCurrentNote(null);
-    };
-
-    window.addEventListener("scroll", removeNote);
-
-    return () => {
-      window.removeEventListener("scroll", removeNote);
-    };
-  }, [setCurrentNote]);
-
-  if (currentNote === null) {
-    return null;
-  }
-
-  const boundingBox = currentNote.element.getBoundingClientRect();
-
-  return createPortal(
-    <div
-      className={cx("fixed p-4 border-2 border-red-500 bg-gray-100", {
-        hidden: currentNote.id !== props.id,
-      })}
-      style={{
-        top: boundingBox.top + boundingBox.height + 4 + "px",
-        left: boundingBox.left + "px",
-      }}
-      {...props}
-    >
-      <p className="text-gray-600">{children}</p>
-    </div>,
-    currentNote.element
-  );
 };
 
 const BaseBlock = ({

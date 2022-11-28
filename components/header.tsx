@@ -4,12 +4,12 @@ import dynamic from "next/dynamic";
 import { Link, LinkProps } from "./link";
 import { Logo } from "./logo";
 
-const DocSearch = dynamic(
-  async () => (await import("@docsearch/react")).DocSearch,
-  {
-    ssr: false,
-  }
-);
+// const DocSearch = dynamic(
+//   async () => (await import("@docsearch/react")).DocSearch,
+//   {
+//     ssr: false,
+//   }
+// );
 
 const NavLink = ({ children, ...props }: LinkProps) => (
   <Link
@@ -58,20 +58,20 @@ export const Header = ({
           </NavLink>
         </nav>
         <div className="flex w-full justify-center mt-4 sm:mt-0 sm:w-auto md:hidden">
-          <DocSearch
+          {/* <DocSearch
             appId="HTUQW2U430"
             apiKey="bccc4f8ec45c035730f43b9443f099a6"
             indexName="strawberry"
-          />
+          /> */}
         </div>
       </div>
       <div className="hidden md:flex justify-end items-center flex-1">
         <div className="mr-4">
-          <DocSearch
+          {/* <DocSearch
             appId="HTUQW2U430"
             apiKey="bccc4f8ec45c035730f43b9443f099a6"
             indexName="strawberry"
-          />
+          /> */}
         </div>
         {version && (
           <Link
