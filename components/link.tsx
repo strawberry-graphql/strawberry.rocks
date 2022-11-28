@@ -47,7 +47,9 @@ const LinkWrapper = ({
     return a == b;
   };
 
+  // TODO: fix this
   const isActive: boolean =
+    // @ts-ignore
     (as != null && match(router?.asPath, as)) || match(router?.asPath, href);
 
   className = cx(className, {

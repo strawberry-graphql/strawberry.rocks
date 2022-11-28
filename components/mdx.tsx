@@ -3,7 +3,6 @@ import GithubSlugger from "github-slugger";
 import { createElement, ReactNode } from "react";
 
 import Image from "next/image";
-import type { ImageProps } from "next/image";
 
 import { AdditionalResources } from "./additional-resources";
 import { CodeNotes } from "./code-notes";
@@ -35,7 +34,7 @@ const DocsLink = ({
   );
 };
 
-const DocsImage = ({ src, ...props }: { src: string } & ImageProps) => (
+const DocsImage = ({ src, ...props }: any) => (
   // eslint-disable-next-line jsx-a11y/alt-text
   <Image className="border-2 border-red-500 max-w-full" src={src} {...props} />
 );
@@ -81,9 +80,9 @@ const UnorderedList = ({ children, ...props }: { children: ReactNode }) => (
   </ul>
 );
 
-const TableHeader = ({ children, ...props }: { children: string }) => {
+const TableHeader = ({ children, ...props }: { children: ReactNode }) => {
   const slugger = new GithubSlugger();
-  const slug = slugger.slug(children);
+  const slug = slugger.slug(children as string);
 
   return (
     <th
@@ -99,7 +98,7 @@ const TableHeader = ({ children, ...props }: { children: string }) => {
   );
 };
 
-const TableCell = ({ children, ...props }: { children: string }) => {
+const TableCell = ({ children, ...props }: { children: ReactNode }) => {
   return (
     <td
       {...props}
@@ -201,7 +200,6 @@ const theme = {
   td: TableCell,
   tr: TableRow,
   hr: Separator,
-  // eslint-disable-next-line react/display-name
   pre: Pre,
   inlineCode: Code,
   a: DocsLink,
