@@ -3,7 +3,6 @@
 import cx from "classnames";
 
 import NextLink from "next/link";
-import { useRouter } from "next/navigation";
 
 import { ExternalIcon } from "./icons/external";
 
@@ -31,8 +30,6 @@ const LinkWrapper = ({
   activeClass = "underline",
   ...rest
 }: LinkProps & { isExternal: boolean }) => {
-  const router = useRouter();
-
   const match = (a: string, b: string) => {
     // TODO: a is undefined
 
@@ -48,9 +45,7 @@ const LinkWrapper = ({
   };
 
   // TODO: fix this
-  const isActive: boolean =
-    // @ts-ignore
-    (as != null && match(router?.asPath, as)) || match(router?.asPath, href);
+  const isActive: boolean = false;
 
   className = cx(className, {
     underline: underline,
