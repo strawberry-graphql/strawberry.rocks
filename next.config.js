@@ -8,6 +8,20 @@ const nextConfig = {
   images: {
     domains: ["strawberry.rocks", "github.com"],
   },
+  experimental: {
+    appDir: true,
+  },
+  webpack: (config) => {
+    const experiments = config.experiments || {};
+    config.experiments = { ...experiments, asyncWebAssembly: true };
+    config.output.assetModuleFilename = "static/[hash][ext]";
+    config.output.publicPath = "/_next/";
+    config.module.rules.push({
+      test: /\.wasm/,
+      type: "webassembly/async",
+    });
+    return config;
+  },
   async rewrites() {
     return [
       {

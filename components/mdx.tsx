@@ -1,3 +1,5 @@
+"use client";
+
 import cx from "classnames";
 import GithubSlugger from "github-slugger";
 import { createElement, ReactNode, useContext, useEffect } from "react";
