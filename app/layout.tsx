@@ -21,13 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <div className="dark:bg-gray-800 text-black dark:text-white">
-        {children}
-        <NewsletterSection />
-        <Footer />
-        {/* <Analytics /> */}
-      </div>
-    </>
+    <html lang="en">
+      <body>
+        <div className="dark:bg-gray-800 text-black dark:text-white">
+          {children}
+          <NewsletterSection />
+          <Footer />
+          {/* <Analytics /> */}
+        </div>
+      </body>
+    </html>
   );
 }
