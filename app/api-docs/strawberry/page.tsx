@@ -64,6 +64,13 @@ def type(
 `;
 
 export default async function Page() {
+  const path =
+    "https://raw.githubusercontent.com/strawberry-graphql/strawberry/main/strawberry/object_type.py";
+
+  const code = await fetch(path).then((res) => res.text());
+
+  console.log(code);
+
   const content = wasm.get_markdown(code);
 
   const version = "0.0.0";
