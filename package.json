@@ -71,7 +71,7 @@
         "@graphql-codegen/cli": "2.14.1",
         "@graphql-codegen/typescript": "2.8.2",
         "@graphql-codegen/typescript-operations": "2.5.7",
-        "@octokit/graphql-schema": "12.31.0",
+        "@octokit/graphql-schema": "12.35.0",
         "@trivago/prettier-plugin-sort-imports": "4.0.0",
         "@types/github-slugger": "2.0.0",
         "@types/jsonp": "0.2.1",
