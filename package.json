@@ -68,7 +68,7 @@
         "unist-util-visit-parents": "5.1.1"
     },
     "devDependencies": {
-        "@graphql-codegen/cli": "2.14.1",
+        "@graphql-codegen/cli": "2.16.2",
         "@graphql-codegen/typescript": "2.8.2",
         "@graphql-codegen/typescript-operations": "2.5.7",
         "@octokit/graphql-schema": "12.31.0",
