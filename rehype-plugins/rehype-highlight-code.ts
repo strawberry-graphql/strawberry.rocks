@@ -19,7 +19,7 @@ refractor.register(json);
 
 const highlightLines = (root: Root, lines: number[]) => {
   let currentGroup: typeof root.children = [];
-  const lineGroups: typeof currentGroup[] = [];
+  const lineGroups: (typeof currentGroup)[] = [];
 
   const addToGroups = (node: Text) => {
     if (node.value.startsWith("\n")) {
@@ -29,8 +29,10 @@ const highlightLines = (root: Root, lines: number[]) => {
         node.value = node.value.slice(1);
       }
 
+      // @ts-expect-error
       currentGroup.push(node);
     } else if (node.value.endsWith("\n")) {
+      // @ts-expect-error
       currentGroup.push(node);
 
       while (node.value.endsWith("\n")) {
@@ -46,6 +48,7 @@ const highlightLines = (root: Root, lines: number[]) => {
           addToGroups({ value: part || " ", type: "text" });
         });
       } else {
+        // @ts-expect-error
         currentGroup.push(node);
       }
     }
@@ -246,6 +249,7 @@ const findNotes = (root: Root) => {
       wrapper.children = parent.children.splice(startIndex, endIndex);
       wrapper.children.pop();
 
+      // @ts-expect-error
       parent.children.splice(startIndex, endIndex, wrapper);
     }
   });
@@ -365,7 +369,9 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
   };
 
   function visitor(node: Node, index: number, parentNode: Node) {
+    // @ts-expect-error
     if (parentNode.tagName === "pre" && node.tagName === "code") {
+      // @ts-expect-error
       const properties = node.properties as any;
 
       if (properties.generatedBy === "rehype-highlight-code") {
@@ -385,6 +391,7 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
         ? (properties.highlight as string).split(",")
         : [];
 
+      // @ts-expect-error
       const text = toString(node);
 
       if (lang.includes("+")) {
@@ -396,7 +403,9 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
           .split(/^---$/m)
           .map((x) => x.trim());
 
+        // @ts-expect-error
         parentNode.tagName = "div";
+        // @ts-expect-error
         parentNode.children = [
           createSplitCodeView({
             leftHeader: firstHeader,
@@ -423,6 +432,7 @@ export const RehypeHighlightCode: Plugin = (options = {}) => {
           wordsToHighlight,
         });
 
+        // @ts-expect-error
         node.children = result.children;
       }
     }
