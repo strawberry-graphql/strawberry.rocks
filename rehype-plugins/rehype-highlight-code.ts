@@ -19,7 +19,7 @@ refractor.register(json);
 
 const highlightLines = (root: Root, lines: number[]) => {
   let currentGroup: typeof root.children = [];
-  const lineGroups: (typeof currentGroup)[] = [];
+  const lineGroups: typeof currentGroup[] = [];
 
   const addToGroups = (node: Text) => {
     if (node.value.startsWith("\n")) {
