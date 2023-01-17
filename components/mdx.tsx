@@ -161,10 +161,10 @@ const Pre = ({
   };
 
   return (
-    <pre
+    <div
       ref={ref}
       className={cx(
-        "mb-8 font-mono overflow-x-auto border-2 border-red-500 p-6",
+        "mb-8 font-mono border-2 border-red-500",
         "bg-white dark:text-white dark:bg-gray-800",
         "relative",
         props.className
@@ -173,8 +173,8 @@ const Pre = ({
       <div className="absolute top-3 right-3 z-10">
         <CopyToClipboard getText={getCode} />
       </div>
-      {children}
-    </pre>
+      <pre className="overflow-x-auto p-6">{children}</pre>
+    </div>
   );
 };
 
