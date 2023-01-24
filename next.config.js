@@ -27,6 +27,12 @@ const nextConfig = {
         destination: "https://discord.gg/3uQ2PaY",
         permanent: true,
       },
+      {
+        source: "/changelog",
+        destination:
+          "https://github.com/strawberry-graphql/strawberry/blob/main/CHANGELOG.md",
+        permanent: false,
+      },
     ];
   },
 };
