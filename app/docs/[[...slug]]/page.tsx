@@ -27,11 +27,17 @@ export default async function DocsPage({
     ref: REF,
   });
 
+  console.log("page", page);
+
   const { data, content } = matter(page);
+
+  console.log("data", data, content);
 
   const highlighter = await shiki.getHighlighter({
     theme: "css-variables",
   });
+
+  console.log("highlighter", highlighter)
 
   return (
     <MDXRemote

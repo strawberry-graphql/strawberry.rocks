@@ -1,3 +1,5 @@
+import { promises as fs } from "fs";
+
 export const fetchDocPageLocal = async ({
   prefix,
   filename,
@@ -8,9 +10,12 @@ export const fetchDocPageLocal = async ({
   repo?: string;
   ref?: string;
 }) => {
-  const pageText = "";
+  const path = process.env.LOCAL_REPO_PATH + "/" + filename;
+
+  const pageText = await fs.readFile(path, "utf8");
 
   return {
     page: pageText,
+    tableContent: null,
   };
 };
