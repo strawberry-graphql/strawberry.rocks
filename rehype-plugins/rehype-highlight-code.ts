@@ -311,15 +311,10 @@ const getHeader = (language: string) => {
 
 const createPre = ({
   language,
-  text,
-  linesToHighlight,
-  wordsToHighlight,
+  children,
 }: {
   language: string;
-  text: string;
-  linesToHighlight: number[];
-  wordsToHighlight: string[];
-  classNames?: string;
+  children: any;
 }): Element => {
   return {
     type: "element",
@@ -333,12 +328,8 @@ const createPre = ({
         tagName: "code",
         properties: {
           className: "language-" + language,
-          // generatedBy: "rehype-highlight-code",
         },
-        children: highlight(text, language, {
-          linesToHighlight,
-          wordsToHighlight,
-        }).children,
+        children,
       } as Element,
     ],
   };
@@ -346,8 +337,6 @@ const createPre = ({
 
 const createSplitCodeView = ({
   children,
-  leftHeader,
-  rightHeader,
 }: {
   children: (Element | Text | Comment)[];
   leftHeader: string;
@@ -387,6 +376,31 @@ export const RehypeHighlightCode = ({ highlighter }) => {
     }
 
     const code = codeNode.children[0].value;
+
+    if (language.includes("+")) {
+      const [firstLanguage, secondLanguage] = language
+        .split("+")
+        .map(normalizeLanguage);
+      // const [firstHeader, secondHeader] = language.split("+").map(getHeader);
+      const [firstCode, secondCode] = code
+        .split(/^---$/m)
+        .map((x: string) => x.trim());
+
+      const firstCodeHtml = highlighter.codeToHtml(firstCode, firstLanguage);
+      const secondCodeHtml = highlighter.codeToHtml(secondCode, secondLanguage);
+
+      const firstTree = fromHtml(firstCodeHtml, { fragment: true });
+      const secondTree = fromHtml(secondCodeHtml, { fragment: true });
+
+      parentNode.children[index] = {
+        type: "element",
+        tagName: "div",
+        children: [firstTree.children[0], secondTree.children[0]],
+      };
+
+      return;
+    }
+
     const codeHtml = highlighter.codeToHtml(code, language);
 
     const tree = fromHtml(codeHtml, { fragment: true });
