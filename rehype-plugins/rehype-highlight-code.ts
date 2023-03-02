@@ -366,7 +366,11 @@ const createSplitCodeView = ({
 
 export const RehypeHighlightCode = ({ highlighter }) => {
   const visitor = (node: Node, index: number, parentNode: Node) => {
-    if (!(node.tagName === "pre")) {
+    if (node.tagName === "code" && parentNode.tagName !== "pre") {
+      node.properties.inline = true;
+    }
+
+    if (node.tagName !== "pre") {
       return;
     }
 

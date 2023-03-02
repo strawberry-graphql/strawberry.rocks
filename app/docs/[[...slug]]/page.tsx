@@ -19,7 +19,7 @@ export default async function DocsPage({
   const slugs = params.slug || ["index"];
   const filename = slugs.join("/") + ".md";
 
-  const { page, tableContent: docsToc } = await fetchDocPage({
+  const { page } = await fetchDocPage({
     prefix: "/docs/",
     filename: `docs/${filename}`,
     owner: OWNER,
@@ -39,9 +39,6 @@ export default async function DocsPage({
       source={content}
       components={components}
       options={{
-        scope: {
-          ab: 123,
-        },
         mdxOptions: {
           rehypePlugins: [RehypeHighlightCode({ highlighter })],
           remarkPlugins: [

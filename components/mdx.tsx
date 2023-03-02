@@ -3,11 +3,11 @@ import {
   Paragraph,
   List,
   ListItem,
+  Code,
   Codebox,
   Link,
+  Separator,
 } from "@strawberry-graphql/styleguide";
-
-import Image from "next/image";
 
 export const components = {
   h1: (props: any) => <Heading level={1} {...props} />,
@@ -22,11 +22,13 @@ export const components = {
   li: (props: any) => <ListItem {...props} />,
   pre: (props: any) => <Codebox {...props} />,
   a: (props: any) => <Link {...props} />,
-  img: (props: any) => (
-    <>
-      LOL
-      <Image {...props} />
-    </>
-  ),
+  hr: (props: any) => <Separator />,
+  code: (props: any) => {
+    if (props.inline) {
+      return <Code {...props} />;
+    }
+
+    return <code {...props} />;
+  },
   Note: () => null,
 };
