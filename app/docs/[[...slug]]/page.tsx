@@ -1,4 +1,4 @@
-import { PageTOC } from "@strawberry-graphql/styleguide";
+import { DocsContent, PageTOC } from "@strawberry-graphql/styleguide";
 import remarkComment from "remark-comment";
 import remarkGfm from "remark-gfm";
 import shiki from "shiki";
@@ -120,7 +120,7 @@ export default async function DocsPage({
 
   return (
     <>
-      <div className="px-16 sm:px-40 space-y-8">{content}</div>
+      <DocsContent>{content}</DocsContent>
       {/* TODO: support for nested? */}
       <PageTOC
         items={items.map((item) => ({
