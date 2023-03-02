@@ -15,7 +15,7 @@ import {
   PullRequestQuery,
 } from "~/types/graphql";
 
-import { fetchDocPageLocal } from "./api-local";
+import { fetchDocPageLocal, fetchTableOfContentsLocal } from "./api-local";
 import {
   getBlobText,
   getDocTree,
@@ -238,6 +238,10 @@ export const fetchTableOfContents = async ({
   owner?: string;
   repo?: string;
 }): Promise<DocsTree | null> => {
+  if (process.env.LOCAL_REPO_PATH) {
+    return fetchTableOfContentsLocal({ prefix });
+  }
+
   try {
     const text = await fetchFile({
       filename: "docs/README.md",
