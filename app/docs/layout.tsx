@@ -7,7 +7,7 @@ import {
   Spacer,
 } from "@strawberry-graphql/styleguide";
 
-import { fetchLatestRelease } from "~/lib/api";
+import { fetchLatestRelease, fetchTableOfContents } from "~/lib/api";
 
 const sections = [
   {
@@ -48,6 +48,24 @@ export default async function DocsLayout({
   children: React.ReactNode;
 }) {
   const version = await fetchLatestRelease();
+
+  const tableOfContents = await fetchTableOfContents({
+    prefix: "",
+  });
+
+  const sections = Object.entries(tableOfContents).map(([name, section]) => ({
+    name,
+    x: console.log(section),
+    links:
+      section.links?.map((link) => ({
+        href: link.href,
+        name: link.text,
+      })) || [],
+    // links: links.map((link) => ({
+    //   href: link.href,
+    //   name: link.name,
+    // })),
+  }));
 
   return (
     <>
