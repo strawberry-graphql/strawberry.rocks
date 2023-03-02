@@ -41,6 +41,10 @@ export const extensionDataIsComplete = (data: {
 };
 
 export const isBlob = (obj: any): obj is Blob => {
+  if (!obj) {
+    return false;
+  }
+
   return Object.keys(obj).length > 0 && obj.__typename === "Blob";
 };
 

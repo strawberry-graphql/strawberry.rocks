@@ -1,7 +1,8 @@
+import { Header } from "@strawberry-graphql/styleguide";
+
 import { GetStaticProps, NextPage } from "next";
 
 import { Features } from "~/components/features";
-import { Header } from "~/components/header";
 import { Hero } from "~/components/hero";
 import { FlashIcon } from "~/components/icons/flash";
 import { Link } from "~/components/link";
@@ -10,13 +11,19 @@ import { Sponsors } from "~/components/sponsors";
 import { fetchLatestRelease } from "~/lib/api";
 
 type Props = {
-  version?: string;
+  version: string;
 };
 
 const HomePage: NextPage<Props> = ({ version }) => (
   <>
     <SEO title="A Python library for GraphQL" />
-    <Header version={version} />
+
+    <Header
+      version={{
+        href: "TODO",
+        name: version,
+      }}
+    />
     <Hero />
 
     <div className="flex-1 my-10 mx-auto max-w-5xl text-center">

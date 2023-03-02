@@ -77,3 +77,4 @@ __generated__/
 
 # Typescript build cache
 tsconfig.tsbuildinfo
+.yalc

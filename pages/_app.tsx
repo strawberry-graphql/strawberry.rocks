@@ -1,4 +1,4 @@
-import "@docsearch/css/dist/style.css";
+import "@strawberry-graphql/styleguide/dist/index.css";
 import { Analytics } from "@vercel/analytics/react";
 import NProgress from "nprogress";
 
@@ -7,9 +7,6 @@ import Router from "next/router";
 
 import { Footer } from "~/components/footer";
 import { NewsletterSection } from "~/components/newsletter-section";
-
-import "../styles/nprogress.css";
-import "../styles/tailwind.css";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());

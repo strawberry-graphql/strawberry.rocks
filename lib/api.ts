@@ -15,6 +15,7 @@ import {
   PullRequestQuery,
 } from "~/types/graphql";
 
+import { fetchDocPageLocal } from "./api-local";
 import {
   getBlobText,
   getDocTree,
@@ -200,7 +201,7 @@ export const fetchFile = async ({
   }
 };
 
-export const fetchLatestRelease = async (): Promise<string | undefined> => {
+export const fetchLatestRelease = async (): Promise<string> => {
   try {
     const latest = await octokit
       .graphql<LatestReleaseQuery>(
@@ -399,6 +400,10 @@ export const fetchDocPage = async ({
   repo?: string;
   ref?: string;
 }) => {
+  if (process.env.LOCAL_REPO_PATH) {
+    return fetchDocPageLocal({ prefix, filename });
+  }
+
   try {
     const response = await octokit.graphql<DocPageQuery>(
       /* GraphQL */

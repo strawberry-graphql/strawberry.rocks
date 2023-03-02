@@ -1,3 +1,4 @@
+import { fromHtml } from "hast-util-from-html";
 import { toHtml } from "hast-util-to-html";
 import { Node, Text, Element, Comment } from "hast-util-to-html/lib/types";
 import { Root, toString } from "hast-util-to-string";
@@ -363,78 +364,117 @@ const createSplitCodeView = ({
   };
 };
 
-export const RehypeHighlightCode: Plugin = (options = {}) => {
-  return (tree) => {
-    visit(tree, "element", visitor);
+export const RehypeHighlightCode = ({ highlighter }) => {
+  const visitor = (node: Node, index: number, parentNode: Node) => {
+    if (!(node.tagName === "pre")) {
+      return;
+    }
+
+    const codeNode = node.children[0];
+
+    const language = codeNode.properties.className
+      ?.find((className: string) => className.startsWith("language-"))
+      ?.replace("language-", "");
+
+    if (!language) {
+      console.warn("No language found for code block");
+
+      return;
+    }
+
+    const code = codeNode.children[0].value;
+    const codeHtml = highlighter.codeToHtml(code, language);
+
+    const tree = fromHtml(codeHtml, { fragment: true });
+
+    parentNode.children[index] = tree.children[0];
+
+    // node.children = tree.children;
+
+    //   // @ts-expect-error
+
+    // }
   };
 
-  function visitor(node: Node, index: number, parentNode: Node) {
-    // @ts-expect-error
-    if (parentNode.tagName === "pre" && node.tagName === "code") {
-      // @ts-expect-error
-      const properties = node.properties as any;
-
-      if (properties.generatedBy === "rehype-highlight-code") {
-        return;
-      }
-
-      // syntax highlight
-      const lang = properties.className
-        ? (properties.className[0] as string).split("-")[1]
-        : "md";
-
-      const linesToHighlight = properties.line
-        ? rangeParser(properties.line)
-        : [];
-
-      const wordsToHighlight = properties.highlight
-        ? (properties.highlight as string).split(",")
-        : [];
-
-      // @ts-expect-error
-      const text = toString(node);
-
-      if (lang.includes("+")) {
-        const [firstLanguage, secondLanguage] = lang
-          .split("+")
-          .map(normalizeLanguage);
-        const [firstHeader, secondHeader] = lang.split("+").map(getHeader);
-        const [firstText, secondText] = text
-          .split(/^---$/m)
-          .map((x) => x.trim());
-
-        // @ts-expect-error
-        parentNode.tagName = "div";
-        // @ts-expect-error
-        parentNode.children = [
-          createSplitCodeView({
-            leftHeader: firstHeader,
-            rightHeader: secondHeader,
-            children: [
-              createPre({
-                language: firstLanguage,
-                text: firstText,
-                linesToHighlight,
-                wordsToHighlight,
-              }),
-              createPre({
-                language: secondLanguage,
-                text: secondText,
-                linesToHighlight,
-                wordsToHighlight,
-              }),
-            ],
-          }),
-        ];
-      } else {
-        const result = highlight(text, lang, {
-          linesToHighlight,
-          wordsToHighlight,
-        });
-
-        // @ts-expect-error
-        node.children = result.children;
-      }
-    }
-  }
+  return () => {
+    return (tree) => {
+      visit(tree, "element", visitor);
+    };
+  };
 };
+
+// export const RehypeHighlightCode: () => Plugin = (options = {}) = () => {
+//   return (tree) => {
+//     visit(tree, "element", visitor);
+//   };
+
+//   function visitor(node: Node, index: number, parentNode: Node) {
+//     // @ts-expect-error
+//     if (parentNode.tagName === "pre" && node.tagName === "code") {
+//       // @ts-expect-error
+//       const properties = node.properties as any;
+
+//       if (properties.generatedBy === "rehype-highlight-code") {
+//         return;
+//       }
+
+//       // syntax highlight
+//       const lang = properties.className
+//         ? (properties.className[0] as string).split("-")[1]
+//         : "md";
+
+//       const linesToHighlight = properties.line
+//         ? rangeParser(properties.line)
+//         : [];
+
+//       const wordsToHighlight = properties.highlight
+//         ? (properties.highlight as string).split(",")
+//         : [];
+
+//       // @ts-expect-error
+//       const text = toString(node);
+
+//       if (lang.includes("+")) {
+//         const [firstLanguage, secondLanguage] = lang
+//           .split("+")
+//           .map(normalizeLanguage);
+//         const [firstHeader, secondHeader] = lang.split("+").map(getHeader);
+//         const [firstText, secondText] = text
+//           .split(/^---$/m)
+//           .map((x) => x.trim());
+
+//         // @ts-expect-error
+//         parentNode.tagName = "div";
+//         // @ts-expect-error
+//         parentNode.children = [
+//           createSplitCodeView({
+//             leftHeader: firstHeader,
+//             rightHeader: secondHeader,
+//             children: [
+//               createPre({
+//                 language: firstLanguage,
+//                 text: firstText,
+//                 linesToHighlight,
+//                 wordsToHighlight,
+//               }),
+//               createPre({
+//                 language: secondLanguage,
+//                 text: secondText,
+//                 linesToHighlight,
+//                 wordsToHighlight,
+//               }),
+//             ],
+//           }),
+//         ];
+//       } else {
+//         const result = highlight(text, lang, {
+//           linesToHighlight,
+//           wordsToHighlight,
+//         });
+
+//         // @ts-expect-error
+//         node.children = result.children;
+//       }
+//     }
+//   }
+// };
