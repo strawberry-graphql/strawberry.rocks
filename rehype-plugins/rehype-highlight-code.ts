@@ -335,24 +335,6 @@ const createPre = ({
   };
 };
 
-const createSplitCodeView = ({
-  children,
-}: {
-  children: (Element | Text | Comment)[];
-  leftHeader: string;
-  rightHeader: string;
-}) => {
-  return {
-    type: "element",
-    tagName: "SplitCodeView",
-    properties: {
-      leftHeader,
-      rightHeader,
-    },
-    children,
-  };
-};
-
 export const RehypeHighlightCode = ({ highlighter }) => {
   const visitor = (node: Node, index: number, parentNode: Node) => {
     if (node.tagName === "code" && parentNode.tagName !== "pre") {
@@ -394,7 +376,7 @@ export const RehypeHighlightCode = ({ highlighter }) => {
 
       parentNode.children[index] = {
         type: "element",
-        tagName: "div",
+        tagName: "SideBySide",
         children: [firstTree.children[0], secondTree.children[0]],
       };
 
@@ -420,79 +402,3 @@ export const RehypeHighlightCode = ({ highlighter }) => {
     };
   };
 };
-
-// export const RehypeHighlightCode: () => Plugin = (options = {}) = () => {
-//   return (tree) => {
-//     visit(tree, "element", visitor);
-//   };
-
-//   function visitor(node: Node, index: number, parentNode: Node) {
-//     // @ts-expect-error
-//     if (parentNode.tagName === "pre" && node.tagName === "code") {
-//       // @ts-expect-error
-//       const properties = node.properties as any;
-
-//       if (properties.generatedBy === "rehype-highlight-code") {
-//         return;
-//       }
-
-//       // syntax highlight
-//       const lang = properties.className
-//         ? (properties.className[0] as string).split("-")[1]
-//         : "md";
-
-//       const linesToHighlight = properties.line
-//         ? rangeParser(properties.line)
-//         : [];
-
-//       const wordsToHighlight = properties.highlight
-//         ? (properties.highlight as string).split(",")
-//         : [];
-
-//       // @ts-expect-error
-//       const text = toString(node);
-
-//       if (lang.includes("+")) {
-//         const [firstLanguage, secondLanguage] = lang
-//           .split("+")
-//           .map(normalizeLanguage);
-//         const [firstHeader, secondHeader] = lang.split("+").map(getHeader);
-//         const [firstText, secondText] = text
-//           .split(/^---$/m)
-//           .map((x) => x.trim());
-
-//         // @ts-expect-error
-//         parentNode.tagName = "div";
-//         // @ts-expect-error
-//         parentNode.children = [
-//           createSplitCodeView({
-//             leftHeader: firstHeader,
-//             rightHeader: secondHeader,
-//             children: [
-//               createPre({
-//                 language: firstLanguage,
-//                 text: firstText,
-//                 linesToHighlight,
-//                 wordsToHighlight,
-//               }),
-//               createPre({
-//                 language: secondLanguage,
-//                 text: secondText,
-//                 linesToHighlight,
-//                 wordsToHighlight,
-//               }),
-//             ],
-//           }),
-//         ];
-//       } else {
-//         const result = highlight(text, lang, {
-//           linesToHighlight,
-//           wordsToHighlight,
-//         });
-
-//         // @ts-expect-error
-//         node.children = result.children;
-//       }
-//     }
-//   }
-// };

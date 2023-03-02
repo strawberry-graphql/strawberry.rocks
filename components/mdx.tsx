@@ -7,6 +7,7 @@ import {
   Codebox,
   Link,
   Separator,
+  SideBySide,
 } from "@strawberry-graphql/styleguide";
 
 export const components = {
@@ -23,6 +24,7 @@ export const components = {
   pre: (props: any) => <Codebox {...props} />,
   a: (props: any) => <Link {...props} />,
   hr: () => <Separator />,
+  SideBySide,
   code: (props: any) => {
     if (props.inline) {
       return <Code {...props} />;
