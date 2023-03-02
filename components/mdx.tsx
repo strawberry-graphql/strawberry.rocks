@@ -8,6 +8,7 @@ import {
   Link,
   Separator,
   SideBySide,
+  Callout,
 } from "@strawberry-graphql/styleguide";
 
 export const components = {
@@ -32,5 +33,7 @@ export const components = {
 
     return <code {...props} />;
   },
-  Note: () => null,
+  Note: (props: any) => <Callout {...props} type="note" />,
+  Tip: (props: any) => <Callout {...props} type="tip" />,
+  AdditionalResources: (props: any) => <>todo: additional resources</>,
 };

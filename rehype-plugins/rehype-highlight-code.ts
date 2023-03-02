@@ -353,6 +353,7 @@ export const RehypeHighlightCode = ({ highlighter }) => {
 
     if (!language) {
       console.warn("No language found for code block");
+      console.debug(codeNode.properties);
 
       return;
     }

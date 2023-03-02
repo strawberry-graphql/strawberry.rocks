@@ -8,40 +8,8 @@ import {
   Spacer,
 } from "@strawberry-graphql/styleguide";
 
+import { DocsNavigation } from "~/components/docs-navigation";
 import { fetchLatestRelease, fetchTableOfContents } from "~/lib/api";
-
-const sections = [
-  {
-    name: "Docs",
-    links: [
-      {
-        href: "/docs",
-        name: "Getting started",
-      },
-    ],
-  },
-  {
-    name: "General",
-    links: [
-      {
-        href: "/abc",
-        name: "Schema basics",
-      },
-      {
-        href: "/abc2",
-        name: "Schema basics",
-      },
-      {
-        href: "/abc3",
-        name: "Schema basics",
-      },
-      {
-        href: "/abc4",
-        name: "Schema basics",
-      },
-    ],
-  },
-];
 
 export default async function DocsLayout({
   children,
@@ -87,7 +55,7 @@ export default async function DocsLayout({
           <Spacer size={16} />
           <SearchInput placeholder="Search" />
           <Spacer size={40} />
-          <SidebarNav sections={sections} />
+          <DocsNavigation sections={sections} />
         </div>
 
         <DocsWrapper>{children}</DocsWrapper>
