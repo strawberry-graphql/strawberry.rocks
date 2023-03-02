@@ -50,12 +50,11 @@ export default async function DocsLayout({
   const version = await fetchLatestRelease();
 
   const tableOfContents = await fetchTableOfContents({
-    prefix: "",
+    prefix: "docs",
   });
 
   const sections = Object.entries(tableOfContents).map(([name, section]) => ({
     name,
-    x: console.log(section),
     links:
       section.links?.map((link) => ({
         href: link.href,

@@ -26,6 +26,10 @@ export const fixImagePathsPlugin =
       if (url.startsWith(".")) {
         const updatedPath = join("docs", dirname(path), url as string);
 
+        if (process.env.LOCAL_REPO_PATH) {
+          return `/_dev/image-proxy/${updatedPath}`;
+        }
+
         return `https://github.com/${owner}/${repo}/raw/${ref}/${updatedPath}`;
       }
 

@@ -202,6 +202,10 @@ export const fetchFile = async ({
 };
 
 export const fetchLatestRelease = async (): Promise<string> => {
+  if (process.env.LOCAL_REPO_PATH) {
+    return "LOCAL";
+  }
+
   try {
     const latest = await octokit
       .graphql<LatestReleaseQuery>(
