@@ -4,7 +4,7 @@ import {
   MobileNav,
   SearchInput,
   SidebarNav,
-  DocsContent,
+  DocsWrapper,
   Spacer,
 } from "@strawberry-graphql/styleguide";
 
@@ -90,7 +90,7 @@ export default async function DocsLayout({
           <SidebarNav sections={sections} />
         </div>
 
-        <DocsContent>{children}</DocsContent>
+        <DocsWrapper>{children}</DocsWrapper>
       </div>
 
       <Spacer size={80} />
