@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@strawberry-graphql/styleguide": {
-      "signature": "a5245e7504b2a6d29a8a5e74c39aa67e",
+      "signature": "92c29779d0a5cc37752c22d9195450e3",
       "file": true,
       "replaced": "0.1.5"
     }

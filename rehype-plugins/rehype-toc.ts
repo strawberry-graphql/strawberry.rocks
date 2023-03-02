@@ -3,57 +3,17 @@ import { Element, toString } from "hast-util-to-string";
 import { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
-type TocItem = {
+export type TocItem = {
   title?: string;
   id?: string;
   level: number;
   children: TocItem[];
 };
 
-const getTableOfContentsList = (
-  root: TocItem,
-  { level = 0, title }: { level: number; title: Element }
-): Element => {
-  return {
-    type: "element",
-    tagName: "ul",
-    properties: {
-      dataLevel: `${level}`,
-      dataToc: "true",
-    },
-    children: root.children
-      .filter((item) => item.id != title.properties?.id)
-      .map((item) => {
-        const children: Element[] = [
-          {
-            type: "element",
-            tagName: "a",
-            properties: {
-              href: `#${item.id}`,
-              className: "toc-link",
-            },
-            children: [{ type: "text", value: item.title! }],
-          },
-        ];
-
-        if (item.children.length > 0) {
-          children.push(
-            getTableOfContentsList(item, { level: level + 1, title })
-          );
-        }
-
-        return {
-          type: "element",
-          tagName: "li",
-          children,
-        };
-      }),
-  };
-};
+const HEADINGS = ["h1", "h2"];
 
 export const RehypeTOC =
-  (options: { onlyLinks?: boolean } = {}) =>
-  (): Plugin => {
+  (options: { onlyLinks?: boolean; items: string[] }) => (): Plugin => {
     return (tree) => {
       const slugger = new GithubSlugger();
 
@@ -65,7 +25,7 @@ export const RehypeTOC =
       const stack = [root];
 
       function collectAndAddLinksToHeaders(node: Element) {
-        if (!["h1", "h2", "h3", "h4"].includes(node.tagName as string)) {
+        if (!HEADINGS.includes(node.tagName as string)) {
           return;
         }
 
@@ -97,6 +57,8 @@ export const RehypeTOC =
           children: [],
         };
 
+        options.items.push(item);
+
         let current = stack[stack.length - 1];
 
         while (item.level <= current.level) {
@@ -112,26 +74,5 @@ export const RehypeTOC =
       }
 
       visit(tree, "element", collectAndAddLinksToHeaders);
-
-      if (!options.onlyLinks) {
-        // find the first h1 and add the toc after it
-        let didAddToc = false;
-
-        visit(tree, "element", (node, index, parent) => {
-          if (didAddToc) {
-            return;
-          }
-
-          if (node.tagName === "h1" && index !== null) {
-            parent.children.splice(
-              index + 1,
-              0,
-              getTableOfContentsList(root, { level: 0, title: node })
-            );
-
-            didAddToc = true;
-          }
-        });
-      }
     };
   };

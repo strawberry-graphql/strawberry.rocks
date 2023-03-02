@@ -22,7 +22,7 @@ export const components = {
   li: (props: any) => <ListItem {...props} />,
   pre: (props: any) => <Codebox {...props} />,
   a: (props: any) => <Link {...props} />,
-  hr: (props: any) => <Separator />,
+  hr: () => <Separator />,
   code: (props: any) => {
     if (props.inline) {
       return <Code {...props} />;

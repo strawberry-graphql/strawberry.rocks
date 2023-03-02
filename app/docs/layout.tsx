@@ -89,10 +89,9 @@ export default async function DocsLayout({
           <SidebarNav sections={sections} />
         </div>
 
+        {/* TODO: make this a component */}
         <div className="max-w-[1600px] 2xl:mx-auto 2xl:relative 2xl:-left-[160px] 2lx:bg-pink md:grid grid-cols-[1fr_200px]">
-          <div className="px-16 sm:px-40 space-y-8">{children}</div>
-
-          {/* <PageNav /> */}
+          {children}
         </div>
       </div>
 
