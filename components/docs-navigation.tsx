@@ -1,10 +1,11 @@
-"use client";
-
 import { SidebarNav } from "@strawberry-graphql/styleguide";
+import type { Section } from "@strawberry-graphql/styleguide/dist/components/sidebar-nav/sidebar-nav";
 
 import { usePathname } from "next/navigation";
 
-export const DocsNavigation = ({ sections }) => {
+("use client");
+
+export const DocsNavigation = ({ sections }: { sections: Section[] }) => {
   const pathname = usePathname();
 
   sections.forEach((section) => {

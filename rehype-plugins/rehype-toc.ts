@@ -13,7 +13,7 @@ export type TocItem = {
 const HEADINGS = ["h1", "h2"];
 
 export const RehypeTOC =
-  (options: { onlyLinks?: boolean; items: string[] }) => (): Plugin => {
+  (options: { onlyLinks?: boolean; items: TocItem[] }) => (): Plugin => {
     return (tree) => {
       const slugger = new GithubSlugger();
 

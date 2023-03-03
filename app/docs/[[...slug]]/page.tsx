@@ -47,16 +47,14 @@ export default async function DocsPage({
     ],
   };
 
-  const { content, frontmatter, ...rest } = await compileMDX<{ title: string }>(
-    {
-      source: page,
-      components,
-      options: {
-        parseFrontmatter: true,
-        mdxOptions,
-      },
-    }
-  );
+  const { content, frontmatter } = await compileMDX<{ title: string }>({
+    source: page,
+    components,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions,
+    },
+  });
 
   return (
     <>

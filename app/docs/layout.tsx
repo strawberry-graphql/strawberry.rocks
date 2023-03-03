@@ -29,10 +29,6 @@ export default async function DocsLayout({
         href: link.href,
         name: link.text,
       })) || [],
-    // links: links.map((link) => ({
-    //   href: link.href,
-    //   name: link.name,
-    // })),
   }));
 
   return (
@@ -42,6 +38,7 @@ export default async function DocsLayout({
           href: "/",
           name: version,
         }}
+        activeSection="docs"
       />
 
       <Spacer size={80} />
