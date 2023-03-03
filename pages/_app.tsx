@@ -1,8 +1,8 @@
 import "@strawberry-graphql/styleguide/dist/index.css";
 import { Analytics } from "@vercel/analytics/react";
+import type { AppProps } from "next/app";
 import NProgress from "nprogress";
 
-import type { AppProps } from "next/app";
 import Router from "next/router";
 
 import { Footer } from "~/components/footer";
