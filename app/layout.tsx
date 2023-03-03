@@ -1,5 +1,6 @@
 import { JetBrains_Mono } from "@next/font/google";
 import localFont from "@next/font/local";
+import { DarkModeScript } from "@strawberry-graphql/styleguide";
 import "@strawberry-graphql/styleguide/dist/index.css";
 import clsx from "clsx";
 
@@ -62,6 +63,7 @@ export default function RootLayout({
           "font-sans"
         )}
       >
+        <DarkModeScript />
         {children}
       </body>
     </html>
