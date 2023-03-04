@@ -1,8 +1,19 @@
 import { JetBrains_Mono } from "@next/font/google";
 import localFont from "@next/font/local";
 import { DarkModeScript } from "@strawberry-graphql/styleguide";
+import {
+  Header,
+  GlowEffect,
+  Hero,
+  Spacer,
+  FeaturesSection,
+  SponsorsSection,
+  Footer,
+} from "@strawberry-graphql/styleguide";
 import "@strawberry-graphql/styleguide/dist/index.css";
 import clsx from "clsx";
+
+import { fetchLatestRelease } from "~/lib/api";
 
 export const metadata = {
   title: "Next.js",
@@ -43,11 +54,13 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const version = await fetchLatestRelease();
+
   return (
     <html lang="en">
       {/*
@@ -65,7 +78,16 @@ export default function RootLayout({
           "font-sans"
         )}
       >
+        <Header
+          version={{
+            href: "/",
+            name: version,
+          }}
+        />
+
         {children}
+
+        <Footer />
       </body>
     </html>
   );

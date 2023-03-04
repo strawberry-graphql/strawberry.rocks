@@ -10,10 +10,6 @@ export const isString = (x: any): x is string => {
   return typeof x === "string";
 };
 
-export const isCollaborator = (x: any): x is GithubCollaborator => {
-  return x?.login != null;
-};
-
 export const isHeading = (token: any): token is marked.Tokens.Heading => {
   return token.type === "heading";
 };

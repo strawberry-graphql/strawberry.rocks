@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { NextPage } from "next";
 
-import DocsNavigation from "~/components/docs-navigation";
+import { DocsNavigation } from "~/components/docs-navigation";
 import { Header } from "~/components/header";
 import { Link } from "~/components/link";
 import { SEO } from "~/components/seo";

@@ -9,15 +9,13 @@ import {
 } from "@strawberry-graphql/styleguide";
 
 import { DocsNavigation } from "~/components/docs-navigation";
-import { fetchLatestRelease, fetchTableOfContents } from "~/lib/api";
+import { fetchTableOfContents } from "~/lib/api";
 
 export default async function DocsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const version = await fetchLatestRelease();
-
   const tableOfContents = await fetchTableOfContents({
     prefix: "/docs/",
   });
@@ -33,14 +31,6 @@ export default async function DocsLayout({
 
   return (
     <>
-      <Header
-        version={{
-          href: "/",
-          name: version,
-        }}
-        activeSection="docs"
-      />
-
       <Spacer size={80} />
 
       <div className="md:hidden">
@@ -59,8 +49,6 @@ export default async function DocsLayout({
       </div>
 
       <Spacer size={80} />
-
-      <Footer />
     </>
   );
 }

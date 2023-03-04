@@ -69,6 +69,7 @@ export const fetchContributors: () => Promise<
    * Get a contributors name & blog. If the request errors then return undefined
    *  and filter item.
    */
+  // TODO: move this to a GraphQL call or use Promise.all
   return Promise.all(
     contributors.map(async (username) => {
       try {
@@ -77,15 +78,19 @@ export const fetchContributors: () => Promise<
         });
 
         return {
-          name: data.name,
-          login: data.login,
+          name: data.name ?? data.login,
           url: data.blog ?? data.html_url,
+          avatarUrl: data.avatar_url,
         };
       } catch {
         return;
       }
     })
-  ).then((resolve) => resolve.filter(isCollaborator));
+  ).then((resolve) =>
+    resolve.filter(
+      (item) => item && ["pre-commit-ci[bot]"].includes(item.name) === false
+    )
+  );
 };
 
 export const fetchPullRequest = async ({
@@ -536,6 +541,38 @@ export const fetchExtensions = async ({
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("fetchFile:", error);
+    throw error;
+  }
+};
+
+export const fetchSponsors = async () => {
+  try {
+    const response = await octokit.graphql<any>(
+      /* GraphQL */
+      `
+        {
+          organization(login: "strawberry-graphql") {
+            sponsors(first: 100) {
+              nodes {
+                ... on User {
+                  name
+                  avatarUrl
+                }
+                ... on Organization {
+                  name
+                  avatarUrl
+                }
+              }
+            }
+          }
+        }
+      `
+    );
+
+    return response.organization.sponsors.nodes;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("fetchSponsors:", error);
     throw error;
   }
 };

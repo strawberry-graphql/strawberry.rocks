@@ -1,7 +1,7 @@
 export type GithubCollaborator = {
-  name: string | null;
-  login: string;
+  name: string;
   url: string;
+  avatarUrl: string;
 };
 
 export type PagePath = {
