@@ -7,12 +7,12 @@ specifiers:
   '@graphql-codegen/typescript': 2.8.7
   '@graphql-codegen/typescript-operations': 2.5.12
   '@hashicorp/remark-plugins': 4.1.1
-  '@heroicons/react': 2.0.13
+  '@heroicons/react': 2.0.16
   '@octokit/core': 4.1.0
   '@octokit/graphql-schema': 12.41.1
   '@octokit/plugin-paginate-rest': 5.0.1
   '@stefanprobst/remark-shiki': 2.2.0
-  '@strawberry-graphql/styleguide': file:.yalc/@strawberry-graphql/styleguide
+  '@strawberry-graphql/styleguide': 0.1.49
   '@tailwindcss/aspect-ratio': 0.4.2
   '@trivago/prettier-plugin-sort-imports': 4.1.1
   '@types/jsonp': 0.2.1
@@ -23,7 +23,7 @@ specifiers:
   '@types/react-dom': 18.0.10
   '@types/refractor': 3.0.2
   '@typescript-eslint/eslint-plugin': 5.48.1
-  '@vercel/analytics': 0.1.8-beta.0
+  '@vercel/analytics': 0.1.11
   autoprefixer: 10.4.13
   classnames: 2.3.2
   eslint: 8.31.0
@@ -67,13 +67,13 @@ dependencies:
   '@docsearch/js': 3.3.2_ib3m5ricvtkl2cll7qpr2f6lvq
   '@docsearch/react': 3.3.2_ib3m5ricvtkl2cll7qpr2f6lvq
   '@hashicorp/remark-plugins': 4.1.1
-  '@heroicons/react': 2.0.13_react@18.2.0
+  '@heroicons/react': 2.0.16_react@18.2.0
   '@octokit/core': 4.1.0
   '@octokit/plugin-paginate-rest': 5.0.1_@octokit+core@4.1.0
   '@stefanprobst/remark-shiki': 2.2.0_shiki@0.14.1
-  '@strawberry-graphql/styleguide': file:.yalc/@strawberry-graphql/styleguide_postcss@8.4.21
+  '@strawberry-graphql/styleguide': 0.1.49_postcss@8.4.21
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.7
-  '@vercel/analytics': 0.1.8-beta.0_react@18.2.0
+  '@vercel/analytics': 0.1.11_react@18.2.0
   classnames: 2.3.2
   github-slugger: 2.0.0
   gray-matter: 4.0.3
@@ -1770,8 +1770,8 @@ packages:
       - supports-color
     dev: false
 
-  /@headlessui/react/1.7.12_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-FhSx5V+Qp0GvbTpaxyS+ymGDDNntCacClWsk/d8Upbr19g3AsPbjfPk4+m2CgJGcuCB5Dz7LpUIOAbvQTyjL2g==}
+  /@headlessui/react/1.7.13_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-9n+EQKRtD9266xIHXdY5MfiXPDfYwl7zBM7KOx2Ae3Gdgxy8QML1FkCMjq6AsOf0l6N9uvI4HcFtuFlenaldKg==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16 || ^17 || ^18
@@ -1782,8 +1782,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@heroicons/react/2.0.13_react@18.2.0:
-    resolution: {integrity: sha512-iSN5XwmagrnirWlYEWNPdCDj9aRYVD/lnK3JlsC9/+fqGF80k8C7rl+1HCvBX0dBoagKqOFBs6fMhJJ1hOg1EQ==}
+  /@heroicons/react/2.0.16_react@18.2.0:
+    resolution: {integrity: sha512-x89rFxH3SRdYaA+JCXwfe+RkE1SFTo9GcOkZettHer71Y3T7V+ogKmfw5CjTazgS3d0ClJ7p1NA+SP7VQLQcLw==}
     peerDependencies:
       react: '>= 16'
     dependencies:
@@ -2329,6 +2329,41 @@ packages:
       regenerator-runtime: 0.13.11
     dev: false
 
+  /@strawberry-graphql/styleguide/0.1.49_postcss@8.4.21:
+    resolution: {integrity: sha512-Xk71LBWALZziTSlSzrPcuqfO63gJalVUgW64RozB54LSzktE3zlaAbibTAT796MutNLgid6o8232Tt2cpmxq4Q==}
+    dependencies:
+      '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
+      '@next/font': 13.1.6
+      '@storybook/theming': 6.5.16_biqbaboplfbrettd7655fr4n2y
+      '@types/node': 18.13.0
+      '@types/react': 18.0.28
+      '@types/react-dom': 18.0.10
+      algoliasearch: 4.15.0
+      clsx: 1.2.1
+      css-loader: 6.7.3
+      eslint: 8.34.0
+      eslint-config-next: 13.1.6_7kw3g6rralp5ps6mg3uyzz6azm
+      next: 13.1.6_biqbaboplfbrettd7655fr4n2y
+      postcss-loader: 7.0.2_postcss@8.4.21
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-instantsearch-hooks-web: 6.40.1_jmf63fejdqsy6olssod66bzdge
+      remove: 0.1.5
+      shiki: 0.14.1
+      style-loader: 3.3.1
+      typescript: 4.9.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+      - eslint-import-resolver-webpack
+      - fibers
+      - node-sass
+      - postcss
+      - sass
+      - supports-color
+      - webpack
+    dev: false
+
   /@swc/helpers/0.4.14:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
@@ -2774,8 +2809,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: false
 
-  /@vercel/analytics/0.1.8-beta.0_react@18.2.0:
-    resolution: {integrity: sha512-uOhEwbc93VzTPUwkn5hOqVYR9RsYO7lGiybkNqbsQlUheb8j7w55vnccEcH6xYL8swFBzB2Moh9nhsjvCRlv5g==}
+  /@vercel/analytics/0.1.11_react@18.2.0:
+    resolution: {integrity: sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==}
     peerDependencies:
       react: ^16.8||^17||^18
     dependencies:
@@ -9644,42 +9679,4 @@ packages:
 
   /zwitch/2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
-    dev: false
-
-  file:.yalc/@strawberry-graphql/styleguide_postcss@8.4.21:
-    resolution: {directory: .yalc/@strawberry-graphql/styleguide, type: directory}
-    id: file:.yalc/@strawberry-graphql/styleguide
-    name: '@strawberry-graphql/styleguide'
-    version: 0.1.48
-    dependencies:
-      '@headlessui/react': 1.7.12_biqbaboplfbrettd7655fr4n2y
-      '@next/font': 13.1.6
-      '@storybook/theming': 6.5.16_biqbaboplfbrettd7655fr4n2y
-      '@types/node': 18.13.0
-      '@types/react': 18.0.28
-      '@types/react-dom': 18.0.10
-      algoliasearch: 4.15.0
-      clsx: 1.2.1
-      css-loader: 6.7.3
-      eslint: 8.34.0
-      eslint-config-next: 13.1.6_7kw3g6rralp5ps6mg3uyzz6azm
-      next: 13.1.6_biqbaboplfbrettd7655fr4n2y
-      postcss-loader: 7.0.2_postcss@8.4.21
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      react-instantsearch-hooks-web: 6.40.1_jmf63fejdqsy6olssod66bzdge
-      remove: 0.1.5
-      shiki: 0.14.1
-      style-loader: 3.3.1
-      typescript: 4.9.5
-    transitivePeerDependencies:
-      - '@babel/core'
-      - babel-plugin-macros
-      - eslint-import-resolver-webpack
-      - fibers
-      - node-sass
-      - postcss
-      - sass
-      - supports-color
-      - webpack
     dev: false
