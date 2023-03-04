@@ -54,7 +54,9 @@ export default function RootLayout({
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <head />
+      <head>
+        <DarkModeScript />
+      </head>
       <body
         className={clsx(
           ranade.variable,
@@ -63,7 +65,6 @@ export default function RootLayout({
           "font-sans"
         )}
       >
-        <DarkModeScript />
         {children}
       </body>
     </html>
