@@ -1,6 +1,6 @@
 {
     "name": "strawberry-graphql",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Patrick Arminio <patrick.arminio@@gmail.com>",
     "engines": {
         "node": "16.x"
