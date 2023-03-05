@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import shiki from "shiki";
 
 import { compileMDX } from "next-mdx-remote/rsc";
+import { notFound } from "next/navigation";
 
 import { components } from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
@@ -19,13 +20,17 @@ export default async function DocsPage({
   const slugs = params.slug || ["index"];
   const filename = slugs.join("/") + ".md";
 
-  const { page } = await fetchDocPage({
-    prefix: "/docs/",
-    filename: `docs/${filename}`,
-    owner: OWNER,
-    repo: REPO,
-    ref: REF,
-  });
+  try {
+    const { page } = await fetchDocPage({
+      prefix: "/docs/",
+      filename: `docs/${filename}`,
+      owner: OWNER,
+      repo: REPO,
+      ref: REF,
+    });
+  } catch (e) {
+    throw notFound();
+  }
 
   const highlighter = await shiki.getHighlighter({
     theme: "css-variables",
