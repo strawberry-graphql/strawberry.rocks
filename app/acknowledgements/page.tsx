@@ -3,9 +3,13 @@ import {
   Heading,
   ContributorsGrid,
   GlowEffect,
+  Box,
+  Spacer,
+  Paragraph,
+  List,
+  ListItem,
+  Link,
 } from "@strawberry-graphql/styleguide";
-
-import Link from "next/link";
 
 import { fetchContributors, fetchSponsors } from "~/lib/api";
 
@@ -13,102 +17,65 @@ export default async function AcknowledgementsPage() {
   const contributors = await fetchContributors();
   const sponsors = await fetchSponsors();
 
-  console.log(contributors);
-
   return (
     <>
       <GlowEffect />
-      <Display>Acknowledgements</Display>
-      <Heading level={4}>
-        Strawberry wouldn&apos;t be possible without all these amazing people
-        and sponsors, thank you!
-      </Heading>
+      <Spacer size={80} />
 
-      <Heading>Sponsors</Heading>
+      <Box textAlign="center" px={16} maxWidth="screen-sm">
+        <Display>Acknowledgements</Display>
 
-      <ContributorsGrid
-        contributors={sponsors.map((sponsor: any) => ({
-          ...sponsor,
-          title: "Sponsor",
-        }))}
-      />
-      <Heading>Contributors</Heading>
+        <Spacer size={24} />
 
-      <ContributorsGrid
-        contributors={contributors.map((contributor: any) => ({
-          ...contributor,
-          title: "Contributor",
-        }))}
-      />
+        <Heading level={4}>
+          Strawberry wouldn&apos;t be possible without all these amazing people
+          and sponsors ❤️
+        </Heading>
+      </Box>
 
-      <div>
-        <p className="my-8">
+      <Spacer size={80} />
+
+      <Box maxWidth="screen-lg" px={16}>
+        <Heading>Sponsors</Heading>
+        <Spacer size={40} />
+        <ContributorsGrid
+          contributors={sponsors.map((sponsor: any) => ({
+            ...sponsor,
+            title: "Sponsor",
+          }))}
+        />
+
+        <Spacer size={80} />
+
+        <Heading>Contributors</Heading>
+        <Spacer size={40} />
+
+        <ContributorsGrid
+          contributors={contributors.map((contributor: any) => ({
+            ...contributor,
+            title: "Contributor",
+          }))}
+        />
+
+        <Spacer size={80} />
+
+        <Paragraph>
           In addition we&apos;d like to thank also the following people:
-        </p>
-        <ul>
-          <li>
-            <Link href="https://twitter.com/druguinni" underline>
-              Orlando Festa
-            </Link>{" "}
-            for the fantastic work on the Strawberry logo.
-          </li>
+        </Paragraph>
 
-          <li>
-            <Link href="https://twitter.com/BijlsmaLotte" underline>
-              Lotte Bijlsma
-            </Link>{" "}
-            for the amazing design of this website.
-          </li>
-        </ul>
+        <List>
+          <ListItem>
+            <Link href="https://twitter.com/druguinni">Orlando Festa</Link> for
+            the fantastic work on the Strawberry logo.
+          </ListItem>
 
-        <h2 className="mt-8 mb-4 text-3xl">Icons:</h2>
-        <p className="mb-6">
-          We are using icons from{" "}
-          <Link href="https://thenounproject.com" underline>
-            The Noun Project
-          </Link>
-          . Here&apos;s the list of icons we used on this website:
-        </p>
-
-        <ul>
-          <li>
-            Async by{" "}
-            <Link href="https://thenounproject.com/t.rostilov/" underline>
-              Timofey Rostilov
-            </Link>
-          </li>
-          <li>
-            Server by{" "}
-            <Link href="https://thenounproject.com/clea.doltz/" underline>
-              Clea Doltz
-            </Link>
-          </li>
-          <li>
-            Python by{" "}
-            <Link href="https://thenounproject.com/priyokumoro5/" underline>
-              Zaenal Abidin
-            </Link>
-          </li>
-          <li>
-            Boxes by{" "}
-            <Link href="https://thenounproject.com/iconsbazaar89/" underline>
-              Icons Bazaar
-            </Link>
-          </li>
-          <li>
-            Navigation by{" "}
-            <Link href="https://thenounproject.com/Flatart/" underline>
-              Flatart
-            </Link>
-          </li>
-          <li>
-            Close by{" "}
-            <Link href="https://thenounproject.com/landan/" underline>
-              Landan Lloyd
-            </Link>
-          </li>
-        </ul>
-      </div>
+          <ListItem>
+            <Link href="https://rollstudio.co.uk">Roll Studio</Link> for the
+            amazing design of this website.
+          </ListItem>
+        </List>
+        <Spacer size={80} />
+      </Box>
     </>
   );
 }
