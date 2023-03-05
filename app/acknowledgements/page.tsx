@@ -2,6 +2,7 @@ import {
   Display,
   Heading,
   ContributorsGrid,
+  GlowEffect,
 } from "@strawberry-graphql/styleguide";
 
 import Link from "next/link";
@@ -16,6 +17,7 @@ export default async function AcknowledgementsPage() {
 
   return (
     <>
+      <GlowEffect />
       <Display>Acknowledgements</Display>
       <Heading level={4}>
         Strawberry wouldn&apos;t be possible without all these amazing people
