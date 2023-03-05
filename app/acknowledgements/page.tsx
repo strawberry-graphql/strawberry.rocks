@@ -79,15 +79,3 @@ export default async function AcknowledgementsPage() {
     </>
   );
 }
-
-// export const getStaticProps: GetStaticProps<Props> = async () => {
-//   return {
-//     props: {
-//       collaborators: await fetchContributors(),
-//       version: await fetchLatestRelease(),
-//     },
-//     revalidate: 60 * 60,
-//   };
-// };
-
-// export default AcknowledgementsPage;

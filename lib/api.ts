@@ -42,6 +42,8 @@ const IGNORE_LIST = [
   "dependabot[bot]",
   "precommit-ci[bot]",
   "botberry",
+  "pre-commit-ci[bot]",
+  "dependabot-support",
 ];
 
 /**
@@ -77,22 +79,23 @@ export const fetchContributors: () => Promise<
           username,
         });
 
+        let url = data.blog ?? data.html_url;
+
+        if (!url) {
+          url = `https://github.com/${data.login}`;
+        } else if (!url.startsWith("http")) {
+          url = `https://${url}`;
+        }
+
         return {
           name: data.name ?? data.login,
-          url: data.blog ?? data.html_url,
+          url,
           avatarUrl: data.avatar_url,
         };
       } catch {
         return;
       }
     })
-  ).then((resolve) =>
-    resolve.filter(
-      (item) =>
-        item &&
-        ["pre-commit-ci[bot]", "dependabot-support"].includes(item.name) ===
-          false
-    )
   );
 };
 
