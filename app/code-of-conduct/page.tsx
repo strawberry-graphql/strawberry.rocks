@@ -31,42 +31,10 @@ export default async function CodeOfConductPage() {
       <Spacer size={80} />
 
       <Box px={16} maxWidth="screen-lg">
-        <div className="mx-auto w-full max-w-7xl p-8 pb-12">{content}</div>
+        <div className="page-content">{content}</div>
       </Box>
+
+      <Spacer size={80} />
     </>
   );
 }
-
-// export const getStaticProps: GetStaticProps<Props> = async () => {
-//   try {
-
-//     if (body == null) {
-//       throw Error("no code of conduct body to show");
-//     }
-//     const { content } = matter(body);
-
-//     const source = await serialize(content, {
-//       mdxOptions: {
-//         remarkPlugins: [
-//           RehypeTOC({ onlyLinks: true }),
-//           remarkComment,
-//           remarkGfm,
-//         ],
-//       },
-//     });
-
-//     return {
-//       props: {
-//         source,
-//         version,
-//       },
-//       revalidate: 60 * 60,
-//     };
-//   } catch (error) {
-//     // eslint-disable-next-line no-console
-//     console.error("code-of-conduct", error);
-//     return { notFound: true };
-//   }
-// };
-
-// export default CodeOfConductPage;

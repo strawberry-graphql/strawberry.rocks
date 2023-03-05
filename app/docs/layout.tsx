@@ -1,14 +1,5 @@
-import {
-  Footer,
-  Header,
-  MobileNav,
-  SearchInput,
-  SidebarNav,
-  DocsWrapper,
-  Spacer,
-} from "@strawberry-graphql/styleguide";
+import { MobileNav, Spacer, DocsWrapper } from "@strawberry-graphql/styleguide";
 
-import { DocsNavigation } from "~/components/docs-navigation";
 import { fetchTableOfContents } from "~/lib/api";
 
 export default async function DocsLayout({
@@ -37,16 +28,7 @@ export default async function DocsLayout({
         <MobileNav sections={sections} />
       </div>
 
-      <div className="md:grid grid-cols-[320px_1fr]">
-        <div className="w-[320px] hidden md:block px-40">
-          <Spacer size={16} />
-          <SearchInput placeholder="Search" />
-          <Spacer size={40} />
-          <DocsNavigation sections={sections} />
-        </div>
-
-        <DocsWrapper>{children}</DocsWrapper>
-      </div>
+      <DocsWrapper sections={sections}>{children}</DocsWrapper>
 
       <Spacer size={80} />
     </>
