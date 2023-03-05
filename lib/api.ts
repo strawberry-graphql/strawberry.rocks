@@ -88,7 +88,10 @@ export const fetchContributors: () => Promise<
     })
   ).then((resolve) =>
     resolve.filter(
-      (item) => item && ["pre-commit-ci[bot]"].includes(item.name) === false
+      (item) =>
+        item &&
+        ["pre-commit-ci[bot]", "dependabot-support"].includes(item.name) ===
+          false
     )
   );
 };
