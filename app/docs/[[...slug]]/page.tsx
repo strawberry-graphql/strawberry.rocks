@@ -8,17 +8,20 @@ import { notFound } from "next/navigation";
 
 import { components } from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
-import { fetchDocPage, OWNER, REF, REPO } from "~/lib/api";
+import { fetchDocPage, fetchPullRequest, OWNER, REF, REPO } from "~/lib/api";
 import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
 import { RehypeTOC, TocItem } from "~/rehype-plugins/rehype-toc";
+
+import { getFetchDocsParams } from "../path-utils";
 
 export default async function DocsPage({
   params,
 }: {
   params: { slug?: string[] };
 }) {
-  const slugs = params.slug || ["index"];
-  const filename = slugs.join("/") + ".md";
+  const { filename, owner, repo, forceRemote, ref } = await getFetchDocsParams(
+    params
+  );
 
   let page;
 
@@ -27,12 +30,15 @@ export default async function DocsPage({
       await fetchDocPage({
         prefix: "/docs/",
         filename: `docs/${filename}`,
-        owner: OWNER,
-        repo: REPO,
-        ref: REF,
+        owner,
+        repo,
+        ref,
+        forceRemote,
       })
     ).page;
   } catch (e) {
+    console.error(e);
+
     throw notFound();
   }
 
@@ -56,7 +62,7 @@ export default async function DocsPage({
     ],
   };
 
-  const { content, frontmatter } = await compileMDX<{ title: string }>({
+  const { content } = await compileMDX<{ title: string }>({
     source: page,
     components,
     options: {

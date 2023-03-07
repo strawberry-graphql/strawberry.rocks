@@ -148,10 +148,10 @@ export const fetchPullRequest = async ({
       pull?.labels?.nodes?.find((label) => label?.name === "ok-to-preview") !==
         undefined;
 
-    if (!safeToPreview) {
-      // TODO: we might want to show a message to the users that a pull request needs the label of "ok-to-preview" instead of throwing an error which 404s.
-      throw new Error("not safe to preview");
-    }
+    // if (!safeToPreview) {
+    //   // TODO: we might want to show a message to the users that a pull request needs the label of "ok-to-preview" instead of throwing an error which 404s.
+    //   throw new Error("not safe to preview");
+    // }
 
     return {
       pull_number: pull?.number,
@@ -212,7 +212,10 @@ export const fetchFile = async ({
   }
 };
 
-export const fetchLatestRelease = async (): Promise<string> => {
+export const fetchLatestRelease = async (): Promise<{
+  href: string;
+  name: string;
+}> => {
   if (process.env.LOCAL_REPO_PATH) {
     return "LOCAL";
   }
@@ -234,7 +237,12 @@ export const fetchLatestRelease = async (): Promise<string> => {
       )
       .then((response) => response.repository);
 
-    return latest?.latestRelease?.tagName;
+    const tagName = latest?.latestRelease?.tagName;
+
+    return {
+      href: `https://github.com/${OWNER}/${REPO}/releases/tag/${tagName}`,
+      name: tagName || "unknown",
+    };
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("fetchLatestRelease", error);
@@ -412,14 +420,16 @@ export const fetchDocPage = async ({
   owner = OWNER,
   repo = REPO,
   ref = REF,
+  forceRemote = false,
 }: {
   prefix: string;
   filename: string;
   owner?: string;
   repo?: string;
   ref?: string;
+  forceRemote?: boolean;
 }) => {
-  if (process.env.LOCAL_REPO_PATH) {
+  if (process.env.LOCAL_REPO_PATH && !forceRemote) {
     return fetchDocPageLocal({ prefix, filename });
   }
 
