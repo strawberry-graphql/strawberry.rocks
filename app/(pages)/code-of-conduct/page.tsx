@@ -1,3 +1,4 @@
+import { Spacer, Box } from "@strawberry-graphql/styleguide";
 import remarkComment from "remark-comment";
 import remarkGfm from "remark-gfm";
 
@@ -5,8 +6,6 @@ import { compileMDX } from "next-mdx-remote/rsc";
 
 import { components } from "~/components/mdx";
 import { fetchCodeOfConduct } from "~/lib/api";
-
-import { Box, Spacer } from ".yalc/@strawberry-graphql/styleguide/dist";
 
 export default async function CodeOfConductPage() {
   const response = await fetchCodeOfConduct();
