@@ -1,11 +1,9 @@
 import {
-  Header,
   GlowEffect,
   Hero,
   Spacer,
   FeaturesSection,
   SponsorsSection,
-  Footer,
 } from "@strawberry-graphql/styleguide";
 
 const sponsors = [

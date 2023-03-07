@@ -8,6 +8,7 @@ specifiers:
   '@graphql-codegen/typescript-operations': 2.5.12
   '@hashicorp/remark-plugins': 4.1.1
   '@heroicons/react': 2.0.16
+  '@next/font': 13.2.3
   '@octokit/core': 4.1.0
   '@octokit/graphql-schema': 12.41.1
   '@octokit/plugin-paginate-rest': 5.0.1
@@ -26,6 +27,7 @@ specifiers:
   '@vercel/analytics': 0.1.11
   autoprefixer: 10.4.13
   classnames: 2.3.2
+  clsx: 1.2.1
   eslint: 8.31.0
   eslint-config-next: 13.1.2
   eslint-config-prettier: 8.6.0
@@ -68,6 +70,7 @@ dependencies:
   '@docsearch/react': 3.3.2_ib3m5ricvtkl2cll7qpr2f6lvq
   '@hashicorp/remark-plugins': 4.1.1
   '@heroicons/react': 2.0.16_react@18.2.0
+  '@next/font': 13.2.3
   '@octokit/core': 4.1.0
   '@octokit/plugin-paginate-rest': 5.0.1_@octokit+core@4.1.0
   '@stefanprobst/remark-shiki': 2.2.0_shiki@0.14.1
@@ -75,6 +78,7 @@ dependencies:
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.7
   '@vercel/analytics': 0.1.11_react@18.2.0
   classnames: 2.3.2
+  clsx: 1.2.1
   github-slugger: 2.0.0
   gray-matter: 4.0.3
   hast-util-from-html: 1.0.1
@@ -1900,6 +1904,10 @@ packages:
 
   /@next/font/13.1.6:
     resolution: {integrity: sha512-AITjmeb1RgX1HKMCiA39ztx2mxeAyxl4ljv2UoSBUGAbFFMg8MO7YAvjHCgFhD39hL7YTbFjol04e/BPBH5RzQ==}
+    dev: false
+
+  /@next/font/13.2.3:
+    resolution: {integrity: sha512-7EHzk0f7FVYICLUZTpyPk93IfcTUao++Xt1Sgb+Zk5dVOCYHabqLtlF5ywSoXIqyFlo0qlshEBxsrzHAGTWkDw==}
     dev: false
 
   /@next/swc-android-arm-eabi/13.1.6:

@@ -1,14 +1,12 @@
 import { promises as fs } from "fs";
 
-import { DocsTree } from "~/components/docs-navigation";
-
 import { getDocTree } from "./doc-tree";
 
 export const fetchTableOfContentsLocal = async ({
   prefix,
 }: {
   prefix: string;
-}): Promise<DocsTree | null> => {
+}) => {
   const readmePath = process.env.LOCAL_REPO_PATH + "/docs/README.md";
 
   const readmeText = await fs.readFile(readmePath, "utf8");

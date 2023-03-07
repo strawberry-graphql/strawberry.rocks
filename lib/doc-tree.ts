@@ -1,6 +1,5 @@
 import { marked } from "marked";
 
-import { DocsTree, Section } from "~/components/docs-navigation";
 import { addHrefPrefix } from "~/helpers/params";
 import {
   isBlob,
@@ -23,7 +22,7 @@ export const getMDLinks = (
   );
 
 export function getDocTree(text: string, prefix: string) {
-  const sections: DocsTree = {};
+  const sections: any = {};
 
   const tokens = marked.lexer(text);
 
@@ -52,7 +51,7 @@ export function getDocTree(text: string, prefix: string) {
       }
 
       const links: marked.Tokens.Link[] = getMDLinks(token.items);
-      (sections[currentSection] as Section).links = links.map((link) => ({
+      (sections[currentSection] as any).links = links.map((link) => ({
         href: addHrefPrefix(link.href, prefix),
         text: link.text,
       }));

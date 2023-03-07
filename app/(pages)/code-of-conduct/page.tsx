@@ -11,13 +11,13 @@ import { Box, Spacer } from ".yalc/@strawberry-graphql/styleguide/dist";
 export default async function CodeOfConductPage() {
   const response = await fetchCodeOfConduct();
 
-  const body = response?.codeOfConduct?.body;
+  const body = response?.codeOfConduct?.body as string;
 
   const mdxOptions = {
     remarkPlugins: [remarkComment, remarkGfm],
   };
 
-  const { content, frontmatter } = await compileMDX<{ title: string }>({
+  const { content } = await compileMDX<{ title: string }>({
     source: body,
     components,
     options: {

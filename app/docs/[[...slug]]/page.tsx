@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 
 import { components } from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
-import { fetchDocPage, fetchPullRequest, OWNER, REF, REPO } from "~/lib/api";
+import { fetchDocPage, OWNER, REF, REPO } from "~/lib/api";
 import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
 import { RehypeTOC, TocItem } from "~/rehype-plugins/rehype-toc";
 
@@ -76,6 +76,7 @@ export default async function DocsPage({
       <DocsContent>{content}</DocsContent>
       {/* TODO: support for nested? */}
       <PageTOC
+        // @ts-ignore
         items={items.map((item) => ({
           id: item.id,
           title: item.title,

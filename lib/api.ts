@@ -2,9 +2,8 @@ import { Octokit } from "@octokit/core";
 import { paginateRest } from "@octokit/plugin-paginate-rest";
 import { marked } from "marked";
 
-import { DocsTree } from "~/components/docs-navigation";
 import { urlToSlugs } from "~/helpers/params";
-import { isCollaborator, isList, isString } from "~/helpers/type-guards";
+import { isList, isString } from "~/helpers/type-guards";
 import { GithubCollaborator, PagePath } from "~/types/api";
 import {
   CodeOfConductQuery,
@@ -71,31 +70,32 @@ export const fetchContributors: () => Promise<
    * Get a contributors name & blog. If the request errors then return undefined
    *  and filter item.
    */
-  // TODO: move this to a GraphQL call or use Promise.all
   return Promise.all(
-    contributors.map(async (username) => {
-      try {
-        const { data } = await octokit.request("GET /users/{username}", {
-          username,
-        });
+    contributors
+      .map(async (username) => {
+        try {
+          const { data } = await octokit.request("GET /users/{username}", {
+            username,
+          });
 
-        let url = data.blog ?? data.html_url;
+          let url = data.blog ?? data.html_url;
 
-        if (!url) {
-          url = `https://github.com/${data.login}`;
-        } else if (!url.startsWith("http")) {
-          url = `https://${url}`;
+          if (!url) {
+            url = `https://github.com/${data.login}`;
+          } else if (!url.startsWith("http")) {
+            url = `https://${url}`;
+          }
+
+          return {
+            name: data.name ?? data.login,
+            url,
+            avatarUrl: data.avatar_url,
+          };
+        } catch {
+          return;
         }
-
-        return {
-          name: data.name ?? data.login,
-          url,
-          avatarUrl: data.avatar_url,
-        };
-      } catch {
-        return;
-      }
-    })
+      })
+      .filter(Boolean) as Promise<GithubCollaborator>[]
   );
 };
 
@@ -217,7 +217,10 @@ export const fetchLatestRelease = async (): Promise<{
   name: string;
 }> => {
   if (process.env.LOCAL_REPO_PATH) {
-    return "LOCAL";
+    return {
+      href: "/",
+      name: "local",
+    };
   }
 
   try {
@@ -260,7 +263,7 @@ export const fetchTableOfContents = async ({
   ref?: string;
   owner?: string;
   repo?: string;
-}): Promise<DocsTree | null> => {
+}) => {
   if (process.env.LOCAL_REPO_PATH) {
     return fetchTableOfContentsLocal({ prefix });
   }
