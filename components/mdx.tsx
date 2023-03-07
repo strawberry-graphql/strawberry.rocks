@@ -23,7 +23,13 @@ export const components = {
   ul: (props: any) => <List {...props} />,
   li: (props: any) => <ListItem {...props} />,
   pre: (props: any) => <Codebox {...props} />,
-  a: (props: any) => <Link {...props} />,
+  a: (props: any) => {
+    if (props.insideHeading) {
+      return <a {...props} />;
+    }
+
+    return <Link {...props} />;
+  },
   hr: () => <Separator />,
   SideBySide,
   code: (props: any) => {

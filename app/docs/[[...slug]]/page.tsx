@@ -20,14 +20,18 @@ export default async function DocsPage({
   const slugs = params.slug || ["index"];
   const filename = slugs.join("/") + ".md";
 
+  let page;
+
   try {
-    const { page } = await fetchDocPage({
-      prefix: "/docs/",
-      filename: `docs/${filename}`,
-      owner: OWNER,
-      repo: REPO,
-      ref: REF,
-    });
+    page = (
+      await fetchDocPage({
+        prefix: "/docs/",
+        filename: `docs/${filename}`,
+        owner: OWNER,
+        repo: REPO,
+        ref: REF,
+      })
+    ).page;
   } catch (e) {
     throw notFound();
   }

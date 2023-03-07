@@ -44,6 +44,7 @@ export const RehypeTOC =
               properties: {
                 href: `#${node.properties.id}`,
                 name: node.properties.id,
+                insideHeading: true,
               },
               children: node.children,
             },
