@@ -1,26 +1,30 @@
-import {
-  GlowEffect,
-  Spacer,
-  Box,
-  Display,
-  Heading,
-} from "@strawberry-graphql/styleguide";
+import { Header, NotFoundHero } from "@strawberry-graphql/styleguide";
+
+import { fetchLatestRelease } from "~/lib/api";
 
 export default async function NotFound() {
+  const version = await fetchLatestRelease();
+
   return (
-    <>
-      <GlowEffect />
-      <Spacer size={80} />
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "grid",
+        gridTemplateRows: "auto 1fr",
+      }}
+    >
+      <div>
+        <Header version={version} />
+      </div>
 
-      <Box textAlign="center" px={16} maxWidth="screen-sm">
-        <Display>404</Display>
-
-        <Spacer size={24} />
-
-        <Heading level={4}>Page not found</Heading>
-      </Box>
-
-      <Spacer size={80} />
-    </>
+      <div
+        style={{
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        <NotFoundHero />
+      </div>
+    </div>
   );
 }
