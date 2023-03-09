@@ -9,6 +9,11 @@ import {
   Separator,
   SideBySide,
   Callout,
+  Table,
+  TableRow,
+  TableHeader,
+  TableCell,
+  TableHead,
 } from "@strawberry-graphql/styleguide";
 
 export const components = {
@@ -39,6 +44,11 @@ export const components = {
 
     return <code {...props} />;
   },
+  table: (props: any) => <Table {...props} />,
+  thead: (props: any) => <TableHead {...props} />,
+  tr: (props: any) => <TableRow {...props} />,
+  th: (props: any) => <TableHeader {...props} />,
+  td: (props: any) => <TableCell {...props} />,
   Note: (props: any) => <Callout {...props} type="note" />,
   Tip: (props: any) => <Callout {...props} type="tip" />,
   AdditionalResources: (props: any) => <>todo: additional resources</>,
