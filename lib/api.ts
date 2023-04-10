@@ -573,11 +573,14 @@ export const fetchSponsors = async () => {
           organization(login: "strawberry-graphql") {
             sponsors(first: 100) {
               nodes {
+                __typename
                 ... on User {
+                  login
                   name
                   avatarUrl
                 }
                 ... on Organization {
+                  login
                   name
                   avatarUrl
                 }
@@ -594,4 +597,74 @@ export const fetchSponsors = async () => {
     console.error("fetchSponsors:", error);
     throw error;
   }
+};
+
+export const fetchSponsorsForHomepage = async () => {
+  const sponsors = await fetchSponsors();
+
+  const getQuery = (alias: string, typename: string, login: string) => {
+    const rootField = typename === "User" ? "user" : "organization";
+
+    return /* GraphQL */ `${alias}: ${rootField}(login: "${login}") {
+      login
+      name
+      logo: avatarUrl
+      websiteUrl
+      url
+      ... on Sponsorable {
+        sponsorshipsAsSponsor(first: 100) {
+          nodes {
+            sponsorable {
+              __typename
+              ... on Organization {
+                login
+              }
+              ... on User {
+                login
+              }
+            }
+            tier {
+              name
+              monthlyPriceInDollars
+            }
+          }
+        }
+      }
+    }`;
+  };
+
+  const queries = sponsors.map((sponsor: any, index: number) => {
+    const { __typename, login } = sponsor;
+
+    return getQuery(`sponsor${index}`, __typename, login);
+  });
+
+  const query = `query {
+    ${queries.join("\n")}
+    }`;
+
+  const response = await octokit.graphql<any>(query);
+
+  const allSponsor = Object.keys(response)
+    .map((key) => {
+      const sponsor = response[key];
+
+      return {
+        login: sponsor.login,
+        name: sponsor.name,
+        logo: sponsor.logo,
+        href: sponsor.websiteUrl || sponsor.url,
+        sponsorship: sponsor.sponsorshipsAsSponsor.nodes.find((node: any) => {
+          const { sponsorable } = node;
+
+          return sponsorable.login === OWNER;
+        }).tier,
+      };
+    })
+    .filter(
+      (sponsor: any) =>
+        sponsor && sponsor.sponsorship.monthlyPriceInDollars >= 100
+    );
+
+  return allSponsor;
 };

@@ -6,6 +6,8 @@ import {
   SponsorsSection,
 } from "@strawberry-graphql/styleguide";
 
+import { fetchSponsorsForHomepage } from "~/lib/api";
+
 const sponsors = [
   {
     name: "Python Software Foundation",
@@ -15,6 +17,8 @@ const sponsors = [
 ];
 
 export default async function HomePage() {
+  const sponsors = await fetchSponsorsForHomepage();
+
   return (
     <>
       <GlowEffect />
