@@ -1,8 +1,9 @@
-import { JetBrains_Mono } from "@next/font/google";
-import localFont from "@next/font/local";
 import { DarkModeScript } from "@strawberry-graphql/styleguide";
 import "@strawberry-graphql/styleguide/dist/index.css";
 import clsx from "clsx";
+
+import { JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 
 export const metadata = {
   title: "Next.js",

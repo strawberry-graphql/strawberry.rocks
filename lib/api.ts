@@ -15,6 +15,7 @@ import {
 } from "~/types/graphql";
 
 import { fetchDocPageLocal, fetchTableOfContentsLocal } from "./api-local";
+import { getOpenCollectiveSponsors } from "./api/opencollective";
 import {
   getBlobText,
   getDocTree,
@@ -600,6 +601,10 @@ export const fetchSponsors = async () => {
 };
 
 export const fetchSponsorsForHomepage = async () => {
+  // if (process.env.LOCAL_REPO_PATH) {
+  //   return [];
+  // }
+
   const sponsors = await fetchSponsors();
 
   const getQuery = (alias: string, typename: string, login: string) => {
@@ -645,26 +650,28 @@ export const fetchSponsorsForHomepage = async () => {
 
   const response = await octokit.graphql<any>(query);
 
-  const allSponsor = Object.keys(response)
-    .map((key) => {
-      const sponsor = response[key];
+  const githubSponsors = Object.keys(response).map((key) => {
+    const sponsor = response[key];
 
-      return {
-        login: sponsor.login,
-        name: sponsor.name,
-        logo: sponsor.logo,
-        href: sponsor.websiteUrl || sponsor.url,
-        sponsorship: sponsor.sponsorshipsAsSponsor.nodes.find((node: any) => {
-          const { sponsorable } = node;
+    return {
+      login: sponsor.login,
+      name: sponsor.name,
+      logo: sponsor.logo,
+      href: sponsor.websiteUrl || sponsor.url,
+      sponsorship: sponsor.sponsorshipsAsSponsor.nodes.find((node: any) => {
+        const { sponsorable } = node;
 
-          return sponsorable.login === OWNER;
-        }).tier,
-      };
-    })
-    .filter(
-      (sponsor: any) =>
-        sponsor && sponsor.sponsorship.monthlyPriceInDollars >= 100
-    );
+        return sponsorable.login === OWNER;
+      }).tier,
+    };
+  });
 
-  return allSponsor;
+  const openCollectiveSponsors = await getOpenCollectiveSponsors();
+
+  const allSponsor = [...githubSponsors, ...openCollectiveSponsors];
+
+  return allSponsor.filter(
+    (sponsor: any) =>
+      sponsor && sponsor.sponsorship.monthlyPriceInDollars >= 100
+  );
 };
