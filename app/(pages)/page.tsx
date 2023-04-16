@@ -7,11 +7,11 @@ import {
 } from "@strawberry-graphql/styleguide";
 
 import { fetchSponsorsForHomepage } from "~/lib/api";
+import { fetchDownloads } from "~/lib/api/pypi";
 
 export default async function HomePage() {
   const sponsors = await fetchSponsorsForHomepage();
-
-  console.log(sponsors);
+  const downloads = await fetchDownloads();
 
   return (
     <>
@@ -28,6 +28,7 @@ export default async function HomePage() {
 
       <SponsorsSection
         sponsors={sponsors}
+        downloads={downloads}
         logoOverrides={{
           xoflare: {
             darkMode: "/images/sponsor-overrides/exoflare-white.png",
