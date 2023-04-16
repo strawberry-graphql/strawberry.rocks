@@ -7,6 +7,7 @@ const CONTRIBUTIONS_QUERY = /* GraphQL */ `
           createdAt
           fromAccount {
             name
+            slug
             imageUrl
             website
           }
@@ -28,6 +29,7 @@ type Result = {
           createdAt: string;
           fromAccount: {
             name: string;
+            slug: string;
             imageUrl: string;
             website: string;
           };
@@ -41,7 +43,7 @@ type Result = {
 };
 
 type Sponsor = {
-  login: string;
+  id: string;
   name: string;
   logo: string;
   href: string;
@@ -70,10 +72,10 @@ export async function getOpenCollectiveSponsors(): Promise<Sponsor[]> {
   const { data } = result as Result;
 
   const sponsors = data.collective.transactions.nodes.map((node) => {
-    const { name, imageUrl, website } = node.fromAccount;
+    const { name, slug, imageUrl, website } = node.fromAccount;
 
     return {
-      login: name,
+      id: slug,
       name,
       logo: imageUrl,
       href: website,

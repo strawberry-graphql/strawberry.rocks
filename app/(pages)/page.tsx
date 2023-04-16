@@ -11,6 +11,8 @@ import { fetchSponsorsForHomepage } from "~/lib/api";
 export default async function HomePage() {
   const sponsors = await fetchSponsorsForHomepage();
 
+  console.log(sponsors);
+
   return (
     <>
       <GlowEffect />
@@ -24,7 +26,25 @@ export default async function HomePage() {
 
       <Spacer size={128} />
 
-      <SponsorsSection sponsors={sponsors} />
+      <SponsorsSection
+        sponsors={sponsors}
+        logoOverrides={{
+          xoflare: {
+            darkMode: "/images/sponsor-overrides/exoflare-white.png",
+            lightMode: "/images/sponsor-overrides/exoflare-black.png",
+          },
+          "moving-content": {
+            darkMode: "/images/sponsor-overrides/moving-content.png",
+            lightMode: "/images/sponsor-overrides/moving-content.png",
+          },
+          cinder: {
+            darkMode: "/images/sponsor-overrides/cinder-white.png",
+            lightMode: "/images/sponsor-overrides/cinder-black.png",
+          },
+        }}
+      />
+
+      <Spacer size={128} />
     </>
   );
 }

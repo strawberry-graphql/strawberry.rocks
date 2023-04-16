@@ -601,9 +601,38 @@ export const fetchSponsors = async () => {
 };
 
 export const fetchSponsorsForHomepage = async () => {
-  // if (process.env.LOCAL_REPO_PATH) {
-  //   return [];
-  // }
+  if (process.env.LOCAL_REPO_PATH) {
+    return [
+      {
+        id: "moving-content",
+        name: "Moving Content AG",
+        logo: "https://avatars.githubusercontent.com/u/1352964?v=4",
+        href: "https://github.com/moving-content",
+        sponsorship: { name: "$100 a month", monthlyPriceInDollars: 100 },
+      },
+      {
+        id: "xoflare",
+        name: "ExoFlare",
+        logo: "https://avatars.githubusercontent.com/u/74335107?v=4",
+        href: "https://www.exoflare.com/",
+        sponsorship: { name: "$100 a month", monthlyPriceInDollars: 100 },
+      },
+      {
+        id: "wedgworth",
+        name: "Wedgworth's, Inc",
+        logo: "https://avatars.githubusercontent.com/u/120101163?v=4",
+        href: "https://wedgworth.com/",
+        sponsorship: { name: "$100 a month", monthlyPriceInDollars: 100 },
+      },
+      {
+        id: "cinder",
+        name: "Cinder",
+        logo: "https://images.opencollective.com/cinder/c477685/logo.png",
+        href: "https://cinder.co",
+        sponsorship: { monthlyPriceInDollars: 100 },
+      },
+    ];
+  }
 
   const sponsors = await fetchSponsors();
 
@@ -654,7 +683,7 @@ export const fetchSponsorsForHomepage = async () => {
     const sponsor = response[key];
 
     return {
-      login: sponsor.login,
+      id: sponsor.login,
       name: sponsor.name,
       logo: sponsor.logo,
       href: sponsor.websiteUrl || sponsor.url,
