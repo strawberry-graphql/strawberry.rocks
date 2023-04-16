@@ -51,8 +51,6 @@ type Sponsor = {
 };
 
 export async function getOpenCollectiveSponsors(): Promise<Sponsor[]> {
-  console.log("Fetching Open Collective sponsors...");
-
   const from = new Date();
   from.setMonth(from.getMonth() - 1);
 
