@@ -15,7 +15,11 @@ export const FaqPlugin: Plugin = () => {
         const heading = element.children[0];
 
         currentDetail = h("FaqDetails", {}, [
-          h("summary", { className: "my-8 text-2xl" }, toString(heading)),
+          h(
+            "summary",
+            { className: "list-none" },
+            h("h2", { className: "cursor-pointer" }, "↳ " + toString(heading))
+          ),
         ]);
         // h converts the name to lowercase
         currentDetail.tagName = "FaqDetails";

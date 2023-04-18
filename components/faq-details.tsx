@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode, useCallback } from "react";
 
 export const FaqDetails = ({ children }: { children: ReactNode }) => {

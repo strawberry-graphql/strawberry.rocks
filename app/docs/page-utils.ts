@@ -1,3 +1,4 @@
+import matter from "gray-matter";
 import path from "path";
 import remarkComment from "remark-comment";
 import remarkGfm from "remark-gfm";
@@ -9,6 +10,7 @@ import { notFound } from "next/navigation";
 import { components } from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { fetchDocPage, OWNER, REPO, REF } from "~/lib/api";
+import { FaqPlugin } from "~/rehype-plugins/faq-plugin";
 import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
 import { TocItem, RehypeTOC } from "~/rehype-plugins/rehype-toc";
 
@@ -46,10 +48,20 @@ export const fetchAndParsePage = async (
     theme,
   });
 
+  const { data: pageData, content: pageContent } = matter({ content: page });
   const items: TocItem[] = [];
 
+  const rehypePlugins: any = [
+    RehypeHighlightCode({ highlighter }),
+    RehypeTOC({ items }),
+  ];
+
+  if (pageData.faq) {
+    rehypePlugins.push(FaqPlugin);
+  }
+
   const mdxOptions = {
-    rehypePlugins: [RehypeHighlightCode({ highlighter }), RehypeTOC({ items })],
+    rehypePlugins,
     remarkPlugins: [
       remarkComment,
       remarkGfm,
@@ -62,14 +74,14 @@ export const fetchAndParsePage = async (
     ],
   };
 
-  const { content, frontmatter } = await compileMDX<{ title: string }>({
-    source: page,
+  const { content } = await compileMDX<{ title: string }>({
+    source: pageContent,
     components,
     options: {
-      parseFrontmatter: true,
+      parseFrontmatter: false,
       mdxOptions,
     },
   });
 
-  return { content, frontmatter, items };
+  return { content, frontmatter: pageData, items };
 };

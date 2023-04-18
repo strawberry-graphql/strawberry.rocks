@@ -16,6 +16,8 @@ import {
   TableHead,
 } from "@strawberry-graphql/styleguide";
 
+import { FaqDetails } from "./faq-details";
+
 export const components = {
   h1: (props: any) => <Heading level={1} {...props} />,
   h2: (props: any) => <Heading level={2} {...props} />,
@@ -58,4 +60,5 @@ export const components = {
   Tip: (props: any) => <Callout {...props} type="tip" />,
   Warning: (props: any) => <Callout {...props} type="warning" />,
   AdditionalResources: (props: any) => <>todo: additional resources</>,
+  FaqDetails,
 };
