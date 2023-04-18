@@ -42,8 +42,10 @@ export default async function DocsPage({
     throw notFound();
   }
 
+  const theme = await shiki.loadTheme("./shiki-theme.json");
+
   const highlighter = await shiki.getHighlighter({
-    theme: "css-variables",
+    theme,
   });
 
   const items: TocItem[] = [];
