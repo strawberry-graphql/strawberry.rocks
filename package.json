@@ -60,6 +60,7 @@
         "postcss": "8.4.22",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "react-feather": "2.0.10",
         "react-instantsearch-dom": "6.39.1",
         "react-refractor": "2.1.7",
         "refractor": "4.8.1",
