@@ -1,4 +1,10 @@
-import { DocsContent, PageTOC } from "@strawberry-graphql/styleguide";
+import {
+  DocsContent,
+  PageTOC,
+  FeedbackForm,
+  Spacer,
+  Separator,
+} from "@strawberry-graphql/styleguide";
 
 import { NotSafeToPreview } from "~/components/not-safe-to-preview";
 
@@ -58,7 +64,13 @@ export default async function DocsPage({
 
   return (
     <>
-      <DocsContent>{content}</DocsContent>
+      <DocsContent>
+        {content}
+
+        <Separator />
+
+        <FeedbackForm />
+      </DocsContent>
       {/* TODO: support for nested? */}
       <PageTOC
         // @ts-ignore
