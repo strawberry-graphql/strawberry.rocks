@@ -56,5 +56,6 @@ export const components = {
   td: (props: any) => <TableCell {...props} />,
   Note: (props: any) => <Callout {...props} type="note" />,
   Tip: (props: any) => <Callout {...props} type="tip" />,
+  Warning: (props: any) => <Callout {...props} type="warning" />,
   AdditionalResources: (props: any) => <>todo: additional resources</>,
 };
