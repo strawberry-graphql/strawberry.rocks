@@ -71,6 +71,10 @@ export async function getOpenCollectiveSponsors(): Promise<Sponsor[]> {
     }),
   }).then((res) => res.json());
 
+  if (result.errors) {
+    throw new Error(result.errors[0].message);
+  }
+
   const { data } = result as Result;
 
   const sponsors = data.collective.transactions.nodes.map((node) => {
