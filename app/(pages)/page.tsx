@@ -9,6 +9,11 @@ import {
 import { fetchSponsorsForHomepage } from "~/lib/api";
 import { fetchDownloads } from "~/lib/api/pypi";
 
+export const metadata = {
+  description:
+    "Strawberry GraphQL is a powerful and modern GraphQL framework for Python that allows developers to easily create robust and scalable APIs. With its intuitive and developer-friendly API, Strawberry makes it easy to define and query GraphQL schemas, while also providing advanced features such as type safety, code generation, and more.",
+};
+
 export default async function HomePage() {
   const sponsors = await fetchSponsorsForHomepage();
   const downloads = await fetchDownloads();
