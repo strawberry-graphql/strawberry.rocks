@@ -1,4 +1,5 @@
 import { DocsContent, PageTOC } from "@strawberry-graphql/styleguide";
+import path from "path";
 import remarkComment from "remark-comment";
 import remarkGfm from "remark-gfm";
 import shiki from "shiki";
@@ -42,7 +43,9 @@ export default async function DocsPage({
     throw notFound();
   }
 
-  const theme = await shiki.loadTheme("./shiki-theme.json");
+  const themePath = path.join(process.cwd(), "shiki-theme.json");
+
+  const theme = await shiki.loadTheme(themePath);
 
   const highlighter = await shiki.getHighlighter({
     theme,
