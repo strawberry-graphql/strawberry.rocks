@@ -60,5 +60,12 @@ export const components = {
   Tip: (props: any) => <Callout {...props} type="tip" />,
   Warning: (props: any) => <Callout {...props} type="warning" />,
   AdditionalResources: (props: any) => <>todo: additional resources</>,
+  summary: ({ children, ...props }: any) => {
+    if (props.hasHeading) {
+      return <summary className="list-none cursor-pointer">{children}</summary>;
+    }
+
+    return <summary className="list-none cursor-pointer">↳ {children}</summary>;
+  },
   FaqDetails,
 };

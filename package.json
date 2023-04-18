@@ -67,6 +67,7 @@
         "rehype-parse": "8.0.4",
         "remark-comment": "1.0.0",
         "remark-gfm": "3.0.1",
+        "remark-mdx-disable-explicit-jsx": "0.1.0",
         "shiki": "0.14.1",
         "to-querystring": "1.2.0",
         "typescript": "5.0.4",

@@ -2,6 +2,7 @@ import matter from "gray-matter";
 import path from "path";
 import remarkComment from "remark-comment";
 import remarkGfm from "remark-gfm";
+import remarkMdxDisableExplicitJsx from "remark-mdx-disable-explicit-jsx";
 import shiki from "shiki";
 
 import { compileMDX } from "next-mdx-remote/rsc";
@@ -65,6 +66,7 @@ export const fetchAndParsePage = async (
     remarkPlugins: [
       remarkComment,
       remarkGfm,
+      remarkMdxDisableExplicitJsx,
       fixImagePathsPlugin({
         path: filename,
         owner: OWNER,

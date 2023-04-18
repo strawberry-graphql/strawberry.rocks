@@ -17,8 +17,8 @@ export const FaqPlugin: Plugin = () => {
         currentDetail = h("FaqDetails", {}, [
           h(
             "summary",
-            { className: "list-none" },
-            h("h2", { className: "cursor-pointer" }, "↳ " + toString(heading))
+            { hasHeading: true },
+            h("h2", {}, "↳ " + toString(heading))
           ),
         ]);
         // h converts the name to lowercase
