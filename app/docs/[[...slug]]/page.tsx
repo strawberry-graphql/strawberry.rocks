@@ -60,7 +60,7 @@ export default async function DocsPage({
     throw e;
   }
 
-  const { content, items } = await fetchAndParsePage(data);
+  const { content, items, githubUrl } = await fetchAndParsePage(data);
 
   return (
     <>
@@ -69,7 +69,21 @@ export default async function DocsPage({
 
         <Separator />
 
-        <FeedbackForm />
+        <div className="flex">
+          <div className="flex-1">
+            <FeedbackForm />
+          </div>
+
+          <div className="ml-auto">
+            {/* TODO: use component */}
+            <a
+              href={githubUrl}
+              className="uppercase typography-label-1 font-bold hover:text-strawberry"
+            >
+              Edit this page on GitHub
+            </a>
+          </div>
+        </div>
       </DocsContent>
       {/* TODO: support for nested? */}
       <PageTOC

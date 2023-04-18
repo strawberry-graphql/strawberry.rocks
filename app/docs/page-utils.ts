@@ -85,5 +85,7 @@ export const fetchAndParsePage = async (
     },
   });
 
-  return { content, frontmatter: pageData, items };
+  const githubUrl = `https://github.com/${owner}/${repo}/edit/${REF}/docs/${filename}`;
+
+  return { content, frontmatter: pageData, items, githubUrl };
 };
