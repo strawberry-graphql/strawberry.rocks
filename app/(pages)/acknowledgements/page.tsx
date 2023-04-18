@@ -11,9 +11,11 @@ import {
   Link,
 } from "@strawberry-graphql/styleguide";
 
+import type { Metadata } from "next";
+
 import { fetchContributors, fetchSponsors } from "~/lib/api";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Acknowledgements",
 };
 

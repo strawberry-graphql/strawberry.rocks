@@ -6,11 +6,13 @@ import {
   Footer,
 } from "@strawberry-graphql/styleguide";
 
+import type { Metadata } from "next";
+
 import { fetchLatestRelease, fetchTableOfContents } from "~/lib/api";
 
 import { getFetchDocsParams } from "../path-utils";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     template: "%s | Docs | 🍓 Strawberry GraphQL",
     default: "Documentation | 🍓 Strawberry GraphQL",

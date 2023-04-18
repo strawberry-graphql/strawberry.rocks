@@ -1,9 +1,11 @@
 import { Header, Footer } from "@strawberry-graphql/styleguide";
 import "@strawberry-graphql/styleguide/dist/index.css";
 
+import type { Metadata } from "next";
+
 import { fetchLatestRelease } from "~/lib/api";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     template: "%s | 🍓 Strawberry GraphQL",
     default: "A Python library for GraphQL | 🍓 Strawberry GraphQL",
