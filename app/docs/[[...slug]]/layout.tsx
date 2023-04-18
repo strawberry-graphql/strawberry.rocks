@@ -20,7 +20,12 @@ export default async function DocsLayout({
   const tableOfContents = await fetchTableOfContents({
     prefix: "/docs/",
   });
-  const { pullNumber } = await getFetchDocsParams(params);
+
+  let pullNumber = null;
+
+  try {
+    pullNumber = (await getFetchDocsParams(params)).pullNumber;
+  } catch (e) {}
 
   const sections = Object.entries(tableOfContents).map(([name, section]) => ({
     name,

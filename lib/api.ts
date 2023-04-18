@@ -149,10 +149,9 @@ export const fetchPullRequest = async ({
       pull?.labels?.nodes?.find((label) => label?.name === "ok-to-preview") !==
         undefined;
 
-    // if (!safeToPreview) {
-    //   // TODO: we might want to show a message to the users that a pull request needs the label of "ok-to-preview" instead of throwing an error which 404s.
-    //   throw new Error("not safe to preview");
-    // }
+    if (!safeToPreview) {
+      throw new Error("not safe to preview");
+    }
 
     return {
       pull_number: pull?.number,

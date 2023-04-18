@@ -8,6 +8,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 
 import { components } from "~/components/mdx";
+import { NotSafeToPreview } from "~/components/not-safe-to-preview";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { fetchDocPage, OWNER, REF, REPO } from "~/lib/api";
 import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
@@ -20,9 +21,23 @@ export default async function DocsPage({
 }: {
   params: { slug?: string[] };
 }) {
-  const { filename, owner, repo, forceRemote, ref } = await getFetchDocsParams(
-    params
-  );
+  let data: Awaited<ReturnType<typeof getFetchDocsParams>>;
+
+  try {
+    data = await getFetchDocsParams(params);
+  } catch (e: any) {
+    if (e.message === "not safe to preview") {
+      return (
+        <DocsContent>
+          <NotSafeToPreview />
+        </DocsContent>
+      );
+    }
+
+    throw e;
+  }
+
+  const { filename, owner, repo, forceRemote, ref } = data;
 
   let page;
 
