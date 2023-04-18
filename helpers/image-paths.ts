@@ -36,7 +36,7 @@ export const fixImagePathsPlugin =
       return url;
     };
 
-    visit(tree, "mdxJsxFlowElement", (node) => {
+    visit(tree, "mdxJsxFlowElement", (node: any) => {
       if (node.name === "img") {
         node.attributes = node.attributes.map((attr: any) => {
           if (attr.name === "src") {
@@ -58,7 +58,9 @@ export const fixImagePathsPlugin =
     });
 
     visit(tree, "image", (node: Node) => {
+      // @ts-ignore
       const url = isString(node.url) ? node.url : "";
+      // @ts-ignore
       node.url = getUrl(url);
     });
   };

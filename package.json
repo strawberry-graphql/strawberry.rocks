@@ -37,7 +37,7 @@
         "@octokit/core": "4.2.0",
         "@octokit/plugin-paginate-rest": "6.0.0",
         "@stefanprobst/remark-shiki": "2.2.0",
-        "@strawberry-graphql/styleguide": "0.1.55",
+        "@strawberry-graphql/styleguide": "0.1.56",
         "@tailwindcss/aspect-ratio": "0.4.2",
         "@vercel/analytics": "0.1.11",
         "classnames": "2.3.2",
