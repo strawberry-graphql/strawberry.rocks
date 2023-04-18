@@ -33,6 +33,11 @@ export const components = {
       return <a {...props} />;
     }
 
+    if (props.href?.startsWith("#")) {
+      // TODO: make a component for footnotes?
+      return <a {...props} />;
+    }
+
     return <Link {...props} />;
   },
   hr: () => <Separator />,

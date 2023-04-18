@@ -12,7 +12,7 @@ specifiers:
   '@octokit/graphql-schema': 14.4.0
   '@octokit/plugin-paginate-rest': 6.0.0
   '@stefanprobst/remark-shiki': 2.2.0
-  '@strawberry-graphql/styleguide': 0.1.56
+  '@strawberry-graphql/styleguide': 0.1.58
   '@tailwindcss/aspect-ratio': 0.4.2
   '@trivago/prettier-plugin-sort-imports': 4.1.1
   '@types/jsonp': 0.2.1
@@ -74,7 +74,7 @@ dependencies:
   '@octokit/core': 4.2.0_encoding@0.1.13
   '@octokit/plugin-paginate-rest': 6.0.0_@octokit+core@4.2.0
   '@stefanprobst/remark-shiki': 2.2.0_shiki@0.14.1
-  '@strawberry-graphql/styleguide': 0.1.56_rbeu5ofoxpp3xchieu74y7jkbq
+  '@strawberry-graphql/styleguide': 0.1.58_rbeu5ofoxpp3xchieu74y7jkbq
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.3.1
   '@vercel/analytics': 0.1.11_react@18.2.0
   classnames: 2.3.2
@@ -2126,8 +2126,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@strawberry-graphql/styleguide/0.1.56_rbeu5ofoxpp3xchieu74y7jkbq:
-    resolution: {integrity: sha512-gFUXQspXWMqwfg/Mnph6IQ47pPTOZVaCqFShRT9HiNHDbbyrA+GHEsIe3l25PddDFIFRGiNHtr9+fyw9J+XQvw==}
+  /@strawberry-graphql/styleguide/0.1.58_rbeu5ofoxpp3xchieu74y7jkbq:
+    resolution: {integrity: sha512-3v7K+7O8u1zttQyTGMdX4rNWeUAOPLxoU55Y7sGEgF2bSowBfPy9SN2/MGGEQjhr9h/Lg9ugFwLLOKgBxg2b0A==}
     dependencies:
       '@headlessui/react': 1.7.14_biqbaboplfbrettd7655fr4n2y
       '@next/font': 13.3.0
