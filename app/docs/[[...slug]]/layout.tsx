@@ -10,6 +10,13 @@ import { fetchLatestRelease, fetchTableOfContents } from "~/lib/api";
 
 import { getFetchDocsParams } from "../path-utils";
 
+export const metadata = {
+  title: {
+    template: "%s | Docs | 🍓 Strawberry GraphQL",
+    default: "Documentation | 🍓 Strawberry GraphQL",
+  },
+};
+
 export default async function DocsLayout({
   children,
   params,
