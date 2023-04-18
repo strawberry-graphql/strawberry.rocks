@@ -67,6 +67,11 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <DarkModeScript />
+        <script
+          defer
+          data-domain="strawberry.rocks"
+          src="/js/script.js"
+        ></script>
       </head>
       <body
         className={clsx(
