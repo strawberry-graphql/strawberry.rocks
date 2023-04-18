@@ -7,6 +7,10 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import { components } from "~/components/mdx";
 import { fetchCodeOfConduct } from "~/lib/api";
 
+export const metadata = {
+  title: "Code of Conduct",
+};
+
 export default async function CodeOfConductPage() {
   const response = await fetchCodeOfConduct();
 

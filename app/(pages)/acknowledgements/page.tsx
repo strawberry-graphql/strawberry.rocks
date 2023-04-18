@@ -13,6 +13,10 @@ import {
 
 import { fetchContributors, fetchSponsors } from "~/lib/api";
 
+export const metadata = {
+  title: "Acknowledgements",
+};
+
 export default async function AcknowledgementsPage() {
   const contributors = await fetchContributors();
   const sponsors = await fetchSponsors();
