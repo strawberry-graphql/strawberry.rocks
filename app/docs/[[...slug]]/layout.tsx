@@ -54,7 +54,7 @@ export default async function DocsLayout({
 
   return (
     <>
-      <Header version={version} />
+      <Header version={version} activeSection="docs" />
 
       <Spacer size={80} />
 
