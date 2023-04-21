@@ -4,6 +4,7 @@ import clsx from "clsx";
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   description:
@@ -70,8 +71,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const cookieStore = cookies();
+  const theme = cookieStore.get("theme")?.value ?? "";
+
   return (
-    <html lang="en">
+    <html lang="en" className={theme}>
       <head>
         <DarkModeScript />
         <script

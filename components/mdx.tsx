@@ -31,8 +31,8 @@ export const components = {
   ul: (props: any) => <List {...props} />,
   li: (props: any) => <ListItem {...props} />,
   pre: (props: any) => <Codebox {...props} />,
-  a: (props: any) => {
-    if (props.insideHeading) {
+  a: ({ insideHeading, ...props }: any) => {
+    if (insideHeading) {
       return <a {...props} />;
     }
 
@@ -61,8 +61,8 @@ export const components = {
   Tip: (props: any) => <Callout {...props} type="tip" />,
   Warning: (props: any) => <Callout {...props} type="warning" />,
   AdditionalResources: (props: any) => <>todo: additional resources</>,
-  summary: ({ children, ...props }: any) => {
-    if (props.hasHeading) {
+  summary: ({ children, hasHeading, ...props }: any) => {
+    if (hasHeading) {
       return <summary className="list-none cursor-pointer">{children}</summary>;
     }
 
