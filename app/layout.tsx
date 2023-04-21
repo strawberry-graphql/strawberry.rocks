@@ -3,7 +3,6 @@ import "@strawberry-graphql/styleguide/dist/index.css";
 import clsx from "clsx";
 
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {
@@ -36,7 +35,6 @@ const ranade = localFont({
     },
   ],
   variable: "--font-ranade",
-  // style: ["normal", "italic"],
 });
 
 const satoshi = localFont({
