@@ -43,7 +43,7 @@ export const ExtensionsList = async ({
     }
 
     extensionData.push({
-      href: `extensions/${urlToSlugs(extensionPage.name)}`,
+      href: `docs/extensions/${urlToSlugs(extensionPage.name)}`,
       data,
     });
   }
