@@ -502,13 +502,11 @@ export const fetchExtensions = async ({
 }) => {
   try {
     const response = await octokit.graphql<ExtensionsPageQuery>(
-      /* GraphQL */
-      `
+      /* GraphQL */ `
         query extensionsPage(
           $owner: String!
           $repo: String!
           $filename: String!
-          $tablecontent: String!
         ) {
           repository(owner: $owner, name: $repo) {
             object(expression: $filename) {
@@ -528,12 +526,6 @@ export const fetchExtensions = async ({
                 }
               }
             }
-            tableOfContents: object(expression: $tablecontent) {
-              ... on Blob {
-                __typename
-                text
-              }
-            }
           }
         }
       `,
@@ -541,7 +533,6 @@ export const fetchExtensions = async ({
         owner,
         repo,
         filename: `${ref}:docs/extensions`,
-        tablecontent: `${ref}:docs/README.md`,
       }
     );
 

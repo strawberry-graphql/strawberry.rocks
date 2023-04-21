@@ -16,6 +16,7 @@ import {
   TableHead,
 } from "@strawberry-graphql/styleguide";
 
+import { ExtensionsList } from "./extensions-list";
 import { FaqDetails } from "./faq-details";
 
 export const components = {
@@ -68,4 +69,5 @@ export const components = {
     return <summary className="list-none cursor-pointer">↳ {children}</summary>;
   },
   FaqDetails,
+  CodeNotes: () => <p>CodeNotes are not supported anymore</p>,
 };

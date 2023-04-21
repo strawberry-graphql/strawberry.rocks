@@ -1,3 +1,4 @@
+import { Spacer } from "@strawberry-graphql/styleguide";
 import matter from "gray-matter";
 import path from "path";
 import remarkComment from "remark-comment";
@@ -8,11 +9,13 @@ import shiki from "shiki";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 
+import { ExtensionsList } from "~/components/extensions-list";
 import { components } from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { fetchDocPage, OWNER, REPO, REF } from "~/lib/api";
 import { FaqPlugin } from "~/rehype-plugins/faq-plugin";
 import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
+import { RehypeMermaid } from "~/rehype-plugins/rehype-mermaid";
 import { TocItem, RehypeTOC } from "~/rehype-plugins/rehype-toc";
 
 import { getFetchDocsParams } from "./path-utils";
@@ -53,6 +56,7 @@ export const fetchAndParsePage = async (
   const items: TocItem[] = [];
 
   const rehypePlugins: any = [
+    RehypeMermaid(),
     RehypeHighlightCode({ highlighter }),
     RehypeTOC({ items }),
   ];
@@ -78,7 +82,23 @@ export const fetchAndParsePage = async (
 
   const { content } = await compileMDX<{ title: string }>({
     source: pageContent,
-    components,
+    components: {
+      ...components,
+      ExtensionsList: () => {
+        return (
+          <>
+            <Spacer size={12} />
+            {/* @ts-expect-error */}
+            <ExtensionsList
+              repoRef={ref}
+              owner={owner}
+              repo={repo}
+              prefix={""}
+            />
+          </>
+        );
+      },
+    },
     options: {
       parseFrontmatter: false,
       mdxOptions,
