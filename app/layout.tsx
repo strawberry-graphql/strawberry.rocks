@@ -53,8 +53,17 @@ const satoshi = localFont({
   variable: "--font-satoshi",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetbrainsMono = localFont({
+  src: [
+    {
+      path: "../fonts/JetBrainsMono[wght].ttf",
+      style: "normal",
+    },
+    {
+      path: "../fonts/JetBrainsMono-Italic[wght].ttf",
+      style: "italic",
+    },
+  ],
   variable: "--font-jetbrains-mono",
 });
 
