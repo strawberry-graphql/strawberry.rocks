@@ -556,42 +556,7 @@ export const fetchExtensions = async ({
 };
 
 export const fetchSponsors = async () => {
-  try {
-    const response = await octokit.graphql<any>(
-      /* GraphQL */
-      `
-        {
-          organization(login: "strawberry-graphql") {
-            sponsors(first: 100) {
-              nodes {
-                __typename
-                ... on User {
-                  login
-                  name
-                  avatarUrl
-                }
-                ... on Organization {
-                  login
-                  name
-                  avatarUrl
-                }
-              }
-            }
-          }
-        }
-      `
-    );
-
-    return response.organization.sponsors.nodes;
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("fetchSponsors:", error);
-    throw error;
-  }
-};
-
-export const fetchSponsorsForHomepage = async () => {
-  if (process.env.LOCAL_REPO_PATH) {
+  if (!process.env.LOCAL_REPO_PATH) {
     return [
       {
         id: "moving-content",
@@ -621,10 +586,52 @@ export const fetchSponsorsForHomepage = async () => {
         href: "https://cinder.co",
         sponsorship: { monthlyPriceInDollars: 100 },
       },
+      {
+        id: "jason",
+        name: "Jason Lengstorf",
+        logo: "https://avatars.githubusercontent.com/u/1792?v=4",
+        href: "https://lengstorf.com/",
+        sponsorship: { monthlyPriceInDollars: 50 },
+      },
     ];
   }
 
-  const sponsors = await fetchSponsors();
+  let sponsors;
+
+  try {
+    sponsors = await octokit
+      .graphql<any>(
+        /* GraphQL */
+        `
+          {
+            organization(login: "strawberry-graphql") {
+              sponsors(first: 100) {
+                nodes {
+                  __typename
+                  ... on User {
+                    login
+                    name
+                    avatarUrl
+                  }
+                  ... on Organization {
+                    login
+                    name
+                    avatarUrl
+                  }
+                }
+              }
+            }
+          }
+        `
+      )
+      .then((response) => {
+        return response.organization.sponsors.nodes;
+      });
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("fetchSponsors:", error);
+    throw error;
+  }
 
   const getQuery = (alias: string, typename: string, login: string) => {
     const rootField = typename === "User" ? "user" : "organization";
@@ -687,7 +694,11 @@ export const fetchSponsorsForHomepage = async () => {
 
   const openCollectiveSponsors = await getOpenCollectiveSponsors();
 
-  const allSponsor = [...githubSponsors, ...openCollectiveSponsors];
+  return [...githubSponsors, ...openCollectiveSponsors];
+};
+
+export const fetchSponsorsForHomepage = async () => {
+  const allSponsor = await fetchSponsors();
 
   return allSponsor.filter(
     (sponsor: any) =>

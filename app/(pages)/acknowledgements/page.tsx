@@ -47,7 +47,10 @@ export default async function AcknowledgementsPage() {
         <ContributorsGrid
           contributors={sponsors.map((sponsor: any) => ({
             ...sponsor,
+            name: sponsor.name || sponsor.id,
             title: "Sponsor",
+            avatarUrl: sponsor.logo,
+            url: sponsor.href,
           }))}
         />
 
