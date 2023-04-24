@@ -14,6 +14,7 @@ import { components } from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { fetchDocPage, OWNER, REPO, REF } from "~/lib/api";
 import { FaqPlugin } from "~/rehype-plugins/faq-plugin";
+import { RehypeCodeNotes } from "~/rehype-plugins/rehype-code-notes";
 import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
 import { RehypeMermaid } from "~/rehype-plugins/rehype-mermaid";
 import { TocItem, RehypeTOC } from "~/rehype-plugins/rehype-toc";
@@ -58,6 +59,7 @@ export const fetchAndParsePage = async (
   const rehypePlugins: any = [
     RehypeMermaid(),
     RehypeHighlightCode({ highlighter }),
+    RehypeCodeNotes(),
     RehypeTOC({ items }),
   ];
 

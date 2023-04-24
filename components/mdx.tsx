@@ -30,7 +30,13 @@ export const components = {
   ol: (props: any) => <List ordered {...props} />,
   ul: (props: any) => <List {...props} />,
   li: (props: any) => <ListItem {...props} />,
-  pre: (props: any) => <Codebox {...props} />,
+  pre: ({ notes, ...props }: any) => {
+    if (notes) {
+      notes = JSON.parse(notes);
+    }
+
+    return <Codebox {...props} notes={notes} />;
+  },
   a: ({ insideHeading, ...props }: any) => {
     if (insideHeading) {
       return <a {...props} />;

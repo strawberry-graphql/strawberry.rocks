@@ -78,12 +78,6 @@ export const RehypeHighlightCode = ({ highlighter }: { highlighter: any }) => {
     const tree = fromHtml(codeHtml, { fragment: true });
 
     parentNode.children[index] = tree.children[0];
-
-    // node.children = tree.children;
-
-    //   // @ts-expect-error
-
-    // }
   };
 
   return () => {
