@@ -70,7 +70,7 @@ const processCode = (
     tree.children[0].children
       .filter((child: any) => child.properties?.className.includes("line"))
       .forEach((child: any, index: number) => {
-        if (metadata.lines.includes(index + 1)) {
+        if (metadata.lines!.includes(index + 1)) {
           child.properties.className.push("highlight");
         }
       });
