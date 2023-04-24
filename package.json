@@ -6,7 +6,6 @@
         "node": "16.x"
     },
     "scripts": {
-        "preinstall": "npx only-allow pnpm",
         "prebuild": "npm run codegen",
         "build": "next build",
         "develop": "npm run dev",

@@ -2,7 +2,6 @@ import {
   DocsContent,
   PageTOC,
   FeedbackForm,
-  Spacer,
   Separator,
 } from "@strawberry-graphql/styleguide";
 
