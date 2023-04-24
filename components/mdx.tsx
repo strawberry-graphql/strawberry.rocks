@@ -16,7 +16,6 @@ import {
   TableHead,
 } from "@strawberry-graphql/styleguide";
 
-import { ExtensionsList } from "./extensions-list";
 import { FaqDetails } from "./faq-details";
 
 export const components = {

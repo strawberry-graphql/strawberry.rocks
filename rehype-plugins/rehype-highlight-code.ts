@@ -1,4 +1,5 @@
 import { fromHtml } from "hast-util-from-html";
+import rangeParser from "parse-numeric-range";
 import { refractor } from "refractor";
 import graphql from "refractor/lang/graphql";
 import json from "refractor/lang/json";
@@ -10,6 +11,73 @@ refractor.register(python);
 refractor.register(graphql);
 refractor.register(markdown);
 refractor.register(json);
+
+const highlightWords = (children: any, words: string[]) => {
+  const newChildren: any = [];
+
+  children.forEach((child: any) => {
+    if (child.type === "text") {
+      const wordsToHighlight = words.map((word) => word.toLowerCase());
+
+      const text = child.value;
+
+      // split on whitespace
+      const wordsInText = text.split(/(\s+)/);
+
+      wordsInText.forEach((word: string) => {
+        if (wordsToHighlight.includes(word.toLowerCase())) {
+          newChildren.push({
+            type: "element",
+            tagName: "mark",
+            children: [
+              {
+                type: "text",
+                value: word,
+              },
+            ],
+          });
+        } else {
+          newChildren.push({
+            type: "text",
+            value: word,
+          });
+        }
+      });
+    } else if (child.type === "element") {
+      child.children = highlightWords(child.children, words);
+      newChildren.push(child);
+    } else {
+      newChildren.push(child);
+    }
+  });
+
+  return newChildren;
+};
+
+const processCode = (
+  tree: any,
+  metadata: {
+    highlight?: string[];
+    lines?: number[];
+  }
+) => {
+  if (metadata.highlight) {
+    // highlight each word
+    tree.children = highlightWords(tree.children, metadata.highlight);
+  }
+
+  if (metadata.lines) {
+    tree.children[0].children
+      .filter((child: any) => child.properties?.className.includes("line"))
+      .forEach((child: any, index: number) => {
+        if (metadata.lines.includes(index + 1)) {
+          child.properties.className.push("highlight");
+        }
+      });
+  }
+
+  return tree;
+};
 
 const normalizeLanguage = (language: string) => {
   if (language === "response") {
@@ -47,6 +115,22 @@ export const RehypeHighlightCode = ({ highlighter }: { highlighter: any }) => {
       return;
     }
 
+    const data = node.children[0].data;
+
+    const metadata = data?.meta
+      ? Object.fromEntries(
+          data.meta.split(" ").map((x: string) => x.split("="))
+        )
+      : {};
+
+    if (metadata.highlight) {
+      metadata.highlight = metadata.highlight.split(",");
+    }
+
+    if (metadata.lines) {
+      metadata.lines = rangeParser(metadata.lines);
+    }
+
     const code = codeNode.children[0].value;
 
     if (language.includes("+")) {
@@ -77,7 +161,7 @@ export const RehypeHighlightCode = ({ highlighter }: { highlighter: any }) => {
 
     const tree = fromHtml(codeHtml, { fragment: true });
 
-    parentNode.children[index] = tree.children[0];
+    parentNode.children[index] = processCode(tree.children[0], metadata);
   };
 
   return () => {
