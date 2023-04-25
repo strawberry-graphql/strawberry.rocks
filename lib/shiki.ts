@@ -34,5 +34,8 @@ export const getHighlighter = async () => {
   return await shiki.getHighlighter({
     theme,
     langs: ["javascript", "python", "graphql", "typescript", "bash", "json"],
+    paths: {
+      languages: `${getShikiPath()}/languages/`,
+    },
   });
 };
