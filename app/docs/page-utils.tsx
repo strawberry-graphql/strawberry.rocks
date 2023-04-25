@@ -1,10 +1,8 @@
 import { Spacer } from "@strawberry-graphql/styleguide";
 import matter from "gray-matter";
-import path from "path";
 import remarkComment from "remark-comment";
 import remarkGfm from "remark-gfm";
 import remarkMdxDisableExplicitJsx from "remark-mdx-disable-explicit-jsx";
-import shiki from "shiki";
 
 import { compileMDX } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
@@ -13,6 +11,7 @@ import { ExtensionsList } from "~/components/extensions-list";
 import { components } from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { fetchDocPage, OWNER, REPO, REF } from "~/lib/api";
+import { getHighlighter } from "~/lib/shiki";
 import { FaqPlugin } from "~/rehype-plugins/faq-plugin";
 import { RehypeCodeNotes } from "~/rehype-plugins/rehype-code-notes";
 import { RehypeHighlightCode } from "~/rehype-plugins/rehype-highlight-code";
@@ -45,17 +44,10 @@ export const fetchAndParsePage = async (
     throw notFound();
   }
 
-  const themePath = path.join(process.cwd(), "shiki-theme.json");
-
-  const theme = await shiki.loadTheme(themePath);
-
-  const highlighter = await shiki.getHighlighter({
-    theme,
-    langs: ["javascript", "python", "graphql", "typescript", "bash", "json"],
-  });
-
   const { data: pageData, content: pageContent } = matter({ content: page });
   const items: TocItem[] = [];
+
+  const highlighter = await getHighlighter();
 
   const rehypePlugins: any = [
     RehypeMermaid(),
