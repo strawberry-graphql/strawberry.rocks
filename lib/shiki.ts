@@ -10,7 +10,7 @@ import shiki from "shiki";
 // Note that they are only referenced on server side
 // See: https://github.com/shikijs/shiki/issues/138
 const getShikiPath = (): string => {
-  return path.join(process.cwd(), "lib/mdx/shiki");
+  return path.join(process.cwd(), "lib/shiki");
 };
 
 const touched = { current: false };
