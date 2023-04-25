@@ -31,6 +31,7 @@ export const FaqPlugin: Plugin = () => {
       }
     }
 
+    // @ts-ignore
     tree.children = elements;
   };
 };
