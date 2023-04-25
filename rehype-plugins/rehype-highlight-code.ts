@@ -1,4 +1,5 @@
 import { fromHtml } from "hast-util-from-html";
+import { toString } from "hast-util-to-string";
 import rangeParser from "parse-numeric-range";
 import { refractor } from "refractor";
 import graphql from "refractor/lang/graphql";
@@ -6,6 +7,7 @@ import json from "refractor/lang/json";
 import markdown from "refractor/lang/markdown";
 import python from "refractor/lang/python";
 import { visit } from "unist-util-visit";
+import { inspect } from "util";
 
 refractor.register(python);
 refractor.register(graphql);
@@ -75,6 +77,28 @@ const processCode = (
         }
       });
   }
+
+  // skip all lines that start with `# fmt:` and the line after
+  let previousWasFmt = false;
+  tree.children[0].children = tree.children[0].children.filter((child: any) => {
+    const text = toString(child);
+
+    const isFmt = text.startsWith("# fmt:");
+
+    if (isFmt) {
+      previousWasFmt = true;
+
+      return false;
+    }
+
+    if (previousWasFmt) {
+      previousWasFmt = false;
+
+      return false;
+    }
+
+    return true;
+  });
 
   return tree;
 };

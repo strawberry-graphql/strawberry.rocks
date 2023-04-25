@@ -68,8 +68,8 @@ export default async function DocsPage({
 
         <Separator />
 
-        <div className="flex">
-          <div className="flex-1">
+        <div className="md:flex">
+          <div className="flex-1 mb-12 md:mb-0">
             <FeedbackForm />
           </div>
 
