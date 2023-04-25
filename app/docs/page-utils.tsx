@@ -51,6 +51,7 @@ export const fetchAndParsePage = async (
 
   const highlighter = await shiki.getHighlighter({
     theme,
+    langs: ["javascript", "python", "graphql", "typescript", "bash", "json"],
   });
 
   const { data: pageData, content: pageContent } = matter({ content: page });
