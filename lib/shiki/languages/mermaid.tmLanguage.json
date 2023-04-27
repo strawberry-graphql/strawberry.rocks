@@ -1,7 +1,5 @@
 {
-  "fileTypes": [
-    "mermaid"
-  ],
+  "fileTypes": ["mermaid"],
   "patterns": [
     {
       "include": "#mermaid"
