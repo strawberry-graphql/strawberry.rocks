@@ -8,6 +8,7 @@ import {
 
 import type { Metadata } from "next";
 
+import { SearchBoxTrigger } from "~/components/searchbox-trigger";
 import { fetchLatestRelease, fetchTableOfContents } from "~/lib/api";
 
 import { getFetchDocsParams } from "../path-utils";
@@ -62,7 +63,9 @@ export default async function DocsLayout({
         <MobileNav sections={sections} />
       </div>
 
-      <DocsWrapper sections={sections}>{children}</DocsWrapper>
+      <DocsWrapper sections={sections} searchBoxTrigger={<SearchBoxTrigger />}>
+        {children}
+      </DocsWrapper>
 
       <Spacer size={80} />
 

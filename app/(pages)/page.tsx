@@ -5,6 +5,7 @@ import {
   FeaturesSection,
   SponsorsSection,
 } from "@strawberry-graphql/styleguide";
+import { SearchBoxTrigger } from "~/components/searchbox-trigger";
 
 import { fetchSponsorsForHomepage } from "~/lib/api";
 import { fetchDownloads } from "~/lib/api/pypi";
@@ -19,6 +20,8 @@ export default async function HomePage() {
       <Spacer size={80} />
 
       <Hero />
+
+      <SearchBoxTrigger triggerOnly />
 
       <Spacer size={128} />
 
