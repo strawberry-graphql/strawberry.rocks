@@ -19,10 +19,9 @@ export async function generateStaticParams() {
   ]);
   const paths = pagePaths.concat(extensionPaths);
 
-  // eslint-disable-next-line no-console
-
-  // TODO "index" replace?
-  return paths.map((path) => path.params);
+  return paths
+    .map((path) => path.params)
+    .filter((params) => params.slug.join("/") !== "index");
 }
 
 export async function generateMetadata({
