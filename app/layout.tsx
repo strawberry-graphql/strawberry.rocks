@@ -70,12 +70,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const cookieStore = cookies();
-  // const theme = cookieStore.get("theme")?.value ?? "";
-  const theme = "";
-
   return (
-    <html lang="en" className={theme}>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <DarkModeScript />
         <script
