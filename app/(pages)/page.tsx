@@ -10,6 +10,9 @@ import { SearchBoxTrigger } from "~/components/searchbox-trigger";
 import { fetchSponsorsForHomepage } from "~/lib/api";
 import { fetchDownloads } from "~/lib/api/pypi";
 
+// revalidate every 10 minutes
+export const revalidate = 600;
+
 export default async function HomePage() {
   const sponsors = await fetchSponsorsForHomepage();
   const downloads = await fetchDownloads();

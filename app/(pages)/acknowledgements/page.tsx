@@ -15,6 +15,9 @@ import type { Metadata } from "next";
 
 import { fetchContributors, fetchSponsors } from "~/lib/api";
 
+// revalidate every 10 minutes
+export const revalidate = 600;
+
 export const metadata: Metadata = {
   title: "Acknowledgements",
 };
