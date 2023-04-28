@@ -41,6 +41,8 @@ export const getHighlighter = async () => {
       "bash",
       "json",
       "mermaid",
+      "yaml",
+      "ini",
     ],
     paths: {
       languages: `${getShikiPath()}/languages/`,

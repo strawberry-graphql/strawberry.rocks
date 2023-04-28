@@ -6,9 +6,24 @@ import {
 } from "@strawberry-graphql/styleguide";
 
 import { NotSafeToPreview } from "~/components/not-safe-to-preview";
+import { fetchExtensionsPaths, fetchTableOfContentsPaths } from "~/lib/api";
 
 import { fetchAndParsePage } from "../page-utils";
 import { getFetchDocsParams } from "../path-utils";
+
+export async function generateStaticParams() {
+  const ref = "main";
+  const [pagePaths, extensionPaths] = await Promise.all([
+    fetchTableOfContentsPaths({ ref }),
+    fetchExtensionsPaths({ ref }),
+  ]);
+  const paths = pagePaths.concat(extensionPaths);
+
+  // eslint-disable-next-line no-console
+
+  // TODO "index" replace?
+  return paths.map((path) => path.params);
+}
 
 export async function generateMetadata({
   params,

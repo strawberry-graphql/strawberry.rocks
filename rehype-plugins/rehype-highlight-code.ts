@@ -132,9 +132,8 @@ export const RehypeHighlightCode = ({ highlighter }: { highlighter: any }) => {
       ?.replace("language-", "");
 
     if (!language) {
+      // TODO: add more info about the page?
       console.warn("No language found for code block");
-      // eslint-disable-next-line no-console
-      console.debug(codeNode.properties);
 
       return;
     }
