@@ -12,7 +12,7 @@ specifiers:
   '@octokit/core': 4.2.0
   '@octokit/graphql-schema': 14.4.0
   '@octokit/plugin-paginate-rest': 6.0.0
-  '@strawberry-graphql/styleguide': 0.3.1
+  '@strawberry-graphql/styleguide': 0.3.3
   '@tailwindcss/aspect-ratio': 0.4.2
   '@trivago/prettier-plugin-sort-imports': 4.1.1
   '@types/jsonp': 0.2.1
@@ -78,7 +78,7 @@ dependencies:
   '@heroicons/react': 2.0.17_react@18.2.0
   '@octokit/core': 4.2.0_encoding@0.1.13
   '@octokit/plugin-paginate-rest': 6.0.0_@octokit+core@4.2.0
-  '@strawberry-graphql/styleguide': 0.3.1_rknojosoizfybqrtwjbrojim3i
+  '@strawberry-graphql/styleguide': 0.3.3_rknojosoizfybqrtwjbrojim3i
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.3.2
   '@vercel/analytics': 1.0.0_react@18.2.0
   classnames: 2.3.2
@@ -290,7 +290,7 @@ packages:
       '@babel/core': 7.21.4
       '@babel/generator': 7.21.4
       '@babel/parser': 7.21.4
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.21.5
       '@babel/traverse': 7.21.4
       '@babel/types': 7.21.4
       babel-preset-fbjs: 3.4.0_@babel+core@7.21.4
@@ -1080,6 +1080,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: false
 
   /@babel/runtime/7.21.5:
     resolution: {integrity: sha512-8jI69toZqqcsnqGGqwGS4Qb1VwLOEp4hz+CXPywcvjs60u3B4Pom/U/7rm4W8tMOYEB+E9wgD0mW1l3r8qlI9Q==}
@@ -2378,8 +2379,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@strawberry-graphql/styleguide/0.3.1_rknojosoizfybqrtwjbrojim3i:
-    resolution: {integrity: sha512-gFlq1Xy4cmI7smqL4c9S3l+G/N/AgiU3xTeW53XWWRarbE+e89+3bQcVVeCa9YGRBKPNqjMKLcjLm/P0IjIQpw==}
+  /@strawberry-graphql/styleguide/0.3.3_rknojosoizfybqrtwjbrojim3i:
+    resolution: {integrity: sha512-FaPI3V/aObOqVTQIhTCUj+8w31biw73O+40iTCvMddUErTzTKeL8xTVQMQHFHRRM3ZqcA6ZKFlO7mxzkSR2wyw==}
     dependencies:
       '@floating-ui/react-dom': 1.3.0_biqbaboplfbrettd7655fr4n2y
       '@headlessui/react': 1.7.14_biqbaboplfbrettd7655fr4n2y
@@ -8795,7 +8796,7 @@ packages:
   /relay-runtime/12.0.0_encoding@0.1.13:
     resolution: {integrity: sha512-QU6JKr1tMsry22DXNy9Whsq5rmvwr3LSZiiWV/9+DFpuTWvp+WFhobWMc8TC4OjKFfNhEZy7mOiqUAn5atQtug==}
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.21.5
       fbjs: 3.0.4_encoding@0.1.13
       invariant: 2.2.4
     transitivePeerDependencies:

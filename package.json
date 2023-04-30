@@ -36,7 +36,7 @@
         "@heroicons/react": "2.0.17",
         "@octokit/core": "4.2.0",
         "@octokit/plugin-paginate-rest": "6.0.0",
-        "@strawberry-graphql/styleguide": "0.3.1",
+        "@strawberry-graphql/styleguide": "0.3.3",
         "@tailwindcss/aspect-ratio": "0.4.2",
         "@vercel/analytics": "1.0.0",
         "classnames": "2.3.2",
