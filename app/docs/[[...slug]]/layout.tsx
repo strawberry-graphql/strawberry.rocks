@@ -39,11 +39,12 @@ export default async function DocsLayout({
 
   const sections = Object.entries(tableOfContents).map(([name, section]) => ({
     name,
+    href: (section as any).href,
     links:
       (section as any).links?.map((link: any) => ({
         href: link.href,
         name: link.text,
-      })) || [],
+      })) || undefined,
   }));
 
   const version = pullNumber

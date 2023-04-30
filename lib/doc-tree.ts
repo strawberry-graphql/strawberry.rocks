@@ -57,6 +57,7 @@ export function getDocTree(text: string, prefix: string) {
       }));
     }
   });
+
   return sections;
 }
 

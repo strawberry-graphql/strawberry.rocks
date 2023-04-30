@@ -38,17 +38,23 @@ export const components = {
     return <Codebox {...props} notes={notes} />;
   },
   a: ({ insideHeading, children, ...props }: any) => {
-    if (insideHeading || !props.href) {
+    return null;
+
+    if (!props.href) {
+      return <a {...props}>{children}</a>;
+    }
+
+    if (props.href.startsWith("#")) {
+      // TODO: make a component for footnotes?
+      return <a {...props} />;
+    }
+
+    if (insideHeading && !props.inline) {
       return (
         <Balancer {...props} as="a">
           {children}
         </Balancer>
       );
-    }
-
-    if (props.href?.startsWith("#")) {
-      // TODO: make a component for footnotes?
-      return <a {...props} />;
     }
 
     return <Link {...props} />;
