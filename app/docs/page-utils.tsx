@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import { ExtensionsList } from "~/components/extensions-list";
 import { components } from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
+import { updateURLsPlugin } from "~/helpers/remark-update-urls";
 import { fetchDocPage, OWNER, REPO, REF } from "~/lib/api";
 import { getHighlighter } from "~/lib/shiki";
 import { FaqPlugin } from "~/rehype-plugins/faq-plugin";
@@ -66,6 +67,7 @@ export const fetchAndParsePage = async (
       remarkComment,
       remarkGfm,
       remarkMdxDisableExplicitJsx,
+      updateURLsPlugin({ path: filename, owner: OWNER, repo: REPO, ref: REF }),
       fixImagePathsPlugin({
         path: filename,
         owner: OWNER,
