@@ -38,13 +38,9 @@ export const components = {
     return <Codebox {...props} notes={notes} />;
   },
   a: ({ insideHeading, children, ...props }: any) => {
-    if (!props.href) {
-      return <a {...props}>{children}</a>;
-    }
-
-    if (props.href.startsWith("#")) {
+    if (!props.href || (props.href.startsWith("#") && !insideHeading)) {
       // TODO: make a component for footnotes?
-      return <a {...props} />;
+      return <a {...props}>{children}</a>;
     }
 
     if (insideHeading && !props.inline) {
@@ -55,7 +51,7 @@ export const components = {
       );
     }
 
-    return <Link {...props} />;
+    return <Link {...props}>{children}</Link>;
   },
   hr: () => <Separator />,
   SideBySide,
