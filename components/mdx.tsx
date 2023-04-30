@@ -38,8 +38,6 @@ export const components = {
     return <Codebox {...props} notes={notes} />;
   },
   a: ({ insideHeading, children, ...props }: any) => {
-    return null;
-
     if (!props.href) {
       return <a {...props}>{children}</a>;
     }
