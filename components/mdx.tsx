@@ -15,16 +15,33 @@ import {
   TableCell,
   TableHead,
 } from "@strawberry-graphql/styleguide";
+import Balancer from "react-wrap-balancer";
 
 import { FaqDetails } from "./faq-details";
 
 export const components = {
-  h1: (props: any) => <Heading level={1} {...props} />,
-  h2: (props: any) => <Heading level={2} {...props} />,
-  h3: (props: any) => <Heading level={3} {...props} />,
-  h4: (props: any) => <Heading level={4} {...props} />,
-  h5: (props: any) => <Heading level={5} {...props} />,
-  h6: (props: any) => <Heading level={6} {...props} />,
+  h1: (props: any) => (
+    <Heading level={1}>
+      <Balancer {...props} />
+    </Heading>
+  ),
+  h2: (props: any) => (
+    <Heading level={2}>
+      <Balancer {...props} />
+    </Heading>
+  ),
+  h3: (props: any) => (
+    <Heading level={3}>
+      <Balancer {...props} />
+    </Heading>
+  ),
+  h4: (props: any) => (
+    <Heading level={4}>
+      <Balancer {...props} />
+    </Heading>
+  ),
+  // TODO: add h5 and h6?
+
   p: (props: any) => <Paragraph {...props} />,
   ol: (props: any) => <List ordered {...props} />,
   ul: (props: any) => <List {...props} />,
