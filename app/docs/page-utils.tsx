@@ -85,7 +85,7 @@ export const fetchAndParsePage = async (
         return (
           <>
             <Spacer size={12} />
-            {/* @ts-expect-error */}
+
             <ExtensionsList
               repoRef={ref}
               owner={owner}
