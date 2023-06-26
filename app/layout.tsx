@@ -1,8 +1,8 @@
 import { DarkModeScript } from "@strawberry-graphql/styleguide";
 import "@strawberry-graphql/styleguide/dist/index.css";
 import clsx from "clsx";
-
 import type { Metadata } from "next";
+
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {
@@ -85,7 +85,7 @@ export default async function RootLayout({
           ranade.variable,
           satoshi.variable,
           jetbrainsMono.variable,
-          "font-sans"
+          "font-sans antialiased"
         )}
       >
         {children}
