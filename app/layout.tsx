@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 
 import localFont from "next/font/local";
 
+import "../styles/tailwind.css";
+
 export const metadata: Metadata = {
   description:
     "Strawberry GraphQL is a powerful and modern GraphQL framework for Python that allows developers to easily create robust and scalable APIs. With its intuitive and developer-friendly API, Strawberry makes it easy to define and query GraphQL schemas, while also providing advanced features such as type safety, code generation, and more.",
