@@ -1,132 +1,134 @@
 {
-  "fileTypes": ["feature"],
-  "firstLineMatch": "기능|機能|功能|フィーチャ|خاصية|תכונה|Функціонал|Функционалност|Функционал|Особина|Функция|Функциональность|Свойство|Могућност|Özellik|Właściwość|Tính năng|Savybė|Požiadavka|Požadavek|Osobina|Ominaisuus|Omadus|OH HAI|Mogućnost|Mogucnost|Jellemző|Fīča|Funzionalità|Funktionalität|Funkcionalnost|Funkcionalitāte|Funcționalitate|Functionaliteit|Functionalitate|Funcionalitat|Funcionalidade|Fonctionnalité|Fitur|Ability|Business Need|Feature|Egenskap|Egenskab|Crikey|Característica|Arwedd(.*)",
-  "foldingStartMarker": "^\\s*\\b(예|시나리오 개요|시나리오|배경|背景|場景大綱|場景|场景大纲|场景|劇本大綱|劇本|例子|例|テンプレ|シナリオテンプレート|シナリオテンプレ|シナリオアウトライン|シナリオ|サンプル|سيناريو مخطط|سيناريو|امثلة|الخلفية|תרחיש|תבנית תרחיש|רקע|דוגמאות|Тарих|Сценарій|Сценарији|Сценарио|Сценарий структураси|Сценарий|Структура сценарію|Структура сценарија|Структура сценария|Скица|Рамка на сценарий|Примери|Пример|Приклади|Предыстория|Предистория|Позадина|Передумова|Основа|Мисоллар|Концепт|Контекст|Значения|Örnekler|Założenia|Wharrimean is|Voorbeelden|Variantai|Tình huống|The thing of it is|Tausta|Taust|Tapausaihio|Tapaus|Tapaukset|Szenariogrundriss|Szenario|Szablon scenariusza|Stsenaarium|Struktura scenarija|Skica|Skenario konsep|Skenario|Situācija|Senaryo taslağı|Senaryo|Scénář|Scénario|Schema dello scenario|Scenārijs pēc parauga|Scenārijs|Scenár|Scenariusz|Scenariul de şablon|Scenariul de sablon|Scenariu|Scenarios|Scenario Outline|Scenario Amlinellol|Scenario|Example|Scenarijus|Scenariji|Scenarijaus šablonas|Scenarijai|Scenarij|Scenarie|Rerefons|Raamstsenaarium|Příklady|Példák|Príklady|Przykłady|Primjeri|Primeri|Primer|Pozadí|Pozadina|Pozadie|Plan du scénario|Plan du Scénario|Piemēri|Pavyzdžiai|Paraugs|Osnova scénáře|Osnova|Náčrt Scénáře|Náčrt Scenáru|Mate|MISHUN SRSLY|MISHUN|Kịch bản|Kontext|Konteksts|Kontekstas|Kontekst|Koncept|Khung tình huống|Khung kịch bản|Juhtumid|Háttér|Grundlage|Geçmiş|Forgatókönyv vázlat|Forgatókönyv|Exemplos|Exemples|Exemplele|Exempel|Examples|Esquema do Cenário|Esquema do Cenario|Esquema del escenario|Esquema de l'escenari|Esempi|Escenario|Escenari|Enghreifftiau|Eksempler|Ejemplos|EXAMPLZ|Dữ liệu|Dis is what went down|Dasar|Contoh|Contexto|Contexte|Contesto|Condiţii|Conditii|Cobber|Cenário|Cenario|Cefndir|Bối cảnh|Blokes|Beispiele|Bakgrunn|Bakgrund|Baggrund|Background|B4|Antecedents|Antecedentes|All y'all|Achtergrond|Abstrakt Scenario|Abstract Scenario|Rule|Regla|Règle|Regel|Regra)",
-  "foldingStopMarker": "^\\s*$",
-  "keyEquivalent": "^~C",
-  "name": "gherkin",
-  "patterns": [
-    {
-      "include": "#feature_element_keyword"
-    },
-    {
-      "include": "#feature_keyword"
-    },
-    {
-      "include": "#step_keyword"
-    },
-    {
-      "include": "#strings_triple_quote"
-    },
-    {
-      "include": "#strings_single_quote"
-    },
-    {
-      "include": "#strings_double_quote"
-    },
-    {
-      "include": "#comments"
-    },
-    {
-      "include": "#tags"
-    },
-    {
-      "include": "#scenario_outline_variable"
-    },
-    {
-      "include": "#table"
-    }
-  ],
-  "repository": {
-    "comments": {
-      "captures": {
-        "0": {
-          "name": "comment.line.number-sign"
-        }
-      },
-      "match": "^\\s*(#.*)"
-    },
-    "table": {
-      "begin": "^\\s*\\|",
-      "end": "\\|\\s*$",
-      "name": "keyword.control.cucumber.table",
-      "patterns": [
+    "fileTypes": [
+        "feature"
+    ],
+    "firstLineMatch": "\uae30\ub2a5|\u6a5f\u80fd|\u529f\u80fd|\u30d5\u30a3\u30fc\u30c1\u30e3|\u062e\u0627\u0635\u064a\u0629|\u05ea\u05db\u05d5\u05e0\u05d4|\u0424\u0443\u043d\u043a\u0446\u0456\u043e\u043d\u0430\u043b|\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u043d\u043e\u0441\u0442|\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b|\u041e\u0441\u043e\u0431\u0438\u043d\u0430|\u0424\u0443\u043d\u043a\u0446\u0438\u044f|\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c|\u0421\u0432\u043e\u0439\u0441\u0442\u0432\u043e|\u041c\u043e\u0433\u0443\u045b\u043d\u043e\u0441\u0442|\u00d6zellik|W\u0142a\u015bciwo\u015b\u0107|T\u00ednh n\u0103ng|Savyb\u0117|Po\u017eiadavka|Po\u017eadavek|Osobina|Ominaisuus|Omadus|OH HAI|Mogu\u0107nost|Mogucnost|Jellemz\u0151|F\u012b\u010da|Funzionalit\u00e0|Funktionalit\u00e4t|Funkcionalnost|Funkcionalit\u0101te|Func\u021bionalitate|Functionaliteit|Functionalitate|Funcionalitat|Funcionalidade|Fonctionnalit\u00e9|Fitur|Ability|Business Need|Feature|Egenskap|Egenskab|Crikey|Caracter\u00edstica|Arwedd(.*)",
+    "foldingStartMarker": "^\\s*\\b(\uc608|\uc2dc\ub098\ub9ac\uc624 \uac1c\uc694|\uc2dc\ub098\ub9ac\uc624|\ubc30\uacbd|\u80cc\u666f|\u5834\u666f\u5927\u7db1|\u5834\u666f|\u573a\u666f\u5927\u7eb2|\u573a\u666f|\u5287\u672c\u5927\u7db1|\u5287\u672c|\u4f8b\u5b50|\u4f8b|\u30c6\u30f3\u30d7\u30ec|\u30b7\u30ca\u30ea\u30aa\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8|\u30b7\u30ca\u30ea\u30aa\u30c6\u30f3\u30d7\u30ec|\u30b7\u30ca\u30ea\u30aa\u30a2\u30a6\u30c8\u30e9\u30a4\u30f3|\u30b7\u30ca\u30ea\u30aa|\u30b5\u30f3\u30d7\u30eb|\u0633\u064a\u0646\u0627\u0631\u064a\u0648 \u0645\u062e\u0637\u0637|\u0633\u064a\u0646\u0627\u0631\u064a\u0648|\u0627\u0645\u062b\u0644\u0629|\u0627\u0644\u062e\u0644\u0641\u064a\u0629|\u05ea\u05e8\u05d7\u05d9\u05e9|\u05ea\u05d1\u05e0\u05d9\u05ea \u05ea\u05e8\u05d7\u05d9\u05e9|\u05e8\u05e7\u05e2|\u05d3\u05d5\u05d2\u05de\u05d0\u05d5\u05ea|\u0422\u0430\u0440\u0438\u0445|\u0421\u0446\u0435\u043d\u0430\u0440\u0456\u0439|\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0458\u0438|\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u043e|\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430\u0441\u0438|\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439|\u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0441\u0446\u0435\u043d\u0430\u0440\u0456\u044e|\u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0458\u0430|\u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f|\u0421\u043a\u0438\u0446\u0430|\u0420\u0430\u043c\u043a\u0430 \u043d\u0430 \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0439|\u041f\u0440\u0438\u043c\u0435\u0440\u0438|\u041f\u0440\u0438\u043c\u0435\u0440|\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438|\u041f\u0440\u0435\u0434\u044b\u0441\u0442\u043e\u0440\u0438\u044f|\u041f\u0440\u0435\u0434\u0438\u0441\u0442\u043e\u0440\u0438\u044f|\u041f\u043e\u0437\u0430\u0434\u0438\u043d\u0430|\u041f\u0435\u0440\u0435\u0434\u0443\u043c\u043e\u0432\u0430|\u041e\u0441\u043d\u043e\u0432\u0430|\u041c\u0438\u0441\u043e\u043b\u043b\u0430\u0440|\u041a\u043e\u043d\u0446\u0435\u043f\u0442|\u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442|\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u044f|\u00d6rnekler|Za\u0142o\u017cenia|Wharrimean is|Voorbeelden|Variantai|T\u00ecnh hu\u1ed1ng|The thing of it is|Tausta|Taust|Tapausaihio|Tapaus|Tapaukset|Szenariogrundriss|Szenario|Szablon scenariusza|Stsenaarium|Struktura scenarija|Skica|Skenario konsep|Skenario|Situ\u0101cija|Senaryo tasla\u011f\u0131|Senaryo|Sc\u00e9n\u00e1\u0159|Sc\u00e9nario|Schema dello scenario|Scen\u0101rijs p\u0113c parauga|Scen\u0101rijs|Scen\u00e1r|Scenariusz|Scenariul de \u015fablon|Scenariul de sablon|Scenariu|Scenarios|Scenario Outline|Scenario Amlinellol|Scenario|Example|Scenarijus|Scenariji|Scenarijaus \u0161ablonas|Scenarijai|Scenarij|Scenarie|Rerefons|Raamstsenaarium|P\u0159\u00edklady|P\u00e9ld\u00e1k|Pr\u00edklady|Przyk\u0142ady|Primjeri|Primeri|Primer|Pozad\u00ed|Pozadina|Pozadie|Plan du sc\u00e9nario|Plan du Sc\u00e9nario|Piem\u0113ri|Pavyzd\u017eiai|Paraugs|Osnova sc\u00e9n\u00e1\u0159e|Osnova|N\u00e1\u010drt Sc\u00e9n\u00e1\u0159e|N\u00e1\u010drt Scen\u00e1ru|Mate|MISHUN SRSLY|MISHUN|K\u1ecbch b\u1ea3n|Kontext|Konteksts|Kontekstas|Kontekst|Koncept|Khung t\u00ecnh hu\u1ed1ng|Khung k\u1ecbch b\u1ea3n|Juhtumid|H\u00e1tt\u00e9r|Grundlage|Ge\u00e7mi\u015f|Forgat\u00f3k\u00f6nyv v\u00e1zlat|Forgat\u00f3k\u00f6nyv|Exemplos|Exemples|Exemplele|Exempel|Examples|Esquema do Cen\u00e1rio|Esquema do Cenario|Esquema del escenario|Esquema de l'escenari|Esempi|Escenario|Escenari|Enghreifftiau|Eksempler|Ejemplos|EXAMPLZ|D\u1eef li\u1ec7u|Dis is what went down|Dasar|Contoh|Contexto|Contexte|Contesto|Condi\u0163ii|Conditii|Cobber|Cen\u00e1rio|Cenario|Cefndir|B\u1ed1i c\u1ea3nh|Blokes|Beispiele|Bakgrunn|Bakgrund|Baggrund|Background|B4|Antecedents|Antecedentes|All y'all|Achtergrond|Abstrakt Scenario|Abstract Scenario|Rule|Regla|R\u00e8gle|Regel|Regra)",
+    "foldingStopMarker": "^\\s*$",
+    "keyEquivalent": "^~C",
+    "name": "gherkin",
+    "patterns": [
         {
-          "match": "\\w",
-          "name": "source"
-        }
-      ]
-    },
-    "feature_keyword": {
-      "captures": {
-        "1": {
-          "name": "keyword.language.gherkin.feature"
+            "include": "#feature_element_keyword"
         },
-        "2": {
-          "name": "string.language.gherkin.feature.title"
-        }
-      },
-      "match": "^\\s*(기능|機能|功能|フィーチャ|خاصية|תכונה|Функціонал|Функционалност|Функционал|Особина|Функция|Функциональность|Свойство|Могућност|Özellik|Właściwość|Tính năng|Savybė|Požiadavka|Požadavek|Osobina|Ominaisuus|Omadus|OH HAI|Mogućnost|Mogucnost|Jellemző|Fīča|Funzionalità|Funktionalität|Funkcionalnost|Funkcionalitāte|Funcționalitate|Functionaliteit|Functionalitate|Funcionalitat|Funcionalidade|Fonctionnalité|Fitur|Ability|Business Need|Feature|Ability|Egenskap|Egenskab|Crikey|Característica|Arwedd):(.*)\\b"
-    },
-    "step_keyword": {
-      "captures": {
-        "1": {
-          "name": "keyword.language.gherkin.feature.step"
-        }
-      },
-      "match": "^\\s*(En |و |Y |E |Եվ |Ya |Too right |Və |Həm |A |И |而且 |并且 |同时 |並且 |同時 |Ak |Epi |A také |Og |😂 |And |Kaj |Ja |Et que |Et qu' |Et |და |Und |Και |અને |וגם |और |तथा |És |Dan |Agus |かつ |Lan |ಮತ್ತು |'ej |latlh |그리고 |AN |Un |Ir |an |a |Мөн |Тэгээд |Ond |7 |ਅਤੇ |Aye |Oraz |Si |Și |Şi |К тому же |Также |An |A tiež |A taktiež |A zároveň |In |Ter |Och |மேலும் |மற்றும் |Һәм |Вә |మరియు |และ |Ve |І |А також |Та |اور |Ва |Và |Maar |لكن |Pero |Բայց |Peru |Yeah nah |Amma |Ancaq |Ali |Но |Però |但是 |Men |Ale |😔 |But |Sed |Kuid |Mutta |Mais que |Mais qu' |Mais |მაგ­რამ |Aber |Αλλά |પણ |אבל |पर |परन्तु |किन्तु |De |En |Tapi |Ach |Ma |しかし |但し |ただし |Nanging |Ananging |ಆದರೆ |'ach |'a |하지만 |단 |BUT |Bet |awer |mä |No |Tetapi |Гэхдээ |Харин |Ac |ਪਰ |اما |Avast! |Mas |Dar |А |Иначе |Buh |Али |Toda |Ampak |Vendar |ஆனால் |Ләкин |Әмма |కాని |แต่ |Fakat |Ama |Але |لیکن |Лекин |Бирок |Аммо |Nhưng |Ond |Dan |اذاً |ثم |Alavez |Allora |Antonces |Ապա |Entós |But at the end of the day I reckon |O halda |Zatim |То |Aleshores |Cal |那么 |那麼 |Lè sa a |Le sa a |Onda |Pak |Så |🙏 |Then |Do |Siis |Niin |Alors |Entón |Logo |მაშინ |Dann |Τότε |પછી |אז |אזי |तब |तदा |Akkor |Þá |Maka |Ansin |ならば |Njuk |Banjur |ನಂತರ |vaj |그러면 |DEN |Tad |Tada |dann |Тогаш |Togash |Kemudian |Тэгэхэд |Үүний дараа |Tha |Þa |Ða |Tha the |Þa þe |Ða ðe |ਤਦ |آنگاه |Let go and haul |Wtedy |Então |Entao |Atunci |Затем |Тогда |Dun |Den youse gotta |Онда |Tak |Potom |Nato |Potem |Takrat |Entonces |அப்பொழுது |Нәтиҗәдә |అప్పుడు |ดังนั้น |O zaman |Тоді |پھر |تب |Унда |Thì |Yna |Wanneer |متى |عندما |Cuan |Եթե |Երբ |Cuando |It's just unbelievable |Əgər |Nə vaxt ki |Kada |Когато |Quan |当 |當 |Lè |Le |Kad |Když |Når |Als |🎬 |When |Se |Kui |Kun |Quand |Lorsque |Lorsqu' |Cando |როდესაც |Wenn |Όταν |ક્યારે |כאשר |जब |कदा |Majd |Ha |Amikor |Þegar |Ketika |Nuair a |Nuair nach |Nuair ba |Nuair nár |Quando |もし |Manawa |Menawa |ಸ್ಥಿತಿಯನ್ನು |qaSDI' |만일 |만약 |WEN |Ja |Kai |wann |Кога |Koga |Apabila |Хэрэв |Tha |Þa |Ða |ਜਦੋਂ |هنگامی |Blimey! |Jeżeli |Jeśli |Gdy |Kiedy |Cand |Când |Когда |Если |Wun |Youse know like when |Када |Кад |Keď |Ak |Ko |Ce |Če |Kadar |När |எப்போது |Әгәр |ఈ పరిస్థితిలో |เมื่อ |Eğer ki |Якщо |Коли |جب |Агар |Khi |Pryd |Gegewe |بفرض |Dau |Dada |Daus |Dadas |Դիցուք |Dáu |Daos |Daes |Y'know |Tutaq ki |Verilir |Dato |Дадено |Donat |Donada |Atès |Atesa |假如 |假设 |假定 |假設 |Sipoze |Sipoze ke |Sipoze Ke |Zadan |Zadani |Zadano |Pokud |Za předpokladu |Givet |Gegeven |Stel |😐 |Given |Donitaĵo |Komence |Eeldades |Oletetaan |Soit |Etant donné que |Etant donné qu' |Etant donné |Etant donnée |Etant donnés |Etant données |Étant donné que |Étant donné qu' |Étant donné |Étant donnée |Étant donnés |Étant données |Dado |Dados |მოცემული |Angenommen |Gegeben sei |Gegeben seien |Δεδομένου |આપેલ છે |בהינתן |अगर |यदि |चूंकि |Amennyiben |Adott |Ef |Dengan |Cuir i gcás go |Cuir i gcás nach |Cuir i gcás gur |Cuir i gcás nár |Data |Dati |Date |前提 |Nalika |Nalikaning |ನೀಡಿದ |ghu' noblu' |DaH ghu' bejlu' |조건 |먼저 |I CAN HAZ |Kad |Duota |ugeholl |Дадена |Dadeno |Dadena |Diberi |Bagi |Өгөгдсөн нь |Анх |Gitt |Thurh |Þurh |Ðurh |ਜੇਕਰ |ਜਿਵੇਂ ਕਿ |با فرض |Gangway! |Zakładając |Mając |Zakładając, że |Date fiind |Dat fiind |Dată fiind |Dati fiind |Dați fiind |Daţi fiind |Допустим |Дано |Пусть |Givun |Youse know when youse got |За дато |За дате |За дати |Za dato |Za date |Za dati |Pokiaľ |Za predpokladu |Dano |Podano |Zaradi |Privzeto |கொடுக்கப்பட்ட |Әйтик |చెప్పబడినది |กำหนดให้ |Diyelim ki |Припустимо |Припустимо, що |Нехай |اگر |بالفرض |فرض کیا |Агар |Biết |Cho |Anrhegedig a |\\* )"
-    },
-    "feature_element_keyword": {
-      "captures": {
-        "1": {
-          "name": "keyword.language.gherkin.feature.scenario"
+        {
+            "include": "#feature_keyword"
         },
-        "2": {
-          "name": "string.language.gherkin.scenario.title.title"
-        }
-      },
-      "match": "^\\s*(예|시나리오 개요|시나리오|배경|背景|場景大綱|場景|场景大纲|场景|劇本大綱|劇本|例子|例|テンプレ|シナリオテンプレート|シナリオテンプレ|シナリオアウトライン|シナリオ|サンプル|سيناريو مخطط|سيناريو|امثلة|الخلفية|תרחיש|תבנית תרחיש|רקע|דוגמאות|Тарих|Сценарій|Сценарији|Сценарио|Сценарий структураси|Сценарий|Структура сценарію|Структура сценарија|Структура сценария|Скица|Рамка на сценарий|Примери|Пример|Приклади|Предыстория|Предистория|Позадина|Передумова|Основа|Мисоллар|Концепт|Контекст|Значения|Örnekler|Założenia|Wharrimean is|Voorbeelden|Variantai|Tình huống|The thing of it is|Tausta|Taust|Tapausaihio|Tapaus|Tapaukset|Szenariogrundriss|Szenario|Szablon scenariusza|Stsenaarium|Struktura scenarija|Skica|Skenario konsep|Skenario|Situācija|Senaryo taslağı|Senaryo|Scénář|Scénario|Schema dello scenario|Scenārijs pēc parauga|Scenārijs|Scenár|Scenariusz|Scenariul de şablon|Scenariul de sablon|Scenariu|Scenarios|Scenario Outline|Scenario Amlinellol|Scenario|Example|Scenarijus|Scenariji|Scenarijaus šablonas|Scenarijai|Scenarij|Scenarie|Rerefons|Raamstsenaarium|Příklady|Példák|Príklady|Przykłady|Primjeri|Primeri|Primer|Pozadí|Pozadina|Pozadie|Plan du scénario|Plan du Scénario|Piemēri|Pavyzdžiai|Paraugs|Osnova scénáře|Osnova|Náčrt Scénáře|Náčrt Scenáru|Mate|MISHUN SRSLY|MISHUN|Kịch bản|Kontext|Konteksts|Kontekstas|Kontekst|Koncept|Khung tình huống|Khung kịch bản|Juhtumid|Háttér|Grundlage|Geçmiş|Forgatókönyv vázlat|Forgatókönyv|Exemplos|Exemples|Exemplele|Exempel|Examples|Esquema do Cenário|Esquema do Cenario|Esquema del escenario|Esquema de l'escenari|Esempi|Escenario|Escenari|Enghreifftiau|Eksempler|Ejemplos|EXAMPLZ|Dữ liệu|Dis is what went down|Dasar|Contoh|Contexto|Contexte|Contesto|Condiţii|Conditii|Cobber|Cenário|Cenario|Cefndir|Bối cảnh|Blokes|Beispiele|Bakgrunn|Bakgrund|Baggrund|Background|B4|Antecedents|Antecedentes|All y'all|Achtergrond|Abstrakt Scenario|Abstract Scenario|Rule|Regla|Règle|Regel|Regra):(.*)"
-    },
-    "scenario_outline_variable": {
-      "match": "<[a-zA-Z0-9 _-]*>",
-      "name": "variable.other"
-    },
-    "strings_double_quote": {
-      "begin": "(?<![a-zA-Z0-9'])\"",
-      "end": "\"(?![a-zA-Z0-9'])",
-      "name": "string.quoted.double",
-      "patterns": [
         {
-          "match": "\\\\.",
-          "name": "constant.character.escape.untitled"
-        }
-      ]
-    },
-    "strings_single_quote": {
-      "begin": "(?<![a-zA-Z0-9\"])'",
-      "end": "'(?![a-zA-Z0-9\"])",
-      "name": "string.quoted.single",
-      "patterns": [
+            "include": "#step_keyword"
+        },
         {
-          "match": "\\\\.",
-          "name": "constant.character.escape"
+            "include": "#strings_triple_quote"
+        },
+        {
+            "include": "#strings_single_quote"
+        },
+        {
+            "include": "#strings_double_quote"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#tags"
+        },
+        {
+            "include": "#scenario_outline_variable"
+        },
+        {
+            "include": "#table"
         }
-      ]
-    },
-    "strings_triple_quote": {
-      "begin": "\"\"\"",
-      "end": "\"\"\"",
-      "name": "string.quoted.single"
-    },
-    "tags": {
-      "captures": {
-        "0": {
-          "name": "entity.name.type.class.tsx"
+    ],
+    "repository": {
+        "comments": {
+            "captures": {
+                "0": {
+                    "name": "comment.line.number-sign"
+                }
+            },
+            "match": "^\\s*(#.*)"
+        },
+        "table": {
+            "begin": "^\\s*\\|",
+            "end": "\\|\\s*$",
+            "name": "keyword.control.cucumber.table",
+            "patterns": [
+                {
+                    "match": "\\w",
+                    "name": "source"
+                }
+            ]
+        },
+        "feature_keyword": {
+            "captures": {
+                "1": {
+                    "name": "keyword.language.gherkin.feature"
+                },
+                "2": {
+                    "name": "string.language.gherkin.feature.title"
+                }
+            },
+            "match": "^\\s*(\uae30\ub2a5|\u6a5f\u80fd|\u529f\u80fd|\u30d5\u30a3\u30fc\u30c1\u30e3|\u062e\u0627\u0635\u064a\u0629|\u05ea\u05db\u05d5\u05e0\u05d4|\u0424\u0443\u043d\u043a\u0446\u0456\u043e\u043d\u0430\u043b|\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u043d\u043e\u0441\u0442|\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b|\u041e\u0441\u043e\u0431\u0438\u043d\u0430|\u0424\u0443\u043d\u043a\u0446\u0438\u044f|\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c|\u0421\u0432\u043e\u0439\u0441\u0442\u0432\u043e|\u041c\u043e\u0433\u0443\u045b\u043d\u043e\u0441\u0442|\u00d6zellik|W\u0142a\u015bciwo\u015b\u0107|T\u00ednh n\u0103ng|Savyb\u0117|Po\u017eiadavka|Po\u017eadavek|Osobina|Ominaisuus|Omadus|OH HAI|Mogu\u0107nost|Mogucnost|Jellemz\u0151|F\u012b\u010da|Funzionalit\u00e0|Funktionalit\u00e4t|Funkcionalnost|Funkcionalit\u0101te|Func\u021bionalitate|Functionaliteit|Functionalitate|Funcionalitat|Funcionalidade|Fonctionnalit\u00e9|Fitur|Ability|Business Need|Feature|Ability|Egenskap|Egenskab|Crikey|Caracter\u00edstica|Arwedd):(.*)\\b"
+        },
+        "step_keyword": {
+            "captures": {
+                "1": {
+                    "name": "keyword.language.gherkin.feature.step"
+                }
+            },
+            "match": "^\\s*(En |\u0648 |Y |E |\u0535\u057e |Ya |Too right |V\u0259 |H\u0259m |A |\u0418 |\u800c\u4e14 |\u5e76\u4e14 |\u540c\u65f6 |\u4e26\u4e14 |\u540c\u6642 |Ak |Epi |A tak\u00e9 |Og |\ud83d\ude02 |And |Kaj |Ja |Et que |Et qu' |Et |\u10d3\u10d0 |Und |\u039a\u03b1\u03b9 |\u0a85\u0aa8\u0ac7 |\u05d5\u05d2\u05dd |\u0914\u0930 |\u0924\u0925\u093e |\u00c9s |Dan |Agus |\u304b\u3064 |Lan |\u0cae\u0ca4\u0ccd\u0ca4\u0cc1 |'ej |latlh |\uadf8\ub9ac\uace0 |AN |Un |Ir |an |a |\u041c\u04e9\u043d |\u0422\u044d\u0433\u044d\u044d\u0434 |Ond |7 |\u0a05\u0a24\u0a47 |Aye |Oraz |Si |\u0218i |\u015ei |\u041a \u0442\u043e\u043c\u0443 \u0436\u0435 |\u0422\u0430\u043a\u0436\u0435 |An |A tie\u017e |A taktie\u017e |A z\u00e1rove\u0148 |In |Ter |Och |\u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd |\u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd |\u04ba\u04d9\u043c |\u0412\u04d9 |\u0c2e\u0c30\u0c3f\u0c2f\u0c41 |\u0e41\u0e25\u0e30 |Ve |\u0406 |\u0410 \u0442\u0430\u043a\u043e\u0436 |\u0422\u0430 |\u0627\u0648\u0631 |\u0412\u0430 |V\u00e0 |Maar |\u0644\u0643\u0646 |Pero |\u0532\u0561\u0575\u0581 |Peru |Yeah nah |Amma |Ancaq |Ali |\u041d\u043e |Per\u00f2 |\u4f46\u662f |Men |Ale |\ud83d\ude14 |But |Sed |Kuid |Mutta |Mais que |Mais qu' |Mais |\u10db\u10d0\u10d2\u00ad\u10e0\u10d0\u10db |Aber |\u0391\u03bb\u03bb\u03ac |\u0aaa\u0aa3 |\u05d0\u05d1\u05dc |\u092a\u0930 |\u092a\u0930\u0928\u094d\u0924\u0941 |\u0915\u093f\u0928\u094d\u0924\u0941 |De |En |Tapi |Ach |Ma |\u3057\u304b\u3057 |\u4f46\u3057 |\u305f\u3060\u3057 |Nanging |Ananging |\u0c86\u0ca6\u0cb0\u0cc6 |'ach |'a |\ud558\uc9c0\ub9cc |\ub2e8 |BUT |Bet |awer |m\u00e4 |No |Tetapi |\u0413\u044d\u0445\u0434\u044d\u044d |\u0425\u0430\u0440\u0438\u043d |Ac |\u0a2a\u0a30 |\u0627\u0645\u0627 |Avast! |Mas |Dar |\u0410 |\u0418\u043d\u0430\u0447\u0435 |Buh |\u0410\u043b\u0438 |Toda |Ampak |Vendar |\u0b86\u0ba9\u0bbe\u0bb2\u0bcd |\u041b\u04d9\u043a\u0438\u043d |\u04d8\u043c\u043c\u0430 |\u0c15\u0c3e\u0c28\u0c3f |\u0e41\u0e15\u0e48 |Fakat |Ama |\u0410\u043b\u0435 |\u0644\u06cc\u06a9\u0646 |\u041b\u0435\u043a\u0438\u043d |\u0411\u0438\u0440\u043e\u043a |\u0410\u043c\u043c\u043e |Nh\u01b0ng |Ond |Dan |\u0627\u0630\u0627\u064b |\u062b\u0645 |Alavez |Allora |Antonces |\u0531\u057a\u0561 |Ent\u00f3s |But at the end of the day I reckon |O halda |Zatim |\u0422\u043e |Aleshores |Cal |\u90a3\u4e48 |\u90a3\u9ebc |L\u00e8 sa a |Le sa a |Onda |Pak |S\u00e5 |\ud83d\ude4f |Then |Do |Siis |Niin |Alors |Ent\u00f3n |Logo |\u10db\u10d0\u10e8\u10d8\u10dc |Dann |\u03a4\u03cc\u03c4\u03b5 |\u0aaa\u0a9b\u0ac0 |\u05d0\u05d6 |\u05d0\u05d6\u05d9 |\u0924\u092c |\u0924\u0926\u093e |Akkor |\u00de\u00e1 |Maka |Ansin |\u306a\u3089\u3070 |Njuk |Banjur |\u0ca8\u0c82\u0ca4\u0cb0 |vaj |\uadf8\ub7ec\uba74 |DEN |Tad |Tada |dann |\u0422\u043e\u0433\u0430\u0448 |Togash |Kemudian |\u0422\u044d\u0433\u044d\u0445\u044d\u0434 |\u04ae\u04af\u043d\u0438\u0439 \u0434\u0430\u0440\u0430\u0430 |Tha |\u00dea |\u00d0a |Tha the |\u00dea \u00fee |\u00d0a \u00f0e |\u0a24\u0a26 |\u0622\u0646\u06af\u0627\u0647 |Let go and haul |Wtedy |Ent\u00e3o |Entao |Atunci |\u0417\u0430\u0442\u0435\u043c |\u0422\u043e\u0433\u0434\u0430 |Dun |Den youse gotta |\u041e\u043d\u0434\u0430 |Tak |Potom |Nato |Potem |Takrat |Entonces |\u0b85\u0baa\u0bcd\u0baa\u0bc6\u0bbe\u0bb4\u0bc1\u0ba4\u0bc1 |\u041d\u04d9\u0442\u0438\u0497\u04d9\u0434\u04d9 |\u0c05\u0c2a\u0c4d\u0c2a\u0c41\u0c21\u0c41 |\u0e14\u0e31\u0e07\u0e19\u0e31\u0e49\u0e19 |O zaman |\u0422\u043e\u0434\u0456 |\u067e\u06be\u0631 |\u062a\u0628 |\u0423\u043d\u0434\u0430 |Th\u00ec |Yna |Wanneer |\u0645\u062a\u0649 |\u0639\u0646\u062f\u0645\u0627 |Cuan |\u0535\u0569\u0565 |\u0535\u0580\u0562 |Cuando |It's just unbelievable |\u018fg\u0259r |N\u0259 vaxt ki |Kada |\u041a\u043e\u0433\u0430\u0442\u043e |Quan |\u5f53 |\u7576 |L\u00e8 |Le |Kad |Kdy\u017e |N\u00e5r |Als |\ud83c\udfac |When |Se |Kui |Kun |Quand |Lorsque |Lorsqu' |Cando |\u10e0\u10dd\u10d3\u10d4\u10e1\u10d0\u10ea |Wenn |\u038c\u03c4\u03b1\u03bd |\u0a95\u0acd\u0aaf\u0abe\u0ab0\u0ac7 |\u05db\u05d0\u05e9\u05e8 |\u091c\u092c |\u0915\u0926\u093e |Majd |Ha |Amikor |\u00deegar |Ketika |Nuair a |Nuair nach |Nuair ba |Nuair n\u00e1r |Quando |\u3082\u3057 |Manawa |Menawa |\u0cb8\u0ccd\u0ca5\u0cbf\u0ca4\u0cbf\u0caf\u0ca8\u0ccd\u0ca8\u0cc1 |qaSDI' |\ub9cc\uc77c |\ub9cc\uc57d |WEN |Ja |Kai |wann |\u041a\u043e\u0433\u0430 |Koga |Apabila |\u0425\u044d\u0440\u044d\u0432 |Tha |\u00dea |\u00d0a |\u0a1c\u0a26\u0a4b\u0a02 |\u0647\u0646\u06af\u0627\u0645\u06cc |Blimey! |Je\u017celi |Je\u015bli |Gdy |Kiedy |Cand |C\u00e2nd |\u041a\u043e\u0433\u0434\u0430 |\u0415\u0441\u043b\u0438 |Wun |Youse know like when |\u041a\u0430\u0434\u0430 |\u041a\u0430\u0434 |Ke\u010f |Ak |Ko |Ce |\u010ce |Kadar |N\u00e4r |\u0b8e\u0baa\u0bcd\u0baa\u0bc7\u0bbe\u0ba4\u0bc1 |\u04d8\u0433\u04d9\u0440 |\u0c08 \u0c2a\u0c30\u0c3f\u0c38\u0c4d\u0c25\u0c3f\u0c24\u0c3f\u0c32\u0c4b |\u0e40\u0e21\u0e37\u0e48\u0e2d |E\u011fer ki |\u042f\u043a\u0449\u043e |\u041a\u043e\u043b\u0438 |\u062c\u0628 |\u0410\u0433\u0430\u0440 |Khi |Pryd |Gegewe |\u0628\u0641\u0631\u0636 |Dau |Dada |Daus |Dadas |\u0534\u056b\u0581\u0578\u0582\u0584 |D\u00e1u |Daos |Daes |Y'know |Tutaq ki |Verilir |Dato |\u0414\u0430\u0434\u0435\u043d\u043e |Donat |Donada |At\u00e8s |Atesa |\u5047\u5982 |\u5047\u8bbe |\u5047\u5b9a |\u5047\u8a2d |Sipoze |Sipoze ke |Sipoze Ke |Zadan |Zadani |Zadano |Pokud |Za p\u0159edpokladu |Givet |Gegeven |Stel |\ud83d\ude10 |Given |Donita\u0135o |Komence |Eeldades |Oletetaan |Soit |Etant donn\u00e9 que |Etant donn\u00e9 qu' |Etant donn\u00e9 |Etant donn\u00e9e |Etant donn\u00e9s |Etant donn\u00e9es |\u00c9tant donn\u00e9 que |\u00c9tant donn\u00e9 qu' |\u00c9tant donn\u00e9 |\u00c9tant donn\u00e9e |\u00c9tant donn\u00e9s |\u00c9tant donn\u00e9es |Dado |Dados |\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 |Angenommen |Gegeben sei |Gegeben seien |\u0394\u03b5\u03b4\u03bf\u03bc\u03ad\u03bd\u03bf\u03c5 |\u0a86\u0aaa\u0ac7\u0ab2 \u0a9b\u0ac7 |\u05d1\u05d4\u05d9\u05e0\u05ea\u05df |\u0905\u0917\u0930 |\u092f\u0926\u093f |\u091a\u0942\u0902\u0915\u093f |Amennyiben |Adott |Ef |Dengan |Cuir i gc\u00e1s go |Cuir i gc\u00e1s nach |Cuir i gc\u00e1s gur |Cuir i gc\u00e1s n\u00e1r |Data |Dati |Date |\u524d\u63d0 |Nalika |Nalikaning |\u0ca8\u0cbf\u0cd5\u0ca1\u0cbf\u0ca6 |ghu' noblu' |DaH ghu' bejlu' |\uc870\uac74 |\uba3c\uc800 |I CAN HAZ |Kad |Duota |ugeholl |\u0414\u0430\u0434\u0435\u043d\u0430 |Dadeno |Dadena |Diberi |Bagi |\u04e8\u0433\u04e9\u0433\u0434\u0441\u04e9\u043d \u043d\u044c |\u0410\u043d\u0445 |Gitt |Thurh |\u00deurh |\u00d0urh |\u0a1c\u0a47\u0a15\u0a30 |\u0a1c\u0a3f\u0a35\u0a47\u0a02 \u0a15\u0a3f |\u0628\u0627 \u0641\u0631\u0636 |Gangway! |Zak\u0142adaj\u0105c |Maj\u0105c |Zak\u0142adaj\u0105c, \u017ce |Date fiind |Dat fiind |Dat\u0103 fiind |Dati fiind |Da\u021bi fiind |Da\u0163i fiind |\u0414\u043e\u043f\u0443\u0441\u0442\u0438\u043c |\u0414\u0430\u043d\u043e |\u041f\u0443\u0441\u0442\u044c |Givun |Youse know when youse got |\u0417\u0430 \u0434\u0430\u0442\u043e |\u0417\u0430 \u0434\u0430\u0442\u0435 |\u0417\u0430 \u0434\u0430\u0442\u0438 |Za dato |Za date |Za dati |Pokia\u013e |Za predpokladu |Dano |Podano |Zaradi |Privzeto |\u0b95\u0bc6\u0bbe\u0b9f\u0bc1\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f |\u04d8\u0439\u0442\u0438\u043a |\u0c1a\u0c46\u0c2a\u0c4d\u0c2a\u0c2c\u0c21\u0c3f\u0c28\u0c26\u0c3f |\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e43\u0e2b\u0e49 |Diyelim ki |\u041f\u0440\u0438\u043f\u0443\u0441\u0442\u0438\u043c\u043e |\u041f\u0440\u0438\u043f\u0443\u0441\u0442\u0438\u043c\u043e, \u0449\u043e |\u041d\u0435\u0445\u0430\u0439 |\u0627\u06af\u0631 |\u0628\u0627\u0644\u0641\u0631\u0636 |\u0641\u0631\u0636 \u06a9\u06cc\u0627 |\u0410\u0433\u0430\u0440 |Bi\u1ebft |Cho |Anrhegedig a |\\* )"
+        },
+        "feature_element_keyword": {
+            "captures": {
+                "1": {
+                    "name": "keyword.language.gherkin.feature.scenario"
+                },
+                "2": {
+                    "name": "string.language.gherkin.scenario.title.title"
+                }
+            },
+            "match": "^\\s*(\uc608|\uc2dc\ub098\ub9ac\uc624 \uac1c\uc694|\uc2dc\ub098\ub9ac\uc624|\ubc30\uacbd|\u80cc\u666f|\u5834\u666f\u5927\u7db1|\u5834\u666f|\u573a\u666f\u5927\u7eb2|\u573a\u666f|\u5287\u672c\u5927\u7db1|\u5287\u672c|\u4f8b\u5b50|\u4f8b|\u30c6\u30f3\u30d7\u30ec|\u30b7\u30ca\u30ea\u30aa\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8|\u30b7\u30ca\u30ea\u30aa\u30c6\u30f3\u30d7\u30ec|\u30b7\u30ca\u30ea\u30aa\u30a2\u30a6\u30c8\u30e9\u30a4\u30f3|\u30b7\u30ca\u30ea\u30aa|\u30b5\u30f3\u30d7\u30eb|\u0633\u064a\u0646\u0627\u0631\u064a\u0648 \u0645\u062e\u0637\u0637|\u0633\u064a\u0646\u0627\u0631\u064a\u0648|\u0627\u0645\u062b\u0644\u0629|\u0627\u0644\u062e\u0644\u0641\u064a\u0629|\u05ea\u05e8\u05d7\u05d9\u05e9|\u05ea\u05d1\u05e0\u05d9\u05ea \u05ea\u05e8\u05d7\u05d9\u05e9|\u05e8\u05e7\u05e2|\u05d3\u05d5\u05d2\u05de\u05d0\u05d5\u05ea|\u0422\u0430\u0440\u0438\u0445|\u0421\u0446\u0435\u043d\u0430\u0440\u0456\u0439|\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0458\u0438|\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u043e|\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430\u0441\u0438|\u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0439|\u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0441\u0446\u0435\u043d\u0430\u0440\u0456\u044e|\u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0458\u0430|\u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u044f|\u0421\u043a\u0438\u0446\u0430|\u0420\u0430\u043c\u043a\u0430 \u043d\u0430 \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0439|\u041f\u0440\u0438\u043c\u0435\u0440\u0438|\u041f\u0440\u0438\u043c\u0435\u0440|\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438|\u041f\u0440\u0435\u0434\u044b\u0441\u0442\u043e\u0440\u0438\u044f|\u041f\u0440\u0435\u0434\u0438\u0441\u0442\u043e\u0440\u0438\u044f|\u041f\u043e\u0437\u0430\u0434\u0438\u043d\u0430|\u041f\u0435\u0440\u0435\u0434\u0443\u043c\u043e\u0432\u0430|\u041e\u0441\u043d\u043e\u0432\u0430|\u041c\u0438\u0441\u043e\u043b\u043b\u0430\u0440|\u041a\u043e\u043d\u0446\u0435\u043f\u0442|\u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442|\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u044f|\u00d6rnekler|Za\u0142o\u017cenia|Wharrimean is|Voorbeelden|Variantai|T\u00ecnh hu\u1ed1ng|The thing of it is|Tausta|Taust|Tapausaihio|Tapaus|Tapaukset|Szenariogrundriss|Szenario|Szablon scenariusza|Stsenaarium|Struktura scenarija|Skica|Skenario konsep|Skenario|Situ\u0101cija|Senaryo tasla\u011f\u0131|Senaryo|Sc\u00e9n\u00e1\u0159|Sc\u00e9nario|Schema dello scenario|Scen\u0101rijs p\u0113c parauga|Scen\u0101rijs|Scen\u00e1r|Scenariusz|Scenariul de \u015fablon|Scenariul de sablon|Scenariu|Scenarios|Scenario Outline|Scenario Amlinellol|Scenario|Example|Scenarijus|Scenariji|Scenarijaus \u0161ablonas|Scenarijai|Scenarij|Scenarie|Rerefons|Raamstsenaarium|P\u0159\u00edklady|P\u00e9ld\u00e1k|Pr\u00edklady|Przyk\u0142ady|Primjeri|Primeri|Primer|Pozad\u00ed|Pozadina|Pozadie|Plan du sc\u00e9nario|Plan du Sc\u00e9nario|Piem\u0113ri|Pavyzd\u017eiai|Paraugs|Osnova sc\u00e9n\u00e1\u0159e|Osnova|N\u00e1\u010drt Sc\u00e9n\u00e1\u0159e|N\u00e1\u010drt Scen\u00e1ru|Mate|MISHUN SRSLY|MISHUN|K\u1ecbch b\u1ea3n|Kontext|Konteksts|Kontekstas|Kontekst|Koncept|Khung t\u00ecnh hu\u1ed1ng|Khung k\u1ecbch b\u1ea3n|Juhtumid|H\u00e1tt\u00e9r|Grundlage|Ge\u00e7mi\u015f|Forgat\u00f3k\u00f6nyv v\u00e1zlat|Forgat\u00f3k\u00f6nyv|Exemplos|Exemples|Exemplele|Exempel|Examples|Esquema do Cen\u00e1rio|Esquema do Cenario|Esquema del escenario|Esquema de l'escenari|Esempi|Escenario|Escenari|Enghreifftiau|Eksempler|Ejemplos|EXAMPLZ|D\u1eef li\u1ec7u|Dis is what went down|Dasar|Contoh|Contexto|Contexte|Contesto|Condi\u0163ii|Conditii|Cobber|Cen\u00e1rio|Cenario|Cefndir|B\u1ed1i c\u1ea3nh|Blokes|Beispiele|Bakgrunn|Bakgrund|Baggrund|Background|B4|Antecedents|Antecedentes|All y'all|Achtergrond|Abstrakt Scenario|Abstract Scenario|Rule|Regla|R\u00e8gle|Regel|Regra):(.*)"
+        },
+        "scenario_outline_variable": {
+            "match": "<[a-zA-Z0-9 _-]*>",
+            "name": "variable.other"
+        },
+        "strings_double_quote": {
+            "begin": "(?<![a-zA-Z0-9'])\"",
+            "end": "\"(?![a-zA-Z0-9'])",
+            "name": "string.quoted.double",
+            "patterns": [
+                {
+                    "match": "\\\\.",
+                    "name": "constant.character.escape.untitled"
+                }
+            ]
+        },
+        "strings_single_quote": {
+            "begin": "(?<![a-zA-Z0-9\"])'",
+            "end": "'(?![a-zA-Z0-9\"])",
+            "name": "string.quoted.single",
+            "patterns": [
+                {
+                    "match": "\\\\.",
+                    "name": "constant.character.escape"
+                }
+            ]
+        },
+        "strings_triple_quote": {
+            "begin": "\"\"\"",
+            "end": "\"\"\"",
+            "name": "string.quoted.single"
+        },
+        "tags": {
+            "captures": {
+                "0": {
+                    "name": "entity.name.type.class.tsx"
+                }
+            },
+            "match": "(@[^@\\r\\n\\t ]+)"
         }
-      },
-      "match": "(@[^@\\r\\n\\t ]+)"
-    }
-  },
-  "scopeName": "text.gherkin.feature",
-  "uuid": "85E2C52C-9B16-4A54-81E7-6D8D3ADAEFA8"
+    },
+    "scopeName": "text.gherkin.feature",
+    "uuid": "85E2C52C-9B16-4A54-81E7-6D8D3ADAEFA8"
 }

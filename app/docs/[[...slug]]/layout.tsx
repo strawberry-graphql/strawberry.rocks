@@ -5,7 +5,6 @@ import {
   Header,
   Footer,
 } from "@strawberry-graphql/styleguide";
-
 import type { Metadata } from "next";
 
 import { SearchBoxTrigger } from "~/components/searchbox-trigger";

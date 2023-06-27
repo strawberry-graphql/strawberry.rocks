@@ -10,7 +10,6 @@ import {
   ListItem,
   Link,
 } from "@strawberry-graphql/styleguide";
-
 import type { Metadata } from "next";
 
 import { fetchContributors, fetchSponsors } from "~/lib/api";
