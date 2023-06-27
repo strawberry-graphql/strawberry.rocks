@@ -7,8 +7,9 @@ import getReadingTime from "reading-time";
 
 import { notFound } from "next/navigation";
 
-import { ArticleHeader } from "./article-header";
 import { compile } from "./mdx";
+
+import { ArticleHeader } from "@strawberry-graphql/styleguide";
 
 const getAuthorInfo = async (username: string) => {
   const octokit = new Octokit({

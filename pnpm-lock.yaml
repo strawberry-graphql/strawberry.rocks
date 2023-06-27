@@ -27,8 +27,8 @@ dependencies:
     specifier: 7.1.2
     version: 7.1.2(@octokit/core@4.2.4)
   '@strawberry-graphql/styleguide':
-    specifier: 0.8.2
-    version: 0.8.2(@babel/core@7.22.5)(postcss@8.4.24)(webpack@5.88.0)
+    specifier: 0.9.0
+    version: 0.9.0(@babel/core@7.22.5)(postcss@8.4.24)(webpack@5.88.0)
   '@tailwindcss/aspect-ratio':
     specifier: 0.4.2
     version: 0.4.2(tailwindcss@3.3.2)
@@ -167,8 +167,8 @@ devDependencies:
     specifier: 4.0.1
     version: 4.0.1(encoding@0.1.13)(graphql@16.7.1)
   '@octokit/graphql-schema':
-    specifier: 14.14.0
-    version: 14.14.0
+    specifier: 14.17.0
+    version: 14.17.0
   '@trivago/prettier-plugin-sort-imports':
     specifier: 4.1.1
     version: 4.1.1(prettier@2.8.8)
@@ -2364,8 +2364,8 @@ packages:
       universal-user-agent: 6.0.0
     dev: false
 
-  /@octokit/graphql-schema@14.14.0:
-    resolution: {integrity: sha512-1Vnj/c2NdFiLHzi4rondfuDr1wgVJACh9zmgHp6Y52o27zZucmQbBWG136Bq1/MG2FC21Us3Q9UDCiK4LnDF7w==}
+  /@octokit/graphql-schema@14.17.0:
+    resolution: {integrity: sha512-DLxyZA68f+xfL8wXm3eqnWKVchvdhUbSnFSyGsoRqsqYkchRQ+O/71yfflY2pCaa6mXYSpwiUIoacH6tJv2vSg==}
     dependencies:
       graphql: 16.7.1
       graphql-tag: 2.12.6(graphql@16.7.1)
@@ -2490,8 +2490,8 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /@storybook/client-logger@7.0.23:
-    resolution: {integrity: sha512-L287SRO8EaYOxTpryV7N/1WCL5I1IFs5Naiq3FpybhguUP7F3Si7KWvVdFmSW06K9jNj2IEQ/8zBRM8ra4ttyg==}
+  /@storybook/client-logger@7.0.24:
+    resolution: {integrity: sha512-4zRTb+QQ1hWaRqad/UufZNRfi2d/cf5a40My72Ct97VwjhJFE6aQ3K+hl1Xt6hh8dncDL2JK3cgziw6ElqjT0w==}
     dependencies:
       '@storybook/global': 5.0.0
     dev: false
@@ -2500,33 +2500,34 @@ packages:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
     dev: false
 
-  /@storybook/theming@7.0.23(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-hKmpjFS24YK0vl69KhqNauARTgxQu5mvlifHmu7xO80bigXi6NzA5VyyCMHO1SKVFJwPBVHHfauQCenSRm2PDQ==}
+  /@storybook/theming@7.0.24(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-CMeCCfqffJ/D5rBl1HpAM/e5Vw0h7ucT+CLzP0ALtLrguz9ZzOiIZYgMj17KpfvWqje7HT+DwEtNkSrnJ01FNQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
-      '@storybook/client-logger': 7.0.23
+      '@storybook/client-logger': 7.0.24
       '@storybook/global': 5.0.0
       memoizerific: 1.11.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@strawberry-graphql/styleguide@0.8.2(@babel/core@7.22.5)(postcss@8.4.24)(webpack@5.88.0):
-    resolution: {integrity: sha512-9Pmnp3Q/UvXIZgwJU6Pr4ddDa1Ben6gPJSP53EQiB0bm5ahVrrHmpAhUgKtfRGwxjBVBinzK3u37a0oP3glIqA==}
+  /@strawberry-graphql/styleguide@0.9.0(@babel/core@7.22.5)(postcss@8.4.24)(webpack@5.88.0):
+    resolution: {integrity: sha512-aoDf31ur/TKkNt/S6tnl3Lq6nDHd36CCxmBSHCh91WGsOPoPr5xnuF9WKCirvmDz87NrjMSC2rxezVTT5ussLg==}
     dependencies:
       '@floating-ui/react-dom': 2.0.1(react-dom@18.2.0)(react@18.2.0)
       '@headlessui/react': 1.7.15(react-dom@18.2.0)(react@18.2.0)
       '@next/font': 13.4.6
-      '@storybook/theming': 7.0.23(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/theming': 7.0.24(react-dom@18.2.0)(react@18.2.0)
       '@types/node': 20.3.1
       '@types/react': 18.2.13
       '@types/react-dom': 18.2.6
       algoliasearch: 4.18.0
       clsx: 1.2.1
       css-loader: 6.8.1(webpack@5.88.0)
+      date-fns: 2.30.0
       eslint: 8.43.0
       eslint-config-next: 13.4.6(eslint@8.43.0)(typescript@5.1.3)
       jsonp: 0.2.1
@@ -9772,12 +9773,12 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
-      terser: 5.18.1
+      terser: 5.18.2
       webpack: 5.88.0
     dev: false
 
-  /terser@5.18.1:
-    resolution: {integrity: sha512-j1n0Ao919h/Ai5r43VAnfV/7azUYW43GPxK7qSATzrsERfW7+y2QW9Cp9ufnRF5CQUWbnLSo7UJokSWCqg4tsQ==}
+  /terser@5.18.2:
+    resolution: {integrity: sha512-Ah19JS86ypbJzTzvUCX7KOsEIhDaRONungA4aYBjEP3JZRf4ocuDzTg4QWZnPn9DEMiMYGJPiSOy7aykoCc70w==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
