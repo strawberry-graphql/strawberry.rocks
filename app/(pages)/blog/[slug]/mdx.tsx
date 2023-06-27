@@ -24,7 +24,7 @@ export const compile = async ({ source }: { source: string }) => {
     remarkPlugins: [remarkComment, remarkGfm, remarkMdxDisableExplicitJsx],
   };
 
-  const { content, frontmatter } = await compileMDX<{ title: string }>({
+  const { content } = await compileMDX<{ title: string }>({
     source,
     components,
     options: {

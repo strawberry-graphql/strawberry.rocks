@@ -81,7 +81,8 @@ export default async function BlogPost({
         duration={readingTime.text}
         date={new Date()}
       />
-      <p>{content}</p>
+
+      <div className="docs-content !p-0">{content}</div>
     </article>
   );
 }
