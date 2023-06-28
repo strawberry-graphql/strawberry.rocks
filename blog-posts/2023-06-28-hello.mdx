@@ -64,8 +64,8 @@ custom name.
 </Note>
 
 On top of that [Thiago](https://github.com/bellini666) spent a lot of time to
-make sure that we support `from __future__ import annotations`, `Generics` and
-more! (Thank you!)
+make sure that we support `__future__` annotations, `Generics` and more! (Thank
+you!)
 
 ### Field extensions
 
@@ -119,10 +119,64 @@ pagination with just a few lines of code:
 # short example here
 ```
 
+### Codemods
+
+I want Strawberry to be as easy to use as possible, and I think that includes
+making it easy to upgrade to latest versions, **especially** when we introduce
+breaking changes. We do have a generous deprecation policy, so you you this have
+plenty of time to upgrade, but we want to make this process as easy as possible.
+
+This is why we've been working on supporting codemods, with a new command called
+`strawberry upgrade`. This command will allow you run a specific codemod (and in
+future all of them) on your codebase. We only have a codemod to update from the
+old union syntax to the new one, but we'll potentially add more in the future.
+
 ## What's next?
 
-New playground... Pydantic integration
+I'm sure you want to know what's coming next! There's a lot I want to build for
+Strawberry, but here's some of them:
+
+### New playground
+
+We have an amazing [playground for Strawberry](https://play.strawberry.rocks)
+which allows you to try out Strawberry directly in the browsers. I want to
+update it with a new design (in line with the new website) and add new features,
+like integration with our docs (imagine clicking on a button on one of the
+snippets and going directly to the playground to try that feature).
+
+### API docs
+
+This is something I've been wanting for ages, at the moment we do have some sort
+of API docs, but they are added manually in the documentation code. I think it
+would be great to have a way to generate them automatically, I know there are
+some tools that can help with this, so hopefully we can get this done at some
+point.
+
+### Pydantic integration
+
+We have an experimental integration for Pydantic, but we've been thinking about
+a "first class" integration for a while. I think it would be great! Imagine
+being able to just do this:
+
+```python
+@strawberry.type
+class User(BaseModel):
+    id: int
+    name: str
+    signup_ts: Optional[datetime] = None
+    friends: List[int] = []
+```
+
+You'd get a GraphQL type from the Pydantic model, with all the Pydantic features
+😊
+
+It will take a bit of time to figure this out properly, but I think it would be
+a great addition to Strawberry! There's an
+[issue here](https://github.com/strawberry-graphql/strawberry/issues/2181) if
+you want to follow the progress.
 
 ## GitHub Accelerator
 
 ...
+
+Still on my free time, thanks contributors, sponsors, etc...

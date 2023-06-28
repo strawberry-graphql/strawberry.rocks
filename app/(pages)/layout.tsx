@@ -1,8 +1,9 @@
-import { Header, Footer } from "@strawberry-graphql/styleguide";
-import "@strawberry-graphql/styleguide/dist/index.css";
 import type { Metadata } from "next";
 
 import { fetchLatestRelease } from "~/lib/api";
+
+import { Header, Footer } from "@strawberry-graphql/styleguide";
+import "@strawberry-graphql/styleguide/dist/index.css";
 
 export const metadata: Metadata = {
   title: {
@@ -19,12 +20,16 @@ export default async function PagesLayout({
   const version = await fetchLatestRelease();
 
   return (
-    <>
-      <Header version={version} />
+    <div className="flex flex-col min-h-screen">
+      <div>
+        <Header version={version} />
 
-      {children}
+        {children}
+      </div>
 
-      <Footer />
-    </>
+      <div className="mt-auto">
+        <Footer />
+      </div>
+    </div>
   );
 }
