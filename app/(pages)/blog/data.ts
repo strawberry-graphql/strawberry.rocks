@@ -26,6 +26,7 @@ export const fetchAllBlogPosts = cache(async () => {
         author: string;
         tags: string[];
         excerpt: string;
+        date: Date;
       };
     })
   );
