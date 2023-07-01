@@ -27,8 +27,8 @@ dependencies:
     specifier: 7.1.2
     version: 7.1.2(@octokit/core@4.2.4)
   '@strawberry-graphql/styleguide':
-    specifier: 0.11.0
-    version: 0.11.0(@babel/core@7.22.5)(postcss@8.4.24)(webpack@5.88.1)
+    specifier: 0.11.1
+    version: 0.11.1(@babel/core@7.22.5)(postcss@8.4.24)(webpack@5.88.1)
   '@tailwindcss/aspect-ratio':
     specifier: 0.4.2
     version: 0.4.2(tailwindcss@3.3.2)
@@ -2532,8 +2532,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@strawberry-graphql/styleguide@0.11.0(@babel/core@7.22.5)(postcss@8.4.24)(webpack@5.88.1):
-    resolution: {integrity: sha512-4ibqaZS/lZ5c/YOHqJVWFfabN9uCSzzsW+uT2S0z07TBqf9/PpfovO0wX/4a1FIbM87ce6X5xvS6BBMgQS61Lw==}
+  /@strawberry-graphql/styleguide@0.11.1(@babel/core@7.22.5)(postcss@8.4.24)(webpack@5.88.1):
+    resolution: {integrity: sha512-5LAN85jjBidqHIPE2hM8vwnhN/+7ukIUpC97bXeLYNR/o7C80CE1LJoftHGMGSAZoSb21YW8rJfBfNI/+2L+LA==}
     dependencies:
       '@floating-ui/react-dom': 2.0.1(react-dom@18.2.0)(react@18.2.0)
       '@headlessui/react': 1.7.15(react-dom@18.2.0)(react@18.2.0)
