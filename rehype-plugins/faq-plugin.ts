@@ -3,7 +3,7 @@ import { h } from "hastscript";
 import { Plugin } from "unified";
 
 export const FaqPlugin: Plugin = () => {
-  return (tree) => {
+  return (tree: unknown) => {
     const rootChildren = (tree as Root).children;
 
     const elements = [];
