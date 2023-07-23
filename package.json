@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "author": "Patrick Arminio <patrick.arminio@@gmail.com>",
     "engines": {
-        "node": "16.x"
+        "node": "18.x"
     },
     "scripts": {
         "preinstall": "npx only-allow pnpm",
