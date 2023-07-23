@@ -44,6 +44,12 @@ export const fixImagePathsPlugin =
       }
     });
 
+    visit(tree, { type: "element", tagName: "img" }, (node) => {
+      if (node.properties.src) {
+        node.properties.src = getUrl(node.properties.src as string);
+      }
+    });
+
     visit(tree, "jsx", (node: Text) => {
       if (node.value.includes("<img")) {
         const [, src] = node.value.split("src=");

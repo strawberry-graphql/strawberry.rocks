@@ -41,7 +41,7 @@ export const extensionDataIsComplete = (data: {
 };
 
 export const isBlob = (obj: any): obj is Blob => {
-  return Object.keys(obj).length > 0 && obj.__typename === "Blob";
+  return obj && Object.keys(obj).length > 0 && obj.__typename === "Blob";
 };
 
 export const isTree = (

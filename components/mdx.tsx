@@ -40,7 +40,7 @@ const DocsLink = ({
 
 const DocsImage = ({ src, ...props }: { src: string } & ImageProps) => (
   // eslint-disable-next-line jsx-a11y/alt-text
-  <Image className="border-2 border-red-500 max-w-full" src={src} {...props} />
+  <img className="border-2 border-red-500 max-w-full" src={src} {...props} />
 );
 
 const heading =
