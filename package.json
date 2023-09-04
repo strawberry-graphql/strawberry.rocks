@@ -37,7 +37,7 @@
         "@octokit/core": "4.1.0",
         "@octokit/plugin-paginate-rest": "5.0.1",
         "@tailwindcss/aspect-ratio": "0.4.2",
-        "@vercel/analytics": "0.1.8-beta.0",
+        "@vercel/analytics": "0.1.8",
         "classnames": "2.3.2",
         "github-slugger": "2.0.0",
         "gray-matter": "4.0.3",
