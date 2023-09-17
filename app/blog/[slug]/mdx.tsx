@@ -29,6 +29,7 @@ export const compile = async ({ source }: { source: string }) => {
     components,
     options: {
       parseFrontmatter: false,
+      // @ts-expect-error
       mdxOptions,
     },
   });

@@ -1,4 +1,5 @@
-import { Root, toString } from "hast-util-to-string";
+import { Root } from "hast-util-from-html/lib";
+import { toString } from "hast-util-to-string";
 import { h } from "hastscript";
 import { Plugin } from "unified";
 

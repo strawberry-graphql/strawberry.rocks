@@ -3,6 +3,9 @@
         "plugin:@typescript-eslint/recommended",
         "next/core-web-vitals"
     ],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
     "rules": {
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-empty-function": "off",

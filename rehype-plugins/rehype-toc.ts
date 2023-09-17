@@ -1,5 +1,6 @@
 import GithubSlugger from "github-slugger";
-import { Element, toString } from "hast-util-to-string";
+import { toString } from "hast-util-to-string";
+import { Element, Root } from "hastscript/lib/create-h";
 import { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
@@ -14,7 +15,8 @@ const HEADINGS = ["h1", "h2"];
 
 export const RehypeTOC =
   (options: { onlyLinks?: boolean; items: TocItem[] }) => (): Plugin => {
-    return (tree) => {
+    // @ts-expect-error
+    return (tree: Root) => {
       const slugger = new GithubSlugger();
 
       const root: TocItem = {

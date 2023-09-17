@@ -1,6 +1,5 @@
-import { Text } from "hast-util-to-html/lib/types";
 import { dirname, join } from "path";
-// @ts-ignore
+// @ts-expect-error
 import { Node } from "unist";
 import { visit } from "unist-util-visit";
 
@@ -48,7 +47,7 @@ export const fixImagePathsPlugin =
       }
     });
 
-    visit(tree, "jsx", (node: Text) => {
+    visit(tree, "jsx", (node: any) => {
       if (node.value.includes("<img")) {
         const [, src] = node.value.split("src=");
         const [, url] = src.split('"');

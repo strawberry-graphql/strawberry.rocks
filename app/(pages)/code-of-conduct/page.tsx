@@ -1,4 +1,3 @@
-import { Spacer, Box } from "@strawberry-graphql/styleguide";
 import type { Metadata } from "next";
 import remarkComment from "remark-comment";
 import remarkGfm from "remark-gfm";
@@ -7,6 +6,8 @@ import { compileMDX } from "next-mdx-remote/rsc";
 
 import { components } from "~/components/mdx";
 import { fetchCodeOfConduct } from "~/lib/api";
+
+import { Spacer, Box } from "@strawberry-graphql/styleguide";
 
 export const metadata: Metadata = {
   title: "Code of Conduct",
@@ -26,6 +27,7 @@ export default async function CodeOfConductPage() {
     components,
     options: {
       parseFrontmatter: true,
+      // @ts-expect-error
       mdxOptions,
     },
   });

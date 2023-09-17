@@ -1,4 +1,3 @@
-import { Spacer } from "@strawberry-graphql/styleguide";
 import matter from "gray-matter";
 import remarkComment from "remark-comment";
 import remarkGfm from "remark-gfm";
@@ -20,6 +19,8 @@ import { RehypeMermaid } from "~/rehype-plugins/rehype-mermaid";
 import { TocItem, RehypeTOC } from "~/rehype-plugins/rehype-toc";
 
 import { getFetchDocsParams } from "./path-utils";
+
+import { Spacer } from "@strawberry-graphql/styleguide";
 
 export const fetchAndParsePage = async (
   data: Awaited<ReturnType<typeof getFetchDocsParams>>
@@ -98,6 +99,7 @@ export const fetchAndParsePage = async (
     },
     options: {
       parseFrontmatter: false,
+      // @ts-expect-error
       mdxOptions,
     },
   });
