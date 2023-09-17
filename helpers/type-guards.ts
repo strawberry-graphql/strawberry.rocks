@@ -1,6 +1,5 @@
-import { marked } from "marked";
+import type { Tokens } from "marked";
 
-import { GithubCollaborator } from "~/types/api";
 import { ExtensionDocData } from "~/types/extensions";
 import { Blob, ExtensionsPageQuery } from "~/types/graphql";
 import { TokenListItem, TokenText } from "~/types/marked";
@@ -10,11 +9,11 @@ export const isString = (x: any): x is string => {
   return typeof x === "string";
 };
 
-export const isHeading = (token: any): token is marked.Tokens.Heading => {
+export const isHeading = (token: any): token is Tokens.Heading => {
   return token.type === "heading";
 };
 
-export const isList = (token: any): token is marked.Tokens.List => {
+export const isList = (token: any): token is Tokens.List => {
   return token?.type === "list";
 };
 
@@ -22,7 +21,7 @@ export const isTextWithTokens = (token: any): token is TokenText => {
   return token?.type === "text" && token?.tokens != null;
 };
 
-export const isLink = (token: any): token is marked.Tokens.Link => {
+export const isLink = (token: any): token is Tokens.Link => {
   return token?.type === "link" && token?.tokens != null;
 };
 

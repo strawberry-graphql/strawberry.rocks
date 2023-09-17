@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+import { SearchBoxTrigger } from "~/components/searchbox-trigger";
+import { fetchLatestRelease, fetchTableOfContents } from "~/lib/api";
+
+import { getFetchDocsParams } from "../path-utils";
+
 import {
   MobileNav,
   Spacer,
@@ -5,12 +12,6 @@ import {
   Header,
   Footer,
 } from "@strawberry-graphql/styleguide";
-import type { Metadata } from "next";
-
-import { SearchBoxTrigger } from "~/components/searchbox-trigger";
-import { fetchLatestRelease, fetchTableOfContents } from "~/lib/api";
-
-import { getFetchDocsParams } from "../path-utils";
 
 export const metadata: Metadata = {
   title: {
@@ -30,11 +31,19 @@ export default async function DocsLayout({
     prefix: "/docs/",
   });
 
+  if (tableOfContents === null) {
+    throw new Error(
+      "Something went wrong while fetching the table of contents"
+    );
+  }
+
   let pullNumber = null;
 
   try {
     pullNumber = (await getFetchDocsParams(params)).pullNumber;
-  } catch (e) {}
+  } catch (e) {
+    console.error(e);
+  }
 
   const sections = Object.entries(tableOfContents).map(([name, section]) => ({
     name,

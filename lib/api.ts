@@ -318,6 +318,7 @@ export const fetchTableOfContentsPaths = async ({
       );
     }
   });
+
   return paramSlugs;
 };
 
