@@ -1,0 +1,13 @@
+{
+  "workbench.colorCustomizations": {
+    "sash.hoverBorder": "#efa1a3",
+    "statusBar.background": "#e87579",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#e1494f",
+    "statusBarItem.remoteBackground": "#e87579",
+    "statusBarItem.remoteForeground": "#15202b"
+  },
+  "peacock.color": "#e87579",
+  "typescript.tsdk": "node_modules/.pnpm/typescript@4.9.5/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}

@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("./mermaid.css");
+
+@layer utilities {
+  .stroke-strawberry-gradient {
+    stroke: url(#strawberry-gradient);
+  }
+
+  /* TODO: this should be improved */
+
+  .stroke-strawberry-gradient-2 {
+    stroke: url(#strawberry-gradient-2);
+  }
+
+  .bg-inline-code {
+    background-color: rgba(247, 57, 61, 0.1);
+  }
+
+  .gradient-border {
+    background: linear-gradient(white, white) padding-box,
+      linear-gradient(
+          to right,
+          theme("colors.strawberry"),
+          theme("colors.orange")
+        )
+        border-box;
+    border: 1.5px solid transparent;
+  }
+
+  .gradient-border-dark {
+    background: linear-gradient(theme("colors.black"), theme("colors.black"))
+        padding-box,
+      linear-gradient(
+          to right,
+          theme("colors.strawberry"),
+          theme("colors.orange")
+        )
+        border-box;
+    border: 1.5px solid transparent;
+  }
+
+  .gradient-border-dark-footer {
+    background: linear-gradient(rgba(27, 29, 33, 1), rgba(27, 29, 33, 1))
+        padding-box,
+      linear-gradient(
+          to right,
+          theme("colors.strawberry"),
+          theme("colors.orange")
+        )
+        border-box;
+    border: 1.5px solid transparent;
+  }
+}
+
+@layer components {
+  .input-border {
+    @apply hover:gradient-border focus:gradient-border dark:hover:gradient-border-dark dark:focus:gradient-border-dark;
+  }
+
+  .dark\:bg-footer-dark .input-border {
+    @apply dark:hover:gradient-border-dark-footer dark:focus:gradient-border-dark-footer;
+  }
+
+  .typography-display {
+    @apply font-medium font-display text-display-s md:text-display;
+  }
+
+  .typography-caption {
+    @apply font-sans text-caption;
+  }
+
+  .typography-heading-1,
+  .typography-heading-2,
+  .typography-heading-3,
+  .typography-heading-4 {
+    @apply font-bold font-display;
+  }
+
+  .typography-heading-1 {
+    @apply text-heading-1-s md:text-heading-1;
+  }
+
+  .typography-heading-2 {
+    @apply text-heading-2-s md:text-heading-2;
+  }
+
+  .typography-heading-3 {
+    @apply text-heading-3;
+  }
+
+  .typography-heading-4 {
+    @apply text-heading-4;
+  }
+
+  .typography-paragraph {
+    @apply font-sans text-paragraph-s md:text-paragraph;
+  }
+
+  .typography-paragraph-2 {
+    @apply font-sans text-paragraph-2;
+  }
+
+  .typography-label {
+    @apply font-bold uppercase tracking-wide text-label;
+  }
+
+  .typography-label-2 {
+    @apply font-bold uppercase tracking-wide text-label-2;
+  }
+
+  .typography-code {
+    @apply font-mono text-code;
+  }
+
+  .border-transparency-light {
+    border-color: rgba(54, 56, 60, 0.5);
+  }
+
+  .bg-transparency-dark {
+    background-color: rgba(40, 41, 44, 0.5);
+  }
+
+  .bg-blog-card-dark {
+    background-color: rgba(27, 29, 33, 0.75);
+  }
+
+  .bg-footer-dark {
+    background-color: rgba(27, 29, 33, 0.75);
+  }
+
+  .bg-transparency-light {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .codebox {
+    overflow: auto;
+    @apply flex;
+  }
+
+  .codebox pre {
+    @apply p-24;
+    overflow: visible !important;
+  }
+
+  .codebox [data-node-id] {
+    background-color: #eaae7557;
+  }
+
+  .codebox .highlight,
+  .codebox mark {
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+    background-color: #ea807557;
+  }
+
+  .codebox pre,
+  .codebox code,
+  .codebox .line {
+    @apply w-full block;
+  }
+  .codebox .line:not(:empty) {
+    @apply w-full inline-block;
+  }
+}
+
+:root {
+  --code-color-green: #8ed287;
+  --code-color-blue: #aed5fb;
+  --code-color-purple: #cbabf9;
+  --code-color-pink: #ea8075;
+  --code-color-orange: #eaad75;
+
+  --shiki-color-text: #fff;
+  --shiki-color-background: transparent;
+  --shiki-token-constant: var(--code-color-blue);
+  --shiki-token-string: var(--code-color-blue);
+  --shiki-token-comment: var(--code-color-pink);
+  --shiki-token-keyword: var(--code-color-green);
+  --shiki-token-parameter: #fff;
+  --shiki-token-function: var(--code-color-purple);
+  --shiki-token-string-expression: var(--code-color-blue);
+  --shiki-token-punctuation: var(--code-color-purple);
+  --shiki-token-link: var(--code-color-orange);
+}
+
+body {
+  @apply bg-white dark:bg-black text-black dark:text-white;
+}
+
+mark {
+  @apply text-strawberry underline bg-transparent font-bold;
+}
+
+.selected mark {
+  color: inherit;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+.docs-content {
+  @apply px-16 sm:px-24 md:px-40 space-y-8;
+}
+
+.docs-content :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0.67em 0 !important;
+}
+
+.docs-content :first-child {
+  margin-top: 0 !important;
+}
+
+.docs-content .callout {
+  margin: 24px 0 !important;
+}
+
+.page-content :is(h1, h2, h3, h4, h5, h6) {
+  margin: 1em 0 !important;
+}
+
+.page-content :first-child {
+  margin-top: 0 !important;
+}
