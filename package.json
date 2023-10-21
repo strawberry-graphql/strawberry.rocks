@@ -70,7 +70,7 @@
         "refractor": "4.8.1",
         "rehype-parse": "9.0.0",
         "remark-comment": "1.0.0",
-        "remark-gfm": "4.0.0",
+        "remark-gfm": "3.0.1",
         "remark-mdx-disable-explicit-jsx": "0.1.0",
         "remark-mermaid": "0.2.0",
         "shiki": "0.14.5",

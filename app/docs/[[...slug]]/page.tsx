@@ -1,15 +1,15 @@
+import { NotSafeToPreview } from "~/components/not-safe-to-preview";
+import { fetchExtensionsPaths, fetchTableOfContentsPaths } from "~/lib/api";
+
+import { fetchAndParsePage } from "../page-utils";
+import { getFetchDocsParams } from "../path-utils";
+
 import {
   DocsContent,
   PageTOC,
   FeedbackForm,
   Separator,
 } from "@strawberry-graphql/styleguide";
-
-import { NotSafeToPreview } from "~/components/not-safe-to-preview";
-import { fetchExtensionsPaths, fetchTableOfContentsPaths } from "~/lib/api";
-
-import { fetchAndParsePage } from "../page-utils";
-import { getFetchDocsParams } from "../path-utils";
 
 // revalidate every 10 minutes
 export const revalidate = 600;
@@ -102,6 +102,7 @@ export default async function DocsPage({
         </div>
       </DocsContent>
       {/* TODO: support for nested? */}
+
       <PageTOC
         // @ts-ignore
         items={items.map((item) => ({
