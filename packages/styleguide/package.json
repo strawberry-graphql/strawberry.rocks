@@ -42,6 +42,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@strawberry-graphql/tailwind-config": "workspace:*",
     "@storybook/addon-essentials": "^7.0.22",
     "@storybook/addon-interactions": "^7.0.22",
     "@storybook/addon-links": "^7.0.22",

@@ -1,12 +1,10 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
+import "styles/global.css";
 
 import localFont from "next/font/local";
 
-import "../styles/tailwind.css";
-
 import { DarkModeScript } from "@strawberry-graphql/styleguide";
-import "@strawberry-graphql/styleguide/dist/index.css";
 
 export const metadata: Metadata = {
   description:

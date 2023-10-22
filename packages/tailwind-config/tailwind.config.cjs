@@ -1,6 +1,7 @@
 // @ts-check
 /** @type {import('tailwindcss').Config} */
 // @ts-ignore
+const path = require('path');
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const colors = {
@@ -283,7 +284,12 @@ const themeFontSizes = Object.fromEntries(
 );
 
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    path.resolve(__dirname, "../styleguide/src/**/*.{js,ts,jsx,tsx,mdx}")
+  ],
   fonts,
   colors,
   typography,

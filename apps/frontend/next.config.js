@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     domains: ["strawberry.rocks", "github.com"],
   },
+  transpilePackages: ["@strawberry-graphql/styleguide"],
   async rewrites() {
     return [
       {
