@@ -43,3 +43,4 @@ export { Input } from "./components/form/input";
 export { ArticleHeader } from "./components/article-header/article-header";
 export { ArticleCard } from "./components/article-card/article-card";
 export { ArticleGrid } from "./components/article-grid/article-grid";
+export { ReleaseCard } from "./components/release-card/release-card";

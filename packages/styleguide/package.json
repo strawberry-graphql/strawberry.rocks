@@ -36,13 +36,13 @@
     "react-instantsearch-hooks-web": "^6.47.3",
     "react-wrap-balancer": "^1.0.0",
     "remove": "^0.1.5",
+    "satori": "^0.10.9",
     "shiki": "^0.14.2",
     "style-loader": "^3.3.3",
     "to-querystring": "^1.2.0",
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@strawberry-graphql/tailwind-config": "workspace:*",
     "@storybook/addon-essentials": "^7.0.22",
     "@storybook/addon-interactions": "^7.0.22",
     "@storybook/addon-links": "^7.0.22",
@@ -51,6 +51,7 @@
     "@storybook/nextjs": "^7.0.22",
     "@storybook/react": "^7.0.22",
     "@storybook/testing-library": "^0.2.0",
+    "@strawberry-graphql/tailwind-config": "workspace:*",
     "@types/jsonp": "^0.2.1",
     "autoprefixer": "^10.4.14",
     "eslint-plugin-storybook": "^0.6.12",
