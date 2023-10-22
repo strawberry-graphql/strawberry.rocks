@@ -7,20 +7,18 @@ import { urlToSlugs } from "~/helpers/params";
 import { isList, isString } from "~/helpers/type-guards";
 import { GithubCollaborator, PagePath } from "~/types/api";
 import {
-  CodeOfConduct,
   CodeOfConductQuery,
-  DocPage,
+  DocPageDocument,
   DocPageQuery,
-  ExtensionsPage,
+  ExtensionsPageDocument,
   ExtensionsPageQuery,
-  ExtensionsPages,
-  File,
+  FileDocument,
   FileQuery,
-  LatestRelease,
+  LatestReleaseDocument,
   LatestReleaseQuery,
-  PullRequest,
+  PullRequestDocument,
   PullRequestQuery,
-  Sponsors,
+  SponsorsDocument,
   SponsorsQuery,
 } from "~/types/graphql";
 
@@ -121,7 +119,7 @@ export const fetchPullRequest = async ({
 }) => {
   try {
     const pull = await octokit
-      .graphql<PullRequestQuery>(print(PullRequest), {
+      .graphql<PullRequestQuery>(print(PullRequestDocument), {
         owner,
         repo,
         pull_number,
@@ -164,7 +162,7 @@ export const fetchFile = async ({
 }) => {
   try {
     const text = await octokit
-      .graphql<FileQuery>(print(File), {
+      .graphql<FileQuery>(print(FileDocument), {
         owner,
         repo,
         filename: `${ref}:${filename}`,
@@ -194,7 +192,7 @@ export const fetchLatestRelease = async (): Promise<{
 
   try {
     const latest = await octokit
-      .graphql<LatestReleaseQuery>(print(LatestRelease), {
+      .graphql<LatestReleaseQuery>(print(LatestReleaseDocument), {
         owner: OWNER,
         repo: REPO,
       })
@@ -293,7 +291,7 @@ export const fetchExtensionsPaths = async ({
 }): Promise<PagePath> => {
   try {
     const response = await octokit.graphql<ExtensionsPageQuery>(
-      print(ExtensionsPage),
+      print(ExtensionsPageDocument),
       {
         owner,
         repo,
@@ -368,12 +366,15 @@ export const fetchDocPage = async ({
   }
 
   try {
-    const response = await octokit.graphql<DocPageQuery>(print(DocPage), {
-      owner,
-      repo,
-      filename: `${ref}:${filename}`,
-      tablecontent: `${ref}:docs/README.md`,
-    });
+    const response = await octokit.graphql<DocPageQuery>(
+      print(DocPageDocument),
+      {
+        owner,
+        repo,
+        filename: `${ref}:${filename}`,
+        tablecontent: `${ref}:docs/README.md`,
+      }
+    );
 
     const pageText = getBlobText(response.repository?.object);
     const tableContentText = getBlobText(response.repository?.tableOfContents);
@@ -407,7 +408,7 @@ export const fetchExtensions = async ({
 }) => {
   try {
     const response = await octokit.graphql<ExtensionsPageQuery>(
-      print(ExtensionsPage),
+      print(ExtensionsPageDocument),
       {
         owner,
         repo,
@@ -475,7 +476,7 @@ export const fetchSponsors = async () => {
 
   try {
     sponsors = await octokit
-      .graphql<SponsorsQuery>(print(Sponsors))
+      .graphql<SponsorsQuery>(print(SponsorsDocument))
       .then((response) => {
         return response?.organization?.sponsors.nodes;
       });
@@ -517,7 +518,7 @@ export const fetchSponsors = async () => {
     }`;
   };
 
-  const queries = sponsors.map((sponsor: any, index: number) => {
+  const queries = sponsors!.map((sponsor: any, index: number) => {
     const { __typename, login } = sponsor;
 
     return getQuery(`sponsor${index}`, __typename, login);

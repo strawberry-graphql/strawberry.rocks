@@ -12,3 +12,4 @@ generates:
       skipTypename: true
       rawRequest: true
       preResolveTypes: false
+      nameSuffix: "Document"

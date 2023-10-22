@@ -28629,7 +28629,7 @@ export type SponsorsQuery = {
   }>;
 };
 
-export const PullRequest = gql`
+export const PullRequestDocument = gql`
   query pullRequest($owner: String!, $repo: String!, $pull_number: Int!) {
     repository(owner: $owner, name: $repo) {
       pullRequest(number: $pull_number) {
@@ -28652,7 +28652,7 @@ export const PullRequest = gql`
     }
   }
 `;
-export const File = gql`
+export const FileDocument = gql`
   query file($owner: String!, $repo: String!, $filename: String!) {
     repository(owner: $owner, name: $repo) {
       object(expression: $filename) {
@@ -28664,7 +28664,7 @@ export const File = gql`
     }
   }
 `;
-export const LatestRelease = gql`
+export const LatestReleaseDocument = gql`
   query latestRelease($owner: String!, $repo: String!) {
     repository(owner: $owner, name: $repo) {
       latestRelease {
@@ -28673,7 +28673,7 @@ export const LatestRelease = gql`
     }
   }
 `;
-export const ExtensionsPages = gql`
+export const ExtensionsPagesDocument = gql`
   query extensionsPages($owner: String!, $repo: String!, $filename: String!) {
     repository(owner: $owner, name: $repo) {
       object(expression: $filename) {
@@ -28688,7 +28688,7 @@ export const ExtensionsPages = gql`
     }
   }
 `;
-export const CodeOfConduct = gql`
+export const CodeOfConductDocument = gql`
   query codeOfConduct($owner: String!, $repo: String!) {
     repository(owner: $owner, name: $repo) {
       codeOfConduct {
@@ -28700,7 +28700,7 @@ export const CodeOfConduct = gql`
     }
   }
 `;
-export const DocPage = gql`
+export const DocPageDocument = gql`
   query docPage(
     $owner: String!
     $repo: String!
@@ -28723,7 +28723,7 @@ export const DocPage = gql`
     }
   }
 `;
-export const ExtensionsPage = gql`
+export const ExtensionsPageDocument = gql`
   query extensionsPage($owner: String!, $repo: String!, $filename: String!) {
     repository(owner: $owner, name: $repo) {
       object(expression: $filename) {
@@ -28746,7 +28746,7 @@ export const ExtensionsPage = gql`
     }
   }
 `;
-export const Sponsors = gql`
+export const SponsorsDocument = gql`
   query sponsors {
     organization(login: "strawberry-graphql") {
       sponsors(first: 100) {
