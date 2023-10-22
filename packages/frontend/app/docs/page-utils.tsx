@@ -10,7 +10,7 @@ import { ExtensionsList } from "~/components/extensions-list";
 import { components } from "~/components/mdx";
 import { fixImagePathsPlugin } from "~/helpers/image-paths";
 import { updateURLsPlugin } from "~/helpers/remark-update-urls";
-import { fetchDocPage, OWNER, REPO, REF } from "~/lib/api";
+import { fetchDocPage, OWNER, REPO, REF } from "~/lib/api/github";
 import { getHighlighter } from "~/lib/shiki";
 import { FaqPlugin } from "~/rehype-plugins/faq-plugin";
 import { RehypeCodeNotes } from "~/rehype-plugins/rehype-code-notes";

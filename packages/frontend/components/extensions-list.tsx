@@ -2,7 +2,7 @@ import matter from "gray-matter";
 
 import { urlToSlugs } from "~/helpers/params";
 import { extensionDataIsComplete } from "~/helpers/type-guards";
-import { fetchExtensions } from "~/lib/api";
+import { fetchExtensions } from "~/lib/api/github";
 import { getBlobText } from "~/lib/doc-tree";
 
 import { ExtensionsGrid } from "@strawberry-graphql/styleguide";

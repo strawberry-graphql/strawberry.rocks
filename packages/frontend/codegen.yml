@@ -1,12 +1,14 @@
 overwrite: true
-schema: ./node_modules/@octokit/graphql-schema/schema.graphql
+schema: ../../node_modules/@octokit/graphql-schema/schema.graphql
 documents:
-  - "./lib/*.ts"
+  - "./lib/api/github.graphql"
 generates:
   ./types/graphql.d.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
+      - typescript-document-nodes
     config:
       skipTypename: true
+      rawRequest: true
       preResolveTypes: false

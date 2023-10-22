@@ -1,4 +1,4 @@
-import { fetchLatestRelease } from "~/lib/api";
+import { fetchLatestRelease } from "~/lib/api/github";
 
 import { Header, NotFoundHero } from "@strawberry-graphql/styleguide";
 

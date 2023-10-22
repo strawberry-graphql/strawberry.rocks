@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 
-import { getDocTree } from "./doc-tree";
+import { getDocTree } from "../doc-tree";
 
 export const fetchTableOfContentsLocal = async ({
   prefix,

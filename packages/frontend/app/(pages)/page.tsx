@@ -1,5 +1,5 @@
 import { SearchBoxTrigger } from "~/components/searchbox-trigger";
-import { fetchSponsorsForHomepage } from "~/lib/api";
+import { fetchSponsorsForHomepage } from "~/lib/api/github";
 import { fetchDownloads } from "~/lib/api/pypi";
 
 import {

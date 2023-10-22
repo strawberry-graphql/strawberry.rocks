@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { fetchContributors, fetchSponsors } from "~/lib/api";
+import { fetchContributors, fetchSponsors } from "~/lib/api/github";
 
 import {
   Display,

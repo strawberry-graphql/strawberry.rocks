@@ -1,4 +1,4 @@
-import { fetchPullRequest, OWNER, REF, REPO } from "~/lib/api";
+import { fetchPullRequest, OWNER, REF, REPO } from "~/lib/api/github";
 
 export const getFetchDocsParams = async ({ slug }: { slug?: string[] }) => {
   let slugs = slug || [];

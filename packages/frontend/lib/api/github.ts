@@ -1,27 +1,37 @@
 import { Octokit } from "@octokit/core";
 import { paginateRest } from "@octokit/plugin-paginate-rest";
+import { print } from "graphql";
 import { marked } from "marked";
 
 import { urlToSlugs } from "~/helpers/params";
 import { isList, isString } from "~/helpers/type-guards";
 import { GithubCollaborator, PagePath } from "~/types/api";
 import {
+  CodeOfConduct,
   CodeOfConductQuery,
+  DocPage,
   DocPageQuery,
+  ExtensionsPage,
   ExtensionsPageQuery,
+  ExtensionsPages,
+  File,
   FileQuery,
+  LatestRelease,
   LatestReleaseQuery,
+  PullRequest,
   PullRequestQuery,
+  Sponsors,
+  SponsorsQuery,
 } from "~/types/graphql";
 
-import { fetchDocPageLocal, fetchTableOfContentsLocal } from "./api-local";
-import { getOpenCollectiveSponsors } from "./api/opencollective";
 import {
   getBlobText,
   getDocTree,
   getMDLinks,
   getTreeEntries,
-} from "./doc-tree";
+} from "../doc-tree";
+import { fetchDocPageLocal, fetchTableOfContentsLocal } from "./github-local";
+import { getOpenCollectiveSponsors } from "./opencollective";
 
 const customOctokit = Octokit.plugin(paginateRest);
 
@@ -111,37 +121,11 @@ export const fetchPullRequest = async ({
 }) => {
   try {
     const pull = await octokit
-      .graphql<PullRequestQuery>(
-        /* GraphQL */
-        `
-          query pullRequest(
-            $owner: String!
-            $repo: String!
-            $pull_number: Int!
-          ) {
-            repository(owner: $owner, name: $repo) {
-              pullRequest(number: $pull_number) {
-                state
-                number
-                headRepositoryOwner {
-                  login
-                }
-                repository {
-                  name
-                }
-                headRefName
-                url
-                labels(first: 10) {
-                  nodes {
-                    name
-                  }
-                }
-              }
-            }
-          }
-        `,
-        { owner, repo, pull_number }
-      )
+      .graphql<PullRequestQuery>(print(PullRequest), {
+        owner,
+        repo,
+        pull_number,
+      })
       .then((response) => response.repository?.pullRequest);
 
     const safeToPreview: boolean =
@@ -180,26 +164,11 @@ export const fetchFile = async ({
 }) => {
   try {
     const text = await octokit
-      .graphql<FileQuery>(
-        /* GraphQL */
-        `
-          query file($owner: String!, $repo: String!, $filename: String!) {
-            repository(owner: $owner, name: $repo) {
-              object(expression: $filename) {
-                ... on Blob {
-                  __typename
-                  text
-                }
-              }
-            }
-          }
-        `,
-        {
-          owner,
-          repo,
-          filename: `${ref}:${filename}`,
-        }
-      )
+      .graphql<FileQuery>(print(File), {
+        owner,
+        repo,
+        filename: `${ref}:${filename}`,
+      })
       .then((response) => getBlobText(response.repository?.object));
     if (text == null) {
       throw new Error("no text");
@@ -225,19 +194,10 @@ export const fetchLatestRelease = async (): Promise<{
 
   try {
     const latest = await octokit
-      .graphql<LatestReleaseQuery>(
-        /* GraphQL */
-        `
-          query latestRelease($owner: String!, $repo: String!) {
-            repository(owner: $owner, name: $repo) {
-              latestRelease {
-                tagName
-              }
-            }
-          }
-        `,
-        { owner: OWNER, repo: REPO }
-      )
+      .graphql<LatestReleaseQuery>(print(LatestRelease), {
+        owner: OWNER,
+        repo: REPO,
+      })
       .then((response) => response.repository);
 
     const tagName = latest?.latestRelease?.tagName;
@@ -333,26 +293,7 @@ export const fetchExtensionsPaths = async ({
 }): Promise<PagePath> => {
   try {
     const response = await octokit.graphql<ExtensionsPageQuery>(
-      /* GraphQL */
-      `
-        query extensionsPages(
-          $owner: String!
-          $repo: String!
-          $filename: String!
-        ) {
-          repository(owner: $owner, name: $repo) {
-            object(expression: $filename) {
-              ... on Tree {
-                __typename
-                entries {
-                  name
-                  path
-                }
-              }
-            }
-          }
-        }
-      `,
+      print(ExtensionsPage),
       {
         owner,
         repo,
@@ -393,18 +334,7 @@ export const fetchCodeOfConduct = async () =>
   await octokit
     .graphql<CodeOfConductQuery>(
       /* GraphQL */
-      `
-        query codeOfConduct($owner: String!, $repo: String!) {
-          repository(owner: $owner, name: $repo) {
-            codeOfConduct {
-              body
-            }
-            latestRelease {
-              tagName
-            }
-          }
-        }
-      `,
+      print(CodeOfConduct),
       { owner: OWNER, repo: REPO }
     )
     .then((response) => response.repository);
@@ -438,38 +368,12 @@ export const fetchDocPage = async ({
   }
 
   try {
-    const response = await octokit.graphql<DocPageQuery>(
-      /* GraphQL */
-      `
-        query docPage(
-          $owner: String!
-          $repo: String!
-          $filename: String!
-          $tablecontent: String!
-        ) {
-          repository(owner: $owner, name: $repo) {
-            object(expression: $filename) {
-              ... on Blob {
-                __typename
-                text
-              }
-            }
-            tableOfContents: object(expression: $tablecontent) {
-              ... on Blob {
-                __typename
-                text
-              }
-            }
-          }
-        }
-      `,
-      {
-        owner,
-        repo,
-        filename: `${ref}:${filename}`,
-        tablecontent: `${ref}:docs/README.md`,
-      }
-    );
+    const response = await octokit.graphql<DocPageQuery>(print(DocPage), {
+      owner,
+      repo,
+      filename: `${ref}:${filename}`,
+      tablecontent: `${ref}:docs/README.md`,
+    });
 
     const pageText = getBlobText(response.repository?.object);
     const tableContentText = getBlobText(response.repository?.tableOfContents);
@@ -503,33 +407,7 @@ export const fetchExtensions = async ({
 }) => {
   try {
     const response = await octokit.graphql<ExtensionsPageQuery>(
-      /* GraphQL */ `
-        query extensionsPage(
-          $owner: String!
-          $repo: String!
-          $filename: String!
-        ) {
-          repository(owner: $owner, name: $repo) {
-            object(expression: $filename) {
-              ... on Tree {
-                __typename
-                entries {
-                  __typename
-                  name
-                  path
-                  type
-                  object {
-                    ... on Blob {
-                      __typename
-                      text
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
+      print(ExtensionsPage),
       {
         owner,
         repo,
@@ -541,13 +419,9 @@ export const fetchExtensions = async ({
     if (extensions == null) {
       throw new Error("no extensions");
     }
-    const tableContentText = getBlobText(response.repository?.tableOfContents);
+
     return {
       extensions,
-      tableContent:
-        tableContentText != null
-          ? await getDocTree(tableContentText, prefix)
-          : null,
     };
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -601,32 +475,9 @@ export const fetchSponsors = async () => {
 
   try {
     sponsors = await octokit
-      .graphql<any>(
-        /* GraphQL */
-        `
-          {
-            organization(login: "strawberry-graphql") {
-              sponsors(first: 100) {
-                nodes {
-                  __typename
-                  ... on User {
-                    login
-                    name
-                    avatarUrl
-                  }
-                  ... on Organization {
-                    login
-                    name
-                    avatarUrl
-                  }
-                }
-              }
-            }
-          }
-        `
-      )
+      .graphql<SponsorsQuery>(print(Sponsors))
       .then((response) => {
-        return response.organization.sponsors.nodes;
+        return response?.organization?.sponsors.nodes;
       });
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -637,6 +488,7 @@ export const fetchSponsors = async () => {
   const getQuery = (alias: string, typename: string, login: string) => {
     const rootField = typename === "User" ? "user" : "organization";
 
+    // TODO: don't judge me for this
     return /* GraphQL */ `${alias}: ${rootField}(login: "${login}") {
       login
       name

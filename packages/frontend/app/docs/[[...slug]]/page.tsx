@@ -1,5 +1,8 @@
 import { NotSafeToPreview } from "~/components/not-safe-to-preview";
-import { fetchExtensionsPaths, fetchTableOfContentsPaths } from "~/lib/api";
+import {
+  fetchExtensionsPaths,
+  fetchTableOfContentsPaths,
+} from "~/lib/api/github";
 
 import { fetchAndParsePage } from "../page-utils";
 import { getFetchDocsParams } from "../path-utils";

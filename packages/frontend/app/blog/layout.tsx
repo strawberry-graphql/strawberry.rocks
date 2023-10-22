@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { fetchLatestRelease } from "~/lib/api";
+import { fetchLatestRelease } from "~/lib/api/github";
 
 import { Header, Footer } from "@strawberry-graphql/styleguide";
 import "@strawberry-graphql/styleguide/dist/index.css";

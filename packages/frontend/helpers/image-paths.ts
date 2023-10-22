@@ -2,7 +2,7 @@ import { dirname, join } from "path";
 import { Node } from "unist";
 import { visit } from "unist-util-visit";
 
-import { OWNER, REF, REPO } from "~/lib/api";
+import { OWNER, REF, REPO } from "~/lib/api/github";
 
 import { isString } from "./type-guards";
 

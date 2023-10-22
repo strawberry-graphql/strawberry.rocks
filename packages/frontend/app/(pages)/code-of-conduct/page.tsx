@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import { compileMDX } from "next-mdx-remote/rsc";
 
 import { components } from "~/components/mdx";
-import { fetchCodeOfConduct } from "~/lib/api";
+import { fetchCodeOfConduct } from "~/lib/api/github";
 
 import { Spacer, Box } from "@strawberry-graphql/styleguide";
 

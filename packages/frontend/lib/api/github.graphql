@@ -1,0 +1,129 @@
+query pullRequest($owner: String!, $repo: String!, $pull_number: Int!) {
+  repository(owner: $owner, name: $repo) {
+    pullRequest(number: $pull_number) {
+      state
+      number
+      headRepositoryOwner {
+        login
+      }
+      repository {
+        name
+      }
+      headRefName
+      url
+      labels(first: 10) {
+        nodes {
+          name
+        }
+      }
+    }
+  }
+}
+
+query file($owner: String!, $repo: String!, $filename: String!) {
+  repository(owner: $owner, name: $repo) {
+    object(expression: $filename) {
+      ... on Blob {
+        __typename
+        text
+      }
+    }
+  }
+}
+
+query latestRelease($owner: String!, $repo: String!) {
+  repository(owner: $owner, name: $repo) {
+    latestRelease {
+      tagName
+    }
+  }
+}
+
+query extensionsPages($owner: String!, $repo: String!, $filename: String!) {
+  repository(owner: $owner, name: $repo) {
+    object(expression: $filename) {
+      ... on Tree {
+        __typename
+        entries {
+          name
+          path
+        }
+      }
+    }
+  }
+}
+
+query codeOfConduct($owner: String!, $repo: String!) {
+  repository(owner: $owner, name: $repo) {
+    codeOfConduct {
+      body
+    }
+    latestRelease {
+      tagName
+    }
+  }
+}
+
+query docPage(
+  $owner: String!
+  $repo: String!
+  $filename: String!
+  $tablecontent: String!
+) {
+  repository(owner: $owner, name: $repo) {
+    object(expression: $filename) {
+      ... on Blob {
+        __typename
+        text
+      }
+    }
+    tableOfContents: object(expression: $tablecontent) {
+      ... on Blob {
+        __typename
+        text
+      }
+    }
+  }
+}
+
+query extensionsPage($owner: String!, $repo: String!, $filename: String!) {
+  repository(owner: $owner, name: $repo) {
+    object(expression: $filename) {
+      ... on Tree {
+        __typename
+        entries {
+          __typename
+          name
+          path
+          type
+          object {
+            ... on Blob {
+              __typename
+              text
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query sponsors {
+  organization(login: "strawberry-graphql") {
+    sponsors(first: 100) {
+      nodes {
+        __typename
+        ... on User {
+          login
+          name
+          avatarUrl
+        }
+        ... on Organization {
+          login
+          name
+          avatarUrl
+        }
+      }
+    }
+  }
+}

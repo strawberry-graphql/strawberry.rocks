@@ -1,7 +1,7 @@
 import path from "path";
 import { visit } from "unist-util-visit";
 
-import { OWNER, REF, REPO } from "~/lib/api";
+import { OWNER, REF, REPO } from "~/lib/api/github";
 
 export const updateURLsPlugin =
   ({
