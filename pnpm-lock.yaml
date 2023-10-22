@@ -7,7 +7,7 @@ settings:
 importers:
   .: {}
 
-  packages/frontend:
+  apps/frontend:
     dependencies:
       "@docsearch/js":
         specifier: 3.5.2
@@ -32,7 +32,7 @@ importers:
         version: 9.0.0(@octokit/core@5.0.1)
       "@strawberry-graphql/styleguide":
         specifier: workspace:*
-        version: link:../styleguide
+        version: link:../../packages/styleguide
       "@tailwindcss/aspect-ratio":
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@3.3.3)
@@ -739,7 +739,7 @@ packages:
       }
     engines: { node: ">=6.9.0" }
     dependencies:
-      "@babel/types": 7.17.0
+      "@babel/types": 7.23.0
       jsesc: 2.5.2
       source-map: 0.5.7
     dev: true
@@ -1138,7 +1138,7 @@ packages:
       "@babel/core": ^7.0.0-0
     dependencies:
       "@babel/core": 7.12.9
-      "@babel/helper-plugin-utils": 7.10.4
+      "@babel/helper-plugin-utils": 7.22.5
       "@babel/plugin-syntax-object-rest-spread": 7.8.3(@babel/core@7.12.9)
       "@babel/plugin-transform-parameters": 7.22.15(@babel/core@7.12.9)
     dev: false
@@ -1334,7 +1334,7 @@ packages:
       "@babel/core": ^7.0.0-0
     dependencies:
       "@babel/core": 7.12.9
-      "@babel/helper-plugin-utils": 7.10.4
+      "@babel/helper-plugin-utils": 7.22.5
     dev: false
 
   /@babel/plugin-syntax-jsx@7.22.5(@babel/core@7.23.2):
@@ -2493,13 +2493,13 @@ packages:
     engines: { node: ">=6.9.0" }
     dependencies:
       "@babel/code-frame": 7.22.13
-      "@babel/generator": 7.17.7
+      "@babel/generator": 7.23.0
       "@babel/helper-environment-visitor": 7.22.20
       "@babel/helper-function-name": 7.23.0
       "@babel/helper-hoist-variables": 7.22.5
       "@babel/helper-split-export-declaration": 7.22.6
       "@babel/parser": 7.23.0
-      "@babel/types": 7.17.0
+      "@babel/types": 7.23.0
       debug: 4.3.4
       globals: 11.12.0
     transitivePeerDependencies:
