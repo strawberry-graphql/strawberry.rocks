@@ -11,8 +11,17 @@ export async function generateMetadata({
 }: {
   params: { version: string };
 }) {
+  const title = `Version ${params.version} | Docs | 🍓 Strawberry GraphQL`;
+  const description = `Release notes for Strawberry GraphQL version ${params.version}`;
+
   return {
-    title: `Version ${params.version} | Docs | 🍓 Strawberry GraphQL`,
+    title,
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      creator: "@strawberry_gql",
+    },
   };
 }
 
