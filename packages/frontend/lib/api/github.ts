@@ -7,6 +7,7 @@ import { urlToSlugs } from "~/helpers/params";
 import { isList, isString } from "~/helpers/type-guards";
 import { GithubCollaborator, PagePath } from "~/types/api";
 import {
+  CodeOfConductDocument,
   CodeOfConductQuery,
   DocPageDocument,
   DocPageQuery,
@@ -332,7 +333,7 @@ export const fetchCodeOfConduct = async () =>
   await octokit
     .graphql<CodeOfConductQuery>(
       /* GraphQL */
-      print(CodeOfConduct),
+      print(CodeOfConductDocument),
       { owner: OWNER, repo: REPO }
     )
     .then((response) => response.repository);

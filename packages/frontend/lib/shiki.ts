@@ -41,6 +41,7 @@ export const getHighlighter = async () => {
       "bash",
       "json",
       "mermaid",
+      "toml",
       "yaml",
       "ini",
     ],

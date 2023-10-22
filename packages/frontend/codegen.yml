@@ -3,7 +3,7 @@ schema: ../../node_modules/@octokit/graphql-schema/schema.graphql
 documents:
   - "./lib/api/github.graphql"
 generates:
-  ./types/graphql.d.ts:
+  ./types/graphql.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
