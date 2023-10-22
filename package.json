@@ -1,4 +1,7 @@
 {
   "name": "strawberry-monorepo",
-  "private": true
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
 }
