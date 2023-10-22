@@ -6,7 +6,17 @@ import {
   Spacer,
 } from "@strawberry-graphql/styleguide";
 
-export default function Page({
+export async function generateMetadata({
+  params,
+}: {
+  params: { version: string };
+}) {
+  return {
+    title: `Version ${params.version} | Docs | 🍓 Strawberry GraphQL`,
+  };
+}
+
+export default function ReleasePage({
   params,
 }: {
   params: {
