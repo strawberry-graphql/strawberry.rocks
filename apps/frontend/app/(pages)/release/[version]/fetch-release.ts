@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { GraphQLClient } from "graphql-request";
 
 import { graphql } from "~/types/graphql";
 
@@ -21,22 +21,20 @@ const FetchReleaseDocument = graphql(`
   }
 `);
 
-// TODO: maybe move this to use hooks and useSuspenseQuery
 export const fetchRelease = async (version: string) => {
-  const client = new ApolloClient({
-    uri: "https://api.github.com/graphql",
+  const client = new GraphQLClient("https://api.github.com/graphql", {
     headers: {
       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     },
-    cache: new InMemoryCache(),
   });
 
-  const { data } = await client.query({
-    query: FetchReleaseDocument,
-    variables: {
-      version,
-    },
+  const data = await client.request(FetchReleaseDocument, {
+    version,
   });
 
-  return data;
+  if (!data.repository?.release) {
+    return null;
+  }
+
+  return data.repository?.release;
 };

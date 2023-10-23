@@ -1,6 +1,8 @@
 import { parseDocument } from "app/docs/page-utils";
 import remarkGithub from "remark-github";
 
+import { notFound } from "next/navigation";
+
 import { fetchRelease } from "./fetch-release";
 
 import {
@@ -37,13 +39,14 @@ export default async function ReleasePage({
     version: string;
   };
 }) {
-  const { repository } = await fetchRelease(params.version);
+  const release = await fetchRelease(params.version);
 
-  // TODO: handle not found and errors
+  if (!release) {
+    throw notFound();
+  }
 
   const content = await parseDocument({
-    // @ts-ignore
-    content: repository.release.description,
+    content: release.description || "No description for this release",
     additionalRemarkPlugins: [remarkGithub],
   });
 
