@@ -18,7 +18,7 @@ export const DocsWrapper = ({
   searchBoxTrigger: React.ReactNode;
 }) => {
   return (
-    <div className="md:grid grid-cols-[320px_1fr]">
+    <div className="md:grid grid-cols-[320px_1fr] max-w-[1600px] mx-auto">
       <div className="w-[320px] hidden md:block pl-40 pr-16 overflow-auto">
         <Spacer size={16} />
         {searchBoxTrigger}
@@ -26,9 +26,7 @@ export const DocsWrapper = ({
         <SidebarNav sections={sections} />
       </div>
 
-      <div className="max-w-[1600px] 2xl:mx-auto 2xl:relative 2xl:-left-[160px] 2lx:bg-pink md:grid grid-cols-[minmax(0,1fr)_200px]">
-        {children}
-      </div>
+      <div className="lg:grid grid-cols-[minmax(0,1fr)_250px]">{children}</div>
     </div>
   );
 };

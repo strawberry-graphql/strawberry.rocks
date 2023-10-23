@@ -104,8 +104,8 @@ export default async function DocsPage({
           </div>
         </div>
       </DocsContent>
-      {/* TODO: support for nested? */}
 
+      {/* TODO: support for nested? */}
       <PageTOC
         // @ts-ignore
         items={items.map((item) => ({

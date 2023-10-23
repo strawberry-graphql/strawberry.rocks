@@ -83,7 +83,7 @@ export const PageTOC = ({
   }, [firstVisibleItem]);
 
   return (
-    <nav className="hidden md:block">
+    <nav className="hidden lg:block">
       <ul className="sticky top-24 border-l border-g-100 dark:border-g-900">
         {items.map((item) => (
           <PageNavItem

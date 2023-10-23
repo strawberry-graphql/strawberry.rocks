@@ -4,6 +4,7 @@
 
 @import url("./mermaid.css");
 
+/* TODO: maybe move this to just the styleguide */
 @layer utilities {
   .stroke-strawberry-gradient {
     stroke: url(#strawberry-gradient);
@@ -162,6 +163,7 @@
   .codebox .line {
     @apply w-full block;
   }
+
   .codebox .line:not(:empty) {
     @apply w-full inline-block;
   }
