@@ -22,12 +22,12 @@ import {
 
 export const components = {
   h1: (props: any) => <Heading level={1} {...props} />,
-  h2: (props: any) => <Heading level={2} {...props} />,
-  h3: (props: any) => <Heading level={3} {...props} />,
-  h4: (props: any) => <Heading level={4} {...props} />,
-  h5: (props: any) => <Heading level={5} {...props} />,
-  h6: (props: any) => <Heading level={6} {...props} />,
-  p: (props: any) => <Paragraph {...props} />,
+  h2: (props: any) => <Heading level={3} as="h2" {...props} />,
+  h3: (props: any) => <Heading level={4} as="h4" {...props} />,
+  h4: (props: any) => <Heading level={5} as="h4" {...props} />,
+  h5: (props: any) => <Heading level={6} as="h5" {...props} />,
+  h6: (props: any) => <Heading level={6} as="h6" {...props} />,
+  p: (props: any) => <Paragraph variant="small" {...props} />,
   ol: (props: any) => <List ordered {...props} />,
   ul: (props: any) => <List {...props} />,
   li: (props: any) => <ListItem {...props} />,

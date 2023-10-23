@@ -4,14 +4,16 @@ export const Heading = ({
   children,
   className,
   level = 1,
+  as,
   ...props
 }: {
   children: React.ReactNode;
   className?: string;
   level?: 1 | 2 | 3 | 4;
   id?: string;
+  as?: keyof JSX.IntrinsicElements;
 }) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const Tag = as ? as : (`h${level}` as keyof JSX.IntrinsicElements);
 
   return (
     <Tag

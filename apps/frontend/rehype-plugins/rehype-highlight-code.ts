@@ -154,7 +154,7 @@ export const RehypeHighlightCode = ({ highlighter }: { highlighter: any }) => {
       metadata.lines = rangeParser(metadata.lines);
     }
 
-    const code = codeNode.children[0].value;
+    const code = codeNode.children[0].value.trim();
 
     if (language.includes("+")) {
       const [firstLanguage, secondLanguage] = language

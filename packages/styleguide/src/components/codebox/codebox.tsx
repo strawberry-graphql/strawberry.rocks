@@ -70,7 +70,7 @@ export const Codebox = ({
   const visibleNote = notes?.find((note) => note.id == currentNote);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="mb-8">
       <div
         className={clsx(
           "text-white border-transparency-light dark:border-g-900 bg-g-900 dark:bg-transparency-dark",

@@ -29,7 +29,7 @@ export const List = ({
   return (
     <Tag
       className={clsx(
-        "list-outside typography-paragraph",
+        "list-outside",
         {
           "list-disc pl-16": variant === "unordered",
           "list-decimal pl-[20px]": variant === "ordered",
