@@ -6,22 +6,16 @@ import { marked } from "marked";
 import { urlToSlugs } from "~/helpers/params";
 import { isList, isString } from "~/helpers/type-guards";
 import { GithubCollaborator, PagePath } from "~/types/api";
+import { graphql } from "~/types/graphql";
 import {
-  CodeOfConductDocument,
   CodeOfConductQuery,
-  DocPageDocument,
   DocPageQuery,
-  ExtensionsPageDocument,
   ExtensionsPageQuery,
-  FileDocument,
   FileQuery,
-  LatestReleaseDocument,
   LatestReleaseQuery,
-  PullRequestDocument,
-  PullRequestQuery,
-  SponsorsDocument,
+  PullRequest,
   SponsorsQuery,
-} from "~/types/graphql";
+} from "~/types/graphql/graphql";
 
 import {
   getBlobText,
@@ -31,6 +25,136 @@ import {
 } from "../doc-tree";
 import { fetchDocPageLocal, fetchTableOfContentsLocal } from "./github-local";
 import { getOpenCollectiveSponsors } from "./opencollective";
+
+const PullRequestDocument = graphql(`
+  query pullRequest($owner: String!, $repo: String!, $pull_number: Int!) {
+    repository(owner: $owner, name: $repo) {
+      pullRequest(number: $pull_number) {
+        state
+        number
+        headRepositoryOwner {
+          login
+        }
+        repository {
+          name
+        }
+        headRefName
+        url
+        labels(first: 10) {
+          nodes {
+            name
+          }
+        }
+      }
+    }
+  }
+`);
+
+const FileDocument = graphql(`
+  query file($owner: String!, $repo: String!, $filename: String!) {
+    repository(owner: $owner, name: $repo) {
+      object(expression: $filename) {
+        ... on Blob {
+          __typename
+          text
+        }
+      }
+    }
+  }
+`);
+
+const LatestReleaseDocument = graphql(`
+  query latestRelease($owner: String!, $repo: String!) {
+    repository(owner: $owner, name: $repo) {
+      latestRelease {
+        tagName
+      }
+    }
+  }
+`);
+
+const CodeOfConductDocument = graphql(`
+  query codeOfConduct($owner: String!, $repo: String!) {
+    repository(owner: $owner, name: $repo) {
+      codeOfConduct {
+        body
+      }
+      latestRelease {
+        tagName
+      }
+    }
+  }
+`);
+
+const DocPageDocument = graphql(`
+  query docPage(
+    $owner: String!
+    $repo: String!
+    $filename: String!
+    $tablecontent: String!
+  ) {
+    repository(owner: $owner, name: $repo) {
+      object(expression: $filename) {
+        ... on Blob {
+          __typename
+          text
+        }
+      }
+      tableOfContents: object(expression: $tablecontent) {
+        ... on Blob {
+          __typename
+          text
+        }
+      }
+    }
+  }
+`);
+
+const ExtensionsPageDocument = graphql(`
+  query extensionsPage($owner: String!, $repo: String!, $filename: String!) {
+    repository(owner: $owner, name: $repo) {
+      object(expression: $filename) {
+        ... on Tree {
+          __typename
+          entries {
+            __typename
+            name
+            path
+            type
+            object {
+              ... on Blob {
+                __typename
+                text
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`);
+
+const SponsorsDocument = graphql(`
+  query sponsors {
+    organization(login: "strawberry-graphql") {
+      sponsors(first: 100) {
+        nodes {
+          __typename
+          ... on User {
+            login
+            name
+            avatarUrl
+          }
+          ... on Organization {
+            login
+            name
+            avatarUrl
+          }
+        }
+      }
+    }
+  }
+`);
 
 const customOctokit = Octokit.plugin(paginateRest);
 
@@ -120,7 +244,7 @@ export const fetchPullRequest = async ({
 }) => {
   try {
     const pull = await octokit
-      .graphql<PullRequestQuery>(print(PullRequestDocument), {
+      .graphql<PullRequest>(print(PullRequestDocument), {
         owner,
         repo,
         pull_number,
@@ -305,6 +429,7 @@ export const fetchExtensionsPaths = async ({
       throw new Error("no extensions");
     }
     const paramSlugs: PagePath = [];
+    // @ts-ignore
     extensions.forEach((extension) => {
       if (!extension.path) {
         return;
@@ -383,10 +508,10 @@ export const fetchDocPage = async ({
       throw new DocPageNotFound("no pageText", filename);
     }
     return {
-      page: pageText,
+      page: pageText as string,
       tableContent:
         tableContentText != null
-          ? await getDocTree(tableContentText, prefix)
+          ? await getDocTree(tableContentText as string, prefix)
           : null,
     };
   } catch (error) {
@@ -491,7 +616,7 @@ export const fetchSponsors = async () => {
     const rootField = typename === "User" ? "user" : "organization";
 
     // TODO: don't judge me for this
-    return /* GraphQL */ `${alias}: ${rootField}(login: "${login}") {
+    return `${alias}: ${rootField}(login: "${login}") {
       login
       name
       logo: avatarUrl

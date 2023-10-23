@@ -1,8 +1,12 @@
+import { parseDocument } from "app/docs/page-utils";
+import remarkGithub from "remark-github";
+
+import { fetchRelease } from "./fetch-release";
+
 import {
   Box,
   Display,
   GlowEffect,
-  Paragraph,
   Spacer,
 } from "@strawberry-graphql/styleguide";
 
@@ -26,13 +30,23 @@ export async function generateMetadata({
   };
 }
 
-export default function ReleasePage({
+export default async function ReleasePage({
   params,
 }: {
   params: {
     version: string;
   };
 }) {
+  const { repository } = await fetchRelease(params.version);
+
+  // TODO: handle not found and errors
+
+  const content = await parseDocument({
+    // @ts-ignore
+    content: repository.release.description,
+    additionalRemarkPlugins: [remarkGithub],
+  });
+
   return (
     <>
       <GlowEffect />
@@ -41,7 +55,7 @@ export default function ReleasePage({
       <Box px={16} maxWidth="screen-lg">
         <Display>Version {params.version}</Display>
 
-        <Paragraph>We&apos;ll have the info here</Paragraph>
+        {content}
       </Box>
 
       <Spacer size={80} />

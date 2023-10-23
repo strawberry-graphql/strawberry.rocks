@@ -1,9 +1,8 @@
 import type { Tokens } from "marked";
 
 import { ExtensionDocData } from "~/types/extensions";
-import { Blob, ExtensionsPageQuery } from "~/types/graphql";
+import { Blob } from "~/types/graphql/graphql";
 import { TokenListItem, TokenText } from "~/types/marked";
-import { ExcludeEmpty } from "~/types/utility";
 
 export const isString = (x: any): x is string => {
   return typeof x === "string";
@@ -43,10 +42,6 @@ export const isBlob = (obj: any): obj is Blob => {
   return Object.keys(obj).length > 0 && obj.__typename === "Blob";
 };
 
-export const isTree = (
-  obj: any
-): obj is ExcludeEmpty<
-  NonNullable<ExtensionsPageQuery["repository"]>["object"]
-> => {
+export const isTree = (obj: any) => {
   return Object.keys(obj).length > 0 && obj.__typename === "Tree";
 };

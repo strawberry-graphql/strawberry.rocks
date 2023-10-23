@@ -22,6 +22,49 @@ import { getFetchDocsParams } from "./path-utils";
 
 import { Spacer } from "@strawberry-graphql/styleguide";
 
+export const parseDocument = async ({
+  content: pageContent,
+  additionalRehypePlugins = [],
+  additionalRemarkPlugins = [],
+  additionalComponents = {},
+}: {
+  content: string;
+  additionalRehypePlugins?: any[];
+  additionalRemarkPlugins?: any[];
+  additionalComponents?: any;
+}) => {
+  const highlighter = await getHighlighter();
+
+  const mdxOptions = {
+    rehypePlugins: [
+      RehypeMermaid(),
+      RehypeHighlightCode({ highlighter }),
+      RehypeCodeNotes(),
+      ...additionalRehypePlugins,
+    ],
+    remarkPlugins: [
+      remarkComment,
+      remarkGfm,
+      remarkMdxDisableExplicitJsx,
+      ...additionalRemarkPlugins,
+    ],
+  };
+
+  const { content } = await compileMDX<{ title: string }>({
+    source: pageContent,
+    components: {
+      ...components,
+      ...additionalComponents,
+    },
+    options: {
+      parseFrontmatter: false,
+      mdxOptions,
+    },
+  });
+
+  return content;
+};
+
 export const fetchAndParsePage = async (
   data: Awaited<ReturnType<typeof getFetchDocsParams>>
 ) => {
@@ -47,41 +90,29 @@ export const fetchAndParsePage = async (
   }
 
   const { data: pageData, content: pageContent } = matter({ content: page });
+
   const items: TocItem[] = [];
-
-  const highlighter = await getHighlighter();
-
-  const rehypePlugins: any = [
-    RehypeMermaid(),
-    RehypeHighlightCode({ highlighter }),
-    RehypeCodeNotes(),
-    RehypeTOC({ items }),
-  ];
+  const additionalRehypePlugins: any[] = [RehypeTOC({ items })];
 
   if (pageData.faq) {
-    rehypePlugins.push(FaqPlugin);
+    additionalRehypePlugins.push(FaqPlugin);
   }
 
-  const mdxOptions = {
-    rehypePlugins,
-    remarkPlugins: [
-      remarkComment,
-      remarkGfm,
-      remarkMdxDisableExplicitJsx,
-      updateURLsPlugin({ path: filename, owner: OWNER, repo: REPO, ref: REF }),
-      fixImagePathsPlugin({
-        path: filename,
-        owner: OWNER,
-        repo: REPO,
-        ref: REF,
-      }),
-    ],
-  };
+  const additionalRemarkPlugins: any[] = [
+    updateURLsPlugin({ path: filename, owner: OWNER, repo: REPO, ref: REF }),
+    fixImagePathsPlugin({
+      path: filename,
+      owner: OWNER,
+      repo: REPO,
+      ref: REF,
+    }),
+  ];
 
-  const { content } = await compileMDX<{ title: string }>({
-    source: pageContent,
-    components: {
-      ...components,
+  const content = await parseDocument({
+    content: pageContent,
+    additionalRehypePlugins,
+    additionalRemarkPlugins,
+    additionalComponents: {
       ExtensionsList: () => {
         return (
           <>
@@ -96,11 +127,6 @@ export const fetchAndParsePage = async (
           </>
         );
       },
-    },
-    options: {
-      parseFrontmatter: false,
-      // @ts-expect-error
-      mdxOptions,
     },
   });
 

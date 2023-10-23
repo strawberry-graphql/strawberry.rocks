@@ -27,6 +27,7 @@ export const ExtensionsList = async ({
 
   const extensionData = [];
 
+  // @ts-ignore
   for (const extensionPage of extensions) {
     const text = getBlobText(extensionPage.object);
     if (text == null) {
@@ -37,6 +38,7 @@ export const ExtensionsList = async ({
       continue;
     }
 
+    // @ts-ignore
     const { data } = matter(text);
 
     if (!extensionDataIsComplete(data)) {
