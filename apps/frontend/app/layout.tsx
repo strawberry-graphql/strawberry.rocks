@@ -89,6 +89,10 @@ export default async function RootLayout({
           "font-sans antialiased"
         )}
       >
+        <div className="bg-strawberry text-white p-12 text-center [text-wrap:balance]">
+          Welcome to the Strawberry GraphQL beta website! We&apos;re still
+          working on it, so please bear with us while we get everything ready.
+        </div>
         {children}
       </body>
     </html>
