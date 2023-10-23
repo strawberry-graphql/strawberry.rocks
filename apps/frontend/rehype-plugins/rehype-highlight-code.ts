@@ -7,7 +7,6 @@ import json from "refractor/lang/json";
 import markdown from "refractor/lang/markdown";
 import python from "refractor/lang/python";
 import { visit } from "unist-util-visit";
-import { inspect } from "util";
 
 refractor.register(python);
 refractor.register(graphql);

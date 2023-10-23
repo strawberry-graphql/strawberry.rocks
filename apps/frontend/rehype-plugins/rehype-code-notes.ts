@@ -101,43 +101,60 @@ export const RehypeCodeNotes = () => {
       let start = 0;
       let end = 0;
 
-      node.children.forEach((child: any) => {
+      if (!toString(node).trim().includes("^^^")) {
+        return;
+      }
+
+      const lines: string[] = [];
+
+      node.children.forEach((child: any, index) => {
         const text = toString(child);
+        const previousText = previousChildren && toString(previousChildren);
 
-        const noteMatch = text.match(noteRegex);
+        const startMatch = text.match(noteStartRegex);
 
-        if (noteMatch) {
-          const startMatch = text.match(noteStartRegex);
+        if (startMatch) {
+          insideCodeNote = true;
 
-          if (startMatch) {
-            insideCodeNote = true;
+          currentNote = {
+            id: currentNote.id + 1,
+            text: "",
+          };
 
-            start = startMatch[1].length + 1;
-            end = start + noteMatch[2].length;
+          start = startMatch[1].length + 1;
+          end = start + startMatch[2].length;
 
-            childBeforeNote = previousChildren;
-          } else {
-            const noteText = noteMatch[2];
+          childBeforeNote = previousChildren;
 
-            currentNote.text = noteText;
+          // remove empty lines before note
+          while (toString(newChildren.slice(-1)[0]).trim() == "") {
+            newChildren.pop();
           }
         } else {
           if (insideCodeNote) {
-            wrapNode(childBeforeNote, start, end, currentNote.id);
+            if (lines.slice(-2).join("-") == "\n-\n") {
+              insideCodeNote = false;
+            }
 
-            insideCodeNote = false;
-            childBeforeNote = null;
-            start = 0;
-            end = 0;
+            const noteMatch = text.match(noteRegex);
 
-            notes.push(currentNote);
+            if (noteMatch) {
+              currentNote.text += noteMatch[2];
+              wrapNode(childBeforeNote, start, end, currentNote.id);
+              insideCodeNote = false;
+              childBeforeNote = null;
+              start = 0;
+              end = 0;
+              notes.push(currentNote);
+            }
           } else {
             newChildren.push(child);
+          }
 
-            currentNote = {
-              id: currentNote.id + 1,
-              text: "",
-            };
+          lines.push(text);
+
+          if (text.trim()) {
+            previousChildren = child;
           }
         }
 

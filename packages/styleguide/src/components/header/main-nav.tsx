@@ -32,7 +32,7 @@ const Link = ({
     >
       {children}
       {href.startsWith("http") && (
-        <ExternalLink className="inline-block h-12 align-top" />
+        <ExternalLink className="inline-block h-12 align-top stroke-current" />
       )}
 
       <span className="absolute rounded-sm bottom-0 left-0 right-0 h-1 md:hidden bg-g-100" />

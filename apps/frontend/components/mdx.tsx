@@ -27,7 +27,7 @@ export const components = {
   h4: (props: any) => <Heading level={5} as="h4" {...props} />,
   h5: (props: any) => <Heading level={6} as="h5" {...props} />,
   h6: (props: any) => <Heading level={6} as="h6" {...props} />,
-  p: (props: any) => <Paragraph variant="small" {...props} />,
+  p: (props: any) => <Paragraph {...props} />,
   ol: (props: any) => <List ordered {...props} />,
   ul: (props: any) => <List {...props} />,
   li: (props: any) => <ListItem {...props} />,
