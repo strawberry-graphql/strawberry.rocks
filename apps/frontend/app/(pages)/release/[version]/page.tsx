@@ -20,6 +20,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
+      site: "@strawberry_gql",
       creator: "@strawberry_gql",
     },
   };
