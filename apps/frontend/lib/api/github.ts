@@ -433,7 +433,7 @@ export const fetchExtensions = async ({
 };
 
 export const fetchSponsors = async () => {
-  if (!process.env.LOCAL_REPO_PATH) {
+  if (process.env.LOCAL_REPO_PATH) {
     return [
       {
         id: "moving-content",
