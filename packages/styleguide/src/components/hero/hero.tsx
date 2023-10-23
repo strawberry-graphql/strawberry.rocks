@@ -19,8 +19,8 @@ export const Hero = () => {
     <div className="p-16 md:px-32 text-center space-y-48 max-w-screen-lg mx-auto">
       <Display>
         <Balancer>
-          The new <span className="text-strawberry">GraphQL library</span> for
-          Python 3, inspired by dataclasses.
+          An intuitive <span className="text-strawberry">GraphQL library</span>{" "}
+          for Python, designed for modern development.
         </Balancer>
       </Display>
 
