@@ -83,11 +83,11 @@ export const MainNav = ({
       href: "https://strawberry.rocks/discord",
       slug: "discord",
     },
-    {
-      name: "Blog",
-      href: "/blog",
-      slug: "blog",
-    },
+    // {
+    //   name: "Blog",
+    //   href: "/blog",
+    //   slug: "blog",
+    // },
     {
       name: "Playground",
       href: "https://play.strawberry.rocks",
