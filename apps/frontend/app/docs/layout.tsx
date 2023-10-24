@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { SearchBoxTrigger } from "~/components/searchbox-trigger";
 import { fetchLatestRelease, fetchTableOfContents } from "~/lib/api/github";
 
-import { getFetchDocsParams } from "../path-utils";
+import { getFetchDocsParams } from "./path-utils";
 
 import {
   MobileNav,

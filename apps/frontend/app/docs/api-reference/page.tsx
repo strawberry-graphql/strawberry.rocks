@@ -77,7 +77,7 @@ const ReferenceLink = ({ name, href }: { name: string; href: string }) => {
 
 export default async function ApiRefHome() {
   return (
-    <>
+    <div className="docs-content">
       <Display>API Reference</Display>
 
       <div className="space-y-16">
@@ -129,6 +129,6 @@ export default async function ApiRefHome() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
