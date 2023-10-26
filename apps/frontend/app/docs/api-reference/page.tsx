@@ -5,7 +5,6 @@ import {
   List,
   ListItem,
   Separator,
-  Spacer,
 } from "@strawberry-graphql/styleguide";
 
 const sections = [

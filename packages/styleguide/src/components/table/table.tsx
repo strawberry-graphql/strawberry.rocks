@@ -19,7 +19,7 @@ export const TableHead = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const TableCell = ({ children }: { children: React.ReactNode }) => {
-  return <td className="py-12">{children}</td>;
+  return <td className="py-12 pr-24 last:pr-0">{children}</td>;
 };
 
 export const Table = ({ children }: { children: React.ReactNode }) => {
