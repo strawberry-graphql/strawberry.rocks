@@ -2,6 +2,7 @@ import { Octokit } from "@octokit/core";
 import { promises as fs } from "fs";
 import matter from "gray-matter";
 import path from "path";
+// @ts-ignore
 import { cache } from "react";
 
 export const fetchAllBlogPosts = cache(async () => {

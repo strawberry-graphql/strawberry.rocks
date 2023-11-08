@@ -1,3 +1,4 @@
+// @ts-ignore
 import { cache } from "react";
 import getReadingTime from "reading-time";
 
