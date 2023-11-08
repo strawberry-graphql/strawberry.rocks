@@ -27,7 +27,7 @@ const renderDefault = (value: any) => {
   return "H";
 };
 
-const renderAnnotation = (value: { cls: string } & any) => {
+const renderAnnotation = (value: { cls: string } & any): string => {
   if (value.cls === "ExprName") {
     return value.name;
   }
@@ -80,7 +80,9 @@ export default async function ApiRef({ params }: { params: { path: string } }) {
   let current: any = data.strawberry;
 
   parts.forEach((part) => {
-    const next = current.members.find((member) => member.name === part);
+    const next = current.members.find(
+      (member: { name: string }) => member.name === part
+    );
 
     if (!next) {
       throw new Error("Unable to find reference");

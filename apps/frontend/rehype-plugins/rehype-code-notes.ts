@@ -107,9 +107,8 @@ export const RehypeCodeNotes = () => {
 
       const lines: string[] = [];
 
-      node.children.forEach((child: any, index) => {
+      node.children.forEach((child: any, index: number) => {
         const text = toString(child);
-        const previousText = previousChildren && toString(previousChildren);
 
         const startMatch = text.match(noteStartRegex);
 
