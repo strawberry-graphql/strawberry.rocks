@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import "styles/global.css";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 
 import { DarkModeScript } from "@strawberry-graphql/styleguide";
@@ -17,13 +17,16 @@ export const metadata: Metadata = {
     "Python",
     "Code-first",
   ],
-  themeColor: "#F7393D",
   twitter: {
     card: "summary_large_image",
     creator: "@strawberry_gql",
   },
   // TODO
   metadataBase: new URL("https://beta.strawberry.rocks"),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#F7393D",
 };
 
 const ranade = localFont({
