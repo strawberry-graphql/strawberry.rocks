@@ -1,5 +1,3 @@
-import clsx from "clsx";
-
 import data from "../../../../strawberry-api-export.json";
 
 import {

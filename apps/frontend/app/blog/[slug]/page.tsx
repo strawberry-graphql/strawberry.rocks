@@ -12,7 +12,7 @@ import { ArticleHeader } from "@strawberry-graphql/styleguide";
 export const fetchBlogPost = cache(async (slug: string) => {
   const allPosts = await fetchAllBlogPosts();
 
-  return allPosts.find((post) => post.slug === slug);
+  return allPosts.find((post: any) => post.slug === slug);
 });
 
 export default async function BlogPost({
