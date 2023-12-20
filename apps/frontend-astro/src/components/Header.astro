@@ -1,0 +1,137 @@
+---
+import Logo from "./Logo.astro";
+import Link from "./Link.astro";
+import NavLink from "./HeaderNavLink.astro";
+import Caption from "./Typography/Caption.astro";
+import MenuIcon from "./Icons/Menu.astro";
+import MenuCloseIcon from "./Icons/MenuClose.astro";
+import HeaderNav from "./HeaderNav.astro";
+
+const version = {
+  name: "v1.0",
+  href: "https://v1.astro.build",
+};
+---
+
+<input type="checkbox" id="toggle-nav" />
+<header>
+  <a href="/" class="logo">
+    <Logo class="w-full h-full" />
+  </a>
+
+  <div class="nav-container">
+    <HeaderNav />
+
+    <label for="toggle-nav" class="cursor-pointer">
+      <MenuIcon class="text-black menu-icon dark:text-g-100" />
+
+      <div class="close-icon-wrapper">
+        <MenuCloseIcon class="text-g-700 dark:text-g-100 menu-icon-close" />
+      </div>
+    </label>
+  </div>
+</header>
+
+<style>
+  header {
+    @apply mx-16 my-8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header :global(nav) {
+    display: none;
+    @apply mt-40;
+  }
+
+  .logo {
+    width: 40px;
+    height: 48px;
+    display: block;
+  }
+
+  #toggle-nav {
+    display: none;
+  }
+
+  .menu-icon-close {
+    display: none;
+  }
+
+  /* Toggled styles */
+
+  @media (max-width: 767px) {
+    #toggle-nav:checked ~ header .nav-container :global(nav),
+    #toggle-nav:checked ~ header .nav-container label .menu-icon-close {
+      display: flex;
+    }
+    #toggle-nav:checked ~ header .nav-container label .menu-icon {
+      display: none;
+    }
+
+    #toggle-nav:checked ~ header {
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    #toggle-nav:checked ~ header .nav-container {
+      height: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+    }
+
+    #toggle-nav:checked ~ header :global(nav) {
+      flex: 1;
+    }
+
+    #toggle-nav:checked ~ header .nav-container .close-icon-wrapper {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 48px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 768px) {
+    header :global(nav) {
+      display: flex;
+      margin-top: 0;
+    }
+
+    header {
+      @apply mx-40 my-32;
+    }
+
+    .logo {
+      width: 67px;
+      height: 80px;
+    }
+
+    label[for="toggle-nav"] {
+      display: none;
+    }
+
+    .nav-container {
+      flex: 1;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .logo {
+      width: 67px;
+      height: 80px;
+    }
+  }
+</style>

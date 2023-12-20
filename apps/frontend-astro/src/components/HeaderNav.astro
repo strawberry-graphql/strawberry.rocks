@@ -1,0 +1,150 @@
+---
+import Link from "./HeaderNavLink.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+
+const links = [
+  {
+    name: "Docs",
+    href: "/docs",
+    slug: "docs",
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/strawberry-graphql/strawberry",
+    slug: "github",
+  },
+  {
+    name: "Discord",
+    href: "https://strawberry.rocks/discord",
+    slug: "discord",
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+    slug: "blog",
+  },
+  {
+    name: "Playground",
+    href: "https://play.strawberry.rocks",
+    slug: "playground",
+  },
+] as const;
+
+const version = {
+  name: "v 0.76.0",
+  href: "...",
+} as const;
+---
+
+<nav>
+  <ul>
+    {
+      links.map((link) => (
+        <li key={link.slug}>
+          <Link href={link.href} active={link.slug === "docs"}>
+            {link.name}
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+
+  <!-- todo: hover state -->
+
+  <a href={version.href} class="version">
+    {version.name}
+  </a>
+
+  <div class="switcher">
+    <ThemeSwitcher />
+  </div>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @apply pb-64;
+  }
+
+  .version {
+    margin-top: 40px;
+    text-transform: uppercase;
+    display: inline-block;
+    font-weight: bold;
+    border-radius: 20px;
+
+    @apply bg-g-50 px-16 py-8 text-g-700 dark:bg-g-900 dark:text-g-400 typography-caption;
+  }
+
+  .switcher {
+    margin-top: auto;
+    width: 100%;
+  }
+
+  nav > ul {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    nav {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 32px;
+      padding-bottom: 0;
+    }
+
+    nav > ul {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: auto;
+      gap: 40px;
+      order: 2;
+    }
+
+    nav > ul::before,
+    nav > ul::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 48px;
+      margin-right: -8px;
+      @apply bg-g-100;
+    }
+    nav > ul::before {
+      display: none;
+    }
+
+    nav > ul::after {
+      margin-left: -8px;
+      margin-right: 0;
+    }
+
+    .switcher {
+      margin-top: 0;
+      width: auto;
+      order: 3;
+    }
+
+    .version {
+      display: none;
+      margin-left: auto;
+      margin-top: 0;
+      order: 1;
+    }
+  }
+
+  @media (min-width: 900px) {
+	nav > ul::before {
+	  display: block;
+	}
+
+
+	.version {
+	  display: block;
+	}
+  }
+</style>

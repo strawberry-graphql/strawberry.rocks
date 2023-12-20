@@ -1,0 +1,68 @@
+---
+interface Props {
+  href: string;
+  active?: boolean;
+}
+
+const { href, active } = Astro.props;
+---
+
+<a class:list={{ active }} href={href}>
+  <slot />
+
+  <span class="border"></span>
+  <span class="underline"></span>
+</a>
+
+<style>
+  a {
+    @apply py-16 typography-paragraph-2 font-sans dark:text-white hover:text-black text-g-500;
+    display: block;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  a.active {
+    @apply text-black dark:text-white;
+  }
+
+  .border {
+    position: absolute;
+    border-radius: 0.25rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    @apply bg-g-100;
+  }
+
+  .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 0.25rem;
+    opacity: 0;
+
+    @apply bg-gradient-to-r from-magenta to-orange;
+  }
+
+  a.active .underline {
+    opacity: 1;
+  }
+
+  a:hover .underline {
+    opacity: 1;
+  }
+
+  @media (min-width: 768px) {
+    a {
+      @apply text-black;
+    }
+    .border {
+      display: none;
+    }
+  }
+</style>
