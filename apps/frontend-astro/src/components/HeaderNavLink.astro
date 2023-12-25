@@ -7,7 +7,7 @@ interface Props {
 const { href, active } = Astro.props;
 ---
 
-<a class:list={{ active }} href={href}>
+<a class:list={{ active }} href={href} class="typography-paragraph-2">
   <slot />
 
   <span class="border"></span>
@@ -16,15 +16,32 @@ const { href, active } = Astro.props;
 
 <style>
   a {
-    @apply py-16 typography-paragraph-2 font-sans dark:text-white hover:text-black text-g-500;
+    padding: 16px 0;
+    color: var(--color-g-500);
     display: block;
     font-weight: bold;
     position: relative;
     transition: color 0.2s ease;
+
+    :hover {
+      color: var(--color-black);
+    }
+  }
+
+  :global(html.dark) a {
+    color: var(--color-white);
+  }
+
+  :global(html.dark) a:hover {
+    color: var(--color-white);
   }
 
   a.active {
-    @apply text-black dark:text-white;
+    color: var(--color-black);
+  }
+
+  :global(html.dark) a.active {
+    color: var(--color-white);
   }
 
   .border {
@@ -34,7 +51,7 @@ const { href, active } = Astro.props;
     left: 0;
     right: 0;
     height: 1px;
-    @apply bg-g-100;
+    background-color: var(--color-g-100);
   }
 
   .underline {
@@ -46,20 +63,21 @@ const { href, active } = Astro.props;
     border-radius: 0.25rem;
     opacity: 0;
 
-    @apply bg-gradient-to-r from-magenta to-orange;
+    background: linear-gradient(
+      90deg,
+      var(--color-magenta),
+      var(--color-orange)
+    );
   }
 
-  a.active .underline {
-    opacity: 1;
-  }
-
+  a.active .underline,
   a:hover .underline {
     opacity: 1;
   }
 
   @media (min-width: 768px) {
     a {
-      @apply text-black;
+      color: var(--color-black);
     }
     .border {
       display: none;

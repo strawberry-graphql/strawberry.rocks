@@ -1,0 +1,83 @@
+@import url("./reset.css");
+@import url("./fonts.css");
+@import url("./typography.css");
+@import url("./pages.css");
+@import url("./doc-search.css");
+
+:root {
+  /* Greyscale */
+  --color-black: #0d0e12;
+  --color-g-900: #1f1f1f;
+  --color-g-800: #28292c;
+  --color-g-700: #515254;
+  --color-g-500: #8b8b8d;
+  --color-g-400: #c5c5c6;
+  --color-g-100: #e2e2e3;
+  --color-g-50: #f0f1f1;
+  --color-white: #fff;
+
+  /* Accent */
+  --color-strawberry: #f7393d;
+  --color-yellow: #ffe500;
+  --color-yellow-light: #feab0a;
+  --color-green: #1eb589;
+  --color-pink: #ff9fa9;
+  --color-blue: #0094ff;
+  --color-magenta: #ee0a78;
+  --color-orange: #fe620a;
+
+  /* Code */
+  --color-code-green: var(--code-color-green);
+  --color-code-blue: var(--code-color-blue);
+  --color-code-purple: var(--code-color-purple);
+  --color-code-pink: var(--code-color-pink);
+  --color-code-orange: var(--code-color-orange);
+
+  /* Callout */
+  --color-callout-tip: rgba(142, 210, 135, 0.2);
+  --color-callout-warning: rgba(234, 173, 117, 0.2);
+  --color-callout-note: rgba(174, 213, 251, 0.2);
+
+  --font-display: "Ranade", sans-serif;
+  --font-sans: "Satoshi", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+.dark body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+body > :is(header, footer) {
+  padding: 16px 8px;
+}
+
+@media (min-width: 768px) {
+  body > :is(header, footer) {
+    padding: 40px 32px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

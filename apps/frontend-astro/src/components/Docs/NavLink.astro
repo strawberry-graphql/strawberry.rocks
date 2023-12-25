@@ -1,0 +1,57 @@
+---
+interface Props {
+  href: string;
+  text: string;
+}
+
+let { href, text } = Astro.props;
+
+let isExperimental = text.includes("**experimental**");
+
+if (isExperimental) {
+  text = text.replace("**experimental**", "");
+}
+
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<a
+  href={href}
+  class:list={["typography-paragraph-2", { active: href === pathname }]}
+  >{text}{
+    isExperimental && (
+      <span class="experimental">
+        exp<span>erimental</span>
+      </span>
+    )
+  }</a
+>
+
+<style>
+  a {
+    font-weight: 700;
+    display: block;
+    color: var(--color-g-500);
+  }
+
+  a:hover,
+  a.active,
+  :global(html.dark) a:hover {
+    color: var(--color-strawberry);
+  }
+
+  .experimental {
+    background-color: var(--color-green);
+    color: var(--color-white);
+    padding: 0.1em 0.5em;
+    text-transform: uppercase;
+    border-radius: 0.25em;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-left: 0.5em;
+
+    span {
+      display: none;
+    }
+  }
+</style>

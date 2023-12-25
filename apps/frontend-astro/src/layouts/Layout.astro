@@ -1,15 +1,19 @@
 ---
-import "../global.css";
+import "../styles/global.css";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Blob from "../components/Blob.astro";
 
 interface Props {
   title: string;
+  blob?: boolean;
+  useDocsGrid?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, blob, useDocsGrid = false } = Astro.props;
 ---
 
-<!-- TODO: meta tags --><!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,8 +23,10 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="dark:bg-black">
-    <Header />
+  <body>
+    {blob && <Blob />}
+    <Header useDocsGrid={useDocsGrid} />
     <slot />
+    <Footer />
   </body>
 </html>

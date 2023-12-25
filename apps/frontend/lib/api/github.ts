@@ -685,3 +685,9 @@ export const fetchSponsorsForHomepage = async () => {
       sponsor && sponsor.sponsorship.monthlyPriceInDollars >= 100
   );
 };
+
+export const fetchSponsorsForHomepage = async () => {
+const sponsors = await fetchSponsors();
+
+return sponsors.filter((sponsor) => sponsor.sponsorship.monthlyPriceInDollars >= 100);
+}

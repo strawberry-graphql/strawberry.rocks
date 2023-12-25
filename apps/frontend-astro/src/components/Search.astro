@@ -1,0 +1,53 @@
+<div id="docsearch"></div>
+
+<script>
+  import docsearch from "@docsearch/js";
+
+  docsearch({
+    container: "#docsearch",
+    appId: "HTUQW2U430",
+    indexName: "strawberry",
+    apiKey: "bccc4f8ec45c035730f43b9443f099a6",
+  });
+</script>
+
+<style is:global>
+  #docsearch button {
+    border-radius: 30px;
+    border: 1px solid var(--color-g-100);
+    width: 100%;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--Grayscale-G-500, #8b8b8d);
+
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 40px;
+
+    &:hover {
+      border-color: var(--color-g-300);
+    }
+
+    .DocSearch-Button-Container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  html.dark #docsearch button {
+    border-color: var(--color-g-700);
+    color: var(--color-g-500);
+
+    &:hover {
+      border-color: var(--color-g-300);
+    }
+  }
+</style>

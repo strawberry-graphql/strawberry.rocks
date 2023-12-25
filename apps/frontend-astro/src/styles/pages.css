@@ -1,0 +1,103 @@
+.grid-layout {
+  display: grid;
+  row-gap: 40px;
+  grid-template-columns:
+    [full-start] var(--full) [feature-start] var(--feature) [popout-start] var(
+      --popout
+    )
+    [content-start] var(--content) [content-end] var(--popout) [popout-end] var(
+      --feature
+    )
+    [feature-end] var(--full) [full-end];
+}
+
+.grid-layout > * {
+  grid-column: content;
+}
+
+.popout {
+  grid-column: popout;
+}
+
+.feature {
+  grid-column: feature;
+}
+
+.full {
+  grid-column: full;
+}
+/* Documentation grid styles */
+@media (min-width: 768px) {
+  .docs-grid {
+    display: grid;
+    grid-template-columns:
+      [nav-start] 250px [nav-end] 32px [content-start] minmax(0, 1fr)
+      [content-end full-end];
+  }
+}
+
+@media (min-width: 1100px) {
+  .docs-grid {
+    grid-template-columns:
+      [nav-start] minmax(250px, 1fr) [nav-end] 32px [content-start] minmax(
+        500px,
+        1300px
+      )
+      [content-end] 32px [page-nav-start] minmax(250px, 300px)
+      [page-nav-end full-end] 1fr;
+  }
+}
+
+/* Pages with nav (docs, releases, etc) */
+
+main > article :is(h1, h2, h3, h4, h5, h6) {
+  text-wrap: pretty;
+}
+
+.docs-nav,
+.page-nav {
+  display: none;
+  padding: 16px 40px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.docs-nav {
+  padding-right: 0;
+}
+
+.page-nav {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  article {
+    grid-column: content;
+  }
+
+  .page-nav {
+    grid-column: page-nav;
+  }
+
+  .docs-nav {
+    display: block;
+    grid-column: nav;
+  }
+}
+
+@media (min-width: 1100px) {
+  .page-nav {
+    display: block;
+  }
+}
+
+main > article {
+  padding: 16px;
+  padding-bottom: 80px;
+
+  > * + * {
+    margin-top: 16px;
+  }
+}

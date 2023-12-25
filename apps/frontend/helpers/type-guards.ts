@@ -24,7 +24,7 @@ export const isLink = (token: any): token is Tokens.Link => {
   return token?.type === "link" && token?.tokens != null;
 };
 
-export const isListItemWithTokens = (token: any): token is TokenListItem => {
+export const isListItemWithTokens = (token: any): token is any => {
   return token?.type === "list_item" && token?.tokens != null;
 };
 

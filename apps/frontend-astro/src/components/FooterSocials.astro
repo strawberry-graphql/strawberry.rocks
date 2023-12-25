@@ -1,0 +1,35 @@
+---
+import SocialIcon from "./SocialIcon.astro";
+---
+
+<ul>
+  <li>
+    <SocialIcon
+      href="https://github.com/strawberry-graphql/strawberry"
+      icon="github"
+    >
+      GitHub
+    </SocialIcon>
+  </li>
+
+  <li>
+    <SocialIcon href="https://twitter.com/strawberry_gql" icon="x">
+      X
+    </SocialIcon>
+  </li>
+  <li>
+    <SocialIcon href="https://social.farbun.dev/@strawberry" icon="mastodon">
+      Mastodon
+    </SocialIcon>
+  </li>
+  <li>
+    <SocialIcon href="/discord" icon="discord">Discord</SocialIcon>
+  </li>
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    gap: 16px;
+  }
+</style>

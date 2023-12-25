@@ -1,0 +1,86 @@
+---
+import { fetchDocPage } from "../../utils/fetch-doc-page";
+import { getTree } from "../../utils/get-tree";
+import NavLink from "./NavLink.astro";
+import VerticalArrow from "../Icons/VerticalArrow.astro";
+
+const readme = await fetchDocPage({ filename: "docs/README.md" });
+
+const tree = getTree(readme, "/docs/");
+---
+
+<nav>
+  <ul>
+    {
+      Object.values(tree).map((entry) => (
+        <li>
+          {entry.type === "section" ? (
+            <details open>
+              <summary class="typography-label">
+                {entry.name}
+
+                <VerticalArrow />
+              </summary>
+              <ul>
+                {entry.links.map((child) => (
+                  <li>
+                    <NavLink href={child.href} text={child.text} />
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ) : (
+            <NavLink href={entry.href} text={entry.text} />
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  ul {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    max-width: 300px;
+  }
+
+  nav details {
+    border-bottom: 1px solid var(--color-g-100);
+  }
+
+  :global(html.dark) nav details {
+    border-bottom-color: var(--color-g-900);
+  }
+
+  nav ul ul {
+    padding-bottom: 16px;
+  }
+
+  details summary {
+    list-style: none;
+    margin-bottom: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary :global(svg) {
+    transition: transform 0.2s ease-in-out;
+    stroke: var(--color-g-500);
+  }
+
+  :global(html.dark) details summary :global(svg) {
+    stroke: var(--color-g-700);
+  }
+
+  details[open] summary :global(svg) {
+    transform: rotate(180deg);
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+import matter from "gray-matter";
+import { fetchDocPage } from "../../utils/fetch-doc-page";
+import Layout from "../../layouts/Layout.astro";
+import Markdown from "../../components/Markdown.astro";
+import Search from "../../components/Search.astro";
+import toc from "markdown-toc";
+import { fetchAllPages } from "../../utils/fetch-all-pages";
+
+import DocsNav from "../../components/Docs/Nav.astro";
+import TableOfContents from "../../components/Docs/TableOfContents.astro";
+import Footer from "../../components/Docs/Footer.astro";
+
+let filename = Astro.params.path;
+
+if (filename === undefined) {
+  filename = "index";
+}
+
+filename = `docs/${filename}.md`;
+
+const content = await fetchDocPage({ filename });
+const { content: markdownContent, data } = matter(content);
+
+const tableOfContents = toc(markdownContent, {
+  maxdepth: 1,
+  // apparently max depth doesn't work
+  // TODO: maybe use a better package
+  // @ts-ignore
+}).json.filter((item) => item.lvl <= 2);
+
+export async function getStaticPaths() {
+  const allPages = await fetchAllPages();
+
+  return allPages.map((page) => {
+    let path = page.replace("docs/", "");
+
+    path = path.replace("README.md", "");
+    path = path.replace(".md", "");
+
+    if (path === "") {
+      path = undefined;
+    }
+
+    return {
+      params: {
+        path,
+      },
+    };
+  });
+}
+---
+
+<Layout title={data.title} useDocsGrid>
+  <main class="docs-grid">
+    <aside class="docs-nav">
+      <Search />
+
+      <DocsNav />
+    </aside>
+
+    <article class="typography-paragraph">
+      <Markdown content={markdownContent} />
+
+      <Footer />
+    </article>
+
+    <aside class="page-nav">
+      <TableOfContents toc={tableOfContents} />
+    </aside>
+  </main>
+</Layout>

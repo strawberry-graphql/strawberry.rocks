@@ -1,0 +1,40 @@
+---
+interface Props {
+  href?: string;
+  target?: string;
+  title?: string;
+}
+
+let { href, target, title } = Astro.props;
+
+if (href?.endsWith(".md")) {
+  href = href.replace(".md", "");
+}
+---
+
+<a href={href} target={target} title={title}><slot /></a>
+
+<style>
+  a {
+    font-weight: bold;
+    color: var(--strawberry);
+    transition: all 0.2s ease-in-out;
+    background: linear-gradient(
+      to right,
+      var(--color-magenta),
+      var(--color-orange)
+    );
+    background-size: 100% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding: 0 4px 2px;
+    border-radius: 4px;
+    margin-left: -4px;
+    margin-right: -4px;
+
+    &:hover {
+      color: var(--color-white);
+      background-size: 100% 100%;
+    }
+  }
+</style>

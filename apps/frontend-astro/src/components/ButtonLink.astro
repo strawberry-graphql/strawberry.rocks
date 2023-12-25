@@ -1,0 +1,46 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={href} class="typography-label">
+  <slot />
+
+  <span class="background"></span>
+</a>
+
+<style>
+  a {
+    color: white;
+    padding: 16px 32px;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .background {
+    --rotation: 0deg;
+
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    aspect-ratio: 1;
+    top: 50%;
+    transform: translateY(-50%) rotate(var(--rotation));
+    z-index: -1;
+
+    background: linear-gradient(
+      90deg,
+      var(--color-magenta),
+      var(--color-orange)
+    );
+    transition: transform 0.3s ease-in-out;
+  }
+
+  a:hover .background {
+    --rotation: 180deg;
+  }
+</style>

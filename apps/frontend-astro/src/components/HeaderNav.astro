@@ -2,6 +2,8 @@
 import Link from "./HeaderNavLink.astro";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 
+import { fetchLatestRelease } from "../utils/fetch-latest-release";
+
 const links = [
   {
     name: "Docs",
@@ -30,17 +32,15 @@ const links = [
   },
 ] as const;
 
-const version = {
-  name: "v 0.76.0",
-  href: "...",
-} as const;
+// TODO: link to latest release should go to the changelog here
+const version = await fetchLatestRelease();
 ---
 
 <nav>
   <ul>
     {
       links.map((link) => (
-        <li key={link.slug}>
+        <li>
           <Link href={link.href} active={link.slug === "docs"}>
             {link.name}
           </Link>
@@ -51,7 +51,7 @@ const version = {
 
   <!-- todo: hover state -->
 
-  <a href={version.href} class="version">
+  <a href={version.href} class="version typography-caption">
     {version.name}
   </a>
 
@@ -65,7 +65,7 @@ const version = {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    @apply pb-64;
+    padding-bottom: 64px;
   }
 
   .version {
@@ -75,7 +75,13 @@ const version = {
     font-weight: bold;
     border-radius: 20px;
 
-    @apply bg-g-50 px-16 py-8 text-g-700 dark:bg-g-900 dark:text-g-400 typography-caption;
+    background-color: var(--color-g-50);
+    color: var(--color-g-700);
+    padding: 8px 16px;
+  }
+  :global(html.dark) .version {
+    background-color: var(--color-g-900);
+    color: var(--color-g-400);
   }
 
   .switcher {
@@ -112,8 +118,14 @@ const version = {
       width: 1px;
       height: 48px;
       margin-right: -8px;
-      @apply bg-g-100;
+      background: var(--color-g-100);
     }
+
+    :global(html.dark) nav > ul::before,
+    :global(html.dark) nav > ul::after {
+      background: var(--color-g-800);
+    }
+
     nav > ul::before {
       display: none;
     }
@@ -138,13 +150,12 @@ const version = {
   }
 
   @media (min-width: 900px) {
-	nav > ul::before {
-	  display: block;
-	}
+    nav > ul::before {
+      display: block;
+    }
 
-
-	.version {
-	  display: block;
-	}
+    .version {
+      display: block;
+    }
   }
 </style>

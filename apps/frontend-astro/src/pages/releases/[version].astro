@@ -1,0 +1,59 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { fetchReleases } from "../../utils/fetch-releases";
+import { fetchRelease } from "../../utils/fetch-release";
+import { addGitHubLinks } from "../../utils/add-github-links";
+import { format } from "date-fns/format";
+import { parseISO } from "date-fns/parseISO";
+import Search from "../../components/Search.astro";
+import DocsNav from "../../components/Docs/Nav.astro";
+import Markdown from "../../components/Markdown.astro";
+
+let version = Astro.params.version;
+
+export async function getStaticPaths() {
+  const releases = await fetchReleases();
+
+  return releases.map((version) => ({ params: { version } }));
+}
+
+const release = await fetchRelease(version);
+
+const content = addGitHubLinks(release.description);
+---
+
+<Layout title={"TODO"} useDocsGrid>
+  <main class="docs-grid">
+    <aside class="docs-nav">
+      <Search />
+      <DocsNav />
+    </aside>
+
+    <article class="typography-paragraph">
+      <h1 class="typography-heading-1">Strawberry GraphQL @ {version}</h1>
+      <h2 class="typography-label">
+        Released <time datetime={release.createdAt}>
+          {format(parseISO(release.createdAt), "MMMM d, yyyy 'at' h:mm a zzzz")}
+        </time>
+      </h2>
+
+      <Markdown content={content} />
+    </article>
+  </main>
+</Layout>
+
+<style>
+  article {
+    padding: 16px;
+    padding-bottom: 80px;
+
+    > * + * {
+      margin-top: 16px;
+    }
+  }
+
+  h2 time {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

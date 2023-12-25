@@ -1,9 +1,22 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Home/Hero.astro";
+import Features from "../components/Home/Features.astro";
+import Sponsors from "../components/Home/Sponsors.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-	</main>
+<Layout title="Welcome to Astro." blob>
+  <main class="grid-layout">
+    <Hero />
+
+    <Features />
+
+    <Sponsors />
+  </main>
 </Layout>
 
+<style>
+  main {
+    padding-bottom: 80px;
+  }
+</style>

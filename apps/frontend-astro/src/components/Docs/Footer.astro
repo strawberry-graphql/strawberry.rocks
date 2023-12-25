@@ -1,0 +1,59 @@
+---
+import FeedbackForm from "./FeedbackForm.astro";
+const pathname = new URL(Astro.request.url).pathname;
+
+const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${pathname}.md`;
+---
+
+<div>
+  <footer>
+    <a href={githubUrl} class="typography-label"> Edit this page on GitHub</a>
+
+    <FeedbackForm />
+  </footer>
+</div>
+
+<style>
+  div {
+    container-type: inline-size;
+  }
+
+  footer {
+    margin-top: 24px !important;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-g-100);
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  @container (max-width: 600px) {
+    footer {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+  }
+
+  :global(html.dark) footer {
+    border-top-color: var(--color-g-900);
+  }
+
+  footer :global(form) {
+    flex: 1 1 auto;
+    margin-right: 24px;
+    max-width: 500px;
+  }
+
+  a {
+    text-transform: uppercase;
+    font-weight: bold;
+    order: 1;
+    flex: 0 0 auto;
+
+    &:hover {
+      color: var(--color-strawberry);
+    }
+  }
+</style>

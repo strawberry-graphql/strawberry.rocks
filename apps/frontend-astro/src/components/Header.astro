@@ -1,54 +1,74 @@
 ---
 import Logo from "./Logo.astro";
-import Link from "./Link.astro";
-import NavLink from "./HeaderNavLink.astro";
-import Caption from "./Typography/Caption.astro";
 import MenuIcon from "./Icons/Menu.astro";
 import MenuCloseIcon from "./Icons/MenuClose.astro";
 import HeaderNav from "./HeaderNav.astro";
 
-const version = {
-  name: "v1.0",
-  href: "https://v1.astro.build",
-};
+interface Props {
+  useDocsGrid?: boolean;
+}
+
+const { useDocsGrid } = Astro.props;
 ---
 
 <input type="checkbox" id="toggle-nav" />
-<header>
+
+<header
+  class:list={[{ "docs-grid": useDocsGrid, "default-layout": !useDocsGrid }]}
+>
   <a href="/" class="logo">
-    <Logo class="w-full h-full" />
+    <Logo />
   </a>
 
   <div class="nav-container">
     <HeaderNav />
 
-    <label for="toggle-nav" class="cursor-pointer">
-      <MenuIcon class="text-black menu-icon dark:text-g-100" />
+    <label for="toggle-nav">
+      <MenuIcon class="menu-icon" />
 
       <div class="close-icon-wrapper">
-        <MenuCloseIcon class="text-g-700 dark:text-g-100 menu-icon-close" />
+        <MenuCloseIcon class="menu-icon menu-icon-close" />
       </div>
     </label>
   </div>
 </header>
 
 <style>
-  header {
-    @apply mx-16 my-8;
+  /* styles for when in doc grid mode */
+  @media (max-width: 767px) {
+    .docs-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .docs-grid .nav-container {
+    grid-column: content-start / full-end;
+  }
+
+  .default-layout {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
   }
 
   header :global(nav) {
     display: none;
-    @apply mt-40;
+    margin-top: 40px;
   }
 
   .logo {
     width: 40px;
     height: 48px;
     display: block;
+  }
+
+  .logo :global(svg) {
+    width: 100%;
+    height: 100%;
   }
 
   #toggle-nav {
@@ -59,16 +79,30 @@ const version = {
     display: none;
   }
 
+  .menu-icon {
+    stroke: var(--color-black);
+  }
+
+  :global(html.dark) .menu-icon {
+    stroke: var(--color-g-100);
+  }
+
+  label[for="toggle-nav"] {
+    cursor: pointer;
+  }
+
   /* Toggled styles */
 
   @media (max-width: 767px) {
+    #toggle-nav:checked ~ header .nav-container label .menu-icon {
+      display: none;
+    }
     #toggle-nav:checked ~ header .nav-container :global(nav),
     #toggle-nav:checked ~ header .nav-container label .menu-icon-close {
       display: flex;
     }
-    #toggle-nav:checked ~ header .nav-container label .menu-icon {
-      display: none;
-    }
+
+    /* TODO: disable scroll on body using :has, allow scroll on header */
 
     #toggle-nav:checked ~ header {
       position: fixed;
@@ -78,8 +112,14 @@ const version = {
       right: 0;
       min-height: 100vh;
       display: flex;
+      z-index: 100;
       flex-direction: column;
       align-items: stretch;
+      background: white;
+    }
+
+    :global(html.dark) #toggle-nav:checked ~ header {
+      background: black;
     }
 
     #toggle-nav:checked ~ header .nav-container {
@@ -96,9 +136,8 @@ const version = {
 
     #toggle-nav:checked ~ header .nav-container .close-icon-wrapper {
       position: absolute;
-      top: 0;
-      right: 0;
-      height: 48px;
+      top: 20px;
+      right: 12px;
       display: flex;
       align-items: center;
     }
@@ -108,10 +147,6 @@ const version = {
     header :global(nav) {
       display: flex;
       margin-top: 0;
-    }
-
-    header {
-      @apply mx-40 my-32;
     }
 
     .logo {

@@ -1,0 +1,89 @@
+---
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import rehypePrettyCode from "rehype-pretty-code";
+
+interface Props {
+  code: string;
+  lang: string;
+}
+
+let { code, lang } = Astro.props;
+
+const langMap: {
+  [key: string]: string;
+} = {
+  text: "plaintext",
+  response: "json",
+  schema: "graphql",
+};
+
+lang = langMap[lang] || lang;
+
+if (lang !== "mermaid") {
+  code = `\`\`\`${lang}\n${code}\n\`\`\``;
+
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypePrettyCode, {
+      keepBackground: false,
+      theme: "one-dark-pro",
+    })
+    .use(rehypeStringify)
+    .process(code);
+
+  code = String(file);
+}
+---
+
+{
+  lang === "mermaid" ? (
+    <pre class="mermaid">{code}</pre>
+  ) : (
+    <div class="code typography-code">
+      <Fragment set:html={code} lang={lang} />
+    </div>
+  )
+}
+
+<!-- <AstroCode code={code} lang={lang as any} /> -->
+<script>
+  import mermaid from "mermaid";
+
+  mermaid.initialize({
+    securityLevel: "loose",
+    theme: window.localStorage.getItem("theme") === "dark" ? "dark" : "default",
+  });
+</script>
+
+<style>
+  .code {
+    background: var(--color-g-900);
+    width: 100%;
+
+    border-radius: 16px;
+    overflow-x: auto;
+  }
+
+  .code :global(pre) {
+    background: transparent !important;
+    overflow-x: unset !important;
+    margin: 24px 24px;
+  }
+
+  .code :global(pre) {
+    width: min-content;
+  }
+
+  @media (min-width: 768px) {
+    .code {
+      font-size: 16px;
+    }
+    .code :global(pre) {
+      margin: 32px;
+    }
+  }
+</style>

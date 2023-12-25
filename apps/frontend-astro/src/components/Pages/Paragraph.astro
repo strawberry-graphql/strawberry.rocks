@@ -1,0 +1,13 @@
+---
+interface Props {
+  small?: boolean;
+}
+
+const { small } = Astro.props;
+
+const className = small ? "typography-paragraph-2" : "typography-paragraph";
+---
+
+<p class={className}>
+  <slot />
+</p>
