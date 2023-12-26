@@ -1,7 +1,7 @@
 const GetReleaseDocument = /* GraphQL */ `
   query {
     repository(owner: "strawberry-graphql", name: "strawberry") {
-      releases(first: 100) {
+      releases(first: 10) {
         nodes {
           tagName
         }

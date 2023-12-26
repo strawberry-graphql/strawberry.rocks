@@ -50,7 +50,7 @@ const features = [
       "Strawberry has support for multiple integrations, allowing you to use it with your favorite web framework.",
     icon: "integrations",
   },
-];
+] as const;
 ---
 
 <div class="features-container">
@@ -109,16 +109,10 @@ const features = [
       width: 100%;
     }
     ul {
-      column-count: 3;
+      column-count: 4;
     }
     li {
       width: auto;
-    }
-  }
-
-  @media (min-width: 1600px) {
-    ul {
-      column-count: 4;
     }
   }
 </style>

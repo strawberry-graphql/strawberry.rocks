@@ -10,7 +10,9 @@ export const fetchAllPages = async () => {
 
   const data = await response.json();
 
-  const docs = data.tree.filter((item: any) => item.path.startsWith("docs/"));
+  const docs = data.tree.filter(
+    (item: any) => item.path.startsWith("docs/") && item.path.endsWith(".md"),
+  );
 
-  return docs.map((item: any) => item.path);
+  return docs.map((item: any) => item.path) as string[];
 };

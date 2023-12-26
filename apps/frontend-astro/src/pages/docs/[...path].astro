@@ -1,17 +1,19 @@
 ---
+// @ts-ignore
+import toc from "markdown-toc";
 import matter from "gray-matter";
 import { fetchDocPage } from "../../utils/fetch-doc-page";
 import Layout from "../../layouts/Layout.astro";
 import Markdown from "../../components/Markdown.astro";
 import Search from "../../components/Search.astro";
-import toc from "markdown-toc";
 import { fetchAllPages } from "../../utils/fetch-all-pages";
 
 import DocsNav from "../../components/Docs/Nav.astro";
 import TableOfContents from "../../components/Docs/TableOfContents.astro";
 import Footer from "../../components/Docs/Footer.astro";
 
-let filename = Astro.params.path;
+// TODO: remove as
+let { path: filename } = Astro.params as { path: string };
 
 if (filename === undefined) {
   filename = "index";
@@ -27,13 +29,13 @@ const tableOfContents = toc(markdownContent, {
   // apparently max depth doesn't work
   // TODO: maybe use a better package
   // @ts-ignore
-}).json.filter((item) => item.lvl <= 2);
+}).json.filter((item: any) => item.lvl <= 2);
 
 export async function getStaticPaths() {
   const allPages = await fetchAllPages();
 
   return allPages.map((page) => {
-    let path = page.replace("docs/", "");
+    let path: string | undefined = page.replace("docs/", "");
 
     path = path.replace("README.md", "");
     path = path.replace(".md", "");

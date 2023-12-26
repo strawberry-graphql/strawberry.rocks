@@ -41,7 +41,7 @@
   const svg = document.querySelector("#blob svg");
 
   if (svg) {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: any) => {
       const { clientX, clientY } = e;
       const top = clientY - 278;
       const left = clientX - 336;
@@ -53,5 +53,5 @@
     };
 
     document.addEventListener("mousemove", handleMouseMove);
-  } 
+  }
 </script>

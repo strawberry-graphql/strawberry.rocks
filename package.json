@@ -3,5 +3,10 @@
   "private": true,
   "devDependencies": {
     "typescript": "5.2.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "marked": "11"
+    }
   }
 }
