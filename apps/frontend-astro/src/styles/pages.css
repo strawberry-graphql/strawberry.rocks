@@ -1,22 +1,14 @@
-.grid-layout {
+.home-layout {
   display: grid;
-  row-gap: 40px;
+  row-gap: 80px;
   grid-template-columns:
-    [full-start] var(--full) [feature-start] var(--feature) [popout-start] var(
-      --popout
-    )
-    [content-start] var(--content) [content-end] var(--popout) [popout-end] var(
-      --feature
-    )
+    [full-start] var(--full) [feature-start] var(--feature)
+    [content-start] var(--content) [content-end] var(--feature)
     [feature-end] var(--full) [full-end];
 }
 
-.grid-layout > * {
+.home-layout > * {
   grid-column: content;
-}
-
-.popout {
-  grid-column: popout;
 }
 
 .feature {
