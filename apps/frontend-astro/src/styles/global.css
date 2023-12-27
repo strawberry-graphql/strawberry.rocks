@@ -68,7 +68,7 @@ body {
 }
 
 body > :is(header, footer) {
-  padding: 16px 8px;
+  padding: 16px;
 }
 
 @media (min-width: 768px) {
