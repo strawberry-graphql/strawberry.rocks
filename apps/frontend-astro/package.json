@@ -23,6 +23,8 @@
     "gray-matter": "4.0.3",
     "markdown-toc": "^1.2.0",
     "marked": "11.1.0",
+    "marked-footnote": "^1.2.2",
+    "marked-smartypants": "^1.1.5",
     "media-query-fns": "^2.0.0",
     "mermaid": "^10.6.1",
     "parsel-js": "^1.1.2",

@@ -10,6 +10,8 @@ import swap from "./ultrahtml/transformers/swap";
 import { jsx as h } from "astro/jsx-runtime";
 // @ts-ignore
 import { renderJSX } from "astro/runtime/server/jsx";
+import markedFootnote from "marked-footnote";
+import { markedSmartypants } from "marked-smartypants";
 
 import GithubSlugger from "github-slugger";
 
@@ -64,10 +66,9 @@ export async function markdown(
       };
     }
   }
-  marked.use({
+
+  marked.use(markedFootnote(), markedSmartypants(), {
     gfm: true,
-    // @ts-ignore ???
-    smartypants: true,
     renderer,
   });
   const content = await marked.parse(dedent(input));

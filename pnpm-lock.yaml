@@ -300,6 +300,12 @@ importers:
       marked:
         specifier: '11'
         version: 11.1.0
+      marked-footnote:
+        specifier: ^1.2.2
+        version: 1.2.2(marked@11.1.0)
+      marked-smartypants:
+        specifier: ^1.1.5
+        version: 1.1.5(marked@11.1.0)
       media-query-fns:
         specifier: ^2.0.0
         version: 2.0.0
@@ -13889,6 +13895,23 @@ packages:
       strip-color: 0.1.0
     dev: false
 
+  /marked-footnote@1.2.2(marked@11.1.0):
+    resolution: {integrity: sha512-TFBEHwHLSSedub7P6XHHs+dMMOnDeNV5+kFDo4trU//gDd8iM57lg9jr9NGwDifPwLllHwKmFcRNp5uYvO2Fnw==}
+    peerDependencies:
+      marked: '11'
+    dependencies:
+      marked: 11.1.0
+    dev: false
+
+  /marked-smartypants@1.1.5(marked@11.1.0):
+    resolution: {integrity: sha512-gp+IpDsthwcXJ/sWT8si7dGWL6Diag3Iy4+OOoMZnhjFAox9z77cWfqQUmwY9oP9XACWZeiBXvWW1TOjTbvwAw==}
+    peerDependencies:
+      marked: '11'
+    dependencies:
+      marked: 11.1.0
+      smartypants: 0.2.2
+    dev: false
+
   /marked@11.1.0:
     resolution: {integrity: sha512-fvKJWAPEafVj1dwGwcPI5mBB/0pvViL6NlCbNDG1HOIRwwAU/jeMoFxfbRLuirO1wRH7m4yPvBqD/O1wyWvayw==}
     engines: {node: '>= 18'}
@@ -18061,6 +18084,11 @@ packages:
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
     dev: true
+
+  /smartypants@0.2.2:
+    resolution: {integrity: sha512-TzobUYoEft/xBtb2voRPryAUIvYguG0V7Tt3de79I1WfXgCwelqVsGuZSnu3GFGRZhXR90AeEYIM+icuB/S06Q==}
+    hasBin: true
+    dev: false
 
   /snake-case@3.0.4:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}

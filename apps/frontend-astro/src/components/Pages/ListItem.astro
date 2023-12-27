@@ -1,3 +1,9 @@
-<li class="typography-paragraph">
+---
+const props = Astro.props;
+
+console.log(props);
+---
+
+<li class="typography-paragraph" {...props}>
   <slot />
 </li>
