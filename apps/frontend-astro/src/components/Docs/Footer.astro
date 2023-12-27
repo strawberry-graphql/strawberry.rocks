@@ -32,7 +32,7 @@ const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${p
     footer {
       flex-direction: column;
       align-items: stretch;
-      gap: 16px;
+      gap: 24px;
     }
   }
 
@@ -52,8 +52,20 @@ const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${p
     order: 1;
     flex: 0 0 auto;
 
+    --border-color: var(--color-g-100);
+
     &:hover {
       color: var(--color-strawberry);
     }
+
+    @container (max-width: 600px) {
+      order: 0;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 24px;
+    }
+  }
+
+  :global(html.dark) a {
+    --border-color: var(--color-g-900);
   }
 </style>

@@ -92,3 +92,16 @@ body > :is(header, footer) {
   white-space: nowrap;
   border-width: 0;
 }
+
+section.footnotes {
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+section.footnotes::before {
+  content: "Footnotes:";
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
