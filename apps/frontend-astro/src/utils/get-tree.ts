@@ -72,6 +72,10 @@ export function getTree(text: string, prefix: string) {
   const fixUrl = (url: string) => {
     url = url.replace(/\/index.md$/, "");
 
+    if (url === ".") {
+      return prefix;
+    }
+
     return addHrefPrefix(url, prefix);
   };
 
