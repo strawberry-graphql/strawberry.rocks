@@ -1,0 +1,81 @@
+<div class="table-container">
+  <table>
+    <slot />
+  </table>
+</div>
+
+<style>
+  .table-container {
+    overflow-y: auto;
+    width: 100%;
+
+    --background: var(--color-white);
+    --transparent: rgba(255, 255, 255, 0);
+    --shadow: rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 600px) {
+      background-image: linear-gradient(
+          to right,
+          var(--background),
+          var(--background)
+        ),
+        linear-gradient(to right, var(--background), var(--background)),
+        linear-gradient(to right, var(--shadow), var(--transparent)),
+        linear-gradient(to left, var(--shadow), var(--transparent));
+      background-position:
+        left center,
+        right center,
+        left center,
+        right center;
+      background-repeat: no-repeat;
+      background-color: var(--background);
+      background-size:
+        40px 100%,
+        40px 100%,
+        10px 100%,
+        10px 100%;
+      background-attachment: local, local, scroll, scroll;
+
+      margin-left: -16px;
+      width: calc(100% + 32px);
+      padding-inline: 16px;
+    }
+  }
+
+  :global(html.dark) .table-container {
+    --background: var(--color-black);
+    --transparent: rgba(255, 255, 255, 0);
+    --shadow: rgba(255, 255, 255, 0.2);
+  }
+
+  table {
+    min-width: 600px;
+    border-collapse: collapse;
+  }
+
+  table :global(th) {
+    font-weight: bold;
+    text-align: left;
+    padding-bottom: 16px;
+  }
+
+  table :global(tr) {
+    border-bottom: 1px solid var(--color-g-100);
+  }
+
+  table :global(td) {
+    padding: 16px 8px;
+  }
+
+  table :global(td:first-child) {
+    padding-left: 0;
+  }
+
+  table :global(td:last-child) {
+    padding-right: 0;
+  }
+
+  :global(html.dark) table :global(tr) {
+    border-bottom: 1px solid var(--color-g-700);
+  }
+</style>
