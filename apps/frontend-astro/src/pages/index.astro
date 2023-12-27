@@ -18,7 +18,6 @@ import Sponsors from "../components/Home/Sponsors.astro";
 <style>
   main {
     padding: 80px 0;
-
     display: flex;
     row-gap: 80px;
     flex-direction: column;
@@ -29,5 +28,9 @@ import Sponsors from "../components/Home/Sponsors.astro";
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+
+    @media (max-width: 800px) {
+      padding: 0 16px;
+    }
   }
 </style>

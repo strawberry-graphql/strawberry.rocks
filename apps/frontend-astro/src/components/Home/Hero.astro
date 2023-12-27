@@ -5,13 +5,18 @@ import CodeBox from "../Pages/CodeBox.astro";
 const code = `
 import strawberry
 
-@strawberry.type
-class User:
-    name: str
 
+@strawberry.type
+class Song:
+    id: strawberry.ID
+    title: str
+
+
+@strawberry.type
+class Query:
     @strawberry.field
-    def is_admin(self) -> bool:
-		return self.name == "Patrick"
+    def song(self, id: strawberry.ID) -> Song:
+        return Song(id=id, title="Strawberry Fields Forever")
 `.trim();
 ---
 
@@ -51,13 +56,11 @@ class User:
     color: var(--color-white);
   }
 
-  .feature :global(.code-wrapper) {
-    max-width: 680px;
-
-  }
-
   .code-wrapper {
+    max-width: 680px;
     align-self: stretch;
+    width: 90%;
+    margin: 0 auto;
 
     @media (min-width: 640px) {
       align-self: center;

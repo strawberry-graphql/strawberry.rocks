@@ -26,12 +26,23 @@
   --color-magenta: #ee0a78;
   --color-orange: #fe620a;
 
-  /* Code */
-  --color-code-green: var(--code-color-green);
-  --color-code-blue: var(--code-color-blue);
-  --color-code-purple: var(--code-color-purple);
-  --color-code-pink: var(--code-color-pink);
-  --color-code-orange: var(--code-color-orange);
+  --code-color-green: #8ed287;
+  --code-color-blue: #aed5fb;
+  --code-color-purple: #cbabf9;
+  --code-color-pink: #ea8075;
+  --code-color-orange: #eaad75;
+
+  --shiki-color-text: #fff;
+  --shiki-color-background: transparent;
+  --shiki-token-constant: var(--code-color-blue);
+  --shiki-token-string: var(--code-color-blue);
+  --shiki-token-comment: var(--code-color-pink);
+  --shiki-token-keyword: var(--code-color-green);
+  --shiki-token-parameter: #fff;
+  --shiki-token-function: var(--code-color-purple);
+  --shiki-token-string-expression: var(--code-color-blue);
+  --shiki-token-punctuation: var(--code-color-purple);
+  --shiki-token-link: var(--code-color-orange);
 
   /* Callout */
   --color-callout-tip: rgba(142, 210, 135, 0.2);

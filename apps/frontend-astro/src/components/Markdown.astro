@@ -12,6 +12,9 @@ import CodeBox from "./Pages/CodeBox.astro";
 import Link from "./Pages/Link.astro";
 import Image from "./Pages/Image.astro";
 import Blockquote from "./Pages/Blockquote.astro";
+import Warning from "./Pages/Callout/Warning.astro";
+import Tip from "./Pages/Callout/Tip.astro";
+import Note from "./Pages/Callout/Note.astro";
 
 interface Props {
   content: string;
@@ -34,5 +37,8 @@ const { content } = Astro.props;
     a: Link,
     img: Image,
     blockquote: Blockquote,
+    Tip,
+    Note,
+    Warning,
   }}
 />
