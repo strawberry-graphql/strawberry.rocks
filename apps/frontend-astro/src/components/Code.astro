@@ -63,18 +63,20 @@ if (lang !== "mermaid") {
   .code {
     background: var(--color-g-900);
     width: 100%;
+    color: white;
 
     border-radius: 16px;
     overflow-x: auto;
+  }
+
+  .code :global(figure) {
+    display: contents;
   }
 
   .code :global(pre) {
     background: transparent !important;
     overflow-x: unset !important;
     margin: 24px 24px;
-  }
-
-  .code :global(pre) {
     width: min-content;
   }
 

@@ -5,9 +5,8 @@ import { fetchRelease } from "../../utils/fetch-release";
 import { addGitHubLinks } from "../../utils/add-github-links";
 import { format } from "date-fns/format";
 import { parseISO } from "date-fns/parseISO";
-import Search from "../../components/Search.astro";
-import DocsNav from "../../components/Docs/Nav.astro";
 import Markdown from "../../components/Markdown.astro";
+import Sidebar from "../../components/Docs/Sidebar.astro";
 
 let version = Astro.params.version;
 
@@ -24,10 +23,7 @@ const content = addGitHubLinks(release.description);
 
 <Layout title={"TODO"} useDocsGrid>
   <main class="docs-grid">
-    <aside class="docs-nav">
-      <Search />
-      <DocsNav />
-    </aside>
+    <Sidebar />
 
     <article class="typography-paragraph">
       <h1 class="typography-heading-1">Strawberry GraphQL @ {version}</h1>
@@ -49,6 +45,7 @@ const content = addGitHubLinks(release.description);
 
     > * + * {
       margin-top: 16px;
+      display: block;
     }
   }
 

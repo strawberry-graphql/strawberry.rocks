@@ -32,8 +32,18 @@ const links = [
   },
 ] as const;
 
-// TODO: link to latest release should go to the changelog here
 const version = await fetchLatestRelease();
+version.href = `/releases/${version.name}`;
+
+const currentPath = new URL(Astro.request.url);
+
+const isActive = (link: (typeof links)[number]) => {
+  if (link.slug === "docs") {
+    return currentPath.pathname.startsWith("/docs");
+  }
+
+  return currentPath.pathname === link.href;
+};
 ---
 
 <nav>
@@ -41,7 +51,7 @@ const version = await fetchLatestRelease();
     {
       links.map((link) => (
         <li>
-          <Link href={link.href} active={link.slug === "docs"}>
+          <Link href={link.href} active={isActive(link)}>
             {link.name}
           </Link>
         </li>

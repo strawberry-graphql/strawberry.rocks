@@ -5,10 +5,9 @@ import matter from "gray-matter";
 import { fetchDocPage } from "../../utils/fetch-doc-page";
 import Layout from "../../layouts/Layout.astro";
 import Markdown from "../../components/Markdown.astro";
-import Search from "../../components/Search.astro";
 import { fetchAllPages } from "../../utils/fetch-all-pages";
 
-import DocsNav from "../../components/Docs/Nav.astro";
+import Sidebar from "../../components/Docs/Sidebar.astro";
 import TableOfContents from "../../components/Docs/TableOfContents.astro";
 import Footer from "../../components/Docs/Footer.astro";
 
@@ -55,11 +54,7 @@ export async function getStaticPaths() {
 
 <Layout title={data.title} useDocsGrid>
   <main class="docs-grid">
-    <aside class="docs-nav">
-      <Search />
-
-      <DocsNav />
-    </aside>
+    <Sidebar/>
 
     <article class="typography-paragraph">
       <Markdown content={markdownContent} />

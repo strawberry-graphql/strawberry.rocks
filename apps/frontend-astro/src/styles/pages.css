@@ -26,25 +26,74 @@ main > article :is(h1, h2, h3, h4, h5, h6) {
   text-wrap: pretty;
 }
 
-.docs-nav,
 .page-nav {
   display: none;
-  padding: 16px 40px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
 }
 
-.docs-nav {
-  padding-right: 0;
+#toggle-docs-nav {
+  display: none;
 }
 
-.page-nav {
-  padding-left: 0;
+@media (max-width: 767px) {
+  .docs-nav {
+    position: fixed;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    z-index: 99;
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    padding: 16px;
+
+    label {
+      cursor: pointer;
+      color: var(--color-g-900);
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+
+      svg {
+        stroke: currentColor;
+      }
+    }
+  }
+
+  .docs-nav-content {
+    display: none;
+  }
+
+  body:has(#toggle-docs-nav:checked) {
+    overflow: hidden;
+  }
+
+  #toggle-docs-nav:checked ~ .docs-nav {
+    height: 100dvh;
+  }
+
+  #toggle-docs-nav:checked ~ .docs-nav .docs-nav-content {
+    display: block;
+  }
 }
 
 @media (min-width: 768px) {
+  .docs-nav,
+  .page-nav {
+    display: none;
+    padding: 16px 40px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .docs-nav {
+    padding-right: 0;
+  }
+
+  .page-nav {
+    padding-left: 0;
+  }
+
   article {
     grid-column: content;
   }
@@ -71,5 +120,6 @@ main > article {
 
   > * + * {
     margin-top: 16px;
+    display: block;
   }
 }
