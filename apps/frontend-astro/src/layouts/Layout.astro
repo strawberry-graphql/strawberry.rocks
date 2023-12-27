@@ -29,5 +29,10 @@ const { title, blob, useDocsGrid = false } = Astro.props;
     <Header useDocsGrid={useDocsGrid} />
     <slot />
     <Footer />
+    <script
+      defer
+      data-domain="strawberry.rocks"
+      data-api="/plausible/api/event"
+      src="/plausible/js/script.js"></script>
   </body>
 </html>
