@@ -127,5 +127,13 @@ export async function getStaticPaths() {
         type: "default",
       },
     },
+    {
+      params: {
+        route: `acknowledgements`,
+      },
+      props: {
+        type: "default",
+      },
+    },
   ];
 }
