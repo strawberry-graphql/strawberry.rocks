@@ -7,6 +7,7 @@ import { fetchAllPages } from "../../utils/fetch-all-pages";
 import { getDocsCard } from "./docs-card";
 import { getReleaseCard } from "./release-card";
 import { fetchReleases } from "../../utils/fetch-releases";
+import { getDefaultCard } from "./default-card";
 
 const dimensions = {
   width: 1200,
@@ -22,7 +23,9 @@ export async function GET(context: APIContext) {
 
   let markup;
 
-  if (type === "docs") {
+  if (type === "default") {
+    markup = await getDefaultCard();
+  } else if (type === "docs") {
     markup = await getDocsCard(source);
   } else {
     markup = await getReleaseCard(version);
@@ -34,6 +37,7 @@ export async function GET(context: APIContext) {
     "./public/fonts/JetBrainsMono-Regular.ttf",
   );
 
+  // @ts-ignore
   const svg = await satori(markup, {
     fonts: [
       {
@@ -78,7 +82,15 @@ export async function getStaticPaths() {
     path = path.replace(".md", "");
 
     if (path === "") {
-      path = undefined;
+      return {
+        params: {
+          route: `docs`,
+        },
+        props: {
+          type: "default",
+          source: page,
+        },
+      };
     }
 
     return {
@@ -104,5 +116,16 @@ export async function getStaticPaths() {
     };
   });
 
-  return [...releasePages, ...docsPages];
+  return [
+    ...releasePages,
+    ...docsPages,
+    {
+      params: {
+        route: `default`,
+      },
+      props: {
+        type: "default",
+      },
+    },
+  ];
 }

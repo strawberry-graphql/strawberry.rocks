@@ -20,8 +20,18 @@ let {
 
 title = `${title} | 🍓 Strawberry GraphQL`;
 
-const url = `https://strawberry.rocks${Astro.pathname}`;
-const image = `https://strawberry.rocks/open-graph${Astro.pathname}`;
+const path = new URL(Astro.request.url).pathname;
+
+let imagePath = path;
+
+if (path === "/") {
+  imagePath = "/default";
+}
+
+imagePath += ".png";
+
+const url = `https://strawberry.rocks${path}`;
+const image = `https://strawberry.rocks/og${imagePath}`;
 ---
 
 <!doctype html>
