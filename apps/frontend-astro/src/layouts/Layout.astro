@@ -8,21 +8,49 @@ interface Props {
   title: string;
   blob?: boolean;
   useDocsGrid?: boolean;
+  description?: string;
 }
 
-const { title, blob, useDocsGrid = false } = Astro.props;
+let {
+  title,
+  blob,
+  useDocsGrid = false,
+  description = "Strawberry GraphQL is a powerful and modern GraphQL framework for Python that allows developers to easily create robust and scalable APIs. With its intuitive and developer-friendly API, Strawberry makes it easy to define and query GraphQL schemas, while also providing advanced features such as type safety, code generation, and more.",
+} = Astro.props;
+
+title = `${title} | 🍓 Strawberry GraphQL`;
+
+const url = `https://strawberry.rocks${Astro.pathname}`;
+const image = `https://strawberry.rocks/open-graph${Astro.pathname}`;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
+
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
   </head>
   <body>
     {blob && <Blob />}
