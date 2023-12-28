@@ -1,11 +1,12 @@
 import satori from "satori";
-import { html } from "satori-html";
 import { promises as fs } from "fs";
 import { Resvg } from "@resvg/resvg-js";
 import type { APIContext } from "astro";
 import { fetchAllPages } from "../../utils/fetch-all-pages";
-import { fetchDocPage } from "../../utils/fetch-doc-page";
-import matter from "gray-matter";
+
+import { getDocsCard } from "./docs-card";
+import { getReleaseCard } from "./release-card";
+import { fetchReleases } from "../../utils/fetch-releases";
 
 const dimensions = {
   width: 1200,
@@ -13,41 +14,25 @@ const dimensions = {
 };
 
 export async function GET(context: APIContext) {
-  let path: string = (
-    context.props as {
-      source: string;
-    }
-  ).source;
+  let { source, type, version } = context.props as {
+    source: string;
+    type: string;
+    version: string;
+  };
 
-  const content = await fetchDocPage({ filename: path });
-  const { data } = matter(content);
+  let markup;
 
-  const title = data.title;
-
-  const bgImage = await fs.readFile("./src/social-card-background.png", {
-    encoding: "base64",
-  });
-  const logo = await fs.readFile("./src/logo.png", { encoding: "base64" });
-
-  const markup = html`<div tw="flex w-full h-full">
-    <img
-      src="data:image/png;base64,${bgImage}"
-      tw="inset-0 absolute object-cover"
-    />
-    <div tw="flex flex-col w-full h-full p-[40px] pb-[60px]">
-      <img src="data:image/png;base64,${logo}" tw="w-[150px] h-[170px]" />
-
-      <div tw="flex flex-col items-start mt-auto font-bold">
-        <h1 tw="text-[100px] text-white mb-[-15px] ml-[-5px]" style="font-family: Ranade">
-          ${title}
-        </h1>
-        <h1 tw="text-[40px] text-white">Strawberry GraphQL</h1>
-      </div>
-    </div>
-  </div>`;
+  if (type === "docs") {
+    markup = await getDocsCard(source);
+  } else {
+    markup = await getReleaseCard(version);
+  }
 
   const Satoshi = await fs.readFile("./public/fonts/Satoshi-Bold.otf");
   const Ranade = await fs.readFile("./public/fonts/Ranade-Bold.otf");
+  const JetBrains = await fs.readFile(
+    "./public/fonts/JetBrainsMono-Regular.ttf",
+  );
 
   const svg = await satori(markup, {
     fonts: [
@@ -60,6 +45,11 @@ export async function GET(context: APIContext) {
         name: "Ranade",
         data: Buffer.from(Ranade),
         weight: 700,
+      },
+      {
+        name: "JetBrains Mono",
+        data: Buffer.from(JetBrains),
+        weight: 400,
       },
     ],
     height: dimensions.height,
@@ -81,9 +71,7 @@ export async function GET(context: APIContext) {
 }
 
 export async function getStaticPaths() {
-  const allPages = await fetchAllPages();
-
-  return allPages.map((page) => {
+  const docsPages = (await fetchAllPages()).map((page) => {
     let path: string | undefined = page.replace("docs/", "");
 
     path = path.replace("README.md", "");
@@ -103,4 +91,18 @@ export async function getStaticPaths() {
       },
     };
   });
+
+  const releasePages = (await fetchReleases()).map((release) => {
+    return {
+      params: {
+        route: `releases/${release}`,
+      },
+      props: {
+        type: "release",
+        version: release,
+      },
+    };
+  });
+
+  return [...releasePages, ...docsPages];
 }
