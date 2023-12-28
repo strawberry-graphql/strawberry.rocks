@@ -321,6 +321,9 @@ importers:
       mermaid:
         specifier: ^10.6.1
         version: 10.6.1
+      parse-link-header:
+        specifier: ^2.0.0
+        version: 2.0.0
       parsel-js:
         specifier: ^1.1.2
         version: 1.1.2
@@ -367,6 +370,9 @@ importers:
         specifier: 5.0.0
         version: 5.0.0
     devDependencies:
+      '@types/parse-link-header':
+        specifier: ^2.0.3
+        version: 2.0.3
       '@types/stylis':
         specifier: ^4.2.5
         version: 4.2.5
@@ -6920,6 +6926,10 @@ packages:
 
   /@types/parse-json@4.0.1:
     resolution: {integrity: sha512-3YmXzzPAdOTVljVMkTMBdBEvlOLg2cDQaDhnnhT3nT9uDbnJzjWhKlzb+desT12Y7tGqaN6d+AbozcKzyL36Ng==}
+
+  /@types/parse-link-header@2.0.3:
+    resolution: {integrity: sha512-ffLAxD6Xqcf2gSbtEJehj8yJ5R/2OZqD4liodQvQQ+hhO4kg1mk9ToEZQPMtNTm/zIQj2GNleQbsjPp9+UQm4Q==}
+    dev: true
 
   /@types/pretty-hrtime@1.0.2:
     resolution: {integrity: sha512-vyv9knII8XeW8TnXDcGH7HqG6FeR56ESN6ExM34d/U8Zvs3xuG34euV6CVyB7KEYI7Ts4lQM8b4NL72e7UadnA==}
@@ -16116,6 +16126,12 @@ packages:
       nlcst-to-string: 3.1.1
       unist-util-modify-children: 3.1.1
       unist-util-visit-children: 2.0.2
+    dev: false
+
+  /parse-link-header@2.0.0:
+    resolution: {integrity: sha512-xjU87V0VyHZybn2RrCX5TIFGxTVZE6zqqZWMPlIKiSKuWh/X5WZdt+w1Ki1nXB+8L/KtL+nZ4iq+sfI6MrhhMw==}
+    dependencies:
+      xtend: 4.0.2
     dev: false
 
   /parse-numeric-range@1.3.0:

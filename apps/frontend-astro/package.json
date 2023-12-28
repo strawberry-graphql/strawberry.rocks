@@ -30,6 +30,7 @@
     "marked-smartypants": "^1.1.5",
     "media-query-fns": "^2.0.0",
     "mermaid": "^10.6.1",
+    "parse-link-header": "^2.0.0",
     "parsel-js": "^1.1.2",
     "rehype-pretty-code": "^0.12.3",
     "rehype-stringify": "^10.0.0",
@@ -47,6 +48,7 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
+    "@types/parse-link-header": "^2.0.3",
     "@types/stylis": "^4.2.5",
     "prettier": "3.1.1",
     "prettier-plugin-astro": "^0.12.2"
