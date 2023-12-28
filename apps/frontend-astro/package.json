@@ -15,6 +15,7 @@
     "@astrojs/tailwind": "^5.0.4",
     "@docsearch/css": "^3.5.2",
     "@docsearch/js": "3",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@resvg/resvg-js": "^2.6.0",
     "astro": "^4.0.7",
     "astro-og-canvas": "^0.4.2",
@@ -48,6 +49,7 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
+    "@types/mailchimp__mailchimp_marketing": "^3.0.17",
     "@types/parse-link-header": "^2.0.3",
     "@types/stylis": "^4.2.5",
     "prettier": "3.1.1",

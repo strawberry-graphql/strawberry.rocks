@@ -1,0 +1,23 @@
+---
+import { subscribeToMailchimp } from "../utils/mailchimp";
+
+let next = "/";
+
+if (Astro.request.method === "POST") {
+  const data = await Astro.request.formData();
+  const email = data.get("email") as string;
+
+  try {
+    await subscribeToMailchimp(email);
+    next = (data.get("next") as string) + "?registration=success";
+  } catch (error) {
+    next = (data.get("next") as string) + "?registration=failed";
+
+    if (error instanceof Error) {
+      console.error(error);
+    }
+  }
+}
+
+return Astro.redirect(next + "#newsletter-form");
+---

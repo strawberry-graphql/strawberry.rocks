@@ -6,21 +6,43 @@ import FooterNav from "./FooterNav.astro";
 import FooterSocials from "./FooterSocials.astro";
 import Logo from "./Logo.astro";
 import VercelLogo from "./VercelLogo.astro";
+
+const url = new URL(Astro.request.url);
+const currentPath = url.pathname;
+
+const registrationStatus = url.searchParams.get("registration");
 ---
 
 <footer>
-  <form>
+  <form method="post" action="/newsletter" id="newsletter-form">
     <legend class="typography-heading-3">Join our newsletter</legend>
 
-    <label for="email" class="sr-only">Email</label>
-
     <div>
-      <Input type="email" name="email" placeholder="Email address" required />
+      <formset>
+        <label for="email" class="sr-only">Email</label>
+        <Input type="email" name="email" placeholder="Email address" required />
 
-      <Button type="submit">
-        <PlusIcon slot="icon" />
-         Subscribe
-      </Button>
+        <input type="hidden" name="next" value={currentPath} />
+        <Button type="submit">
+          <PlusIcon slot="icon" />
+           Subscribe
+        </Button>
+      </formset>
+
+      {
+        registrationStatus === "success" && (
+          <p class="typography-body-2 status">
+            You have been successfully registered!
+          </p>
+        )
+      }
+      {
+        registrationStatus === "failed" && (
+          <p class="typography-body-2 status status-error">
+            Something went wrong. Please try again.
+          </p>
+        )
+      }
     </div>
   </form>
 
@@ -132,10 +154,19 @@ import VercelLogo from "./VercelLogo.astro";
     }
   }
 
-  form div {
+  form formset {
     display: flex;
     flex-direction: row;
     gap: 16px;
+  }
+
+  form .status {
+    margin-top: 16px;
+    color: var(--color-green);
+  }
+
+  form .status-error {
+    color: var(--color-strawberry);
   }
 
   .info {
