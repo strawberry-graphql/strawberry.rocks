@@ -94,7 +94,7 @@ const getGithubSponsorsInfo = async (sponsors: any) => {
 
     return {
       id: sponsor.login,
-      name: sponsor.name,
+      name: sponsor.name || sponsor.login,
       logo: sponsor.logo,
       href: sponsor.websiteUrl || sponsor.url,
       sponsorship: sponsor.sponsorshipsAsSponsor.nodes.find((node: any) => {
@@ -131,7 +131,11 @@ export const fetchSponsors = async () => {
   const sponsorsInfo = await getGithubSponsorsInfo(sponsors);
   const openCollectiveSponsors = await fetchOpenCollectiveSponsors();
 
-  return [...sponsorsInfo, ...openCollectiveSponsors];
+  return [...sponsorsInfo, ...openCollectiveSponsors].sort((a, b) => {
+    return (
+      b.sponsorship.monthlyPriceInDollars - a.sponsorship.monthlyPriceInDollars
+    );
+  });
 };
 
 export const fetchSponsorsForHome = async () => {
