@@ -39,6 +39,13 @@ if (path.endsWith("/")) {
 
 const url = `https://strawberry.rocks${path}`;
 const image = `https://strawberry.rocks/og${imagePath}`;
+
+let canonicalUrl = url;
+
+if (prNumber) {
+  // remove `/pr/number` from the path
+  canonicalUrl = url.replace(/\/pr\/\d+/, "");
+}
 ---
 
 <!doctype html>
@@ -51,7 +58,7 @@ const image = `https://strawberry.rocks/og${imagePath}`;
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
-    <link rel="canonical" href={url} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <meta name="title" content={title} />
     <meta name="description" content={description} />

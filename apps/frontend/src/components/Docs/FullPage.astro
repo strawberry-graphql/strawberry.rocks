@@ -9,12 +9,11 @@ import TableOfContents from "../../components/Docs/TableOfContents.astro";
 import Footer from "../../components/Docs/Footer.astro";
 
 interface Props {
-  preview?: boolean;
   prNumber?: string | undefined;
   content: string;
 }
 
-const { preview, content, prNumber } = Astro.props;
+const { content, prNumber } = Astro.props;
 const { content: markdownContent, data } = matter(content);
 
 const tableOfContents = toc(markdownContent, {
@@ -26,7 +25,7 @@ const tableOfContents = toc(markdownContent, {
 
 let title = data.title;
 
-if (preview) {
+if (prNumber) {
   title = `[Preview] ${title}`;
 }
 ---
