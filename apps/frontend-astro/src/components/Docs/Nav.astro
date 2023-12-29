@@ -6,7 +6,11 @@ import VerticalArrow from "../Icons/VerticalArrow.astro";
 
 const readme = await fetchDocPage({ filename: "docs/README.md" });
 
-const tree = getTree(readme, "/docs/");
+const { number } = Astro.params;
+
+const prefix = number ? `/docs/pr/${number}/` : "/docs/";
+
+const tree = getTree(readme, prefix);
 ---
 
 <nav>
