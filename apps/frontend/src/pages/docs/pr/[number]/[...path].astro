@@ -27,7 +27,7 @@ if (pr) {
 let content = "";
 
 if (!previewDisabled) {
-  content = await fetchDocPage({ filename, prNumber });
+  content = await fetchDocPage({ filename, prNumber: prNumber! });
 }
 ---
 

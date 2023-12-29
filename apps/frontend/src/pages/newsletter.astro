@@ -1,6 +1,7 @@
 ---
 import { subscribeToMailchimp } from "../utils/mailchimp";
 
+// @ts-ignore (Astro issue)
 let next = "/";
 
 if (Astro.request.method === "POST") {

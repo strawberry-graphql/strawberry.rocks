@@ -1,6 +1,7 @@
 ---
 import { sendFeedback } from "../utils/send-feedback";
 
+// @ts-ignore (Astro issue)
 let next = "/";
 
 if (Astro.request.method === "POST") {

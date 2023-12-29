@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.3.4",
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.0.4",
+    "@astrojs/vercel": "^6.1.1",
     "@docsearch/css": "^3.5.2",
     "@docsearch/js": "3",
     "@mailchimp/mailchimp_marketing": "^3.0.80",

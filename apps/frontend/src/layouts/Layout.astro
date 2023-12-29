@@ -8,7 +8,7 @@ import PreviewBanner from "../components/PreviewBanner.astro";
 interface Props {
   title: string;
   blob?: boolean;
-  prNumber?: string;
+  prNumber?: string | undefined;
   useDocsGrid?: boolean;
   description?: string;
 }
