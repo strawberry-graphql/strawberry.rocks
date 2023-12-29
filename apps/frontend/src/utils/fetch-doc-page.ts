@@ -1,3 +1,5 @@
+import { githubFetch } from "./github-fetch";
+
 const GetFileDocument = `
     query GetFile($expression: String!, $owner: String!, $name: String!) {
     repository(owner: $owner, name: $name) {
@@ -30,21 +32,13 @@ export const fetchDocPage = async ({
     expression = `pull/${prNumber}/head:${filename}`;
   }
 
-  const response = await fetch("https://api.github.com/graphql", {
+  const response = await githubFetch("https://api.github.com/graphql", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `bearer ${import.meta.env.GITHUB_TOKEN}`,
-    },
     body: JSON.stringify({
       query: GetFileDocument,
       variables: { expression, owner, name },
     }),
   });
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
 
   const content = await response.json();
 

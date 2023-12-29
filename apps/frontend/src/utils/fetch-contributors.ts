@@ -1,4 +1,5 @@
 import parseLinkHeader from "parse-link-header";
+import { githubFetch } from "./github-fetch";
 
 // TODO: see if we can use the GraphQL API to get the names as well
 export const fetchContributors = async () => {
@@ -14,15 +15,7 @@ export const fetchContributors = async () => {
   }[];
 
   while (url) {
-    const response = await fetch(url, {
-      headers: {
-        Authorization: `bearer ${import.meta.env.GITHUB_TOKEN}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch contributors");
-    }
+    const response = await githubFetch(url, { method: "GET" });
 
     const data = await response.json();
 

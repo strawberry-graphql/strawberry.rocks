@@ -1,3 +1,5 @@
+import { githubFetch } from "./github-fetch";
+
 const GetReleaseDocument = /* GraphQL */ `
   query GetRelease($tagName: String!) {
     repository(owner: "strawberry-graphql", name: "strawberry") {
@@ -11,12 +13,8 @@ const GetReleaseDocument = /* GraphQL */ `
 `;
 
 export const fetchRelease = async (tagName: string) => {
-  const response = await fetch("https://api.github.com/graphql", {
+  const response = await githubFetch("https://api.github.com/graphql", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `bearer ${import.meta.env.GITHUB_TOKEN}`,
-    },
     body: JSON.stringify({
       query: GetReleaseDocument,
       variables: {
@@ -24,10 +22,6 @@ export const fetchRelease = async (tagName: string) => {
       },
     }),
   });
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
 
   const content = await response.json();
 

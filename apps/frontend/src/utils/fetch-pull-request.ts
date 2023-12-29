@@ -1,3 +1,5 @@
+import { githubFetch } from "./github-fetch";
+
 const GetPRDocument = /* GraphQL */ `
   query GetPR($number: Int!) {
     repository(owner: "strawberry-graphql", name: "strawberry") {
@@ -13,12 +15,8 @@ const GetPRDocument = /* GraphQL */ `
 `;
 
 export const fetchPullRequest = async (number: string) => {
-  const response = await fetch("https://api.github.com/graphql", {
+  const response = await githubFetch("https://api.github.com/graphql", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `bearer ${import.meta.env.GITHUB_TOKEN}`,
-    },
     body: JSON.stringify({
       query: GetPRDocument,
       variables: {
@@ -26,10 +24,6 @@ export const fetchPullRequest = async (number: string) => {
       },
     }),
   });
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
 
   const content = await response.json();
 

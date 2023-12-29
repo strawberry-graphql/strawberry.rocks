@@ -1,4 +1,5 @@
 import { fetchOpenCollectiveSponsors } from "./fetch-opencollective-sponsors";
+import { githubFetch } from "./github-fetch";
 
 const SponsorsDocument = `
   query sponsors {
@@ -69,19 +70,12 @@ const getGithubSponsorsInfo = async (sponsors: any) => {
     ${queries.join("\n")}
     }`;
 
-  const response = await fetch("https://api.github.com/graphql", {
+  const response = await githubFetch("https://api.github.com/graphql", {
     method: "POST",
     body: JSON.stringify({
       query,
     }),
-    headers: {
-      Authorization: `bearer ${import.meta.env.GITHUB_TOKEN}`,
-    },
   });
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch sponsors");
-  }
 
   const content = await response.json();
 
@@ -107,24 +101,13 @@ const getGithubSponsorsInfo = async (sponsors: any) => {
 };
 
 export const fetchSponsors = async () => {
-  const response = await fetch("https://api.github.com/graphql", {
+  const response = await githubFetch("https://api.github.com/graphql", {
     method: "POST",
     body: JSON.stringify({
       query: SponsorsDocument,
     }),
-    headers: {
-      Authorization: `bearer ${import.meta.env.GITHUB_TOKEN}`,
-    },
   });
   const content = await response.json();
-
-  if (!response.ok) {
-    throw new Error(content.message);
-  }
-
-  if (!content.data) {
-    throw new Error("No data");
-  }
 
   const sponsors = content.data.organization.sponsors.nodes;
 

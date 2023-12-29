@@ -93,4 +93,3 @@ export async function fetchOpenCollectiveSponsors(): Promise<Sponsor[]> {
 
   return sponsors;
 }
-
