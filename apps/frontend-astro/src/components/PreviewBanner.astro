@@ -1,0 +1,29 @@
+---
+interface Props {
+  prNumber: string;
+}
+
+const { prNumber } = Astro.props;
+---
+
+<div>
+  Heads up! You're viewing a preview of this page from PR <a
+    href={`https://github.com/strawberry-graphql/strawberry/pull/${prNumber}`}
+    >#{prNumber}</a
+  >.
+</div>
+
+<style>
+  div {
+    background: var(--color-strawberry);
+    color: var(--color-white);
+    padding: 12px;
+    text-align: center;
+    text-wrap: balance;
+
+    a {
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
+</style>

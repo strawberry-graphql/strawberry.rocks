@@ -1,31 +1,18 @@
-const GetFileDocument = `
-    query GetFile($expression: String!) {
+const GetPRDocument = /* GraphQL */ `
+  query GetPR($number: Int!) {
     repository(owner: "strawberry-graphql", name: "strawberry") {
-      object(expression: $expression) {
-        ... on Blob {
-          __typename
-          text
+      pullRequest(number: $number) {
+        labels(first: 100) {
+          nodes {
+            name
+          }
         }
       }
     }
   }
 `;
 
-export const fetchDocPage = async ({
-  filename,
-  prNumber,
-}: {
-  filename: string;
-  prNumber?: string;
-}) => {
-  const prefix = "main";
-
-  let expression = `${prefix}:${filename}`;
-
-  if (prNumber) {
-    expression = `pull/${prNumber}/head:${filename}`;
-  }
-
+export const fetchPullRequest = async (number: string) => {
   const response = await fetch("https://api.github.com/graphql", {
     method: "POST",
     headers: {
@@ -33,8 +20,10 @@ export const fetchDocPage = async ({
       Authorization: `bearer ${import.meta.env.GITHUB_TOKEN}`,
     },
     body: JSON.stringify({
-      query: GetFileDocument,
-      variables: { expression },
+      query: GetPRDocument,
+      variables: {
+        number: parseInt(number),
+      },
     }),
   });
 
@@ -50,5 +39,11 @@ export const fetchDocPage = async ({
     throw new Error("No data returned");
   }
 
-  return data.repository.object.text as string;
+  return data.repository.pullRequest as {
+    labels: {
+      nodes: {
+        name: string;
+      }[];
+    };
+  } | null;
 };
