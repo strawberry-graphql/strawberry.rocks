@@ -116,24 +116,20 @@ export async function getStaticPaths() {
     };
   });
 
-  return [
-    ...releasePages,
-    ...docsPages,
-    {
+  const additionalPages = [
+    "default",
+    "acknowledgements",
+    "code-of-conduct",
+  ].map((page) => {
+    return {
       params: {
-        route: `default`,
+        route: page,
       },
       props: {
         type: "default",
       },
-    },
-    {
-      params: {
-        route: `acknowledgements`,
-      },
-      props: {
-        type: "default",
-      },
-    },
-  ];
+    };
+  });
+
+  return [...releasePages, ...docsPages, ...additionalPages];
 }

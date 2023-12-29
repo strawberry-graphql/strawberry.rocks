@@ -1,6 +1,6 @@
 const GetFileDocument = `
-    query GetFile($expression: String!) {
-    repository(owner: "strawberry-graphql", name: "strawberry") {
+    query GetFile($expression: String!, $owner: String!, $name: String!) {
+    repository(owner: $owner, name: $name) {
       object(expression: $expression) {
         ... on Blob {
           __typename
@@ -14,11 +14,15 @@ const GetFileDocument = `
 export const fetchDocPage = async ({
   filename,
   prNumber,
+  repo = "strawberry-graphql/strawberry",
 }: {
   filename: string;
   prNumber?: string;
+  repo?: string;
 }) => {
   const prefix = "main";
+
+  const [owner, name] = repo.split("/");
 
   let expression = `${prefix}:${filename}`;
 
@@ -34,7 +38,7 @@ export const fetchDocPage = async ({
     },
     body: JSON.stringify({
       query: GetFileDocument,
-      variables: { expression },
+      variables: { expression, owner, name },
     }),
   });
 
