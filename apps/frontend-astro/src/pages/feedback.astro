@@ -1,0 +1,34 @@
+---
+import { sendFeedback } from "../utils/send-feedback";
+
+let next = "/";
+
+if (Astro.request.method === "POST") {
+  const data = await Astro.request.formData();
+  const sentiment = data.get("sentiment") as string;
+  const url = data.get("url") as string;
+  const feedback = data.get("feedback") as string;
+
+  if (!sentiment || !url || !feedback) {
+    next = (data.get("url") || "/docs") + "?feedback=failed";
+    return Astro.redirect(next + "#feedback-form");
+  }
+
+  try {
+    await sendFeedback({
+      sentiment,
+      url,
+      feedback,
+    });
+    next = (data.get("url") as string) + "?feedback=success";
+  } catch (error) {
+    next = (data.get("url") as string) + "?feedback=failed";
+
+    if (error instanceof Error) {
+      console.error(error);
+    }
+  }
+}
+
+return Astro.redirect(next + "#feedback-form");
+---

@@ -32,9 +32,12 @@ const FEEDBACK_OPTIONS = [
     buttonLabel: "💖 Send feedback 🤩",
   },
 ];
+
+const url = new URL(Astro.request.url);
+const feedbackStatus = url.searchParams.get("feedback");
 ---
 
-<form class="feedback-form">
+<form class="feedback-form" id="feedback-form" action="/feedback" method="POST">
   <header>
     <Paragraph small>Was this page helpful?</Paragraph>
 
@@ -46,7 +49,7 @@ const FEEDBACK_OPTIONS = [
               type="radio"
               id={option.label}
               name="sentiment"
-              value={option.label}
+              value={option.emoji}
             />
             {option.emoji}
           </label>
@@ -56,23 +59,30 @@ const FEEDBACK_OPTIONS = [
   </header>
 
   <div>
+    <input type="hidden" name="url" value={url.pathname} />
     <Textarea
       placeholder={"Make sure to write actionable feedback, we read all the feedback (they are posted on our discord server) ✨"}
       required
       name="feedback"
     />
 
-    <Button type="submit" as="button">
-      label
-      {
-        false && (
-          <span class="animate-bounce absolute flex justify-center items-center inset-0">
-            🍓
-          </span>
-        )
-      }
-    </Button>
+    <Button type="submit" as="button">Send feedback</Button>
   </div>
+
+  {
+    feedbackStatus === "success" && (
+      <p class="typography-body-2 status">
+        Your feedback has been sent. Thank you! 🙏
+      </p>
+    )
+  }
+  {
+    feedbackStatus === "failed" && (
+      <p class="typography-body-2 status status-error">
+        Something went wrong. Please try again.
+      </p>
+    )
+  }
 </form>
 
 <style>
@@ -159,7 +169,7 @@ const FEEDBACK_OPTIONS = [
   forms.forEach((form) => {
     form.addEventListener("change", (event) => {
       const selectedOption = options.find(
-        (option) => option.label === event.target.value,
+        (option) => option.emoji === event.target.value,
       );
 
       form.querySelector("textarea").placeholder = selectedOption.placeholder;

@@ -105,3 +105,12 @@ section.footnotes::before {
   margin-bottom: 12px;
   display: block;
 }
+
+form .status {
+  margin-top: 16px;
+  color: var(--color-green);
+}
+
+form .status-error {
+  color: var(--color-strawberry);
+}
