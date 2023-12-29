@@ -50,6 +50,10 @@ class Query:
     margin: 0 auto;
     text-wrap: balance;
     text-align: center;
+
+    @media (min-width: 768px) {
+      font-size: 60px;
+    }
   }
 
   :global(html.dark) h1 {
@@ -70,11 +74,5 @@ class Query:
   h1 em {
     color: var(--color-strawberry);
     font-style: normal;
-  }
-
-  @media (min-width: 768px) {
-    h1 {
-      font-size: 60px;
-    }
   }
 </style>
