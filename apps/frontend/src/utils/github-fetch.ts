@@ -23,17 +23,5 @@ export const githubFetch = async (
     throw new Error("Network response was not ok");
   }
 
-  const content = await response.json();
-
-  const { data, errors } = content;
-
-  if (errors) {
-    throw new Error(errors[0].message);
-  }
-
-  if (!data) {
-    throw new Error("No data returned");
-  }
-
-  return data;
+  return response;
 };
