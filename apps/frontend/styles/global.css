@@ -1,5 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@import url("@strawberry-graphql/tailwind-config/styles/global.css");

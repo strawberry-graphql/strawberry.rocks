@@ -1,5 +1,0 @@
-name: "Strawberry.rocks CodeQL config"
-
-paths-ignore:
-  - "rehype-plugins/rehype-highlight-code.ts"
-  - "rehype-plugins/rehype-toc.ts"

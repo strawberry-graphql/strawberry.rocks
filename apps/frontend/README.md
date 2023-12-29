@@ -1,113 +1,54 @@
-# Strawberry GraphQL website
-
-This is the repo for [Strawberry GraphQL](https://strawberry.rocks). If you want
-to edit the documentation head to the
-[main repository](https://github.com/strawberry-graphql/strawberry).
-
-This repo only contains the template and design of the website.
-
-## Docs
-
-**This shows the latest released version and not the master branch docs.**
-
-#### `https://strawberry.rocks/docs`
-
-Shows the latest
-[release](https://github.com/strawberry-graphql/strawberry/releases) from
-[Strawberry Graphql Repo]. These pages are rendered at build time and
-revalidated after 60 seconds. When a new release of Strawberry Graphql is done
-then the site should update [Strawberry GraphQL](https://strawberry.rocks) site
-by itself. Not requiring a re-deployment.
-
-### Pull Requests
-
-#### `https://strawberry.rocks/docs/pr/:pull-request-number`
-
-Pull requests on [Strawberry Graphql Repo] with a label of
-[ok-to-preview](https://github.com/strawberry-graphql/strawberry/pulls?q=is%3Apr+is%3Aopen+label%3Aok-to-preview)
-can be viewed. Theses are rendered on-demand and cached. They will be
-revalidated after 60 seconds.
-
-### Version Releases
-
-#### `https://strawberry.rocks/docs/tag/:release-tag`
-
-[Releases](https://github.com/strawberry-graphql/strawberry/releases) of
-Strawberry Graphql can be viewed. Theses are rendered on-demand and cached. But
-are not revalidated on the server unless a new deployment is done.
-
-## How to setup the project
-
-Make sure to have `nodejs 14.16.0` (exact version shouldn't matter too much, you
-can use [asdf](https://github.com/asdf-vm/asdf) to install it, in case).
-
-You also need a GitHub token, this is used to fetch the list of contributors for
-the repo, you can create one with the following scopes
-`public_repo, read:packages, read:user, repo:status`, following
-[this guide](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)
-or by clicking
-[this link](https://github.com/settings/tokens/new?description=Strawberry%20Docs&scopes=repo:status,public_repo,read:user,repo:status,read:packages)
-directly (notice it will ask you for a password).
-
-The token needs to be stored in a `.env` file, like this:
-
-```env
-GITHUB_TOKEN=123123123
-```
-
-### Installing the dependencies
-
-We are using npm to manage dependencies, so can install the dependencies by
-running
+# Astro Starter Kit: Basics
 
 ```sh
-pnpm install
+npm create astro@latest -- --template basics
 ```
 
-### Running the website
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
 
-To run the website, you can use npm:
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-```sh
-pnpm run dev
+![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   │   └── Card.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-This should start the server on [http://localhost:3000](http://localhost:3000)
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-### GraphQL TypeScript Typings
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-We generate the TypeScript typings for any GraphQL queries using.
+Any static assets, like images, can be placed in the `public/` directory.
 
-- [@octokit/graphql-schema](https://github.com/octokit/graphql-schema)
-- [GraphQL Code Generator](https://graphql-code-generator.com/)
+## 🧞 Commands
 
-Outputted to [`./types/graphql.d.ts`](./types/graphql.d.ts)
+All commands are run from the root of the project, from a terminal:
 
-To update them run.
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-```sh
-pnpm run codegen
-```
+## 👀 Want to learn more?
 
-Any new GraphQL query will need a comment before it to generate theses typings.
-
-```ts
-/* GraphQL */ `query GoesHere {}`;
-```
-
-### Debugging
-
-To run the website in debug mode:
-
-```sh
-pnpm run dev:inspect
-```
-
-See next.js docs on the different ways to
-[connect to the debugger](https://nextjs.org/docs/advanced-features/debugging#step-2-connect-to-the-debugger).
-
-[strawberry graphql repo]: https://github.com/strawberry-graphql/strawberry/
-
----
-
-[<img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg">](https://vercel.com?utm_source=strawberry-graphql&utm_campaign=oss)
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

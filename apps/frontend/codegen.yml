@@ -1,9 +1,0 @@
-overwrite: true
-schema: ./github-schema.graphql
-documents:
-  - "./app/**/*.ts"
-  - "./app/**/*.tsx"
-  - "./lib/api/github.ts"
-generates:
-  ./types/graphql/:
-    preset: client

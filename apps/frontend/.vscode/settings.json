@@ -1,13 +1,11 @@
 {
-  "workbench.colorCustomizations": {
-    "sash.hoverBorder": "#d099a8",
-    "statusBar.background": "#c0768a",
-    "statusBar.foreground": "#15202b",
-    "statusBarItem.hoverBackground": "#b0536c",
-    "statusBarItem.remoteBackground": "#c0768a",
-    "statusBarItem.remoteForeground": "#15202b"
-  },
-  "peacock.color": "#c0768a",
-  "typescript.tsdk": "node_modules/.pnpm/typescript@4.9.3/node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+    "workbench.colorCustomizations": {
+        "sash.hoverBorder": "#d4da73",
+        "statusBar.background": "#c7cf4b",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#aeb631",
+        "statusBarItem.remoteBackground": "#c7cf4b",
+        "statusBarItem.remoteForeground": "#15202b"
+    },
+    "peacock.color": "#c7cf4b"
 }

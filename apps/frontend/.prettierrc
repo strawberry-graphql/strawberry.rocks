@@ -1,9 +1,0 @@
-{
-  "semi": true,
-  "singleQuote": false,
-  "trailingComma": "es5",
-  "proseWrap": "always",
-  "importOrder": ["^next", "^~", "^[./]", "@strawberry-graphql/styleguide"],
-  "importOrderSeparation": true,
-  "plugins": ["@trivago/prettier-plugin-sort-imports"]
-}
