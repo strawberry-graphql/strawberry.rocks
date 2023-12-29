@@ -25,7 +25,11 @@ export const githubFetch = async (
 
   const content = await response.json();
 
-  const { data } = content;
+  const { data, errors } = content;
+
+  if (errors) {
+    throw new Error(errors[0].message);
+  }
 
   if (!data) {
     throw new Error("No data returned");
