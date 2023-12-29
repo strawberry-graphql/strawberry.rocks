@@ -1,4 +1,5 @@
 {
+    "trailingSlash": false,
     "rewrites": [
         {
             "source": "/plausible/js/script.js",

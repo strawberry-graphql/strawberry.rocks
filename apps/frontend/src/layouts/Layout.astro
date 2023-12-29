@@ -23,7 +23,7 @@ let {
 
 title = `${title} | 🍓 Strawberry GraphQL`;
 
-const path = new URL(Astro.request.url).pathname;
+let path = new URL(Astro.request.url).pathname;
 
 let imagePath = path;
 
@@ -32,6 +32,10 @@ if (path === "/") {
 }
 
 imagePath += ".png";
+
+if (path.endsWith("/")) {
+  path = path.slice(0, -1);
+}
 
 const url = `https://strawberry.rocks${path}`;
 const image = `https://strawberry.rocks/og${imagePath}`;
@@ -47,6 +51,7 @@ const image = `https://strawberry.rocks/og${imagePath}`;
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
+    <link rel="canonical" href={url} />
 
     <meta name="title" content={title} />
     <meta name="description" content={description} />

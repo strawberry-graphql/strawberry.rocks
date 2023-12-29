@@ -13,11 +13,12 @@ if (isExperimental) {
 }
 
 const pathname = new URL(Astro.request.url).pathname;
+
+// remove slashes from both
+const isActive = pathname.replace(/\//g, "") === href.replace(/\//g, "");
 ---
 
-<a
-  href={href}
-  class:list={["typography-paragraph-2", { active: href === pathname }]}
+<a href={href} class:list={["typography-paragraph-2", { active: isActive }]}
   >{text}{
     isExperimental && (
       <span class="experimental">
