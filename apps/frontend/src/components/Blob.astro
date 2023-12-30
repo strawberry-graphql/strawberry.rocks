@@ -7,11 +7,10 @@
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      opacity="0.2"
+      opacity="0.3"
       d="M113.713 240.714C113.713 151.755 229.977 61.4378 293.208 61.4378C310.206 92.6754 360.657 155.15 426.472 155.15C508.74 155.15 416.953 1 580.81 1C744.667 1 648.121 284.175 580.81 351.404L426.472 505.554C327.885 604.02 367.318 532.717 113.713 505.554C-139.891 478.391 113.713 329.673 113.713 240.714Z"
       fill="#F7393D"></path>
   </svg>
-  <div></div>
 </div>
 
 <style>
@@ -23,17 +22,12 @@
 
   svg {
     position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate3d(0, 0, 0);
+    left: 50%;
+    top: 50%;
+    filter: blur(200px);
+    transform: translate(-50%, -50%);
+    will-change: transform;
     z-index: -9;
-  }
-
-  div > div {
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(200px);
-    z-index: -8;
   }
 </style>
 
@@ -43,12 +37,18 @@
   if (svg) {
     const handleMouseMove = (e: any) => {
       const { clientX, clientY } = e;
-      const top = clientY - 278;
-      const left = clientX - 336;
+
+      const { innerWidth, innerHeight } = window;
+      const top = clientY - innerHeight / 2;
+      const left = clientX - innerWidth / 2;
+
+      console.log(top, left);
 
       svg.animate(
-	{ transform: `translate(${left}px, ${top}px)` },
-	{ duration: 3000, fill: "forwards" }
+        {
+          transform: `translate(calc(-50% + ${left}px), calc(-50% + ${top}px))`,
+        },
+        { duration: 2000, fill: "forwards" },
       );
     };
 
