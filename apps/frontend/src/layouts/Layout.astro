@@ -37,8 +37,9 @@ if (path.endsWith("/")) {
   path = path.slice(0, -1);
 }
 
-const url = `https://strawberry.rocks${path}`;
-const image = `https://strawberry.rocks/og${imagePath}`;
+// TODO: change this back to `https://strawberry.rocks` once we launch
+const url = `https://beta.strawberry.rocks${path}`;
+const image = `https://beta.strawberry.rocks/og${imagePath}`;
 
 let canonicalUrl = url;
 
@@ -54,9 +55,9 @@ if (prNumber) {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon.ico" sizes="32x32">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#e44b46" />
 
