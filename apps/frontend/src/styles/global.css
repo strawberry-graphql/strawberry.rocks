@@ -54,6 +54,12 @@
   --font-mono: "JetBrains Mono", monospace;
 }
 
+@media screen and (max-device-width: 480px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
 .dark body {
   background-color: var(--color-black);
   color: var(--color-white);
