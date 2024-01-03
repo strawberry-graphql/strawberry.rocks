@@ -3,8 +3,7 @@ import { fetchDocPage } from "../../utils/fetch-doc-page";
 import { fetchAllPages } from "../../utils/fetch-all-pages";
 import FullPage from "../../components/Docs/FullPage.astro";
 
-// TODO: remove as
-let { path: filename } = Astro.params as { path: string };
+let { path: filename } = Astro.params;
 
 if (filename === undefined) {
   filename = "index";
