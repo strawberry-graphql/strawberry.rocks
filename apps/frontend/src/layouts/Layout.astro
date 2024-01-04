@@ -25,17 +25,17 @@ title = `${title} | 🍓 Strawberry GraphQL`;
 
 let path = new URL(Astro.request.url).pathname;
 
+if (path.endsWith("/")) {
+  path = path.slice(0, -1);
+}
+
 let imagePath = path;
 
-if (path === "/") {
+if (path === "") {
   imagePath = "/default";
 }
 
 imagePath += ".png";
-
-if (path.endsWith("/")) {
-  path = path.slice(0, -1);
-}
 
 // TODO: change this back to `https://strawberry.rocks` once we launch
 const url = `https://beta.strawberry.rocks${path}`;
