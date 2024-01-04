@@ -9,5 +9,13 @@ export default defineConfig({
   output: "hybrid",
   site: "https://strawberry.rocks",
   integrations: [sitemap()],
-  adapter: vercel()
+  adapter: vercel(),
+  vite: {
+    ssr: {
+      external: ['@resvg/resvg-js']
+    },
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"]
+    }
+  }
 });
