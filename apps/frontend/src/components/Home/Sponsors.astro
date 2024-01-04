@@ -1,12 +1,29 @@
 ---
+import { fetchDownloads } from "../../utils/fetch-downloads";
 import ButtonLink from "../ButtonLink.astro";
 import SponsorsList from "./SponsorsList.astro";
+
+const downloads = await fetchDownloads();
+
+function roundDownToNearest(num: number, nearest: number) {
+  return Math.floor(num / nearest) * nearest;
+}
+
+const downloadsLastWeek = roundDownToNearest(downloads.lastWeek, 5000);
+
+let message = `More than ${downloadsLastWeek.toLocaleString()} downloads last week.`;
+
+if (downloadsLastWeek < 100_000) {
+  const downloadsLastMonth = roundDownToNearest(downloads.lastMonth, 100_000);
+
+  message = `More than ${downloadsLastMonth.toLocaleString()} downloads last month.`;
+}
 ---
 
 <section class="full">
   <header>
     <h1>Discover the sponsors that make Strawberry possible.</h1>
-    <h2 class="typography-heading-4">More than 150,000 downloads last week.</h2>
+    <h2 class="typography-heading-4">{message}</h2>
   </header>
 
   <ButtonLink href="/sponsor">Become a sponsor</ButtonLink>
@@ -29,7 +46,7 @@ import SponsorsList from "./SponsorsList.astro";
     font-weight: 700;
     line-height: 1.2;
     text-align: center;
-    margin-bottom: 20px!important;
+    margin-bottom: 20px !important;
     text-wrap: balance;
   }
 
