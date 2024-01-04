@@ -107,7 +107,7 @@ export async function getStaticPaths() {
   const releasePages = (await fetchReleases()).map((release) => {
     return {
       params: {
-        route: `releases/${release}`,
+        route: `release/${release}`,
       },
       props: {
         type: "release",

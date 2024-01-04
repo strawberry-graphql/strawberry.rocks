@@ -33,7 +33,7 @@ const links = [
 ] as const;
 
 const version = await fetchLatestRelease();
-version.href = `/releases/${version.name}`;
+version.href = `/release/${version.name}`;
 
 const currentPath = new URL(Astro.request.url);
 
