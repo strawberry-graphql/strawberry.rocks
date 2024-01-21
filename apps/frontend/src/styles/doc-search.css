@@ -141,9 +141,28 @@ body.DocSearch--active {
   }
 }
 
+.DocSearch-Hit-Container {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
 .DocSearch-Hit-icon,
 .DocSearch-Hit-action {
+  width: 25px;
+}
+
+.DocSearch-Hit-Tree {
   display: none;
+}
+
+.DocSearch-Hit-action {
+  margin-left: auto;
+  display: none;
+}
+
+.DocSearch-Hit[aria-selected="true"] .DocSearch-Hit-action {
+  display: block;
 }
 
 .DocSearch-StartScreen,
