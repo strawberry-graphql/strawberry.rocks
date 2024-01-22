@@ -21,7 +21,7 @@ const release = await fetchRelease(version);
 const content = addGitHubLinks(release.description);
 ---
 
-<Layout title={"TODO"} useDocsGrid>
+<Layout title={`Strawberry GraphQL @ ${version}`} useDocsGrid>
   <main class="docs-grid">
     <Sidebar />
 
