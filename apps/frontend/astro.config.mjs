@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import astroMetaTags from "astro-meta-tags";
 
 import vercel from "@astrojs/vercel/serverless";
 
@@ -8,7 +9,7 @@ export default defineConfig({
   trailingSlash: 'never',
   output: "hybrid",
   site: "https://strawberry.rocks",
-  integrations: [sitemap()],
+  integrations: [sitemap(), astroMetaTags()],
   adapter: vercel(),
   vite: {
     ssr: {
