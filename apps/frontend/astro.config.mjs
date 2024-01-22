@@ -7,7 +7,7 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   trailingSlash: 'never',
-  output: "hybrid",
+  output: "server",
   site: "https://strawberry.rocks",
   integrations: [sitemap(), astroMetaTags()],
   adapter: vercel(),
