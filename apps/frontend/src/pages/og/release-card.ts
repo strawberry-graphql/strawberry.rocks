@@ -23,7 +23,7 @@ export const getReleaseCard = async (version: string) => {
         tw="flex relative absolute bottom-[27px] right-[45px] text-[43px] font-mono text-white text-right z-10"
         style="font-family: 'JetBrains Mono'"
       >
-        v${version}
+        ${version ? `v${version}` : ""}
       </div>
     </div>
   `;
