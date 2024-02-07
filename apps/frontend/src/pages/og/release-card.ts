@@ -5,7 +5,7 @@ import path from "path";
 export const getReleaseCard = async (version: string) => {
   const bgPath = path.join(
     process.cwd(),
-    "social-cards/version-background.png",
+    "apps/frontend/social-cards/version-background.png",
   );
 
   const bgImage = await fs.readFile(bgPath, {
