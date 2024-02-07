@@ -1,10 +1,14 @@
 import { html } from "satori-html";
 import { promises as fs } from "fs";
+import path from "path";
 
 export const getDefaultCard = async () => {
-  const path = process.cwd() + "/social-cards/version-background.png";
+  const bgPath = path.join(
+    process.cwd(),
+    "social-cards/version-background.png",
+  );
 
-  const bgImage = await fs.readFile(path, {
+  const bgImage = await fs.readFile(bgPath, {
     encoding: "base64",
   });
 

@@ -2,14 +2,15 @@ import { html } from "satori-html";
 import { promises as fs } from "fs";
 import matter from "gray-matter";
 import { fetchDocPage } from "../../utils/fetch-doc-page";
+import path from "path";
 
-export const getDocsCard = async (path: string) => {
-  const content = await fetchDocPage({ filename: path });
+export const getDocsCard = async (filename: string) => {
+  const content = await fetchDocPage({ filename });
   const { data } = matter(content);
 
   const title = data.title;
 
-  const bgPath = process.cwd() + "/social-cards/background.png";
+  const bgPath = path.join(process.cwd(), "social-cards/background.png");
 
   const bgImage = await fs.readFile(bgPath, {
     encoding: "base64",
