@@ -10,9 +10,20 @@ if (src.startsWith(".")) {
   // ../something
   // ./something
 
-  const path = new URL(src, Astro.request.url).pathname;
+  let url = Astro.request.url;
+
+  if (url.endsWith("/")) {
+    url = url.slice(0, -1);
+  }
+
+  let path = new URL(src, url).pathname;
   const ref = "main";
-  src = `https://github.com/strawberry-graphql/strawberry/raw/${ref}/${path}`;
+
+  if (!path.startsWith("/docs")) {
+    path = `/docs/${path}`;
+  }
+
+  src = `https://github.com/strawberry-graphql/strawberry/raw/${ref}${path}`;
 }
 ---
 
