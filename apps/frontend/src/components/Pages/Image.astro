@@ -1,0 +1,30 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+}
+
+let { src, alt } = Astro.props;
+
+if (src.startsWith(".")) {
+  // ../something
+  // ./something
+
+  let url = Astro.request.url;
+
+  if (url.endsWith("/")) {
+    url = url.slice(0, -1);
+  }
+
+  let path = new URL(src, url).pathname;
+  const ref = "main";
+
+  if (!path.startsWith("/docs")) {
+    path = `/docs/${path}`;
+  }
+
+  src = `https://github.com/strawberry-graphql/strawberry/raw/${ref}${path}`;
+}
+---
+
+<img src={src} alt={alt} />

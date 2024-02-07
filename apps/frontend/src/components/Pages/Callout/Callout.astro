@@ -1,0 +1,71 @@
+---
+import WarningIcon from "../../Icons/Callout/Warning.astro";
+import StarIcon from "../../Icons/Callout/Star.astro";
+import PencilIcon from "../../Icons/Callout/Pencil.astro";
+
+interface Props {
+  type: "warning" | "note" | "tip";
+}
+
+const { type } = Astro.props;
+
+const Icon = {
+  warning: WarningIcon,
+  note: PencilIcon,
+  tip: StarIcon,
+}[type];
+
+const title = {
+  warning: "Warning",
+  note: "Note",
+  tip: "Tip",
+}[type];
+---
+
+<div class:list={["callout typography-paragraph", type]}>
+  <header>
+    <Icon />
+    <span>{title}</span>
+  </header>
+  <p>
+    <slot />
+  </p>
+</div>
+
+<style>
+  .callout {
+    margin: 32px 0;
+    padding: 24px;
+    border: 2px solid var(--border-color);
+    background-color: var(--background-color);
+    border-radius: 16px;
+
+    header {
+      font-weight: bold;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    > * + * {
+      margin-top: 16px;
+      display: block;
+    }
+  }
+
+  .callout.warning {
+    --border-color: var(--code-color-orange);
+    --background-color: var(--color-callout-warning);
+  }
+
+  .callout.note {
+    --border-color: var(--code-color-blue);
+    --background-color: var(--color-callout-note);
+  }
+
+  .callout.tip {
+    --border-color: var(--code-color-green);
+    --background-color: var(--color-callout-tip);
+  }
+</style>

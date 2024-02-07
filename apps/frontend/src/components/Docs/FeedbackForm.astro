@@ -1,0 +1,180 @@
+---
+import Button from "../Button.astro";
+import Textarea from "../Form/Textarea.astro";
+import Paragraph from "../Pages/Paragraph.astro";
+const FEEDBACK_OPTIONS = [
+  {
+    emoji: "😭",
+    label: "Not at all",
+    placeholder:
+      "Write something specific about why this page wasn't helpful, we read all the feedback (they are posted on our discord server) ✨",
+    buttonLabel: "Send feedback 😭",
+  },
+  {
+    emoji: "😕",
+    label: "It is a bit confusing",
+    placeholder:
+      "Write something specific about why this page was confusing, we read all the feedback (they are posted on our discord server) ✨",
+    buttonLabel: "Send feedback 😕",
+  },
+  {
+    emoji: "😃",
+    label: "Yes",
+    placeholder:
+      "Write something specific about why this page was helpful, we read all the feedback (they are posted on our discord server) ✨",
+    buttonLabel: "Send feedback 😃",
+  },
+  {
+    emoji: "🤩",
+    label: "Yes, very much",
+    placeholder:
+      "💖 Write something specific about why this page was helpful, we read all the feedback (they are posted on our discord server) ✨",
+    buttonLabel: "💖 Send feedback 🤩",
+  },
+];
+
+const url = new URL(Astro.request.url);
+const feedbackStatus = url.searchParams.get("feedback");
+---
+
+<form class="feedback-form" id="feedback-form" action="/feedback" method="POST">
+  <header>
+    <Paragraph small>Was this page helpful?</Paragraph>
+
+    <div class="options typography-paragraph-2">
+      {
+        FEEDBACK_OPTIONS.map((option) => (
+          <label>
+            <input
+              type="radio"
+              id={option.label}
+              name="sentiment"
+              value={option.emoji}
+            />
+            {option.emoji}
+          </label>
+        ))
+      }
+    </div>
+  </header>
+
+  <div>
+    <input type="hidden" name="url" value={url.pathname} />
+    <Textarea
+      placeholder={"Make sure to write actionable feedback, we read all the feedback (they are posted on our discord server) ✨"}
+      required
+      name="feedback"
+    />
+
+    <Button type="submit" as="button">Send feedback</Button>
+  </div>
+
+  {
+    feedbackStatus === "success" && (
+      <p class="typography-body-2 status">
+        Your feedback has been sent. Thank you! 🙏
+      </p>
+    )
+  }
+  {
+    feedbackStatus === "failed" && (
+      <p class="typography-body-2 status status-error">
+        Something went wrong. Please try again.
+      </p>
+    )
+  }
+</form>
+
+<style>
+  .options {
+    display: flex;
+    gap: 4px;
+    margin-left: 12px;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  form :global(textarea) {
+    min-height: 120px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    display: none;
+  }
+
+  form :global(button) {
+    display: none;
+  }
+
+  form:has(input[type="radio"]:checked) :global(:is(textarea, button)) {
+    display: block;
+  }
+
+  label {
+    border: 1px solid var(--color-g-100);
+    border-radius: 4px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      background-color: var(--color-g-100);
+    }
+
+    input {
+      opacity: 0;
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+    }
+  }
+
+  label:has(input[type="radio"]:checked) {
+    background: linear-gradient(
+      to right,
+      var(--color-strawberry) 0%,
+      var(--color-orange) 100%
+    );
+  }
+
+  :global(html.dark) .feedback-form {
+    label {
+      border-color: var(--color-g-900);
+    }
+
+    label:hover {
+      background-color: var(--color-g-900);
+    }
+
+    label:has(input[type="radio"]:checked) {
+      background: linear-gradient(
+        to right,
+        var(--color-strawberry) 0%,
+        var(--color-orange) 100%
+      );
+    }
+  }
+</style>
+
+<script define:vars={{ options: FEEDBACK_OPTIONS }}>
+  const forms = document.querySelectorAll("form.feedback-form");
+
+  forms.forEach((form) => {
+    form.addEventListener("change", (event) => {
+      const selectedOption = options.find(
+        (option) => option.emoji === event.target.value,
+      );
+
+      form.querySelector("textarea").placeholder = selectedOption.placeholder;
+      form.querySelector("button .text").textContent =
+        selectedOption.buttonLabel;
+    });
+  });
+</script>

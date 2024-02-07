@@ -1,0 +1,58 @@
+---
+import GithubIcon from "./Icons/Github.astro";
+import XIcon from "./Icons/X.astro";
+import MastodonIcon from "./Icons/Mastodon.astro";
+import DiscordIcon from "./Icons/Discord.astro";
+
+interface Props {
+  href: string;
+  icon: "github" | "x" | "mastodon" | "discord";
+}
+
+const { href, icon } = Astro.props;
+
+const Icon = {
+  github: GithubIcon,
+  x: XIcon,
+  mastodon: MastodonIcon,
+  discord: DiscordIcon,
+}[icon];
+---
+
+<a href={href} target="_blank" rel="noopener noreferrer">
+  <Icon />
+
+  <span class="sr-only"><slot /></span>
+</a>
+
+<style>
+  a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #000;
+
+    &:hover {
+      background: #f7393d;
+    }
+  }
+
+  a :global(svg) {
+    fill: white;
+  }
+
+  :global(html.dark) a {
+    background-color: #fff;
+
+    &:hover {
+      background: #f7393d;
+    }
+  }
+
+  :global(html.dark) a :global(svg) {
+    fill: #000;
+  }
+</style>

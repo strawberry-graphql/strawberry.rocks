@@ -1,0 +1,190 @@
+---
+import Input from "./Form/Input.astro";
+import Button from "./Button.astro";
+import PlusIcon from "./Icons/Plus.astro";
+import FooterNav from "./FooterNav.astro";
+import FooterSocials from "./FooterSocials.astro";
+import Logo from "./Logo.astro";
+import VercelLogo from "./VercelLogo.astro";
+
+const url = new URL(Astro.request.url);
+const currentPath = url.pathname;
+
+const registrationStatus = url.searchParams.get("registration");
+---
+
+<footer>
+  <form method="post" action="/newsletter" id="newsletter-form">
+    <legend class="typography-heading-3">Join our newsletter</legend>
+
+    <div>
+      <formset>
+        <label for="email" class="sr-only">Email</label>
+        <Input type="email" name="email" placeholder="Email address" required />
+
+        <input type="hidden" name="next" value={currentPath} />
+        <Button type="submit">
+          <PlusIcon slot="icon" />
+           Subscribe
+        </Button>
+      </formset>
+
+      {
+        registrationStatus === "success" && (
+          <p class="typography-body-2 status">
+            You have been successfully registered!
+          </p>
+        )
+      }
+      {
+        registrationStatus === "failed" && (
+          <p class="typography-body-2 status status-error">
+            Something went wrong. Please try again.
+          </p>
+        )
+      }
+    </div>
+  </form>
+
+  <hr />
+
+  <FooterNav />
+
+  <hr />
+
+  <div class="socials">
+    <FooterSocials />
+  </div>
+
+  <hr />
+
+  <div class="info">
+    <Logo />
+
+    <p>
+      Website powered by <a
+        href="https://vercel.com/?utm_source=strawberry-graphql&utm_campaign=oss"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <VercelLogo />
+      </a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding-top: 40px;
+    padding-bottom: 120px;
+    border-top: 1px solid #e2e2e3;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+
+    @media (min-width: 480px) {
+      padding-top: 60px;
+    }
+
+    @media (min-width: 768px) {
+      padding-bottom: 60px;
+    }
+
+    @media (min-width: 920px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 32px;
+
+      hr {
+        display: none;
+      }
+
+      hr:last-of-type {
+        display: block;
+        grid-column: 1 / 3;
+        margin: 0;
+      }
+
+      .socials {
+        grid-column: 2 / -1;
+        grid-row: 3 / -1;
+        align-self: center;
+        justify-self: end;
+      }
+
+      .info {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+  }
+
+  @media (min-width: 920px) {
+    footer :global(nav) {
+      justify-self: end;
+    }
+    footer :global(nav ul) {
+      text-align: right;
+    }
+  }
+
+  :global(html.dark) footer {
+    border-top: 1px solid rgba(54, 56, 60, 0.5);
+    background: rgba(27, 29, 33, 0.75);
+    color: white;
+  }
+
+  hr {
+    margin: 32px 0;
+    height: 1px;
+    border: none;
+    background-color: var(--color-g-100);
+  }
+
+  :global(html.dark) hr {
+    background: var(--color-g-800);
+  }
+
+  legend {
+    font-size: 24px;
+    margin-bottom: 24px;
+
+    @media (min-width: 480px) {
+      font-size: 32px;
+    }
+  }
+
+  form formset {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .info > :global(svg) {
+    width: 50px;
+    height: 60px;
+  }
+
+  .info p {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .info p a {
+    height: 24px;
+  }
+
+  .info p a > :global(svg) {
+    height: 100%;
+    fill: currentColor;
+  }
+</style>

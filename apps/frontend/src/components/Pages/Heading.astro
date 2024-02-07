@@ -1,0 +1,19 @@
+---
+// @ts-expect-error - https://github.com/withastro/language-tools/issues/741
+interface Props {
+  as?: string;
+  href?: string;
+}
+
+const { as: Component, href } = Astro.props;
+
+const level = Component.replace("h", "");
+
+const className = `typography-heading-${level}`;
+---
+
+<Component class={className} id={href.replace("#", "")}>
+  <a href={href}>
+    <slot />
+  </a>
+</Component>

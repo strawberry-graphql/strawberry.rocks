@@ -1,0 +1,40 @@
+---
+import { fetchSponsors } from "../utils/fetch-sponsors";
+import ContributorCard from "./ContributorCard.astro";
+
+const sponsors = await fetchSponsors();
+---
+
+<ul>
+  {
+    sponsors.map((sponsor) => (
+      <li>
+        <ContributorCard
+          type="sponsor"
+          href={sponsor.href}
+          avatar={sponsor.logo}
+          name={sponsor.name}
+        />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: grid;
+    gap: 16px;
+
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 800px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 1000px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

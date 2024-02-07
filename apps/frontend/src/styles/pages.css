@@ -1,0 +1,138 @@
+/* Documentation grid styles */
+@media (min-width: 768px) {
+  .docs-grid {
+    display: grid;
+    grid-template-columns:
+      [nav-start] 250px [nav-end] 32px [content-start] minmax(0, 1fr)
+      [content-end full-end];
+  }
+}
+
+@media (min-width: 1100px) {
+  .docs-grid {
+    grid-template-columns:
+      [nav-start] minmax(250px, 1fr) [nav-end] 32px [content-start] minmax(
+        500px,
+        1300px
+      )
+      [content-end] 32px [page-nav-start] minmax(250px, 300px)
+      [page-nav-end full-end] 1fr;
+  }
+}
+
+/* Pages with nav (docs, releases, etc) */
+
+.page-nav {
+  display: none;
+}
+
+#toggle-docs-nav {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .docs-nav {
+    position: fixed;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    z-index: 99;
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    padding: 16px;
+
+    html.dark & {
+      background: rgba(0, 0, 0, 0.9);
+
+      label {
+        color: var(--color-white);
+      }
+    }
+
+    label {
+      cursor: pointer;
+      color: var(--color-g-900);
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+
+      svg {
+        stroke: currentColor;
+      }
+    }
+  }
+
+  .docs-nav-content {
+    display: none;
+  }
+
+  body:has(#toggle-docs-nav:checked) {
+    overflow: hidden;
+  }
+
+  #toggle-docs-nav:checked ~ .docs-nav {
+    height: 100dvh;
+  }
+
+  #toggle-docs-nav:checked ~ .docs-nav .docs-nav-content {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .docs-nav,
+  .page-nav {
+    display: none;
+    padding: 16px 40px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .docs-nav {
+    padding-right: 0;
+  }
+
+  .page-nav {
+    padding-left: 0;
+  }
+
+  article {
+    grid-column: content;
+  }
+
+  .page-nav {
+    grid-column: page-nav;
+  }
+
+  .docs-nav {
+    display: block;
+    grid-column: nav;
+  }
+}
+
+@media (min-width: 1100px) {
+  .page-nav {
+    display: block;
+  }
+}
+
+main > article {
+  padding: 16px;
+  padding-bottom: 80px;
+
+  > * + * {
+    margin-top: 16px;
+    display: block;
+  }
+
+  > :is(h1, h2, h3, h4, h5, h6) {
+    text-wrap: pretty;
+    margin-top: 32px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

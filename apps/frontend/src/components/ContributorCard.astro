@@ -1,0 +1,73 @@
+---
+import ExternalIcon from "./Icons/External.astro";
+
+interface Props {
+  type: "sponsor" | "contributor";
+  name: string;
+  avatar: string;
+  href: string;
+}
+
+const { type, name, avatar, href } = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noreferrer">
+  <img src={avatar} />
+  <div>
+    <p class="typography-caption title">
+      {type === "sponsor" ? "Sponsor" : "Contributor"}
+    </p>
+    <p class="typography-paragraph-2">
+      {name}
+    </p>
+  </div>
+
+  <span>
+    <ExternalIcon />
+  </span>
+</a>
+
+<style>
+  /* dark:border-transparency-light dark:bg-blog-card-dark" */
+  a {
+    background: color-mix(in srgb, var(--color-white) 75%, transparent);
+    border-radius: 16px;
+    border: 1px solid var(--color-g-100);
+    padding: 16px;
+    display: flex;
+  }
+
+  img {
+    width: 74px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-right: 24px;
+  }
+
+  p {
+    font-weight: bold;
+  }
+
+  p.title {
+    /* text-g-700 dark:text-g-500 */
+    font-weight: normal;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  span {
+    margin-left: auto;
+  }
+
+  /* html.dark {
+    a {
+      background: color-mix(in srgb, var(--color-transparency-dark) 75%, transparent);
+      border: 1px solid var(--color-transparency-light);
+    }
+  } */
+</style>

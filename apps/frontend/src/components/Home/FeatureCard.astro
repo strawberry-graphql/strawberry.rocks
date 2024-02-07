@@ -1,0 +1,92 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon:
+    | "pencil"
+    | "thunder"
+    | "loading"
+    | "link"
+    | "generics"
+    | "heart"
+    | "integrations"
+    | "move";
+}
+
+const { title, description, icon } = Astro.props;
+
+import Pencil from "../Icons/Pencil.astro";
+import Thunder from "../Icons/Thunder.astro";
+import Loading from "../Icons/Loading.astro";
+import Link from "../Icons/Link.astro";
+import Generics from "../Icons/Generics.astro";
+import Heart from "../Icons/Heart.astro";
+import Integrations from "../Icons/Integrations.astro";
+import Move from "../Icons/Move.astro";
+
+const Icon = {
+  pencil: Pencil,
+  thunder: Thunder,
+  loading: Loading,
+  link: Link,
+  generics: Generics,
+  move: Move,
+  heart: Heart,
+  integrations: Integrations,
+}[icon];
+---
+
+<div class="card">
+  <div class="icon">
+    <Icon />
+  </div>
+  <div>
+    <p class="title typography-paragraph">{title}</p>
+    <p class="description typography-paragraph-2">
+      {description}
+    </p>
+  </div>
+</div>
+
+<style>
+  .card {
+    padding: 24px;
+    border: 1px solid;
+    border-radius: 16px;
+    border-color: var(--color-g-100);
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+  }
+
+  :global(.dark) .card {
+    border: 1px solid rgba(54, 56, 60, 0.5);
+    background: rgba(27, 29, 33, 0.75);
+    color: white;
+  }
+
+  .icon {
+    background-color: var(--color-strawberry);
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon :global(svg) {
+    stroke: white;
+  }
+
+  .title {
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  .description {
+    text-wrap: pretty;
+  }
+</style>

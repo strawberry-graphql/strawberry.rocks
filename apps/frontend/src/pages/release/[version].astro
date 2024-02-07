@@ -1,0 +1,46 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { fetchReleases } from "../../utils/fetch-releases";
+import { fetchRelease } from "../../utils/fetch-release";
+import { addGitHubLinks } from "../../utils/add-github-links";
+import { format } from "date-fns/format";
+import { parseISO } from "date-fns/parseISO";
+import Markdown from "../../components/Markdown.astro";
+import Sidebar from "../../components/Docs/Sidebar.astro";
+
+let version = Astro.params.version;
+
+export async function getStaticPaths() {
+  const releases = await fetchReleases();
+
+  return releases.map((version) => ({ params: { version } }));
+}
+
+const release = await fetchRelease(version);
+
+const content = addGitHubLinks(release.description);
+---
+
+<Layout title={`Strawberry GraphQL @ ${version}`} useDocsGrid>
+  <main class="docs-grid">
+    <Sidebar />
+
+    <article class="typography-paragraph">
+      <h1 class="typography-heading-1">Strawberry GraphQL @ {version}</h1>
+      <h2 class="typography-label">
+        Released <time datetime={release.createdAt}>
+          {format(parseISO(release.createdAt), "MMMM d, yyyy 'at' h:mm a zzzz")}
+        </time>
+      </h2>
+
+      <Markdown content={content} />
+    </article>
+  </main>
+</Layout>
+
+<style>
+  h2 time {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

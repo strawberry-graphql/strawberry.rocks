@@ -1,0 +1,119 @@
+---
+import FeatureCard from "./FeatureCard.astro";
+
+const features = [
+  {
+    title: "Type hints",
+    description:
+      "Strawberry leverages Python type hints to provide a great developer experience while creating GraphQL Libraries.",
+    icon: "pencil",
+  },
+  {
+    title: "Async Support",
+    description:
+      "Strawberry supports async/await out of the box, allowing you to write your resolvers in a non-blocking way.",
+    icon: "thunder",
+  },
+  {
+    title: "Extensible",
+    description:
+      "Strawberry has support for schema and field extensions, allowing you to extend the schema with custom logic.",
+    icon: "move",
+  },
+  {
+    title: "Community",
+    description:
+      "Strawberry is backed by a great community, with a lot of people willing to help you out.",
+    icon: "heart",
+  },
+  {
+    title: "Generics",
+    description:
+      "Strawberry supports generics, allowing you to create reusable types that can be used in multiple places.",
+    icon: "generics",
+  },
+  {
+    title: "Federation",
+    description:
+      "Strawberry supports Federation, allowing you to create a federated GraphQL schema.",
+    icon: "link",
+  },
+  {
+    title: "Dataloaders",
+    description:
+      "Strawberry comes with support for dataloaders, allowing you to batch multiple queries into a single one.",
+    icon: "loading",
+  },
+  {
+    title: "Integrations",
+    description:
+      "Strawberry has support for multiple integrations, allowing you to use it with your favorite web framework.",
+    icon: "integrations",
+  },
+] as const;
+---
+
+<div class="features-container">
+  <ul>
+    {
+      features.map((feature) => (
+        <li>
+          <FeatureCard {...feature} />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .features-container {
+    text-align: center;
+    align-self: stretch;
+  }
+
+  ul {
+    display: flex;
+    scroll-snap-type: x mandatory;
+    gap: 24px;
+    overflow-x: auto;
+    padding: 0 16px;
+    max-width: 1600px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  li {
+    margin-bottom: 24px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    width: 90%;
+    max-width: 400px;
+    break-inside: avoid;
+    display: flex;
+    align-items: stretch;
+  }
+
+  @media (min-width: 900px) {
+    .features-container {
+      width: max-content;
+      margin: 0 auto;
+    }
+
+    ul {
+      column-count: 2;
+      display: block;
+    }
+  }
+
+  @media (min-width: 1300px) {
+    .features-container {
+      width: 100%;
+    }
+    ul {
+      column-count: 4;
+    }
+    li {
+      width: auto;
+    }
+  }
+</style>

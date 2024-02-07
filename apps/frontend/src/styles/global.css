@@ -1,0 +1,122 @@
+@import url("./reset.css");
+@import url("./fonts.css");
+@import url("./typography.css");
+@import url("./pages.css");
+@import url("./doc-search.css");
+
+:root {
+  /* Greyscale */
+  --color-black: #0d0e12;
+  --color-g-900: #1f1f1f;
+  --color-g-800: #28292c;
+  --color-g-700: #515254;
+  --color-g-500: #8b8b8d;
+  --color-g-400: #c5c5c6;
+  --color-g-100: #e2e2e3;
+  --color-g-50: #f0f1f1;
+  --color-white: #fff;
+
+  /* Accent */
+  --color-strawberry: #f7393d;
+  --color-yellow: #ffe500;
+  --color-yellow-light: #feab0a;
+  --color-green: #1eb589;
+  --color-pink: #ff9fa9;
+  --color-blue: #0094ff;
+  --color-magenta: #ee0a78;
+  --color-orange: #fe620a;
+
+  --code-color-green: #8ed287;
+  --code-color-blue: #aed5fb;
+  --code-color-purple: #cbabf9;
+  --code-color-pink: #ea8075;
+  --code-color-orange: #eaad75;
+
+  --shiki-color-text: #fff;
+  --shiki-color-background: transparent;
+  --shiki-token-constant: var(--code-color-blue);
+  --shiki-token-string: var(--code-color-blue);
+  --shiki-token-comment: var(--code-color-pink);
+  --shiki-token-keyword: var(--code-color-green);
+  --shiki-token-parameter: #fff;
+  --shiki-token-function: var(--code-color-purple);
+  --shiki-token-string-expression: var(--code-color-blue);
+  --shiki-token-punctuation: var(--code-color-purple);
+  --shiki-token-link: var(--code-color-orange);
+
+  /* Callout */
+  --color-callout-tip: rgba(142, 210, 135, 0.2);
+  --color-callout-warning: rgba(234, 173, 117, 0.2);
+  --color-callout-note: rgba(174, 213, 251, 0.2);
+
+  --font-display: "Ranade", sans-serif;
+  --font-sans: "Satoshi", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@media screen and (max-device-width: 480px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+.dark body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+body > :is(header, footer) {
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  body > :is(header, footer) {
+    padding: 40px 32px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+section.footnotes {
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+section.footnotes::before {
+  content: "Footnotes:";
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
+
+form .status {
+  margin-top: 16px;
+  color: var(--color-green);
+}
+
+form .status-error {
+  color: var(--color-strawberry);
+}

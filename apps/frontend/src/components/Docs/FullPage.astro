@@ -1,0 +1,47 @@
+---
+// @ts-ignore
+import toc from "markdown-toc";
+import matter from "gray-matter";
+import Layout from "../../layouts/Layout.astro";
+import Markdown from "../../components/Markdown.astro";
+import Sidebar from "../../components/Docs/Sidebar.astro";
+import TableOfContents from "../../components/Docs/TableOfContents.astro";
+import Footer from "../../components/Docs/Footer.astro";
+
+interface Props {
+  prNumber?: string | undefined;
+  content: string;
+}
+
+const { content, prNumber } = Astro.props;
+const { content: markdownContent, data } = matter(content);
+
+const tableOfContents = toc(markdownContent, {
+  maxdepth: 1,
+  // apparently max depth doesn't work
+  // TODO: maybe use a better package
+  // @ts-ignore
+}).json.filter((item: any) => item.lvl <= 2);
+
+let title = data.title;
+
+if (prNumber) {
+  title = `[Preview] ${title}`;
+}
+---
+
+<Layout title={title} useDocsGrid prNumber={prNumber}>
+  <main class="docs-grid">
+    <Sidebar />
+
+    <article class="typography-paragraph">
+      <Markdown content={markdownContent} />
+
+      <Footer />
+    </article>
+
+    <aside class="page-nav">
+      <TableOfContents toc={tableOfContents} />
+    </aside>
+  </main>
+</Layout>

@@ -1,0 +1,25 @@
+---
+import { markdown, createComponentProxy } from "./utils";
+
+export interface Props {
+  content?: string;
+  sanitize?: any;
+  components?: Record<string, any>;
+}
+
+const input = Astro.props.content ?? (await Astro.slots.render("default"));
+if (!input) {
+  throw new Error(
+    "Unable to render <Markdown> without a content prop or children",
+  );
+}
+// @ts-ignore
+const components = createComponentProxy($$result, Astro.props.components);
+const content = await markdown(input, {
+  sanitize: Astro.props.sanitize,
+  components,
+});
+
+---
+
+<Fragment set:html={content} />

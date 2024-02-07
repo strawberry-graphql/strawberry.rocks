@@ -1,0 +1,24 @@
+<blockquote>
+  <slot />
+</blockquote>
+
+<style>
+  blockquote {
+    padding: 10px 20px;
+    position: relative;
+  }
+
+  blockquote::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      var(--color-strawberry) 0%,
+      var(--color-orange) 100%
+    );
+  }
+</style>

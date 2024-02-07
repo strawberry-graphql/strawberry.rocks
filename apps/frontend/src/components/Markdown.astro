@@ -1,0 +1,48 @@
+---
+import AstroMarkdown from "./vendor/AstroMarkdown.astro";
+
+import Paragraph from "./Pages/Paragraph.astro";
+import List from "./Pages/List.astro";
+import OrderedList from "./Pages/OrderedList.astro";
+import ListItem from "./Pages/ListItem.astro";
+import Heading from "./Pages/Heading.astro";
+import Pre from "./Pages/Pre.astro";
+import CodeSpan from "./Pages/CodeSpan.astro";
+import CodeBox from "./Pages/CodeBox.astro";
+import Link from "./Pages/Link.astro";
+import Image from "./Pages/Image.astro";
+import Blockquote from "./Pages/Blockquote.astro";
+import Warning from "./Pages/Callout/Warning.astro";
+import Tip from "./Pages/Callout/Tip.astro";
+import Note from "./Pages/Callout/Note.astro";
+import Table from "./Pages/Table.astro";
+import HR from "./Pages/HR.astro";
+
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+---
+
+<AstroMarkdown
+  content={content}
+  components={{
+    p: Paragraph,
+    ul: List,
+    ol: OrderedList,
+    li: ListItem,
+    Heading,
+    pre: Pre,
+    CodeSpan: CodeSpan,
+    CodeBlock: CodeBox,
+    a: Link,
+    img: Image,
+    blockquote: Blockquote,
+    Tip,
+    Note,
+    table: Table,
+    hr: HR,
+    Warning,
+  }}
+/>

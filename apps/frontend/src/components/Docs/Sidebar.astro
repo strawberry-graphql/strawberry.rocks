@@ -1,0 +1,29 @@
+---
+import Search from "../../components/Search.astro";
+import DocsNav from "../../components/Docs/Nav.astro";
+import IndexIcon from "../Icons/Index.astro";
+---
+
+<input type="checkbox" id="toggle-docs-nav" />
+
+<aside class="docs-nav">
+  <label for="toggle-docs-nav" class="docs-nav-toggle typography-label">
+    <IndexIcon />
+
+     Index
+  </label>
+
+  <div class="docs-nav-content">
+    <Search />
+
+    <DocsNav />
+  </div>
+</aside>
+
+<style>
+  @media (min-width: 768px) {
+    .docs-nav-toggle {
+      display: none;
+    }
+  }
+</style>

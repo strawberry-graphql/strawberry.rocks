@@ -1,0 +1,46 @@
+---
+import { fetchContributors } from "../utils/fetch-contributors";
+import ContributorCard from "./ContributorCard.astro";
+
+const contributors = (await fetchContributors()).filter(({ name }) => {
+  if (name.includes("[bot]")) {
+    return false;
+  }
+
+  return !["botberry", "dependabot-support"].includes(name);
+});
+---
+
+<ul>
+  {
+    contributors.map((contributor) => (
+      <li>
+        <ContributorCard
+          type="contributor"
+          href={contributor.href}
+          avatar={contributor.avatar}
+          name={contributor.name}
+        />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: grid;
+    gap: 16px;
+
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 800px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 1000px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

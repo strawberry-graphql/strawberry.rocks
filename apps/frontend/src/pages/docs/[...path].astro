@@ -1,0 +1,38 @@
+---
+import { fetchDocPage } from "../../utils/fetch-doc-page";
+import { fetchAllPages } from "../../utils/fetch-all-pages";
+import FullPage from "../../components/Docs/FullPage.astro";
+
+let { path: filename } = Astro.params;
+
+if (filename === undefined) {
+  filename = "index";
+}
+
+filename = `docs/${filename}.md`;
+
+const content = await fetchDocPage({ filename });
+
+export async function getStaticPaths() {
+  const allPages = await fetchAllPages();
+
+  return allPages.map((page) => {
+    let path: string | undefined = page.replace("docs/", "");
+
+    path = path.replace("README.md", "");
+    path = path.replace(".md", "");
+
+    if (path === "") {
+      path = undefined;
+    }
+
+    return {
+      params: {
+        path,
+      },
+    };
+  });
+}
+---
+
+<FullPage content={content} />

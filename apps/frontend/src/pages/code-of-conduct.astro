@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Markdown from "../components/Markdown.astro";
+
+import { fetchDocPage } from "../utils/fetch-doc-page";
+
+const content = await fetchDocPage({
+  filename: ".github/CODE_OF_CONDUCT.md",
+  repo: "strawberry-graphql/.github",
+});
+---
+
+<Layout title="Acknowledgements" blob>
+  <article>
+    <Markdown content={content} />
+  </article>
+</Layout>
+
+<style>
+  article {
+    padding: 80px 16px;
+    display: flex;
+    row-gap: 16px;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+</style>

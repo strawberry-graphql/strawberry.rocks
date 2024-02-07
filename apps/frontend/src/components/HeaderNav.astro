@@ -1,0 +1,171 @@
+---
+import Link from "./HeaderNavLink.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+
+import { fetchLatestRelease } from "../utils/fetch-latest-release";
+
+const links = [
+  {
+    name: "Docs",
+    href: "/docs",
+    slug: "docs",
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/strawberry-graphql/strawberry",
+    slug: "github",
+  },
+  {
+    name: "Discord",
+    href: "https://strawberry.rocks/discord",
+    slug: "discord",
+  },
+  // {
+  //   name: "Blog",
+  //   href: "/blog",
+  //   slug: "blog",
+  // },
+  {
+    name: "Playground",
+    href: "https://play.strawberry.rocks",
+    slug: "playground",
+  },
+] as const;
+
+const version = await fetchLatestRelease();
+version.href = `/release/${version.name}`;
+
+const currentPath = new URL(Astro.request.url);
+
+const isActive = (link: (typeof links)[number]) => {
+  if (link.slug === "docs") {
+    return currentPath.pathname.startsWith("/docs");
+  }
+
+  return currentPath.pathname === link.href;
+};
+---
+
+<nav>
+  <ul>
+    {
+      links.map((link) => (
+        <li>
+          <Link href={link.href} active={isActive(link)}>
+            {link.name}
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+
+  <!-- todo: hover state -->
+
+  <a href={version.href} class="version typography-caption">
+    {version.name}
+  </a>
+
+  <div class="switcher">
+    <ThemeSwitcher />
+  </div>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 64px;
+  }
+
+  .version {
+    margin-top: 40px;
+    text-transform: uppercase;
+    display: inline-block;
+    font-weight: bold;
+    border-radius: 20px;
+
+    background-color: var(--color-g-50);
+    color: var(--color-g-700);
+    padding: 8px 16px;
+  }
+  :global(html.dark) .version {
+    background-color: var(--color-g-900);
+    color: var(--color-g-400);
+  }
+
+  .switcher {
+    margin-top: auto;
+    width: 100%;
+  }
+
+  nav > ul {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    nav {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 32px;
+      padding-bottom: 0;
+    }
+
+    nav > ul {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: auto;
+      gap: 40px;
+      order: 2;
+    }
+
+    nav > ul::before,
+    nav > ul::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 48px;
+      margin-right: -8px;
+      background: var(--color-g-100);
+    }
+
+    :global(html.dark) nav > ul::before,
+    :global(html.dark) nav > ul::after {
+      background: var(--color-g-800);
+    }
+
+    nav > ul::before {
+      display: none;
+    }
+
+    nav > ul::after {
+      margin-left: -8px;
+      margin-right: 0;
+    }
+
+    .switcher {
+      margin-top: 0;
+      width: auto;
+      order: 3;
+    }
+
+    .version {
+      display: none;
+      margin-left: auto;
+      margin-top: 0;
+      order: 1;
+    }
+  }
+
+  @media (min-width: 900px) {
+    nav > ul::before {
+      display: block;
+    }
+
+    .version {
+      display: block;
+    }
+  }
+</style>

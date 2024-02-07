@@ -1,0 +1,47 @@
+---
+import AstroCode from "../Code.astro";
+
+interface Props {
+  code: string;
+  lang: string;
+}
+
+let { code, lang } = Astro.props;
+let secondLang: string | undefined;
+let secondCode: string | undefined;
+
+if (lang.includes("+")) {
+  const langs = lang.split("+");
+
+  lang = langs[0]!;
+  secondLang = langs[1];
+
+  const codes = code.split("\n---").map((c) => c.trim());
+  code = codes[0]!;
+  secondCode = codes[1];
+}
+---
+
+<div class:list={{ "code-container": !!secondCode }}>
+  <AstroCode code={code} lang={lang as any} />
+  {secondCode && <AstroCode code={secondCode} lang={secondLang as any} />}
+</div>
+
+<style>
+  .code-container {
+    display: grid;
+    grid-template-columns: [full-start] 1fr 1fr [full-end];
+    gap: 16px;
+    container-type: inline-size;
+  }
+
+  .code-container > * {
+    grid-column: full;
+  }
+
+  @container (min-width: 700px) {
+    .code-container > * {
+      grid-column: unset;
+    }
+  }
+</style>

@@ -1,0 +1,157 @@
+---
+interface Props {
+  toc: {
+    slug: string;
+    content: string;
+  }[];
+}
+
+const { toc } = Astro.props;
+---
+
+<nav class="toc">
+  <ul class="typography-paragraph-2">
+    {
+      toc.map((item) => (
+        <li>
+          <a href={`#${item.slug}`}>{item.content}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  nav {
+    --indicator-top: 0;
+    --indicator-height: 20px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 24px;
+    position: relative;
+  }
+
+  ul::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 1.5px;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-g-100);
+  }
+
+  :global(html.dark) ul::before {
+    background: var(--color-g-900);
+  }
+
+  .js ul::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    transform: translateY(var(--indicator-top));
+    left: 0;
+    width: 4px;
+    z-index: 2;
+    height: var(--indicator-height);
+    border-radius: 2px;
+    transition: all 0.2s ease-in-out;
+    background: linear-gradient(
+      to bottom,
+      var(--color-strawberry),
+      var(--color-strawberry)
+    );
+  }
+
+  a {
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+  }
+
+  a:hover,
+  a.active {
+    color: var(--color-strawberry);
+  }
+</style>
+
+<script define:vars={{ toc }}>
+  const root = document.querySelector("main > article");
+  const tocElement = document.querySelector(".toc");
+
+  if (root && tocElement) {
+    tocElement.classList.add("js");
+    const headingSelectors = toc.map((item) => `#${item.slug}`).join(", ");
+    const headings = document.querySelectorAll(headingSelectors);
+
+    let direction = "down";
+    let lastScrollTop = 0;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        const st = document.documentElement.scrollTop;
+
+        direction = st > lastScrollTop ? "down" : "up";
+
+        lastScrollTop = st;
+      },
+      {
+        passive: true,
+      },
+    );
+
+    const setActive = (id) => {
+      navItem = tocElement.querySelector(`a[href="#${id}"]`);
+
+      if (navItem) {
+        navItem.classList.add("active");
+
+        const tocElementRect = tocElement.getBoundingClientRect();
+
+        const navItemRect = navItem.getBoundingClientRect();
+        const navItemTop = navItemRect.top;
+        const height = navItemRect.height;
+
+        const top = navItemTop - tocElementRect.top;
+
+        tocElement.style.setProperty("--indicator-top", `${top}px`);
+        tocElement.style.setProperty("--indicator-height", `${height}px`);
+      }
+    };
+
+    let observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+
+        if (visibleEntries.length === 0) {
+          return;
+        }
+
+        const entry =
+          visibleEntries[direction === "down" ? 0 : visibleEntries.length - 1];
+
+        const id = entry.target.id;
+
+        // TODO: this could be better, by checking if the one that's not
+        // visibile anymore and if it's going up
+
+        tocElement.querySelectorAll("a").forEach((navItem) => {
+          navItem.classList.remove("active");
+        });
+
+        setActive(id);
+      },
+      {
+        threshold: 0,
+      },
+    );
+
+    headings.forEach((heading) => observer.observe(heading));
+  }
+</script>

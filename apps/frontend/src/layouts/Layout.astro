@@ -1,0 +1,98 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Blob from "../components/Blob.astro";
+import PreviewBanner from "../components/PreviewBanner.astro";
+
+interface Props {
+  title: string;
+  blob?: boolean;
+  prNumber?: string | undefined;
+  useDocsGrid?: boolean;
+  description?: string;
+}
+
+let {
+  title,
+  blob,
+  useDocsGrid = false,
+  prNumber,
+  description = "Strawberry GraphQL is a powerful and modern GraphQL framework for Python that allows developers to easily create robust and scalable APIs. With its intuitive and developer-friendly API, Strawberry makes it easy to define and query GraphQL schemas, while also providing advanced features such as type safety, code generation, and more.",
+} = Astro.props;
+
+title = `${title} | 🍓 Strawberry GraphQL`;
+
+let path = new URL(Astro.request.url).pathname;
+
+if (path.endsWith("/")) {
+  path = path.slice(0, -1);
+}
+
+let imagePath = path;
+
+if (path === "") {
+  imagePath = "/default";
+}
+
+imagePath += ".png";
+
+// TODO: change this back to `https://strawberry.rocks` once we launch
+const url = `https://beta.strawberry.rocks${path}`;
+const image = `https://beta.strawberry.rocks/og${imagePath}`;
+
+let canonicalUrl = url;
+
+if (prNumber) {
+  // remove `/pr/number` from the path
+  canonicalUrl = url.replace(/\/pr\/\d+/, "");
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#e44b46" />
+
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+  </head>
+  <body>
+    {blob && <Blob />}
+    {prNumber && <PreviewBanner prNumber={prNumber} />}
+    <Header useDocsGrid={useDocsGrid} />
+    <slot />
+    <Footer />
+    <script
+      defer
+      data-domain="strawberry.rocks"
+      data-api="/plausible/api/event"
+      src="/plausible/js/script.js"></script>
+  </body>
+</html>

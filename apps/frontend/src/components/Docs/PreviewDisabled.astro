@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title={"Preview disabled"} useDocsGrid>
+  <main>
+    <h1 class="typography-heading-1">Preview disabled</h1>
+  </main>
+</Layout>
+
+<style is:global>
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  body > footer {
+    margin-top: auto;
+  }
+</style>
+
+<style>
+  main {
+    text-align: center;
+    padding: 40px 16px;
+  }
+</style>

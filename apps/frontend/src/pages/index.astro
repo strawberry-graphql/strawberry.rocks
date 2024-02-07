@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Home/Hero.astro";
+import Features from "../components/Home/Features.astro";
+import Sponsors from "../components/Home/Sponsors.astro";
+---
+
+<Layout title="A modern GraphQL library for Python" blob>
+  <main class="home-layout">
+    <Hero />
+
+    <Features />
+
+    <Sponsors />
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 80px 0;
+    display: flex;
+    row-gap: 80px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  main :global(h1, h2) {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+    text-wrap: pretty;
+
+    @media (max-width: 820px) {
+      padding: 0 16px;
+    }
+  }
+</style>
