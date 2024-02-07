@@ -9,7 +9,9 @@ export const getDocsCard = async (path: string) => {
 
   const title = data.title;
 
-  const bgImage = await fs.readFile("./src/social-cards/background.png", {
+  const bgPath = process.cwd() + "/src/social-cards/background.png";
+
+  const bgImage = await fs.readFile(bgPath, {
     encoding: "base64",
   });
 
