@@ -1,5 +1,5 @@
 ---
-import { subscribeToMailchimp } from "../utils/mailchimp";
+import { subscribeToPolar } from "../utils/polar";
 
 // @ts-ignore (Astro issue)
 let next = "/";
@@ -9,7 +9,7 @@ if (Astro.request.method === "POST") {
   const email = data.get("email") as string;
 
   try {
-    await subscribeToMailchimp(email);
+    await subscribeToPolar(email);
     next = (data.get("next") as string) + "?registration=success";
   } catch (error) {
     next = (data.get("next") as string) + "?registration=failed";
