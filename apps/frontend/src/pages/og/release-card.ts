@@ -2,7 +2,7 @@ import { html } from "satori-html";
 import { promises as fs } from "fs";
 
 export const getReleaseCard = async (version: string) => {
-  const path = process.cwd() + "/src/social-cards/version-background.png";
+  const path = process.cwd() + "/social-cards/version-background.png";
 
   const bgImage = await fs.readFile(path, {
     encoding: "base64",

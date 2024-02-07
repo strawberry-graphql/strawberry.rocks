@@ -7,11 +7,11 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   trailingSlash: 'never',
-  output: "server",
+  output: "serverg",
   site: "https://strawberry.rocks",
   integrations: [sitemap(), astroMetaTags()],
   adapter: vercel({
-    includeFiles: ["./src/social-cards/version-background.png", "./src/social-cards/background.png"],
+    includeFiles: ["./social-cards/version-background.png", "./social-cards/background.png"],
   }),
   vite: {
     ssr: {
