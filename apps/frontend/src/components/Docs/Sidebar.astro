@@ -10,7 +10,7 @@ import IndexIcon from "../Icons/Index.astro";
   <label for="toggle-docs-nav" class="docs-nav-toggle typography-label">
     <IndexIcon />
 
-     Index
+    Index
   </label>
 
   <div class="docs-nav-content">
@@ -21,6 +21,10 @@ import IndexIcon from "../Icons/Index.astro";
 </aside>
 
 <style>
+  .docs-nav {
+    scrollbar-width: thin;
+  }
+
   @media (min-width: 768px) {
     .docs-nav-toggle {
       display: none;

@@ -65,6 +65,10 @@
   color: var(--color-white);
 }
 
+html {
+  scrollbar-color: var(--color-strawberry) transparent;
+}
+
 button {
   cursor: pointer;
 }
