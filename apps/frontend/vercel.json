@@ -9,5 +9,12 @@
             "source": "/plausible/api/event",
             "destination": "https://plausible.io/api/event"
         }
+    ],
+    "redirects": [
+        {
+            "source": "/discord",
+            "destination": "https://discord.gg/3uQ2PaY",
+            "permanent": true
+        }
     ]
 }
