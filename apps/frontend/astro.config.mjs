@@ -10,7 +10,9 @@ export default defineConfig({
   output: "server",
   site: "https://strawberry.rocks",
   integrations: [sitemap(), astroMetaTags()],
-  adapter: vercel(),
+  adapter: vercel({
+    includeFiles: ["./src/social-cards/version-background.png", "./src/social-cards/background.png"],
+  }),
   vite: {
     ssr: {
       external: ['@resvg/resvg-js']
