@@ -6,19 +6,25 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  trailingSlash: 'never',
+  trailingSlash: "never",
   output: "server",
   site: "https://strawberry.rocks",
   integrations: [sitemap(), astroMetaTags()],
   adapter: vercel({
-    includeFiles: ["./social-cards/version-background.png", "./social-cards/background.png"],
+    includeFiles: [
+      "./social-cards/version-background.png",
+      "./social-cards/background.png",
+      "./public/fonts/Satoshi-Bold.otf",
+      "./public/fonts/Ranade-Bold.otf",
+      "./public/fonts/JetBrainsMono-Regular.ttf",
+    ],
   }),
   vite: {
     ssr: {
-      external: ['@resvg/resvg-js']
+      external: ["@resvg/resvg-js"],
     },
     optimizeDeps: {
-      exclude: ["@resvg/resvg-js"]
-    }
-  }
+      exclude: ["@resvg/resvg-js"],
+    },
+  },
 });

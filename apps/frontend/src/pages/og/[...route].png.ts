@@ -9,6 +9,8 @@ import { getReleaseCard } from "./release-card";
 import { fetchReleases } from "../../utils/fetch-releases";
 import { getDefaultCard } from "./default-card";
 
+import path from "path";
+
 const dimensions = {
   width: 1200,
   height: 630,
@@ -31,10 +33,17 @@ export async function GET(context: APIContext) {
     markup = await getReleaseCard(version);
   }
 
-  const Satoshi = await fs.readFile("./public/fonts/Satoshi-Bold.otf");
-  const Ranade = await fs.readFile("./public/fonts/Ranade-Bold.otf");
+  const Satoshi = await fs.readFile(
+    path.join(process.cwd(), "apps/frontend/public/fonts/Satoshi-Bold.otf"),
+  );
+  const Ranade = await fs.readFile(
+    path.join(process.cwd(), "apps/frontend/public/fonts/Ranade-Bold.otf"),
+  );
   const JetBrains = await fs.readFile(
-    "./public/fonts/JetBrainsMono-Regular.ttf",
+    path.join(
+      process.cwd(),
+      "apps/frontend/public/fonts/JetBrainsMono-Regular.ttf",
+    ),
   );
 
   // @ts-ignore
