@@ -123,13 +123,12 @@ main > article {
   padding-bottom: 80px;
 
   > * + * {
-    margin-top: 16px;
+    margin-top: 1em;
     display: block;
   }
 
   > :is(h1, h2, h3, h4, h5, h6) {
     text-wrap: pretty;
-    margin-top: 32px;
 
     &:first-child {
       margin-top: 0;
