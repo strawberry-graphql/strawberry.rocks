@@ -8,9 +8,8 @@ interface Props {
 
 let { href, target, title, id, ...rest } = Astro.props;
 
-if (href?.endsWith(".md")) {
-  href = href.replace(".md", "");
-}
+// Remove .md extension from href, but make sure to preserve #hashes
+href = href?.replace(/\.md(#.*)?$/, "$1");
 ---
 
 <a href={href} target={target} title={title} id={id} {...rest}><slot /></a>
