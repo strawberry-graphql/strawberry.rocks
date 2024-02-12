@@ -9,7 +9,7 @@ export const fetchLatestRelease = async (): Promise<{
 }> => {
   const response = await githubFetch(
     `https://api.github.com/repos/${OWNER}/${REPO}/releases/latest`,
-    { method: "GET" },
+    { method: "GET" }
   );
 
   const data = await response.json();

@@ -27,7 +27,7 @@ export function querySelector(node: Node, selector: string): Node {
         if (!m) return false;
         return m;
       },
-      { single: true },
+      { single: true }
     )[0];
   } catch (e) {
     if (e instanceof Error) {
@@ -55,7 +55,7 @@ interface Matcher {
 function select(
   node: Node,
   match: Matcher,
-  opts: { single?: boolean } = { single: false },
+  opts: { single?: boolean } = { single: false }
 ): Node[] {
   let nodes: Node[] = [];
   walkSync(node, (n, parent, index): void => {
@@ -138,7 +138,7 @@ const createMatch = (selector: AST): Matcher => {
             node.type === ELEMENT_NODE &&
             (node.children.length === 0 ||
               node.children.every(
-                (n: Node) => n.type === TEXT_NODE && n.value.trim() === "",
+                (n: Node) => n.type === TEXT_NODE && n.value.trim() === ""
               ));
         case "first-child":
           return (node: Node, parent?: Node) => firstChild(node, parent);
@@ -161,7 +161,7 @@ const createMatch = (selector: AST): Matcher => {
                   }
                   const nth = nthChild(selector.argument);
                   const elements = parent?.children.filter(
-                    (n: Node) => n.type === ELEMENT_NODE,
+                    (n: Node) => n.type === ELEMENT_NODE
                   );
                   const childIndex = nthChildIndex(node, parent) + 1;
                   for (let i = 0; i < elements.length; i++) {

@@ -21,7 +21,7 @@ export interface SanitizeOptions {
 }
 
 function resolveSantizeOptions(
-  sanitize?: SanitizeOptions,
+  sanitize?: SanitizeOptions
 ): Required<SanitizeOptions> {
   if (sanitize === undefined) {
     return {
@@ -62,7 +62,7 @@ type ActionType = "allow" | "drop" | "block";
 function getAction(
   name: string,
   kind: NodeKind,
-  sanitize: Required<SanitizeOptions>,
+  sanitize: Required<SanitizeOptions>
 ): ActionType {
   if (sanitize.allowElements?.length > 0) {
     if (sanitize.allowElements.includes(name)) return "allow";
@@ -81,7 +81,7 @@ function getAction(
 
 function sanitizeAttributes(
   node: ElementNode,
-  sanitize: Required<SanitizeOptions>,
+  sanitize: Required<SanitizeOptions>
 ): Record<string, string> {
   const attrs: Record<string, string> = node.attributes;
   for (const key of Object.keys(node.attributes)) {
@@ -108,7 +108,7 @@ function sanitizeAttributes(
 function sanitizeElement(
   opts: Required<SanitizeOptions>,
   node: ElementNode,
-  parent: Node,
+  parent: Node
 ) {
   const kind = getNodeKind(node);
   const { name } = node;
@@ -116,7 +116,7 @@ function sanitizeElement(
   if (action === "drop")
     return () => {
       parent!.children = parent!.children.filter(
-        (child: Node) => child !== node,
+        (child: Node) => child !== node
       );
     };
   if (action === "block")

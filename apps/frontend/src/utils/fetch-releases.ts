@@ -33,6 +33,6 @@ export const fetchReleases = async () => {
   }
 
   return data.repository.releases.nodes.map(
-    (release: any) => release.tagName,
+    (release: any) => release.tagName
   ) as string[];
 };

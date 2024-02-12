@@ -6,7 +6,7 @@ export default function swap(
   components: Record<
     string,
     string | ((props: Record<string, any>, ...children: any[]) => any)
-  > = {},
+  > = {}
 ) {
   return (doc: Node): Node => {
     for (const [selector, component] of Object.entries(components)) {

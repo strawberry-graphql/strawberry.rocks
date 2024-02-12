@@ -1,15 +1,13 @@
-import satori from "satori";
-import { promises as fs } from "fs";
-import { Resvg } from "@resvg/resvg-js";
-import type { APIContext } from "astro";
 import { fetchAllPages } from "../../utils/fetch-all-pages";
-
-import { getDocsCard } from "./docs-card";
-import { getReleaseCard } from "./release-card";
 import { fetchReleases } from "../../utils/fetch-releases";
 import { getDefaultCard } from "./default-card";
-
+import { getDocsCard } from "./docs-card";
+import { getReleaseCard } from "./release-card";
+import { Resvg } from "@resvg/resvg-js";
+import type { APIContext } from "astro";
+import { promises as fs } from "fs";
 import path from "path";
+import satori from "satori";
 
 const dimensions = {
   width: 1200,
@@ -34,16 +32,16 @@ export async function GET(context: APIContext) {
   }
 
   const Satoshi = await fs.readFile(
-    path.join(process.cwd(), "apps/frontend/public/fonts/Satoshi-Bold.otf"),
+    path.join(process.cwd(), "apps/frontend/public/fonts/Satoshi-Bold.otf")
   );
   const Ranade = await fs.readFile(
-    path.join(process.cwd(), "apps/frontend/public/fonts/Ranade-Bold.otf"),
+    path.join(process.cwd(), "apps/frontend/public/fonts/Ranade-Bold.otf")
   );
   const JetBrains = await fs.readFile(
     path.join(
       process.cwd(),
-      "apps/frontend/public/fonts/JetBrainsMono-Regular.ttf",
-    ),
+      "apps/frontend/public/fonts/JetBrainsMono-Regular.ttf"
+    )
   );
 
   // @ts-ignore

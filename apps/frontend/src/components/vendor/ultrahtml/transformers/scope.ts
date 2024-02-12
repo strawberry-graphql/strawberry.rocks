@@ -2,9 +2,9 @@ import type { ElementNode } from "../index.js";
 import { walkSync, ELEMENT_NODE, TEXT_NODE, render } from "../index.js";
 import type { Node } from "../index.js";
 import { matches } from "../selector.js";
-import { serialize, compile, middleware, stringify } from "stylis";
 import { parse } from "parsel-js";
 import type { AST } from "parsel-js";
+import { serialize, compile, middleware, stringify } from "stylis";
 
 export interface ScopeOptions {
   hash?: string;
@@ -45,7 +45,7 @@ export default function scope(opts: ScopeOptions = {}) {
                 c.value = scopeCSS(c.value, hash);
                 if (c.value === "") {
                   node.parent.children = node.parent.children.filter(
-                    (s: Node) => s !== node,
+                    (s: Node) => s !== node
                   );
                 }
                 return c;
@@ -131,7 +131,7 @@ function scopeCSS(css: string, hash: string) {
         if (element.type === "rule") {
           if (Array.isArray(element.props)) {
             element.props = element.props.map((prop) =>
-              scopeSelector(prop, hash),
+              scopeSelector(prop, hash)
             );
           } else {
             element.props = scopeSelector(element.props, hash);
@@ -139,7 +139,7 @@ function scopeCSS(css: string, hash: string) {
         }
       },
       stringify,
-    ]),
+    ])
   );
 }
 
@@ -159,7 +159,7 @@ function getSelectors(css: string) {
           }
         }
       },
-    ]),
+    ])
   );
   return Array.from(selectors);
 }

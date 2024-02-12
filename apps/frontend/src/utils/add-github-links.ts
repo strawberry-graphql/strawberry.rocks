@@ -1,11 +1,11 @@
-import { unified } from "unified";
 import markdown from "remark-parse";
 import stringify from "remark-stringify";
+import { unified } from "unified";
 import { visit } from "unist-util-visit";
 
 export const addGitHubLinks = (
   text: string,
-  repository = "strawberry-graphql/strawberry",
+  repository = "strawberry-graphql/strawberry"
 ) => {
   const processor = unified().use(markdown);
   const tree = processor.parse(text);
@@ -16,7 +16,7 @@ export const addGitHubLinks = (
 
     const addLink = (
       regex: RegExp,
-      urlFunc: (match: RegExpExecArray) => string,
+      urlFunc: (match: RegExpExecArray) => string
     ) => {
       let match;
       while ((match = regex.exec(node.value)) !== null) {
@@ -44,7 +44,7 @@ export const addGitHubLinks = (
     addLink(/@(\w+)/g, (match) => `https://github.com/${match[1]}`);
     addLink(
       /#(\d+)/g,
-      (match) => `https://github.com/${repository}/pull/${match[1]}`,
+      (match) => `https://github.com/${repository}/pull/${match[1]}`
     );
 
     // Push remaining text

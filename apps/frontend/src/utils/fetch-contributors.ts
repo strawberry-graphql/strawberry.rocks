@@ -1,5 +1,5 @@
-import parseLinkHeader from "parse-link-header";
 import { githubFetch } from "./github-fetch";
+import parseLinkHeader from "parse-link-header";
 
 // TODO: see if we can use the GraphQL API to get the names as well
 export const fetchContributors = async () => {
