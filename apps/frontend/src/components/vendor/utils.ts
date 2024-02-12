@@ -1,19 +1,18 @@
-import { marked } from "marked";
 import { transform } from "./ultrahtml";
 // @ts-ignore
 import { __unsafeHTML } from "./ultrahtml";
-import * as entities from "entities";
+import swap from "./ultrahtml/transformers/swap";
 // @ts-ignore
 import { dedent } from "astro-remote/lib/utils";
-import swap from "./ultrahtml/transformers/swap";
 // import sanitize from "./ultrahtml/transformers/sanitize";
 import { jsx as h } from "astro/jsx-runtime";
 // @ts-ignore
 import { renderJSX } from "astro/runtime/server/jsx";
+import * as entities from "entities";
+import GithubSlugger from "github-slugger";
+import { marked } from "marked";
 import markedFootnote from "marked-footnote";
 import { markedSmartypants } from "marked-smartypants";
-
-import GithubSlugger from "github-slugger";
 
 export interface HTMLOptions {
   sanitize?: {};
@@ -22,7 +21,7 @@ export interface HTMLOptions {
 
 export async function markdown(
   input: string,
-  opts: HTMLOptions = {},
+  opts: HTMLOptions = {}
 ): Promise<string> {
   const slugger = new GithubSlugger();
 
@@ -85,7 +84,7 @@ export async function markdown(
 
 export function createComponentProxy(
   result: any,
-  _components: Record<string, any> = {},
+  _components: Record<string, any> = {}
 ) {
   const components = {};
   for (const [key, value] of Object.entries(_components)) {
@@ -100,7 +99,7 @@ export function createComponentProxy(
         }
         const output = await renderJSX(
           result,
-          h(value, { ...props, "set:html": children.value }),
+          h(value, { ...props, "set:html": children.value })
         );
         return __unsafeHTML(output);
       };

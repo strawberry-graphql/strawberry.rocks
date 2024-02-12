@@ -71,7 +71,7 @@ export function h(
     children: children.map((child) =>
       typeof child === "string"
         ? { type: TEXT_NODE, value: escapeHTML(String(child)) }
-        : child,
+        : child
     ),
     parent: undefined as any,
     loc: [] as any,
@@ -335,7 +335,7 @@ export function __unsafeHTML(str: string) {
 }
 export function __unsafeRenderFn(
   node: ElementNode,
-  fn: (props: Record<string, any>, ...children: Node[]) => Node,
+  fn: (props: Record<string, any>, ...children: Node[]) => Node
 ) {
   Object.defineProperty(node, RenderFn, {
     value: fn,
@@ -404,7 +404,7 @@ function canSelfClose(node: Node): boolean {
 async function renderElement(node: Node): Promise<string> {
   const { name, attributes = {} } = node;
   const children = await Promise.all(
-    node.children.map((child: Node) => render(child)),
+    node.children.map((child: Node) => render(child))
   ).then((res) => res.join(""));
   if (RenderFn in node) {
     const value = await (node as any)[RenderFn](attributes, mark(children));
@@ -464,7 +464,7 @@ export async function render(node: Node): Promise<string> {
   switch (node.type) {
     case DOCUMENT_NODE:
       return Promise.all(
-        node.children.map((child: Node) => render(child)),
+        node.children.map((child: Node) => render(child))
       ).then((res) => {
         return res.join("");
       });
@@ -487,11 +487,11 @@ export interface Transformer {
 
 export async function transform(
   markup: string | Node,
-  transformers: Transformer[] = [],
+  transformers: Transformer[] = []
 ): Promise<string> {
   if (!Array.isArray(transformers)) {
     throw new Error(
-      `Invalid second argument for \`transform\`! Expected \`Transformer[]\` but got \`${typeof transformers}\``,
+      `Invalid second argument for \`transform\`! Expected \`Transformer[]\` but got \`${typeof transformers}\``
     );
   }
   const doc = typeof markup === "string" ? parse(markup) : markup;

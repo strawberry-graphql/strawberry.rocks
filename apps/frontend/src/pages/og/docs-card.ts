@@ -1,8 +1,8 @@
-import { html } from "satori-html";
+import { fetchDocPage } from "../../utils/fetch-doc-page";
 import { promises as fs } from "fs";
 import matter from "gray-matter";
-import { fetchDocPage } from "../../utils/fetch-doc-page";
 import path from "path";
+import { html } from "satori-html";
 
 export const getDocsCard = async (filename: string) => {
   const content = await fetchDocPage({ filename });

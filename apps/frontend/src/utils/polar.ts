@@ -13,7 +13,7 @@ export const subscribeToPolar = async (email: string) => {
         Authorization: `Bearer ${import.meta.env.POLAR_SH_TOKEN}`,
       },
       body: JSON.stringify(payload),
-    },
+    }
   );
 
   if (!response.ok) {

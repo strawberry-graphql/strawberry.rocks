@@ -6,7 +6,7 @@ export const githubFetch = async (
   }: {
     method: string;
     body?: string;
-  },
+  }
 ) => {
   const response = await fetch(url, {
     method,

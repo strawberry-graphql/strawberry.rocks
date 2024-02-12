@@ -7,7 +7,7 @@ function createVNode(
   { children, ...attributes }: Record<string, any>,
   _key: string,
   __self: string,
-  __source: string,
+  __source: string
 ) {
   const vnode: ElementNode = {
     type: ELEMENT_NODE,

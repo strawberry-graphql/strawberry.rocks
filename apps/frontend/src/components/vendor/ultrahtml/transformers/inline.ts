@@ -1,8 +1,8 @@
 import { walkSync, ELEMENT_NODE, TEXT_NODE } from "../index.js";
 import type { Node } from "../index.js";
 import { querySelectorAll, specificity } from "../selector.js";
-import { type Element as CSSEntry, compile } from "stylis";
 import { compileQuery, matches, type Environment } from "media-query-fns";
+import { type Element as CSSEntry, compile } from "stylis";
 
 export interface InlineOptions {
   /** Emit `style` attributes as objects rather than strings. */
@@ -20,7 +20,7 @@ export default function inline(opts?: Partial<InlineOptions>) {
           style.push(
             node.children
               .map((c: Node) => (c.type === TEXT_NODE ? c.value : ""))
-              .join(""),
+              .join("")
           );
           actions.push(() => {
             parent!.children = parent!.children.filter((c: Node) => c !== node);
@@ -41,7 +41,7 @@ export default function inline(opts?: Partial<InlineOptions>) {
           (rule.children as unknown as Element[]).map((child: any) => [
             child.props,
             child.children,
-          ]),
+          ])
         );
         for (const selector of rule.props) {
           const value = Object.assign(selectors.get(selector) ?? {}, rules);
