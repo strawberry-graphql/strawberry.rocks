@@ -14,7 +14,7 @@ export const sendFeedback = async ({
       query:
         "mutation ($input: SendFeedbackInput!) { sendFeedback(input: $input) }",
       variables: {
-        input: { feedback, sentiment, url: `https://strawberry.rocs${url}` },
+        input: { feedback, sentiment, url: `https://strawberry.rocks${url}` },
       },
     }),
   });
