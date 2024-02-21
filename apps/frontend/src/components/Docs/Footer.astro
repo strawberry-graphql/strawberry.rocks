@@ -1,5 +1,16 @@
 ---
 import FeedbackForm from "./FeedbackForm.astro";
+
+export interface Props {
+  authors: Array<{
+    name: string;
+    avatarUrl: string;
+    login: string | null;
+  }>;
+}
+
+const { authors } = Astro.props;
+
 const pathname = new URL(Astro.request.url).pathname;
 
 const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${pathname}.md`;
@@ -7,9 +18,33 @@ const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${p
 
 <div>
   <footer>
-    <a href={githubUrl} class="typography-label"> Edit this page on GitHub</a>
+    <div class="contributors">
+      <p class="typography-label">Contributors:</p>
 
-    <FeedbackForm />
+      <ul>
+        {
+          authors.map((author) => (
+            <li>
+              <a
+                href={author.login ? `https://github.com/${author.login}` : ""}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={author.name}
+              >
+                <img src={author.avatarUrl} alt={author.name} />
+                <span class="sr-only">{author.name}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="actions">
+      <a href={githubUrl} class="typography-label"> Edit this page on GitHub</a>
+
+      <FeedbackForm />
+    </div>
   </footer>
 </div>
 
@@ -22,14 +57,10 @@ const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${p
     margin-top: 24px !important;
     padding-top: 24px;
     border-top: 1px solid var(--color-g-100);
-
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
   }
 
   @container (max-width: 600px) {
-    footer {
+    footer .actions {
       flex-direction: column;
       align-items: stretch;
       gap: 24px;
@@ -46,7 +77,15 @@ const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${p
     max-width: 500px;
   }
 
-  a {
+  .actions {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  a,
+  .contributors {
     text-transform: uppercase;
     font-weight: bold;
     order: 1;
@@ -54,7 +93,7 @@ const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${p
 
     --border-color: var(--color-g-100);
 
-    &:hover {
+    &:is(a):hover {
       color: var(--color-strawberry);
     }
 
@@ -65,7 +104,51 @@ const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${p
     }
   }
 
-  :global(html.dark) a {
+  :global(html.dark) :is(a, .contributors) {
     --border-color: var(--color-g-900);
+  }
+
+  .contributors {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+
+    ul {
+      display: contents;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: -0.6em;
+    }
+
+    a {
+      width: 1.6rem;
+      aspect-ratio: 1;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+        background: white;
+        object-fit: cover;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a:hover {
+      position: relative;
+      z-index: 10;
+    }
   }
 </style>

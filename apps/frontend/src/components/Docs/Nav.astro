@@ -4,13 +4,13 @@ import { getTree } from "../../utils/get-tree";
 import NavLink from "./NavLink.astro";
 import VerticalArrow from "../Icons/VerticalArrow.astro";
 
-const readme = await fetchDocPage({ filename: "docs/README.md" });
+const {content} = await fetchDocPage({ filename: "docs/README.md" });
 
 const { number } = Astro.params;
 
 const prefix = number ? `/docs/pr/${number}/` : "/docs/";
 
-const tree = getTree(readme, prefix);
+const tree = getTree(content, prefix);
 ---
 
 <nav>

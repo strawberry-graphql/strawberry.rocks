@@ -11,9 +11,10 @@ import Footer from "../../components/Docs/Footer.astro";
 interface Props {
   prNumber?: string | undefined;
   content: string;
+  authors: Array<{ name: string; avatarUrl: string; login: string | null }>;
 }
 
-const { content, prNumber } = Astro.props;
+const { content, prNumber, authors } = Astro.props;
 const { content: markdownContent, data } = matter(content);
 
 const tableOfContents = toc(markdownContent, {
@@ -37,7 +38,7 @@ if (prNumber) {
     <article class="typography-paragraph" id="docs-content">
       <Markdown content={markdownContent} />
 
-      <Footer />
+      <Footer authors={authors} />
     </article>
 
     <aside class="page-nav">

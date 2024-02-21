@@ -4,7 +4,7 @@ import Markdown from "../components/Markdown.astro";
 
 import { fetchDocPage } from "../utils/fetch-doc-page";
 
-const content = await fetchDocPage({
+const { content } = await fetchDocPage({
   filename: ".github/CODE_OF_CONDUCT.md",
   repo: "strawberry-graphql/.github",
 });

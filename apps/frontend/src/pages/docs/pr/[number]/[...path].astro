@@ -24,17 +24,15 @@ if (pr) {
   );
 }
 
-let content = "";
-
-if (!previewDisabled) {
-  content = await fetchDocPage({ filename, prNumber: prNumber! });
-}
+const { content, authors } = previewDisabled
+  ? { content: "", authors: [] }
+  : await fetchDocPage({ filename, prNumber: prNumber! });
 ---
 
 {
   previewDisabled ? (
     <PreviewDisabled />
   ) : (
-    <FullPage content={content} prNumber={prNumber} />
+    <FullPage content={content} prNumber={prNumber} authors={authors} />
   )
 }

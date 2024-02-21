@@ -11,7 +11,7 @@ if (filename === undefined) {
 
 filename = `docs/${filename}.md`;
 
-const content = await fetchDocPage({ filename });
+const { content, authors } = await fetchDocPage({ filename });
 
 export async function getStaticPaths() {
   const allPages = await fetchAllPages();
@@ -35,4 +35,4 @@ export async function getStaticPaths() {
 }
 ---
 
-<FullPage content={content} />
+<FullPage content={content} authors={authors} />

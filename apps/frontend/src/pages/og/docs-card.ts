@@ -5,7 +5,7 @@ import path from "path";
 import { html } from "satori-html";
 
 export const getDocsCard = async (filename: string) => {
-  const content = await fetchDocPage({ filename });
+  const { content } = await fetchDocPage({ filename });
   const { data } = matter(content);
 
   const title = data.title;
