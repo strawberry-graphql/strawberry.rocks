@@ -86,7 +86,7 @@ body.DocSearch--active {
 }
 
 .DocSearch-Hits {
-  padding: 24px;
+  margin: 24px;
 }
 
 .DocSearch-Hit-source {
