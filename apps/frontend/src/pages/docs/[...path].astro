@@ -1,6 +1,7 @@
 ---
 import { fetchDocPage } from "../../utils/fetch-doc-page";
 import { fetchAllPages } from "../../utils/fetch-all-pages";
+import { getTree } from "../../utils/get-tree";
 import FullPage from "../../components/Docs/FullPage.astro";
 
 let { path: filename } = Astro.params;
@@ -12,6 +13,29 @@ if (filename === undefined) {
 filename = `docs/${filename}.md`;
 
 const { content, authors } = await fetchDocPage({ filename });
+
+const { content: readmeContent } = await fetchDocPage({
+  filename: "docs/README.md",
+});
+
+const docsTree = getTree(readmeContent, "/docs/");
+
+let breadcrumbs: Array<{ title: string; url: string }> = [];
+
+// TODO: maybe support multiple levels :)
+for (const [sectionName, section] of Object.entries(docsTree)) {
+  const source = filename.replace(/^docs\//, "./");
+
+  // @ts-ignore
+  if (section.links && section.links.some((link) => link.source === source)) {
+    breadcrumbs = [
+      {
+        title: sectionName,
+        url: "",
+      },
+    ];
+  }
+}
 
 export async function getStaticPaths() {
   const allPages = await fetchAllPages();
@@ -35,4 +59,4 @@ export async function getStaticPaths() {
 }
 ---
 
-<FullPage content={content} authors={authors} />
+<FullPage content={content} authors={authors} breadcrumbs={breadcrumbs} />

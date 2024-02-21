@@ -33,6 +33,11 @@ const { content, authors } = previewDisabled
   previewDisabled ? (
     <PreviewDisabled />
   ) : (
-    <FullPage content={content} prNumber={prNumber} authors={authors} />
+    <FullPage
+      content={content}
+      prNumber={prNumber}
+      authors={authors}
+      breadcrumbs={[]}
+    />
   )
 }

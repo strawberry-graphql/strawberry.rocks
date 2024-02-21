@@ -41,6 +41,7 @@ export type Section = {
   links: {
     text: string;
     href: string;
+    source: string;
   }[];
 };
 
@@ -48,6 +49,7 @@ export type SectionLink = {
   type: "section-link";
   href: string;
   text: string;
+  source: string;
 };
 
 export type DocsTree = {
@@ -59,7 +61,7 @@ export const getMDLinks = (items: Tokens.ListItem[]): Tokens.Link[] =>
     item.tokens
       .filter(isTextWithTokens)
       .flatMap((t: any) => t.tokens)
-      .filter(isLink)
+      .filter(isLink),
   );
 
 export function getTree(text: string, prefix: string) {
@@ -89,6 +91,7 @@ export function getTree(text: string, prefix: string) {
           type: "section-link",
           href: fixUrl(link.href),
           text: link.text,
+          source: link.href,
         };
       }
       currentSection = token.text;
@@ -111,6 +114,7 @@ export function getTree(text: string, prefix: string) {
         type: "section-link",
         href: fixUrl(link.href),
         text: link.text,
+        source: link.href,
       }));
     }
   });
@@ -119,5 +123,5 @@ export function getTree(text: string, prefix: string) {
 }
 
 export const getTreeEntries = (
-  obj: Record<string, unknown> | null | undefined
+  obj: Record<string, unknown> | null | undefined,
 ) => (isTree(obj) ? obj?.entries : null);

@@ -11,10 +11,11 @@ import Footer from "../../components/Docs/Footer.astro";
 interface Props {
   prNumber?: string | undefined;
   content: string;
+  breadcrumbs: Array<{ title: string; url: string }>;
   authors: Array<{ name: string; avatarUrl: string; login: string | null }>;
 }
 
-const { content, prNumber, authors } = Astro.props;
+const { content, prNumber, authors, breadcrumbs } = Astro.props;
 const { content: markdownContent, data } = matter(content);
 
 const tableOfContents = toc(markdownContent, {
@@ -34,6 +35,19 @@ if (prNumber) {
 <Layout title={title} useDocsGrid prNumber={prNumber}>
   <main class="docs-grid">
     <Sidebar />
+
+    <nav class="breadcrumbs sr-only">
+      <ul>
+        {
+          breadcrumbs.map((breadcrumb, index) => (
+            <li id={index === 0 ? "main-category" : ""}>
+              <a href={breadcrumb.url}>{breadcrumb.title}</a>
+            </li>
+          ))
+        }
+        <li>{title}</li>
+      </ul>
+    </nav>
 
     <article class="typography-paragraph" id="docs-content">
       <Markdown content={markdownContent} />
