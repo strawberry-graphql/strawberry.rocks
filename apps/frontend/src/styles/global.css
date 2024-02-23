@@ -52,6 +52,15 @@
   --font-display: "Ranade", sans-serif;
   --font-sans: "Satoshi", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+  /* Theme-specific Variables */
+  /* Light Theme */
+  --light-background-color: rgb(255 248 247);
+  --light-text-color: rgb(6 3 3);
+
+  /* Dark Theme */
+  --dark-background-color: rgb(24 18 17);
+  --dark-text-color: rgb(237 224 222);
 }
 
 @media screen and (max-device-width: 480px) {
@@ -61,8 +70,8 @@
 }
 
 .dark body {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--dark-background-color);
+  color: var(--dark-text-color);
 }
 
 html {
@@ -75,6 +84,8 @@ button {
 
 body {
   font-family: var(--font-sans);
+  background-color: var(--light-background-color);
+  color: var(--light-text-color);
 }
 
 body > :is(header, footer) {
