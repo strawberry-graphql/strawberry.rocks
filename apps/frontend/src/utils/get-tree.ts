@@ -61,7 +61,7 @@ export const getMDLinks = (items: Tokens.ListItem[]): Tokens.Link[] =>
     item.tokens
       .filter(isTextWithTokens)
       .flatMap((t: any) => t.tokens)
-      .filter(isLink),
+      .filter(isLink)
   );
 
 export function getTree(text: string, prefix: string) {
@@ -123,5 +123,5 @@ export function getTree(text: string, prefix: string) {
 }
 
 export const getTreeEntries = (
-  obj: Record<string, unknown> | null | undefined,
+  obj: Record<string, unknown> | null | undefined
 ) => (isTree(obj) ? obj?.entries : null);
