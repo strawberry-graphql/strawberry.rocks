@@ -78,12 +78,12 @@ body {
 }
 
 body > :is(header, footer) {
-  padding: 16px;
+  padding: 16px 0;
 }
 
 @media (min-width: 768px) {
   body > :is(header, footer) {
-    padding: 40px 32px;
+    padding: 40px 0;
   }
 }
 

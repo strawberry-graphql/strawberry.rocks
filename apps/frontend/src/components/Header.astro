@@ -34,17 +34,12 @@ const { useDocsGrid } = Astro.props;
 </header>
 
 <style>
-  /* styles for when in doc grid mode */
-  @media (max-width: 767px) {
-    .docs-grid {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  .logo {
+    grid-column: nav-start / content-start;
   }
 
-  .docs-grid .nav-container {
-    grid-column: content-start / full-end;
+  .nav-container {
+    grid-column: content-start / page-nav-end;
   }
 
   .default-layout {
@@ -89,11 +84,23 @@ const { useDocsGrid } = Astro.props;
 
   label[for="toggle-nav"] {
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 
   /* Toggled styles */
 
   @media (max-width: 767px) {
+    .logo {
+      grid-row: 1 / 1;
+    }
+    .nav-container {
+      grid-column: content-start / full-end;
+      grid-row: 1 / 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
     #toggle-nav:checked ~ header .nav-container label .menu-icon {
       display: none;
     }
@@ -106,12 +113,10 @@ const { useDocsGrid } = Astro.props;
 
     #toggle-nav:checked ~ header {
       position: fixed;
-      display: block;
       top: 0;
       left: 0;
       right: 0;
       min-height: 100vh;
-      display: flex;
       z-index: 100;
       flex-direction: column;
       align-items: stretch;
@@ -124,10 +129,6 @@ const { useDocsGrid } = Astro.props;
 
     #toggle-nav:checked ~ header .nav-container {
       height: 100%;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: stretch;
     }
 
     #toggle-nav:checked ~ header :global(nav) {
@@ -136,8 +137,8 @@ const { useDocsGrid } = Astro.props;
 
     #toggle-nav:checked ~ header .nav-container .close-icon-wrapper {
       position: absolute;
-      top: 20px;
-      right: 12px;
+      top: 28px;
+      right: 18px;
       display: flex;
       align-items: center;
     }
