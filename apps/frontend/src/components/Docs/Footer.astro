@@ -65,6 +65,12 @@ const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${p
       align-items: stretch;
       gap: 24px;
     }
+
+    .actions > :first-child {
+      order: 0;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 24px;
+    }
   }
 
   :global(html.dark) footer {
@@ -95,12 +101,6 @@ const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${p
 
     &:is(a):hover {
       color: var(--color-strawberry);
-    }
-
-    @container (max-width: 600px) {
-      order: 0;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 24px;
     }
   }
 
