@@ -3,19 +3,11 @@ import Logo from "./Logo.astro";
 import MenuIcon from "./Icons/Menu.astro";
 import MenuCloseIcon from "./Icons/MenuClose.astro";
 import HeaderNav from "./HeaderNav.astro";
-
-interface Props {
-  useDocsGrid?: boolean;
-}
-
-const { useDocsGrid } = Astro.props;
 ---
 
 <input type="checkbox" id="toggle-nav" />
 
-<header
-  class:list={[{ "docs-grid": useDocsGrid, "default-layout": !useDocsGrid }]}
->
+<header class="docs-grid">
   <a href="/" class="logo">
     <Logo />
   </a>
