@@ -18,38 +18,62 @@
   font-weight: bold;
   font-family: var(--font-display);
   line-height: 1.25;
+
+  /* https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/ */
+
+  --min-fs: 1;
+  --max-fs: 1.5;
+  --min-vw: 20;
+  --max-vw: 45;
+
+  --min-fs-rem: var(--min-fs) * 1rem;
+  --max-fs-rem: var(--max-fs) * 1rem;
+  --min-vw-rem: var(--min-vw) * 1rem;
+
+  --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) /
+    (var(--max-vw) - var(--min-vw));
+
+  font-size: clamp(
+    var(--min-fs-rem),
+    var(--min-fs-rem) + var(--slope),
+    var(--max-fs-rem)
+  );
 }
 
 .typography-heading-1 {
-  font-size: 36px;
-
-  @media (min-width: 768px) {
-    font-size: 48px;
-  }
+  /* 36 px, 48px */
+  --min-fs: 2.25;
+  --max-fs: 3;
 }
 
 .typography-heading-2 {
-  font-size: 32px;
-
-  @media (min-width: 768px) {
-    font-size: 48px;
-  }
+  /* 32px, 40px */
+  --min-fs: 2;
+  --max-fs: 2.5;
 }
 
 .typography-heading-3 {
-  font-size: 32px;
+  /* 28px, 36px */
+  --min-fs: 1.75;
+  --max-fs: 2.25;
 }
 
 .typography-heading-4 {
-  font-size: 24px;
+  /* 24px, 32px */
+  --min-fs: 1.5;
+  --max-fs: 2;
 }
 
 .typography-heading-5 {
-  font-size: 24px;
+  /* 20px, 28px */
+  --min-fs: 1.25;
+  --max-fs: 1.75;
 }
 
 .typography-heading-6 {
-  font-size: 24px;
+  /* 16px, 24px */
+  --min-fs: 1;
+  --max-fs: 1.5;
 }
 
 .typography-paragraph {
