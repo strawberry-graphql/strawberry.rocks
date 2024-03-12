@@ -74,7 +74,9 @@ export const fetchDocPage = async ({
     throw new Error(errors[0].message);
   }
 
-  if (!data) {
+  if (!data || !data.repository.object) {
+    console.log(filename, data);
+
     throw new Error("No data returned");
   }
 
