@@ -39,11 +39,13 @@ if (prNumber) {
     <nav class="breadcrumbs sr-only">
       <ul>
         {
-          breadcrumbs.map((breadcrumb, index) => (
-            <li id={index === 0 ? "main-category" : ""}>
-              <a href={breadcrumb.url}>{breadcrumb.title}</a>
-            </li>
-          ))
+          breadcrumbs.map((breadcrumb, index) =>
+            breadcrumb.url ? (
+              <li id={index === 0 ? "main-category" : ""}>
+                <a href={breadcrumb.url}>{breadcrumb.title}</a>
+              </li>
+            ) : null,
+          )
         }
         <li>{title}</li>
       </ul>
