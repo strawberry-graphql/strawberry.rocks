@@ -11,7 +11,7 @@ interface Props {
 const { type, name, avatar, href } = Astro.props;
 ---
 
-<a href={href} target="_blank" rel="noreferrer">
+<a href={href} target="_blank" rel="noreferrer" class="card">
   <img src={avatar} />
   <div>
     <p class="typography-caption title">
@@ -23,17 +23,12 @@ const { type, name, avatar, href } = Astro.props;
   </div>
 
   <span>
-    <ExternalIcon />
+    {href && <ExternalIcon />}
   </span>
 </a>
 
 <style>
-  /* dark:border-transparency-light dark:bg-blog-card-dark" */
   a {
-    background: color-mix(in srgb, var(--color-white) 75%, transparent);
-    border-radius: 16px;
-    border: 1px solid var(--color-g-100);
-    padding: 16px;
     display: flex;
   }
 
@@ -50,7 +45,6 @@ const { type, name, avatar, href } = Astro.props;
   }
 
   p.title {
-    /* text-g-700 dark:text-g-500 */
     font-weight: normal;
   }
 
@@ -63,11 +57,4 @@ const { type, name, avatar, href } = Astro.props;
   span {
     margin-left: auto;
   }
-
-  /* html.dark {
-    a {
-      background: color-mix(in srgb, var(--color-transparency-dark) 75%, transparent);
-      border: 1px solid var(--color-transparency-light);
-    }
-  } */
 </style>

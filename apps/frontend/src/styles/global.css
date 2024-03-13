@@ -124,3 +124,16 @@ form .status {
 form .status-error {
   color: var(--color-strawberry);
 }
+
+.card {
+  background: color-mix(in srgb, var(--color-white) 75%, transparent);
+  border-radius: 16px;
+  border: 1px solid var(--color-g-100);
+  padding: 16px;
+  display: flex;
+
+  .dark & {
+    background: color-mix(in srgb, var(--color-g-800) 75%, transparent);
+    border: 1px solid var(--color-g-700);
+  }
+}

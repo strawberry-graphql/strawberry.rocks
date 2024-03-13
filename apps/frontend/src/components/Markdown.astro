@@ -17,6 +17,7 @@ import Tip from "./Pages/Callout/Tip.astro";
 import Note from "./Pages/Callout/Note.astro";
 import Table from "./Pages/Table.astro";
 import HR from "./Pages/HR.astro";
+import ExtensionsList from "./ExtensionsList.astro";
 
 interface Props {
   content: string;
@@ -44,5 +45,6 @@ const { content } = Astro.props;
     table: Table,
     hr: HR,
     Warning,
+    ExtensionsList,
   }}
 />
