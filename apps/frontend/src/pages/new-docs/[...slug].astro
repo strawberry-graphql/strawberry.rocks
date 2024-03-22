@@ -1,0 +1,93 @@
+---
+import { getEntry } from "astro:content"
+import Layout from "../../layouts/Layout.astro"
+import Sidebar from "../../components/Docs/Sidebar.astro"
+import Footer from "../../components/Docs/Footer.astro"
+import Paragraph from "../../components/Pages/Paragraph.astro";
+import List from "../../components/Pages/List.astro";
+import OrderedList from "../../components/Pages/OrderedList.astro";
+import ListItem from "../../components/Pages/ListItem.astro";
+import Heading from "../../components/Pages/Heading.astro";
+import Pre from "../../components/Pages/Pre.astro";
+import CodeSpan from "../../components/Pages/CodeSpan.astro";
+import CodeBox from "../../components/Pages/CodeBox.astro";
+import Link from "../../components/Pages/Link.astro";
+import Image from "../../components/Pages/Image.astro";
+import Blockquote from "../../components/Pages/Blockquote.astro";
+import Warning from "../../components/Pages/Callout/Warning.astro";
+import Tip from "../../components/Pages/Callout/Tip.astro";
+import Note from "../../components/Pages/Callout/Note.astro";
+import Table from "../../components/Pages/Table.astro";
+import HR from "../../components/Pages/HR.astro";
+import ExtensionsList from "../../components/ExtensionsList.astro";
+
+interface Props {
+  content: string;
+}
+
+
+let {  slug } = Astro.params;
+
+if (slug=== undefined) {
+  slug =  "index";
+}
+
+
+const page = await getEntry("docs", slug)
+
+console.log(page)
+const title = "TODO"
+const breadcrumbs = []
+const authors = []
+
+const {Content, headings} = await page.render()
+---
+
+
+<Layout title={title} useDocsGrid>
+  <main class="docs-grid">
+    <Sidebar />
+
+    <nav class="breadcrumbs sr-only">
+      <ul>
+        {
+          breadcrumbs.map((breadcrumb, index) =>
+            breadcrumb.url ? (
+              <li id={index === 0 ? "main-category" : ""}>
+                <a href={breadcrumb.url}>{breadcrumb.title}</a>
+              </li>
+            ) : null,
+          )
+        }
+        <li>{title}</li>
+      </ul>
+    </nav>
+    <article class="typography-paragraph" id="docs-content">
+      <!-- <Markdown content={markdownContent} /> -->
+        <Content
+        components={{
+          Note,
+          table: Table,
+          hr: HR,
+          Warning,
+          ExtensionsList,
+        }}
+
+        />
+
+      <Footer authors={authors} />
+    </article>
+
+    <aside class="page-nav">
+
+      <!-- <TableOfContents toc={tableOfContents} /> -->
+    </aside>
+  </main>
+</Layout>
+
+<style>
+  #docs-content {
+    grid-column: content-start / content-end;
+    min-width: 0;
+  }
+</style>

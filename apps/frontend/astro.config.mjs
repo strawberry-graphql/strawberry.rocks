@@ -5,6 +5,7 @@ import vercel from "@astrojs/vercel/serverless";
 
 import sentry from "@sentry/astro";
 import { captureConsoleIntegration } from "@sentry/integrations";
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,13 +26,9 @@ export default defineConfig({
         authToken: process.env.SENTRY_AUTH_TOKEN,
       },
     }),
+    mdx(),
   ],
   adapter: vercel({
-    isr: {
-      // caches all pages on first request and saves for 10 minutes
-      expiration: 60 * 60 * 10,
-      exclude: ["/docs/pr"],
-    },
     includeFiles: [
       "./social-cards/version-background.png",
       "./social-cards/background.png",

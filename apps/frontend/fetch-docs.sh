@@ -28,3 +28,7 @@ rm -rf src/content/docs
 
 clone_docs_from_repo "https://github.com/strawberry-graphql/strawberry" "docs"
 clone_docs_from_repo "https://github.com/strawberry-graphql/strawberry-django" "docs/django"
+
+# rename all .md files in the docs folder to have a .mdx extension
+
+find src/content/docs -type f -name "*.md" -exec bash -c 'mv "$1" "${1%.md}.mdx"' _ {} \;
