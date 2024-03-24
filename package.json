@@ -2,7 +2,7 @@
   "name": "strawberry-monorepo",
   "private": true,
   "devDependencies": {
-    "typescript": "5.2.2"
+    "typescript": "5.4.3"
   },
   "pnpm": {
     "overrides": {

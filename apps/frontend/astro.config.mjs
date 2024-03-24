@@ -11,6 +11,11 @@ export default defineConfig({
   site: "https://strawberry.rocks",
   integrations: [sitemap(), astroMetaTags()],
   adapter: vercel({
+    isr: {
+      // caches all pages on first request and saves for 10 minutes
+      expiration: 60 * 60 * 10,
+      exclude: ["/docs/pr"],
+    },
     includeFiles: [
       "./social-cards/version-background.png",
       "./social-cards/background.png",
