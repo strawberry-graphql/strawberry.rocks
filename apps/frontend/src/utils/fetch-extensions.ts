@@ -1,5 +1,6 @@
 import { githubFetch } from "./github-fetch";
 import matter from "gray-matter";
+
 const FetchTreeDocument = /* GraphQL */ `
   query extensionsPage($owner: String!, $name: String!, $expression: String!) {
     repository(owner: $owner, name: $name) {
@@ -83,10 +84,10 @@ export const fetchExtensions = async ({
   }
 
   const extensions = data.repository.object.entries.filter(
-    (entry: any) => !entry.name.startsWith("_"),
+    (entry: any) => !entry.name.startsWith("_")
   );
 
   return extensions.map((extension: any) =>
-    getExtension(extension.name, extension.object.text),
+    getExtension(extension.name, extension.object.text)
   ) as ReturnType<typeof getExtension>[];
 };
