@@ -8,7 +8,7 @@ export const fetchPolarSponsors = async () => {
       id: "stellate",
       name: "Stellate",
       logo: "this is overriden",
-      href: "https://stellate.co",
+      href: "https://stellate.co/?utm_source=sponsor&utm_medium=strawberry",
       sponsorship: {
         monthlyPriceInDollars: 500,
       },
