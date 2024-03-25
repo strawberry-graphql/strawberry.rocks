@@ -1,3 +1,5 @@
+import type { Sponsor } from "./types";
+
 const CONTRIBUTIONS_QUERY = /* GraphQL */ `
   query ContributionsQuery($from: DateTime) {
     collective(slug: "strawberry-graphql") {
@@ -42,16 +44,6 @@ type Result = {
   };
 };
 
-type Sponsor = {
-  id: string;
-  name: string;
-  logo: string;
-  href: string;
-  sponsorship: {
-    monthlyPriceInDollars: number;
-  };
-};
-
 export async function fetchOpenCollectiveSponsors(): Promise<Sponsor[]> {
   const from = new Date();
   from.setMonth(from.getMonth() - 1);
@@ -60,7 +52,7 @@ export async function fetchOpenCollectiveSponsors(): Promise<Sponsor[]> {
   const url = new URL("https://api.opencollective.com/graphql/v2");
   url.searchParams.append(
     "personalToken",
-    import.meta.env.OPENCOLLECTIVE_TOKEN!
+    import.meta.env.OPENCOLLECTIVE_TOKEN!,
   );
 
   const result = await fetch(url.toString(), {

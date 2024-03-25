@@ -1,5 +1,7 @@
 import { fetchOpenCollectiveSponsors } from "./fetch-opencollective-sponsors";
+import { fetchPolarSponsors } from "./fetch-polar-sponsors";
 import { githubFetch } from "./github-fetch";
+import type { Sponsor } from "./types";
 
 const SponsorsDocument = `
   query sponsors {
@@ -26,7 +28,7 @@ const SponsorsDocument = `
 const getSponsorInfoQuery = (
   alias: string,
   typename: string,
-  login: string
+  login: string,
 ) => {
   const rootField = typename === "User" ? "user" : "organization";
 
@@ -96,7 +98,7 @@ const getGithubSponsorsInfo = async (sponsors: any) => {
 
         return sponsorable.login === "strawberry-graphql";
       }).tier,
-    };
+    } as Sponsor;
   });
 };
 
@@ -113,18 +115,22 @@ export const fetchSponsors = async () => {
 
   const sponsorsInfo = await getGithubSponsorsInfo(sponsors);
   const openCollectiveSponsors = await fetchOpenCollectiveSponsors();
+  const polarSponsors = await fetchPolarSponsors();
 
-  return [...sponsorsInfo, ...openCollectiveSponsors].sort((a, b) => {
-    return (
-      b.sponsorship.monthlyPriceInDollars - a.sponsorship.monthlyPriceInDollars
-    );
-  });
+  return [...sponsorsInfo, ...openCollectiveSponsors, ...polarSponsors].sort(
+    (a, b) => {
+      return (
+        b.sponsorship.monthlyPriceInDollars -
+        a.sponsorship.monthlyPriceInDollars
+      );
+    },
+  );
 };
 
 export const fetchSponsorsForHome = async () => {
   const sponsors = await fetchSponsors();
 
   return sponsors.filter(
-    (sponsor) => sponsor.sponsorship.monthlyPriceInDollars >= 100
+    (sponsor) => sponsor.sponsorship.monthlyPriceInDollars >= 100,
   );
 };
