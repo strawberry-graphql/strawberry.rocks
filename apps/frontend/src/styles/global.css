@@ -83,7 +83,7 @@ body > :is(header, footer) {
 
 @media (min-width: 768px) {
   body > :is(header, footer) {
-    padding: 40px 0;
+    padding: 16px 0 40px;
   }
 }
 
