@@ -45,29 +45,25 @@ const tree = getTree(content, prefix);
 <style>
   ul {
     display: flex;
-    gap: 16px;
+    gap: 8px;
     flex-direction: column;
 
     @media (min-width: 768px) {
       max-width: 300px;
     }
-  }
 
-  nav details {
-    border-bottom: 1px solid var(--color-g-100);
-  }
-
-  :global(html.dark) nav details {
-    border-bottom-color: var(--color-g-900);
+    ul li {
+      margin-left: 8px;
+    }
   }
 
   nav ul ul {
-    padding-bottom: 16px;
+    padding-bottom: 8px;
   }
 
   details summary {
     list-style: none;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     cursor: pointer;
     display: flex;
     align-items: flex-start;

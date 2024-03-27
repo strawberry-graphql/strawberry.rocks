@@ -10,7 +10,7 @@ const { toc } = Astro.props;
 ---
 
 <nav class="toc">
-  <ul class="typography-paragraph-2">
+  <ul class="typography-paragraph">
     {
       toc.map((item) => (
         <li>
@@ -30,7 +30,7 @@ const { toc } = Astro.props;
   ul {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
     padding-left: 24px;
     position: relative;
   }
