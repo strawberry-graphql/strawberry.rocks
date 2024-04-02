@@ -15,7 +15,7 @@ export default defineConfig({
     sitemap(),
     astroMetaTags(),
     sentry({
-      integrations: [sentry.replayIntegration(), captureConsoleIntegration()],
+      integrations: [captureConsoleIntegration()],
       replaysSessionSampleRate: 0.1,
       replaysOnErrorSampleRate: 1.0,
 
