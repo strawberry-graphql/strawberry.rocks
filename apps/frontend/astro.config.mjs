@@ -1,15 +1,26 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import astroMetaTags from "astro-meta-tags";
-
 import vercel from "@astrojs/vercel/serverless";
+
+import sentry from "@sentry/astro";
 
 // https://astro.build/config
 export default defineConfig({
   trailingSlash: "never",
   output: "server",
   site: "https://strawberry.rocks",
-  integrations: [sitemap(), astroMetaTags()],
+  integrations: [
+    sitemap({
+      dsn: "https://0018fa3f24b795d1bdf9d79f014db518@o4504582464208896.ingest.us.sentry.io/4506706724388864",
+      sourceMapsUploadOptions: {
+        project: "strawberryrocks",
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+      },
+    }),
+    astroMetaTags(),
+    sentry(),
+  ],
   adapter: vercel({
     isr: {
       // caches all pages on first request and saves for 10 minutes
