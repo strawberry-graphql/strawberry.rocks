@@ -19,6 +19,7 @@
     "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@resvg/resvg-js": "^2.6.0",
     "@sentry/astro": "^7.109.0",
+    "@sentry/integrations": "^7.109.0",
     "astro": "^4.5.9",
     "astro-meta-tags": "^0.2.2",
     "astro-og-canvas": "^0.4.2",

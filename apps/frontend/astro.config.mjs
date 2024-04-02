@@ -4,6 +4,7 @@ import astroMetaTags from "astro-meta-tags";
 import vercel from "@astrojs/vercel/serverless";
 
 import sentry from "@sentry/astro";
+import { captureConsoleIntegration } from "@sentry/integrations";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +15,7 @@ export default defineConfig({
     sitemap(),
     astroMetaTags(),
     sentry({
-      integrations: [sentry.replayIntegration()],
+      integrations: [sentry.replayIntegration(), captureConsoleIntegration()],
       replaysSessionSampleRate: 0.1,
       replaysOnErrorSampleRate: 1.0,
 
