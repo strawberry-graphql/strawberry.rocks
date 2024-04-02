@@ -1,6 +1,5 @@
 import { githubFetch } from "./github-fetch";
 import matter from "gray-matter";
-import sentry from "@sentry/astro";
 
 const FetchTreeDocument = /* GraphQL */ `
   query extensionsPage($owner: String!, $name: String!, $expression: String!) {
