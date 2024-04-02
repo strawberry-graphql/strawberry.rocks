@@ -1,5 +1,6 @@
 import { githubFetch } from "./github-fetch";
 import matter from "gray-matter";
+import sentry from "@sentry/astro";
 
 const FetchTreeDocument = /* GraphQL */ `
   query extensionsPage($owner: String!, $name: String!, $expression: String!) {
@@ -78,16 +79,18 @@ export const fetchExtensions = async ({
   }
 
   if (!data || !data.repository.object) {
-    console.log(filename, data);
+    console.log("data", data);
 
-    throw new Error("No data returned");
+    throw new Error(
+      `No data found for ${expression}, data: ${JSON.stringify(data)}`,
+    );
   }
 
   const extensions = data.repository.object.entries.filter(
-    (entry: any) => !entry.name.startsWith("_")
+    (entry: any) => !entry.name.startsWith("_"),
   );
 
   return extensions.map((extension: any) =>
-    getExtension(extension.name, extension.object.text)
+    getExtension(extension.name, extension.object.text),
   ) as ReturnType<typeof getExtension>[];
 };
