@@ -11,15 +11,19 @@ export default defineConfig({
   output: "server",
   site: "https://strawberry.rocks",
   integrations: [
-    sitemap({
+    sitemap(),
+    astroMetaTags(),
+    sentry({
+      integrations: [sentry.replayIntegration()],
+      replaysSessionSampleRate: 0.1,
+      replaysOnErrorSampleRate: 1.0,
+
       dsn: "https://0018fa3f24b795d1bdf9d79f014db518@o4504582464208896.ingest.us.sentry.io/4506706724388864",
       sourceMapsUploadOptions: {
         project: "strawberryrocks",
         authToken: process.env.SENTRY_AUTH_TOKEN,
       },
     }),
-    astroMetaTags(),
-    sentry(),
   ],
   adapter: vercel({
     isr: {
