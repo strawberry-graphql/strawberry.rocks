@@ -91,6 +91,7 @@ body > :is(header, footer) {
   display: none;
 }
 
+.DocSearch-VisuallyHiddenForAccessibility,
 .sr-only {
   position: absolute;
   width: 1px;
