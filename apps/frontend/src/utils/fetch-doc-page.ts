@@ -75,9 +75,9 @@ export const fetchDocPage = async ({
   }
 
   if (!data || !data.repository.object) {
-    console.log(filename, data);
-
-    throw new Error("No data returned", data);
+    throw new Error(
+      `No data found for ${filename}, data: ${JSON.stringify(data)}`,
+    );
   }
 
   const content = data.repository.object.text as string;
