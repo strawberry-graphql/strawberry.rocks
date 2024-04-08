@@ -9,6 +9,7 @@ export const CodeEditor = ({
 }: {
     source: string;
     language: "python" | "graphql" | "json";
+    readOnly?: boolean;
     onChange?: (pythonSource: string) => void;
 }) => {
     const monacoRef = useRef<Monaco | null>(null);
