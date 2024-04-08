@@ -1,8 +1,7 @@
-import React from "react";
-import { createContext, useState, useContext } from "react";
+import { useState } from "react";
 import { CodeEditor } from "./components/editor/editor";
-import { clsx } from "clsx";
 import { usePyodide } from "./components/pyodide";
+import { Tabs, Tab } from "./components/tabs";
 
 const STARTER_CODE = `
 import strawberry
@@ -12,103 +11,38 @@ class Query:
     @strawberry.field
     def hello() -> str:
         return "world"
+
+schema = strawberry.Schema(Query)
 `.trim();
 
-const TabsContext = createContext({
-  activeTab: 0,
-  setActiveTab: (_index: number) => { },
-});
-
-const useTabs = () => {
-  const context = useContext(TabsContext);
-  if (!context) {
-    throw new Error("useTabs must be used within a TabsProvider");
-  }
-  return context;
-};
-
-export const Tabs = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  const [activeTab, setActiveTab] = useState(0);
-
-  // all children should be Tab components
-  // we need to pass the activeTab and setActiveTab to the Tab components
-  // get all title props from the tabs
-  const tabsTitles = React.Children.map(children, (child) => {
-    return (child as React.ReactElement).props.title;
-  })!;
-
-  const childrenArray = React.Children.toArray(children);
-
-  const activeTabContent = childrenArray[activeTab];
-  return (
-    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
-      <div className={clsx(className, "flex flex-col")}>
-        <TabsHeader>
-          {tabsTitles.map((title, index) => (
-            <TabTitle key={index} index={index}>
-              {title}
-            </TabTitle>
-          ))}
-        </TabsHeader>
-        <div className="flex-1">{activeTabContent}</div>
-      </div>
-    </TabsContext.Provider>
-  );
-};
-
-export const TabsHeader = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="flex items-center flex-none pl-5 sm:pl-6 pr-4 lg:pr-6 z-10 border-b">
-      <div className="flex space-x-5">{children}</div>
-    </div>
-  );
-};
-
-export const TabTitle = ({
-  children,
-  index,
-}: {
-  children: React.ReactNode;
-  index?: number;
-}) => {
-  const { activeTab, setActiveTab } = useTabs();
-
-  const active = activeTab === index;
-
-  return (
-    <button
-      type="button"
-      className="relative flex py-3 text-sm leading-6 font-semibold focus:outline-none text-gray-700 hover:text-gray-900 focus:text-gray-900 dark:text-gray-300 dark:hover:text-white"
-      onClick={() => index !== undefined && setActiveTab(index)}
-    >
-      <span
-        className={clsx(
-          "absolute bottom-0 inset-x-0 bg-red-500 h-0.5 rounded-full transition-opacity duration-150",
-          { "opacity-0": !active, "opacity-1": active },
-        )}
-      ></span>
-      {children}
-    </button>
-  );
-};
-
-export const Tab = ({
-  children,
-}: {
-  children: React.ReactNode;
-  title: string;
-}) => {
-  return children;
-};
-
 function App() {
-  const { loading } = usePyodide();
+  const { loading, runPython } = usePyodide();
+
+  const [result, setResult] = useState<string | null>(null);
+
+  const runQuery = async (code: string) => {
+    const { result, error } = await runPython(`
+${code}
+
+result = await schema.execute('{hello, hello2}')
+
+from strawberry.http import process_result
+
+data = process_result(result)
+
+
+print(data)
+import json
+
+import js
+from pyodide.ffi import to_js
+
+to_js(data, dict_converter=js.Object.fromEntries)
+    `);
+
+    console.log(JSON.stringify(result, null, 4));
+    setResult(JSON.stringify(result, null, 4));
+  };
 
   return (
     <>
@@ -126,7 +60,7 @@ function App() {
           <Tab title="Code">
             <CodeEditor
               source={STARTER_CODE}
-              onChange={() => { }}
+              onChange={runQuery}
               language="python"
             />
           </Tab>
@@ -146,13 +80,7 @@ function App() {
 
         <Tabs className="h-screen w-1/3">
           <Tab title="Result">
-            <CodeEditor
-              source={`{
-  "hello": "world"
-}`}
-              language="json"
-              readOnly
-            />
+            <CodeEditor source={result ?? ""} language="json" readOnly />
           </Tab>
         </Tabs>
       </div>

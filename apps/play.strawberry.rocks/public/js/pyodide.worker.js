@@ -9,6 +9,9 @@ async function loadPyodideAndPackages() {
     import micropip
 
     print("Installing packages...")
+    micropip.install([
+        "strawberry-graphql",
+    ])
   `);
 }
 
@@ -28,7 +31,7 @@ self.onmessage = async (event) => {
     try {
         await self.pyodide.loadPackagesFromImports(python);
 
-        const result = pyodide.runPython(python);
+        const result = await pyodide.runPythonAsync(python);
 
         self.postMessage({ result, id });
     } catch (error) {

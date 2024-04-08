@@ -54,7 +54,6 @@ export const PyodideProvider = ({
   const [loading, setLoading] = useState(true);
 
   pyodideWorker.onload = () => {
-    console.log("Pyodide is ready");
     setLoading(false);
   };
 
@@ -78,6 +77,7 @@ export const usePyodide = () => {
       }>);
 
       setLoading(false);
+      console.log(data);
 
       return data;
     },

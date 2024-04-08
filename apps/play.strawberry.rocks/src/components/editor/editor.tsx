@@ -17,7 +17,7 @@ export const CodeEditor = ({
 
     const handleChange = useCallback(
         (value: string | undefined) => {
-            onChange(value ?? "");
+            onChange?.(value ?? "");
         },
         [onChange],
     );
