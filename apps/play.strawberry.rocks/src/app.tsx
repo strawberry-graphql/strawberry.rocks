@@ -35,21 +35,36 @@ export const Tabs = ({
 }) => {
   const [activeTab, setActiveTab] = useState(0);
 
+  // all children should be Tab components
+  // we need to pass the activeTab and setActiveTab to the Tab components
+  // get all title props from the tabs
+  const tabsTitles = React.Children.map(children, (child) => {
+    return (child as React.ReactElement).props.title;
+  })!;
+
+  const childrenArray = React.Children.toArray(children);
+
+  const activeTabContent = childrenArray[activeTab];
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
-      <div className={className}>{children}</div>
+      <div className={clsx(className, "flex flex-col")}>
+        <TabsHeader>
+          {tabsTitles.map((title, index) => (
+            <TabTitle key={index} index={index}>
+              {title}
+            </TabTitle>
+          ))}
+        </TabsHeader>
+        <div className="flex-1">{activeTabContent}</div>
+      </div>
     </TabsContext.Provider>
   );
 };
 
 export const TabsHeader = ({ children }: { children: React.ReactNode }) => {
-  const tabsTitles = React.Children.map(children, (child, index) => {
-    return React.cloneElement(child as React.ReactElement, { index });
-  });
-
   return (
     <div className="flex items-center flex-none pl-5 sm:pl-6 pr-4 lg:pr-6 z-10 border-b">
-      <div className="flex space-x-5">{tabsTitles}</div>
+      <div className="flex space-x-5">{children}</div>
     </div>
   );
 };
@@ -61,7 +76,7 @@ export const TabTitle = ({
   children: React.ReactNode;
   index?: number;
 }) => {
-  const { activeTab } = useTabs();
+  const { activeTab, setActiveTab } = useTabs();
 
   const active = activeTab === index;
 
@@ -69,6 +84,7 @@ export const TabTitle = ({
     <button
       type="button"
       className="relative flex py-3 text-sm leading-6 font-semibold focus:outline-none text-gray-700 hover:text-gray-900 focus:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+      onClick={() => index !== undefined && setActiveTab(index)}
     >
       <span
         className={clsx(
@@ -81,7 +97,12 @@ export const TabTitle = ({
   );
 };
 
-export const Tab = ({ children }: { children: React.ReactNode }) => {
+export const Tab = ({
+  children,
+}: {
+  children: React.ReactNode;
+  title: string;
+}) => {
   return children;
 };
 
@@ -94,40 +115,37 @@ function App() {
 
       <div className="divide-x flex">
         <Tabs className="h-screen w-1/3">
-          <TabsHeader>
-            <TabTitle>Code</TabTitle>
-          </TabsHeader>
-
-          <CodeEditor
-            source={STARTER_CODE}
-            onChange={() => { }}
-            language="python"
-          />
+          <Tab title="Code">
+            <CodeEditor
+              source={STARTER_CODE}
+              onChange={() => { }}
+              language="python"
+            />
+          </Tab>
         </Tabs>
         <Tabs className="h-screen w-1/3">
-          <TabsHeader>
-            <TabTitle>Query</TabTitle>
-            <TabTitle>Variables</TabTitle>
-          </TabsHeader>
-
-          <CodeEditor
-            source="{ hello }"
-            onChange={() => { }}
-            language="graphql"
-          />
+          <Tab title="Query">
+            <CodeEditor
+              source="{ hello }"
+              onChange={() => { }}
+              language="graphql"
+            />
+          </Tab>
+          <Tab title="Variables">
+            <CodeEditor source="{}" onChange={() => { }} language="json" />
+          </Tab>
         </Tabs>
+
         <Tabs className="h-screen w-1/3">
-          <TabsHeader>
-            <TabTitle>Result</TabTitle>
-            <TabTitle>Schema</TabTitle>
-          </TabsHeader>
-          <CodeEditor
-            source={`{
+          <Tab title="Result">
+            <CodeEditor
+              source={`{
   "hello": "world"
 }`}
-            language="json"
-            readOnly
-          />
+              language="json"
+              readOnly
+            />
+          </Tab>
         </Tabs>
       </div>
     </>
