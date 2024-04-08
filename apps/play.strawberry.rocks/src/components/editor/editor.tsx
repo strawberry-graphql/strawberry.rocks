@@ -39,6 +39,7 @@ export const CodeEditor = ({
                 scrollBeyondLastLine: false,
                 contextmenu: false,
             }}
+            theme="Tomorrow"
             language={language}
             value={source}
             onChange={handleChange}
