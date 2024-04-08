@@ -5,11 +5,14 @@ import "./index.css";
 
 import { loader } from "@monaco-editor/react";
 import { setupMonaco } from "./components/editor/setup-monaco";
+import { PyodideProvider } from "./components/pyodide.tsx";
 
 loader.init().then(setupMonaco);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
+    <PyodideProvider>
+      <App />
+    </PyodideProvider>
   </React.StrictMode>,
 );

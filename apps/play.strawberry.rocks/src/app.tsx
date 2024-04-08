@@ -2,6 +2,7 @@ import React from "react";
 import { createContext, useState, useContext } from "react";
 import { CodeEditor } from "./components/editor/editor";
 import { clsx } from "clsx";
+import { usePyodide } from "./components/pyodide";
 
 const STARTER_CODE = `
 import strawberry
@@ -107,8 +108,15 @@ export const Tab = ({
 };
 
 function App() {
+  const { loading } = usePyodide();
+
   return (
     <>
+      {loading && (
+        <div className="absolute flex items-center justify-center bg-yellow-200 bg-opacity-90 z-50 px-10 py-6 bottom-10 right-10">
+          Loading pyodide...
+        </div>
+      )}
       <header className="border-b relative z-20 py-3 pl-5 pr-3 sm:pl-6 sm:pr-4 md:pr-3.5 lg:px-6 flex items-center space-x-4">
         <div className="font-bold text-xl">Strawberry Playground</div>
       </header>
