@@ -9,8 +9,15 @@ async function loadPyodideAndPackages() {
     import micropip
 
     print("Installing packages...")
-    micropip.install([
+    await micropip.install([
+        "typing_extensions==4.11.0",
+        "ssl",
+    ])
+    print(micropip.list())
+    await micropip.install([
         "strawberry-graphql",
+        "fastapi",
+        "httpx",
     ])
   `);
 }

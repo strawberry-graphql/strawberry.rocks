@@ -72,12 +72,11 @@ export const usePyodide = () => {
       setLoading(true);
 
       const data = await (pyodideWorker.runPython(code) as Promise<{
-        result: string | null;
+        result: any | null;
         error: string | null;
       }>);
 
       setLoading(false);
-      console.log(data);
 
       return data;
     },

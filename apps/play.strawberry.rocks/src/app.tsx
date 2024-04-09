@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CodeEditor } from "./components/editor/editor";
 import { usePyodide } from "./components/pyodide";
 import { Tabs, Tab } from "./components/tabs";
@@ -15,34 +15,76 @@ class Query:
 schema = strawberry.Schema(Query)
 `.trim();
 
+type Result = {
+  data: any;
+  status_code: number;
+  headers: { [key: string]: string };
+};
+
 function App() {
   const { loading, runPython } = usePyodide();
+  const [editorState, setEditorState] = useState({
+    code: STARTER_CODE,
+    query: "{ hello }",
+    variables: "{}",
+  });
 
-  const [result, setResult] = useState<string | null>(null);
+  const [result, setResult] = useState<Result | null>(null);
 
-  const runQuery = async (code: string) => {
+  const runQuery = async () => {
+    const code = editorState.code;
+    const query = editorState.query;
+    const variables = editorState.variables;
+
     const { result, error } = await runPython(`
 ${code}
 
-result = await schema.execute('{hello, hello2}')
+query = """
+${query}
+"""
 
-from strawberry.http import process_result
+variables = ${variables}
 
-data = process_result(result)
+import httpx
+import fastapi
+from strawberry.fastapi import GraphQLRouter
 
+app = fastapi.FastAPI()
 
-print(data)
-import json
+async def context_getter():
+    return {}
+
+router = GraphQLRouter(schema, path="/", context_getter=context_getter)
+
+app.include_router(router, prefix="")
+
+async def handle_request():
+    async with httpx.AsyncClient(app=app, base_url="http://testserver") as client:
+        response = await client.post("/", json={"query": query, "variables": variables})
+
+    return response.json(), response.status_code, response.headers.items()
+
+result = await handle_request()
+
+result = {
+    "data": result[0],
+    "status_code": result[1],
+    "headers": dict(result[2]),
+}
 
 import js
 from pyodide.ffi import to_js
 
-to_js(data, dict_converter=js.Object.fromEntries)
+to_js(result, dict_converter=js.Object.fromEntries)
     `);
 
-    console.log(JSON.stringify(result, null, 4));
-    setResult(JSON.stringify(result, null, 4));
+    setResult(result);
   };
+
+  useEffect(() => {
+    console.log("running");
+    runQuery();
+  }, [editorState.code, editorState.query, editorState.variables]);
 
   return (
     <>
@@ -59,8 +101,10 @@ to_js(data, dict_converter=js.Object.fromEntries)
         <Tabs className="h-screen w-1/3">
           <Tab title="Code">
             <CodeEditor
-              source={STARTER_CODE}
-              onChange={runQuery}
+              source={editorState.code}
+              onChange={(code) => {
+                setEditorState({ ...editorState, code });
+              }}
               language="python"
             />
           </Tab>
@@ -68,19 +112,31 @@ to_js(data, dict_converter=js.Object.fromEntries)
         <Tabs className="h-screen w-1/3">
           <Tab title="Query">
             <CodeEditor
-              source="{ hello }"
-              onChange={() => { }}
+              source={editorState.query}
+              onChange={(query) => {
+                setEditorState({ ...editorState, query });
+              }}
               language="graphql"
             />
           </Tab>
           <Tab title="Variables">
-            <CodeEditor source="{}" onChange={() => { }} language="json" />
+            <CodeEditor
+              source={editorState.variables}
+              onChange={(variables) => {
+                setEditorState({ ...editorState, variables });
+              }}
+              language="json"
+            />
           </Tab>
         </Tabs>
 
         <Tabs className="h-screen w-1/3">
           <Tab title="Result">
-            <CodeEditor source={result ?? ""} language="json" readOnly />
+            <CodeEditor
+              source={result?.data ? JSON.stringify(result.data, null, 2) : ""}
+              language="json"
+              readOnly
+            />
           </Tab>
         </Tabs>
       </div>
