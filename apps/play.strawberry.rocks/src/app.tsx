@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { CodeEditor } from "./components/editor/editor";
 import { usePyodide } from "./components/pyodide";
 import { Tabs, Tab } from "./components/tabs";
+import { Panel, PanelGroup } from "react-resizable-panels";
+import { ResizeHandler } from "./components/resize-handler";
+import { StatusBadge } from "./components/status-badge";
 
 const STARTER_CODE = `
 import strawberry
@@ -9,7 +12,7 @@ import strawberry
 @strawberry.type
 class Query:
     @strawberry.field
-    def hello() -> str:
+    def hello(self, info: strawberry.Info) -> str:
         return "world"
 
 schema = strawberry.Schema(Query)
@@ -97,55 +100,74 @@ to_js(result, dict_converter=js.Object.fromEntries)
         <div className="font-bold text-xl">Strawberry Playground</div>
       </header>
 
-      <div className="divide-x flex h-full">
-        <Tabs className="h-full w-1/3">
-          <Tab title="Code">
-            <CodeEditor
-              source={editorState.code}
-              onChange={(code) => {
-                setEditorState({ ...editorState, code });
-              }}
-              language="python"
-            />
-          </Tab>
-        </Tabs>
-        <Tabs className="h-full w-1/3">
-          <Tab title="Query">
-            <CodeEditor
-              source={editorState.query}
-              onChange={(query) => {
-                setEditorState({ ...editorState, query });
-              }}
-              language="graphql"
-            />
-          </Tab>
-          <Tab title="Variables">
-            <CodeEditor
-              source={editorState.variables}
-              onChange={(variables) => {
-                setEditorState({ ...editorState, variables });
-              }}
-              language="json"
-            />
-          </Tab>
-        </Tabs>
-
-        <div className="h-full w-1/3 flex flex-col">
-          <Tabs className="flex-1 w-full">
-            <Tab title="Result">
+      <PanelGroup direction="horizontal" className="h-full">
+        <Panel minSize={20}>
+          <Tabs className="h-full">
+            <Tab title="Code">
               <CodeEditor
-                source={
-                  result?.data ? JSON.stringify(result.data, null, 2) : ""
-                }
-                language="json"
-                readOnly
+                source={editorState.code}
+                onChange={(code) => {
+                  setEditorState({ ...editorState, code });
+                }}
+                language="python"
               />
             </Tab>
           </Tabs>
+        </Panel>
+        <ResizeHandler />
 
-          <div>Status code: {result?.status_code}</div>
-        </div>
-      </div>
+        <Panel minSize={20}>
+          <PanelGroup direction="vertical" className="h-full">
+            <Panel minSize={20}>
+              <Tabs className="h-full">
+                <Tab title="Query">
+                  <CodeEditor
+                    source={editorState.query}
+                    onChange={(query) => {
+                      setEditorState({ ...editorState, query });
+                    }}
+                    language="graphql"
+                  />
+                </Tab>
+              </Tabs>
+            </Panel>
+            <ResizeHandler direction="vertical" />
+            <Panel minSize={20}>
+              <Tabs className="h-full">
+                <Tab title="Variables">
+                  <CodeEditor
+                    source={editorState.variables}
+                    onChange={(variables) => {
+                      setEditorState({ ...editorState, variables });
+                    }}
+                    language="json"
+                  />
+                </Tab>
+              </Tabs>
+            </Panel>
+          </PanelGroup>
+        </Panel>
+        <ResizeHandler />
+        <Panel minSize={20}>
+          <div className="h-full flex flex-col">
+            <Tabs className="flex-1 w-full">
+              <Tab title="Result">
+                <CodeEditor
+                  source={
+                    result?.data ? JSON.stringify(result.data, null, 2) : ""
+                  }
+                  language="json"
+                  readOnly
+                />
+              </Tab>
+            </Tabs>
+
+            <div className="p-2 border-t">
+              <StatusBadge status={result?.status_code ?? 200} />
+            </div>
+          </div>
+        </Panel>
+      </PanelGroup>
     </>
   );
 }
