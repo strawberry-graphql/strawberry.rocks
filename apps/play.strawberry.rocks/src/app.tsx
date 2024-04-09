@@ -160,6 +160,17 @@ to_js(result, dict_converter=js.Object.fromEntries)
                   readOnly
                 />
               </Tab>
+              <Tab title="Headers">
+                <CodeEditor
+                  source={
+                    result?.headers
+                      ? JSON.stringify(result.headers, null, 2)
+                      : ""
+                  }
+                  language="json"
+                  readOnly
+                />
+              </Tab>
             </Tabs>
 
             <div className="p-2 border-t">
