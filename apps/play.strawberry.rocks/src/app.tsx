@@ -97,8 +97,8 @@ to_js(result, dict_converter=js.Object.fromEntries)
         <div className="font-bold text-xl">Strawberry Playground</div>
       </header>
 
-      <div className="divide-x flex">
-        <Tabs className="h-screen w-1/3">
+      <div className="divide-x flex h-full">
+        <Tabs className="h-full w-1/3">
           <Tab title="Code">
             <CodeEditor
               source={editorState.code}
@@ -109,7 +109,7 @@ to_js(result, dict_converter=js.Object.fromEntries)
             />
           </Tab>
         </Tabs>
-        <Tabs className="h-screen w-1/3">
+        <Tabs className="h-full w-1/3">
           <Tab title="Query">
             <CodeEditor
               source={editorState.query}
@@ -130,15 +130,21 @@ to_js(result, dict_converter=js.Object.fromEntries)
           </Tab>
         </Tabs>
 
-        <Tabs className="h-screen w-1/3">
-          <Tab title="Result">
-            <CodeEditor
-              source={result?.data ? JSON.stringify(result.data, null, 2) : ""}
-              language="json"
-              readOnly
-            />
-          </Tab>
-        </Tabs>
+        <div className="h-full w-1/3 flex flex-col">
+          <Tabs className="flex-1 w-full">
+            <Tab title="Result">
+              <CodeEditor
+                source={
+                  result?.data ? JSON.stringify(result.data, null, 2) : ""
+                }
+                language="json"
+                readOnly
+              />
+            </Tab>
+          </Tabs>
+
+          <div>Status code: {result?.status_code}</div>
+        </div>
       </div>
     </>
   );
