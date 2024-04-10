@@ -1,10 +1,10 @@
 import { CodeEditor } from "./components/editor/editor";
-import { usePyodide } from "./components/pyodide";
 import { ResizeHandler } from "./components/resize-handler";
 import { StatusBadge } from "./components/status-badge";
+import { usePyodide } from "./components/strawberry/pyodide";
 import { Tabs, Tab } from "./components/tabs";
 import { VersionSelector } from "./components/version-selector";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useCallback } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 
 const STARTER_CODE = `
@@ -26,7 +26,7 @@ type Result = {
 };
 
 function App() {
-  const { initialLoading, runPython } = usePyodide();
+  const { initialLoading, runPython, executeQuery } = usePyodide();
   const [strawberryVersion, setStrawberryVersion] = useState("latest");
   const [editorState, setEditorState] = useState({
     code: STARTER_CODE,
@@ -36,57 +36,21 @@ function App() {
 
   const [result, setResult] = useState<Result | null>(null);
 
-  console.log("strawberryVersion", strawberryVersion);
-
-  const runQuery = async () => {
+  const runQuery = useCallback(async () => {
     const code = editorState.code;
     const query = editorState.query;
     const variables = editorState.variables;
 
-    const { result, error } = await runPython(`
-${code}
+    const { result, error } = await executeQuery({
+      schemaCode: code,
+      query,
+      variables,
+    });
 
-query = """
-${query}
-"""
-
-variables = ${variables}
-
-import httpx
-import fastapi
-from strawberry.fastapi import GraphQLRouter
-
-app = fastapi.FastAPI()
-
-async def context_getter():
-    return {}
-
-router = GraphQLRouter(schema, path="/", context_getter=context_getter)
-
-app.include_router(router, prefix="")
-
-async def handle_request():
-    async with httpx.AsyncClient(app=app, base_url="http://testserver") as client:
-        response = await client.post("/", json={"query": query, "variables": variables})
-
-    return response.json(), response.status_code, response.headers.items()
-
-result = await handle_request()
-
-result = {
-    "data": result[0],
-    "status_code": result[1],
-    "headers": dict(result[2]),
-}
-
-import js
-from pyodide.ffi import to_js
-
-to_js(result, dict_converter=js.Object.fromEntries)
-    `);
+    // TODO: handle error?
 
     setResult(result);
-  };
+  }, [editorState]);
 
   useEffect(() => {
     console.log("running");

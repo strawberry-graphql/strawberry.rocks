@@ -1,3 +1,4 @@
+import execute from "./execute.py?raw";
 import { useContext, createContext, useState, useCallback } from "react";
 
 const PyodideContext = createContext({
@@ -73,13 +74,13 @@ export const usePyodide = () => {
     useContext(PyodideContext);
 
   const runPython = useCallback(
-    async (code: string) => {
+    async <Result,>(code: string) => {
       setLoading(true);
 
-      const data = await (pyodideWorker.runPython(code) as Promise<{
-        result: any | null;
-        error: string | null;
-      }>);
+      const data = (await pyodideWorker.runPython(code)) as Promise<{
+        result: Result;
+        error: any;
+      }>;
 
       setLoading(false);
 
@@ -88,5 +89,34 @@ export const usePyodide = () => {
     [pyodideWorker]
   );
 
-  return { loading, error, runPython, initialLoading };
+  const executeQuery = useCallback(
+    async ({
+      schemaCode,
+      query,
+      variables,
+    }: {
+      schemaCode: string;
+      query: string;
+      variables: string;
+    }) => {
+      const queryCode = `query = """${query}"""`;
+      const variablesCode = `variables = ${variables}`;
+
+      const code = execute
+        .replace("# {{ schema }}", schemaCode)
+        .replace("# {{ query }}", queryCode)
+        .replace("# {{ variables }}", variablesCode);
+
+      const { result, error } = await runPython<{
+        data: any;
+        status_code: number;
+        headers: { [key: string]: string };
+      }>(code);
+
+      return { result, error };
+    },
+    [runPython]
+  );
+
+  return { loading, error, runPython, initialLoading, executeQuery };
 };

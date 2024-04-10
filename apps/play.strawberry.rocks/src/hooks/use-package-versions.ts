@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import semverSort from "semver-sort";
 import useSWR from "swr";
 
@@ -10,7 +11,10 @@ export const usePackageVersions = (packageName: string) => {
     { suspense: true }
   );
 
-  const versions = Object.keys(data?.releases || {});
+  const versions = useMemo(() => {
+    const v = Object.keys(data?.releases || {});
+    return semverSort.desc(v) as string[];
+  }, [data]);
 
-  return semverSort.desc(versions) as string[];
+  return versions;
 };
