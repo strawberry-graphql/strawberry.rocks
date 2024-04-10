@@ -3,13 +3,13 @@ import { useContext, createContext, useState, useCallback } from "react";
 const PyodideContext = createContext({
   loading: true,
   error: null,
-  setLoading: (loading: boolean) => { },
+  setLoading: (loading: boolean) => {},
 });
 
 export default class PyodideWorker extends Worker {
   currentId: number;
   callbacks: { [key: number]: (value: any) => void };
-  onload: () => void = () => { };
+  onload: () => void = () => {};
 
   constructor() {
     super("/js/pyodide.worker.js");
@@ -80,7 +80,7 @@ export const usePyodide = () => {
 
       return data;
     },
-    [pyodideWorker],
+    [pyodideWorker]
   );
 
   return { loading, error, runPython };

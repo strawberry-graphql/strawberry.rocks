@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState } from "react";
 import clsx from "clsx";
+import React, { createContext, useContext, useState } from "react";
 
 const TabsContext = createContext({
   activeTab: 0,
-  setActiveTab: (_index: number) => { },
+  setActiveTab: (_index: number) => {},
 });
 
 const useTabs = () => {
@@ -77,7 +77,7 @@ export const TabTitle = ({
       <span
         className={clsx(
           "absolute bottom-0 inset-x-0 bg-red-500 h-0.5 rounded-full transition-opacity duration-150",
-          { "opacity-0": !active, "opacity-1": active },
+          { "opacity-0": !active, "opacity-1": active }
         )}
       ></span>
       {children}

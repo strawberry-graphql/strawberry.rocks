@@ -52,7 +52,7 @@ export async function fetchOpenCollectiveSponsors(): Promise<Sponsor[]> {
   const url = new URL("https://api.opencollective.com/graphql/v2");
   url.searchParams.append(
     "personalToken",
-    import.meta.env.OPENCOLLECTIVE_TOKEN!,
+    import.meta.env.OPENCOLLECTIVE_TOKEN!
   );
 
   const result = await fetch(url.toString(), {

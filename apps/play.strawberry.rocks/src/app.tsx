@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
 import { CodeEditor } from "./components/editor/editor";
 import { usePyodide } from "./components/pyodide";
-import { Tabs, Tab } from "./components/tabs";
-import { Panel, PanelGroup } from "react-resizable-panels";
 import { ResizeHandler } from "./components/resize-handler";
 import { StatusBadge } from "./components/status-badge";
+import { Tabs, Tab } from "./components/tabs";
+import { VersionSelector } from "./components/version-selector";
+import { useState, useEffect, Suspense } from "react";
+import { Panel, PanelGroup } from "react-resizable-panels";
 
 const STARTER_CODE = `
 import strawberry
@@ -179,6 +180,11 @@ to_js(result, dict_converter=js.Object.fromEntries)
           </div>
         </Panel>
       </PanelGroup>
+      <div className="border-t py-2 px-1">
+        <Suspense fallback={<div>Loading...</div>}>
+          <VersionSelector name="strawberry-graphql" />
+        </Suspense>
+      </div>
     </>
   );
 }

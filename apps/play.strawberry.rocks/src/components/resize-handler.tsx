@@ -1,6 +1,5 @@
-import { PanelResizeHandle } from "react-resizable-panels";
-
 import { clsx } from "clsx";
+import { PanelResizeHandle } from "react-resizable-panels";
 
 export const ResizeHandler = ({
   direction = "horizontal",

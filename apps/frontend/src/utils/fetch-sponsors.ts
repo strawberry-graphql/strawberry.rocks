@@ -28,7 +28,7 @@ const SponsorsDocument = `
 const getSponsorInfoQuery = (
   alias: string,
   typename: string,
-  login: string,
+  login: string
 ) => {
   const rootField = typename === "User" ? "user" : "organization";
 
@@ -123,7 +123,7 @@ export const fetchSponsors = async () => {
         b.sponsorship.monthlyPriceInDollars -
         a.sponsorship.monthlyPriceInDollars
       );
-    },
+    }
   );
 };
 
@@ -131,6 +131,6 @@ export const fetchSponsorsForHome = async () => {
   const sponsors = await fetchSponsors();
 
   return sponsors.filter(
-    (sponsor) => sponsor.sponsorship.monthlyPriceInDollars >= 100,
+    (sponsor) => sponsor.sponsorship.monthlyPriceInDollars >= 100
   );
 };
