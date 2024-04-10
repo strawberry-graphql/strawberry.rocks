@@ -27,6 +27,7 @@ type Result = {
 
 function App() {
   const { loading, runPython } = usePyodide();
+  const [strawberryVersion, setStrawberryVersion] = useState("latest");
   const [editorState, setEditorState] = useState({
     code: STARTER_CODE,
     query: "{ hello }",
@@ -34,6 +35,8 @@ function App() {
   });
 
   const [result, setResult] = useState<Result | null>(null);
+
+  console.log("strawberryVersion", strawberryVersion);
 
   const runQuery = async () => {
     const code = editorState.code;
@@ -182,7 +185,10 @@ to_js(result, dict_converter=js.Object.fromEntries)
       </PanelGroup>
       <div className="border-t py-2 px-1">
         <Suspense fallback={<div>Loading...</div>}>
-          <VersionSelector name="strawberry-graphql" />
+          <VersionSelector
+            name="strawberry-graphql"
+            onVersionSelected={setStrawberryVersion}
+          />
         </Suspense>
       </div>
     </>

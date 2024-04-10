@@ -6,9 +6,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
 
-export const VersionSelector = ({ name }: { name: string }) => {
+export const VersionSelector = ({
+  name,
+  onVersionSelected,
+}: {
+  name: string;
+
+  onVersionSelected?: (version: string) => void;
+}) => {
   let versions = usePackageVersions(name);
 
   // add latest version
@@ -16,7 +22,10 @@ export const VersionSelector = ({ name }: { name: string }) => {
 
   return (
     <div>
-      <Select defaultValue="latest">
+      <Select
+        defaultValue="latest"
+        onValueChange={(value) => onVersionSelected?.(value)}
+      >
         <SelectTrigger className="w-[80px]">
           <SelectValue placeholder="Version" />
         </SelectTrigger>
