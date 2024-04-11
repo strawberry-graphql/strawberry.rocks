@@ -1,11 +1,10 @@
 import { Playground } from "./components/playground";
 import { usePyodide } from "./components/strawberry/pyodide";
 import { VersionSelector } from "./components/version-selector";
-import { useState, Suspense } from "react";
+import { Suspense } from "react";
 
 function App() {
-  const { initializing } = usePyodide();
-  const [strawberryVersion, setStrawberryVersion] = useState("latest");
+  const { initializing, setLibraryVersion } = usePyodide();
 
   return (
     <>
@@ -24,7 +23,9 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <VersionSelector
             name="strawberry-graphql"
-            onVersionSelected={setStrawberryVersion}
+            onVersionSelected={(version) =>
+              setLibraryVersion({ name: "strawberry-graphql", version })
+            }
           />
         </Suspense>
       </div>

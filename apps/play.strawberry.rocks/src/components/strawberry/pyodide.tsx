@@ -5,7 +5,14 @@ const PyodideContext = createContext({
   loading: false,
   error: null,
   initializing: true,
-  setLoading: (loading: boolean) => {},
+  setLoading: (_loading: boolean) => {},
+  setLibraryVersion: ({
+    name,
+    version,
+  }: {
+    name: string;
+    version: string;
+  }) => {},
 });
 
 export default class PyodideWorker extends Worker {
@@ -118,5 +125,30 @@ export const usePyodide = () => {
     [runPython]
   );
 
-  return { loading, error, runPython, initializing, executeQuery };
+  const setLibraryVersion = useCallback(
+    async ({ name, version }: { name: string; version: string }) => {
+      const { error } = await runPython(
+        `
+          import micropip
+          micropip.uninstall(["${name}"])
+          await micropip.install(["${name}==${version}"])
+          print(micropip.list())
+        `
+      );
+
+      if (error) {
+        throw new Error(error);
+      }
+    },
+    [runPython]
+  );
+
+  return {
+    loading,
+    error,
+    runPython,
+    initializing,
+    executeQuery,
+    setLibraryVersion,
+  };
 };
