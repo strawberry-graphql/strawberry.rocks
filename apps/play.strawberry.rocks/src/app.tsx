@@ -4,12 +4,12 @@ import { VersionSelector } from "./components/version-selector";
 import { useState, Suspense } from "react";
 
 function App() {
-  const { initialLoading } = usePyodide();
+  const { initializing } = usePyodide();
   const [strawberryVersion, setStrawberryVersion] = useState("latest");
 
   return (
     <>
-      {initialLoading && (
+      {initializing && (
         <div className="absolute flex items-center justify-center bg-yellow-200 bg-opacity-90 z-50 px-10 py-6 bottom-10 right-10">
           Loading pyodide...
         </div>

@@ -35,7 +35,7 @@ export const Playground = () => {
     variables: "{}",
   });
 
-  const [{ result, error }, setResult] = useState<Result | null>({
+  const [{ result, error }, setResult] = useState<Result>({
     error: null,
     result: null,
   });

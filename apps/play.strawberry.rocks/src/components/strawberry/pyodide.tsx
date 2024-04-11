@@ -4,7 +4,7 @@ import { useContext, createContext, useState, useCallback } from "react";
 const PyodideContext = createContext({
   loading: false,
   error: null,
-  initialLoading: true,
+  initializing: true,
   setLoading: (loading: boolean) => {},
 });
 
@@ -54,15 +54,15 @@ export const PyodideProvider = ({
   children: React.ReactNode;
 }) => {
   const [loading, setLoading] = useState(false);
-  const [initialLoading, setInitialLoading] = useState(true);
+  const [initializing, setInitializing] = useState(true);
 
   pyodideWorker.onload = () => {
-    setInitialLoading(false);
+    setInitializing(false);
   };
 
   return (
     <PyodideContext.Provider
-      value={{ loading, error: null, setLoading, initialLoading }}
+      value={{ loading, error: null, setLoading, initializing }}
     >
       {children}
     </PyodideContext.Provider>
@@ -70,7 +70,7 @@ export const PyodideProvider = ({
 };
 
 export const usePyodide = () => {
-  const { loading, error, setLoading, initialLoading } =
+  const { loading, error, setLoading, initializing } =
     useContext(PyodideContext);
 
   const runPython = useCallback(
@@ -118,5 +118,5 @@ export const usePyodide = () => {
     [runPython]
   );
 
-  return { loading, error, runPython, initialLoading, executeQuery };
+  return { loading, error, runPython, initializing, executeQuery };
 };
