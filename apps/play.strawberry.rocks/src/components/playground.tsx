@@ -19,9 +19,12 @@ schema = strawberry.Schema(Query)
 `.trim();
 
 type Result = {
-  data: any;
-  status_code: number;
-  headers: { [key: string]: string };
+  error: string | null;
+  result: {
+    data: any;
+    status_code: number;
+    headers: { [key: string]: string };
+  } | null;
 };
 
 export const Playground = () => {
@@ -32,7 +35,10 @@ export const Playground = () => {
     variables: "{}",
   });
 
-  const [result, setResult] = useState<Result | null>(null);
+  const [{ result, error }, setResult] = useState<Result | null>({
+    error: null,
+    result: null,
+  });
 
   const runQuery = useCallback(async () => {
     const code = editorState.code;
@@ -45,9 +51,7 @@ export const Playground = () => {
       variables,
     });
 
-    // TODO: handle error?
-
-    setResult(result);
+    setResult({ result, error });
   }, [editorState]);
 
   useEffect(() => {
@@ -108,13 +112,19 @@ export const Playground = () => {
         <div className="h-full flex flex-col">
           <Tabs className="flex-1 w-full">
             <Tab title="Result">
-              <CodeEditor
-                source={
-                  result?.data ? JSON.stringify(result.data, null, 2) : ""
-                }
-                language="json"
-                readOnly
-              />
+              {error ? (
+                <pre className="p-2 text-red-500 overflow-auto h-full text-[14px]">
+                  {error}
+                </pre>
+              ) : (
+                <CodeEditor
+                  source={
+                    result?.data ? JSON.stringify(result.data, null, 2) : ""
+                  }
+                  language="json"
+                  readOnly
+                />
+              )}
             </Tab>
             <Tab title="Headers">
               <CodeEditor
