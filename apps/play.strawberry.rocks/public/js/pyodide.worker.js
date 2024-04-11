@@ -1,9 +1,12 @@
 importScripts("https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js");
 
-async function loadPyodideAndPackages() {
+async function loadPyodideAndPackages(strawberryVersion) {
   self.pyodide = await loadPyodide();
 
   await self.pyodide.loadPackage(["micropip"]);
+
+  const versionSuffix =
+    strawberryVersion === "latest" ? "" : `==${strawberryVersion}`;
 
   await self.pyodide.runPythonAsync(`
     import micropip
@@ -13,35 +16,41 @@ async function loadPyodideAndPackages() {
         "typing_extensions==4.11.0",
         "ssl",
     ])
-    print(micropip.list())
+    print("Installing strawberry-graphql${versionSuffix}...")
     await micropip.install([
-        "strawberry-graphql",
+        "strawberry-graphql${versionSuffix}",
         "fastapi",
         "httpx",
     ])
+    print(micropip.list())
   `);
 }
 
-let pyodideReadyPromise = loadPyodideAndPackages().then(() => {
-  self.postMessage({ ready: true });
-});
-
 self.onmessage = async (event) => {
-  await pyodideReadyPromise;
+  if (event.data.type === "load") {
+    const strawberryVersion = event.data.version;
 
-  const { id, python, ...context } = event.data;
-
-  for (const key of Object.keys(context)) {
-    self[key] = context[key];
+    loadPyodideAndPackages(strawberryVersion).then(() => {
+      self.postMessage({ ready: true });
+    });
+    return;
   }
 
-  try {
-    await self.pyodide.loadPackagesFromImports(python);
+  if (event.data.type === "run") {
+    const { id, python, ...context } = event.data;
 
-    const result = await pyodide.runPythonAsync(python);
+    for (const key of Object.keys(context)) {
+      self[key] = context[key];
+    }
 
-    self.postMessage({ result, id });
-  } catch (error) {
-    self.postMessage({ error: error.message, id });
+    try {
+      await self.pyodide.loadPackagesFromImports(python);
+
+      const result = await pyodide.runPythonAsync(python);
+
+      self.postMessage({ result, id });
+    } catch (error) {
+      self.postMessage({ error: error.message, id });
+    }
   }
 };

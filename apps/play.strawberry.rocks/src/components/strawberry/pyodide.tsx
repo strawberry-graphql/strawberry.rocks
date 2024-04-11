@@ -1,18 +1,20 @@
 import execute from "./execute.py?raw";
-import { useContext, createContext, useState, useCallback } from "react";
+import {
+  useContext,
+  useRef,
+  useEffect,
+  createContext,
+  useState,
+  useCallback,
+} from "react";
 
 const PyodideContext = createContext({
   loading: false,
   error: null,
   initializing: true,
+  pyodideWorker: null as PyodideWorker | null,
   setLoading: (_loading: boolean) => {},
-  setLibraryVersion: ({
-    name,
-    version,
-  }: {
-    name: string;
-    version: string;
-  }) => {},
+  setLibraryVersion: (_version: { name: string; version: string }) => {},
 });
 
 export default class PyodideWorker extends Worker {
@@ -20,7 +22,7 @@ export default class PyodideWorker extends Worker {
   callbacks: { [key: number]: (value: any) => void };
   onload: () => void = () => {};
 
-  constructor() {
+  constructor(version: string) {
     super("/js/pyodide.worker.js");
 
     this.currentId = 0;
@@ -38,6 +40,11 @@ export default class PyodideWorker extends Worker {
         delete this.callbacks[id];
       }
     };
+
+    this.postMessage({
+      type: "load",
+      version,
+    });
   }
 
   // run the code in the worker
@@ -46,14 +53,13 @@ export default class PyodideWorker extends Worker {
     return new Promise((onSuccess) => {
       this.callbacks[this.currentId] = onSuccess;
       this.postMessage({
+        type: "run",
         python: code,
         id: this.currentId,
       });
     });
   }
 }
-
-const pyodideWorker = new PyodideWorker();
 
 export const PyodideProvider = ({
   children,
@@ -62,14 +68,61 @@ export const PyodideProvider = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const [initializing, setInitializing] = useState(true);
+  const workerRef = useRef<PyodideWorker | null>(null);
+  const previousVersion = useRef<string | null>(null);
+  const [pyodideWorker, setPyodideWorker] = useState<PyodideWorker | null>(
+    null
+  );
+  const [strawberryVersion, setStrawberryVersion] = useState("latest");
 
-  pyodideWorker.onload = () => {
-    setInitializing(false);
+  useEffect(() => {
+    if (workerRef.current && previousVersion.current === strawberryVersion) {
+      return;
+    }
+
+    setInitializing(true);
+
+    console.log("creating a new worker");
+
+    const worker = new PyodideWorker(strawberryVersion);
+
+    worker.onload = () => {
+      console.log("worker ready");
+      setInitializing(false);
+
+      setPyodideWorker(worker);
+    };
+
+    workerRef.current = worker;
+    previousVersion.current = strawberryVersion;
+  }, [strawberryVersion]);
+
+  const setLibraryVersion = ({
+    name,
+    version,
+  }: {
+    name: string;
+    version: string;
+  }) => {
+    if (name !== "strawberry-graphql") {
+      throw new Error(`Unknown library: ${name}`);
+    }
+
+    console.log("setting strawberry version", version);
+
+    setStrawberryVersion(version);
   };
 
   return (
     <PyodideContext.Provider
-      value={{ loading, error: null, setLoading, initializing }}
+      value={{
+        loading,
+        error: null,
+        setLoading,
+        initializing,
+        pyodideWorker,
+        setLibraryVersion,
+      }}
     >
       {children}
     </PyodideContext.Provider>
@@ -77,11 +130,21 @@ export const PyodideProvider = ({
 };
 
 export const usePyodide = () => {
-  const { loading, error, setLoading, initializing } =
-    useContext(PyodideContext);
+  const {
+    loading,
+    error,
+    setLoading,
+    initializing,
+    pyodideWorker,
+    setLibraryVersion,
+  } = useContext(PyodideContext);
 
   const runPython = useCallback(
     async <Result,>(code: string) => {
+      if (!pyodideWorker) {
+        return { result: null, error: "Pyodide not initialized" };
+      }
+
       setLoading(true);
 
       const data = (await pyodideWorker.runPython(code)) as Promise<{
@@ -121,24 +184,6 @@ export const usePyodide = () => {
       }>(code);
 
       return { result, error };
-    },
-    [runPython]
-  );
-
-  const setLibraryVersion = useCallback(
-    async ({ name, version }: { name: string; version: string }) => {
-      const { error } = await runPython(
-        `
-          import micropip
-          micropip.uninstall(["${name}"])
-          await micropip.install(["${name}==${version}"])
-          print(micropip.list())
-        `
-      );
-
-      if (error) {
-        throw new Error(error);
-      }
     },
     [runPython]
   );

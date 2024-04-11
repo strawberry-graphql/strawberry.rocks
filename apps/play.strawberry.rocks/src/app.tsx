@@ -1,10 +1,11 @@
 import { Playground } from "./components/playground";
 import { usePyodide } from "./components/strawberry/pyodide";
 import { VersionSelector } from "./components/version-selector";
+import clsx from "clsx";
 import { Suspense } from "react";
 
 function App() {
-  const { initializing, setLibraryVersion } = usePyodide();
+  const { initializing, setLibraryVersion, loading } = usePyodide();
 
   return (
     <>
@@ -19,15 +20,25 @@ function App() {
 
       <Playground />
 
-      <div className="border-t py-2 px-1">
-        <Suspense fallback={<div>Loading...</div>}>
-          <VersionSelector
-            name="strawberry-graphql"
-            onVersionSelected={(version) =>
-              setLibraryVersion({ name: "strawberry-graphql", version })
-            }
-          />
-        </Suspense>
+      <div className="border-t py-2 flex gap-4 px-4">
+        <div
+          className={clsx("ml-auto", {
+            "animate-spin": loading,
+          })}
+        >
+          {loading ? "⏳" : "✅"}
+        </div>
+
+        <div>
+          <Suspense fallback={null}>
+            <VersionSelector
+              name="strawberry-graphql"
+              onVersionSelected={(version) =>
+                setLibraryVersion({ name: "strawberry-graphql", version })
+              }
+            />
+          </Suspense>
+        </div>
       </div>
     </>
   );
