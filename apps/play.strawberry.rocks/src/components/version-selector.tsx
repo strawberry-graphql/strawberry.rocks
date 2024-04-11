@@ -20,8 +20,6 @@ export const VersionSelector = ({
   // add latest version
   versions = ["latest", ...versions];
 
-  return null;
-  // TODO: something is up with this, it kills the performance
   return (
     <div>
       <Select
