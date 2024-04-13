@@ -13,7 +13,7 @@ const PyodideContext = createContext({
   error: null,
   initializing: true,
   setLibraryVersion: (_version: { name: string; version: string }) => {},
-  runPython: <Result,>(_code: string) => {},
+  runPython: <Result,>(_code: string): Promise<Result> => {},
 });
 
 export default class PyodideWorker extends Worker {
@@ -166,6 +166,7 @@ export const usePyodide = () => {
         data: any;
         status_code: number;
         headers: { [key: string]: string };
+        schema: string;
       }>(code);
 
       return { result, error };

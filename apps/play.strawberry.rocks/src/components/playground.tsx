@@ -33,6 +33,7 @@ export const Playground = () => {
     code: STARTER_CODE,
     query: "{ hello }",
     variables: "{}",
+    schema: "",
   });
 
   const [{ result, error }, setResult] = useState<Result>({
@@ -142,6 +143,10 @@ export const Playground = () => {
                 language="json"
                 readOnly
               />
+            </Tab>
+
+            <Tab title="Schema">
+              <CodeEditor source={result?.schema} language="graphql" readOnly />
             </Tab>
           </Tabs>
 

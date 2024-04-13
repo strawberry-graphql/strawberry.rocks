@@ -33,6 +33,7 @@ result = {
     "data": result[0],
     "status_code": result[1],
     "headers": dict(result[2]),
+    "schema": str(schema),
 }
 
 
