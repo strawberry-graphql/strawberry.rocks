@@ -12,9 +12,8 @@ const PyodideContext = createContext({
   loading: false,
   error: null,
   initializing: true,
-  pyodideWorker: null as PyodideWorker | null,
-  setLoading: (_loading: boolean) => {},
   setLibraryVersion: (_version: { name: string; version: string }) => {},
+  runPython: <Result,>(_code: string) => {},
 });
 
 export default class PyodideWorker extends Worker {
@@ -70,9 +69,6 @@ export const PyodideProvider = ({
   const [initializing, setInitializing] = useState(true);
   const workerRef = useRef<PyodideWorker | null>(null);
   const previousVersion = useRef<string | null>(null);
-  const [pyodideWorker, setPyodideWorker] = useState<PyodideWorker | null>(
-    null
-  );
   const [strawberryVersion, setStrawberryVersion] = useState("latest");
 
   useEffect(() => {
@@ -86,16 +82,32 @@ export const PyodideProvider = ({
 
     const worker = new PyodideWorker(strawberryVersion);
 
-    worker.onload = () => {
-      console.log("worker ready");
-      setInitializing(false);
+    console.log("worker created");
 
-      setPyodideWorker(worker);
+    worker.onload = () => {
+      setInitializing(false);
     };
 
     workerRef.current = worker;
     previousVersion.current = strawberryVersion;
   }, [strawberryVersion]);
+
+  const runPython = useCallback(async <Result,>(code: string) => {
+    if (!workerRef.current) {
+      return { result: null, error: "Pyodide not initialized" };
+    }
+
+    setLoading(true);
+
+    const data = (await workerRef.current.runPython(code)) as Promise<{
+      result: Result;
+      error: any;
+    }>;
+
+    setLoading(false);
+
+    return data;
+  }, []);
 
   const setLibraryVersion = ({
     name,
@@ -118,10 +130,9 @@ export const PyodideProvider = ({
       value={{
         loading,
         error: null,
-        setLoading,
         initializing,
-        pyodideWorker,
         setLibraryVersion,
+        runPython,
       }}
     >
       {children}
@@ -130,34 +141,8 @@ export const PyodideProvider = ({
 };
 
 export const usePyodide = () => {
-  const {
-    loading,
-    error,
-    setLoading,
-    initializing,
-    pyodideWorker,
-    setLibraryVersion,
-  } = useContext(PyodideContext);
-
-  const runPython = useCallback(
-    async <Result,>(code: string) => {
-      if (!pyodideWorker) {
-        return { result: null, error: "Pyodide not initialized" };
-      }
-
-      setLoading(true);
-
-      const data = (await pyodideWorker.runPython(code)) as Promise<{
-        result: Result;
-        error: any;
-      }>;
-
-      setLoading(false);
-
-      return data;
-    },
-    [pyodideWorker]
-  );
+  const { loading, error, initializing, runPython, setLibraryVersion } =
+    useContext(PyodideContext);
 
   const executeQuery = useCallback(
     async ({

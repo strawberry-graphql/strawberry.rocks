@@ -28,7 +28,7 @@ type Result = {
 };
 
 export const Playground = () => {
-  const { executeQuery } = usePyodide();
+  const { executeQuery, initializing } = usePyodide();
   const [editorState, setEditorState] = useState({
     code: STARTER_CODE,
     query: "{ hello }",
@@ -55,9 +55,17 @@ export const Playground = () => {
   }, [editorState]);
 
   useEffect(() => {
-    console.log("running");
+    if (initializing) {
+      return;
+    }
+
     runQuery();
-  }, [editorState.code, editorState.query, editorState.variables]);
+  }, [
+    editorState.code,
+    editorState.query,
+    editorState.variables,
+    initializing,
+  ]);
 
   return (
     <PanelGroup direction="horizontal" className="h-full">
