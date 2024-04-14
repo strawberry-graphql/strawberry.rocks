@@ -10,9 +10,10 @@ import {
 export const VersionSelector = ({
   name,
   onVersionSelected,
+  defaultVersion,
 }: {
   name: string;
-
+  defaultVersion: string;
   onVersionSelected?: (version: string) => void;
 }) => {
   let versions = usePackageVersions(name);
@@ -23,7 +24,7 @@ export const VersionSelector = ({
   return (
     <div>
       <Select
-        defaultValue="latest"
+        defaultValue={defaultVersion}
         onValueChange={(value) => onVersionSelected?.(value)}
       >
         <SelectTrigger className="w-[80px]">

@@ -3,11 +3,30 @@ import { usePyodide } from "./components/strawberry/pyodide";
 import { VersionSelector } from "./components/version-selector";
 import { useSnippet } from "./hooks/use-snippet";
 import clsx from "clsx";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState, useRef } from "react";
 
 function App() {
   const { initializing, setLibraryVersion, loading } = usePyodide();
   const { snippet } = useSnippet();
+  const previousVersion = useRef<string | null>(null);
+  const [currentVersion, setCurrentVersion] = useState<string>(
+    snippet.strawberryVersion
+  );
+
+  useEffect(() => {
+    if (initializing) {
+      return;
+    }
+
+    if (previousVersion.current !== currentVersion) {
+      setLibraryVersion({
+        name: "strawberry-graphql",
+        version: currentVersion,
+      });
+
+      previousVersion.current = currentVersion;
+    }
+  }, [initializing, setLibraryVersion, currentVersion]);
 
   return (
     <>
@@ -41,9 +60,8 @@ function App() {
           <Suspense fallback={null}>
             <VersionSelector
               name="strawberry-graphql"
-              onVersionSelected={(version) =>
-                setLibraryVersion({ name: "strawberry-graphql", version })
-              }
+              defaultVersion={snippet.strawberryVersion}
+              onVersionSelected={(version) => setCurrentVersion(version)}
             />
           </Suspense>
         </div>

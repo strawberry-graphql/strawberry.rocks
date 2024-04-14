@@ -35,6 +35,7 @@ export const useSnippet = () => {
       code: string;
       query: string;
       variables: string;
+      requirements: string;
     };
   }>({
     queryKey: ["gist", { gistId }],
@@ -42,12 +43,22 @@ export const useSnippet = () => {
       request("https://api.strawberry.rocks/graphql", GET_GIST, { id: gistId }),
   });
 
+  let strawberryVersion = "latest";
+
+  if (data.gist?.requirements) {
+    const match = data.gist.requirements.match(/strawberry-graphql==(.*)/);
+
+    if (match) {
+      strawberryVersion = match[1];
+    }
+  }
+
   const snippet = {
     code: data.gist?.code || STARTER_CODE,
     variables: data.gist?.variables
       ? JSON.stringify(data.gist.variables, null, 2)
       : "",
-    strawberryVersion: "latest",
+    strawberryVersion,
     query: data.gist?.query || "{ hello }",
   };
 
