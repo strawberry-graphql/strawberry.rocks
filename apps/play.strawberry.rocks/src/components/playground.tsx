@@ -6,18 +6,6 @@ import { Tabs, Tab } from "./tabs";
 import { useState, useEffect, useCallback } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 
-const STARTER_CODE = `
-import strawberry
-
-@strawberry.type
-class Query:
-    @strawberry.field
-    def hello(self, info: strawberry.Info) -> str:
-        return "world"
-
-schema = strawberry.Schema(Query)
-`.trim();
-
 type Result = {
   error: string | null;
   result: {
@@ -27,12 +15,20 @@ type Result = {
   } | null;
 };
 
-export const Playground = () => {
+export const Playground = ({
+  defaultCode,
+  defaultQuery,
+  defaultVariables,
+}: {
+  defaultCode: string;
+  defaultQuery: string;
+  defaultVariables: string;
+}) => {
   const { executeQuery, initializing } = usePyodide();
   const [editorState, setEditorState] = useState({
-    code: STARTER_CODE,
-    query: "{ hello }",
-    variables: "{}",
+    code: defaultCode,
+    query: defaultQuery,
+    variables: defaultVariables,
     schema: "",
   });
 

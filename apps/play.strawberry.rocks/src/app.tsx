@@ -1,11 +1,13 @@
 import { Playground } from "./components/playground";
 import { usePyodide } from "./components/strawberry/pyodide";
 import { VersionSelector } from "./components/version-selector";
+import { useSnippet } from "./hooks/use-snippet";
 import clsx from "clsx";
 import { Suspense } from "react";
 
 function App() {
   const { initializing, setLibraryVersion, loading } = usePyodide();
+  const { snippet } = useSnippet();
 
   return (
     <>
@@ -18,7 +20,13 @@ function App() {
         <div className="font-bold text-xl">Strawberry Playground</div>
       </header>
 
-      <Playground />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Playground
+          defaultCode={snippet.code}
+          defaultQuery={snippet.query}
+          defaultVariables={snippet.variables}
+        />
+      </Suspense>
 
       <div className="border-t py-2 flex gap-4 px-4">
         <div
