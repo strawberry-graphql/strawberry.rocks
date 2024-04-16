@@ -35,7 +35,7 @@ export const Tabs = ({
   const activeTabContent = childrenArray[activeTab];
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
-      <div className={clsx(className, "flex flex-col")}>
+      <div className={clsx(className, "grid grid-rows-[50px_1fr]")}>
         <TabsHeader>
           {tabsTitles.map((title, index) => (
             <TabTitle key={index} index={index}>
@@ -43,7 +43,7 @@ export const Tabs = ({
             </TabTitle>
           ))}
         </TabsHeader>
-        <div className="flex-1">{activeTabContent}</div>
+        <div className="min-h-0 min-w-0">{activeTabContent}</div>
       </div>
     </TabsContext.Provider>
   );

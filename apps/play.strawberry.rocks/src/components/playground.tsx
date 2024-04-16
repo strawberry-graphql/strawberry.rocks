@@ -115,10 +115,10 @@ export const Playground = ({
       <ResizeHandler />
       <Panel minSize={20}>
         <div className="h-full flex flex-col">
-          <Tabs className="flex-1 w-full">
+          <Tabs className="flex-1 w-full h-full">
             <Tab title="Result">
               {error ? (
-                <pre className="p-2 text-red-500 overflow-auto h-full text-[14px]">
+                <pre className="p-2 text-red-500 overflow-auto text-[14px] h-full">
                   {error}
                 </pre>
               ) : (
