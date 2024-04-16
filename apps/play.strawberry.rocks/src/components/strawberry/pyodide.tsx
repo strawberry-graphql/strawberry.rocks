@@ -155,7 +155,9 @@ export const usePyodide = () => {
       variables: string;
     }) => {
       const queryCode = `query = """${query}"""`;
-      const variablesCode = `variables = ${variables}`;
+      const variablesCode = variables?.trim()
+        ? `variables = ${variables.trim()}`
+        : `variables = {}`;
 
       const code = execute
         .replace("# {{ schema }}", schemaCode)
