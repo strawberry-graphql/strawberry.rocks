@@ -167,6 +167,9 @@ importers:
       "@radix-ui/react-select":
         specifier: ^2.0.0
         version: 2.0.0(@types/react-dom@18.2.24)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
+      "@radix-ui/react-slot":
+        specifier: ^1.0.2
+        version: 1.0.2(@types/react@18.2.74)(react@18.2.0)
       "@tanstack/react-query":
         specifier: ^5.29.2
         version: 5.29.2(react@18.2.0)
@@ -799,7 +802,7 @@ packages:
       }
     dependencies:
       "@algolia/ui-components-shared": 1.2.2
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
     dev: false
 
   /@algolia/ui-components-shared@1.2.2:
@@ -4672,7 +4675,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/react-primitive": 1.0.3(@types/react-dom@18.2.14)(@types/react@18.2.31)(react-dom@18.2.0)(react@18.2.0)
       "@types/react": 18.2.31
       "@types/react-dom": 18.2.14
@@ -4696,7 +4699,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/react-primitive": 1.0.3(@types/react-dom@18.2.24)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
       "@types/react": 18.2.74
       "@types/react-dom": 18.2.24
@@ -4876,7 +4879,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/primitive": 1.0.1
       "@radix-ui/react-compose-refs": 1.0.1(@types/react@18.2.31)(react@18.2.0)
       "@radix-ui/react-primitive": 1.0.3(@types/react-dom@18.2.14)(@types/react@18.2.31)(react-dom@18.2.0)(react@18.2.0)
@@ -4966,7 +4969,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/react-compose-refs": 1.0.1(@types/react@18.2.31)(react@18.2.0)
       "@radix-ui/react-primitive": 1.0.3(@types/react-dom@18.2.14)(@types/react@18.2.31)(react-dom@18.2.0)(react@18.2.0)
       "@radix-ui/react-use-callback-ref": 1.0.1(@types/react@18.2.31)(react@18.2.0)
@@ -5065,7 +5068,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@floating-ui/react-dom": 2.0.2(react-dom@18.2.0)(react@18.2.0)
       "@radix-ui/react-arrow": 1.0.3(@types/react-dom@18.2.14)(@types/react@18.2.31)(react-dom@18.2.0)(react@18.2.0)
       "@radix-ui/react-compose-refs": 1.0.1(@types/react@18.2.31)(react@18.2.0)
@@ -5131,7 +5134,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/react-primitive": 1.0.3(@types/react-dom@18.2.14)(@types/react@18.2.31)(react-dom@18.2.0)(react@18.2.0)
       "@types/react": 18.2.31
       "@types/react-dom": 18.2.14
@@ -5227,7 +5230,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/primitive": 1.0.1
       "@radix-ui/react-collection": 1.0.3(@types/react-dom@18.2.14)(@types/react@18.2.31)(react-dom@18.2.0)(react@18.2.0)
       "@radix-ui/react-compose-refs": 1.0.1(@types/react@18.2.31)(react@18.2.0)
@@ -5259,7 +5262,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/number": 1.0.1
       "@radix-ui/primitive": 1.0.1
       "@radix-ui/react-collection": 1.0.3(@types/react-dom@18.2.14)(@types/react@18.2.31)(react-dom@18.2.0)(react@18.2.0)
@@ -5347,7 +5350,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/react-primitive": 1.0.3(@types/react-dom@18.2.14)(@types/react@18.2.31)(react-dom@18.2.0)(react@18.2.0)
       "@types/react": 18.2.31
       "@types/react-dom": 18.2.14
@@ -5407,7 +5410,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/primitive": 1.0.1
       "@radix-ui/react-context": 1.0.1(@types/react@18.2.31)(react@18.2.0)
       "@radix-ui/react-direction": 1.0.1(@types/react@18.2.31)(react@18.2.0)
@@ -5437,7 +5440,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/primitive": 1.0.1
       "@radix-ui/react-primitive": 1.0.3(@types/react-dom@18.2.14)(@types/react@18.2.31)(react-dom@18.2.0)(react@18.2.0)
       "@radix-ui/react-use-controllable-state": 1.0.1(@types/react@18.2.31)(react@18.2.0)
@@ -5463,7 +5466,7 @@ packages:
       "@types/react-dom":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/primitive": 1.0.1
       "@radix-ui/react-context": 1.0.1(@types/react@18.2.31)(react@18.2.0)
       "@radix-ui/react-direction": 1.0.1(@types/react@18.2.31)(react@18.2.0)
@@ -5559,7 +5562,7 @@ packages:
       "@types/react":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/react-use-callback-ref": 1.0.1(@types/react@18.2.31)(react@18.2.0)
       "@types/react": 18.2.31
       react: 18.2.0
@@ -5577,7 +5580,7 @@ packages:
       "@types/react":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/react-use-callback-ref": 1.0.1(@types/react@18.2.74)(react@18.2.0)
       "@types/react": 18.2.74
       react: 18.2.0
@@ -5663,7 +5666,7 @@ packages:
       "@types/react":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/rect": 1.0.1
       "@types/react": 18.2.31
       react: 18.2.0
@@ -5681,7 +5684,7 @@ packages:
       "@types/react":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/rect": 1.0.1
       "@types/react": 18.2.74
       react: 18.2.0
@@ -5699,7 +5702,7 @@ packages:
       "@types/react":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/react-use-layout-effect": 1.0.1(@types/react@18.2.31)(react@18.2.0)
       "@types/react": 18.2.31
       react: 18.2.0
@@ -5717,7 +5720,7 @@ packages:
       "@types/react":
         optional: true
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@radix-ui/react-use-layout-effect": 1.0.1(@types/react@18.2.74)(react@18.2.0)
       "@types/react": 18.2.74
       react: 18.2.0
@@ -5777,7 +5780,7 @@ packages:
         integrity: sha512-fyrgCaedtvMg9NK3en0pnOYJdtfwxUcNolezkNPUsoX57X8oQk+NkqcvzHXD2uKNij6GXmWU9NDru2IWjrO4BQ==,
       }
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
 
   /@resvg/resvg-js-android-arm-eabi@2.6.2:
     resolution:
@@ -7838,7 +7841,7 @@ packages:
     engines: { node: ">=14" }
     dependencies:
       "@babel/code-frame": 7.22.13
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       "@types/aria-query": 5.0.3
       aria-query: 5.1.3
       chalk: 4.1.2
@@ -13279,7 +13282,7 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       aria-query: 5.3.0
       array-includes: 3.1.7
       array.prototype.flatmap: 1.3.2
@@ -19165,7 +19168,7 @@ packages:
       }
     engines: { node: ">=10" }
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
     dev: true
 
   /postcss-import@15.1.0(postcss@8.4.38):
@@ -19816,7 +19819,7 @@ packages:
     dependencies:
       "@babel/core": 7.23.2
       "@babel/generator": 7.23.0
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       ast-types: 0.14.2
       commander: 2.20.3
       doctrine: 3.0.0
@@ -19908,7 +19911,7 @@ packages:
       algoliasearch: ">= 3.1 < 5"
       react: ">= 16.8.0 < 19"
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
       algoliasearch: 4.20.0
       algoliasearch-helper: 3.14.0(algoliasearch@4.20.0)
       instantsearch.js: 4.56.8(algoliasearch@4.20.0)
@@ -20281,7 +20284,7 @@ packages:
         integrity: sha512-hfMp2BoF0qOk3uc5V20ALGDS2ddjQaLrdl7xrGXvAIow7qeWRM2VA2HuCHkUKk9slq3VwEwLNK3DFBqDfPGYtg==,
       }
     dependencies:
-      "@babel/runtime": 7.23.2
+      "@babel/runtime": 7.24.4
     dev: true
 
   /regex-parser@2.2.11:

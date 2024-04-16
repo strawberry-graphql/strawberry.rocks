@@ -1,5 +1,7 @@
+import { Logo } from "./components/logo";
 import { Playground } from "./components/playground";
 import { usePyodide } from "./components/strawberry/pyodide";
+import { Button } from "./components/ui/button";
 import { VersionSelector } from "./components/version-selector";
 import { useSnippet } from "./hooks/use-snippet";
 import clsx from "clsx";
@@ -35,8 +37,14 @@ function App() {
           Loading pyodide...
         </div>
       )}
-      <header className="border-b relative z-20 py-3 pl-5 pr-3 sm:pl-6 sm:pr-4 md:pr-3.5 lg:px-6 flex items-center space-x-4">
-        <div className="font-bold text-xl">Strawberry Playground</div>
+      <header className="border-b relative z-20 py-3 pl-5 pr-3 sm:pl-6 sm:pr-4 md:pr-3.5 lg:px-6 flex items-center w-full">
+        <Logo className="h-auto w-8 mr-4" />
+        <div className="font-bold text-xl">
+          <a href="https://strawberry.rocks">Strawberry GraphQL</a> Playground
+        </div>
+        <div className="ml-auto">
+          <Button>Share</Button>
+        </div>
       </header>
 
       <Suspense fallback={<div>Loading...</div>}>
