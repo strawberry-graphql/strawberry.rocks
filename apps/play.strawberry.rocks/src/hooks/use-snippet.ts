@@ -40,7 +40,11 @@ export const useSnippet = () => {
   }>({
     queryKey: ["gist", { gistId }],
     queryFn: async () =>
-      request("https://api.strawberry.rocks/graphql", GET_GIST, { id: gistId }),
+      gistId
+        ? request("https://api.strawberry.rocks/graphql", GET_GIST, {
+            id: gistId,
+          })
+        : Promise.resolve({ gist: undefined }),
   });
 
   let strawberryVersion = "latest";
