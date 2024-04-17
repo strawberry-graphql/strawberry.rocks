@@ -1,4 +1,4 @@
-import Editor, { BeforeMount, Monaco, OnMount } from "@monaco-editor/react";
+import Editor, { OnMount } from "@monaco-editor/react";
 import { useCallback, useRef, useEffect } from "react";
 
 export const CodeEditor = ({

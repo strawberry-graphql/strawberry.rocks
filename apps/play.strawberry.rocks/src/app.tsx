@@ -4,16 +4,6 @@ import { Share } from "./components/share";
 import { usePyodide } from "./components/strawberry/pyodide";
 import { VersionSelector } from "./components/version-selector";
 import { useSnippet } from "./hooks/use-snippet";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogFooter,
-} from "@/components/ui/dialog";
 import clsx from "clsx";
 import { Suspense, useEffect, useState, useRef } from "react";
 
