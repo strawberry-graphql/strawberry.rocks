@@ -1,9 +1,19 @@
 import { Logo } from "./components/logo";
 import { Playground } from "./components/playground";
+import { Share } from "./components/share";
 import { usePyodide } from "./components/strawberry/pyodide";
-import { Button } from "./components/ui/button";
 import { VersionSelector } from "./components/version-selector";
 import { useSnippet } from "./hooks/use-snippet";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import clsx from "clsx";
 import { Suspense, useEffect, useState, useRef } from "react";
 
@@ -14,6 +24,7 @@ function App() {
   const [currentVersion, setCurrentVersion] = useState<string>(
     snippet.strawberryVersion
   );
+  const playgroundRef = useRef<any>(null);
 
   useEffect(() => {
     if (initializing) {
@@ -40,15 +51,19 @@ function App() {
       <header className="border-b relative z-20 py-3 pl-5 pr-3 sm:pl-6 sm:pr-4 md:pr-3.5 lg:px-6 flex items-center w-full">
         <Logo className="h-auto w-8 mr-4" />
         <div className="font-bold text-xl">
-          <a href="https://strawberry.rocks">Strawberry GraphQL</a> Playground
+          <a href="https://strawberry.rocks" className="underline">
+            Strawberry GraphQL
+          </a>{" "}
+          Playground
         </div>
         <div className="ml-auto">
-          <Button>Share</Button>
+          <Share playground={playgroundRef.current} version={currentVersion} />
         </div>
       </header>
 
       <Suspense fallback={<div>Loading...</div>}>
         <Playground
+          ref={playgroundRef}
           defaultCode={snippet.code}
           defaultQuery={snippet.query}
           defaultVariables={snippet.variables}

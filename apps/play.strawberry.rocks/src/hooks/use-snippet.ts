@@ -61,7 +61,7 @@ export const useSnippet = () => {
     code: data.gist?.code || STARTER_CODE,
     variables: data.gist?.variables
       ? JSON.stringify(data.gist.variables, null, 2)
-      : "",
+      : "{}",
     strawberryVersion,
     query: data.gist?.query || "{ hello }",
   };
