@@ -13,7 +13,10 @@ const PyodideContext = createContext({
   error: null,
   initializing: true,
   setLibraryVersion: (_version: { name: string; version: string }) => {},
-  runPython: <Result,>(_code: string): Promise<Result> => {},
+  run: <Result,>(
+    _code: string
+    // @ts-ignore
+  ): Promise<{ result: Result | null; error: any }> => {},
 });
 
 export default class PyodideWorker extends Worker {
@@ -47,7 +50,7 @@ export default class PyodideWorker extends Worker {
   }
 
   // run the code in the worker
-  runPython(code: string) {
+  run(code: string) {
     this.currentId = (this.currentId + 1) % Number.MAX_SAFE_INTEGER;
     return new Promise((onSuccess) => {
       this.callbacks[this.currentId] = onSuccess;
@@ -92,14 +95,14 @@ export const PyodideProvider = ({
     previousVersion.current = strawberryVersion;
   }, [strawberryVersion]);
 
-  const runPython = useCallback(async <Result,>(code: string) => {
+  const run = useCallback(async <Result,>(code: string) => {
     if (!workerRef.current) {
       return { result: null, error: "Pyodide not initialized" };
     }
 
     setLoading(true);
 
-    const data = (await workerRef.current.runPython(code)) as Promise<{
+    const data = (await workerRef.current.run(code)) as Promise<{
       result: Result;
       error: any;
     }>;
@@ -132,7 +135,7 @@ export const PyodideProvider = ({
         error: null,
         initializing,
         setLibraryVersion,
-        runPython,
+        run,
       }}
     >
       {children}
@@ -141,7 +144,7 @@ export const PyodideProvider = ({
 };
 
 export const usePyodide = () => {
-  const { loading, error, initializing, runPython, setLibraryVersion } =
+  const { loading, error, initializing, run, setLibraryVersion } =
     useContext(PyodideContext);
 
   const executeQuery = useCallback(
@@ -164,7 +167,7 @@ export const usePyodide = () => {
         .replace("# {{ query }}", queryCode)
         .replace("# {{ variables }}", variablesCode);
 
-      const { result, error } = await runPython<{
+      const { result, error } = await run<{
         data: any;
         status_code: number;
         headers: { [key: string]: string };
@@ -173,13 +176,12 @@ export const usePyodide = () => {
 
       return { result, error };
     },
-    [runPython]
+    [run]
   );
 
   return {
     loading,
     error,
-    runPython,
     initializing,
     executeQuery,
     setLibraryVersion,

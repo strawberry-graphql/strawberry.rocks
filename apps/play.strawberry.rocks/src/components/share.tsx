@@ -5,7 +5,6 @@ import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { CopyIcon } from "@radix-ui/react-icons";
 import { useMutation } from "@tanstack/react-query";
 import { gql, request } from "graphql-request";
-import { useState } from "react";
 
 const CREATE_GIST_DOCUMENT = gql`
   mutation CreateGist($input: CreateGistInput!) {
@@ -23,7 +22,7 @@ export function Share({
   playground: any;
   version: string;
 }) {
-  const { data, error, isPending, mutate } = useMutation<
+  const { data, isPending, mutate } = useMutation<
     {
       createGist: { id: string };
     },

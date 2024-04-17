@@ -1,7 +1,9 @@
 import { useMemo } from "react";
+// @ts-ignore
 import semverSort from "semver-sort";
 import useSWR from "swr";
 
+// @ts-ignore
 const fetcher = (...args: any) => fetch(...args).then((res) => res.json());
 
 export const usePackageVersions = (packageName: string) => {
