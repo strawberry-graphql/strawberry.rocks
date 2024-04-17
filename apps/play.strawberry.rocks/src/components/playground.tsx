@@ -3,14 +3,9 @@ import { ResizeHandler } from "./resize-handler";
 import { StatusBadge } from "./status-badge";
 import { usePyodide } from "./strawberry/pyodide";
 import { Tabs, Tab } from "./tabs";
-import {
-  useState,
-  useEffect,
-  useCallback,
-  forwardRef,
-  useImperativeHandle,
-} from "react";
+import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
+import { useDebouncedCallback } from "use-debounce";
 
 type Result = {
   error: string | null;
@@ -47,7 +42,7 @@ export const Playground = forwardRef(
       result: null,
     });
 
-    const runQuery = useCallback(async () => {
+    const runQuery = useDebouncedCallback(async () => {
       const code = editorState.code;
       const query = editorState.query;
       const variables = editorState.variables;
@@ -59,7 +54,7 @@ export const Playground = forwardRef(
       });
 
       setResult({ result, error });
-    }, [editorState]);
+    }, 100);
 
     useEffect(() => {
       if (initializing) {
