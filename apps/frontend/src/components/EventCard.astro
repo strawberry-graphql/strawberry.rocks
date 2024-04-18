@@ -61,7 +61,6 @@ const { date, title, event, speakers, link } = Astro.props.event.data;
   }
 
   article {
-    color: var(--color-g-400);
     margin: 12px 0 auto;
   }
 
@@ -72,7 +71,7 @@ const { date, title, event, speakers, link } = Astro.props.event.data;
 
   footer {
     margin-top: 24px;
-    border-top: 1px solid var(--color-g-700);
+    border-top: 1px solid var(--color-g-400);
     padding: 10px 0 0;
     display: flex;
 
@@ -89,5 +88,15 @@ const { date, title, event, speakers, link } = Astro.props.event.data;
     border-radius: 100%;
     object-fit: contain;
     background: white;
+  }
+
+  :global(html.dark) {
+    article {
+      color: var(--color-g-400);
+    }
+
+    footer {
+      border-color: var(--color-g-700);
+    }
   }
 </style>
