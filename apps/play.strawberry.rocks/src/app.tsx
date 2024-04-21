@@ -2,7 +2,6 @@ import { Logo } from "./components/logo";
 import { Playground } from "./components/playground";
 import { Share } from "./components/share";
 import { usePyodide } from "./components/strawberry/pyodide";
-import { useTheme } from "./components/theme-provider";
 import { ThemeToggle } from "./components/theme-toggle";
 import { VersionSelector } from "./components/version-selector";
 import { useSnippet } from "./hooks/use-snippet";
