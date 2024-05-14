@@ -37,25 +37,4 @@ const { content } = await fetchDocPage({
       padding: 0 16px;
     }
   }
-
-  main header h1 {
-    margin-bottom: 40px;
-  }
-
-  ul {
-    display: grid;
-    gap: 40px;
-
-    > li {
-      height: 100%;
-    }
-
-    @media (min-width: 800px) {
-      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    }
-  }
-
-  :global(.card) {
-    height: 100%;
-  }
 </style>
