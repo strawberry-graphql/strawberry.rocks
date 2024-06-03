@@ -9,12 +9,12 @@
   }
 }
 
-.typography-heading-1,
-.typography-heading-2,
-.typography-heading-3,
-.typography-heading-4,
-.typography-heading-5,
-.typography-heading-6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold;
   font-family: var(--font-display);
   line-height: 1.25;
@@ -40,37 +40,37 @@
   );
 }
 
-.typography-heading-1 {
+h1 {
   /* 36 px, 48px */
   --min-fs: 2.25;
   --max-fs: 3;
 }
 
-.typography-heading-2 {
+h2 {
   /* 32px, 40px */
   --min-fs: 2;
   --max-fs: 2.5;
 }
 
-.typography-heading-3 {
+h3 {
   /* 28px, 36px */
   --min-fs: 1.75;
   --max-fs: 2.25;
 }
 
-.typography-heading-4 {
+h4 {
   /* 24px, 32px */
   --min-fs: 1.5;
   --max-fs: 2;
 }
 
-.typography-heading-5 {
+h5 {
   /* 20px, 28px */
   --min-fs: 1.25;
   --max-fs: 1.75;
 }
 
-.typography-heading-6 {
+h6 {
   /* 16px, 24px */
   --min-fs: 1;
   --max-fs: 1.5;

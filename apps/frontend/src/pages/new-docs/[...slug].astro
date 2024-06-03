@@ -1,8 +1,8 @@
 ---
-import { getEntry } from "astro:content"
-import Layout from "../../layouts/Layout.astro"
-import Sidebar from "../../components/Docs/Sidebar.astro"
-import Footer from "../../components/Docs/Footer.astro"
+import { getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Sidebar from "../../components/Docs/Sidebar.astro";
+import Footer from "../../components/Docs/Footer.astro";
 import Paragraph from "../../components/Pages/Paragraph.astro";
 import List from "../../components/Pages/List.astro";
 import OrderedList from "../../components/Pages/OrderedList.astro";
@@ -25,24 +25,21 @@ interface Props {
   content: string;
 }
 
+let { slug } = Astro.params;
 
-let {  slug } = Astro.params;
-
-if (slug=== undefined) {
-  slug =  "index";
+if (slug === undefined) {
+  slug = "index";
 }
 
+const page = await getEntry("docs", slug);
 
-const page = await getEntry("docs", slug)
+console.log(page);
+const title = "TODO";
+const breadcrumbs = [];
+const authors = [];
 
-console.log(page)
-const title = "TODO"
-const breadcrumbs = []
-const authors = []
-
-const {Content, headings} = await page.render()
+const { Content, headings } = await page.render();
 ---
-
 
 <Layout title={title} useDocsGrid>
   <main class="docs-grid">
@@ -64,22 +61,29 @@ const {Content, headings} = await page.render()
     </nav>
     <article class="typography-paragraph" id="docs-content">
       <!-- <Markdown content={markdownContent} /> -->
-        <Content
+      <Content
         components={{
+          p: Paragraph,
+          ul: List,
+          ol: OrderedList,
+          li: ListItem,
+
+          a: Link,
+          img: Image,
+          blockquote: Blockquote,
+          Tip,
           Note,
           table: Table,
           hr: HR,
           Warning,
           ExtensionsList,
         }}
-
-        />
+      />
 
       <Footer authors={authors} />
     </article>
 
     <aside class="page-nav">
-
       <!-- <TableOfContents toc={tableOfContents} /> -->
     </aside>
   </main>

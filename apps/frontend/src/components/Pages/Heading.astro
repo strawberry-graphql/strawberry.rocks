@@ -5,14 +5,16 @@ interface Props {
   href?: string;
 }
 
-const { as: Component, href } = Astro.props;
+const { href } = Astro.props;
 
-const level = Component.replace("h", "");
+const level = 1;
+console.log(Astro.props);
+const Component = `h${level}`;
 
 const className = `typography-heading-${level}`;
 ---
 
-<Component class={className} id={href.replace("#", "")}>
+<Component class={className} id={href}>
   <a href={href}>
     <slot />
   </a>
