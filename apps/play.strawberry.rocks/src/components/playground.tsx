@@ -163,7 +163,7 @@ export const Playground = forwardRef(
               </Tab>
             </Tabs>
 
-            <div className="p-2 border-t">
+            <div className="p-2 border-t dark:bg-dark">
               <StatusBadge status={result?.status_code ?? 200} />
             </div>
           </div>

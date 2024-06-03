@@ -79,7 +79,7 @@ export function Share({
   return (
     <Popover onOpenChange={handleOpen}>
       <PopoverTrigger asChild>
-        <Button variant="secondary">Share</Button>
+        <Button>Share</Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-[520px]">
         <div className="flex flex-col space-y-2 text-center sm:text-left">
@@ -102,7 +102,6 @@ export function Share({
           </div>
           <Button
             type="submit"
-            size="sm"
             className="px-3"
             onClick={() => window.navigator.clipboard.writeText(url)}
           >

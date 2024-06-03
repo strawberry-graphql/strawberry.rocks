@@ -11,7 +11,6 @@ async function loadPyodideAndPackages(strawberryVersion) {
   await self.pyodide.runPythonAsync(`
     import micropip
 
-    print("Installing packages...")
     await micropip.install([
         "typing_extensions==4.11.0",
         "ssl",
@@ -19,7 +18,7 @@ async function loadPyodideAndPackages(strawberryVersion) {
     print("Installing strawberry-graphql${versionSuffix}...")
     await micropip.install([
         "strawberry-graphql${versionSuffix}",
-        "fastapi",
+        "fastapi-slim",
         "httpx",
     ])
     print(micropip.list())

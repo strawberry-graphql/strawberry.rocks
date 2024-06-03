@@ -1,0 +1,10 @@
+title: Django loves strawberries
+event:
+  name: PyCon DE & PyData 2024
+  location: Berlin, Germany
+  image: ./pycon-de-2024.png
+date: 2024-04-24
+speakers:
+  - name: Arthur Bayr
+    link: https://github.com/speedy1991
+link: https://pretalx.com/pyconde-pydata-2024/talk/AT9HCG/

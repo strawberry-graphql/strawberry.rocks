@@ -1,0 +1,10 @@
+title: Building high-performance, type-safe GraphQL APIs with Strawberry and Django
+event:
+  name: PyCon Italia
+  location: Florence, Italy
+  image: ./pycon-it-2024.png
+date: 2024-05-23
+speakers:
+  - name: Thiago Bellini Ribeiro
+    link: https://github.com/bellini666
+link: https://2024.pycon.it/en/event/building-high-performance-type-safe-graphql-apis-with-strawberry-and-django

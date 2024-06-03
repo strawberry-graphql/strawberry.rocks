@@ -1,0 +1,10 @@
+title: Rewrite everything in Rust? What we learned from introducing Rust in Strawberry-GraphQL
+event:
+  name: PyCon Italia
+  location: Florence, Italy
+  image: ./pycon-it-2024.png
+date: 2024-05-23
+speakers:
+  - name: Erik Wrede
+    link: https://github.com/erikwrede
+link: https://2024.pycon.it/en/event/rewrite-everything-in-rust-what-we-learned-from-introducing-rust-in-strawberry-graphql

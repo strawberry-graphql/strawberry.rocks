@@ -1,0 +1,102 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import ExternalIcon from "./Icons/External.astro";
+import { format } from "date-fns";
+
+type Event = Awaited<ReturnType<typeof getCollection<"events">>>[0];
+
+interface Props {
+  event: Event;
+}
+
+const { date, title, event, speakers, link } = Astro.props.event.data;
+---
+
+<div class="card">
+  <header>
+    <h1 class="typography-heading-4">
+      <a href={link} target="_blank" rel="noreferrer">{title}</a>
+    </h1>
+    <Image src={event.image} alt={event.name} />
+  </header>
+
+  <article class="typography-paragraph">
+    <p>
+      Event: <a href={link} target="_blank" rel="noreferrer">{event.name}</a>
+    </p>
+    <p>
+      Speakers: {
+        speakers.map((speaker) => (
+          <a href={speaker.link} target="_blank" rel="noreferrer">
+            {speaker.name}
+          </a>
+        ))
+      }
+    </p>
+  </article>
+
+  <footer>
+    <p class="typography-label">{format(date, "MMM d, yyyy")}</p>
+
+    <a href={link} target="_blank" rel="noreferrer">
+      <ExternalIcon />
+    </a>
+  </footer>
+</div>
+
+<style>
+  div.card {
+    display: flex;
+    flex-direction: column;
+
+    header {
+      display: flex;
+      gap: 24px;
+
+      > h1 {
+        margin: 0 auto 0 0;
+      }
+    }
+  }
+
+  article {
+    margin: 12px 0 auto;
+  }
+
+  article p > a {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  footer {
+    margin-top: 24px;
+    border-top: 1px solid var(--color-g-400);
+    padding: 10px 0 0;
+    display: flex;
+
+    > p {
+      margin-right: auto;
+    }
+  }
+
+  img {
+    width: 64px;
+    height: 64px;
+    padding: 4px;
+    display: block;
+    border-radius: 100%;
+    object-fit: contain;
+    background: white;
+  }
+
+  :global(html.dark) {
+    article {
+      color: var(--color-g-400);
+    }
+
+    footer {
+      border-color: var(--color-g-700);
+    }
+  }
+</style>

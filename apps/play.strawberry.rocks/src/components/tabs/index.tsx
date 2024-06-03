@@ -35,7 +35,9 @@ export const Tabs = ({
   const activeTabContent = childrenArray[activeTab];
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
-      <div className={clsx(className, "grid grid-rows-[50px_1fr]")}>
+      <div
+        className={clsx(className, "grid grid-rows-[50px_1fr] dark:bg-dark")}
+      >
         <TabsHeader>
           {tabsTitles.map((title, index) => (
             <TabTitle key={index} index={index}>

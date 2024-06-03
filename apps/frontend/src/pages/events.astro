@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EventCard from "../components/EventCard.astro";
+
+import { getCollection } from "astro:content";
+
+const events = await getCollection("events");
+---
+
+<Layout title="Events" blob>
+  <main>
+    <header>
+      <h1 class="typography-heading-1">Events</h1>
+      <h4 class="typography-heading-4">
+        Do you want to join us in one of our events? Check out the list of
+        upcoming events below.
+      </h4>
+    </header>
+
+    <h1 class="typography-heading-1">Upcoming events</h1>
+    <ul>
+      {
+        events.map((event) => (
+          <li>
+            <EventCard event={event} />
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 80px 16px;
+    display: flex;
+    row-gap: 80px;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  main :is(h1, h2, h3, h4) {
+    max-width: 800px;
+    margin: 0 auto;
+    text-wrap: balance;
+
+    @media (max-width: 800px) {
+      padding: 0 16px;
+    }
+  }
+
+  main header h1 {
+    margin-bottom: 40px;
+  }
+
+  ul {
+    display: grid;
+    gap: 40px;
+
+    > li {
+      height: 100%;
+    }
+
+    @media (min-width: 800px) {
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+  }
+
+  :global(.card) {
+    height: 100%;
+  }
+</style>

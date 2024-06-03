@@ -1,3 +1,4 @@
+import { useTheme } from "../theme-provider";
 import Editor, { OnMount } from "@monaco-editor/react";
 import { useCallback, useRef, useEffect } from "react";
 
@@ -53,6 +54,8 @@ export const CodeEditor = ({
     };
   }, [monaco]);
 
+  const { actualTheme } = useTheme();
+
   return (
     <Editor
       onMount={handleMount}
@@ -65,7 +68,7 @@ export const CodeEditor = ({
         scrollBeyondLastLine: false,
         contextmenu: false,
       }}
-      theme="Tomorrow"
+      theme={actualTheme === "dark" ? "TomorrowNight" : "Tomorrow"}
       language={language}
       value={source}
       onChange={handleChange}

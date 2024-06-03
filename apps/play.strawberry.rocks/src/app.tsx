@@ -2,6 +2,7 @@ import { Logo } from "./components/logo";
 import { Playground } from "./components/playground";
 import { Share } from "./components/share";
 import { usePyodide } from "./components/strawberry/pyodide";
+import { ThemeToggle } from "./components/theme-toggle";
 import { VersionSelector } from "./components/version-selector";
 import { useSnippet } from "./hooks/use-snippet";
 import clsx from "clsx";
@@ -38,7 +39,7 @@ function App() {
           Loading pyodide...
         </div>
       )}
-      <header className="border-b relative z-20 py-3 pl-5 pr-3 sm:pl-6 sm:pr-4 md:pr-3.5 lg:px-6 flex items-center w-full">
+      <header className="border-b relative z-20 py-3 pl-5 pr-3 sm:pl-6 sm:pr-4 md:pr-3.5 lg:px-6 flex items-center w-full dark:text-white dark:bg-dark">
         <Logo className="h-auto w-8 mr-4" />
         <div className="font-bold text-xl">
           <a href="https://strawberry.rocks" className="underline">
@@ -46,8 +47,9 @@ function App() {
           </a>{" "}
           Playground
         </div>
-        <div className="ml-auto">
+        <div className="ml-auto flex gap-3">
           <Share playground={playgroundRef.current} version={currentVersion} />
+          <ThemeToggle />
         </div>
       </header>
 
@@ -60,7 +62,7 @@ function App() {
         />
       </Suspense>
 
-      <div className="border-t py-2 flex gap-4 px-4">
+      <div className="border-t py-2 flex gap-4 px-4 dark:bg-dark">
         <div
           className={clsx("ml-auto", {
             "animate-spin": loading,

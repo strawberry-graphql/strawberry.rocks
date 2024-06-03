@@ -14,7 +14,7 @@ export const ResizeHandler = ({
         "h-0.5 w-full": direction === "vertical",
       })}
     >
-      <PanelResizeHandle className="bg-red-200 w-full h-full" />
+      <PanelResizeHandle className="bg-red-200 w-full h-full dark:bg-gray-800" />
     </div>
   );
 };
