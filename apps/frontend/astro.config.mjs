@@ -15,7 +15,17 @@ export default defineConfig({
   integrations: [
     sitemap(),
     astroMetaTags(),
-    expressiveCode(),
+    expressiveCode({
+      themes: ["dark-plus"],
+      useStyleReset: false,
+      styleOverrides: {
+        codeFontSize: "1em",
+        borderRadius: "16px",
+        frames: {
+          shadowColor: "transparent",
+        },
+      },
+    }),
     mdx({
       remarkPlugins: [remarkComment],
     }),

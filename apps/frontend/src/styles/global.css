@@ -68,8 +68,10 @@
   color: var(--color-white);
 }
 
-html {
+html,
+pre {
   scrollbar-color: var(--color-strawberry) transparent;
+  scrollbar-width: thin !important;
 }
 
 button {

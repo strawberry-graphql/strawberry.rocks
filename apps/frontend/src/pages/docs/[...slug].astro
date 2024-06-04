@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Sidebar from "../../components/Docs/Sidebar.astro";
 import Footer from "../../components/Docs/Footer.astro";
@@ -20,6 +20,7 @@ import Note from "../../components/Pages/Callout/Note.astro";
 import Table from "../../components/Pages/Table.astro";
 import HR from "../../components/Pages/HR.astro";
 import ExtensionsList from "../../components/ExtensionsList.astro";
+import CodeGrid from "../../components/CodeGrid.astro";
 
 interface Props {
   content: string;
@@ -31,6 +32,12 @@ if (slug === undefined) {
   slug = "index";
 }
 
+console.log(slug);
+const entries = await getCollection("docs");
+
+for (const entry of entries) {
+  console.log(entry.slug);
+}
 const page = await getEntry("docs", slug);
 
 console.log(page);
@@ -39,6 +46,8 @@ const breadcrumbs = [];
 const authors = [];
 
 const { Content, headings } = await page.render();
+
+console.log(headings);
 ---
 
 <Layout title={title} useDocsGrid>
@@ -73,10 +82,12 @@ const { Content, headings } = await page.render();
           blockquote: Blockquote,
           Tip,
           Note,
+          code: CodeSpan,
           table: Table,
           hr: HR,
           Warning,
           ExtensionsList,
+          CodeGrid,
         }}
       />
 
