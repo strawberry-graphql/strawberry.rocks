@@ -21,6 +21,7 @@ export default defineConfig({
       styleOverrides: {
         codeFontSize: "1em",
         borderRadius: "16px",
+        codePaddingBlock: "20px",
         frames: {
           shadowColor: "transparent",
         },

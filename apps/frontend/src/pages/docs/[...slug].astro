@@ -1,5 +1,5 @@
 ---
-import { getEntry, getCollection } from "astro:content";
+import { getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Sidebar from "../../components/Docs/Sidebar.astro";
 import Footer from "../../components/Docs/Footer.astro";
@@ -7,12 +7,8 @@ import Paragraph from "../../components/Pages/Paragraph.astro";
 import List from "../../components/Pages/List.astro";
 import OrderedList from "../../components/Pages/OrderedList.astro";
 import ListItem from "../../components/Pages/ListItem.astro";
-import Heading from "../../components/Pages/Heading.astro";
-import Pre from "../../components/Pages/Pre.astro";
 import CodeSpan from "../../components/Pages/CodeSpan.astro";
-import CodeBox from "../../components/Pages/CodeBox.astro";
 import Link from "../../components/Pages/Link.astro";
-import Image from "../../components/Pages/Image.astro";
 import Blockquote from "../../components/Pages/Blockquote.astro";
 import Warning from "../../components/Pages/Callout/Warning.astro";
 import Tip from "../../components/Pages/Callout/Tip.astro";
@@ -21,6 +17,7 @@ import Table from "../../components/Pages/Table.astro";
 import HR from "../../components/Pages/HR.astro";
 import ExtensionsList from "../../components/ExtensionsList.astro";
 import CodeGrid from "../../components/CodeGrid.astro";
+import TableOfContents from "../../components/Docs/TableOfContents.astro";
 
 interface Props {
   content: string;
@@ -32,22 +29,15 @@ if (slug === undefined) {
   slug = "index";
 }
 
-console.log(slug);
-const entries = await getCollection("docs");
-
-for (const entry of entries) {
-  console.log(entry.slug);
-}
 const page = await getEntry("docs", slug);
 
 console.log(page);
 const title = "TODO";
-const breadcrumbs = [];
 const authors = [];
 
-const { Content, headings } = await page.render();
+let breadcrumbs: Array<{ title: string; url: string }> = [];
 
-console.log(headings);
+const { Content, headings } = await page.render();
 ---
 
 <Layout title={title} useDocsGrid>
@@ -69,7 +59,6 @@ console.log(headings);
       </ul>
     </nav>
     <article class="typography-paragraph" id="docs-content">
-      <!-- <Markdown content={markdownContent} /> -->
       <Content
         components={{
           p: Paragraph,
@@ -78,7 +67,6 @@ console.log(headings);
           li: ListItem,
 
           a: Link,
-          img: Image,
           blockquote: Blockquote,
           Tip,
           Note,
@@ -95,7 +83,7 @@ console.log(headings);
     </article>
 
     <aside class="page-nav">
-      <!-- <TableOfContents toc={tableOfContents} /> -->
+      <TableOfContents toc={headings} />
     </aside>
   </main>
 </Layout>
@@ -104,5 +92,10 @@ console.log(headings);
   #docs-content {
     grid-column: content-start / content-end;
     min-width: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 </style>
