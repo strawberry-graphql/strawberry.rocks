@@ -18,6 +18,8 @@ import HR from "../../components/Pages/HR.astro";
 import ExtensionsList from "../../components/ExtensionsList.astro";
 import CodeGrid from "../../components/CodeGrid.astro";
 import TableOfContents from "../../components/Docs/TableOfContents.astro";
+import { getTree } from "../../utils/get-tree";
+import { fetchPageContributors } from "../../utils/fetch-page-contributors";
 
 interface Props {
   content: string;
@@ -31,11 +33,32 @@ if (slug === undefined) {
 
 const page = await getEntry("docs", slug);
 
-console.log(page);
-const title = "TODO";
-const authors = [];
+const readme = await getEntry("docs", "readme");
+
+const docsTree = getTree(readme.body, "/docs/");
 
 let breadcrumbs: Array<{ title: string; url: string }> = [];
+
+const filename = "docs/" + page?.id.replace("mdx", "md");
+
+// TODO: maybe support multiple levels :)
+for (const [sectionName, section] of Object.entries(docsTree)) {
+  const source = filename.replace(/^docs\//, "./");
+
+  // @ts-ignore
+  if (section.links && section.links.some((link) => link.source === source)) {
+    breadcrumbs = [
+      {
+        title: sectionName,
+        url: "",
+      },
+    ];
+  }
+}
+
+const contributors = await fetchPageContributors({ filename });
+
+const title = page?.data.title;
 
 const { Content, headings } = await page.render();
 ---
@@ -79,7 +102,7 @@ const { Content, headings } = await page.render();
         }}
       />
 
-      <Footer authors={authors} />
+      <Footer authors={contributors} />
     </article>
 
     <aside class="page-nav">

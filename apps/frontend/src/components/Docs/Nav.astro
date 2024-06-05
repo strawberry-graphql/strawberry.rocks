@@ -1,16 +1,16 @@
 ---
-import { fetchDocPage } from "../../utils/fetch-doc-page";
-import { getTree } from "../../utils/get-tree";
+import { getEntry } from "astro:content";
 import NavLink from "./NavLink.astro";
 import VerticalArrow from "../Icons/VerticalArrow.astro";
-
-const { content } = await fetchDocPage({ filename: "docs/README.md" });
+import { getTree } from "../../utils/get-tree";
 
 const { number } = Astro.params;
 
+const readme = await getEntry("docs", "readme");
+
 const prefix = number ? `/docs/pr/${number}/` : "/docs/";
 
-const tree = getTree(content, prefix);
+const tree = getTree(readme.body, prefix);
 ---
 
 <nav>
