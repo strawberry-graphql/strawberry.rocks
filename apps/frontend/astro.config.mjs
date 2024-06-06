@@ -2,36 +2,36 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import astroMetaTags from "astro-meta-tags";
 import vercel from "@astrojs/vercel/serverless";
+import mdx from "@astrojs/mdx";
+import remarkComment from "remark-comment";
 
-import sentry from "@sentry/astro";
-import { captureConsoleIntegration } from "@sentry/integrations";
+import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
   trailingSlash: "never",
-  output: "server",
+  output: "hybrid",
   site: "https://strawberry.rocks",
   integrations: [
     sitemap(),
     astroMetaTags(),
-    sentry({
-      integrations: [captureConsoleIntegration()],
-      replaysSessionSampleRate: 0.1,
-      replaysOnErrorSampleRate: 1.0,
-
-      dsn: "https://0018fa3f24b795d1bdf9d79f014db518@o4504582464208896.ingest.us.sentry.io/4506706724388864",
-      sourceMapsUploadOptions: {
-        project: "strawberryrocks",
-        authToken: process.env.SENTRY_AUTH_TOKEN,
+    expressiveCode({
+      themes: ["dark-plus"],
+      useStyleReset: false,
+      styleOverrides: {
+        codeFontSize: "1em",
+        borderRadius: "16px",
+        codePaddingBlock: "20px",
+        frames: {
+          shadowColor: "transparent",
+        },
       },
+    }),
+    mdx({
+      remarkPlugins: [remarkComment],
     }),
   ],
   adapter: vercel({
-    isr: {
-      // caches all pages on first request and saves for 10 minutes
-      expiration: 60 * 60 * 10,
-      exclude: ["/docs/pr"],
-    },
     includeFiles: [
       "./social-cards/version-background.png",
       "./social-cards/background.png",
@@ -40,11 +40,11 @@ export default defineConfig({
       "./public/fonts/JetBrainsMono-Regular.ttf",
     ],
   }),
-  vite: {
-    ssr: {
+  te: {
+    r: {
       external: ["@resvg/resvg-js"],
     },
-    optimizeDeps: {
+    timizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
   },

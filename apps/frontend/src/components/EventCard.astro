@@ -15,7 +15,7 @@ const { date, title, event, speakers, link } = Astro.props.event.data;
 
 <div class="card">
   <header>
-    <h1 class="typography-heading-4">
+    <h1>
       <a href={link} target="_blank" rel="noreferrer">{title}</a>
     </h1>
     <Image src={event.image} alt={event.name} />
@@ -56,6 +56,7 @@ const { date, title, event, speakers, link } = Astro.props.event.data;
 
       > h1 {
         margin: 0 auto 0 0;
+        font-size: 24px;
       }
     }
   }

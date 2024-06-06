@@ -1,0 +1,23 @@
+<div class="code-container">
+  <slot />
+</div>
+
+<style>
+  .code-container {
+    display: grid;
+    grid-template-columns: [full-start] 50% 50% [full-end];
+    gap: 16px;
+    container-type: inline-size;
+  }
+
+  .code-container > :global(*) {
+    grid-column: full;
+  }
+
+  @container (min-width: 700px) {
+    .code-container > :global(*) {
+      grid-column: unset;
+      flex-grow: 0;
+    }
+  }
+</style>

@@ -10,8 +10,11 @@
   --color-g-900: #1f1f1f;
   --color-g-800: #28292c;
   --color-g-700: #515254;
+  --color-g-600: #6f7073;
   --color-g-500: #8b8b8d;
   --color-g-400: #c5c5c6;
+  --color-g-300: #dcdcdc;
+  --color-g-200: #e5e5e5;
   --color-g-100: #e2e2e3;
   --color-g-50: #f0f1f1;
   --color-white: #fff;
@@ -65,8 +68,10 @@
   color: var(--color-white);
 }
 
-html {
+html,
+pre {
   scrollbar-color: var(--color-strawberry) transparent;
+  scrollbar-width: thin !important;
 }
 
 button {

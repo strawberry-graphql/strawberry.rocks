@@ -5,8 +5,9 @@ interface Props {
 }
 
 let { src, alt } = Astro.props;
+console.log(src);
 
-if (src.startsWith(".")) {
+if (typeof src === "string" && src.startsWith(".")) {
   // ../something
   // ./something
 

@@ -1,0 +1,141 @@
+---
+import { getEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Sidebar from "../../components/Docs/Sidebar.astro";
+import Footer from "../../components/Docs/Footer.astro";
+import Paragraph from "../../components/Pages/Paragraph.astro";
+import List from "../../components/Pages/List.astro";
+import OrderedList from "../../components/Pages/OrderedList.astro";
+import ListItem from "../../components/Pages/ListItem.astro";
+import CodeSpan from "../../components/Pages/CodeSpan.astro";
+import Link from "../../components/Pages/Link.astro";
+import Blockquote from "../../components/Pages/Blockquote.astro";
+import Warning from "../../components/Pages/Callout/Warning.astro";
+import Tip from "../../components/Pages/Callout/Tip.astro";
+import Note from "../../components/Pages/Callout/Note.astro";
+import Table from "../../components/Pages/Table.astro";
+import HR from "../../components/Pages/HR.astro";
+import ExtensionsList from "../../components/ExtensionsList.astro";
+import CodeGrid from "../../components/CodeGrid.astro";
+import TableOfContents from "../../components/Docs/TableOfContents.astro";
+import { getTree } from "../../utils/get-tree";
+import { fetchPageContributors } from "../../utils/fetch-page-contributors";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const docs = await getCollection("docs");
+
+  return [
+    {
+      params: { slug: undefined },
+    },
+    ...docs.map((doc) => ({ params: { slug: doc.slug } })),
+  ];
+}
+
+interface Props {
+  content: string;
+}
+
+let { slug } = Astro.params;
+
+if (slug === undefined) {
+  slug = "index";
+}
+
+const page = await getEntry("docs", slug);
+
+if (!page) {
+  throw new Error("something went wrong: " + slug);
+}
+
+const readme = await getEntry("docs", "readme");
+
+const docsTree = getTree(readme.body, "/docs/");
+
+let breadcrumbs: Array<{ title: string; url: string }> = [];
+
+const filename = "docs/" + page?.id.replace("mdx", "md");
+
+// TODO: maybe support multiple levels :)
+for (const [sectionName, section] of Object.entries(docsTree)) {
+  const source = filename.replace(/^docs\//, "./");
+
+  // @ts-ignore
+  if (section.links && section.links.some((link) => link.source === source)) {
+    breadcrumbs = [
+      {
+        title: sectionName,
+        url: "",
+      },
+    ];
+  }
+}
+
+const contributors = await fetchPageContributors({ filename });
+
+const title = page.data.title;
+
+const { Content, headings } = await page.render();
+---
+
+<Layout title={title} useDocsGrid>
+  <main class="docs-grid">
+    <Sidebar />
+
+    <nav class="breadcrumbs sr-only">
+      <ul>
+        {
+          breadcrumbs.map((breadcrumb, index) =>
+            breadcrumb.url ? (
+              <li id={index === 0 ? "main-category" : ""}>
+                <a href={breadcrumb.url}>{breadcrumb.title}</a>
+              </li>
+            ) : null,
+          )
+        }
+        <li>{title}</li>
+      </ul>
+    </nav>
+    <article class="typography-paragraph" id="docs-content">
+      <Content
+        components={{
+          p: Paragraph,
+          ul: List,
+          ol: OrderedList,
+          li: ListItem,
+
+          a: Link,
+          blockquote: Blockquote,
+          Tip,
+          Note,
+          code: CodeSpan,
+          table: Table,
+          hr: HR,
+          Warning,
+          ExtensionsList,
+          CodeGrid,
+        }}
+      />
+
+      <Footer authors={contributors} />
+    </article>
+
+    <aside class="page-nav">
+      <TableOfContents toc={headings} />
+    </aside>
+  </main>
+</Layout>
+
+<style>
+  #docs-content {
+    grid-column: content-start / content-end;
+    min-width: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>

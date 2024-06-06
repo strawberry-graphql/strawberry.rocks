@@ -25,22 +25,30 @@ if (href?.includes(".md")) {
     font-weight: bold;
     color: var(--strawberry);
     transition: all 0.2s ease-in-out;
-    background: linear-gradient(
-      to right,
-      var(--color-magenta),
-      var(--color-orange)
-    );
-    background-size: 100% 2px;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    padding: 0 4px 2px;
-    border-radius: 4px;
-    margin-left: -4px;
-    margin-right: -4px;
 
-    &:hover {
-      color: var(--color-white);
-      background-size: 100% 100%;
+    &:not(:has(code)) {
+      background: linear-gradient(
+        to right,
+        var(--color-magenta),
+        var(--color-orange)
+      );
+      background-size: 100% 2px;
+      background-position: 0 100%;
+      background-repeat: no-repeat;
+      padding: 0 4px 2px;
+      border-radius: 4px;
+      margin-left: -4px;
+      margin-right: -4px;
+
+      &:hover {
+        color: var(--color-white);
+        background-size: 100% 100%;
+      }
+    }
+
+    &:hover :global(code) {
+      background: transparent;
+      border-color: transparent;
     }
 
     &[data-footnote-ref] {

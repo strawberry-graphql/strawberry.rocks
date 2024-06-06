@@ -5,7 +5,7 @@ import { html } from "satori-html";
 export const getReleaseCard = async (version: string) => {
   const bgPath = path.join(
     process.cwd(),
-    "apps/frontend/social-cards/version-background.png"
+    "social-cards/version-background.png"
   );
 
   const bgImage = await fs.readFile(bgPath, {

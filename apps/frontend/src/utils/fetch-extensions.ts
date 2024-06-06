@@ -78,8 +78,6 @@ export const fetchExtensions = async ({
   }
 
   if (!data || !data.repository.object) {
-    console.log("data", data);
-
     throw new Error(
       `No data found for ${expression}, data: ${JSON.stringify(data)}`
     );

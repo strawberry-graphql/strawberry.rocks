@@ -1,8 +1,9 @@
 ---
 interface Props {
   toc: {
+    depth: number;
     slug: string;
-    content: string;
+    text: string;
   }[];
 }
 
@@ -14,7 +15,7 @@ const { toc } = Astro.props;
     {
       toc.map((item) => (
         <li>
-          <a href={`#${item.slug}`}>{item.content}</a>
+          <a href={`#${item.slug}`}>{item.text}</a>
         </li>
       ))
     }

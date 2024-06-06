@@ -1,0 +1,38 @@
+name: Fetch and Commit Docs
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  fetch-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Fetch docs
+        run: |
+          cd apps/frontend
+          pnpm fetch-docs
+
+      - name: Check for changes
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Update docs"
+            git push
+          else
+            echo "No changes to commit"
+          fi

@@ -18,7 +18,7 @@ const pathname = new URL(Astro.request.url).pathname;
 const isActive = pathname.replace(/\//g, "") === href.replace(/\//g, "");
 ---
 
-<a href={href} class:list={["typography-paragraph", { active: isActive }]}
+<a href={href} class:list={[{ active: isActive }]}
   >{text}{
     isExperimental && (
       <span class="experimental">
@@ -33,13 +33,22 @@ const isActive = pathname.replace(/\//g, "") === href.replace(/\//g, "");
     font-weight: 500;
     letter-spacing: 0.025em;
     display: block;
-    color: var(--color-g-500);
+    color: var(--color-g-600);
+    font-size: 1.05em;
+    padding: 4px 0;
+    padding-left: 8px;
+  }
+
+  :global(html.dark) a {
+    color: var(--color-g-400);
   }
 
   a:hover,
   a.active,
   :global(html.dark) a:hover {
     color: var(--color-strawberry);
+    border-left: 1px solid var(--color-strawberry);
+    margin-left: -1px;
   }
 
   .experimental {

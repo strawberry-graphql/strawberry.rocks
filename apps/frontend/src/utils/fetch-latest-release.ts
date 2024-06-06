@@ -7,6 +7,10 @@ export const fetchLatestRelease = async (): Promise<{
   href: string;
   name: string;
 }> => {
+  if (process.env.LOCAL === "true") {
+    return { href: "#", name: "999" };
+  }
+
   const response = await githubFetch(
     `https://api.github.com/repos/${OWNER}/${REPO}/releases/latest`,
     { method: "GET" }

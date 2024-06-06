@@ -1,16 +1,16 @@
 ---
-import { fetchDocPage } from "../../utils/fetch-doc-page";
-import { getTree } from "../../utils/get-tree";
+import { getEntry } from "astro:content";
 import NavLink from "./NavLink.astro";
 import VerticalArrow from "../Icons/VerticalArrow.astro";
-
-const { content } = await fetchDocPage({ filename: "docs/README.md" });
+import { getTree } from "../../utils/get-tree";
 
 const { number } = Astro.params;
 
+const readme = await getEntry("docs", "readme");
+
 const prefix = number ? `/docs/pr/${number}/` : "/docs/";
 
-const tree = getTree(content, prefix);
+const tree = getTree(readme.body, prefix);
 ---
 
 <nav>
@@ -45,20 +45,22 @@ const tree = getTree(content, prefix);
 <style>
   ul {
     display: flex;
-    gap: 8px;
+    gap: 16px;
     flex-direction: column;
 
     @media (min-width: 768px) {
       max-width: 300px;
     }
-
-    ul li {
-      margin-left: 8px;
-    }
   }
 
   nav ul ul {
-    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-left: 1px solid var(--color-g-200);
+    gap: 12px;
+  }
+
+  :global(html.dark) nav ul ul {
+    border-color: var(--color-g-500);
   }
 
   details summary {
