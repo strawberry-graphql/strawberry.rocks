@@ -26,7 +26,12 @@ export const prerender = true;
 export async function getStaticPaths() {
   const docs = await getCollection("docs");
 
-  return docs.map((doc) => ({ params: { slug: doc.slug } }));
+  return [
+    {
+      params: { slug: undefined },
+    },
+    ...docs.map((doc) => ({ params: { slug: doc.slug } })),
+  ];
 }
 
 interface Props {
