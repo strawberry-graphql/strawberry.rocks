@@ -32,16 +32,13 @@ export async function GET(context: APIContext) {
   }
 
   const Satoshi = await fs.readFile(
-    path.join(process.cwd(), "apps/frontend/public/fonts/Satoshi-Bold.otf")
+    path.join(process.cwd(), "public/fonts/Satoshi-Bold.otf")
   );
   const Ranade = await fs.readFile(
-    path.join(process.cwd(), "apps/frontend/public/fonts/Ranade-Bold.otf")
+    path.join(process.cwd(), "public/fonts/Ranade-Bold.otf")
   );
   const JetBrains = await fs.readFile(
-    path.join(
-      process.cwd(),
-      "apps/frontend/public/fonts/JetBrainsMono-Regular.ttf"
-    )
+    path.join(process.cwd(), "public/fonts/JetBrainsMono-Regular.ttf")
   );
 
   // @ts-ignore
