@@ -34,9 +34,13 @@ const isActive = pathname.replace(/\//g, "") === href.replace(/\//g, "");
     letter-spacing: 0.025em;
     display: block;
     color: var(--color-g-600);
-    font-size: 1em;
+    font-size: 1.05em;
     padding: 4px 0;
     padding-left: 8px;
+  }
+
+  :global(html.dark) a {
+    color: var(--color-g-400);
   }
 
   a:hover,

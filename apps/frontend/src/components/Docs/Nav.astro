@@ -59,6 +59,10 @@ const tree = getTree(readme.body, prefix);
     gap: 12px;
   }
 
+  :global(html.dark) nav ul ul {
+    border-color: var(--color-g-500);
+  }
+
   details summary {
     list-style: none;
     margin-bottom: 8px;
