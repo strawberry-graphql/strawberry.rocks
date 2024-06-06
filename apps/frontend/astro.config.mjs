@@ -10,7 +10,7 @@ import expressiveCode from "astro-expressive-code";
 // https://astro.build/config
 export default defineConfig({
   trailingSlash: "never",
-  output: "server",
+  output: "hybrid",
   site: "https://strawberry.rocks",
   integrations: [
     sitemap(),
@@ -31,7 +31,7 @@ export default defineConfig({
       remarkPlugins: [remarkComment],
     }),
   ],
-  apter: vercel({
+  adapter: vercel({
     includeFiles: [
       "./social-cards/version-background.png",
       "./social-cards/background.png",

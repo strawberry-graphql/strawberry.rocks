@@ -28,7 +28,7 @@ function clone_docs_from_repo() {
 rm -rf src/content/docs
 
 clone_docs_from_repo "https://github.com/strawberry-graphql/strawberry" "docs" "feature/new-docs"
-clone_docs_from_repo "https://github.com/strawberry-graphql/strawberry-django" "docs/django" "feature/new-docs"
+# clone_docs_from_repo "https://github.com/strawberry-graphql/strawberry-django" "docs/django" "feature/new-docs"
 
 # rename all .md files in the docs folder to have a .mdx extension
 

@@ -70,7 +70,7 @@ for (const [sectionName, section] of Object.entries(docsTree)) {
 
 const contributors = await fetchPageContributors({ filename });
 
-const title = page?.data.title;
+const title = page.data.title;
 
 const { Content, headings } = await page.render();
 ---
