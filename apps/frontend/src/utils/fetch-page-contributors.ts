@@ -40,6 +40,10 @@ export const fetchPageContributors = async ({
   prNumber?: string;
   repo?: string;
 }) => {
+  if (process.env.LOCAL === "true") {
+    return [];
+  }
+
   const [owner, name] = repo.split("/");
 
   const response = await githubFetch("https://api.github.com/graphql", {

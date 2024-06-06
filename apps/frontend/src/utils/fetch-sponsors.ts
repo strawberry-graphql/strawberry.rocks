@@ -103,6 +103,10 @@ const getGithubSponsorsInfo = async (sponsors: any) => {
 };
 
 export const fetchSponsors = async () => {
+  if (process.env.LOCAL === "true") {
+    return [];
+  }
+
   const response = await githubFetch("https://api.github.com/graphql", {
     method: "POST",
     body: JSON.stringify({

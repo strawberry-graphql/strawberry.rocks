@@ -5,7 +5,7 @@
 <style>
   .code-container {
     display: grid;
-    grid-template-columns: [full-start] 1fr 1fr [full-end];
+    grid-template-columns: [full-start] 50% 50% [full-end];
     gap: 16px;
     container-type: inline-size;
   }
@@ -17,6 +17,7 @@
   @container (min-width: 700px) {
     .code-container > :global(*) {
       grid-column: unset;
+      flex-grow: 0;
     }
   }
 </style>

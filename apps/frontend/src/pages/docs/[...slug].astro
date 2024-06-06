@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Sidebar from "../../components/Docs/Sidebar.astro";
 import Footer from "../../components/Docs/Footer.astro";
@@ -21,6 +21,14 @@ import TableOfContents from "../../components/Docs/TableOfContents.astro";
 import { getTree } from "../../utils/get-tree";
 import { fetchPageContributors } from "../../utils/fetch-page-contributors";
 
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const docs = await getCollection("docs");
+
+  return docs.map((doc) => ({ params: { slug: doc.slug } }));
+}
+
 interface Props {
   content: string;
 }
@@ -32,6 +40,10 @@ if (slug === undefined) {
 }
 
 const page = await getEntry("docs", slug);
+
+if (!page) {
+  throw new Error("something went wrong: " + slug);
+}
 
 const readme = await getEntry("docs", "readme");
 
