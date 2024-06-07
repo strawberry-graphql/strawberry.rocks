@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
-    "@astrojs/mdx": "^3.0.1",
+    "@astrojs/mdx": "^3.1.0",
     "@astrojs/sitemap": "^3.1.4",
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vercel": "^7.6.0",
@@ -20,7 +20,7 @@
     "@docsearch/js": "^3.6.0",
     "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@resvg/resvg-js": "^2.6.2",
-    "astro": "^4.8.2",
+    "astro": "^4.10.0",
     "astro-expressive-code": "^0.35.3",
     "astro-meta-tags": "^0.3.0",
     "astro-og-canvas": "^0.5.0",
@@ -47,9 +47,9 @@
     "satori": "^0.10.13",
     "satori-html": "^0.3.2",
     "sharp": "^0.33.3",
-    "shiki": "^0.14.2",
+    "shiki": "^1.6.2",
     "stylis": "^4.3.2",
-    "tailwindcss": "^3.4.3",
+    "tailwindcss": "^3.4.4",
     "typescript": "5.4.5",
     "ultrahtml": "^1.5.3",
     "unified": "11.0.4",
@@ -59,7 +59,7 @@
     "@types/mailchimp__mailchimp_marketing": "^3.0.20",
     "@types/parse-link-header": "^2.0.3",
     "@types/stylis": "^4.2.6",
-    "prettier": "3.3.0",
+    "prettier": "3.3.1",
     "prettier-plugin-astro": "^0.14.0"
   }
 }
