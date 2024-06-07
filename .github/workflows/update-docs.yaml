@@ -21,8 +21,8 @@ jobs:
         run: npm install -g pnpm
 
       - name: Fetch docs
+        working-directory: apps/frontend
         run: |
-          cd apps/frontend
           pnpm fetch-docs
 
       - name: Check for changes
