@@ -1,4 +1,4 @@
-function clone_docs_from_repo() {
+clone_docs_from_repo() {
     working_dir=$(pwd)
 
     repo=$1
