@@ -34,3 +34,4 @@ repos:
         additional_dependencies:
           - "prettier@2.8.8"
           - "@trivago/prettier-plugin-sort-imports@4.1.0"
+        exclude: pnpm-lock.yaml
