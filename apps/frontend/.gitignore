@@ -21,3 +21,5 @@ pnpm-debug.log*
 .DS_Store
 .vercel
 .env*.local
+
+__pycache__/

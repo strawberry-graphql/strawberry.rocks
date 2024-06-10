@@ -1,0 +1,54 @@
+---
+import Markdown from "../Markdown.astro";
+import Table from "../Pages/Table.astro";
+
+export interface Props {
+  fun: {
+    name: string;
+  };
+}
+
+const { fun } = Astro.props;
+
+const parsedParameters = fun.docstring.parsed.find(
+  (item) => item.kind === "parameters",
+);
+
+const parametersDescriptions = parsedParameters
+  ? parsedParameters.value.reduce((acc, item) => {
+      acc[item.name] = item.description;
+      return acc;
+    }, {})
+  : {};
+
+console.log(parametersDescriptions);
+---
+
+<div>
+  <h1>{fun.name}</h1>
+
+  <Markdown content={fun.docstring.value} />
+
+  <Table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Default</th>
+        <th>Kind</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        fun.parameters.map((param) => (
+          <tr>
+            <td>{param.name}</td>
+            <td>{param.default}</td>
+            <td>{param.kind}</td>
+            <td>{parametersDescriptions[param.name]}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </Table>
+</div>

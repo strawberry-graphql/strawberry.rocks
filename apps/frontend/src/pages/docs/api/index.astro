@@ -1,0 +1,46 @@
+---
+import { promises as fs } from "fs";
+import Layout from "../../../layouts/Layout.astro";
+
+const data = JSON.parse(
+  await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
+);
+
+// remove all private members
+data.members = data.members.filter((member) => !member.name.startsWith("_"));
+
+const membersByKind = data.members.reduce((acc, member) => {
+  if (!acc[member.kind]) {
+    acc[member.kind] = [];
+  }
+
+  acc[member.kind].push(member);
+
+  return acc;
+}, {});
+---
+
+<Layout title="API Docs">
+  <main class="docs-grid">
+    <aside>Nav</aside>
+    <article>
+      <h1>{data.name}</h1>
+      <h2>Members</h2>
+
+      {
+        Object.entries(membersByKind).map(([kind, members]) => (
+          <>
+            <h3>{kind}</h3>
+            <ul>
+              {members.map((member) => (
+                <li>
+                  <code>strawberry.{member.name}</code>
+                </li>
+              ))}
+            </ul>
+          </>
+        ))
+      }
+    </article>
+  </main>
+</Layout>

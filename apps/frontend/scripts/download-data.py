@@ -1,6 +1,8 @@
 # /// script
 # dependencies = [
+#    "pdbpp",
 #    "griffe",
+#    "griffe-typingdoc",
 # ]
 # requires-python = ">=3.11"
 # ///
@@ -29,12 +31,14 @@ def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
 
         import griffe
 
-        data = griffe.load(package_name)
+        extensions = griffe.load_extensions(["griffe_typingdoc"])
+
+        data = griffe.load(package_name, extensions=extensions)
 
         os.makedirs(destination, exist_ok=True)
 
         with open(os.path.join(destination, f"{package_name}.json"), "w") as f:
-            f.write(data.as_json(indent=2))
+            f.write(data.as_json(indent=2, full=True))
 
 
 def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> None:
@@ -85,4 +89,8 @@ clone_docs_from_repo("https://github.com/strawberry-graphql/strawberry", "docs")
 # clone_docs_from_repo("https://github.com/strawberry-graphql/strawberry-django", "docs/django", "feature/new-docs")
 
 
-fetch_api_docs("https://github.com/strawberry-graphql/strawberry", "strawberry")
+fetch_api_docs(
+    "https://github.com/strawberry-graphql/strawberry",
+    "strawberry",
+    "feature/docstring",
+)
