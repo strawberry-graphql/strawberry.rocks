@@ -1,5 +1,6 @@
 # /// script
 # dependencies = [
+#    "griffe",
 # ]
 # requires-python = ">=3.11"
 # ///
@@ -10,7 +11,33 @@ import subprocess
 import tempfile
 
 
-def clone_docs_from_repo(repo, destination_subpath, branch="main"):
+def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
+    working_dir = os.getcwd()
+    destination = os.path.join(working_dir, "src", "content", "api")
+
+    with tempfile.TemporaryDirectory() as tmpdirname:
+        os.chdir(tmpdirname)
+
+        subprocess.run(
+            ["git", "clone", "-b", branch, repo],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+
+        repo_name = os.path.basename(repo)
+        os.chdir(repo_name)
+
+        import griffe
+
+        data = griffe.load(package_name)
+
+        os.makedirs(destination, exist_ok=True)
+
+        with open(os.path.join(destination, f"{package_name}.json"), "w") as f:
+            f.write(data.as_json(indent=2))
+
+
+def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> None:
     working_dir = os.getcwd()
     destination = os.path.join(working_dir, "src", "content", destination_subpath)
 
@@ -57,10 +84,5 @@ shutil.rmtree("src/content/docs", ignore_errors=True)
 clone_docs_from_repo("https://github.com/strawberry-graphql/strawberry", "docs")
 # clone_docs_from_repo("https://github.com/strawberry-graphql/strawberry-django", "docs/django", "feature/new-docs")
 
-# Rename all .md files to .mdx in the docs folder
-for root, _, files in os.walk("src/content/docs"):
-    for file in files:
-        if file.endswith(".md"):
-            file_path = os.path.join(root, file)
-            new_file_path = os.path.splitext(file_path)[0] + ".mdx"
-            os.rename(file_path, new_file_path)
+
+fetch_api_docs("https://github.com/strawberry-graphql/strawberry", "strawberry")

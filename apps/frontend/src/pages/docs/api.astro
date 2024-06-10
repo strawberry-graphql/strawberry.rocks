@@ -1,0 +1,30 @@
+---
+import { promises as fs } from "fs";
+import Layout from "../../layouts/Layout.astro";
+
+const data = JSON.parse(
+  await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
+);
+
+console.log(data);
+---
+
+<Layout title="API Docs">
+  <main class="docs-grid">
+    <aside>Nav</aside>
+    <article>
+      <h1>{data.name}</h1>
+      <h2>Members</h2>
+
+      <ul>
+        {
+          data.members.map((member) => (
+            <li>
+              {member.name} ({member.kind})
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+  </main>
+</Layout>
