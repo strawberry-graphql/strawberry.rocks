@@ -1,6 +1,4 @@
 # /// script
-# dependencies = [
-# ]
 # requires-python = ">=3.11"
 # ///
 
