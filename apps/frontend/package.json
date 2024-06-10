@@ -8,7 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fetch-docs": "sh fetch-docs.sh"
+    "fetch-data": "pipx run scripts/download-data.py"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
