@@ -343,7 +343,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/auto.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/auto.py"
     },
     {
       "kind": "alias",
@@ -1059,7 +1059,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/directive.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/directive.py"
     },
     {
       "kind": "alias",
@@ -2206,7 +2206,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/enum.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/enum.py"
     },
     {
       "kind": "alias",
@@ -4268,7 +4268,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/field.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/field.py"
     },
     {
       "kind": "alias",
@@ -4346,7 +4346,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/mutation.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/mutation.py"
     },
     {
       "kind": "alias",
@@ -5414,7 +5414,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/type.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/type.py"
     },
     {
       "kind": "alias",
@@ -6151,7 +6151,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema_directive.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema_directive.py"
     },
     {
       "kind": "alias",
@@ -7050,7 +7050,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/union.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/union.py"
     },
     {
       "kind": "alias",
@@ -7382,7 +7382,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/unset.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/unset.py"
     },
     {
       "kind": "module",
@@ -8934,7 +8934,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/annotation.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/annotation.py"
     },
     {
       "kind": "module",
@@ -9719,7 +9719,7 @@
           "decorators": []
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/permission.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/permission.py"
     },
     {
       "kind": "module",
@@ -9784,7 +9784,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/resolvers.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/resolvers.py"
     },
     {
       "kind": "module",
@@ -11066,7 +11066,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/arguments.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/arguments.py"
     },
     {
       "kind": "module",
@@ -11627,7 +11627,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/lazy_type.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/lazy_type.py"
     },
     {
       "kind": "module",
@@ -11708,7 +11708,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/parent.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/parent.py"
     },
     {
       "kind": "module",
@@ -11801,7 +11801,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema_directives.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema_directives.py"
     },
     {
       "kind": "module",
@@ -12941,7 +12941,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/custom_scalar.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/custom_scalar.py"
     },
     {
       "kind": "module",
@@ -13904,7 +13904,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/object_type.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/object_type.py"
     },
     {
       "kind": "module",
@@ -15739,7 +15739,7 @@
           "returns": "None"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/dataloader.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/dataloader.py"
     },
     {
       "kind": "module",
@@ -16516,7 +16516,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/scalars.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/scalars.py"
     },
     {
       "kind": "module",
@@ -16531,7 +16531,7 @@
           "endlineno": 1
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/__main__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/__main__.py"
     },
     {
       "kind": "module",
@@ -16643,7 +16643,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/private.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/private.py"
     },
     {
       "kind": "module",
@@ -17976,10 +17976,10 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/flask/views.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/flask/views.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/flask/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/flask/__init__.py"
     },
     {
       "kind": "module",
@@ -19054,7 +19054,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/aiohttp/views.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/aiohttp/views.py"
         },
         {
           "kind": "module",
@@ -19409,10 +19409,10 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/aiohttp/test/client.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/aiohttp/test/client.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/aiohttp/test/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/aiohttp/test/__init__.py"
         },
         {
           "kind": "module",
@@ -19865,7 +19865,7 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/aiohttp/handlers/graphql_ws_handler.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/aiohttp/handlers/graphql_ws_handler.py"
             },
             {
               "kind": "module",
@@ -20301,13 +20301,13 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/aiohttp/handlers/graphql_transport_ws_handler.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/aiohttp/handlers/graphql_transport_ws_handler.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/aiohttp/handlers/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/aiohttp/handlers/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/aiohttp/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/aiohttp/__init__.py"
     },
     {
       "kind": "module",
@@ -21822,10 +21822,10 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/asgi/test/client.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/asgi/test/client.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/asgi/test/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/asgi/test/__init__.py"
         },
         {
           "kind": "module",
@@ -22224,7 +22224,7 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/asgi/handlers/graphql_ws_handler.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/asgi/handlers/graphql_ws_handler.py"
             },
             {
               "kind": "module",
@@ -22556,13 +22556,13 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/asgi/handlers/graphql_transport_ws_handler.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/asgi/handlers/graphql_transport_ws_handler.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/asgi/handlers/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/asgi/handlers/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/asgi/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/asgi/__init__.py"
     },
     {
       "kind": "module",
@@ -23015,7 +23015,7 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/experimental/pydantic/error_type.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/experimental/pydantic/error_type.py"
             },
             {
               "kind": "alias",
@@ -23247,7 +23247,7 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/experimental/pydantic/fields.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/experimental/pydantic/fields.py"
             },
             {
               "kind": "module",
@@ -23470,7 +23470,7 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/experimental/pydantic/conversion.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/experimental/pydantic/conversion.py"
             },
             {
               "kind": "module",
@@ -23767,7 +23767,7 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/experimental/pydantic/conversion_types.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/experimental/pydantic/conversion_types.py"
             },
             {
               "kind": "module",
@@ -23853,107 +23853,107 @@
                 },
                 {
                   "kind": "alias",
+                  "name": "BaseModel",
+                  "target_path": "pydantic.BaseModel",
+                  "lineno": 16,
+                  "endlineno": 16
+                },
+                {
+                  "kind": "alias",
                   "name": "CompatModelField",
                   "target_path": "strawberry.experimental.pydantic._compat.CompatModelField",
-                  "lineno": 16,
-                  "endlineno": 20
+                  "lineno": 18,
+                  "endlineno": 22
                 },
                 {
                   "kind": "alias",
                   "name": "PydanticCompat",
                   "target_path": "strawberry.experimental.pydantic._compat.PydanticCompat",
-                  "lineno": 16,
-                  "endlineno": 20
+                  "lineno": 18,
+                  "endlineno": 22
                 },
                 {
                   "kind": "alias",
                   "name": "smart_deepcopy",
                   "target_path": "strawberry.experimental.pydantic._compat.smart_deepcopy",
-                  "lineno": 16,
-                  "endlineno": 20
+                  "lineno": 18,
+                  "endlineno": 22
                 },
                 {
                   "kind": "alias",
                   "name": "AutoFieldsNotInBaseModelError",
                   "target_path": "strawberry.experimental.pydantic.exceptions.AutoFieldsNotInBaseModelError",
-                  "lineno": 21,
-                  "endlineno": 25
+                  "lineno": 23,
+                  "endlineno": 27
                 },
                 {
                   "kind": "alias",
                   "name": "BothDefaultAndDefaultFactoryDefinedError",
                   "target_path": "strawberry.experimental.pydantic.exceptions.BothDefaultAndDefaultFactoryDefinedError",
-                  "lineno": 21,
-                  "endlineno": 25
+                  "lineno": 23,
+                  "endlineno": 27
                 },
                 {
                   "kind": "alias",
                   "name": "UnregisteredTypeException",
                   "target_path": "strawberry.experimental.pydantic.exceptions.UnregisteredTypeException",
-                  "lineno": 21,
-                  "endlineno": 25
+                  "lineno": 23,
+                  "endlineno": 27
                 },
                 {
                   "kind": "alias",
                   "name": "is_private",
                   "target_path": "strawberry.private.is_private",
-                  "lineno": 26,
-                  "endlineno": 26
+                  "lineno": 28,
+                  "endlineno": 28
                 },
                 {
                   "kind": "alias",
                   "name": "UNSET",
                   "target_path": "strawberry.unset.UNSET",
-                  "lineno": 27,
-                  "endlineno": 27
+                  "lineno": 29,
+                  "endlineno": 29
                 },
                 {
                   "kind": "alias",
                   "name": "get_list_annotation",
                   "target_path": "strawberry.utils.typing.get_list_annotation",
-                  "lineno": 28,
-                  "endlineno": 33
+                  "lineno": 30,
+                  "endlineno": 35
                 },
                 {
                   "kind": "alias",
                   "name": "get_optional_annotation",
                   "target_path": "strawberry.utils.typing.get_optional_annotation",
-                  "lineno": 28,
-                  "endlineno": 33
+                  "lineno": 30,
+                  "endlineno": 35
                 },
                 {
                   "kind": "alias",
                   "name": "is_list",
                   "target_path": "strawberry.utils.typing.is_list",
-                  "lineno": 28,
-                  "endlineno": 33
+                  "lineno": 30,
+                  "endlineno": 35
                 },
                 {
                   "kind": "alias",
                   "name": "is_optional",
                   "target_path": "strawberry.utils.typing.is_optional",
-                  "lineno": 28,
-                  "endlineno": 33
-                },
-                {
-                  "kind": "alias",
-                  "name": "BaseModel",
-                  "target_path": "pydantic.BaseModel",
-                  "lineno": 36,
-                  "endlineno": 36
+                  "lineno": 30,
+                  "endlineno": 35
                 },
                 {
                   "kind": "alias",
                   "name": "NoArgAnyCallable",
                   "target_path": "pydantic.typing.NoArgAnyCallable",
-                  "lineno": 37,
-                  "endlineno": 37
+                  "lineno": 38,
+                  "endlineno": 38
                 },
                 {
                   "kind": "function",
                   "name": "normalize_type",
-                  "lineno": 40,
-                  "endlineno": 47,
+                  "lineno": 41,
+                  "endlineno": 48,
                   "labels": [],
                   "members": [],
                   "decorators": [],
@@ -23976,8 +23976,8 @@
                 {
                   "kind": "function",
                   "name": "get_strawberry_type_from_model",
-                  "lineno": 50,
-                  "endlineno": 54,
+                  "lineno": 51,
+                  "endlineno": 55,
                   "labels": [],
                   "members": [],
                   "decorators": [],
@@ -24000,8 +24000,8 @@
                 {
                   "kind": "function",
                   "name": "get_private_fields",
-                  "lineno": 57,
-                  "endlineno": 58,
+                  "lineno": 58,
+                  "endlineno": 59,
                   "labels": [],
                   "members": [],
                   "decorators": [],
@@ -24040,20 +24040,20 @@
                 {
                   "kind": "class",
                   "name": "DataclassCreationFields",
-                  "lineno": 61,
-                  "endlineno": 70,
+                  "lineno": 62,
+                  "endlineno": 71,
                   "docstring": {
                     "value": "Fields required for the fields parameter of make_dataclass",
-                    "lineno": 62,
-                    "endlineno": 62
+                    "lineno": 63,
+                    "endlineno": 63
                   },
                   "labels": [],
                   "members": [
                     {
                       "kind": "attribute",
                       "name": "name",
-                      "lineno": 64,
-                      "endlineno": 64,
+                      "lineno": 65,
+                      "endlineno": 65,
                       "labels": ["instance-attribute"],
                       "members": [],
                       "annotation": {
@@ -24064,8 +24064,8 @@
                     {
                       "kind": "attribute",
                       "name": "field_type",
-                      "lineno": 65,
-                      "endlineno": 65,
+                      "lineno": 66,
+                      "endlineno": 66,
                       "labels": ["instance-attribute"],
                       "members": [],
                       "annotation": {
@@ -24076,8 +24076,8 @@
                     {
                       "kind": "attribute",
                       "name": "field",
-                      "lineno": 66,
-                      "endlineno": 66,
+                      "lineno": 67,
+                      "endlineno": 67,
                       "labels": ["instance-attribute"],
                       "members": [],
                       "annotation": {
@@ -24097,8 +24097,8 @@
                     {
                       "kind": "function",
                       "name": "to_tuple",
-                      "lineno": 68,
-                      "endlineno": 70,
+                      "lineno": 69,
+                      "endlineno": 71,
                       "labels": [],
                       "members": [],
                       "decorators": [],
@@ -24157,12 +24157,12 @@
                 {
                   "kind": "function",
                   "name": "get_default_factory_for_field",
-                  "lineno": 73,
-                  "endlineno": 118,
+                  "lineno": 74,
+                  "endlineno": 125,
                   "docstring": {
                     "value": "Gets the default factory for a pydantic field.\n\nHandles mutable defaults when making the dataclass by\nusing pydantic's smart_deepcopy\n\nReturns optionally a NoArgAnyCallable representing a default_factory parameter",
-                    "lineno": 76,
-                    "endlineno": 83
+                    "lineno": 78,
+                    "endlineno": 85
                   },
                   "labels": [],
                   "members": [],
@@ -24172,6 +24172,15 @@
                       "name": "field",
                       "annotation": {
                         "name": "CompatModelField",
+                        "cls": "ExprName"
+                      },
+                      "kind": "positional or keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "compat",
+                      "annotation": {
+                        "name": "PydanticCompat",
                         "cls": "ExprName"
                       },
                       "kind": "positional or keyword",
@@ -24212,8 +24221,8 @@
                 {
                   "kind": "function",
                   "name": "ensure_all_auto_fields_in_pydantic",
-                  "lineno": 121,
-                  "endlineno": 133,
+                  "lineno": 128,
+                  "endlineno": 140,
                   "labels": [],
                   "members": [],
                   "decorators": [],
@@ -24263,7 +24272,7 @@
                   "returns": "None"
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/experimental/pydantic/utils.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/experimental/pydantic/utils.py"
             },
             {
               "kind": "module",
@@ -24562,7 +24571,7 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/experimental/pydantic/exceptions.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/experimental/pydantic/exceptions.py"
             },
             {
               "kind": "module",
@@ -25463,7 +25472,7 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/experimental/pydantic/object_type.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/experimental/pydantic/object_type.py"
             },
             {
               "kind": "module",
@@ -26323,7 +26332,7 @@
                   "kind": "class",
                   "name": "PydanticV2Compat",
                   "lineno": 120,
-                  "endlineno": 163,
+                  "endlineno": 166,
                   "labels": [],
                   "members": [
                     {
@@ -26457,6 +26466,53 @@
                         },
                         "cls": "ExprSubscript"
                       }
+                    },
+                    {
+                      "kind": "function",
+                      "name": "model_dump",
+                      "lineno": 165,
+                      "endlineno": 166,
+                      "labels": [],
+                      "members": [],
+                      "decorators": [],
+                      "parameters": [
+                        {
+                          "name": "self",
+                          "annotation": null,
+                          "kind": "positional or keyword",
+                          "default": null
+                        },
+                        {
+                          "name": "model_instance",
+                          "annotation": {
+                            "name": "BaseModel",
+                            "cls": "ExprName"
+                          },
+                          "kind": "positional or keyword",
+                          "default": null
+                        }
+                      ],
+                      "returns": {
+                        "left": {
+                          "name": "Dict",
+                          "cls": "ExprName"
+                        },
+                        "slice": {
+                          "elements": [
+                            {
+                              "name": "Any",
+                              "cls": "ExprName"
+                            },
+                            {
+                              "name": "Any",
+                              "cls": "ExprName"
+                            }
+                          ],
+                          "implicit": true,
+                          "cls": "ExprTuple"
+                        },
+                        "cls": "ExprSubscript"
+                      }
                     }
                   ],
                   "bases": [],
@@ -26465,15 +26521,15 @@
                 {
                   "kind": "class",
                   "name": "PydanticV1Compat",
-                  "lineno": 166,
-                  "endlineno": 236,
+                  "lineno": 169,
+                  "endlineno": 242,
                   "labels": [],
                   "members": [
                     {
                       "kind": "attribute",
                       "name": "PYDANTIC_MISSING_TYPE",
-                      "lineno": 168,
-                      "endlineno": 169,
+                      "lineno": 171,
+                      "endlineno": 172,
                       "labels": ["property"],
                       "members": [],
                       "annotation": {
@@ -26484,8 +26540,8 @@
                     {
                       "kind": "function",
                       "name": "get_model_fields",
-                      "lineno": 171,
-                      "endlineno": 189,
+                      "lineno": 174,
+                      "endlineno": 192,
                       "labels": [],
                       "members": [],
                       "decorators": [],
@@ -26538,8 +26594,8 @@
                     {
                       "kind": "attribute",
                       "name": "fields_map",
-                      "lineno": 192,
-                      "endlineno": 204,
+                      "lineno": 195,
+                      "endlineno": 207,
                       "labels": ["cached", "property"],
                       "members": [],
                       "annotation": {
@@ -26567,8 +26623,8 @@
                     {
                       "kind": "function",
                       "name": "get_basic_type",
-                      "lineno": 206,
-                      "endlineno": 236,
+                      "lineno": 209,
+                      "endlineno": 239,
                       "labels": [],
                       "members": [],
                       "decorators": [],
@@ -26600,6 +26656,53 @@
                         },
                         "cls": "ExprSubscript"
                       }
+                    },
+                    {
+                      "kind": "function",
+                      "name": "model_dump",
+                      "lineno": 241,
+                      "endlineno": 242,
+                      "labels": [],
+                      "members": [],
+                      "decorators": [],
+                      "parameters": [
+                        {
+                          "name": "self",
+                          "annotation": null,
+                          "kind": "positional or keyword",
+                          "default": null
+                        },
+                        {
+                          "name": "model_instance",
+                          "annotation": {
+                            "name": "BaseModel",
+                            "cls": "ExprName"
+                          },
+                          "kind": "positional or keyword",
+                          "default": null
+                        }
+                      ],
+                      "returns": {
+                        "left": {
+                          "name": "Dict",
+                          "cls": "ExprName"
+                        },
+                        "slice": {
+                          "elements": [
+                            {
+                              "name": "Any",
+                              "cls": "ExprName"
+                            },
+                            {
+                              "name": "Any",
+                              "cls": "ExprName"
+                            }
+                          ],
+                          "implicit": true,
+                          "cls": "ExprTuple"
+                        },
+                        "cls": "ExprSubscript"
+                      }
                     }
                   ],
                   "bases": [],
@@ -26608,15 +26711,15 @@
                 {
                   "kind": "class",
                   "name": "PydanticCompat",
-                  "lineno": 239,
-                  "endlineno": 254,
+                  "lineno": 245,
+                  "endlineno": 260,
                   "labels": [],
                   "members": [
                     {
                       "kind": "function",
                       "name": "__init__",
-                      "lineno": 240,
-                      "endlineno": 244,
+                      "lineno": 246,
+                      "endlineno": 250,
                       "labels": [],
                       "members": [],
                       "decorators": [],
@@ -26642,8 +26745,8 @@
                     {
                       "kind": "attribute",
                       "name": "_compat",
-                      "lineno": 242,
-                      "endlineno": 242,
+                      "lineno": 248,
+                      "endlineno": 248,
                       "labels": ["instance-attribute"],
                       "members": [],
                       "value": {
@@ -26658,8 +26761,8 @@
                     {
                       "kind": "function",
                       "name": "from_model",
-                      "lineno": 246,
-                      "endlineno": 251,
+                      "lineno": 252,
+                      "endlineno": 257,
                       "labels": ["classmethod"],
                       "members": [],
                       "decorators": [
@@ -26668,8 +26771,8 @@
                             "name": "classmethod",
                             "cls": "ExprName"
                           },
-                          "lineno": 246,
-                          "endlineno": 246
+                          "lineno": 252,
+                          "endlineno": 252
                         }
                       ],
                       "parameters": [
@@ -26704,8 +26807,8 @@
                     {
                       "kind": "function",
                       "name": "__getattr__",
-                      "lineno": 253,
-                      "endlineno": 254,
+                      "lineno": 259,
+                      "endlineno": 260,
                       "labels": [],
                       "members": [],
                       "decorators": [],
@@ -26739,49 +26842,49 @@
                   "kind": "alias",
                   "name": "get_args",
                   "target_path": "pydantic.typing.get_args",
-                  "lineno": 266,
-                  "endlineno": 271
+                  "lineno": 272,
+                  "endlineno": 277
                 },
                 {
                   "kind": "alias",
                   "name": "get_origin",
                   "target_path": "pydantic.typing.get_origin",
-                  "lineno": 266,
-                  "endlineno": 271
+                  "lineno": 272,
+                  "endlineno": 277
                 },
                 {
                   "kind": "alias",
                   "name": "is_new_type",
                   "target_path": "pydantic.typing.is_new_type",
-                  "lineno": 266,
-                  "endlineno": 271
+                  "lineno": 272,
+                  "endlineno": 277
                 },
                 {
                   "kind": "alias",
                   "name": "lenient_issubclass",
                   "target_path": "pydantic.utils.lenient_issubclass",
-                  "lineno": 272,
-                  "endlineno": 275
+                  "lineno": 278,
+                  "endlineno": 281
                 },
                 {
                   "kind": "alias",
                   "name": "smart_deepcopy",
                   "target_path": "pydantic.utils.smart_deepcopy",
-                  "lineno": 272,
-                  "endlineno": 275
+                  "lineno": 278,
+                  "endlineno": 281
                 },
                 {
                   "kind": "alias",
                   "name": "new_type_supertype",
                   "target_path": "pydantic.typing.new_type_supertype",
-                  "lineno": 266,
-                  "endlineno": 271
+                  "lineno": 272,
+                  "endlineno": 277
                 },
                 {
                   "kind": "attribute",
                   "name": "__all__",
-                  "lineno": 278,
-                  "endlineno": 286,
+                  "lineno": 284,
+                  "endlineno": 292,
                   "labels": ["module-attribute"],
                   "members": [],
                   "value": {
@@ -26798,13 +26901,13 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/experimental/pydantic/_compat.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/experimental/pydantic/_compat.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/experimental/pydantic/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/experimental/pydantic/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/experimental/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/experimental/__init__.py"
     },
     {
       "kind": "module",
@@ -26981,7 +27084,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/tools/create_type.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/tools/create_type.py"
         },
         {
           "kind": "module",
@@ -27083,7 +27186,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/tools/merge_types.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/tools/merge_types.py"
         },
         {
           "kind": "attribute",
@@ -27098,7 +27201,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/tools/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/tools/__init__.py"
     },
     {
       "kind": "module",
@@ -27271,7 +27374,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/types/graphql.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/types/graphql.py"
         },
         {
           "kind": "module",
@@ -28390,7 +28493,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/types/execution.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/types/execution.py"
         },
         {
           "kind": "module",
@@ -29615,7 +29718,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/types/types.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/types/types.py"
         },
         {
           "kind": "module",
@@ -29804,7 +29907,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/types/type_resolver.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/types/type_resolver.py"
         },
         {
           "kind": "module",
@@ -30828,7 +30931,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/types/nodes.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/types/nodes.py"
         },
         {
           "kind": "module",
@@ -31491,7 +31594,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/types/info.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/types/info.py"
         },
         {
           "kind": "module",
@@ -33286,13 +33389,13 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/types/fields/resolver.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/types/fields/resolver.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/types/fields/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/types/fields/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/types/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/types/__init__.py"
     },
     {
       "kind": "module",
@@ -35287,7 +35390,7 @@
           }
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema_codegen/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema_codegen/__init__.py"
     },
     {
       "kind": "module",
@@ -36380,10 +36483,10 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/test/client.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/test/client.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/test/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/test/__init__.py"
     },
     {
       "kind": "module",
@@ -36553,7 +36656,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/file_uploads/utils.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/file_uploads/utils.py"
         },
         {
           "kind": "module",
@@ -36630,10 +36733,10 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/file_uploads/scalars.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/file_uploads/scalars.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/file_uploads/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/file_uploads/__init__.py"
     },
     {
       "kind": "module",
@@ -37353,10 +37456,10 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/quart/views.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/quart/views.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/quart/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/quart/__init__.py"
     },
     {
       "kind": "module",
@@ -37743,7 +37846,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/printer/ast_from_value.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/printer/ast_from_value.py"
         },
         {
           "kind": "module",
@@ -39256,10 +39359,10 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/printer/printer.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/printer/printer.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/printer/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/printer/__init__.py"
     },
     {
       "kind": "module",
@@ -40613,7 +40716,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/ext/mypy_plugin.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/ext/mypy_plugin.py"
         },
         {
           "kind": "module",
@@ -40785,13 +40888,13 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/ext/dataclasses/dataclasses.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/ext/dataclasses/dataclasses.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/ext/dataclasses/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/ext/dataclasses/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/ext/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/ext/__init__.py"
     },
     {
       "kind": "module",
@@ -40977,7 +41080,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/logging.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/logging.py"
         },
         {
           "kind": "module",
@@ -41039,7 +41142,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/importer.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/importer.py"
         },
         {
           "kind": "module",
@@ -41222,7 +41325,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/await_maybe.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/await_maybe.py"
         },
         {
           "kind": "module",
@@ -41573,7 +41676,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/graphql_lexer.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/graphql_lexer.py"
         },
         {
           "kind": "module",
@@ -41701,7 +41804,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/operation.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/operation.py"
         },
         {
           "kind": "module",
@@ -41954,7 +42057,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/deprecations.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/deprecations.py"
         },
         {
           "kind": "module",
@@ -42201,7 +42304,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/inspect.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/inspect.py"
         },
         {
           "kind": "module",
@@ -42337,7 +42440,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/str_converters.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/str_converters.py"
         },
         {
           "kind": "module",
@@ -42508,7 +42611,7 @@
               "returns": "None"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/debug.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/debug.py"
         },
         {
           "kind": "module",
@@ -42951,7 +43054,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/aio.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/aio.py"
         },
         {
           "kind": "module",
@@ -43043,7 +43146,7 @@
               "returns": "None"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/dataclasses.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/dataclasses.py"
         },
         {
           "kind": "module",
@@ -43997,10 +44100,10 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/typing.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/typing.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/utils/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/utils/__init__.py"
     },
     {
       "kind": "module",
@@ -44064,7 +44167,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/app.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/app.py"
         },
         {
           "kind": "alias",
@@ -44143,7 +44246,7 @@
               "value": "'STRAWBERRY_DEBUG_SERVER_LOG_OPERATIONS'"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/constants.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/constants.py"
         },
         {
           "kind": "module",
@@ -44410,7 +44513,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/debug_server.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/debug_server.py"
         },
         {
           "kind": "module",
@@ -44457,10 +44560,10 @@
               "name": "load_schema",
               "labels": [],
               "members": [],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/utils/load_schema.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/utils/load_schema.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/utils/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/utils/__init__.py"
         },
         {
           "kind": "module",
@@ -44935,7 +45038,7 @@
                   "returns": "None"
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/commands/server.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/commands/server.py"
             },
             {
               "kind": "module",
@@ -45151,7 +45254,7 @@
                   "returns": "None"
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/commands/export_schema.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/commands/export_schema.py"
             },
             {
               "kind": "module",
@@ -45845,7 +45948,7 @@
                   "returns": "None"
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/commands/codegen.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/commands/codegen.py"
             },
             {
               "kind": "module",
@@ -46093,7 +46196,7 @@
                   "returns": "None"
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/commands/schema_codegen.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/commands/schema_codegen.py"
             },
             {
               "kind": "module",
@@ -46945,7 +47048,7 @@
                       }
                     }
                   ],
-                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/commands/upgrade/_run_codemod.py"
+                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/commands/upgrade/_run_codemod.py"
                 },
                 {
                   "kind": "module",
@@ -47106,16 +47209,16 @@
                       "decorators": []
                     }
                   ],
-                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/commands/upgrade/_fake_progress.py"
+                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/commands/upgrade/_fake_progress.py"
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/commands/upgrade/__init__.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/commands/upgrade/__init__.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/commands/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/commands/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/cli/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/cli/__init__.py"
     },
     {
       "kind": "module",
@@ -48224,7 +48327,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/scalar_already_registered.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/scalar_already_registered.py"
         },
         {
           "kind": "module",
@@ -48581,7 +48684,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/exception.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/exception.py"
         },
         {
           "kind": "module",
@@ -48835,7 +48938,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/missing_return_annotation.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/missing_return_annotation.py"
         },
         {
           "kind": "module",
@@ -49204,7 +49307,7 @@
               "returns": "None"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/handler.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/handler.py"
         },
         {
           "kind": "module",
@@ -49463,7 +49566,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/duplicated_type_name.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/duplicated_type_name.py"
         },
         {
           "kind": "module",
@@ -49710,7 +49813,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/private_strawberry_field.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/private_strawberry_field.py"
         },
         {
           "kind": "module",
@@ -49928,7 +50031,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/not_a_strawberry_enum.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/not_a_strawberry_enum.py"
         },
         {
           "kind": "module",
@@ -50056,7 +50159,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/missing_dependencies.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/missing_dependencies.py"
         },
         {
           "kind": "module",
@@ -50273,7 +50376,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/permission_fail_silently_requires_optional.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/permission_fail_silently_requires_optional.py"
         },
         {
           "kind": "module",
@@ -50710,7 +50813,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/object_is_not_a_class.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/object_is_not_a_class.py"
         },
         {
           "kind": "module",
@@ -51077,7 +51180,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/missing_arguments_annotations.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/missing_arguments_annotations.py"
         },
         {
           "kind": "module",
@@ -51331,7 +51434,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/unresolved_field_type.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/unresolved_field_type.py"
         },
         {
           "kind": "module",
@@ -51631,7 +51734,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/syntax.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/syntax.py"
         },
         {
           "kind": "module",
@@ -51883,7 +51986,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/missing_field_annotation.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/missing_field_annotation.py"
         },
         {
           "kind": "module",
@@ -52115,7 +52218,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/object_is_not_an_enum.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/object_is_not_an_enum.py"
         },
         {
           "kind": "module",
@@ -52656,7 +52759,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/invalid_union_type.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/invalid_union_type.py"
         },
         {
           "kind": "module",
@@ -52875,7 +52978,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/exception_source.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/exception_source.py"
         },
         {
           "kind": "module",
@@ -53173,7 +53276,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/conflicting_arguments.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/conflicting_arguments.py"
         },
         {
           "kind": "module",
@@ -53497,7 +53600,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/invalid_argument_type.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/invalid_argument_type.py"
         },
         {
           "kind": "module",
@@ -54872,13 +54975,13 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/utils/source_finder.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/utils/source_finder.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/utils/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/utils/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/exceptions/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/exceptions/__init__.py"
     },
     {
       "kind": "module",
@@ -57594,7 +57697,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/codegen/types.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/codegen/types.py"
         },
         {
           "kind": "module",
@@ -60399,7 +60502,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/codegen/query_codegen.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/codegen/query_codegen.py"
         },
         {
           "kind": "module",
@@ -60467,7 +60570,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/codegen/exceptions.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/codegen/exceptions.py"
         },
         {
           "kind": "module",
@@ -61023,7 +61126,7 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/codegen/plugins/typescript.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/codegen/plugins/typescript.py"
             },
             {
               "kind": "module",
@@ -61702,7 +61805,7 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/codegen/plugins/print_operation.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/codegen/plugins/print_operation.py"
             },
             {
               "kind": "module",
@@ -62597,13 +62700,13 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/codegen/plugins/python.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/codegen/plugins/python.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/codegen/plugins/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/codegen/plugins/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/codegen/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/codegen/__init__.py"
     },
     {
       "kind": "module",
@@ -62848,7 +62951,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/disable_validation.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/disable_validation.py"
         },
         {
           "kind": "module",
@@ -63285,7 +63388,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/runner.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/runner.py"
         },
         {
           "kind": "module",
@@ -63459,7 +63562,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/add_validation_rules.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/add_validation_rules.py"
         },
         {
           "kind": "module",
@@ -63566,7 +63669,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/max_tokens.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/max_tokens.py"
         },
         {
           "kind": "module",
@@ -64125,7 +64228,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/base_extension.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/base_extension.py"
         },
         {
           "kind": "module",
@@ -64265,7 +64368,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/pyinstrument.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/pyinstrument.py"
         },
         {
           "kind": "module",
@@ -64460,7 +64563,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/max_aliases.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/max_aliases.py"
         },
         {
           "kind": "module",
@@ -64621,7 +64724,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/validation_cache.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/validation_cache.py"
         },
         {
           "kind": "module",
@@ -64874,7 +64977,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/mask_errors.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/mask_errors.py"
         },
         {
           "kind": "module",
@@ -65265,7 +65368,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/directives.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/directives.py"
         },
         {
           "kind": "module",
@@ -66335,7 +66438,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/context.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/context.py"
         },
         {
           "kind": "module",
@@ -66870,7 +66973,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/field_extension.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/field_extension.py"
         },
         {
           "kind": "module",
@@ -67009,7 +67112,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/utils.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/utils.py"
         },
         {
           "kind": "module",
@@ -67170,7 +67273,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/parser_cache.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/parser_cache.py"
         },
         {
           "kind": "module",
@@ -68225,7 +68328,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/query_depth_limiter.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/query_depth_limiter.py"
         },
         {
           "kind": "module",
@@ -69616,7 +69719,7 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/tracing/apollo.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/tracing/apollo.py"
             },
             {
               "kind": "module",
@@ -70520,7 +70623,7 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/tracing/opentelemetry.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/tracing/opentelemetry.py"
             },
             {
               "kind": "module",
@@ -70624,7 +70727,7 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/tracing/utils.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/tracing/utils.py"
             },
             {
               "kind": "module",
@@ -71122,7 +71225,7 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/tracing/sentry.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/tracing/sentry.py"
             },
             {
               "kind": "module",
@@ -71637,13 +71740,13 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/tracing/datadog.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/tracing/datadog.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/tracing/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/tracing/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/extensions/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/extensions/__init__.py"
     },
     {
       "kind": "module",
@@ -72713,7 +72816,7 @@
                       "decorators": []
                     }
                   ],
-                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/subscriptions/protocols/graphql_ws/handlers.py"
+                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/subscriptions/protocols/graphql_ws/handlers.py"
                 },
                 {
                   "kind": "module",
@@ -73070,10 +73173,10 @@
                       "decorators": []
                     }
                   ],
-                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/subscriptions/protocols/graphql_ws/types.py"
+                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/subscriptions/protocols/graphql_ws/types.py"
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/subscriptions/protocols/graphql_ws/__init__.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/subscriptions/protocols/graphql_ws/__init__.py"
             },
             {
               "kind": "module",
@@ -74482,7 +74585,7 @@
                       "decorators": []
                     }
                   ],
-                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/subscriptions/protocols/graphql_transport_ws/handlers.py"
+                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/subscriptions/protocols/graphql_transport_ws/handlers.py"
                 },
                 {
                   "kind": "module",
@@ -75934,16 +76037,16 @@
                       ]
                     }
                   ],
-                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/subscriptions/protocols/graphql_transport_ws/types.py"
+                  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/subscriptions/protocols/graphql_transport_ws/types.py"
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/subscriptions/protocols/graphql_transport_ws/__init__.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/subscriptions/protocols/graphql_transport_ws/__init__.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/subscriptions/protocols/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/subscriptions/protocols/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/subscriptions/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/subscriptions/__init__.py"
     },
     {
       "kind": "module",
@@ -76034,7 +76137,7 @@
               "kind": "class",
               "name": "StrawberryConfig",
               "lineno": 9,
-              "endlineno": 21,
+              "endlineno": 22,
               "labels": ["dataclass"],
               "members": [
                 {
@@ -76126,10 +76229,23 @@
                   }
                 },
                 {
+                  "kind": "attribute",
+                  "name": "disable_field_suggestions",
+                  "lineno": 15,
+                  "endlineno": 15,
+                  "labels": ["class-attribute", "instance-attribute"],
+                  "members": [],
+                  "value": "False",
+                  "annotation": {
+                    "name": "bool",
+                    "cls": "ExprName"
+                  }
+                },
+                {
                   "kind": "function",
                   "name": "__post_init__",
-                  "lineno": 16,
-                  "endlineno": 21,
+                  "lineno": 17,
+                  "endlineno": 22,
                   "labels": [],
                   "members": [],
                   "decorators": [],
@@ -76245,6 +76361,15 @@
                       },
                       "kind": "positional or keyword",
                       "default": "100"
+                    },
+                    {
+                      "name": "disable_field_suggestions",
+                      "annotation": {
+                        "name": "bool",
+                        "cls": "ExprName"
+                      },
+                      "kind": "positional or keyword",
+                      "default": "False"
                     }
                   ],
                   "returns": "None"
@@ -76263,7 +76388,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/config.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/config.py"
         },
         {
           "kind": "module",
@@ -76665,7 +76790,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/compat.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/compat.py"
         },
         {
           "kind": "module",
@@ -78791,7 +78916,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/schema_converter.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/schema_converter.py"
         },
         {
           "kind": "module",
@@ -79519,7 +79644,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/execute.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/execute.py"
         },
         {
           "kind": "module",
@@ -80335,7 +80460,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/name_converter.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/name_converter.py"
         },
         {
           "kind": "module",
@@ -80435,7 +80560,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/exceptions.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/exceptions.py"
         },
         {
           "kind": "module",
@@ -80614,7 +80739,7 @@
               "kind": "class",
               "name": "BaseSchema",
               "lineno": 25,
-              "endlineno": 96,
+              "endlineno": 115,
               "labels": [],
               "members": [
                 {
@@ -81287,9 +81412,89 @@
                 },
                 {
                   "kind": "function",
-                  "name": "process_errors",
+                  "name": "remove_field_suggestion",
                   "lineno": 90,
                   "endlineno": 96,
+                  "labels": ["staticmethod"],
+                  "members": [],
+                  "decorators": [
+                    {
+                      "value": {
+                        "name": "staticmethod",
+                        "cls": "ExprName"
+                      },
+                      "lineno": 90,
+                      "endlineno": 90
+                    }
+                  ],
+                  "parameters": [
+                    {
+                      "name": "error",
+                      "annotation": {
+                        "name": "GraphQLError",
+                        "cls": "ExprName"
+                      },
+                      "kind": "positional or keyword",
+                      "default": null
+                    }
+                  ],
+                  "returns": "None"
+                },
+                {
+                  "kind": "function",
+                  "name": "_process_errors",
+                  "lineno": 98,
+                  "endlineno": 107,
+                  "labels": [],
+                  "members": [],
+                  "decorators": [],
+                  "parameters": [
+                    {
+                      "name": "self",
+                      "annotation": null,
+                      "kind": "positional or keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "errors",
+                      "annotation": {
+                        "left": {
+                          "name": "List",
+                          "cls": "ExprName"
+                        },
+                        "slice": {
+                          "name": "GraphQLError",
+                          "cls": "ExprName"
+                        },
+                        "cls": "ExprSubscript"
+                      },
+                      "kind": "positional or keyword",
+                      "default": null
+                    },
+                    {
+                      "name": "execution_context",
+                      "annotation": {
+                        "left": {
+                          "name": "Optional",
+                          "cls": "ExprName"
+                        },
+                        "slice": {
+                          "name": "ExecutionContext",
+                          "cls": "ExprName"
+                        },
+                        "cls": "ExprSubscript"
+                      },
+                      "kind": "positional or keyword",
+                      "default": "None"
+                    }
+                  ],
+                  "returns": "None"
+                },
+                {
+                  "kind": "function",
+                  "name": "process_errors",
+                  "lineno": 109,
+                  "endlineno": 115,
                   "labels": [],
                   "members": [],
                   "decorators": [],
@@ -81345,7 +81550,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/base.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/base.py"
         },
         {
           "kind": "module",
@@ -83165,7 +83370,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/schema.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/schema.py"
         },
         {
           "kind": "module",
@@ -83859,7 +84064,7 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/types/base_scalars.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/types/base_scalars.py"
             },
             {
               "kind": "module",
@@ -84584,7 +84789,7 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/types/scalar.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/types/scalar.py"
             },
             {
               "kind": "module",
@@ -84890,10 +85095,10 @@
                   }
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/types/concrete_type.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/types/concrete_type.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/types/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/types/__init__.py"
         },
         {
           "kind": "module",
@@ -85156,13 +85361,13 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/validation_rules/one_of.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/validation_rules/one_of.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/validation_rules/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/validation_rules/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/schema/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/schema/__init__.py"
     },
     {
       "kind": "module",
@@ -86055,10 +86260,10 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/chalice/views.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/chalice/views.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/chalice/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/chalice/__init__.py"
     },
     {
       "kind": "module",
@@ -86345,10 +86550,10 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/field_extensions/input_mutation.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/field_extensions/input_mutation.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/field_extensions/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/field_extensions/__init__.py"
     },
     {
       "kind": "module",
@@ -87959,7 +88164,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/http/async_base_view.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/http/async_base_view.py"
         },
         {
           "kind": "module",
@@ -88131,7 +88336,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/http/temporal_response.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/http/temporal_response.py"
         },
         {
           "kind": "module",
@@ -88351,7 +88556,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/http/types.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/http/types.py"
         },
         {
           "kind": "module",
@@ -88460,7 +88665,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/http/ides.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/http/ides.py"
         },
         {
           "kind": "module",
@@ -89603,7 +89808,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/http/sync_base_view.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/http/sync_base_view.py"
         },
         {
           "kind": "module",
@@ -89709,7 +89914,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/http/typevars.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/http/typevars.py"
         },
         {
           "kind": "module",
@@ -89793,7 +89998,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/http/exceptions.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/http/exceptions.py"
         },
         {
           "kind": "module",
@@ -90335,10 +90540,10 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/http/base.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/http/base.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/http/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/http/__init__.py"
     },
     {
       "kind": "module",
@@ -90674,7 +90879,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/fastapi/context.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/fastapi/context.py"
         },
         {
           "kind": "module",
@@ -92986,7 +93191,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/fastapi/router.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/fastapi/router.py"
         },
         {
           "kind": "module",
@@ -93107,7 +93312,7 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/fastapi/handlers/graphql_ws_handler.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/fastapi/handlers/graphql_ws_handler.py"
             },
             {
               "kind": "module",
@@ -93194,13 +93399,13 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/fastapi/handlers/graphql_transport_ws_handler.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/fastapi/handlers/graphql_transport_ws_handler.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/fastapi/handlers/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/fastapi/handlers/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/fastapi/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/fastapi/__init__.py"
     },
     {
       "kind": "module",
@@ -93353,7 +93558,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/argument.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/argument.py"
         },
         {
           "kind": "module",
@@ -93743,7 +93948,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/enum.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/enum.py"
         },
         {
           "kind": "alias",
@@ -94397,7 +94602,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/field.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/field.py"
         },
         {
           "kind": "module",
@@ -94424,7 +94629,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/mutation.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/mutation.py"
         },
         {
           "kind": "alias",
@@ -94868,7 +95073,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/scalar.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/scalar.py"
         },
         {
           "kind": "alias",
@@ -95478,7 +95683,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/schema_directive.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/schema_directive.py"
         },
         {
           "kind": "module",
@@ -95666,7 +95871,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/union.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/union.py"
         },
         {
           "kind": "attribute",
@@ -95838,7 +96043,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/types.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/types.py"
         },
         {
           "kind": "module",
@@ -98416,7 +98621,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/schema_directives.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/schema_directives.py"
         },
         {
           "kind": "module",
@@ -99655,7 +99860,7 @@
               "returns": null
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/object_type.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/object_type.py"
         },
         {
           "kind": "module",
@@ -100820,10 +101025,10 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/schema.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/schema.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/federation/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/federation/__init__.py"
     },
     {
       "kind": "module",
@@ -100934,7 +101139,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/sanic/context.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/sanic/context.py"
         },
         {
           "kind": "module",
@@ -101065,7 +101270,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/sanic/utils.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/sanic/utils.py"
         },
         {
           "kind": "module",
@@ -101937,10 +102142,10 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/sanic/views.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/sanic/views.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/sanic/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/sanic/__init__.py"
     },
     {
       "kind": "module",
@@ -103501,10 +103706,10 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/starlite/controller.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/starlite/controller.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/starlite/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/starlite/__init__.py"
     },
     {
       "kind": "module",
@@ -104906,7 +105111,7 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/relay/fields.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/relay/fields.py"
         },
         {
           "kind": "module",
@@ -107185,7 +107390,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/relay/types.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/relay/types.py"
         },
         {
           "kind": "module",
@@ -107657,7 +107862,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/relay/utils.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/relay/utils.py"
         },
         {
           "kind": "module",
@@ -108260,10 +108465,10 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/relay/exceptions.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/relay/exceptions.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/relay/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/relay/__init__.py"
     },
     {
       "kind": "module",
@@ -110887,10 +111092,10 @@
               }
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/litestar/controller.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/litestar/controller.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/litestar/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/litestar/__init__.py"
     },
     {
       "kind": "module",
@@ -110980,7 +111185,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/django/apps.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/django/apps.py"
         },
         {
           "kind": "module",
@@ -111175,7 +111380,7 @@
               ]
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/django/context.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/django/context.py"
         },
         {
           "kind": "module",
@@ -112940,7 +113145,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/django/views.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/django/views.py"
         },
         {
           "kind": "module",
@@ -113129,13 +113334,13 @@
                   "decorators": []
                 }
               ],
-              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/django/test/client.py"
+              "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/django/test/client.py"
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/django/test/__init__.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/django/test/__init__.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/django/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/django/__init__.py"
     },
     {
       "kind": "module",
@@ -113940,10 +114145,10 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/codemods/annotated_unions.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/codemods/annotated_unions.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/codemods/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/codemods/__init__.py"
     },
     {
       "kind": "module",
@@ -114182,7 +114387,7 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/channels/router.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/channels/router.py"
         },
         {
           "kind": "module",
@@ -114791,11 +114996,11 @@
               "decorators": []
             }
           ],
-          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/channels/testing.py"
+          "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/channels/testing.py"
         }
       ],
-      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/channels/__init__.py"
+      "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/channels/__init__.py"
     }
   ],
-  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmpfmr1qjn3/strawberry/strawberry/__init__.py"
+  "filepath": "/private/var/folders/tz/d3_033052gg7k7lrj34yj0lr0000gn/T/tmp3hry9j0b/strawberry/strawberry/__init__.py"
 }
