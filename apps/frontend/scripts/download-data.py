@@ -1,7 +1,3 @@
-# /// script
-# requires-python = ">=3.11"
-# ///
-
 import os
 import shutil
 import subprocess
