@@ -1,0 +1,82 @@
+---
+import Markdown from "../Markdown.astro";
+import CodeSpan from "../Pages/CodeSpan.astro";
+import Table from "../Pages/Table.astro";
+import Expression from "./Expression.astro";
+
+export interface Props {
+  parameters: any;
+  parametersDescriptions: any;
+}
+
+const { parameters, parametersDescriptions } = Astro.props;
+---
+
+<ol>
+  {
+    parameters.map((param) => (
+      <li>
+        <p class="name">
+          <CodeSpan variant="simple">{param.name}</CodeSpan>
+        </p>
+        {parametersDescriptions[param.name] && (
+          <Markdown content={parametersDescriptions[param.name]} />
+        )}
+        <dl>
+          <dt>Type</dt>
+          <dd>
+            <CodeSpan>
+              <Expression expr={param.annotation} />
+            </CodeSpan>
+          </dd>
+
+          <dt>Default</dt>
+          <dd>
+            <CodeSpan>
+              <Expression expr={param.default} />
+            </CodeSpan>
+          </dd>
+        </dl>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  ol {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-g-300);
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    p.name {
+      font-size: 1.6rem;
+    }
+  }
+
+  :global(html.dark) li {
+    border-color: var(--color-g-800);
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 0.5rem 1rem;
+    margin-top: 1rem;
+  }
+
+  dt {
+    font-weight: bold;
+    color: var(--color-g-800);
+  }
+
+  dd {
+    margin-left: 0;
+  }
+</style>

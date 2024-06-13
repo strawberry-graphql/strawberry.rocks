@@ -1,0 +1,50 @@
+---
+import Markdown from "../Markdown.astro";
+import CodeSpan from "../Pages/CodeSpan.astro";
+import Table from "../Pages/Table.astro";
+import Expression from "./Expression.astro";
+
+export interface Props {
+  parameters: any;
+  parametersDescriptions: any;
+}
+
+const { parameters, parametersDescriptions } = Astro.props;
+---
+
+<Table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Kind</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      parameters.map((param) => (
+        <tr>
+          <td>{param.name}</td>
+          <td>
+            <CodeSpan>
+              <Expression expr={param.annotation} />
+            </CodeSpan>
+          </td>
+          <td>
+            <CodeSpan>
+              <Expression expr={param.default} />
+            </CodeSpan>
+          </td>
+          <td>{param.kind}</td>
+          <td>
+            {parametersDescriptions[param.name] && (
+              <Markdown content={parametersDescriptions[param.name]} />
+            )}
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</Table>
