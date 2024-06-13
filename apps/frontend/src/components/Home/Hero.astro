@@ -1,6 +1,6 @@
 ---
 import ButtonLink from "../ButtonLink.astro";
-import CodeBox from "../Pages/CodeBox.astro";
+import { Code } from "astro-expressive-code/components";
 
 const code = `
 import strawberry
@@ -22,14 +22,14 @@ class Query:
 
 <div class="feature">
   <h1>
-    Strawberry is a developer friendly <em>GraphQL library</em> for Python,
-    designed for modern development.
+    Strawberry is a developer friendly <em>GraphQL library</em> for Python, designed
+    for modern development.
   </h1>
 
   <ButtonLink href="/docs">Get Started</ButtonLink>
 
   <div class="code-wrapper">
-    <CodeBox code={code} lang="python" />
+    <Code code={code} lang="python" />
   </div>
 </div>
 

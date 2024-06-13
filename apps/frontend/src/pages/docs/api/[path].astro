@@ -4,7 +4,11 @@ import Layout from "../../../layouts/Layout.astro";
 import Function from "../../../components/ApiDocs/Function.astro";
 
 export async function getStaticPaths() {
-  return [{ params: { path: "strawberry.scalar" } }];
+  return [
+    { params: { path: "strawberry.scalar" } },
+    { params: { path: "strawberry.object_type.type" } },
+    { params: { path: "strawberry.type" } },
+  ];
 }
 
 const data = JSON.parse(
@@ -35,6 +39,8 @@ let current = findMember(parts);
 if (current.kind === "alias") {
   current = findMember(current.target_path.split(".").slice(1));
 }
+
+console.log(current);
 ---
 
 <Layout title="API Docs">

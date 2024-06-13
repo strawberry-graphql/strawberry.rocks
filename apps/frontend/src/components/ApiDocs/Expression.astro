@@ -1,0 +1,53 @@
+---
+export interface Props {
+  expr: any;
+}
+
+let { expr } = Astro.props;
+
+const simplifyAnnotated = (expr: any) => {
+  console.log(expr);
+  return expr.slice.elements[0];
+};
+
+if (expr.cls === "ExprSubscript" && expr.left.name === "Annotated") {
+  expr = simplifyAnnotated(expr);
+}
+---
+
+{typeof expr === "string" && expr}
+{expr.cls === "ExprName" && expr.name}
+{
+  expr.cls === "ExprTuple" && (
+    <>
+      {!expr.implicit && "("}
+      {expr.elements.map((element: any) => (
+        <>
+          <Astro.self expr={element} />,
+        </>
+      ))}
+      {!expr.implicit && ")"}
+    </>
+  )
+}
+{
+  expr.cls === "ExprSubscript" && (
+    <!-- prettier-ignore -->
+    <><Astro.self expr={expr.left} />[<Astro.self expr={expr.slice} />]</>
+  )
+}
+
+{
+  expr.cls === "ExprCall" && (
+    <>
+      <Astro.self expr={expr.function} />(
+      {expr.arguments.map((arg: any) => (
+        <>
+          <Astro.self expr={arg} />,
+        </>
+      ))}
+      )
+    </>
+  )
+}
+<pre style="display: none;">{JSON.stringify(expr, null, 2)}</pre>

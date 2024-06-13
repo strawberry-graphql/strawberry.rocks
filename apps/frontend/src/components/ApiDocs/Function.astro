@@ -1,6 +1,8 @@
 ---
 import Markdown from "../Markdown.astro";
+import CodeSpan from "../Pages/CodeSpan.astro";
 import Table from "../Pages/Table.astro";
+import Expression from "./Expression.astro";
 
 export interface Props {
   fun: {
@@ -16,39 +18,54 @@ const parsedParameters = fun.docstring.parsed.find(
 
 const parametersDescriptions = parsedParameters
   ? parsedParameters.value.reduce((acc, item) => {
+      console.log(item);
       acc[item.name] = item.description;
       return acc;
     }, {})
   : {};
-
-console.log(parametersDescriptions);
 ---
 
-<div>
-  <h1>{fun.name}</h1>
+<h1>{fun.name}</h1>
 
-  <Markdown content={fun.docstring.value} />
+<Markdown content={fun.docstring.value} />
 
-  <Table>
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Default</th>
-        <th>Kind</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        fun.parameters.map((param) => (
-          <tr>
-            <td>{param.name}</td>
-            <td>{param.default}</td>
-            <td>{param.kind}</td>
-            <td>{parametersDescriptions[param.name]}</td>
-          </tr>
-        ))
-      }
-    </tbody>
-  </Table>
-</div>
+<h2>Parameters</h2>
+
+<Table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Kind</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      fun.parameters.map((param) => (
+        <tr>
+          <td>{param.name}</td>
+          <td>
+            <code>
+              <CodeSpan>
+                <Expression expr={param.annotation} />
+              </CodeSpan>
+            </code>
+          </td>
+          <td>
+            <CodeSpan>
+              <Expression expr={param.default} />
+            </CodeSpan>
+          </td>
+          <td>{param.kind}</td>
+          <td>
+            {parametersDescriptions[param.name] && (
+              <Markdown content={parametersDescriptions[param.name]} />
+            )}
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</Table>
