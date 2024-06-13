@@ -15,8 +15,8 @@ if (expr.cls === "ExprSubscript" && expr.left.name === "Annotated") {
 }
 ---
 
-{typeof expr === "string" && expr}
-{expr.cls === "ExprName" && expr.name}
+<>{typeof expr === "string" && <>{expr}</>}</>
+<>{expr.cls === "ExprName" && <>{expr.name}</>}</>
 {
   expr.cls === "ExprTuple" && (
     <>
@@ -42,12 +42,9 @@ if (expr.cls === "ExprSubscript" && expr.left.name === "Annotated") {
     <>
       <Astro.self expr={expr.function} />(
       {expr.arguments.map((arg: any) => (
-        <>
-          <Astro.self expr={arg} />,
-        </>
+         <><Astro.self expr={arg} />,</>
       ))}
       )
     </>
   )
 }
-<pre style="display: none;">{JSON.stringify(expr, null, 2)}</pre>

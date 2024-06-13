@@ -4,11 +4,22 @@ import Layout from "../../../layouts/Layout.astro";
 import Function from "../../../components/ApiDocs/Function.astro";
 
 export async function getStaticPaths() {
-  return [
-    { params: { path: "strawberry.scalar" } },
-    { params: { path: "strawberry.object_type.type" } },
-    { params: { path: "strawberry.type" } },
-  ];
+  const data = JSON.parse(
+    await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
+  );
+  const paths: Array<string> = [];
+
+  const addPaths = (members: any, currentPath: string) => {
+    for (const member of members) {
+      if (member.kind === "alias") {
+        paths.push(`${currentPath}.${member.name}`);
+      }
+    }
+  };
+
+  addPaths(data.members, "strawberry");
+
+  return paths.map((path) => ({ params: { path } }));
 }
 
 const data = JSON.parse(
