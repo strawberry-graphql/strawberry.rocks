@@ -58,7 +58,7 @@ while (current.kind === "alias") {
     <aside>Nav</aside>
 
     <article>
-      {current.kind === "function" && <Function fun={current} />}
+      {current.kind === "function" && <Function fun={current} open />}
       {current.kind === "class" && <Class klass={current} />}
     </article>
   </main>

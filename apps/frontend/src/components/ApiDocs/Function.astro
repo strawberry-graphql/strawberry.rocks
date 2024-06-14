@@ -1,14 +1,16 @@
 ---
 import Markdown from "../Markdown.astro";
+import FunctionSignature from "./FunctionSignature.astro";
 import ParametersList from "./ParametersList.astro";
 
 export interface Props {
   fun: {
     name: string;
   };
+  open?: boolean;
 }
 
-const { fun } = Astro.props;
+const { fun, open = false } = Astro.props;
 
 const parsedParameters = fun.docstring?.parsed.find(
   (item) => item.kind === "parameters",
@@ -23,12 +25,16 @@ const parametersDescriptions = parsedParameters
   : {};
 ---
 
-<details>
+<details open={open} class:list={{ top: open }}>
   <summary>
     <h1 class="typography-code">{fun.name}</h1>
   </summary>
 
   {fun.docstring?.value && <Markdown content={fun.docstring.value} />}
+
+  <h2>Signature:</h2>
+
+  <FunctionSignature fun={fun} />
 
   <h2>Parameters:</h2>
 
@@ -40,7 +46,7 @@ const parametersDescriptions = parsedParameters
 
 <style>
   h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   h2 {
@@ -57,7 +63,6 @@ const parametersDescriptions = parsedParameters
     }
 
     h1::after {
-      content: "▼";
       font-size: 0.7em;
       vertical-align: middle;
       display: inline-block;
@@ -65,7 +70,12 @@ const parametersDescriptions = parsedParameters
     }
   }
 
-  details[open] h1::after {
+  :not(.top) summary {
+    h1::after {
+      content: "▲";
+    }
+
+    details[open] h1::after {
       content: "▲";
     }
   }

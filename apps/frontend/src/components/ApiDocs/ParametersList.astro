@@ -1,7 +1,7 @@
 ---
 import Markdown from "../Markdown.astro";
 import CodeSpan from "../Pages/CodeSpan.astro";
-import Expression from "./Expression";
+import expressionToString from "./expression";
 
 export interface Props {
   parameters: any;
@@ -36,9 +36,7 @@ const parameters = Astro.props.parameters.filter(
               <>
                 <dt>Type</dt>
                 <dd>
-                  <CodeSpan>
-                    <Expression expr={param.annotation} />
-                  </CodeSpan>
+                  <CodeSpan>{expressionToString(param.annotation)}</CodeSpan>
                 </dd>
               </>
             )}
@@ -47,9 +45,7 @@ const parameters = Astro.props.parameters.filter(
               <>
                 <dt>Default</dt>
                 <dd>
-                  <CodeSpan>
-                    <Expression expr={param.default} />
-                  </CodeSpan>
+                  <CodeSpan>{expressionToString(param.default)}</CodeSpan>
                 </dd>
               </>
             )}
