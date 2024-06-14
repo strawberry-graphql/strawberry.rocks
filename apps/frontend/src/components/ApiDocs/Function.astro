@@ -25,7 +25,7 @@ const parametersDescriptions = parsedParameters
 
 <details>
   <summary>
-    <h1 class="typography-code">{fun.name} ▼</h1>
+    <h1 class="typography-code">{fun.name}</h1>
   </summary>
 
   {fun.docstring?.value && <Markdown content={fun.docstring.value} />}
@@ -51,9 +51,22 @@ const parametersDescriptions = parsedParameters
   summary {
     cursor: pointer;
     list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    h1::after {
+      content: "▼";
+      font-size: 0.7em;
+      vertical-align: middle;
+      display: inline-block;
+      margin-left: 0.5em;
+    }
   }
 
-  summary::-webkit-details-marker {
-    display: none;
+  details[open] h1::after {
+      content: "▲";
+    }
   }
 </style>
