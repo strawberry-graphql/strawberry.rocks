@@ -1,6 +1,5 @@
 ---
 import Markdown from "../Markdown.astro";
-import ParametersTable from "./ParametersTable.astro";
 import ParametersList from "./ParametersList.astro";
 
 export interface Props {
@@ -11,7 +10,7 @@ export interface Props {
 
 const { fun } = Astro.props;
 
-const parsedParameters = fun.docstring.parsed.find(
+const parsedParameters = fun.docstring?.parsed.find(
   (item) => item.kind === "parameters",
 );
 
@@ -24,13 +23,37 @@ const parametersDescriptions = parsedParameters
   : {};
 ---
 
-<h1>{fun.name}</h1>
+<details>
+  <summary>
+    <h1 class="typography-code">{fun.name} ▼</h1>
+  </summary>
 
-<Markdown content={fun.docstring.value} />
+  {fun.docstring?.value && <Markdown content={fun.docstring.value} />}
 
-<h2>Parameters</h2>
+  <h2>Parameters:</h2>
 
-<ParametersList
-  parameters={fun.parameters}
-  parametersDescriptions={parametersDescriptions}
-/>
+  <ParametersList
+    parameters={fun.parameters}
+    parametersDescriptions={parametersDescriptions}
+  />
+</details>
+
+<style>
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    margin-block: 1rem;
+    font-size: 1.5rem;
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

@@ -2,6 +2,7 @@
 import { promises as fs } from "fs";
 import Layout from "../../../layouts/Layout.astro";
 import Function from "../../../components/ApiDocs/Function.astro";
+import Class from "../../../components/ApiDocs/Class.astro";
 
 export async function getStaticPaths() {
   const data = JSON.parse(
@@ -47,11 +48,9 @@ const findMember = (parts: string[]) => {
 
 let current = findMember(parts);
 
-if (current.kind === "alias") {
+while (current.kind === "alias") {
   current = findMember(current.target_path.split(".").slice(1));
 }
-
-console.log(current);
 ---
 
 <Layout title="API Docs">
@@ -60,6 +59,7 @@ console.log(current);
 
     <article>
       {current.kind === "function" && <Function fun={current} />}
+      {current.kind === "class" && <Class klass={current} />}
     </article>
   </main>
 </Layout>

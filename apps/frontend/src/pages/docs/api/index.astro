@@ -34,7 +34,9 @@ const membersByKind = data.members.reduce((acc, member) => {
             <ul>
               {members.map((member) => (
                 <li>
-                  <code>strawberry.{member.name}</code>
+                  <a href={`/docs/api/strawberry.${member.name}`}>
+                    <code>strawberry.{member.name}</code>
+                  </a>
                 </li>
               ))}
             </ul>

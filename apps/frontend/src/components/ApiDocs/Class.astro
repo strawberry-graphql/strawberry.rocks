@@ -1,0 +1,50 @@
+---
+import Markdown from "../Markdown.astro";
+import Function from "./Function.astro";
+import ParametersList from "./ParametersList.astro";
+
+export interface Props {
+  klass: {
+    name: string;
+  };
+}
+
+const { klass } = Astro.props;
+
+const methods = klass.members.filter((m) => m.kind === "function");
+---
+
+<h1>{klass.name}</h1>
+
+{klass.docstring && <Markdown content={klass.docstring.value} />}
+
+{
+  methods.length > 0 && (
+    <>
+      <h2>Methods</h2>
+      <ul class="methods">
+        {methods.map((method) => (
+          <li>
+            <Function fun={method} />
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+<pre>{JSON.stringify(klass, null, 2)}</pre>
+
+<style>
+  .methods {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-g-300);
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+</style>

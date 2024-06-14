@@ -1,42 +1,60 @@
 ---
 import Markdown from "../Markdown.astro";
 import CodeSpan from "../Pages/CodeSpan.astro";
-import Table from "../Pages/Table.astro";
-import Expression from "./Expression.astro";
+import Expression from "./Expression";
 
 export interface Props {
   parameters: any;
   parametersDescriptions: any;
 }
 
-const { parameters, parametersDescriptions } = Astro.props;
+const { parametersDescriptions } = Astro.props;
+
+const PARAMS_TO_IGNORE = ["self"];
+
+const parameters = Astro.props.parameters.filter(
+  (param) => !PARAMS_TO_IGNORE.includes(param.name),
+);
 ---
 
 <ol>
   {
     parameters.map((param) => (
       <li>
-        <p class="name">
-          <CodeSpan variant="simple">{param.name}</CodeSpan>
-        </p>
-        {parametersDescriptions[param.name] && (
-          <Markdown content={parametersDescriptions[param.name]} />
-        )}
-        <dl>
-          <dt>Type</dt>
-          <dd>
-            <CodeSpan>
-              <Expression expr={param.annotation} />
-            </CodeSpan>
-          </dd>
+        <div>
+          <p class="name">
+            <CodeSpan variant="simple">{param.name}</CodeSpan>
+          </p>
+        </div>
+        <div>
+          {parametersDescriptions[param.name] && (
+            <Markdown content={parametersDescriptions[param.name]} />
+          )}
 
-          <dt>Default</dt>
-          <dd>
-            <CodeSpan>
-              <Expression expr={param.default} />
-            </CodeSpan>
-          </dd>
-        </dl>
+          <dl>
+            {param.annotation && (
+              <>
+                <dt>Type</dt>
+                <dd>
+                  <CodeSpan>
+                    <Expression expr={param.annotation} />
+                  </CodeSpan>
+                </dd>
+              </>
+            )}
+
+            {param.default && (
+              <>
+                <dt>Default</dt>
+                <dd>
+                  <CodeSpan>
+                    <Expression expr={param.default} />
+                  </CodeSpan>
+                </dd>
+              </>
+            )}
+          </dl>
+        </div>
       </li>
     ))
   }
@@ -46,17 +64,23 @@ const { parameters, parametersDescriptions } = Astro.props;
   ol {
     list-style-type: none;
     padding: 0;
+
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 1.5rem;
   }
 
   li {
-    &:not(:last-child) {
+    display: contents;
+
+    &:not(:last-child) > * {
       border-bottom: 1px solid var(--color-g-300);
-      margin-bottom: 2rem;
-      padding-bottom: 2rem;
+      padding-bottom: 1.5rem;
     }
 
     p.name {
-      font-size: 1.6rem;
+      font-size: 1.2rem;
+      font-weight: bold;
     }
   }
 
