@@ -8,19 +8,28 @@ export async function getStaticPaths() {
   const data = JSON.parse(
     await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
   );
-  const paths: Array<string> = [];
+
+  const paths: Array<{
+    params: { path: string };
+    props: { kind: string; path: string };
+  }> = [];
 
   const addPaths = (members: any, currentPath: string) => {
     for (const member of members) {
       if (member.kind === "alias") {
-        paths.push(`${currentPath}.${member.name}`);
+        const path = `${currentPath}.${member.name}`;
+
+        paths.push({
+          params: { path },
+          props: { kind: member.kind, path },
+        });
       }
     }
   };
 
   addPaths(data.members, "strawberry");
 
-  return paths.map((path) => ({ params: { path } }));
+  return paths;
 }
 
 const data = JSON.parse(
@@ -28,8 +37,9 @@ const data = JSON.parse(
 );
 
 const { path } = Astro.params;
-const parts = path.split(".").slice(1);
+const props = Astro.props;
 
+const parts = path.split(".").slice(1);
 const findMember = (parts: string[]) => {
   let current = data;
 
@@ -50,6 +60,10 @@ let current = findMember(parts);
 
 while (current.kind === "alias") {
   current = findMember(current.target_path.split(".").slice(1));
+}
+
+if (props.kind === "alias") {
+  current.name = props.path;
 }
 ---
 
