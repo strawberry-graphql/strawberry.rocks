@@ -33,32 +33,43 @@ const Component = topLevel ? "div" : "details";
 const Summary = topLevel ? "div" : "summary";
 ---
 
-<Component class="content">
+<Component class="function">
   <Summary>
     <h1 class="typography-code">{fun.name}</h1>
   </Summary>
 
-  {fun.docstring?.value && <Markdown content={fun.docstring.value} />}
+  <div class="content">
+    {fun.docstring?.value && <Markdown content={fun.docstring.value} />}
+  </div>
 
-  <h2>Signature:</h2>
+  <div class="content">
+    <h2>Signature:</h2>
 
-  <FunctionSignature fun={fun} />
-
+    <FunctionSignature fun={fun} />
+  </div>
   {
     parameters.length > 0 && (
-      <>
+      <div class="content">
         <h2>Parameters:</h2>
 
         <ParametersList
           parameters={parameters}
           parametersDescriptions={parametersDescriptions}
         />
-      </>
+      </div>
     )
   }
 </Component>
 
 <style>
+  .function *:not(:first-child) + * {
+    margin-top: 2rem;
+  }
+
+  .function :first-child + * {
+    margin-top: 1rem;
+  }
+
   h1 {
     font-size: 1.5rem;
   }

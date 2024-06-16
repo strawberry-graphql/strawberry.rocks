@@ -20,7 +20,7 @@ const { parametersDescriptions, parameters } = Astro.props;
             <CodeSpan variant="simple">{param.name}:</CodeSpan>
           </p>
         </div>
-        <div>
+        <div class="info content">
           {parametersDescriptions[param.name] && (
             <Markdown content={parametersDescriptions[param.name]} />
           )}
