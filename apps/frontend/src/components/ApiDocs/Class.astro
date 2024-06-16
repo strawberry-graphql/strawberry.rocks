@@ -32,7 +32,11 @@ const methods = klass.members.filter((m) => m.kind === "function");
     </>
   )
 }
-<pre>{JSON.stringify(klass, null, 2)}</pre>
+
+<details>
+  <summary>debug json</summary>
+  <pre>{JSON.stringify(klass, null, 2)}</pre>
+</details>
 
 <style>
   .methods {

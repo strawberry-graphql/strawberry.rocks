@@ -8,13 +8,7 @@ export interface Props {
   parametersDescriptions: any;
 }
 
-const { parametersDescriptions } = Astro.props;
-
-const PARAMS_TO_IGNORE = ["self"];
-
-const parameters = Astro.props.parameters.filter(
-  (param) => !PARAMS_TO_IGNORE.includes(param.name),
-);
+const { parametersDescriptions, parameters } = Astro.props;
 ---
 
 <ol>
@@ -62,6 +56,7 @@ const parameters = Astro.props.parameters.filter(
     padding: 0;
 
     display: grid;
+    align-items: baseline;
     grid-template-columns: max-content 1fr;
     gap: 1.5rem;
   }
@@ -88,7 +83,6 @@ const parameters = Astro.props.parameters.filter(
     display: grid;
     grid-template-columns: auto 1fr;
     grid-gap: 0.5rem 1rem;
-    margin-top: 1rem;
   }
 
   dt {

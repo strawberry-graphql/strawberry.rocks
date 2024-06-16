@@ -24,11 +24,16 @@ const parametersDescriptions = parsedParameters
     }, {})
   : {};
 
+const PARAMATERS_TO_SKIP = ["self", "cls"];
+const parameters = fun.parameters.filter(
+  (param) => !PARAMATERS_TO_SKIP.includes(param.name),
+);
+
 const Component = topLevel ? "div" : "details";
 const Summary = topLevel ? "div" : "summary";
 ---
 
-<Component>
+<Component class="content">
   <Summary>
     <h1 class="typography-code">{fun.name}</h1>
   </Summary>
@@ -39,12 +44,18 @@ const Summary = topLevel ? "div" : "summary";
 
   <FunctionSignature fun={fun} />
 
-  <h2>Parameters:</h2>
+  {
+    parameters.length > 0 && (
+      <>
+        <h2>Parameters:</h2>
 
-  <ParametersList
-    parameters={fun.parameters}
-    parametersDescriptions={parametersDescriptions}
-  />
+        <ParametersList
+          parameters={parameters}
+          parametersDescriptions={parametersDescriptions}
+        />
+      </>
+    )
+  }
 </Component>
 
 <style>
