@@ -17,7 +17,7 @@ const { parametersDescriptions, parameters } = Astro.props;
       <li>
         <div>
           <p class="name">
-            <CodeSpan variant="simple">{param.name}</CodeSpan>
+            <CodeSpan variant="simple">{param.name}:</CodeSpan>
           </p>
         </div>
         <div>
@@ -54,15 +54,18 @@ const { parametersDescriptions, parameters } = Astro.props;
   ol {
     list-style-type: none;
     padding: 0;
-
     display: grid;
     align-items: baseline;
     grid-template-columns: max-content 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   li {
     display: contents;
+
+    > div {
+      height: 100%;
+    }
 
     &:not(:last-child) > * {
       border-bottom: 1px solid var(--color-g-300);
