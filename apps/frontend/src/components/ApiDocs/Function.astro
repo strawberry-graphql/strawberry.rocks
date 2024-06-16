@@ -7,10 +7,10 @@ export interface Props {
   fun: {
     name: string;
   };
-  open?: boolean;
+  topLevel?: boolean;
 }
 
-const { fun, open = false } = Astro.props;
+const { fun, topLevel = false } = Astro.props;
 
 const parsedParameters = fun.docstring?.parsed.find(
   (item) => item.kind === "parameters",
@@ -23,12 +23,15 @@ const parametersDescriptions = parsedParameters
       return acc;
     }, {})
   : {};
+
+const Component = topLevel ? "div" : "details";
+const Summary = topLevel ? "div" : "summary";
 ---
 
-<details open={open} class:list={{ top: open }}>
-  <summary>
+<Component>
+  <Summary>
     <h1 class="typography-code">{fun.name}</h1>
-  </summary>
+  </Summary>
 
   {fun.docstring?.value && <Markdown content={fun.docstring.value} />}
 
@@ -42,7 +45,7 @@ const parametersDescriptions = parsedParameters
     parameters={fun.parameters}
     parametersDescriptions={parametersDescriptions}
   />
-</details>
+</Component>
 
 <style>
   h1 {
@@ -70,13 +73,13 @@ const parametersDescriptions = parsedParameters
     }
   }
 
-  :not(.top) summary {
+  summary {
     h1::after {
-      content: "▲";
+      content: "▼";
     }
+  }
 
-    details[open] h1::after {
-      content: "▲";
-    }
+  details[open] summary h1::after {
+    content: "▲";
   }
 </style>
