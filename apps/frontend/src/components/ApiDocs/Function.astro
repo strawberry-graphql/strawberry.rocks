@@ -18,7 +18,6 @@ const parsedParameters = fun.docstring?.parsed.find(
 
 const parametersDescriptions = parsedParameters
   ? parsedParameters.value.reduce((acc, item) => {
-      console.log(item);
       acc[item.name] = item.description;
       return acc;
     }, {})

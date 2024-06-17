@@ -74,6 +74,10 @@ if (props.kind === "alias") {
     <article>
       {current.kind === "function" && <Function fun={current} topLevel />}
       {current.kind === "class" && <Class klass={current} />}
+      <details>
+        <summary>debug json</summary>
+        <pre>{JSON.stringify(current, null, 2)}</pre>
+      </details>
     </article>
   </main>
 </Layout>
