@@ -1,20 +1,20 @@
 ---
 import Markdown from "../Markdown.astro";
 import Function from "./Function.astro";
-import ParametersList from "./ParametersList.astro";
 
 export interface Props {
+  name: string;
   klass: {
     name: string;
   };
 }
 
-const { klass } = Astro.props;
+const { name, klass } = Astro.props;
 
 const methods = klass.members.filter((m) => m.kind === "function");
 ---
 
-<h1>{klass.name}</h1>
+<h1>{name}</h1>
 
 {klass.docstring && <Markdown content={klass.docstring.value} />}
 
@@ -25,7 +25,7 @@ const methods = klass.members.filter((m) => m.kind === "function");
       <ul class="methods">
         {methods.map((method) => (
           <li>
-            <Function fun={method} />
+            <Function name={method.name} fun={method} />
           </li>
         ))}
       </ul>

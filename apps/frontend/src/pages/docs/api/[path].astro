@@ -62,8 +62,10 @@ while (current.kind === "alias") {
   current = findMember(current.target_path.split(".").slice(1));
 }
 
+let name = current.name;
+
 if (props.kind === "alias") {
-  current.name = props.path;
+  name = props.path;
 }
 ---
 
@@ -72,8 +74,12 @@ if (props.kind === "alias") {
     <aside>Nav</aside>
 
     <article>
-      {current.kind === "function" && <Function fun={current} topLevel />}
-      {current.kind === "class" && <Class klass={current} />}
+      {
+        current.kind === "function" && (
+          <Function name={name} fun={current} topLevel />
+        )
+      }
+      {current.kind === "class" && <Class name={name} klass={current} />}
       <details>
         <summary>debug json</summary>
         <pre>{JSON.stringify(current, null, 2)}</pre>

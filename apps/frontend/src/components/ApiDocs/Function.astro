@@ -4,13 +4,14 @@ import FunctionSignature from "./FunctionSignature.astro";
 import ParametersList from "./ParametersList.astro";
 
 export interface Props {
+  name: string;
   fun: {
     name: string;
   };
   topLevel?: boolean;
 }
 
-const { fun, topLevel = false } = Astro.props;
+const { name, fun, topLevel = false } = Astro.props;
 
 const parsedParameters = fun.docstring?.parsed.find(
   (item) => item.kind === "parameters",
@@ -34,7 +35,7 @@ const Summary = topLevel ? "div" : "summary";
 
 <Component class="function">
   <Summary>
-    <h1 class="typography-code">{fun.name}</h1>
+    <h1 class="typography-code">{name}</h1>
   </Summary>
 
   <div class="content">
