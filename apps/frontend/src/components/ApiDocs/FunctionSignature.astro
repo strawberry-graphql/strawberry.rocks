@@ -14,9 +14,15 @@ let params = fun.parameters;
 
 for (let i = 0; i < params.length; i++) {
   signature += "  " + params[i].name;
+
   if (params[i].annotation) {
     signature += ": " + expressionToString(params[i].annotation);
   }
+
+  if (params[i].default) {
+    signature += " = " + expressionToString(params[i].default);
+  }
+
   if (i < params.length - 1) {
     signature += ",\n";
   }

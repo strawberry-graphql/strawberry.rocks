@@ -43,7 +43,11 @@ function expressionToString(expr: any): string {
       .join(", ")})`;
   }
 
-  return "";
+  if (expr.cls === "ExprAttribute") {
+    return expr.values.map(expressionToString).join(".");
+  }
+
+  return expr.cls;
 }
 
 export default expressionToString;
