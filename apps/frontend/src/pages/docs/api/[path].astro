@@ -3,6 +3,8 @@ import { promises as fs } from "fs";
 import Layout from "../../../layouts/Layout.astro";
 import Function from "../../../components/ApiDocs/Function.astro";
 import Class from "../../../components/ApiDocs/Class.astro";
+import Module from "../../../components/ApiDocs/Module.astro";
+import Attribute from "../../../components/ApiDocs/Attribute.astro";
 
 export async function getStaticPaths() {
   const data = JSON.parse(
@@ -23,6 +25,15 @@ export async function getStaticPaths() {
           params: { path },
           props: { kind: member.kind, path },
         });
+      }
+
+      if (member.kind === "module") {
+        paths.push({
+          params: { path: `${currentPath}.${member.name}` },
+          props: { kind: member.kind, path: `${currentPath}.${member.name}` },
+        });
+
+        // addPaths(member.members, `${currentPath}.${member.name}`);
       }
     }
   };
@@ -64,7 +75,7 @@ while (current.kind === "alias") {
 
 let name = current.name;
 
-if (props.kind === "alias") {
+if (props.kind === "alias" || props.kind === "module") {
   name = props.path;
 }
 ---
@@ -80,6 +91,12 @@ if (props.kind === "alias") {
         )
       }
       {current.kind === "class" && <Class name={name} klass={current} />}
+      {current.kind === "module" && <Module name={name} module={current} />}
+      {
+        current.kind === "attribute" && (
+          <Attribute name={name} attribute={current} />
+        )
+      }
       <details>
         <summary>debug json</summary>
         <pre>{JSON.stringify(current, null, 2)}</pre>

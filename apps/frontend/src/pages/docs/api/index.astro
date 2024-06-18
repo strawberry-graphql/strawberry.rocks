@@ -1,6 +1,7 @@
 ---
 import { promises as fs } from "fs";
 import Layout from "../../../layouts/Layout.astro";
+import Markdown from "../../../components/Markdown.astro";
 
 const data = JSON.parse(
   await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
@@ -18,19 +19,25 @@ const membersByKind = data.members.reduce((acc, member) => {
 
   return acc;
 }, {});
+
+const names = {
+  alias: "Aliases",
+  module: "Modules",
+};
 ---
 
 <Layout title="API Docs">
   <main class="docs-grid">
     <aside>Nav</aside>
     <article>
-      <h1>{data.name}</h1>
-      <h2>Members</h2>
+      <h1>Strawberry API docs</h1>
+
+      <Markdown content={data.docstring.parsed[0].value} />
 
       {
         Object.entries(membersByKind).map(([kind, members]) => (
           <>
-            <h3>{kind}</h3>
+            <h2>{names[kind]}</h2>
             <ul>
               {members.map((member) => (
                 <li>

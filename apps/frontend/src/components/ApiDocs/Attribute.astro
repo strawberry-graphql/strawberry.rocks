@@ -1,0 +1,31 @@
+---
+import Markdown from "../Markdown.astro";
+
+export interface Props {
+  name: string;
+  attribute: {
+    name: string;
+  };
+}
+
+const { name, attribute } = Astro.props;
+---
+
+<h1>{name}</h1>
+
+{attribute.docstring && <Markdown content={attribute.docstring.value} />}
+
+<style>
+  .methods {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-g-300);
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+export interface Props {
+  module: any;
+  name: string;
+}
+
+const { name, module } = Astro.props;
+
+const removeQuotes = (str: string) => str.replace(/['"]+/g, "");
+
+const all = (
+  module.members.find((item: any) => item.name === "__all__")?.value.elements ||
+  []
+).map((item: any) => removeQuotes(item));
+
+const members = module.members.filter((item: any) => all.includes(item.name));
+
+console.log(all);
+---
+
+<h1>{name}</h1>
+
+<ul>
+  {members.map((item: any) => <li key={item.id}>{item.name}</li>)}
+</ul>
