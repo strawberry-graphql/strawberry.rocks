@@ -1,0 +1,49 @@
+---
+import { promises as fs } from "fs";
+import GenericNav from "../GenericNav.astro";
+import type { DocsTree } from "../../utils/get-tree";
+
+const data = JSON.parse(
+  await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
+);
+
+// remove all private members
+data.members = data.members.filter((member) => !member.name.startsWith("_"));
+
+const membersByKind = data.members.reduce((acc, member) => {
+  if (!acc[member.kind]) {
+    acc[member.kind] = [];
+  }
+
+  acc[member.kind].push(member);
+
+  return acc;
+}, {});
+
+const names = {
+  alias: "Aliases",
+  module: "Modules",
+};
+
+const tree: DocsTree = Object.fromEntries(
+  Object.entries(membersByKind).map(([kind, members]) => {
+    return [
+      kind,
+      {
+        type: "section",
+        name: names[kind] || kind,
+        links: members.map((member) => {
+          return {
+            type: "section-link",
+            text: member.name,
+            href: `/docs/api/strawberry.${member.name}`,
+            source: "?",
+          };
+        }),
+      },
+    ];
+  }),
+);
+---
+
+<GenericNav tree={tree} />

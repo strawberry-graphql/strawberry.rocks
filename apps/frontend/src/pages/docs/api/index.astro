@@ -2,6 +2,8 @@
 import { promises as fs } from "fs";
 import Layout from "../../../layouts/Layout.astro";
 import Markdown from "../../../components/Markdown.astro";
+import Nav from "../../../components/ApiDocs/Nav.astro";
+import Sidebar from "../../../components/Docs/Sidebar.astro";
 
 const data = JSON.parse(
   await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
@@ -28,7 +30,7 @@ const names = {
 
 <Layout title="API Docs">
   <main class="docs-grid">
-    <aside>Nav</aside>
+    <Sidebar><Nav /></Sidebar>
     <article>
       <h1>Strawberry API docs</h1>
 

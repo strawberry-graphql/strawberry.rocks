@@ -5,6 +5,8 @@ import Function from "../../../components/ApiDocs/Function.astro";
 import Class from "../../../components/ApiDocs/Class.astro";
 import Module from "../../../components/ApiDocs/Module.astro";
 import Attribute from "../../../components/ApiDocs/Attribute.astro";
+import Sidebar from "../../../components/Docs/Sidebar.astro";
+import Nav from "../../../components/ApiDocs/Nav.astro";
 
 export async function getStaticPaths() {
   const data = JSON.parse(
@@ -82,7 +84,7 @@ if (props.kind === "alias" || props.kind === "module") {
 
 <Layout title="API Docs">
   <main class="docs-grid">
-    <aside>Nav</aside>
+    <Sidebar><Nav /></Sidebar>
 
     <article>
       {
