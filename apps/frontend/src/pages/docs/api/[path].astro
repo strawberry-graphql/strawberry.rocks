@@ -16,6 +16,10 @@ export async function getStaticPaths() {
 
   const addPaths = (members: any, currentPath: string) => {
     for (const member of members) {
+      if (member.name?.startsWith("_")) {
+        continue;
+      }
+
       if (member.kind === "alias") {
         const path = `${currentPath}.${member.name}`;
 
