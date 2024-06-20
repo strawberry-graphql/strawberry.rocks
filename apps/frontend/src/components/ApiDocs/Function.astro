@@ -7,6 +7,21 @@ export interface Props {
   name: string;
   fun: {
     name: string;
+    parameters: {
+      name: string;
+      type: string;
+      default: string;
+    }[];
+    docstring?: {
+      value: string;
+      parsed: {
+        kind: string;
+        value: {
+          name: string;
+          description: string;
+        }[];
+      }[];
+    };
   };
   topLevel?: boolean;
 }
@@ -19,6 +34,7 @@ const parsedParameters = fun.docstring?.parsed.find(
 
 const parametersDescriptions = parsedParameters
   ? parsedParameters.value.reduce((acc, item) => {
+      // @ts-ignore
       acc[item.name] = item.description;
       return acc;
     }, {})

@@ -1,31 +1,37 @@
 ---
-import { promises as fs } from "fs";
 import Layout from "../../../layouts/Layout.astro";
 import Markdown from "../../../components/Markdown.astro";
 import Nav from "../../../components/ApiDocs/Nav.astro";
 import Sidebar from "../../../components/Docs/Sidebar.astro";
 
-const data = JSON.parse(
-  await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
-);
+import data from "../../../content/api/strawberry.json";
 
 // remove all private members
 data.members = data.members.filter((member) => !member.name.startsWith("_"));
 
-const membersByKind = data.members.reduce((acc, member) => {
-  if (!acc[member.kind]) {
-    acc[member.kind] = [];
-  }
+type Member = (typeof data.members)[0];
 
-  acc[member.kind].push(member);
+const membersByKind: Record<Member["kind"], Member[]> = data.members.reduce(
+  (acc, member) => {
+    if (!acc[member.kind]) {
+      acc[member.kind] = [];
+    }
 
-  return acc;
-}, {});
+    // @ts-ignore
+    acc[member.kind].push(member);
+
+    return acc;
+  },
+  {} as Record<Member["kind"], Member[]>,
+);
 
 const names = {
   alias: "Aliases",
   module: "Modules",
-};
+} as const;
+
+const parsed = data.docstring?.parsed || [];
+const moduleDoc = parsed.length > 0 ? parsed[0]?.value : null;
 ---
 
 <Layout title="API Docs">
@@ -34,15 +40,15 @@ const names = {
     <article>
       <h1>Strawberry API docs</h1>
 
-      <Markdown content={data.docstring.parsed[0].value} />
+      {moduleDoc && <Markdown content={moduleDoc} />}
 
       {
         Object.entries(membersByKind).map(([kind, members]) => (
           <>
-            <h2>{names[kind]}</h2>
+            <h2>{names[kind as keyof typeof names]}</h2>
             <ul>
               {members.map((member) => (
-                <li>
+                <li class="typography-paragraph">
                   <a href={`/docs/api/strawberry.${member.name}`}>
                     <code>strawberry.{member.name}</code>
                   </a>
@@ -55,3 +61,15 @@ const names = {
     </article>
   </main>
 </Layout>
+
+<style>
+  ul {
+    list-style-type: disc;
+    padding-left: 1rem;
+  }
+
+  ul li a {
+    text-decoration: underline;
+    text-decoration-offset: 0.2em;
+  }
+</style>

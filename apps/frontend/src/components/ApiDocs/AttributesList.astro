@@ -4,7 +4,13 @@ import CodeSpan from "../Pages/CodeSpan.astro";
 import expressionToString from "./expression";
 
 export interface Props {
-  attributes: any;
+  attributes: Array<{
+    name: string;
+    docstring?: {
+      value: string;
+    };
+    annotation?: any;
+  }>;
 }
 
 const { attributes } = Astro.props;

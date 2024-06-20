@@ -7,6 +7,38 @@ export interface Props {
   name: string;
   klass: {
     name: string;
+    docstring?: {
+      value: string;
+    };
+    members: Array<{
+      kind: string;
+      name: string;
+      docstring?: {
+        value: string;
+        parsed: {
+          kind: string;
+          value: {
+            name: string;
+            description: string;
+          }[];
+        }[];
+      };
+      parameters: Array<{
+        name: string;
+        default: string;
+        type: string;
+        docstring?: {
+          value: string;
+          parsed: {
+            kind: string;
+            value: {
+              name: string;
+              description: string;
+            }[];
+          }[];
+        };
+      }>;
+    }>;
   };
 }
 

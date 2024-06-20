@@ -1,5 +1,4 @@
 ---
-import { promises as fs } from "fs";
 import Layout from "../../../layouts/Layout.astro";
 import Function from "../../../components/ApiDocs/Function.astro";
 import Class from "../../../components/ApiDocs/Class.astro";
@@ -7,12 +6,9 @@ import Module from "../../../components/ApiDocs/Module.astro";
 import Attribute from "../../../components/ApiDocs/Attribute.astro";
 import Sidebar from "../../../components/Docs/Sidebar.astro";
 import Nav from "../../../components/ApiDocs/Nav.astro";
+import data from "../../../content/api/strawberry.json";
 
 export async function getStaticPaths() {
-  const data = JSON.parse(
-    await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
-  );
-
   const paths: Array<{
     params: { path: string };
     props: { kind: string; path: string };
@@ -45,19 +41,16 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const data = JSON.parse(
-  await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
-);
-
 const { path } = Astro.params;
 const props = Astro.props;
 
 const parts = path.split(".").slice(1);
+
 const findMember = (parts: string[]) => {
-  let current = data;
+  let current: any = data;
 
   for (const part of parts) {
-    const sub = current.members.find((member) => member.name === part);
+    const sub = current.members.find((member: any) => member.name === part);
 
     if (!sub) {
       throw new Error(`Could not find member ${part}`);

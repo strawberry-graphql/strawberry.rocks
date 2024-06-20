@@ -1,24 +1,25 @@
 ---
-import { promises as fs } from "fs";
 import GenericNav from "../GenericNav.astro";
 import type { DocsTree } from "../../utils/get-tree";
+import data from "../../content/api/strawberry.json";
 
-const data = JSON.parse(
-  await fs.readFile("./src/content/api/strawberry.json", "utf-8"),
-);
-
+type Member = (typeof data.members)[0];
 // remove all private members
 data.members = data.members.filter((member) => !member.name.startsWith("_"));
 
-const membersByKind = data.members.reduce((acc, member) => {
-  if (!acc[member.kind]) {
-    acc[member.kind] = [];
-  }
+const membersByKind = data.members.reduce(
+  (acc, member) => {
+    if (!acc[member.kind]) {
+      acc[member.kind] = [];
+    }
 
-  acc[member.kind].push(member);
+    // @ts-ignore
+    acc[member.kind].push(member);
 
-  return acc;
-}, {});
+    return acc;
+  },
+  {} as Record<string, Member[]>,
+);
 
 const names = {
   alias: "Aliases",
@@ -31,6 +32,7 @@ const tree: DocsTree = Object.fromEntries(
       kind,
       {
         type: "section",
+        // @ts-ignore
         name: names[kind] || kind,
         links: members.map((member) => {
           return {
