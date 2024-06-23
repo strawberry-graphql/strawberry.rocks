@@ -2,6 +2,23 @@ const simplifyAnnotated = (expr: any) => {
   return expr.slice.elements[0];
 };
 
+const parseSubscript = (expr: any) => {
+  if (expr.left.name === "Annotated") {
+    expr = simplifyAnnotated(expr);
+  }
+
+  if (expr.left.name === "Optional") {
+    expr = {
+      cls: "ExprBinOp",
+      left: expr.slice,
+      operator: "|",
+      right: "None",
+    };
+  }
+
+  return expr;
+};
+
 function expressionToString(expr: any): string {
   if (!expr) {
     return "";
@@ -11,23 +28,27 @@ function expressionToString(expr: any): string {
     return expr;
   }
 
-  if (expr.cls === "ExprSubscript" && expr.left.name === "Annotated") {
-    expr = simplifyAnnotated(expr);
+  if (expr.cls === "ExprSubscript") {
+    expr = parseSubscript(expr);
   }
 
   if (expr.cls === "ExprName") {
     return expr.name;
   }
 
+  if (expr.cls === "ExprBinOp") {
+    return `${expressionToString(expr.left)} ${
+      expr.operator
+    } ${expressionToString(expr.right)}`;
+  }
+
   if (expr.cls === "ExprTuple") {
-    let content = "";
+    let content = expr.elements.map(expressionToString).join(", ");
+
     if (!expr.implicit) {
-      content += "(";
+      content = `(${content})`;
     }
-    content += expr.elements.map(expressionToString).join(", ");
-    if (!expr.implicit) {
-      content += ")";
-    }
+
     return content;
   }
 

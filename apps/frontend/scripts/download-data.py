@@ -31,9 +31,7 @@ def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
 
         import griffe
 
-        extensions = griffe.load_extensions(["griffe_typingdoc"])
-
-        data = griffe.load(package_name, extensions=extensions)
+        data = griffe.load(package_name, docstring_parser="google")
 
         os.makedirs(destination, exist_ok=True)
 

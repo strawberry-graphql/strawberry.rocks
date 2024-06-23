@@ -16,10 +16,7 @@ export interface Props {
       value: string;
       parsed: {
         kind: string;
-        value: {
-          name: string;
-          description: string;
-        }[];
+        value: string;
       }[];
     };
   };
@@ -32,6 +29,7 @@ const parsedParameters = fun.docstring?.parsed.find(
   (item) => item.kind === "parameters",
 );
 
+console.log(parsedParameters);
 const parametersDescriptions = parsedParameters
   ? parsedParameters.value.reduce((acc, item) => {
       // @ts-ignore
@@ -55,7 +53,11 @@ const Summary = topLevel ? "div" : "summary";
   </Summary>
 
   <div class="content">
-    {fun.docstring?.value && <Markdown content={fun.docstring.value} />}
+    {
+      fun.docstring?.parsed && (
+        <Markdown content={fun.docstring.parsed[0].value} />
+      )
+    }
   </div>
 
   <div class="content">
