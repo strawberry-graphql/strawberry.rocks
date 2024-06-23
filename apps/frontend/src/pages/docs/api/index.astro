@@ -30,6 +30,11 @@ const names = {
   module: "Modules",
 } as const;
 
+// sort all members by name
+Object.values(membersByKind).forEach((members) => {
+  members.sort((a, b) => a.name.localeCompare(b.name));
+});
+
 const parsed = data.docstring?.parsed || [];
 const moduleDoc = parsed.length > 0 ? parsed[0]?.value : null;
 ---

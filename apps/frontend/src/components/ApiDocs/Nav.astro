@@ -21,6 +21,11 @@ const membersByKind = data.members.reduce(
   {} as Record<string, Member[]>,
 );
 
+// sort members by name
+Object.values(membersByKind).forEach((members) => {
+  members.sort((a, b) => a.name.localeCompare(b.name));
+});
+
 const names = {
   alias: "Aliases",
   module: "Modules",
