@@ -2,6 +2,27 @@ const simplifyAnnotated = (expr: any) => {
   return expr.slice.elements[0];
 };
 
+const unionToBinOp = (expr: any) => {
+  const elements = expr.slice.elements;
+
+  if (elements.length === 1) {
+    return elements[0];
+  }
+
+  return {
+    cls: "ExprBinOp",
+    left: elements[0],
+    operator: "|",
+    right: unionToBinOp({
+      cls: "Union",
+      slice: {
+        cls: "Slice",
+        elements: elements.slice(1),
+      },
+    }),
+  };
+};
+
 const parseSubscript = (expr: any) => {
   if (expr.left.name === "Annotated") {
     expr = simplifyAnnotated(expr);
@@ -14,6 +35,10 @@ const parseSubscript = (expr: any) => {
       operator: "|",
       right: "None",
     };
+  }
+
+  if (expr.left.name === "Union") {
+    expr = unionToBinOp(expr);
   }
 
   return expr;
@@ -62,6 +87,10 @@ function expressionToString(expr: any): string {
     return `${expressionToString(expr.function)}(${expr.arguments
       .map(expressionToString)
       .join(", ")})`;
+  }
+
+  if (expr.cls === "ExprList") {
+    return `[${expr.elements.map(expressionToString).join(", ")}]`;
   }
 
   if (expr.cls === "ExprAttribute") {

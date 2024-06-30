@@ -29,7 +29,6 @@ const parsedParameters = fun.docstring?.parsed.find(
   (item) => item.kind === "parameters",
 );
 
-console.log(parsedParameters);
 const parametersDescriptions = parsedParameters
   ? parsedParameters.value.reduce((acc, item) => {
       // @ts-ignore
@@ -45,6 +44,9 @@ const parameters = fun.parameters.filter(
 
 const Component = topLevel ? "div" : "details";
 const Summary = topLevel ? "div" : "summary";
+
+const returns = fun.docstring?.parsed.find((item) => item.kind === "returns")
+  ?.value[0].description;
 ---
 
 <Component class="function">
@@ -59,6 +61,16 @@ const Summary = topLevel ? "div" : "summary";
       )
     }
   </div>
+
+  {
+    returns && (
+      <div class="content">
+        <h2>Returns:</h2>
+
+        <Markdown content={returns} />
+      </div>
+    )
+  }
 
   <div class="content">
     <h2>Signature:</h2>
