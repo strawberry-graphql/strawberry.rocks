@@ -23,6 +23,10 @@ export async function getStaticPaths() {
       if (member.kind === "alias") {
         const path = `${currentPath}.${member.name}`;
 
+        if (path.includes("*")) {
+          continue;
+        }
+
         paths.push({
           params: { path },
           props: { kind: member.kind, path },
@@ -35,7 +39,7 @@ export async function getStaticPaths() {
           props: { kind: member.kind, path: `${currentPath}.${member.name}` },
         });
 
-        // addPaths(member.members, `${currentPath}.${member.name}`);
+        addPaths(member.members, `${currentPath}.${member.name}`);
       }
     }
   };
@@ -90,7 +94,11 @@ if (props.kind === "alias" || props.kind === "module") {
         )
       }
       {current.kind === "class" && <Class name={name} klass={current} />}
-      {current.kind === "module" && <Module name={name} module={current} />}
+      {
+        current.kind === "module" && (
+          <Module name={name} module={current} path={path} />
+        )
+      }
       {
         current.kind === "attribute" && (
           <Attribute name={name} attribute={current} />
