@@ -116,10 +116,14 @@ if (props.kind === "alias" || props.kind === "module") {
           <Attribute name={name} attribute={current} />
         )
       }
-      <details>
-        <summary>debug json</summary>
-        <pre>{JSON.stringify(current, null, 2)}</pre>
-      </details>
+      {
+        process.env.NODE_ENV === "development" && (
+          <details>
+            <summary>debug json</summary>
+            <pre>{JSON.stringify(current, null, 2)}</pre>
+          </details>
+        )
+      }
     </article>
   </main>
 </Layout>
