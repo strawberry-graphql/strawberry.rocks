@@ -62,7 +62,8 @@ export async function getStaticPaths() {
 const { path } = Astro.params;
 const props = Astro.props;
 
-const parts = path.split(".").slice(1);
+// removing `strawberry.` from the path since the data start with strawberry
+const parts = path.replace(/^strawberry\./, "").split(".");
 
 const findMember = (parts: string[]) => {
   let current: any = data;
@@ -71,7 +72,8 @@ const findMember = (parts: string[]) => {
     const sub = current.members.find((member: any) => member.name === part);
 
     if (!sub) {
-      throw new Error(`Could not find member ${part}`);
+      console.info("could not find", part, "for path", path);
+      return Astro.redirect("/404");
     }
 
     current = sub;
