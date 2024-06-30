@@ -4,10 +4,11 @@ import type { DocsTree } from "../../utils/get-tree";
 import data from "../../content/api/strawberry.json";
 
 type Member = (typeof data.members)[0];
-// remove all private members
-data.members = data.members.filter((member) => !member.name.startsWith("_"));
 
-const membersByKind = data.members.reduce(
+// remove all private members
+const members = data.members.filter((member) => !member.name.startsWith("_"));
+
+const membersByKind = members.reduce(
   (acc, member) => {
     if (!acc[member.kind]) {
       acc[member.kind] = [];

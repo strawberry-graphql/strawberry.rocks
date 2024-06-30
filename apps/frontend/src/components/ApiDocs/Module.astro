@@ -3,6 +3,10 @@ import Markdown from "../Markdown.astro";
 import Title from "./Title.astro";
 import { removeQuotes } from "./utils/remove-quotes";
 
+import data from "../../content/api/strawberry.json";
+
+type Member = (typeof data.members)[0];
+
 export interface Props {
   module: any;
   path: string;
@@ -20,8 +24,6 @@ const members = module.members.filter(
   (member: { name: string; kind: string }) =>
     all.includes(member.name) || member.kind === "module",
 );
-
-type Member = (typeof module.members)[0];
 
 const membersByKind: Record<Member["kind"], Member[]> = members.reduce(
   (acc: Record<Member["kind"], Member[]>, member: Member) => {
@@ -72,3 +74,14 @@ const moduleDoc = parsed.length > 0 ? parsed[0]?.value : null;
     </>
   ))
 }
+
+<style>
+  ul {
+    list-style-type: disc;
+    padding-left: 1rem;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
