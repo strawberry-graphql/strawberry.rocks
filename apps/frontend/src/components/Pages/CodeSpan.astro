@@ -3,13 +3,13 @@ export interface Props {
   variant?: "default" | "simple";
 }
 
-const { variant = "default" } = Astro.props;
+const { variant = "default", ...props } = Astro.props;
 ---
 
 <code class:list={["typography-code", variant]}><slot /></code>
 
 <style>
-  code.default {
+  :global(:not(pre) > code.default) {
     color: var(--color-strawberry);
     border-radius: 4px;
     padding-inline: 6px;
