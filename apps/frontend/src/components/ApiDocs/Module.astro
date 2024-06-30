@@ -1,9 +1,9 @@
 ---
 import Markdown from "../Markdown.astro";
 import Title from "./Title.astro";
-import { removeQuotes } from "./utils/remove-quotes";
 
 import data from "../../content/api/strawberry.json";
+import { filterMembers } from "./utils/filter-members";
 
 type Member = (typeof data.members)[0];
 
@@ -15,15 +15,7 @@ export interface Props {
 
 const { name, module, path } = Astro.props;
 
-const all = (
-  module.members.find((item: any) => item.name === "__all__")?.value.elements ||
-  []
-).map((item: any) => removeQuotes(item));
-
-const members = module.members.filter(
-  (member: { name: string; kind: string }) =>
-    all.includes(member.name) || member.kind === "module",
-);
+const members = filterMembers(data.members);
 
 const membersByKind: Record<Member["kind"], Member[]> = members.reduce(
   (acc: Record<Member["kind"], Member[]>, member: Member) => {

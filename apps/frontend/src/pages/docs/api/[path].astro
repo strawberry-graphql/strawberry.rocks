@@ -7,6 +7,7 @@ import Attribute from "../../../components/ApiDocs/Attribute.astro";
 import Sidebar from "../../../components/Docs/Sidebar.astro";
 import Nav from "../../../components/ApiDocs/Nav.astro";
 import data from "../../../content/api/strawberry.json";
+import { filterMembers } from "../../../components/ApiDocs/utils/filter-members";
 
 export async function getStaticPaths() {
   const paths: Array<{
@@ -15,6 +16,8 @@ export async function getStaticPaths() {
   }> = [];
 
   const addPaths = (members: any, currentPath: string) => {
+    members = filterMembers(members);
+
     for (const member of members) {
       if (member.name?.startsWith("_")) {
         continue;
