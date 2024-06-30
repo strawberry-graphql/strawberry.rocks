@@ -15,7 +15,7 @@ export interface Props {
 
 const { name, module, path } = Astro.props;
 
-const members = filterMembers(data.members);
+const members = filterMembers(module.members);
 
 const membersByKind: Record<Member["kind"], Member[]> = members.reduce(
   (acc: Record<Member["kind"], Member[]>, member: Member) => {
