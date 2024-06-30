@@ -2,6 +2,7 @@
 import Markdown from "../Markdown.astro";
 import FunctionSignature from "./FunctionSignature.astro";
 import ParametersList from "./ParametersList.astro";
+import Title from "./Title.astro";
 
 export interface Props {
   name: string;
@@ -50,9 +51,7 @@ const returns = fun.docstring?.parsed.find((item) => item.kind === "returns")
 ---
 
 <Component class="function">
-  <Summary>
-    <h1 class="typography-code">{name}</h1>
-  </Summary>
+  <Summary><Title>{name}</Title> </Summary>
 
   <div class="content">
     {

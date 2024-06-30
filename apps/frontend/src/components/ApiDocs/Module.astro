@@ -1,4 +1,8 @@
 ---
+import Markdown from "../Markdown.astro";
+import Title from "./Title.astro";
+import { removeQuotes } from "./utils/remove-quotes";
+
 export interface Props {
   module: any;
   name: string;
@@ -6,18 +10,67 @@ export interface Props {
 
 const { name, module } = Astro.props;
 
-const removeQuotes = (str: string) => str.replace(/['"]+/g, "");
-
 const all = (
   module.members.find((item: any) => item.name === "__all__")?.value.elements ||
   []
 ).map((item: any) => removeQuotes(item));
 
-const members = module.members.filter((item: any) => all.includes(item.name));
+const members = module.members.filter(
+  (item: any) => all.includes(item.name) || item.kind === "module",
+);
+
+// remove all private members
+module.members = module.members.filter(
+  (member) => !member.name.startsWith("_"),
+);
+
+type Member = (typeof module.members)[0];
+
+const membersByKind: Record<Member["kind"], Member[]> = module.members.reduce(
+  (acc, member) => {
+    if (!acc[member.kind]) {
+      acc[member.kind] = [];
+    }
+
+    // @ts-ignore
+    acc[member.kind].push(member);
+
+    return acc;
+  },
+  {} as Record<Member["kind"], Member[]>,
+);
+
+const names = {
+  alias: "Aliases",
+  module: "Modules",
+} as const;
+
+// sort all members by name
+Object.values(membersByKind).forEach((members) => {
+  members.sort((a, b) => a.name.localeCompare(b.name));
+});
+
+const parsed = module.docstring?.parsed || [];
+const moduleDoc = parsed.length > 0 ? parsed[0]?.value : null;
 ---
 
 <h1>{name}</h1>
 
-<ul>
-  {members.map((item: any) => <li>{item.name}</li>)}
-</ul>
+{moduleDoc && <Markdown content={moduleDoc} />}
+
+{
+  Object.entries(membersByKind).map(([kind, members]) => (
+    <>
+      <h2>{names[kind as keyof typeof names]}</h2>
+      <ul>
+        {members.map((member) => (
+          <li class="typography-paragraph">
+            <a href={`/docs/api/strawberry.${member.name}`}>
+              <code>strawberry.{member.name}</code>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  ))
+}

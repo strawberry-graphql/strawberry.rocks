@@ -1,68 +1,18 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import Markdown from "../../../components/Markdown.astro";
 import Nav from "../../../components/ApiDocs/Nav.astro";
 import Sidebar from "../../../components/Docs/Sidebar.astro";
 
 import data from "../../../content/api/strawberry.json";
-
-// remove all private members
-data.members = data.members.filter((member) => !member.name.startsWith("_"));
-
-type Member = (typeof data.members)[0];
-
-const membersByKind: Record<Member["kind"], Member[]> = data.members.reduce(
-  (acc, member) => {
-    if (!acc[member.kind]) {
-      acc[member.kind] = [];
-    }
-
-    // @ts-ignore
-    acc[member.kind].push(member);
-
-    return acc;
-  },
-  {} as Record<Member["kind"], Member[]>,
-);
-
-const names = {
-  alias: "Aliases",
-  module: "Modules",
-} as const;
-
-// sort all members by name
-Object.values(membersByKind).forEach((members) => {
-  members.sort((a, b) => a.name.localeCompare(b.name));
-});
-
-const parsed = data.docstring?.parsed || [];
-const moduleDoc = parsed.length > 0 ? parsed[0]?.value : null;
+import Module from "../../../components/ApiDocs/Module.astro";
 ---
 
 <Layout title="API Docs">
   <main class="docs-grid">
     <Sidebar><Nav /></Sidebar>
+
     <article>
-      <h1>Strawberry API docs</h1>
-
-      {moduleDoc && <Markdown content={moduleDoc} />}
-
-      {
-        Object.entries(membersByKind).map(([kind, members]) => (
-          <>
-            <h2>{names[kind as keyof typeof names]}</h2>
-            <ul>
-              {members.map((member) => (
-                <li class="typography-paragraph">
-                  <a href={`/docs/api/strawberry.${member.name}`}>
-                    <code>strawberry.{member.name}</code>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </>
-        ))
-      }
+      <Module name={data.name} module={data} />
     </article>
   </main>
 </Layout>

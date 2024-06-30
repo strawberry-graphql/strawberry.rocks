@@ -1,5 +1,6 @@
 ---
 import Markdown from "../Markdown.astro";
+import Title from "./Title.astro";
 
 export interface Props {
   name: string;
@@ -14,7 +15,7 @@ export interface Props {
 const { name, attribute } = Astro.props;
 ---
 
-<h1>{name}</h1>
+<Title>{name}</Title>
 
 {attribute.docstring && <Markdown content={attribute.docstring.value} />}
 
