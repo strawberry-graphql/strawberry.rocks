@@ -16,14 +16,14 @@ const all = (
   []
 ).map((item: any) => removeQuotes(item));
 
-module.members = module.members.filter(
+const members = module.members.filter(
   (member: { name: string; kind: string }) =>
     all.includes(member.name) || member.kind === "module",
 );
 
 type Member = (typeof module.members)[0];
 
-const membersByKind: Record<Member["kind"], Member[]> = module.members.reduce(
+const membersByKind: Record<Member["kind"], Member[]> = members.reduce(
   (acc: Record<Member["kind"], Member[]>, member: Member) => {
     if (!acc[member.kind]) {
       acc[member.kind] = [];

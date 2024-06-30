@@ -27,16 +27,6 @@ const attributes = klass.members.filter((m) => m.kind === "attribute");
 {klass.docstring && <Markdown content={klass.docstring.value} />}
 
 {
-  attributes.length > 0 && (
-    <>
-      <h2>Attributes</h2>
-
-      <AttributesList attributes={attributes} />
-    </>
-  )
-}
-
-{
   methods.length > 0 && (
     <>
       <h2>Methods</h2>
@@ -47,6 +37,16 @@ const attributes = klass.members.filter((m) => m.kind === "attribute");
           </li>
         ))}
       </ul>
+    </>
+  )
+}
+
+{
+  attributes.length > 0 && (
+    <>
+      <h2>Attributes</h2>
+
+      <AttributesList attributes={attributes} />
     </>
   )
 }
