@@ -2,7 +2,7 @@ const simplifyAnnotated = (expr: any) => {
   return expr.slice.elements[0];
 };
 
-const unionToBinOp = (expr: any) => {
+const unionToBinOp = (expr: any): any => {
   const elements = expr.slice.elements;
 
   if (elements.length === 1) {

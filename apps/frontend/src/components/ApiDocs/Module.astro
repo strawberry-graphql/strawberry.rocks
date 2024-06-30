@@ -16,19 +16,15 @@ const all = (
   []
 ).map((item: any) => removeQuotes(item));
 
-const members = module.members.filter(
-  (item: any) => all.includes(item.name) || item.kind === "module",
-);
-
-// remove all private members
 module.members = module.members.filter(
-  (member) => !member.name.startsWith("_"),
+  (member: { name: string; kind: string }) =>
+    all.includes(member.name) || member.kind === "module",
 );
 
 type Member = (typeof module.members)[0];
 
 const membersByKind: Record<Member["kind"], Member[]> = module.members.reduce(
-  (acc, member) => {
+  (acc: Record<Member["kind"], Member[]>, member: Member) => {
     if (!acc[member.kind]) {
       acc[member.kind] = [];
     }
@@ -44,6 +40,7 @@ const membersByKind: Record<Member["kind"], Member[]> = module.members.reduce(
 const names = {
   alias: "Aliases",
   module: "Modules",
+  class: "Classes",
 } as const;
 
 // sort all members by name
@@ -55,14 +52,14 @@ const parsed = module.docstring?.parsed || [];
 const moduleDoc = parsed.length > 0 ? parsed[0]?.value : null;
 ---
 
-<h1>{name}</h1>
+<Title>{name}</Title>
 
 {moduleDoc && <Markdown content={moduleDoc} />}
 
 {
   Object.entries(membersByKind).map(([kind, members]) => (
     <>
-      <h2>{names[kind as keyof typeof names]}</h2>
+      <h2>{names[kind as keyof typeof names] || kind}</h2>
       <ul>
         {members.map((member) => (
           <li class="typography-paragraph">

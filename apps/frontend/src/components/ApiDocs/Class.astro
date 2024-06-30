@@ -1,8 +1,9 @@
 ---
 import Markdown from "../Markdown.astro";
-import Function from "./Function.astro";
+import Function, { type FunctionDefinition } from "./Function.astro";
 import AttributesList from "./AttributesList.astro";
 import Title from "./Title.astro";
+import type { AttributeDefinition } from "./Attribute.astro";
 
 export interface Props {
   name: string;
@@ -11,35 +12,7 @@ export interface Props {
     docstring?: {
       value: string;
     };
-    members: Array<{
-      kind: string;
-      name: string;
-      docstring?: {
-        value: string;
-        parsed: {
-          kind: string;
-          value: {
-            name: string;
-            description: string;
-          }[];
-        }[];
-      };
-      parameters: Array<{
-        name: string;
-        default: string;
-        type: string;
-        docstring?: {
-          value: string;
-          parsed: {
-            kind: string;
-            value: {
-              name: string;
-              description: string;
-            }[];
-          }[];
-        };
-      }>;
-    }>;
+    members: Array<FunctionDefinition | AttributeDefinition>;
   };
 }
 

@@ -2,14 +2,17 @@
 import Markdown from "../Markdown.astro";
 import Title from "./Title.astro";
 
+export interface AttributeDefinition {
+  name: string;
+  kind: "attribute";
+  docstring?: {
+    value: string;
+  };
+}
+
 export interface Props {
   name: string;
-  attribute: {
-    name: string;
-    docstring?: {
-      value: string;
-    };
-  };
+  attribute: AttributeDefinition;
 }
 
 const { name, attribute } = Astro.props;

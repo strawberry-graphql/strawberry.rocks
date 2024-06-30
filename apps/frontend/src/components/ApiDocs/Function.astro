@@ -4,23 +4,41 @@ import FunctionSignature from "./FunctionSignature.astro";
 import ParametersList from "./ParametersList.astro";
 import Title from "./Title.astro";
 
+export interface FunctionDefinition {
+  name: string;
+  kind: "function";
+  parameters: {
+    name: string;
+    type: string;
+    default: string;
+  }[];
+  docstring?: {
+    value: string;
+    parsed: Array<
+      | {
+          kind: "parameters";
+          value: Array<{
+            description: string;
+            name: string;
+          }>;
+        }
+      | {
+          kind: "returns";
+          value: Array<{
+            description: string;
+          }>;
+        }
+      | {
+          kind: "text";
+          value: string;
+        }
+    >;
+  };
+}
+
 export interface Props {
   name: string;
-  fun: {
-    name: string;
-    parameters: {
-      name: string;
-      type: string;
-      default: string;
-    }[];
-    docstring?: {
-      value: string;
-      parsed: {
-        kind: string;
-        value: string;
-      }[];
-    };
-  };
+  fun: FunctionDefinition;
   topLevel?: boolean;
 }
 
@@ -31,7 +49,8 @@ const parsedParameters = fun.docstring?.parsed.find(
 );
 
 const parametersDescriptions = parsedParameters
-  ? parsedParameters.value.reduce((acc, item) => {
+  ? // @ts-ignore
+    parsedParameters.value.reduce((acc: Record<string, string>, item: any) => {
       // @ts-ignore
       acc[item.name] = item.description;
       return acc;
@@ -46,19 +65,19 @@ const parameters = fun.parameters.filter(
 const Component = topLevel ? "div" : "details";
 const Summary = topLevel ? "div" : "summary";
 
-const returns = fun.docstring?.parsed.find((item) => item.kind === "returns")
-  ?.value[0].description;
+const returns = fun.docstring?.parsed?.find((item) => item.kind === "returns")
+  ?.value[0]?.description;
+
+const docstring = fun.docstring?.parsed.find(
+  (item) => item.kind === "text",
+)?.value;
 ---
 
 <Component class="function">
-  <Summary><Title>{name}</Title> </Summary>
+  <Summary><Title>{name}</Title></Summary>
 
   <div class="content">
-    {
-      fun.docstring?.parsed && (
-        <Markdown content={fun.docstring.parsed[0].value} />
-      )
-    }
+    {docstring && <Markdown content={docstring} />}
   </div>
 
   {
