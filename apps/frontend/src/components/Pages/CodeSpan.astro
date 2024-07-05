@@ -9,15 +9,14 @@ const { variant = "default", allowCopy } = Astro.props;
 ---
 
 <code class:list={["typography-code", variant, { "allow-copy": allowCopy }]}
-  ><slot />
-  {
+  ><slot />{
     allowCopy && (
       <button class="copy-button">
         <CopyIcon />
       </button>
     )
-  }
-</code>
+  }</code
+>
 
 <style>
   :global(:not(pre) > code.default) {
