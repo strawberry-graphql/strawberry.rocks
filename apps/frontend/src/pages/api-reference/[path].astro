@@ -1,13 +1,13 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import Function from "../../../components/ApiDocs/Function.astro";
-import Class from "../../../components/ApiDocs/Class.astro";
-import Module from "../../../components/ApiDocs/Module.astro";
-import Attribute from "../../../components/ApiDocs/Attribute.astro";
-import Sidebar from "../../../components/Docs/Sidebar.astro";
-import Nav from "../../../components/ApiDocs/Nav.astro";
-import data from "../../../content/api/strawberry.json";
-import { filterMembers } from "../../../components/ApiDocs/utils/filter-members";
+import Layout from "../../layouts/Layout.astro";
+import Function from "../../components/ApiDocs/Function.astro";
+import Class from "../../components/ApiDocs/Class.astro";
+import Module from "../../components/ApiDocs/Module.astro";
+import Attribute from "../../components/ApiDocs/Attribute.astro";
+import Sidebar from "../../components/Docs/Sidebar.astro";
+import Nav from "../../components/ApiDocs/Nav.astro";
+import data from "../../content/api/strawberry.json";
+import { filterMembers } from "../../components/ApiDocs/utils/filter-members";
 
 export async function getStaticPaths() {
   const paths: Array<{

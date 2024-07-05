@@ -57,7 +57,7 @@ const moduleDoc = parsed.length > 0 ? parsed[0]?.value : null;
       <ul>
         {members.map((member) => (
           <li class="typography-paragraph">
-            <a href={`/docs/api/${path}.${member.name}`}>
+            <a href={`/api-reference/${path}.${member.name}`}>
               <code>{member.name}</code>
             </a>
           </li>
