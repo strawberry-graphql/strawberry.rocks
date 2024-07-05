@@ -8,27 +8,31 @@ export interface Props {
 
 const { fun } = Astro.props;
 
-let signature = "def " + fun.name + "(\n";
-
 let params = fun.parameters;
 
+let paramsStrings = [];
+
 for (let i = 0; i < params.length; i++) {
-  signature += "  " + params[i].name;
+  let param = params[i].name;
 
   if (params[i].annotation) {
-    signature += ": " + expressionToString(params[i].annotation);
+    param += ": " + expressionToString(params[i].annotation);
   }
 
   if (params[i].default) {
-    signature += " = " + expressionToString(params[i].default);
+    param += " = " + expressionToString(params[i].default);
   }
 
-  if (i < params.length - 1) {
-    signature += ",\n";
-  }
+  paramsStrings.push(param);
 }
 
-signature += "\n) -> " + expressionToString(fun.returns) + ":\n  ...";
+let paramsString = paramsStrings.join(", ");
+
+if (paramsString.length > 80) {
+  paramsString = "\n    " + paramsStrings.join(",\n    ") + ",\n";
+}
+
+let signature = `def ${fun.name}(${paramsString}) -> ${expressionToString(fun.returns)}:\n  ...`;
 ---
 
 <Code code={signature} lang="python" />
