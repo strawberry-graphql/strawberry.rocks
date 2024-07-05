@@ -18,8 +18,16 @@ export interface Props {
 
 const { name, klass } = Astro.props;
 
-const methods = klass.members.filter((m) => m.kind === "function");
-const attributes = klass.members.filter((m) => m.kind === "attribute");
+const methods = klass.members.filter(
+  (m) => m.kind === "function" && !m.name.startsWith("_"),
+);
+const attributes = klass.members.filter(
+  (m) => m.kind === "attribute" && !m.name.startsWith("_"),
+);
+
+const constructor = klass.members.find(
+  (m) => m.kind === "function" && m.name === "__init__",
+) as FunctionDefinition | undefined;
 ---
 
 <Title>{name}</Title>
@@ -27,9 +35,24 @@ const attributes = klass.members.filter((m) => m.kind === "attribute");
 {klass.docstring && <Markdown content={klass.docstring.value} />}
 
 {
+  constructor && (
+    <>
+      <h2>Constructor:</h2>
+
+      <Function
+        name={constructor.name}
+        fun={constructor}
+        topLevel
+        showName={false}
+      />
+    </>
+  )
+}
+
+{
   methods.length > 0 && (
     <>
-      <h2>Methods</h2>
+      <h2>Methods:</h2>
       <ul class="methods">
         {methods.map((method) => (
           <li>
@@ -44,7 +67,7 @@ const attributes = klass.members.filter((m) => m.kind === "attribute");
 {
   attributes.length > 0 && (
     <>
-      <h2>Attributes</h2>
+      <h2>Attributes:</h2>
 
       <AttributesList attributes={attributes} />
     </>

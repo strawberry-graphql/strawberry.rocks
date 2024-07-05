@@ -11,13 +11,17 @@ import Module from "../../components/ApiDocs/Module.astro";
   <main class="docs-grid">
     <Sidebar><Nav /></Sidebar>
 
-    <article>
+    <article id="docs-content">
       <Module name={data.name} module={data} path="strawberry" />
     </article>
   </main>
 </Layout>
 
 <style>
+  #docs-content {
+    grid-column-end: page-nav-end;
+  }
+
   ul {
     list-style-type: disc;
     padding-left: 1rem;

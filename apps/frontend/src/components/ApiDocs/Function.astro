@@ -40,9 +40,10 @@ export interface Props {
   name: string;
   fun: FunctionDefinition;
   topLevel?: boolean;
+  showName?: boolean;
 }
 
-const { name, fun, topLevel = false } = Astro.props;
+const { name, fun, topLevel = false, showName = true } = Astro.props;
 
 const parsedParameters = fun.docstring?.parsed.find(
   (item) => item.kind === "parameters",
@@ -74,7 +75,13 @@ const docstring = fun.docstring?.parsed.find(
 ---
 
 <Component class="function">
-  <Summary><Title>{name}</Title></Summary>
+  {
+    showName && (
+      <Summary>
+        <Title>{name}</Title>
+      </Summary>
+    )
+  }
 
   <div class="content">
     {docstring && <Markdown content={docstring} />}
@@ -149,7 +156,9 @@ const docstring = fun.docstring?.parsed.find(
     }
   }
 
-  details[open] summary h1::after {
-    content: "▲";
+  details[open] summary {
+    h1::after {
+      content: "▲";
+    }
   }
 </style>

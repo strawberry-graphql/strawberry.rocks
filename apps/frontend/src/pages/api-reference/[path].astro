@@ -6,6 +6,7 @@ import Module from "../../components/ApiDocs/Module.astro";
 import Attribute from "../../components/ApiDocs/Attribute.astro";
 import Sidebar from "../../components/Docs/Sidebar.astro";
 import Nav from "../../components/ApiDocs/Nav.astro";
+import CodeSpan from "../../components/Pages/CodeSpan.astro";
 import data from "../../content/api/strawberry.json";
 import { filterMembers } from "../../components/ApiDocs/utils/filter-members";
 
@@ -93,13 +94,15 @@ let name = current.name;
 if (props.kind === "alias" || props.kind === "module") {
   name = props.path;
 }
+
+const filepath = current.relative_filepath;
 ---
 
 <Layout title="API Docs">
   <main class="docs-grid">
     <Sidebar><Nav /></Sidebar>
 
-    <article>
+    <article id="docs-content">
       {
         current.kind === "function" && (
           <Function name={name} fun={current} topLevel />
@@ -116,6 +119,21 @@ if (props.kind === "alias" || props.kind === "module") {
           <Attribute name={name} attribute={current} />
         )
       }
+
+      <footer>
+        <p>
+          <span class="typography-label"> File path: </span>
+          <CodeSpan allowCopy>{filepath}</CodeSpan>
+        </p>
+        <p class="typography-label">
+          <a
+            href={`https://github.com/strawberry-graphql/strawberry/blob/main/${filepath}`}
+            target="_blank"
+            rel="noopener noreferrer">Open in GitHub</a
+          >
+        </p>
+      </footer>
+
       {
         process.env.NODE_ENV === "development" && (
           <details>
@@ -127,3 +145,18 @@ if (props.kind === "alias" || props.kind === "module") {
     </article>
   </main>
 </Layout>
+
+<style>
+  #docs-content {
+    grid-column-end: page-nav-end;
+  }
+
+  footer {
+    margin-top: 24px !important;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-g-100);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+</style>

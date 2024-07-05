@@ -1,12 +1,23 @@
 ---
+import CopyIcon from "../Icons/Copy.astro";
 export interface Props {
   variant?: "default" | "simple";
+  allowCopy?: boolean;
 }
 
-const { variant = "default" } = Astro.props;
+const { variant = "default", allowCopy } = Astro.props;
 ---
 
-<code class:list={["typography-code", variant]}><slot /></code>
+<code class:list={["typography-code", variant, { "allow-copy": allowCopy }]}
+  ><slot />
+  {
+    allowCopy && (
+      <button class="copy-button">
+        <CopyIcon />
+      </button>
+    )
+  }
+</code>
 
 <style>
   :global(:not(pre) > code.default) {
@@ -17,4 +28,38 @@ const { variant = "default" } = Astro.props;
     border: 1px solid var(--color-strawberry);
     background-color: rgba(247, 57, 61, 0.1);
   }
+
+  .allow-copy {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  button.copy-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    margin-left: 8px;
+  }
+
+  code :global(svg) {
+    stroke: var(--color-strawberry);
+    height: 16px;
+  }
 </style>
+
+<script>
+  const copyButtons = document.querySelectorAll(".copy-button");
+
+  copyButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const code = button.parentElement!.textContent;
+
+      if (!code) return;
+
+      navigator.clipboard.writeText(code.trim());
+    });
+  });
+</script>
