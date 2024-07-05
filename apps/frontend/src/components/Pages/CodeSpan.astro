@@ -3,7 +3,7 @@ export interface Props {
   variant?: "default" | "simple";
 }
 
-const { variant = "default", ...props } = Astro.props;
+const { variant = "default" } = Astro.props;
 ---
 
 <code class:list={["typography-code", variant]}><slot /></code>
