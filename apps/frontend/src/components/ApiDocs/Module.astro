@@ -19,6 +19,10 @@ const members = filterMembers(module.members);
 
 const membersByKind: Record<Member["kind"], Member[]> = members.reduce(
   (acc: Record<Member["kind"], Member[]>, member: Member) => {
+    if (member.name.startsWith("_")) {
+      return acc;
+    }
+
     if (!acc[member.kind]) {
       acc[member.kind] = [];
     }

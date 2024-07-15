@@ -95,6 +95,8 @@ if (props.kind === "alias" || props.kind === "module") {
   name = props.path;
 }
 
+const githubLine = `#L${current.lineno}-L${current.endlineno}`;
+
 const filepath = current.relative_filepath;
 ---
 
@@ -127,7 +129,7 @@ const filepath = current.relative_filepath;
         </p>
         <p class="typography-label">
           <a
-            href={`https://github.com/strawberry-graphql/strawberry/blob/main/${filepath}`}
+            href={`https://github.com/strawberry-graphql/strawberry/blob/main/${filepath}${githubLine}`}
             target="_blank"
             rel="noopener noreferrer">Open in GitHub</a
           >
