@@ -11,6 +11,7 @@ import os
 import shutil
 import subprocess
 import tempfile
+import griffe
 
 
 def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
@@ -20,16 +21,10 @@ def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
     with tempfile.TemporaryDirectory() as tmpdirname:
         os.chdir(tmpdirname)
 
-        subprocess.run(
-            ["git", "clone", "-b", branch, repo],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
+        subprocess.run(["git", "clone", "--depth", "1", "-b", branch, repo], check=True)
 
         repo_name = os.path.basename(repo)
         os.chdir(repo_name)
-
-        import griffe
 
         data = griffe.load(package_name, docstring_parser="google")
 
@@ -80,15 +75,10 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
 
 
 # Remove existing docs directory
-# shutil.rmtree("src/content/docs", ignore_errors=True)
+shutil.rmtree("src/content/docs", ignore_errors=True)
 
 # Clone docs from repository
-# clone_docs_from_repo("https://github.com/strawberry-graphql/strawberry", "docs")
+clone_docs_from_repo("https://github.com/strawberry-graphql/strawberry", "docs")
 # clone_docs_from_repo("https://github.com/strawberry-graphql/strawberry-django", "docs/django", "feature/new-docs")
 
-
-fetch_api_docs(
-    "https://github.com/strawberry-graphql/strawberry",
-    "strawberry",
-    "feature/docstring",
-)
+fetch_api_docs("https://github.com/strawberry-graphql/strawberry", "strawberry")
