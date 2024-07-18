@@ -1,6 +1,5 @@
 # /// script
 # dependencies = [
-#    "pdbpp",
 #    "griffe",
 #    "griffe-typingdoc",
 # ]

@@ -20,11 +20,6 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: Install pipx
-        run: |
-          python3 -m pip install --user pipx
-          python3 -m pipx ensurepath
-
       - name: Fetch data
         working-directory: apps/frontend
         run: |

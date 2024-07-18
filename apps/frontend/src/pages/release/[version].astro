@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { fetchReleases } from "../../utils/fetch-releases";
 import { fetchRelease } from "../../utils/fetch-release";
 import { addGitHubLinks } from "../../utils/add-github-links";
 import { format } from "date-fns/format";
@@ -8,17 +7,13 @@ import { parseISO } from "date-fns/parseISO";
 import Markdown from "../../components/Markdown.astro";
 import Sidebar from "../../components/Docs/Sidebar.astro";
 
-let version = Astro.params.version;
-
-export async function getStaticPaths() {
-  const releases = await fetchReleases();
-
-  return releases.map((version) => ({ params: { version } }));
-}
+let version = Astro.params.version!;
 
 const release = await fetchRelease(version);
 
 const content = addGitHubLinks(release.description);
+
+export const prerender = false;
 ---
 
 <Layout title={`Strawberry GraphQL @ ${version}`} useDocsGrid>
