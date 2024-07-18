@@ -20,10 +20,10 @@ const { name, klass } = Astro.props;
 
 const methods = klass.members.filter(
   (m) => m.kind === "function" && !m.name.startsWith("_"),
-);
+) as FunctionDefinition[];
 const attributes = klass.members.filter(
   (m) => m.kind === "attribute" && !m.name.startsWith("_"),
-);
+) as AttributeDefinition[];
 
 const constructor = klass.members.find(
   (m) => m.kind === "function" && m.name === "__init__",
