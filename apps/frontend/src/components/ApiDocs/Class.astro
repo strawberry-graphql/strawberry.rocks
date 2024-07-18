@@ -1,0 +1,90 @@
+---
+import Markdown from "../Markdown.astro";
+import Function, { type FunctionDefinition } from "./Function.astro";
+import AttributesList from "./AttributesList.astro";
+import Title from "./Title.astro";
+import type { AttributeDefinition } from "./Attribute.astro";
+
+export interface Props {
+  name: string;
+  klass: {
+    name: string;
+    docstring?: {
+      value: string;
+    };
+    members: Array<FunctionDefinition | AttributeDefinition>;
+  };
+}
+
+const { name, klass } = Astro.props;
+
+const methods = klass.members.filter(
+  (m) => m.kind === "function" && !m.name.startsWith("_"),
+) as FunctionDefinition[];
+const attributes = klass.members.filter(
+  (m) => m.kind === "attribute" && !m.name.startsWith("_"),
+) as AttributeDefinition[];
+
+const constructor = klass.members.find(
+  (m) => m.kind === "function" && m.name === "__init__",
+) as FunctionDefinition | undefined;
+---
+
+<Title>{name}</Title>
+
+{klass.docstring && <Markdown content={klass.docstring.value} />}
+
+{
+  constructor && (
+    <>
+      <h2>Constructor:</h2>
+
+      <Function
+        name={constructor.name}
+        fun={constructor}
+        topLevel
+        showName={false}
+      />
+    </>
+  )
+}
+
+{
+  methods.length > 0 && (
+    <>
+      <h2>Methods:</h2>
+      <ul class="methods">
+        {methods.map((method) => (
+          <li>
+            <Function name={method.name} fun={method} />
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+{
+  attributes.length > 0 && (
+    <>
+      <h2>Attributes:</h2>
+
+      <AttributesList attributes={attributes} />
+    </>
+  )
+}
+
+<style>
+  .methods {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-g-300);
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+</style>

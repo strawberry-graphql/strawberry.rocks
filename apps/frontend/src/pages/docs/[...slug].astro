@@ -2,6 +2,7 @@
 import { getEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Sidebar from "../../components/Docs/Sidebar.astro";
+import DocsNav from "../../components/Docs/Nav.astro";
 import Footer from "../../components/Docs/Footer.astro";
 import Paragraph from "../../components/Pages/Paragraph.astro";
 import List from "../../components/Pages/List.astro";
@@ -82,7 +83,9 @@ const { Content, headings } = await page.render();
 
 <Layout title={title} useDocsGrid>
   <main class="docs-grid">
-    <Sidebar />
+    <Sidebar>
+      <DocsNav />
+    </Sidebar>
 
     <nav class="breadcrumbs sr-only">
       <ul>
@@ -105,7 +108,6 @@ const { Content, headings } = await page.render();
           ul: List,
           ol: OrderedList,
           li: ListItem,
-
           a: Link,
           blockquote: Blockquote,
           Tip,
@@ -127,15 +129,3 @@ const { Content, headings } = await page.render();
     </aside>
   </main>
 </Layout>
-
-<style>
-  #docs-content {
-    grid-column: content-start / content-end;
-    min-width: 0;
-
-    img {
-      width: 100%;
-      height: auto;
-    }
-  }
-</style>

@@ -50,7 +50,7 @@
     "shiki": "^1.6.3",
     "stylis": "^4.3.2",
     "tailwindcss": "^3.4.4",
-    "typescript": "5.4.5",
+    "typescript": "5.5.2",
     "ultrahtml": "^1.5.3",
     "unified": "11.0.4",
     "unist-util-visit": "5.0.0"

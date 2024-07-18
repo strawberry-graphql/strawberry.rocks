@@ -25,6 +25,16 @@
   }
 }
 
+#docs-content {
+  grid-column: content-start / content-end;
+  min-width: 0;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 /* Pages with nav (docs, releases, etc) */
 
 .page-nav {
@@ -122,14 +132,13 @@
   }
 }
 
-main > article {
-  padding-bottom: 80px;
-
+.content,
+article,
+details {
   > * + * {
     margin-top: 1em;
     display: block;
   }
-
   > :is(h1, h2, h3, h4, h5, h6) {
     text-wrap: pretty;
 
@@ -137,4 +146,12 @@ main > article {
       margin-top: 0;
     }
   }
+}
+
+main > article {
+  padding-bottom: 80px;
+}
+
+.expressive-code .frame pre {
+  max-width: 900px;
 }

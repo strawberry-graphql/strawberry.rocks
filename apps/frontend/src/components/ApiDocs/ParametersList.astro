@@ -1,0 +1,99 @@
+---
+import Markdown from "../Markdown.astro";
+import CodeSpan from "../Pages/CodeSpan.astro";
+import expressionToString from "./expression";
+
+export interface Props {
+  parameters: any;
+  parametersDescriptions: any;
+}
+
+const { parametersDescriptions, parameters } = Astro.props;
+---
+
+<ol>
+  {
+    parameters.map((param: any) => (
+      <li>
+        <div>
+          <p class="name">
+            <CodeSpan variant="simple">{param.name}:</CodeSpan>
+          </p>
+        </div>
+        <div class="info content">
+          {parametersDescriptions[param.name] && (
+            <Markdown content={parametersDescriptions[param.name]} />
+          )}
+
+          <dl>
+            {param.annotation && (
+              <>
+                <dt>Type</dt>
+                <dd>
+                  <CodeSpan>{expressionToString(param.annotation)}</CodeSpan>
+                </dd>
+              </>
+            )}
+
+            {param.default && (
+              <>
+                <dt>Default</dt>
+                <dd>
+                  <CodeSpan>{expressionToString(param.default)}</CodeSpan>
+                </dd>
+              </>
+            )}
+          </dl>
+        </div>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  ol {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    align-items: baseline;
+    grid-template-columns: max-content 1fr;
+    gap: 2rem;
+  }
+
+  li {
+    display: contents;
+
+    > div {
+      height: 100%;
+    }
+
+    &:not(:last-child) > * {
+      border-bottom: 1px solid var(--color-g-300);
+      padding-bottom: 1.5rem;
+    }
+
+    p.name {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+
+  :global(html.dark) li {
+    border-color: var(--color-g-800);
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 0.5rem 1rem;
+  }
+
+  dt {
+    font-weight: bold;
+    color: var(--color-g-800);
+  }
+
+  dd {
+    margin-left: 0;
+  }
+</style>

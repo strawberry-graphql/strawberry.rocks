@@ -1,0 +1,57 @@
+---
+import GenericNav from "../GenericNav.astro";
+import type { DocsTree } from "../../utils/get-tree";
+import data from "../../content/api/strawberry.json";
+
+type Member = (typeof data.members)[0];
+
+// remove all private members
+const members = data.members.filter((member) => !member.name.startsWith("_"));
+
+const membersByKind = members.reduce(
+  (acc, member) => {
+    if (!acc[member.kind]) {
+      acc[member.kind] = [];
+    }
+
+    // @ts-ignore
+    acc[member.kind].push(member);
+
+    return acc;
+  },
+  {} as Record<string, Member[]>,
+);
+
+// sort members by name
+Object.values(membersByKind).forEach((members) => {
+  members.sort((a, b) => a.name.localeCompare(b.name));
+});
+
+const names = {
+  alias: "Aliases",
+  module: "Modules",
+};
+
+const tree: DocsTree = Object.fromEntries(
+  Object.entries(membersByKind).map(([kind, members]) => {
+    return [
+      kind,
+      {
+        type: "section",
+        // @ts-ignore
+        name: names[kind] || kind,
+        links: members.map((member) => {
+          return {
+            type: "section-link",
+            text: member.name,
+            href: `/api-reference/strawberry.${member.name}`,
+            source: "?",
+          };
+        }),
+      },
+    ];
+  }),
+);
+---
+
+<GenericNav tree={tree} />

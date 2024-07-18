@@ -1,0 +1,83 @@
+---
+import Markdown from "../Markdown.astro";
+import Title from "./Title.astro";
+
+import data from "../../content/api/strawberry.json";
+import { filterMembers } from "./utils/filter-members";
+
+type Member = (typeof data.members)[0];
+
+export interface Props {
+  module: any;
+  path: string;
+  name: string;
+}
+
+const { name, module, path } = Astro.props;
+
+const members = filterMembers(module.members);
+
+const membersByKind: Record<Member["kind"], Member[]> = members.reduce(
+  (acc: Record<Member["kind"], Member[]>, member: Member) => {
+    if (member.name.startsWith("_")) {
+      return acc;
+    }
+
+    if (!acc[member.kind]) {
+      acc[member.kind] = [];
+    }
+
+    // @ts-ignore
+    acc[member.kind].push(member);
+
+    return acc;
+  },
+  {} as Record<Member["kind"], Member[]>,
+);
+
+const names = {
+  alias: "Aliases",
+  module: "Modules",
+  class: "Classes",
+} as const;
+
+// sort all members by name
+Object.values(membersByKind).forEach((members) => {
+  members.sort((a, b) => a.name.localeCompare(b.name));
+});
+
+const parsed = module.docstring?.parsed || [];
+const moduleDoc = parsed.length > 0 ? parsed[0]?.value : null;
+---
+
+<Title>{name}</Title>
+
+{moduleDoc && <Markdown content={moduleDoc} />}
+
+{
+  Object.entries(membersByKind).map(([kind, members]) => (
+    <>
+      <h2>{names[kind as keyof typeof names] || kind}</h2>
+      <ul>
+        {members.map((member) => (
+          <li class="typography-paragraph">
+            <a href={`/api-reference/${path}.${member.name}`}>
+              <code>{member.name}</code>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  ))
+}
+
+<style>
+  ul {
+    list-style-type: disc;
+    padding-left: 1rem;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

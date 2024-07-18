@@ -8,40 +8,33 @@ import HeaderNav from "./HeaderNav.astro";
 <input type="checkbox" id="toggle-nav" />
 
 <header class="docs-grid">
-  <a href="/" class="logo">
-    <Logo />
+  <div>
+    <a href="/" class="logo">
+      <Logo />
 
-    <span class="sr-only">Strawberry GraphQL</span>
-  </a>
+      <span class="sr-only">Strawberry GraphQL</span>
+    </a>
 
-  <div class="nav-container">
-    <HeaderNav />
+    <div class="nav-container">
+      <HeaderNav />
 
-    <label for="toggle-nav">
-      <MenuIcon class="menu-icon" />
+      <label for="toggle-nav">
+        <MenuIcon class="menu-icon" />
 
-      <div class="close-icon-wrapper">
-        <MenuCloseIcon class="menu-icon menu-icon-close" />
-      </div>
-    </label>
+        <div class="close-icon-wrapper">
+          <MenuCloseIcon class="menu-icon menu-icon-close" />
+        </div>
+      </label>
+    </div>
   </div>
 </header>
 
 <style>
-  .logo {
-    grid-column: nav-start / content-start;
-  }
-
-  .nav-container {
-    grid-column: content-start / page-nav-end;
-  }
-
-  .default-layout {
+  header > div {
+    grid-column: nav-start / page-nav-end;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1600px;
-    margin: 0 auto;
   }
 
   header :global(nav) {

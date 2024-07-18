@@ -4,7 +4,6 @@ import astroMetaTags from "astro-meta-tags";
 import vercel from "@astrojs/vercel/serverless";
 import mdx from "@astrojs/mdx";
 import remarkComment from "remark-comment";
-
 import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config

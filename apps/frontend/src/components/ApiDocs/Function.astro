@@ -1,0 +1,164 @@
+---
+import Markdown from "../Markdown.astro";
+import FunctionSignature from "./FunctionSignature.astro";
+import ParametersList from "./ParametersList.astro";
+import Title from "./Title.astro";
+
+export interface FunctionDefinition {
+  name: string;
+  kind: "function";
+  parameters: {
+    name: string;
+    type: string;
+    default: string;
+  }[];
+  docstring?: {
+    value: string;
+    parsed: Array<
+      | {
+          kind: "parameters";
+          value: Array<{
+            description: string;
+            name: string;
+          }>;
+        }
+      | {
+          kind: "returns";
+          value: Array<{
+            description: string;
+          }>;
+        }
+      | {
+          kind: "text";
+          value: string;
+        }
+    >;
+  };
+}
+
+export interface Props {
+  name: string;
+  fun: FunctionDefinition;
+  topLevel?: boolean;
+  showName?: boolean;
+}
+
+const { name, fun, topLevel = false, showName = true } = Astro.props;
+
+const parsedParameters = fun.docstring?.parsed.find(
+  (item) => item.kind === "parameters",
+);
+
+const parametersDescriptions = parsedParameters
+  ? // @ts-ignore
+    parsedParameters.value.reduce((acc: Record<string, string>, item: any) => {
+      // @ts-ignore
+      acc[item.name] = item.description;
+      return acc;
+    }, {})
+  : {};
+
+const PARAMATERS_TO_SKIP = ["self", "cls"];
+const parameters = fun.parameters.filter(
+  (param) => !PARAMATERS_TO_SKIP.includes(param.name),
+);
+
+const Component = topLevel ? "div" : "details";
+const Summary = topLevel ? "div" : "summary";
+
+const returns = fun.docstring?.parsed?.find((item) => item.kind === "returns")
+  ?.value[0]?.description;
+
+const docstring = fun.docstring?.parsed.find(
+  (item) => item.kind === "text",
+)?.value;
+---
+
+<Component class="function">
+  {
+    showName && (
+      <Summary>
+        <Title>{name}</Title>
+      </Summary>
+    )
+  }
+
+  <div class="content">
+    {docstring && <Markdown content={docstring} />}
+  </div>
+
+  {
+    returns && (
+      <div class="content">
+        <h2>Returns:</h2>
+
+        <Markdown content={returns} />
+      </div>
+    )
+  }
+
+  <div class="content">
+    <h2>Signature:</h2>
+
+    <FunctionSignature fun={fun} />
+  </div>
+  {
+    parameters.length > 0 && (
+      <div class="content">
+        <h2>Parameters:</h2>
+
+        <ParametersList
+          parameters={parameters}
+          parametersDescriptions={parametersDescriptions}
+        />
+      </div>
+    )
+  }
+</Component>
+
+<style>
+  .function *:not(:first-child) + * {
+    margin-top: 2rem;
+  }
+
+  .function :first-child + * {
+    margin-top: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    margin-block: 1rem;
+    font-size: 1.5rem;
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    h1::after {
+      font-size: 0.7em;
+      vertical-align: middle;
+      display: inline-block;
+      margin-left: 0.5em;
+    }
+  }
+
+  summary {
+    h1::after {
+      content: "▼";
+    }
+  }
+
+  details[open] summary {
+    h1::after {
+      content: "▲";
+    }
+  }
+</style>

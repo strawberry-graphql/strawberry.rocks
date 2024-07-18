@@ -8,7 +8,7 @@ import ListItem from "./Pages/ListItem.astro";
 import Heading from "./Pages/Heading.astro";
 import Pre from "./Pages/Pre.astro";
 import CodeSpan from "./Pages/CodeSpan.astro";
-import CodeBox from "./Pages/CodeBox.astro";
+import { Code } from "astro-expressive-code/components";
 import Link from "./Pages/Link.astro";
 import Image from "./Pages/Image.astro";
 import Blockquote from "./Pages/Blockquote.astro";
@@ -36,7 +36,7 @@ const { content } = Astro.props;
     Heading,
     pre: Pre,
     CodeSpan: CodeSpan,
-    CodeBlock: CodeBox,
+    CodeBlock: Code,
     a: Link,
     img: Image,
     blockquote: Blockquote,

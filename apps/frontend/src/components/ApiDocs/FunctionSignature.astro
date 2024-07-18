@@ -1,0 +1,38 @@
+---
+import { Code } from "astro-expressive-code/components";
+import expressionToString from "./expression";
+
+export interface Props {
+  fun: any;
+}
+
+const { fun } = Astro.props;
+
+let params = fun.parameters;
+
+let paramsStrings = [];
+
+for (let i = 0; i < params.length; i++) {
+  let param = params[i].name;
+
+  if (params[i].annotation) {
+    param += ": " + expressionToString(params[i].annotation);
+  }
+
+  if (params[i].default) {
+    param += " = " + expressionToString(params[i].default);
+  }
+
+  paramsStrings.push(param);
+}
+
+let paramsString = paramsStrings.join(", ");
+
+if (paramsString.length > 65) {
+  paramsString = "\n    " + paramsStrings.join(",\n    ") + ",\n";
+}
+
+let signature = `def ${fun.name}(${paramsString}) -> ${expressionToString(fun.returns)}:\n  ...`;
+---
+
+<Code code={signature} lang="python" />
