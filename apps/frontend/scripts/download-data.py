@@ -11,26 +11,29 @@ import shutil
 import subprocess
 import tempfile
 import griffe
+from pathlib import Path
 
 
 def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
-    working_dir = os.getcwd()
-    destination = os.path.join(working_dir, "src", "content", "api")
+    working_dir = Path.cwd()
+    destination = working_dir / "src" / "content" / "api"
 
-    with tempfile.TemporaryDirectory() as tmpdirname:
-        os.chdir(tmpdirname)
+    tmpdirname = Path("/tmp/griffe")
+    tmpdirname.mkdir(exist_ok=True)
 
-        subprocess.run(["git", "clone", "--depth", "1", "-b", branch, repo], check=True)
+    os.chdir(tmpdirname)
 
-        repo_name = os.path.basename(repo)
-        os.chdir(repo_name)
+    subprocess.run(["git", "clone", "--depth", "1", "-b", branch, repo], check=True)
 
-        data = griffe.load(package_name, docstring_parser="google")
+    repo_name = os.path.basename(repo)
+    os.chdir(repo_name)
 
-        os.makedirs(destination, exist_ok=True)
+    data = griffe.load(package_name, docstring_parser="google")
 
-        with open(os.path.join(destination, f"{package_name}.json"), "w") as f:
-            f.write(data.as_json(indent=2, full=True))
+    os.makedirs(destination, exist_ok=True)
+
+    with (destination / f"{package_name}.json").open("w") as f:
+        f.write(data.as_json(indent=2, full=True, sort_keys=True))
 
 
 def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> None:
