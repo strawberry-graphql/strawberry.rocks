@@ -78,14 +78,14 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       marked:
-        specifier: ^13.0.2
-        version: 13.0.2
+        specifier: '11'
+        version: 11.2.0
       marked-footnote:
         specifier: ^1.2.2
-        version: 1.2.2(marked@13.0.2)
+        version: 1.2.2(marked@11.2.0)
       marked-smartypants:
         specifier: ^1.1.7
-        version: 1.1.7(marked@13.0.2)
+        version: 1.1.7(marked@11.2.0)
       media-query-fns:
         specifier: ^2.0.0
         version: 2.0.0
@@ -13579,14 +13579,6 @@ packages:
       marked: 11.2.0
     dev: false
 
-  /marked-footnote@1.2.2(marked@13.0.2):
-    resolution: {integrity: sha512-TFBEHwHLSSedub7P6XHHs+dMMOnDeNV5+kFDo4trU//gDd8iM57lg9jr9NGwDifPwLllHwKmFcRNp5uYvO2Fnw==}
-    peerDependencies:
-      marked: '11'
-    dependencies:
-      marked: 13.0.2
-    dev: false
-
   /marked-smartypants@1.1.7(marked@11.2.0):
     resolution: {integrity: sha512-GXtR6UfyZ3NXkmdwUWnM+MFrmxvF1HA2KzTGB+vGoWc7K829CgSs/wlDOz2MK/peujK866X2650HJhrnXQBpiA==}
     peerDependencies:
@@ -13596,23 +13588,8 @@ packages:
       smartypants: 0.2.2
     dev: false
 
-  /marked-smartypants@1.1.7(marked@13.0.2):
-    resolution: {integrity: sha512-GXtR6UfyZ3NXkmdwUWnM+MFrmxvF1HA2KzTGB+vGoWc7K829CgSs/wlDOz2MK/peujK866X2650HJhrnXQBpiA==}
-    peerDependencies:
-      marked: '11'
-    dependencies:
-      marked: 13.0.2
-      smartypants: 0.2.2
-    dev: false
-
   /marked@11.2.0:
     resolution: {integrity: sha512-HR0m3bvu0jAPYiIvLUUQtdg1g6D247//lvcekpHO1WMvbwDlwSkZAX9Lw4F4YHE1T0HaaNve0tuAWuV1UJ6vtw==}
-    engines: {node: '>= 18'}
-    hasBin: true
-    dev: false
-
-  /marked@13.0.2:
-    resolution: {integrity: sha512-J6CPjP8pS5sgrRqxVRvkCIkZ6MFdRIjDkwUwgJ9nL2fbmM6qGQeB2C16hi8Cc9BOzj6xXzy0jyi0iPIfnMHYzA==}
     engines: {node: '>= 18'}
     hasBin: true
     dev: false
