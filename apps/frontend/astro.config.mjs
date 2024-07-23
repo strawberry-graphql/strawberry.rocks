@@ -5,6 +5,7 @@ import vercel from "@astrojs/vercel/serverless";
 import mdx from "@astrojs/mdx";
 import remarkComment from "remark-comment";
 import expressiveCode from "astro-expressive-code";
+import remarkGithubAlerts from "remark-github-alerts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,7 +28,7 @@ export default defineConfig({
       },
     }),
     mdx({
-      remarkPlugins: [remarkComment],
+      remarkPlugins: [remarkComment, remarkGithubAlerts],
     }),
   ],
   adapter: vercel({

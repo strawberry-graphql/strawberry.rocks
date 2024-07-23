@@ -20,6 +20,7 @@ def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
 
     tmpdirname = Path("/tmp/griffe")
     tmpdirname.mkdir(exist_ok=True)
+    shutil.rmtree(tmpdirname / "strawberry", ignore_errors=True)
 
     os.chdir(tmpdirname)
 
@@ -81,6 +82,19 @@ shutil.rmtree("src/content/docs", ignore_errors=True)
 
 # Clone docs from repository
 clone_docs_from_repo("https://github.com/strawberry-graphql/strawberry", "docs")
-# clone_docs_from_repo("https://github.com/strawberry-graphql/strawberry-django", "docs/django", "feature/new-docs")
+clone_docs_from_repo(
+    "https://github.com/strawberry-graphql/strawberry-django",
+    "docs/django",
+    "feature/new-docs",
+)
 
-fetch_api_docs("https://github.com/strawberry-graphql/strawberry", "strawberry")
+# fetch_api_docs("https://github.com/strawberry-graphql/strawberry", "strawberry")
+
+
+# Rename all .md files to .mdx in the docs folder
+for root, _, files in os.walk("src/content/docs"):
+    for file in files:
+        if file.endswith(".md"):
+            file_path = os.path.join(root, file)
+            new_file_path = os.path.splitext(file_path)[0] + ".mdx"
+            os.rename(file_path, new_file_path)

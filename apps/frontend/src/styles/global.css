@@ -3,6 +3,7 @@
 @import url("./typography.css");
 @import url("./pages.css");
 @import url("./doc-search.css");
+@import url("./markdown-alerts.css");
 
 :root {
   /* Greyscale */
@@ -55,6 +56,13 @@
   --font-display: "Ranade", sans-serif;
   --font-sans: "Satoshi", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
 }
 
 @media screen and (max-device-width: 480px) {

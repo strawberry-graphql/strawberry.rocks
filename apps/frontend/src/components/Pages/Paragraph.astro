@@ -1,11 +1,12 @@
 ---
 interface Props {
   small?: boolean;
+  class?: string;
 }
 
-const { small } = Astro.props;
+let { small, class: className } = Astro.props;
 
-const className = small ? "typography-paragraph-2" : "typography-paragraph";
+className += small ? " typography-paragraph-2" : " typography-paragraph";
 ---
 
 <p class={className}>
