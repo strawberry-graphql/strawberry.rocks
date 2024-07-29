@@ -7,13 +7,21 @@ export interface Props {
     avatarUrl: string;
     login: string | null;
   }>;
+  integration: "django" | null;
 }
 
-const { authors } = Astro.props;
+const { authors, integration } = Astro.props;
 
-const pathname = new URL(Astro.request.url).pathname;
+let pathname = new URL(Astro.request.url).pathname;
 
-const githubUrl = `https://github.com/strawberry-graphql/strawberry/edit/main${pathname}.md`;
+if (integration === "django") {
+  pathname = pathname.replace(/^\/docs\/django/, "");
+}
+
+const githubUrl =
+  integration === "django"
+    ? `https://github.com/strawberry-graphql/strawberry-django/edit/main${pathname}.md`
+    : `https://github.com/strawberry-graphql/strawberry/edit/main${pathname}.md`;
 ---
 
 <div>

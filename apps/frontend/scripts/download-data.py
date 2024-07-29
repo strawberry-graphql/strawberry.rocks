@@ -56,7 +56,7 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
         os.chdir(repo_name)
 
         subprocess.run(
-            ["git", "sparse-checkout", "set", "--no-cone", "docs"],
+            ["git", "sparse-checkout", "set", "--no-clone", "docs"],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )

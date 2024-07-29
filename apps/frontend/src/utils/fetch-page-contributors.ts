@@ -34,14 +34,21 @@ query GetFile($owner: String!, $name: String!, $path: String!) {
 
 export const fetchPageContributors = async ({
   filename,
-  repo = "strawberry-graphql/strawberry",
+  integration = null,
 }: {
   filename: string;
   prNumber?: string;
-  repo?: string;
+  integration: "django" | null;
 }) => {
   if (process.env.LOCAL === "true") {
     return [];
+  }
+
+  let repo = "strawberry-graphql/strawberry";
+
+  if (integration === "django") {
+    repo = "strawberry-graphql/strawberry-django";
+    filename = filename.replace(/^docs\/django/, "docs");
   }
 
   const [owner, name] = repo.split("/");
