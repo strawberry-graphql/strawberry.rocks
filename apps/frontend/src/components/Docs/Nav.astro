@@ -15,7 +15,7 @@ const readme = await getEntry("docs", readmeSlug);
 
 const prefix = integration ? `/docs/${integration}/` : "/docs/";
 
-const tree = getTree(readme.body, prefix);
+const tree = getTree(readme!.body, prefix);
 ---
 
 <GenericNav tree={tree} />
