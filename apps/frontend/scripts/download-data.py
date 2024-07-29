@@ -83,12 +83,10 @@ shutil.rmtree("src/content/docs", ignore_errors=True)
 # Clone docs from repository
 clone_docs_from_repo("https://github.com/strawberry-graphql/strawberry", "docs")
 clone_docs_from_repo(
-    "https://github.com/strawberry-graphql/strawberry-django",
-    "docs/django",
-    "feature/new-docs",
+    "https://github.com/strawberry-graphql/strawberry-django", "docs/django"
 )
 
-# fetch_api_docs("https://github.com/strawberry-graphql/strawberry", "strawberry")
+fetch_api_docs("https://github.com/strawberry-graphql/strawberry", "strawberry")
 
 
 # Rename all .md files to .mdx in the docs folder
