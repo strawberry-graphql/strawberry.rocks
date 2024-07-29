@@ -11,11 +11,16 @@ app = fastapi.FastAPI()
 # {{ query }}
 
 
-async def context_getter():
+async def _context_getter():
+    try:
+        return await context_getter()
+    except NameError:
+        pass
+
     return {}
 
 
-router = GraphQLRouter(schema, path="/", context_getter=context_getter)
+router = GraphQLRouter(schema, path="/", context_getter=_context_getter)
 
 app.include_router(router, prefix="")
 
