@@ -3,13 +3,19 @@ import { getEntry } from "astro:content";
 import GenericNav from "../GenericNav.astro";
 import { getTree } from "../../utils/get-tree";
 
-const { number } = Astro.params;
+interface Props {
+  integration: "django" | null;
+}
 
-const readme = await getEntry("docs", "readme");
+const { integration } = Astro.props;
 
-const prefix = number ? `/docs/pr/${number}/` : "/docs/";
+const readmeSlug = integration ? `${integration}/readme` : "readme";
 
-const tree = getTree(readme.body, prefix);
+const readme = await getEntry("docs", readmeSlug);
+
+const prefix = integration ? `/docs/${integration}/` : "/docs/";
+
+const tree = getTree(readme!.body, prefix);
 ---
 
 <GenericNav tree={tree} />

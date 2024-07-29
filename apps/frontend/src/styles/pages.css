@@ -133,6 +133,7 @@
 }
 
 .content,
+.markdown-alert,
 article,
 details {
   > * + * {

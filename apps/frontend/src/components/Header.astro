@@ -32,9 +32,12 @@ import HeaderNav from "./HeaderNav.astro";
 <style>
   header > div {
     grid-column: nav-start / page-nav-end;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    @media (min-width: 768px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   header :global(nav) {

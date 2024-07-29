@@ -45,6 +45,10 @@ if (slug === undefined) {
   slug = "index";
 }
 
+const django = slug === "django" || slug?.startsWith("django/");
+
+const integration = django ? "django" : null;
+
 const page = await getEntry("docs", slug);
 
 if (!page) {
@@ -74,7 +78,7 @@ for (const [sectionName, section] of Object.entries(docsTree)) {
   }
 }
 
-const contributors = await fetchPageContributors({ filename });
+const contributors = await fetchPageContributors({ filename, integration });
 
 const title = page.data.title;
 
@@ -84,7 +88,7 @@ const { Content, headings } = await page.render();
 <Layout title={title} useDocsGrid>
   <main class="docs-grid">
     <Sidebar>
-      <DocsNav />
+      <DocsNav integration={integration} />
     </Sidebar>
 
     <nav class="breadcrumbs sr-only">
@@ -121,7 +125,7 @@ const { Content, headings } = await page.render();
         }}
       />
 
-      <Footer authors={contributors} />
+      <Footer authors={contributors} integration={integration} />
     </article>
 
     <aside class="page-nav">

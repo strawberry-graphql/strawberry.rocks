@@ -1,6 +1,7 @@
 ---
 import Search from "../../components/Search.astro";
 import IndexIcon from "../Icons/Index.astro";
+import NavLink from "./NavLink.astro";
 ---
 
 <input type="checkbox" id="toggle-docs-nav" />
@@ -15,11 +16,33 @@ import IndexIcon from "../Icons/Index.astro";
   <div class="docs-nav-content">
     <Search />
 
+    <ul>
+      <li>
+        <NavLink href="/docs" text="🍓 Documentation" />
+      </li>
+      <li>
+        <NavLink href="/docs/django" text="🦄 Strawberry Django" />
+      </li>
+    </ul>
+
     <slot />
   </div>
 </aside>
 
 <style>
+  ul {
+    margin-bottom: 32px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      a {
+        padding: 0 !important;
+      }
+    }
+  }
+
   .docs-nav {
     scrollbar-width: thin;
 
