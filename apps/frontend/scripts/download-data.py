@@ -89,10 +89,14 @@ clone_docs_from_repo(
 fetch_api_docs("https://github.com/strawberry-graphql/strawberry", "strawberry")
 
 
-# Rename all .md files to .mdx in the docs folder
-for root, _, files in os.walk("src/content/docs"):
-    for file in files:
-        if file.endswith(".md"):
-            file_path = os.path.join(root, file)
-            new_file_path = os.path.splitext(file_path)[0] + ".mdx"
-            os.rename(file_path, new_file_path)
+HERE = Path(__file__).parent
+
+DOCS_DIR = HERE.parent / "src" / "content" / "docs"
+
+print(f"Renaming files in {DOCS_DIR}")
+
+for file in DOCS_DIR.glob("**/*.md"):
+    new_file_name = file.with_suffix(".mdx")
+
+    file.rename(new_file_name)
+    print(f"Renamed: {file.name} -> {new_file_name.name}")
