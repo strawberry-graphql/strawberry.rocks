@@ -46,7 +46,7 @@ export async function getStaticPaths() {
         addPaths(member.members, `${currentPath}.${member.name}`);
       }
 
-      if (["class", "attribute"].includes(member.kind)) {
+      if (["class", "attribute", "function"].includes(member.kind)) {
         paths.push({
           params: { path: `${currentPath}.${member.name}` },
           props: { kind: member.kind, path: `${currentPath}.${member.name}` },
