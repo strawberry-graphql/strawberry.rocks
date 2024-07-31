@@ -1,5 +1,7 @@
 ---
 import Markdown from "../Markdown.astro";
+import CodeSpan from "../Pages/CodeSpan.astro";
+import expressionToString from "./expression";
 import Title from "./Title.astro";
 
 export interface AttributeDefinition {
@@ -8,6 +10,7 @@ export interface AttributeDefinition {
   docstring?: {
     value: string;
   };
+  value?: any;
 }
 
 export interface Props {
@@ -21,6 +24,8 @@ const { name, attribute } = Astro.props;
 <Title>{name}</Title>
 
 {attribute.docstring && <Markdown content={attribute.docstring.value} />}
+
+{attribute.value && <CodeSpan>{expressionToString(attribute.value)}</CodeSpan>}
 
 <style>
   .methods {
