@@ -25,7 +25,11 @@ const { name, attribute } = Astro.props;
 
 {attribute.docstring && <Markdown content={attribute.docstring.value} />}
 
-{attribute.value && <CodeSpan>{expressionToString(attribute.value)}</CodeSpan>}
+{
+  !attribute.docstring && attribute.value && (
+    <CodeSpan variant="simple">{expressionToString(attribute.value)}</CodeSpan>
+  )
+}
 
 <style>
   .methods {

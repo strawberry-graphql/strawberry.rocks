@@ -28,6 +28,10 @@ const parseSubscript = (expr: any) => {
     expr = simplifyAnnotated(expr);
   }
 
+  if (!expr.left) {
+    return expr;
+  }
+
   if (expr.left.name === "Optional") {
     expr = {
       cls: "ExprBinOp",
