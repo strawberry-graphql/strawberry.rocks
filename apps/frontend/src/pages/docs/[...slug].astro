@@ -21,6 +21,7 @@ import CodeGrid from "../../components/CodeGrid.astro";
 import TableOfContents from "../../components/Docs/TableOfContents.astro";
 import { getTree } from "../../utils/get-tree";
 import { fetchPageContributors } from "../../utils/fetch-page-contributors";
+import { getIntegrationFromSlug } from "../../utils/get-integration-from-slug";
 
 export const prerender = true;
 
@@ -30,24 +31,30 @@ export async function getStaticPaths() {
   return [
     {
       params: { slug: undefined },
+      props: { integration: null },
     },
-    ...docs.map((doc) => ({ params: { slug: doc.slug } })),
+    ...docs.map((doc) => {
+      const slug = doc.slug;
+
+      const integration = getIntegrationFromSlug(slug);
+
+      return { params: { slug }, props: { integration } };
+    }),
   ];
 }
 
 interface Props {
   content: string;
+  integration: "django" | null;
 }
 
 let { slug } = Astro.params;
 
+const { integration } = Astro.props;
+
 if (slug === undefined) {
   slug = "index";
 }
-
-const django = slug === "django" || slug?.startsWith("django/");
-
-const integration = django ? "django" : null;
 
 const page = await getEntry("docs", slug);
 
