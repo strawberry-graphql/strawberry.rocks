@@ -18,7 +18,17 @@ if (href?.includes(".md")) {
 }
 
 if (href && !href?.startsWith("http")) {
-  const currentUrl = Astro.url.href;
+  let currentUrl = Astro.url.href;
+
+  console.log({ currentUrl, href });
+
+  if (!currentUrl.endsWith("/")) {
+    currentUrl += "/";
+  }
+
+  if (!href.startsWith(".")) {
+    href = `./${href}`;
+  }
 
   href = new URL(href, currentUrl).href;
 }

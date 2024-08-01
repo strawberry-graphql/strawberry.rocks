@@ -15,7 +15,7 @@ const { authors, integration } = Astro.props;
 let pathname = new URL(Astro.request.url).pathname;
 
 if (integration === "django") {
-  pathname = pathname.replace(/^\/docs\/django/, "");
+  pathname = pathname.replace(/^\/docs\/django/, "/docs");
 }
 
 const githubUrl =
