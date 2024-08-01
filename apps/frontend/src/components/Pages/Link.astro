@@ -25,10 +25,6 @@ if (
 ) {
   let currentUrl = Astro.url.href;
 
-  if (!currentUrl.endsWith("/")) {
-    currentUrl += "/";
-  }
-
   if (!href.startsWith(".")) {
     href = `./${href}`;
   }
