@@ -75,10 +75,10 @@ export function getTree(text: string, prefix: string) {
     url = url.replace(/\/index.md$/, "");
 
     if (url === ".") {
-      return prefix;
+      return prefix.replace(/\/$/, "");
     }
 
-    return addHrefPrefix(url, prefix);
+    return addHrefPrefix(url, prefix).replace(/\/$/, "");
   };
 
   tokens.forEach((token) => {
