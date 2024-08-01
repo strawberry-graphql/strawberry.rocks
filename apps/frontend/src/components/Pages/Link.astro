@@ -17,10 +17,13 @@ if (href?.includes(".md")) {
   href = href?.replace(/\.md(#.*)?$/, "$1");
 }
 
-if (href && !href?.startsWith("http")) {
+if (
+  href &&
+  ["http", "mailto", "tel", "#", "/"].every(
+    (prefix) => !href!.startsWith(prefix),
+  )
+) {
   let currentUrl = Astro.url.href;
-
-  console.log({ currentUrl, href });
 
   if (!currentUrl.endsWith("/")) {
     currentUrl += "/";
