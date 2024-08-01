@@ -8,10 +8,33 @@
 
 import os
 import shutil
+import json
 import subprocess
 import tempfile
 import griffe
+from griffe import JSONEncoder
+
 from pathlib import Path
+
+
+def _get_one_of(data: dict, keys: list[str]) -> str:
+    for key in keys:
+        if key in data:
+            return data[key]
+
+    raise KeyError(f"Could not find any of the keys {keys} in {data}")
+
+
+def _sort_dict(data):
+    if "members" in data:
+        data["members"] = sorted(
+            data["members"], key=lambda x: _get_one_of(x, ["filepath", "path", "name"])
+        )
+
+        for member in data["members"]:
+            member = _sort_dict(member)
+
+    return data
 
 
 def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
@@ -33,8 +56,10 @@ def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
 
     os.makedirs(destination, exist_ok=True)
 
+    data = _sort_dict(data.as_dict())
+
     with (destination / f"{package_name}.json").open("w") as f:
-        f.write(data.as_json(indent=2, full=True, sort_keys=True))
+        json.dump(data, f, indent=2, cls=JSONEncoder)
 
 
 def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> None:
