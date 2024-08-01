@@ -28,7 +28,8 @@ def _get_one_of(data: dict, keys: list[str]) -> str:
 def _sort_dict(data):
     if "members" in data:
         data["members"] = sorted(
-            data["members"], key=lambda x: _get_one_of(x, ["filepath", "path", "name"])
+            data["members"],
+            key=lambda x: str(_get_one_of(x, ["filepath", "path", "name"])),
         )
 
         for member in data["members"]:
@@ -56,10 +57,10 @@ def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
 
     os.makedirs(destination, exist_ok=True)
 
-    data = _sort_dict(data.as_dict())
+    data = _sort_dict(data.as_dict(full=True))
 
     with (destination / f"{package_name}.json").open("w") as f:
-        json.dump(data, f, indent=2, cls=JSONEncoder)
+        json.dump(data, f, indent=2, cls=JSONEncoder, full=True)
 
 
 def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> None:
