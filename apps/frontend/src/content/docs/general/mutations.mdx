@@ -11,7 +11,7 @@ that sends an email. Like in queries, they accept parameters and can return
 anything a regular field can, including new types and existing object types.
 This can be useful for fetching the new state of an object after an update.
 
-Let's improve our books project from the [Getting started tutorial](../index.md)
+Let's improve our books project from the [Getting started tutorial](/docs/index)
 and implement a mutation that is supposed to add a book:
 
 ```python
@@ -78,6 +78,7 @@ class Mutation:
         print(f"Restarting the server")
 ```
 
+
 ```graphql
 type Mutation {
   restart: Void
@@ -86,12 +87,15 @@ type Mutation {
 
 </CodeGrid>
 
+
 <Note>
+
 
 Mutations with void-result go against
 [this community-created guide on GQL best practices](https://graphql-rules.com/rules/mutation-payload).
 
 </Note>
+
 
 ## The input mutation extension
 
@@ -186,6 +190,7 @@ class Mutation:
 
 <Note>
 Fields on the root `Mutation` type are resolved serially. Namespace types introduce the potential for mutations to be resolved asynchronously and in parallel because the mutation fields that mutate data are no longer at the root level.
+
 
 To guarantee serial execution when namespace types are used, clients should use
 aliases to select the root mutation field for each mutation. In the following

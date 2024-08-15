@@ -40,7 +40,7 @@ schema = strawberry.Schema(
 
 ## ASGI / FastAPI / Starlette
 
-Since these integrations use asyncio for communication, the resolver _must_ be
+Since these integrations use asyncio for communication, the resolver *must* be
 async.
 
 Additionally, these servers rely on the `python-multipart` package, which is not
@@ -49,7 +49,7 @@ convenience, it is included in extras: `strawberry[asgi]` (for ASGI/Starlette)
 or `strawberry[fastapi]` (for FastAPI). For example:
 
 - if using Pip, `pip install 'strawberry[fastapi]'`
-- if using Poetry, `strawberry = { version = "...", extras = ["fastapi"] }` in
+- if using Poetry, `strawberry = { version = &quot;...&quot;, extras = [&quot;fastapi&quot;] }` in
   `pyproject.toml`.
 
 Example:

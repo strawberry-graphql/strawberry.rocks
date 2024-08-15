@@ -25,21 +25,21 @@ app.add_route(
 The `GraphQLView` accepts two options at the moment:
 
 - `schema`: mandatory, the schema created by `strawberry.Schema`.
-- `graphql_ide`: optional, defaults to `"graphiql"`, allows to choose the
+- `graphql_ide`: optional, defaults to `&quot;graphiql&quot;`, allows to choose the
   GraphQL IDE interface (one of `graphiql`, `apollo-sandbox` or `pathfinder`) or
   to disable it by passing `None`.
 - `allow_queries_via_get`: optional, defaults to `True`, whether to enable
   queries via `GET` requests
-- `def encode_json(self, data: GraphQLHTTPResponse) -> str`
+- `def encode_json(self, data: GraphQLHTTPResponse) -&gt; str`
 
 ## Extending the view
 
 The base `GraphQLView` class can be extended by overriding the following
 methods:
 
-- `async get_context(self, request: Request, response: Response) -> Any`
-- `async get_root_value(self, request: Request) -> Any`
-- `async process_result(self, result: ExecutionResult) -> GraphQLHTTPResponse`
+- `async get_context(self, request: Request, response: Response) -&gt; Any`
+- `async get_root_value(self, request: Request) -&gt; Any`
+- `async process_result(self, result: ExecutionResult) -&gt; GraphQLHTTPResponse`
 
 ## get_context
 
@@ -61,7 +61,7 @@ class Query:
 ```
 
 Here we are returning a custom context dictionary that contains only one item
-called `"example"`.
+called `&quot;example&quot;`.
 
 Then we can use the context in a resolver. In this case the resolver will return
 `1`.
@@ -86,7 +86,7 @@ class Query:
 ```
 
 Here we configure a Query where requesting the `name` field will return
-`"Patrick"` through the custom root value.
+`&quot;Patrick&quot;` through the custom root value.
 
 ## process_result
 

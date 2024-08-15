@@ -35,15 +35,18 @@ class Schema(Query, mutation=None, subscription=None, **kwargs): ...
 
 <!-- TODO: add docs on directives, types, extensions and execution context class -->
 
+
 #### `query: Type`
 
 The root query Strawberry type. Usually called `Query`.
 
 <Note>
 
+
 A query type is always required when creating a Schema.
 
 </Note>
+
 
 #### `mutation: Optional[Type] = None`
 
@@ -65,6 +68,7 @@ from the root Query.
 
 <details class="mb-4">
 <summary>Defining extra `types` when using Interfaces</summary>
+
 
 ```python
 from datetime import date
@@ -104,6 +108,7 @@ schema = strawberry.Schema(Query, types=[Individual, Company])
 
 </details>
 
+
 #### `extensions: List[Type[SchemaExtension]] = []`
 
 List of [extensions](/docs/extensions) to add to your Schema.
@@ -113,7 +118,7 @@ List of [extensions](/docs/extensions) to add to your Schema.
 Override the implementation of the built in scalars.
 [More information](/docs/types/scalars#overriding-built-in-scalars).
 
----
+***
 
 ## Methods
 
@@ -179,7 +184,7 @@ The name of the operation you want to execute, useful when sending a document
 with multiple operations. If no `operation_name` is specified the first
 operation in the document will be executed.
 
----
+***
 
 ## Handling execution errors
 
@@ -268,10 +273,12 @@ schema = PublicSchema(query=Query)
 
 <Note>
 
+
 The `get_fields` method is only called once when creating the schema, this is
 not intended to be used to dynamically customise the schema.
 
 </Note>
+
 
 ## Deprecating fields
 
@@ -279,13 +286,16 @@ Fields can be deprecated using the argument `deprecation_reason`.
 
 <Note>
 
+
 This does not prevent the field from being used, it's only for documentation.
 See:
 [GraphQL field deprecation](https://spec.graphql.org/June2018/#sec-Field-Deprecation).
 
 </Note>
 
+
 <CodeGrid>
+
 
 ```python
 import strawberry

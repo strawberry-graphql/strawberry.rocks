@@ -30,7 +30,9 @@ We'll build an example database of fruit and their colours.
 > This allows strawberry-django to automatically use an enum in the graphQL schema, instead of
 > a string which would be the default behaviour for TextField.
 >
-> See the [choices-field integration](./integrations/choices-field.md) for more information.
+> See the [choices-field integration](/docs/django/integrations/choices-field) for more information.
+>
+
 
 ```python title="models.py"
 from django.db import models
@@ -81,7 +83,9 @@ which describes the shape of the data that can be queried from the GraphQL serve
 > A key feature of `strawberry-graphql-django` is that it provides helpers to create types from django models,
 > by automatically inferring types (and even documentation!!) from the model fields.
 >
-> See the [fields guide](./guide/fields.md) for more information.
+> See the [fields guide](/docs/django/guide/fields) for more information.
+>
+
 
 ```python title="types.py"
 import strawberry_django
@@ -113,11 +117,15 @@ Next we want to assemble the [schema](https://strawberry.rocks/docs/types/schema
 >
 > The purpose here is similar but subtly different. Previously, the syntax defined that it was possible to make a query that **traverses** within the graph, from a Color to a list of Fruits.
 > Here, the usage defines a [**root** query](https://strawberry.rocks/docs/general/queries) (a bit like an entrypoint into the graph).
+>
+
 
 > [!TIP]
 > We add the `DjangoOptimizerExtension` here. Don't worry about why for now, but you're almost certain to want it.
 >
-> See the [optimizer guide](./guide/optimizer.md) for more information.
+> See the [optimizer guide](/docs/django/guide/optimizer) for more information.
+>
+
 
 ```python title="schema.py"
 import strawberry
@@ -210,16 +218,16 @@ Using the interactive query tool, you can query for the fruits you added earlier
 
 ## Next steps
 
-1. [Defining more Django Types](./guide/types.md)
-2. [Define Fields inside those Types](./guide/fields.md)
-3. [Serve your API using ASGI or WSGI](./guide/views.md)
-4. [Define filters for your fields](./guide/filters.md)
-5. [Define orderings for your fields](./guide/ordering.md)
-6. [Define pagination for your fields](./guide/pagination.md)
-7. [Define queries for your schema](./guide/queries.md)
-8. [Define mutations for your schema](./guide/mutations.md)
-9. [Define subscriptions for your schema](./guide/subscriptions.md)
-10. [Enable the Query Optimizer extension for performance improvement](./guide/optimizer.md)
-11. [Use the relay integration for advanced pagination and model refetching](./guide/relay.md)
-12. [Protect your fields using the Permission Extension](./guide/permissions.md)
-13. [Write unit tests for your schema](./guide/unit-testing.md)
+1. [Defining more Django Types](/docs/django/guide/types)
+2. [Define Fields inside those Types](/docs/django/guide/fields)
+3. [Serve your API using ASGI or WSGI](/docs/django/guide/views)
+4. [Define filters for your fields](/docs/django/guide/filters)
+5. [Define orderings for your fields](/docs/django/guide/ordering)
+6. [Define pagination for your fields](/docs/django/guide/pagination)
+7. [Define queries for your schema](/docs/django/guide/queries)
+8. [Define mutations for your schema](/docs/django/guide/mutations)
+9. [Define subscriptions for your schema](/docs/django/guide/subscriptions)
+10. [Enable the Query Optimizer extension for performance improvement](/docs/django/guide/optimizer)
+11. [Use the relay integration for advanced pagination and model refetching](/docs/django/guide/relay)
+12. [Protect your fields using the Permission Extension](/docs/django/guide/permissions)
+13. [Write unit tests for your schema](/docs/django/guide/unit-testing)

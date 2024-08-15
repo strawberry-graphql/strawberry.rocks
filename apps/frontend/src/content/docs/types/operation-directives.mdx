@@ -26,10 +26,12 @@ Strawberry provides two default operation directives:
 
 <Note>
 
+
 `@deprecated(reason: String)` IS NOT compatible with Operation directives.
-`@deprecated` is exclusive to [Schema Directives](./schema-directives.md)
+`@deprecated` is exclusive to [Schema Directives](/docs/types/schema-directives)
 
 </Note>
+
 
 **Examples of Default Operation directives**
 
@@ -87,7 +89,7 @@ query People($identified: Boolean!) {
 
 # Locations for Operation directives
 
-Directives can only appear in _specific_ locations inside the query. These
+Directives can only appear in *specific* locations inside the query. These
 locations must be included in the directive's definition. In Strawberry the
 location is defined in the directive function's parameter `locations`.
 

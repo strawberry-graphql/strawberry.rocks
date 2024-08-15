@@ -10,6 +10,7 @@ on our `User`. This would be our code:
 
 <CodeGrid>
 
+
 ```python
 import strawberry
 
@@ -30,6 +31,7 @@ type User {
 ```
 
 </CodeGrid>
+
 
 In this case `full_name` will need to access the `first_name` and `last_name`
 fields, and depending on whether we define the resolver as a function or as a
@@ -66,6 +68,8 @@ this case it would be the `User`.
 
 > **Note:** `strawberry.Parent` accepts a type argument, which will then be used
 > by your type checker to check your code!
+>
+
 
 ### Using root
 

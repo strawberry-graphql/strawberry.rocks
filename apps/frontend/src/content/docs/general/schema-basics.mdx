@@ -15,7 +15,7 @@ Strawberry to create one.
 ## Schema definition language (SDL)
 
 There are two approaches for creating the schema for a GraphQL server. One is
-called “schema-first” and the other is called “code-first”. Strawberry _only_
+called “schema-first” and the other is called “code-first”. Strawberry *only*
 supports code-first schemas. Before diving into code-first, let’s first explain
 what the Schema definition language is.
 
@@ -42,9 +42,11 @@ specific subset of that data.
 
 <Note>
 
+
 The `!` sign specifies that a field is non-nullable.
 
 </Note>
+
 
 Notice that the schema doesn’t specify how to get the data. That comes later
 when defining the resolvers.
@@ -91,6 +93,7 @@ GraphQL supports a few different types:
 
 <!--alex ignore-->
 
+
 Scalar types are similar to Python primitive types. Here’s the list of the
 default scalar types in GraphQL:
 
@@ -105,13 +108,16 @@ default scalar types in GraphQL:
 
 <Note>
 
+
 Strawberry also includes support for date, time and datetime objects, they are
 not officially included with the GraphQL spec, but they are usually needed in
 most servers. They are serialized as ISO-8601.
 
 </Note>
 
+
 <!--alex ignore-->
+
 
 These primitives work for the majority of use cases, but you can also specify
 your [own scalar types](/docs/types/scalars#custom-scalars).
@@ -148,7 +154,7 @@ In the above schema, a `Book` has an `author` field and an `Author` has a
 structure of the promised schema.
 
 To achieve this, we introduce the concept of the
-[_resolver_](../types/resolvers.md) that provides some data to a field through a
+[*resolver*](/docs/types/resolvers) that provides some data to a field through a
 function.
 
 Continuing with this example of books and authors, resolvers can be defined to
@@ -194,7 +200,7 @@ databases, e.g. making SQL queries using SQLAlchemy, and other APIs, e.g. making
 HTTP requests using aiohttp.
 
 For more information and detail on the different ways to write resolvers, see
-the [resolvers section](../types/resolvers.md).
+the [resolvers section](/docs/types/resolvers).
 
 ## The Query type
 
@@ -307,11 +313,13 @@ defined in our schema.
 
 <Note>
 
+
 Strawberry converts fields names from snake case to camel case by default. This
 can be changed by specifying a
-[custom `StrawberryConfig` on the schema](../types/schema-configurations.md)
+[custom `StrawberryConfig` on the schema](/docs/types/schema-configurations)
 
 </Note>
+
 
 ### Structuring a mutation
 

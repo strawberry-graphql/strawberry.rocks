@@ -26,6 +26,8 @@ class Fruit:
 > `foo: Optional[SomeType] = strawberry.UNSET`
 > Above `auto` annotation is wrapped in `Optional` automatically.
 > `UNSET` is automatically used for fields without `field` or with `strawberry_django.filter_field`.
+>
+
 
 The code above would generate following schema:
 
@@ -41,10 +43,12 @@ input FruitFilter {
 ```
 
 > [!TIP]
-> If you are using the [relay integration](relay.md) and working with types inheriting
+> If you are using the [relay integration](/docs/django/guide/relay) and working with types inheriting
 > from `relay.Node` and `GlobalID` for identifying objects, you might want to set
-> `MAP_AUTO_ID_AS_GLOBAL_ID=True` in your [strawberry django settings](./settings.md)
+> `MAP_AUTO_ID_AS_GLOBAL_ID=True` in your [strawberry django settings](/docs/django/guide/settings)
 > to make sure `auto` fields gets mapped to `GlobalID` on types and filters.
+>
+
 
 ## AND, OR, NOT, DISTINCT ...
 
@@ -207,6 +211,8 @@ class FruitFilter:
 > [!WARNING]
 > It is discouraged to use `queryset.filter()` directly. When using more
 > complex filtering via `NOT`, `OR` & `AND` this might lead to undesired behaviour.
+>
+
 
 > [!TIP]
 >
@@ -236,6 +242,8 @@ class FruitFilter:
 > - True - always resolve
 > - False - never resolve
 > - UNSET (default) - resolves for filters without custom method only
+>
+
 
 The code above generates the following schema:
 
@@ -280,7 +288,7 @@ class ColorFilter:
 
 - `value` - represents graphql field type
   - **Required**, but forbidden for default `filter` method
-  - _must_ be annotated
+  - *must* be annotated
   - used instead of field's return type
 - `queryset` - can be used for more complex filtering
   - Optional, but **Required** for default `filter` method
@@ -304,7 +312,7 @@ By default `null` values are ignored. This can be toggled as such `@strawberry_d
 Works similar to field filter method, but:
 
 - is responsible for resolution of filtering for entire object
-- _must_ be named `filter`
+- *must* be named `filter`
 - argument `queryset` is **Required**
 - argument `value` is **Forbidden**
 
@@ -346,6 +354,8 @@ class FruitFilter:
 > As seen above `strawberry_django.process_filters` function is exposed and can be
 > reused in custom methods.
 > For filter method `filter` `skip_object_order_method` was used to avoid endless recursion.
+>
+
 
 ## Adding filters to types
 
@@ -423,7 +433,9 @@ The previous version of filters can be enabled via [**USE_DEPRECATED_FILTERS**](
 
 > [!WARNING]
 > If **USE_DEPRECATED_FILTERS** is not set to `True` legacy custom filtering
-> methods will be _not_ be called.
+> methods will be *not* be called.
+>
+
 
 When using legacy filters it is important to use legacy
 `strawberry_django.filters.FilterLookup` lookups as well.
@@ -439,4 +451,4 @@ Migration process could be composed of these steps:
 - enable **USE_DEPRECATED_FILTERS**
 - gradually transform custom filter field methods to new version (do not forget to use old FilterLookup if applicable)
 - gradually transform default `filter` methods
-- disable **USE_DEPRECATED_FILTERS** - **_This is breaking change_**
+- disable **USE_DEPRECATED_FILTERS** - ***This is breaking change***

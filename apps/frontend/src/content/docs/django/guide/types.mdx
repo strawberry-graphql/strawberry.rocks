@@ -7,14 +7,16 @@ title: Defining Types
 ## Output types
 
 > [!NOTE]
-> It is highly recommended to enable the [Query Optimizer Extension](optimizer.md)
+> It is highly recommended to enable the [Query Optimizer Extension](/docs/django/guide/optimizer)
 > for improved performance and avoid some common pitfalls (e.g. the `n+1` issue)
+>
+
 
 Output types are generated from models. The `auto` type is used for field type auto resolution.
 Relational fields are described by referencing to other types generated from Django models.
 A many-to-many relation is described with the `typing.List` type annotation.
 `strawberry_django` will automatically generate resolvers for relational fields.
-More information about that can be read from [resolvers](resolvers.md) page.
+More information about that can be read from [resolvers](/docs/django/guide/resolvers) page.
 
 ```python title="types.py"
 import strawberry_django
@@ -88,14 +90,16 @@ class Fruit:
 ### Adding fields to the type
 
 By default, no fields are implemented on the new type. Check the documentation
-on [How to define Fields](fields.md) for that.
+on [How to define Fields](/docs/django/guide/fields) for that.
 
 ### Customizing the returned `QuerySet`
 
 > [!WARNING]
 > By doing this you are modifying all automatic `QuerySet` generation for any field
-> that returns this type. Ideally you will want to define your own [resolver](resolvers.md)
+> that returns this type. Ideally you will want to define your own [resolver](/docs/django/guide/resolvers)
 > instead, which gives you more control over it.
+>
+
 
 By default, a `strawberry_django` type will get data from the default manager for its Django Model.
 You can implement a custom `get_queryset` classmethod to your type to do some extra processing to the default queryset,
@@ -132,8 +136,10 @@ class Berry:
 ```
 
 > [!NOTE]
-> Another way of limiting this is by using the [PermissionExtension](permissions.md)
+> Another way of limiting this is by using the [PermissionExtension](/docs/django/guide/permissions)
 > provided by this lib.
+>
+
 
 The `kwargs` dictionary can include other parameters that were added in a `@strawberry.django.type` definition
-like [filters](filters.md) or [pagination](pagination.md).
+like [filters](/docs/django/guide/filters) or [pagination](/docs/django/guide/pagination).

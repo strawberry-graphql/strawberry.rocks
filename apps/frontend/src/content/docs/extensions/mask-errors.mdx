@@ -1,7 +1,7 @@
 ---
-title: Mask Errors
 summary: Hide error messages from the client.
 tags: security
+title: Mask Errors
 ---
 
 # `MaskErrors`
@@ -39,11 +39,13 @@ resolver.
 
 <Note>
 
+
 The `default_should_mask_error` function always returns `True`.
 
 </Note>
 
-#### `error_message: str = "Unexpected error."`
+
+#### `error_message: str = &quot;Unexpected error.&quot;`
 
 The error message to display to the client when there is an error.
 
@@ -51,6 +53,7 @@ The error message to display to the client when there is an error.
 
 <details>
   <summary>Hide some exceptions</summary>
+
 
 ```python
 import strawberry
@@ -80,8 +83,10 @@ schema = strawberry.Schema(
 
 </details>
 
+
 <details>
   <summary>Change error message</summary>
+
 
 ```python
 import strawberry

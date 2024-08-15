@@ -22,6 +22,7 @@ contains an `errors` list:
 
 <CodeGrid>
 
+
 ```graphql
 {
   hi
@@ -47,6 +48,7 @@ contains an `errors` list:
 ```
 
 </CodeGrid>
+
 
 Each error has a message, line, column and path to help you identify what part
 of the query caused the error.
@@ -77,6 +79,7 @@ schema = strawberry.Schema(query=Query)
 
 <CodeGrid>
 
+
 ```graphql
 {
   hello
@@ -102,6 +105,7 @@ schema = strawberry.Schema(query=Query)
 ```
 
 </CodeGrid>
+
 
 Each error has a message, line, column and path to help you identify what part
 of the query caused the error.
@@ -133,6 +137,7 @@ schema = strawberry.Schema(query=Query)
 
 <CodeGrid>
 
+
 ```graphql
 {
   user {
@@ -160,6 +165,7 @@ schema = strawberry.Schema(query=Query)
 ```
 
 </CodeGrid>
+
 
 ## Expected errors
 
@@ -252,7 +258,7 @@ This approach allows you to express the possible error states in the schema and
 so provide a robust interface for your client to account for all the potential
 outcomes from a mutation.
 
----
+***
 
 ## Additional resources:
 

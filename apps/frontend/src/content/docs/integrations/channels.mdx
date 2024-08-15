@@ -17,7 +17,7 @@ the most common use case will be to run a normal Django project with GraphQL
 subscriptions support, typically taking advantage of the Channel Layers
 functionality which is exposed through the Strawberry integration.
 
----
+***
 
 ## Getting Started
 
@@ -50,11 +50,11 @@ required dependencies by running:
 pip install 'strawberry-graphql[channels]'
 ```
 
----
+***
 
 ## Tutorial
 
-_The following example will pick up where the Channels tutorials left off._
+*The following example will pick up where the Channels tutorials left off.*
 
 By the end of this tutorial, You will have a graphql chat subscription that will
 be able to talk with the channels chat consumer from the tutorial.
@@ -102,7 +102,7 @@ pattern, as we will see below.
 
 ### The chat subscription
 
-Now we will create the chat [subscription](../general/subscriptions.md).
+Now we will create the chat [subscription](/docs/general/subscriptions).
 
 ```python
 # mysite/gqlchat/subscription.py
@@ -153,12 +153,13 @@ class Subscription:
                     )
 ```
 
-Explanation: `Info.context["ws"]` or `Info.context["request"]` is a pointer to
+Explanation: `Info.context[&quot;ws&quot;]` or `Info.context[&quot;request&quot;]` is a pointer to
 the [`ChannelsConsumer`](#channelsconsumer) instance. Here we have first sent a
 message to all the channel_layer groups (specified in the subscription argument
 `rooms`) that we have joined the chat.
 
 <Note>
+
 
 The `ChannelsConsumer` instance is shared between all subscriptions created in a
 single websocket connection. The `ws.listen_to_channel` context manager will
@@ -168,19 +169,22 @@ sent to the same group or groups that it was called with - if another
 subscription using the same `ChannelsConsumer` also uses `ws.listen_to_channel`
 with some other group names, those will be returned as well.
 
-In the example we ensure `message["room_id"] in room_ids` before passing
+In the example we ensure `message[&quot;room_id&quot;] in room_ids` before passing
 messages on to the subscription client to ensure subscriptions only receive
 messages for the chat rooms requested in that subscription.
 
 </Note>
 
+
 <Note>
+
 
 We do not need to call `await channel_layer.group_add(room, ws.channel_name)` if
 we don't want to send an initial message while instantiating the subscription.
 It is handled by `ws.listen_to_channel`.
 
 </Note>
+
 
 ### Chat message mutation
 
@@ -219,7 +223,7 @@ class Mutation:
 All we did so far is useless without creating an asgi consumer for our schema.
 The easiest way to do that is to use the
 [`GraphQLProtocolTypeRouter`](#graphqlprotocoltyperouter) which will wrap your
-Django application, and route **HTTP and websockets** for `"/graphql"` to
+Django application, and route **HTTP and websockets** for `&quot;/graphql&quot;` to
 Strawberry, while sending all other requests to Django. You'll need to modify
 the `myproject.asgi.py` file from the Channels instructions to look something
 like this:
@@ -307,7 +311,7 @@ Strawberry.
 
 ### Running our example
 
-First run your asgi application _(The ProtocolTypeRouter)_ using your asgi
+First run your asgi application *(The ProtocolTypeRouter)* using your asgi
 server. If you are coming from the channels tutorial, there is no difference.
 Then open three different tabs on your browser and go to the following URLs:
 
@@ -365,7 +369,7 @@ Look here for some more complete examples:
    [Strawberry Examples repo](https://github.com/strawberry-graphql/examples)
    contains a basic example app demonstrating subscriptions with Channels.
 
----
+***
 
 ### Confirming GraphQL Subscriptions
 
@@ -407,8 +411,8 @@ after entering the `listen_to_channel` context manger.
 ## Testing
 
 We provide a minimal application communicator (`GraphQLWebsocketCommunicator`)
-for subscribing. Here is an example based on the tutorial above: _Make sure you
-have pytest-async installed_
+for subscribing. Here is an example based on the tutorial above: *Make sure you
+have pytest-async installed*
 
 ```python
 from channels.testing import WebsocketCommunicator
@@ -453,10 +457,12 @@ In order to test a real server connection we can use python
 
 <Note>
 
+
 This example is based on the extended `ChannelsLiveServerTestCase` class from
 channels tutorial part 4. **You cannot run this test with a pytest session.**
 
 </Note>
+
 
 Add this test in your `ChannelsLiveServerTestCase` extended class:
 
@@ -490,7 +496,7 @@ def test_send_message_via_channels_chat_joinChatRooms_recieves(self):
             self._close_all_new_windows()
 ```
 
----
+***
 
 The HTTP and WebSockets protocol are handled by different base classes. HTTP
 uses `GraphQLHTTPConsumer` and WebSockets uses `GraphQLWSConsumer`. Both of them
@@ -517,7 +523,7 @@ GraphQLWebsocketCommunicator(
 `GraphQLHTTPConsumer` supports the same options as all other integrations:
 
 - `schema`: mandatory, the schema created by `strawberry.Schema`.
-- `graphql_ide`: optional, defaults to `"graphiql"`, allows to choose the
+- `graphql_ide`: optional, defaults to `&quot;graphiql&quot;`, allows to choose the
   GraphQL IDE interface (one of `graphiql`, `apollo-sandbox` or `pathfinder`) or
   to disable it by passing `None`.
 - `allow_queries_via_get`: optional, defaults to `True`, whether to enable
@@ -529,9 +535,9 @@ GraphQLWebsocketCommunicator(
 
 We allow to extend `GraphQLHTTPConsumer`, by overriding the following methods:
 
-- `async def get_context(self, request: ChannelsRequest, response: TemporalResponse) -> Context`
-- `async def get_root_value(self, request: ChannelsRequest) -> Optional[RootValue]`
-- `async def process_result(self, request: Request, result: ExecutionResult) -> GraphQLHTTPResponse:`.
+- `async def get_context(self, request: ChannelsRequest, response: TemporalResponse) -&gt; Context`
+- `async def get_root_value(self, request: ChannelsRequest) -&gt; Optional[RootValue]`
+- `async def process_result(self, request: Request, result: ExecutionResult) -&gt; GraphQLHTTPResponse:`.
 
 ### Context
 
@@ -565,8 +571,8 @@ following keys by default:
 
 We allow to extend `GraphQLWSConsumer`, by overriding the following methods:
 
-- `async def get_context(self, request: ChannelsConsumer, connection_params: Any) -> Context`
-- `async def get_root_value(self, request: ChannelsConsumer) -> Optional[RootValue]`
+- `async def get_context(self, request: ChannelsConsumer, connection_params: Any) -&gt; Context`
+- `async def get_root_value(self, request: ChannelsConsumer) -&gt; Optional[RootValue]`
 
 ### Context
 
@@ -574,7 +580,7 @@ The default context returned by `get_context()` is a `dict` and it includes the
 following keys by default:
 
 - `request`: The `GraphQLWSConsumer` instance of the current connection. It can
-  be used to access the connection scope, e.g. `info.context["ws"].headers`
+  be used to access the connection scope, e.g. `info.context[&quot;ws&quot;].headers`
   allows access to any headers.
 - `ws`: The same as `request`
 - `connection_params`: Any `connection_params`, see
@@ -653,7 +659,7 @@ class GraphQLWSConsumer(BaseGraphQLWSConsumer):
 You can import and use the extended `GraphQLHTTPConsumer` and
 `GraphQLWSConsumer` classes in your `myproject.asgi.py` file as shown before.
 
----
+***
 
 ## API
 
@@ -688,7 +694,7 @@ Strawberries extended
 [`AsyncConsumer`](https://channels.readthedocs.io/en/stable/topics/consumers.html#consumers).
 
 Every graphql session will have an instance of this class inside
-`info.context["ws"]` (WebSockets) or `info.context["request"].consumer` (HTTP).
+`info.context[&quot;ws&quot;]` (WebSockets) or `info.context[&quot;request&quot;].consumer` (HTTP).
 
 #### properties
 

@@ -52,7 +52,7 @@ class Color:
 
 ## Optimizing resolvers
 
-When using custom resolvers together with the [Query Optimizer Extension](optimizer.md)
+When using custom resolvers together with the [Query Optimizer Extension](/docs/django/guide/optimizer)
 you might need to give it a "hint" on how to optimize that field
 
 Take a look at the [optimization hints](optimizer.md#optimization-hints)
@@ -61,7 +61,7 @@ docs for more information about this topic.
 ## Issues with Resolvers
 
 It is important to note that overriding resolvers also removes default capabilities
-(e.g. `Pagination`, `Filter`), exception for [relay connections](relay.md). You can
+(e.g. `Pagination`, `Filter`), exception for [relay connections](/docs/django/guide/relay). You can
 however still add those by hand and resolve them:
 
 ```python title="types.py"

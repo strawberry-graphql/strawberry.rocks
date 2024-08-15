@@ -7,30 +7,6 @@ interface Props {
 }
 
 let { href, target, title, id, ...rest } = Astro.props;
-
-if (href?.includes(".md")) {
-  if (href.includes("index.md")) {
-    href = href.replace("index.md", "");
-  }
-
-  // Remove .md extension from href, but make sure to preserve #hashes
-  href = href?.replace(/\.md(#.*)?$/, "$1");
-}
-
-if (
-  href &&
-  ["http", "mailto", "tel", "#", "/"].every(
-    (prefix) => !href!.startsWith(prefix),
-  )
-) {
-  let currentUrl = Astro.url.href;
-
-  if (!href.startsWith(".")) {
-    href = `./${href}`;
-  }
-
-  href = new URL(href, currentUrl).href;
-}
 ---
 
 <a href={href} target={target} title={title} id={id} {...rest}><slot /></a>

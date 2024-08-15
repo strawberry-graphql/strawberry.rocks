@@ -9,12 +9,14 @@ Strawberry supports
 which are directives that don't change the behavior of your GraphQL schema but
 instead provide a way to add additional metadata to it.
 
-> For example our [Apollo Federation integration](../guides/federation.md) is
+> For example our [Apollo Federation integration](/docs/guides/federation) is
 > based on schema directives.
+>
+
 
 Let's see how you can implement a schema directive in Strawberry, here we are
 creating a directive called `keys` that can be applied to
-[Object types definitions](./object-types.md) and accepts one parameter called
+[Object types definitions](/docs/types/object-types) and accepts one parameter called
 `fields`. Note that directive names, by default, are converted to camelCase on
 the GraphQL schema.
 

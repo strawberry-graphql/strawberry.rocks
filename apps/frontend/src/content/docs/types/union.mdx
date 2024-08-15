@@ -51,6 +51,7 @@ the type name from the names of the union members:
 
 <CodeGrid>
 
+
 ```python
 from typing import Union
 import strawberry
@@ -98,10 +99,12 @@ type Image {
 
 </CodeGrid>
 
+
 Or if you need to specify a name or a description for a union you can use
 Annotated with the `strawberry.union` function:
 
 <CodeGrid>
+
 
 ```python
 import strawberry
@@ -136,6 +139,7 @@ type Image {
 
 </CodeGrid>
 
+
 ## Resolving a union
 
 When a field’s return type is a union, GraphQL needs to know what specific
@@ -168,6 +172,7 @@ Annotated and `strawberry.union` you can tell Strawberry that you want to define
 a union with only one member:
 
 <CodeGrid>
+
 
 ```python
 import strawberry

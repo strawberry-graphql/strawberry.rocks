@@ -15,7 +15,7 @@ Here are the differences between those:
 - Strawberry Django's mutation will be sure that the mutation is executed in an async safe
   environment, meaning that if you are running ASGI and you define a `sync` resolver, it will
   automatically be wrapped in a `sync_to_async` call.
-- It will better integrate with the [permission integration](./permissions.md)
+- It will better integrate with the [permission integration](/docs/django/guide/permissions)
 - It has an option to automatically handle common django errors and return them
   in a standardized way (more on that below)
 
@@ -89,6 +89,8 @@ mutation {
 > If all or most of your mutations use this behaviour, you can change the
 > default behaviour for `handle_django_errors` by setting
 > `MUTATIONS_DEFAULT_HANDLE_ERRORS=True` in your [strawberry django settings](../settings)
+>
+
 
 ## Input mutations
 
@@ -139,11 +141,11 @@ Some things to note here:
 
 - Those CUD mutations accept the same arguments as `@strawberry_django.mutation`
   accepts. This allows you to pass `handle_django_errors=True` to it for example.
-- The mutation will receive the type in an argument named `"data"` by default.
-  To change it to `"info"` for example, you can change it by passing
-  `argument_name="info"` to the mutation, or set `MUTATIONS_DEFAULT_ARGUMENT_NAME="info"`
+- The mutation will receive the type in an argument named `&quot;data&quot;` by default.
+  To change it to `&quot;info&quot;` for example, you can change it by passing
+  `argument_name=&quot;info&quot;` to the mutation, or set `MUTATIONS_DEFAULT_ARGUMENT_NAME=&quot;info&quot;`
   in your [strawberry django settings](../settings) to make it the default when not provided.
-- Take note that inputs using `partial` will _not_ automatically mark non-auto fields optional
+- Take note that inputs using `partial` will *not* automatically mark non-auto fields optional
   and instead will respect explicit type annotations;
   see [partial input types](./types.md#input-types) documentation for examples.
 - I's also possible to update or delete model by using unique identifier other than id by providing `key_attr` property :
@@ -170,9 +172,11 @@ class Mutation:
 > [!CAUTION]
 > This is totally discouraged as it allows for any issue with the filters
 > to be able to alter your whole model collection.
+>
+
 
 Filters can be added to update and delete mutations. More information in the
-[filtering](filters.md) section.
+[filtering](/docs/django/guide/filters) section.
 
 ```python title="schema.py"
 import strawberry

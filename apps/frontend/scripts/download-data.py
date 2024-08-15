@@ -2,6 +2,8 @@
 # dependencies = [
 #    "griffe",
 #    "griffe-typingdoc",
+#    "mistune",
+#    "python-frontmatter",
 # ]
 # requires-python = ">=3.11"
 # ///
@@ -13,6 +15,12 @@ import subprocess
 import tempfile
 import griffe
 from griffe import JSONEncoder
+import frontmatter
+import textwrap
+
+import mistune
+from mistune.renderers.markdown import MarkdownRenderer
+import re
 
 from pathlib import Path
 
@@ -64,10 +72,78 @@ def fetch_api_docs(repo: str, package_name: str, branch: str = "main") -> None:
 
 
 def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> None:
-    working_dir = os.getcwd()
-    destination = os.path.join(working_dir, "src", "content", destination_subpath)
+    working_dir = Path.cwd()
+    destination = working_dir / "src" / "content" / destination_subpath
 
-    print(f"Cloning docs from {repo} to {destination} on branch {branch}")
+    class UpdateLinksRenderer(MarkdownRenderer):
+        def __init__(self, file_path: Path) -> None:
+            self.file_path = file_path
+
+            super().__init__()
+
+        def block_quote(self, token, state) -> str:
+            text = self.render_children(token, state)
+            text = textwrap.indent(text, "> ", lambda _: True)
+            text = text + "\n\n"
+
+            return text
+
+        def _fix_url(self, url: str | None) -> str | None:
+            if not url:
+                return url
+
+            if url.startswith("/"):
+                return url
+
+            if url.startswith("http"):
+                return url
+
+            if not url.endswith(".md"):
+                return url
+
+            destination_path = self.file_path.relative_to(working_dir).parent / Path(
+                url
+            )
+
+            # TODO: would be nice to check if the file exists
+
+            new_url = (
+                (working_dir / destination_path)
+                .resolve()
+                .relative_to(working_dir / "src" / "content")
+            )
+
+            if new_url.suffix == ".md":
+                new_url = new_url.with_suffix("")
+
+            return "/" + str(new_url)
+
+        def link(self, token, state):
+            url = token["attrs"].get("url")
+            url = self._fix_url(url)
+
+            # copied from https://github.com/lepture/mistune/blob/231df0141c8a9006df8c0e49f6b7463afdcfb2bd/src/mistune/renderers/markdown.py
+            # and modified to remove the conversion from [link](link) to <link>
+            label = token.get("label")
+            text = self.render_children(token, state)
+            out = "[" + text + "]"
+
+            if label:
+                return out + "[" + label + "]"
+
+            attrs = token["attrs"]
+            title = attrs.get("title")
+
+            out += "("
+
+            if "(" in url or ")" in url:
+                out += "<" + url + ">"
+            else:
+                out += url
+            if title:
+                out += ' "' + title + '"'
+
+            return out + ")"
 
     with tempfile.TemporaryDirectory() as tmpdirname:
         os.chdir(tmpdirname)
@@ -78,7 +154,8 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
             stderr=subprocess.DEVNULL,
         )
 
-        repo_name = os.path.basename(repo)
+        repo_name = repo.split("/")[-1]
+
         os.chdir(repo_name)
 
         subprocess.run(
@@ -86,11 +163,12 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
+
         subprocess.run(
             ["git", "checkout"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
         )
 
-        os.makedirs(destination, exist_ok=True)
+        destination.mkdir(parents=True, exist_ok=True)
 
         for item in os.listdir("docs"):
             s = os.path.join("docs", item)
@@ -100,7 +178,27 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
             else:
                 shutil.copy2(s, d)
 
-    os.chdir(working_dir)
+        for file in destination.rglob("*.md"):
+            new_file_name = file.with_suffix(".mdx")
+
+            renderer = UpdateLinksRenderer(file)
+            markdown = mistune.create_markdown(renderer=renderer)
+
+            content = file.read_text()
+
+            post = frontmatter.loads(content)
+            text = post.content
+
+            processed_content = markdown(text)
+
+            post.content = processed_content
+
+            output = frontmatter.dumps(post)
+            new_file_name.write_text(output)
+
+            file.unlink()
+
+        os.chdir(working_dir)
 
 
 # Remove existing docs directory
@@ -112,17 +210,4 @@ clone_docs_from_repo(
     "https://github.com/strawberry-graphql/strawberry-django", "docs/django"
 )
 
-fetch_api_docs("https://github.com/strawberry-graphql/strawberry", "strawberry")
-
-
-HERE = Path(__file__).parent
-
-DOCS_DIR = HERE.parent / "src" / "content" / "docs"
-
-print(f"Renaming files in {DOCS_DIR}")
-
-for file in DOCS_DIR.glob("**/*.md"):
-    new_file_name = file.with_suffix(".mdx")
-
-    file.rename(new_file_name)
-    print(f"Renamed: {file.name} -> {new_file_name.name}")
+# fetch_api_docs("https://github.com/strawberry-graphql/strawberry", "strawberry")

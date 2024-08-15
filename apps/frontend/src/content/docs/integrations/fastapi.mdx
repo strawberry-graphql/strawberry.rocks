@@ -45,7 +45,7 @@ app.include_router(graphql_app, prefix="/graphql")
 The `GraphQLRouter` accepts the following options:
 
 - `schema`: mandatory, the schema created by `strawberry.Schema`.
-- `graphql_ide`: optional, defaults to `"graphiql"`, allows to choose the
+- `graphql_ide`: optional, defaults to `&quot;graphiql&quot;`, allows to choose the
   GraphQL IDE interface (one of `graphiql`, `apollo-sandbox` or `pathfinder`) or
   to disable it by passing `None`.
 - `allow_queries_via_get`: optional, defaults to `True`, whether to enable
@@ -117,7 +117,7 @@ app.include_router(graphql_app, prefix="/graphql")
 Here we are returning a custom context dictionary that contains one extra item
 called "custom*value", which is injected from `custom_context_dependency`. This
 value exists alongside `request`, `response`, and `background_tasks` in the
-`info.context` \_dictionary* and so it requires `['request']` indexing.
+`info.context` _dictionary* and so it requires `['request']` indexing.
 
 Then we use the context in a resolver. The resolver will return "Hello John" in
 this case.
@@ -168,7 +168,7 @@ app.include_router(graphql_app, prefix="/graphql")
 In this case, we are returning a custom context class that inherits from
 BaseContext with fields `name` and `greeting`, which is also injected by
 `custom_context_dependency`. These custom values exist alongside `request`,
-`response`, and `background_tasks` in the `info.context` _class_ and so it
+`response`, and `background_tasks` in the `info.context` *class* and so it
 requires `.request` indexing.
 
 Then we use the context in a resolver. The resolver will return “Hello John, you
