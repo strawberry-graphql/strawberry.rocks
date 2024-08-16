@@ -98,6 +98,8 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
             if url.startswith("http"):
                 return url
 
+            url, hash = url.split("#") if "#" in url else (url, None)
+
             if not url.endswith(".md"):
                 return url
 
@@ -113,10 +115,11 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
                 .relative_to(working_dir / "src" / "content")
             )
 
-            if new_url.suffix == ".md":
-                new_url = new_url.with_suffix("")
+            new_url = new_url.with_suffix("")
 
-            return "/" + str(new_url)
+            suffix = f"#{hash}" if hash else ""
+
+            return "/" + str(new_url) + suffix
 
         def link(self, token, state):
             url = token["attrs"].get("url")

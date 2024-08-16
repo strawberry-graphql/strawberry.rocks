@@ -89,7 +89,7 @@ mutation {
 > If all or most of your mutations use this behaviour, you can change the
 > default behaviour for `handle_django_errors` by setting
 > `MUTATIONS_DEFAULT_HANDLE_ERRORS=True` in your [strawberry django settings](../settings)
-> 
+>
 
 
 ## Input mutations
@@ -147,7 +147,7 @@ Some things to note here:
   in your [strawberry django settings](../settings) to make it the default when not provided.
 - Take note that inputs using `partial` will *not* automatically mark non-auto fields optional
   and instead will respect explicit type annotations;
-  see [partial input types](./types.md#input-types) documentation for examples.
+  see [partial input types](/docs/django/guide/types#input-types) documentation for examples.
 - I's also possible to update or delete model by using unique identifier other than id by providing `key_attr` property :
 
 ```python
@@ -172,7 +172,7 @@ class Mutation:
 > [!CAUTION]
 > This is totally discouraged as it allows for any issue with the filters
 > to be able to alter your whole model collection.
-> 
+>
 
 
 Filters can be added to update and delete mutations. More information in the

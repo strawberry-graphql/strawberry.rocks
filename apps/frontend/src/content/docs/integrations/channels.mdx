@@ -154,7 +154,7 @@ class Subscription:
 ```
 
 Explanation: `Info.context[&quot;ws&quot;]` or `Info.context[&quot;request&quot;]` is a pointer to
-the [`ChannelsConsumer`](#channelsconsumer) instance. Here we have first sent a
+the [`ChannelsConsumer`]() instance. Here we have first sent a
 message to all the channel_layer groups (specified in the subscription argument
 `rooms`) that we have joined the chat.
 
@@ -222,7 +222,7 @@ class Mutation:
 
 All we did so far is useless without creating an asgi consumer for our schema.
 The easiest way to do that is to use the
-[`GraphQLProtocolTypeRouter`](#graphqlprotocoltyperouter) which will wrap your
+[`GraphQLProtocolTypeRouter`]() which will wrap your
 Django application, and route **HTTP and websockets** for `&quot;/graphql&quot;` to
 Strawberry, while sending all other requests to Django. You'll need to modify
 the `myproject.asgi.py` file from the Channels instructions to look something
