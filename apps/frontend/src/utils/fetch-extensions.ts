@@ -30,7 +30,7 @@ const getExtension = (path: string, text: string) => {
   const { data } = matter(text);
 
   return {
-    href: `/docs/extensions/${path.replace(".mdx", "")}`,
+    href: `/docs/extensions/${path.replace(".md", "")}`,
     title: data.title,
     summary: data.summary,
     tags: data.tags.split(","),
