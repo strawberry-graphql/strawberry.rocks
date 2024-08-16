@@ -117,6 +117,9 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
 
             new_url = new_url.with_suffix("")
 
+            if new_url.name == "index":
+                new_url = new_url.parent
+
             suffix = f"#{hash}" if hash else ""
 
             return "/" + str(new_url) + suffix
