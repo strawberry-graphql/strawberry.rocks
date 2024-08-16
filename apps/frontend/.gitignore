@@ -23,3 +23,5 @@ pnpm-debug.log*
 .env*.local
 
 __pycache__/
+
+*.0x/
