@@ -6,7 +6,7 @@ import Table from "../components/Pages/Table.astro";
 import HR from "../components/Pages/HR.astro";
 
 import { getEntry, render } from "astro:content";
-const page = await getEntry("pages", "changelog.md");
+const page = await getEntry("pages", "changelog");
 
 const { Content } = await render(page);
 ---

@@ -45,7 +45,7 @@ function gitHubPageLoader(): Loader {
         });
 
         store.set({
-          id: page,
+          id: page.toLowerCase().replace(/\.md$/, ""),
           rendered: { html: result.code },
           data: {},
         });
