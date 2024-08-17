@@ -76,6 +76,8 @@ h6 {
   --max-fs: 1.5;
 }
 
+article p,
+article li,
 .typography-paragraph {
   font-family: var(--font-sans);
   font-size: 18px;
@@ -111,6 +113,7 @@ h6 {
   font-size: 14px;
 }
 
+article code,
 .typography-code {
   font-family: var(--font-mono);
   font-size: 0.85em;

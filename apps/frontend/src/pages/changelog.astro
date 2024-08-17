@@ -1,17 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Markdown from "../components/Markdown.astro";
-import { fetchDocPage } from "../utils/fetch-doc-page";
 
-const { content } = await fetchDocPage({
-  filename: "CHANGELOG.md",
-});
+import CodeSpan from "../components/Pages/CodeSpan.astro";
+import Table from "../components/Pages/Table.astro";
+import HR from "../components/Pages/HR.astro";
+
+import { getEntry, render } from "astro:content";
+const page = await getEntry("pages", "changelog.md");
+
+const { Content } = await render(page);
 ---
 
 <Layout title="Changelog" blob>
   <main>
     <article>
-      <Markdown content={content} />
+      <Content
+        components={{
+          code: CodeSpan,
+          table: Table,
+          hr: HR,
+        }}
+      />
     </article>
   </main>
 </Layout>

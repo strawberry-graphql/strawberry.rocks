@@ -9,6 +9,7 @@ import remarkGithubAlerts from "remark-github-alerts";
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: { contentLayer: true },
   trailingSlash: "never",
   output: "hybrid",
   site: "https://strawberry.rocks",
