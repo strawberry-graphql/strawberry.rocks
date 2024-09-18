@@ -1,0 +1,101 @@
+---
+import Link from "../components/Pages/Link.astro";
+import List from "../components/Pages/List.astro";
+import ListItem from "../components/Pages/ListItem.astro";
+import Paragraph from "../components/Pages/Paragraph.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Support" blob>
+  <main>
+    <header>
+      <h1 class="typography-heading-1">Support</h1>
+      <p>
+        Read more if you want to support Strawberry or if you want to be
+        supported by us in your project.
+      </p>
+    </header>
+
+    <article>
+      <h2 class="typography-heading-2">Supporting Strawberry</h2>
+
+      <Paragraph>
+        Strawberry is an open-source project and is maintained by a small team
+        of developers. If you want to support us, you can sponsor us on the
+        following platforms:
+      </Paragraph>
+
+      <List>
+        <ListItem>
+          <Link href="https://polar.sh/strawberry-graphql" target="_blank"
+            >Polar</Link
+          >
+        </ListItem>
+        <ListItem>
+          <Link
+            href="https://github.com/sponsors/strawberry-graphql"
+            target="_blank">GitHub Sponsors</Link
+          >
+        </ListItem>
+        <ListItem>
+          <Link
+            href="https://opencollective.com/strawberry-graphql"
+            target="_blank">Open Collective</Link
+          >
+        </ListItem>
+      </List>
+
+      <Paragraph>
+        By sponsoring us, you will help us to maintain the project and to
+        implement new features. All the money will be used to improve the
+        project and to support the developers.
+      </Paragraph>
+
+      <Paragraph>
+        If you want to support us in other ways, you can contribute to the
+        project by opening pull requests, reporting bugs, or helping other users
+        in the community.
+      </Paragraph>
+    </article>
+
+    <article>
+      <h2 class="typography-heading-2">Getting Support</h2>
+
+      <Paragraph>
+        If you are a company or a developer and you need help with your project,
+        you can get enterprise support from the following companies:
+      </Paragraph>
+
+      <List>
+        <ListItem>
+          <Link href="https://farbun.dev" target="_blank">Farbun</Link>
+        </ListItem>
+      </List>
+    </article>
+  </main>
+
+  <style>
+    main {
+      padding: 80px 16px;
+      display: flex;
+      row-gap: 40px;
+      flex-direction: column;
+      justify-content: center;
+
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    main > article {
+      padding-bottom: 0;
+    }
+
+    main :global(h1, h2, h3, h4) {
+      text-wrap: balance;
+    }
+
+    main header h1 {
+      margin-bottom: 40px;
+    }
+  </style>
+</Layout>

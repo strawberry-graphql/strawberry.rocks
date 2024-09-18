@@ -122,6 +122,7 @@ export async function getStaticPaths() {
 
   const additionalPages = [
     "default",
+    "support",
     "acknowledgements",
     "code-of-conduct",
   ].map((page) => {

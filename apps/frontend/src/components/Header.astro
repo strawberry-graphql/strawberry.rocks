@@ -31,12 +31,14 @@ import HeaderNav from "./HeaderNav.astro";
 
 <style>
   header > div {
-    grid-column: nav-start / page-nav-end;
+    grid-column: nav;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     @media (min-width: 768px) {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      grid-column-end: page-nav-end;
     }
   }
 
@@ -84,11 +86,17 @@ import HeaderNav from "./HeaderNav.astro";
     .logo {
       grid-row: 1 / 1;
     }
+
     .nav-container {
       grid-column: content-start / full-end;
       grid-row: 1 / 1;
       display: flex;
       justify-content: flex-end;
+    }
+
+    #toggle-nav:checked ~ header > div {
+      flex-direction: column;
+      align-items: stretch;
     }
 
     #toggle-nav:checked ~ header .nav-container label .menu-icon {
