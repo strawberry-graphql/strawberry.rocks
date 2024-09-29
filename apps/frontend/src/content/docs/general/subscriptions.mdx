@@ -152,6 +152,43 @@ connection, which is abstracted as `connectionParams` in Apollo-client, and it
 will be successfully injected into the `info.context` object. It is then up to
 you to handle it correctly!
 
+## Closing Subscriptions
+
+At some point it may be necessary to implement a pub-sub pattern.
+When the client chooses to unsubscribe to an endpoint, it can caught up in a
+try ... except block.
+
+```python
+import asyncio
+from typing import AsyncGenerator
+from uuid import uuid4
+
+import strawberry
+
+# track active subscribers
+event_messages = {}
+
+@strawberry.type
+class Subscription:
+    @strawberry.subscription
+    async def message(self) -> AsyncGenerator[int, None]:
+        try:
+            i = 0
+            subId = uuid4()
+
+            event_messages[subId] = []
+
+            while True:
+                if len(event_messages[subId]) > 0:
+                    yield event_messages[subId]
+                    event_messages[subId].clear()
+
+                await asyncio.sleep(1)
+        except asyncio.CancelledError:
+            # stop listening to events
+            del event_messages[subId]
+```
+
 ## Advanced Subscription Patterns
 
 Typically a GraphQL subscription is streaming something more interesting back.
