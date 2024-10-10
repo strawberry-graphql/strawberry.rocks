@@ -14,7 +14,7 @@ const { toc } = Astro.props;
   <ul class="typography-paragraph">
     {
       toc.map((item) => (
-        <li>
+        <li style={`margin-left: calc(${item.depth - 1} * 8px)`}>
           <a href={`#${item.slug}`}>{item.text}</a>
         </li>
       ))
