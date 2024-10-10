@@ -5,7 +5,7 @@ import { fetchExtensions } from "../utils/fetch-extensions";
 const extensions = await fetchExtensions();
 ---
 
-<div>
+<div class="extensions-list">
   <ul>
     {
       extensions.map((extension) => (
@@ -38,6 +38,10 @@ const extensions = await fetchExtensions();
 
     li {
       min-width: 0;
+
+      > a {
+        height: 100%;
+      }
     }
   }
 </style>

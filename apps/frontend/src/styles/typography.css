@@ -77,7 +77,7 @@ h6 {
 }
 
 article p,
-article li,
+article > :not(.extensions-list) li,
 .typography-paragraph {
   font-family: var(--font-sans);
   font-size: 18px;

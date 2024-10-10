@@ -157,7 +157,7 @@ main > article {
   max-width: 900px !important;
 }
 
-article {
+article > :not(.extensions-list) {
   ul {
     padding-inline-start: 2em;
     list-style: decimal;
