@@ -29,9 +29,9 @@ We'll build an example database of fruit and their colours.
 > You'll notice that for `Fruit.category`, we use `TextChoicesField` instead of `TextField(choices=...)`.
 > This allows strawberry-django to automatically use an enum in the graphQL schema, instead of
 > a string which would be the default behaviour for TextField.
->
+> 
 > See the [choices-field integration](/docs/django/integrations/choices-field) for more information.
->
+> 
 
 
 ```python title="models.py"
@@ -82,9 +82,9 @@ which describes the shape of the data that can be queried from the GraphQL serve
 > [!TIP]
 > A key feature of `strawberry-graphql-django` is that it provides helpers to create types from django models,
 > by automatically inferring types (and even documentation!!) from the model fields.
->
+> 
 > See the [fields guide](/docs/django/guide/fields) for more information.
->
+> 
 
 
 ```python title="types.py"
@@ -114,17 +114,17 @@ Next we want to assemble the [schema](https://strawberry.rocks/docs/types/schema
 > [!WARNING]
 > You'll notice a familiar statement, `fruits: list[Fruit]`. We already used this statement in the previous step in `types.py`.
 > Seeing it twice can be a point of confusion when you're first getting to grips with graph and strawberry.
->
+> 
 > The purpose here is similar but subtly different. Previously, the syntax defined that it was possible to make a query that **traverses** within the graph, from a Color to a list of Fruits.
 > Here, the usage defines a [**root** query](https://strawberry.rocks/docs/general/queries) (a bit like an entrypoint into the graph).
->
+> 
 
 
 > [!TIP]
 > We add the `DjangoOptimizerExtension` here. Don't worry about why for now, but you're almost certain to want it.
->
+> 
 > See the [optimizer guide](/docs/django/guide/optimizer) for more information.
->
+> 
 
 
 ```python title="schema.py"
