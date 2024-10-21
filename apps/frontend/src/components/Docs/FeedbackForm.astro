@@ -2,6 +2,7 @@
 import Button from "../Button.astro";
 import Textarea from "../Form/Textarea.astro";
 import Paragraph from "../Pages/Paragraph.astro";
+
 const FEEDBACK_OPTIONS = [
   {
     emoji: "😭",
@@ -34,10 +35,9 @@ const FEEDBACK_OPTIONS = [
 ];
 
 const url = new URL(Astro.request.url);
-const feedbackStatus = url.searchParams.get("feedback");
 ---
 
-<form class="feedback-form" id="feedback-form" action="/feedback" method="POST">
+<form class="feedback-form" id="feedback-form" method="POST">
   <header>
     <Paragraph small>Was this page helpful?</Paragraph>
 
@@ -69,20 +69,13 @@ const feedbackStatus = url.searchParams.get("feedback");
     <Button type="submit" as="button">Send feedback</Button>
   </div>
 
-  {
-    feedbackStatus === "success" && (
-      <p class="typography-body-2 status">
-        Your feedback has been sent. Thank you! 🙏
-      </p>
-    )
-  }
-  {
-    feedbackStatus === "failed" && (
-      <p class="typography-body-2 status status-error">
-        Something went wrong. Please try again.
-      </p>
-    )
-  }
+  <p class="typography-body-2 status hidden">
+    Your feedback has been sent. Thank you! 🙏
+  </p>
+
+  <p class="typography-body-2 status status-error hidden">
+    Something went wrong. Please try again.
+  </p>
 </form>
 
 <style>
@@ -163,18 +156,84 @@ const feedbackStatus = url.searchParams.get("feedback");
   }
 </style>
 
-<script define:vars={{ options: FEEDBACK_OPTIONS }}>
+<script>
+  import { actions } from "astro:actions";
+
   const forms = document.querySelectorAll("form.feedback-form");
 
-  forms.forEach((form) => {
-    form.addEventListener("change", (event) => {
-      const selectedOption = options.find(
-        (option) => option.emoji === event.target.value,
-      );
+  // TODO: check how to remove this code duplication
+  const options = [
+    {
+      emoji: "😭",
+      label: "Not at all",
+      placeholder:
+        "Write something specific about why this page wasn't helpful, we read all the feedback (they are posted on our discord server) ✨",
+      buttonLabel: "Send feedback 😭",
+    },
+    {
+      emoji: "😕",
+      label: "It is a bit confusing",
+      placeholder:
+        "Write something specific about why this page was confusing, we read all the feedback (they are posted on our discord server) ✨",
+      buttonLabel: "Send feedback 😕",
+    },
+    {
+      emoji: "😃",
+      label: "Yes",
+      placeholder:
+        "Write something specific about why this page was helpful, we read all the feedback (they are posted on our discord server) ✨",
+      buttonLabel: "Send feedback 😃",
+    },
+    {
+      emoji: "🤩",
+      label: "Yes, very much",
+      placeholder:
+        "💖 Write something specific about why this page was helpful, we read all the feedback (they are posted on our discord server) ✨",
+      buttonLabel: "💖 Send feedback 🤩",
+    },
+  ];
 
-      form.querySelector("textarea").placeholder = selectedOption.placeholder;
-      form.querySelector("button .text").textContent =
-        selectedOption.buttonLabel;
+  forms.forEach((form) => {
+    const radioButtons = form.querySelectorAll("input[type=radio]");
+
+    radioButtons.forEach((radioButton) => {
+      radioButton.addEventListener("change", (event) => {
+        const selectedOption = options.find(
+          // @ts-ignore
+          (option) => option.emoji === event.target?.value,
+        )!;
+
+        form.querySelector("textarea")!.placeholder =
+          selectedOption.placeholder;
+        form.querySelector("button .text")!.textContent =
+          selectedOption.buttonLabel;
+      });
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+
+      const { data, error } = await actions.sendFeedback({
+        sentiment: formData.get("sentiment")!.toString(),
+        feedback: formData.get("feedback")!.toString(),
+        url: formData.get("url")!.toString(),
+      });
+
+      if (error) {
+        form.querySelector(".status-error")!.classList.remove("hidden");
+        return;
+      }
+
+      if (data) {
+        form.querySelector(".status")!.classList.remove("hidden");
+        form.querySelector("textarea")!.value = "";
+
+        radioButtons.forEach((radioButton) => {
+          radioButton.checked = false;
+        });
+      }
     });
   });
 </script>
