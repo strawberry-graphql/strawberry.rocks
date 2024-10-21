@@ -10,12 +10,13 @@ export const server = {
       feedback: z.string(),
     }),
     handler: async (input) => {
-      console.log(input);
       await sendFeedback({
         sentiment: input.sentiment,
         url: input.url,
         feedback: input.feedback,
       });
+
+      return true;
     },
   }),
 };

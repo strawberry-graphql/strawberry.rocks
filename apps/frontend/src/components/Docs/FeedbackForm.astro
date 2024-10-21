@@ -213,6 +213,7 @@ const url = new URL(Astro.request.url);
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
+      // @ts-ignore
       const formData = new FormData(event.target);
 
       const { data, error } = await actions.sendFeedback({
@@ -231,6 +232,7 @@ const url = new URL(Astro.request.url);
         form.querySelector("textarea")!.value = "";
 
         radioButtons.forEach((radioButton) => {
+          // @ts-ignore
           radioButton.checked = false;
         });
       }
