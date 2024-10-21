@@ -29,11 +29,11 @@ const events = defineCollection({
 function gitHubPageLoader(): Loader {
   return {
     name: "GitHubPageLoader",
-    load: async ({ settings, store }) => {
+    load: async ({ store, config }) => {
       const pages = ["CHANGELOG.md"];
 
       // @ts-ignore
-      const processor = await createMarkdownProcessor(settings.config.markdown);
+      const processor = await createMarkdownProcessor(config.markdown);
 
       store.clear();
 
