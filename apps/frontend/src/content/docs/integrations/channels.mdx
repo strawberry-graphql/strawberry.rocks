@@ -153,7 +153,7 @@ class Subscription:
                     )
 ```
 
-Explanation: `Info.context[&quot;ws&quot;]` or `Info.context[&quot;request&quot;]` is a pointer to
+Explanation: `Info.context["ws"]` or `Info.context["request"]` is a pointer to
 the [`ChannelsConsumer`]() instance. Here we have first sent a
 message to all the channel_layer groups (specified in the subscription argument
 `rooms`) that we have joined the chat.
@@ -169,7 +169,7 @@ sent to the same group or groups that it was called with - if another
 subscription using the same `ChannelsConsumer` also uses `ws.listen_to_channel`
 with some other group names, those will be returned as well.
 
-In the example we ensure `message[&quot;room_id&quot;] in room_ids` before passing
+In the example we ensure `message["room_id"] in room_ids` before passing
 messages on to the subscription client to ensure subscriptions only receive
 messages for the chat rooms requested in that subscription.
 
@@ -223,7 +223,7 @@ class Mutation:
 All we did so far is useless without creating an asgi consumer for our schema.
 The easiest way to do that is to use the
 [`GraphQLProtocolTypeRouter`]() which will wrap your
-Django application, and route **HTTP and websockets** for `&quot;/graphql&quot;` to
+Django application, and route **HTTP and websockets** for `"/graphql"` to
 Strawberry, while sending all other requests to Django. You'll need to modify
 the `myproject.asgi.py` file from the Channels instructions to look something
 like this:
@@ -523,7 +523,7 @@ GraphQLWebsocketCommunicator(
 `GraphQLHTTPConsumer` supports the same options as all other integrations:
 
 - `schema`: mandatory, the schema created by `strawberry.Schema`.
-- `graphql_ide`: optional, defaults to `&quot;graphiql&quot;`, allows to choose the
+- `graphql_ide`: optional, defaults to `"graphiql"`, allows to choose the
   GraphQL IDE interface (one of `graphiql`, `apollo-sandbox` or `pathfinder`) or
   to disable it by passing `None`.
 - `allow_queries_via_get`: optional, defaults to `True`, whether to enable
@@ -537,10 +537,10 @@ GraphQLWebsocketCommunicator(
 
 We allow to extend `GraphQLHTTPConsumer`, by overriding the following methods:
 
-- `async def get_context(self, request: ChannelsRequest, response: TemporalResponse) -&gt; Context`
-- `async def get_root_value(self, request: ChannelsRequest) -&gt; Optional[RootValue]`
-- `async def process_result(self, request: Request, result: ExecutionResult) -&gt; GraphQLHTTPResponse`.
-- `async def render_graphql_ide(self, request: ChannelsRequest) -&gt; ChannelsResponse`
+- `async def get_context(self, request: ChannelsRequest, response: TemporalResponse) -> Context`
+- `async def get_root_value(self, request: ChannelsRequest) -> Optional[RootValue]`
+- `async def process_result(self, request: Request, result: ExecutionResult) -> GraphQLHTTPResponse`.
+- `async def render_graphql_ide(self, request: ChannelsRequest) -> ChannelsResponse`
 
 #### Context
 
@@ -590,8 +590,8 @@ class MyGraphQLHTTPConsumer(GraphQLHTTPConsumer):
 
 We allow to extend `GraphQLWSConsumer`, by overriding the following methods:
 
-- `async def get_context(self, request: ChannelsConsumer, connection_params: Any) -&gt; Context`
-- `async def get_root_value(self, request: ChannelsConsumer) -&gt; Optional[RootValue]`
+- `async def get_context(self, request: ChannelsConsumer, connection_params: Any) -> Context`
+- `async def get_root_value(self, request: ChannelsConsumer) -> Optional[RootValue]`
 
 ### Context
 
@@ -599,7 +599,7 @@ The default context returned by `get_context()` is a `dict` and it includes the
 following keys by default:
 
 - `request`: The `GraphQLWSConsumer` instance of the current connection. It can
-  be used to access the connection scope, e.g. `info.context[&quot;ws&quot;].headers`
+  be used to access the connection scope, e.g. `info.context["ws"].headers`
   allows access to any headers.
 - `ws`: The same as `request`
 - `connection_params`: Any `connection_params`, see
@@ -713,7 +713,7 @@ Strawberries extended
 [`AsyncConsumer`](https://channels.readthedocs.io/en/stable/topics/consumers.html#consumers).
 
 Every graphql session will have an instance of this class inside
-`info.context[&quot;ws&quot;]` (WebSockets) or `info.context[&quot;request&quot;].consumer` (HTTP).
+`info.context["ws"]` (WebSockets) or `info.context["request"].consumer` (HTTP).
 
 #### properties
 

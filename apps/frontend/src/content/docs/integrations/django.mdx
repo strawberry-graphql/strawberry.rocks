@@ -34,7 +34,7 @@ project, this is needed to provide the template for the GraphiQL interface.
 The `GraphQLView` accepts the following arguments:
 
 - `schema`: mandatory, the schema created by `strawberry.Schema`.
-- `graphql_ide`: optional, defaults to `&quot;graphiql&quot;`, allows to choose the
+- `graphql_ide`: optional, defaults to `"graphiql"`, allows to choose the
   GraphQL IDE interface (one of `graphiql`, `apollo-sandbox` or `pathfinder`) or
   to disable it by passing `None`.
 - `allow_queries_via_get`: optional, defaults to `True`, whether to enable
@@ -52,7 +52,7 @@ The following options are deprecated and will be removed in a future release:
   be used to serialize the data.
 - `json_dumps_params`: optional dictionary of keyword arguments to pass to the
   `json.dumps` call used to generate the response. To get the most compact JSON
-  representation, you should specify `{&quot;separators&quot;: (&quot;,&quot;, &quot;:&quot;)}`, defaults to
+  representation, you should specify `{"separators": (",", ":")}`, defaults to
   `None`.
 
 You can extend the view and override `encode_json` to customize the JSON
@@ -62,10 +62,10 @@ encoding process.
 
 We allow to extend the base `GraphQLView`, by overriding the following methods:
 
-- `def get_context(self, request: HttpRequest, response: HttpResponse) -&gt; Any`
-- `def get_root_value(self, request: HttpRequest) -&gt; Any`
-- `def process_result(self, request: HttpRequest, result: ExecutionResult) -&gt; GraphQLHTTPResponse`
-- `def render_graphql_ide(self, request: HttpRequest) -&gt; HttpResponse`
+- `def get_context(self, request: HttpRequest, response: HttpResponse) -> Any`
+- `def get_root_value(self, request: HttpRequest) -> Any`
+- `def process_result(self, request: HttpRequest, result: ExecutionResult) -> GraphQLHTTPResponse`
+- `def render_graphql_ide(self, request: HttpRequest) -> HttpResponse`
 
 ### get_context
 
@@ -194,7 +194,7 @@ project, this is needed to provide the template for the GraphiQL interface.
 The `AsyncGraphQLView` accepts the following arguments:
 
 - `schema`: mandatory, the schema created by `strawberry.Schema`.
-- `graphql_ide`: optional, defaults to `&quot;graphiql&quot;`, allows to choose the
+- `graphql_ide`: optional, defaults to `"graphiql"`, allows to choose the
   GraphQL IDE interface (one of `graphiql`, `apollo-sandbox` or `pathfinder`) or
   to disable it by passing `None`.
 - `allow_queries_via_get`: optional, defaults to `True`, whether to enable
@@ -205,11 +205,11 @@ The `AsyncGraphQLView` accepts the following arguments:
 We allow to extend the base `AsyncGraphQLView`, by overriding the following
 methods:
 
-- `async get_context(self, request: HttpRequest) -&gt; Any`
-- `async get_root_value(self, request: HttpRequest) -&gt; Any`
-- `async process_result(self, request: HttpRequest, result: ExecutionResult) -&gt; GraphQLHTTPResponse`
-- `def encode_json(self, data: GraphQLHTTPResponse) -&gt; str`
-- `async def render_graphql_ide(self, request: HttpRequest) -&gt; HttpResponse`
+- `async get_context(self, request: HttpRequest) -> Any`
+- `async get_root_value(self, request: HttpRequest) -> Any`
+- `async process_result(self, request: HttpRequest, result: ExecutionResult) -> GraphQLHTTPResponse`
+- `def encode_json(self, data: GraphQLHTTPResponse) -> str`
+- `async def render_graphql_ide(self, request: HttpRequest) -> HttpResponse`
 
 ### get_context
 

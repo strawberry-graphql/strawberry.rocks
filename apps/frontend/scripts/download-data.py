@@ -20,6 +20,7 @@ import textwrap
 
 import mistune
 from mistune.renderers.markdown import MarkdownRenderer
+from mistune.util import unescape
 import re
 
 from pathlib import Path
@@ -75,7 +76,7 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
     working_dir = Path.cwd()
     destination = working_dir / "src" / "content" / destination_subpath
 
-    class UpdateLinksRenderer(MarkdownRenderer):
+    class StrawberryRenderer(MarkdownRenderer):
         def __init__(self, file_path: Path) -> None:
             self.file_path = file_path
 
@@ -87,6 +88,10 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
             text = text + "\n\n"
 
             return text
+
+        def codespan(self, token, state) -> str:
+            # TODO: not sure what is escaping the code blocks
+            return "`" + unescape(token["raw"]) + "`"
 
         def _fix_url(self, url: str | None) -> str | None:
             if not url:
@@ -187,7 +192,7 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
         for file in destination.rglob("*.md"):
             new_file_name = file.with_suffix(".mdx")
 
-            renderer = UpdateLinksRenderer(file)
+            renderer = StrawberryRenderer(file)
             markdown = mistune.create_markdown(renderer=renderer)
 
             content = file.read_text()

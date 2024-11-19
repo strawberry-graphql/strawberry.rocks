@@ -39,13 +39,13 @@ be paginated, usually an iterable/generator of the connection type itself.
 You can fix this error by annotating the resolver with one of the following
 supported types:
 
-- `List[&lt;NodeType&gt;]`
-- `Iterator[&lt;NodeType&gt;]`
-- `Iterable[&lt;NodeType&gt;]`
-- `AsyncIterator[&lt;NodeType&gt;]`
-- `AsyncIterable[&lt;NodeType&gt;]`
-- `Generator[&lt;NodeType&gt;, Any, Any]`
-- `AsyncGenerator[&lt;NodeType&gt;, Any]`
+- `List[<NodeType>]`
+- `Iterator[<NodeType>]`
+- `Iterable[<NodeType>]`
+- `AsyncIterator[<NodeType>]`
+- `AsyncIterable[<NodeType>]`
+- `Generator[<NodeType>, Any, Any]`
+- `AsyncGenerator[<NodeType>, Any]`
 
 For example:
 

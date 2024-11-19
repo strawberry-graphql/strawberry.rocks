@@ -72,11 +72,11 @@ The `GraphQLView` accepts two options at the moment:
 
 We allow to extend the base `GraphQLView`, by overriding the following methods:
 
-- `get_context(self, request: Request, response: TemporalResponse) -&gt; Any`
-- `get_root_value(self, request: Request) -&gt; Any`
-- `process_result(self, request: Request, result: ExecutionResult) -&gt; GraphQLHTTPResponse`
-- `encode_json(self, response_data: GraphQLHTTPResponse) -&gt; str`
-- `def render_graphql_ide(self, request: Request) -&gt; Response`
+- `get_context(self, request: Request, response: TemporalResponse) -> Any`
+- `get_root_value(self, request: Request) -> Any`
+- `process_result(self, request: Request, result: ExecutionResult) -> GraphQLHTTPResponse`
+- `encode_json(self, response_data: GraphQLHTTPResponse) -> str`
+- `def render_graphql_ide(self, request: Request) -> Response`
 
 ### get_context
 

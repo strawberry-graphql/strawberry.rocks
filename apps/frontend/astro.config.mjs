@@ -42,12 +42,4 @@ export default defineConfig({
       "./public/fonts/JetBrainsMono-Regular.ttf",
     ],
   }),
-  te: {
-    r: {
-      external: ["@resvg/resvg-js"],
-    },
-    timizeDeps: {
-      exclude: ["@resvg/resvg-js"],
-    },
-  },
 });

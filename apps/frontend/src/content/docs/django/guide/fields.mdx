@@ -7,7 +7,7 @@ title: Defining Fields
 > [!TIP]
 > It is highly recommended to enable the [Query Optimizer Extension](/docs/django/guide/optimizer)
 > for improved performance and avoid some common pitfalls (e.g. the `n+1` issue)
-> 
+>
 
 
 Fields can be defined manually or `auto` type can be used for automatic type resolution. All basic field types and relation fields are supported out of the box. If you use a library that defines a custom field you will need to define an equivalent type such as `str`, `float`, `bool`, `int` or `id`.
@@ -34,7 +34,7 @@ class Fruit2:
 > [Django's TextChoices/IntegerChoices](https://docs.djangoproject.com/en/4.2/ref/models/fields/#enumeration-types)
 > it is recommented using the [django-choices-field](/docs/django/integrations/choices-field) integration
 > enum handling.
-> 
+>
 
 
 ## Relationships
@@ -125,8 +125,8 @@ field_type_map.update({
 ## Including / excluding Django model fields by name
 
 > [!WARNING]
-> These new keywords should be used with caution, as they may inadvertently lead to exposure of unwanted data. Especially with `fields=&quot;__all__&quot;` or `exclude`, sensitive model attributes may be included and made available in the schema without your awareness.
-> 
+> These new keywords should be used with caution, as they may inadvertently lead to exposure of unwanted data. Especially with `fields="__all__"` or `exclude`, sensitive model attributes may be included and made available in the schema without your awareness.
+>
 
 
 `strawberry_django.type` includes two optional keyword fields to help you populate fields from the Django model, `fields` and `exclude`.
@@ -134,7 +134,7 @@ field_type_map.update({
 Valid values for `fields` are:
 
 - `__all__` to assign `strawberry.auto` as the field type for all model fields.
-- `[&lt;List of field names&gt;]` to assign `strawberry.auto` as the field type for the enumerated fields. These can be combined with manual type annotations if needed.
+- `[<List of field names>]` to assign `strawberry.auto` as the field type for the enumerated fields. These can be combined with manual type annotations if needed.
 
 ```python title="All Fields"
 @strawberry_django.type(models.Fruit, fields="__all__")
@@ -156,7 +156,7 @@ class FruitType:
 
 Valid values for `exclude` are:
 
-- `[&lt;List of field names&gt;]` to exclude from the fields list. All other Django model fields will included and have `strawberry.auto` as the field type. These can also be overriden if another field type should be assigned. An empty list is ignored.
+- `[<List of field names>]` to exclude from the fields list. All other Django model fields will included and have `strawberry.auto` as the field type. These can also be overriden if another field type should be assigned. An empty list is ignored.
 
 ```python title="Exclude Fields"
 @strawberry_django.type(models.Fruit, exclude=["name"])

@@ -32,7 +32,7 @@ app.router.add_route("*", "/graphql", GraphQLView(schema=schema))
 The `GraphQLView` accepts the following options at the moment:
 
 - `schema`: mandatory, the schema created by `strawberry.Schema`.
-- `graphql_ide`: optional, defaults to `&quot;graphiql&quot;`, allows to choose the
+- `graphql_ide`: optional, defaults to `"graphiql"`, allows to choose the
   GraphQL IDE interface (one of `graphiql`, `apollo-sandbox` or `pathfinder`) or
   to disable it by passing `None`.
 - `allow_queries_via_get`: optional, defaults to `True`, whether to enable
@@ -47,11 +47,11 @@ The `GraphQLView` accepts the following options at the moment:
 The base `GraphQLView` class can be extended by overriding the following
 methods:
 
-- `async get_context(self, request: aiohttp.web.Request, response: aiohttp.web.StreamResponse) -&gt; object`
-- `async get_root_value(self, request: aiohttp.web.Request) -&gt; object`
-- `async process_result(self, request: aiohttp.web.Request, result: ExecutionResult) -&gt; GraphQLHTTPResponse`
-- `def encode_json(self, data: GraphQLHTTPResponse) -&gt; str`
-- `async def render_graphql_ide(self, request: aiohttp.web.Request) -&gt; aiohttp.web.Response`
+- `async get_context(self, request: aiohttp.web.Request, response: aiohttp.web.StreamResponse) -> object`
+- `async get_root_value(self, request: aiohttp.web.Request) -> object`
+- `async process_result(self, request: aiohttp.web.Request, result: ExecutionResult) -> GraphQLHTTPResponse`
+- `def encode_json(self, data: GraphQLHTTPResponse) -> str`
+- `async def render_graphql_ide(self, request: aiohttp.web.Request) -> aiohttp.web.Response`
 
 ### get_context
 
@@ -79,7 +79,7 @@ class Query:
 ```
 
 Here we are returning a custom context dictionary that contains only one item
-called `&quot;example&quot;`.
+called `"example"`.
 
 Then we can use the context in a resolver. In this case the resolver will return
 `1`.
@@ -109,7 +109,7 @@ class Query:
 ```
 
 Here we configure a Query where requesting the `name` field will return
-`&quot;Patrick&quot;` through the custom root value.
+`"Patrick"` through the custom root value.
 
 ### process_result
 

@@ -89,7 +89,7 @@ mutation {
 > If all or most of your mutations use this behaviour, you can change the
 > default behaviour for `handle_django_errors` by setting
 > `MUTATIONS_DEFAULT_HANDLE_ERRORS=True` in your [strawberry django settings](/docs/django/guide/settings)
-> 
+>
 
 
 ## Input mutations
@@ -141,9 +141,9 @@ Some things to note here:
 
 - Those CUD mutations accept the same arguments as `@strawberry_django.mutation`
   accepts. This allows you to pass `handle_django_errors=True` to it for example.
-- The mutation will receive the type in an argument named `&quot;data&quot;` by default.
-  To change it to `&quot;info&quot;` for example, you can change it by passing
-  `argument_name=&quot;info&quot;` to the mutation, or set `MUTATIONS_DEFAULT_ARGUMENT_NAME=&quot;info&quot;`
+- The mutation will receive the type in an argument named `"data"` by default.
+  To change it to `"info"` for example, you can change it by passing
+  `argument_name="info"` to the mutation, or set `MUTATIONS_DEFAULT_ARGUMENT_NAME="info"`
   in your [strawberry django settings](/docs/django/guide/settings) to make it the default when not provided.
 - Take note that inputs using `partial` will *not* automatically mark non-auto fields optional
   and instead will respect explicit type annotations;
@@ -171,7 +171,7 @@ class Mutation:
 
 > [!CAUTION]
 > Filtering on mutations is discouraged as it can potentially alter your entire model collection if there are issues with the filters.
-> 
+>
 
 
 Filters can be added to update and delete mutations. More information in the

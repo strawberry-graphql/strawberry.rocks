@@ -172,7 +172,7 @@ Song.objects.all().only(
 > Even though `album__release_date` field was not selected here, it got selected
 > in the prefetch query later. Since Django caches known objects, we have to select it here or
 > else it would trigger extra queries latter.
-> 
+>
 
 
 ## Optimization hints
@@ -254,7 +254,7 @@ The following options are accepted for optimizer hints:
   The keys of this dict are strings,
   and each value is a [Query Expression](https://docs.djangoproject.com/en/4.2/ref/models/expressions/)
   or a callable in the format of `Callable[[Info], BaseExpression]`
-  (e.g. `annotate={&quot;total&quot;: lambda info: Sum(...)}`)
+  (e.g. `annotate={"total": lambda info: Sum(...)}`)
 
 ## Optimization hints on model (ModelProperty)
 

@@ -10,6 +10,7 @@ const escapeMap: Record<string, string> = {
 };
 
 const escapeHtml = (str: string) =>
+  // @ts-ignore
   str.replace(/[&<>"']/g, (c) => escapeMap[c]);
 
 export const mermaid: RemarkPlugin<[]> = () => (tree) => {

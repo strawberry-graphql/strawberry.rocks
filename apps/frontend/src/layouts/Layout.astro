@@ -99,7 +99,7 @@ if (prNumber) {
       /**
        * @params {HTMLCollectionOf<HTMLElement>} graphs
        */
-      async function renderDiagrams(graphs) {
+      async function renderDiagrams(graphs: any) {
         const { default: mermaid } = await import("mermaid");
         mermaid.initialize({
           startOnLoad: false,

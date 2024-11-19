@@ -29,7 +29,7 @@ if __name__ == "__main__":
 The `GraphQLView` accepts the following options at the moment:
 
 - `schema`: mandatory, the schema created by `strawberry.Schema`.
-- `graphql_ide`: optional, defaults to `&quot;graphiql&quot;`, allows to choose the
+- `graphql_ide`: optional, defaults to `"graphiql"`, allows to choose the
   GraphQL IDE interface (one of `graphiql`, `apollo-sandbox` or `pathfinder`) or
   to disable it by passing `None`.
 - `allow_queries_via_get`: optional, defaults to `True`, whether to enable
@@ -43,11 +43,11 @@ The `GraphQLView` accepts the following options at the moment:
 
 We allow to extend the base `GraphQLView`, by overriding the following methods:
 
-- `async def get_context(self, request: Request, response: Response) -&gt; Any`
-- `async def get_root_value(self, request: Request) -&gt; Any`
-- `async def process_result(self, result: ExecutionResult) -&gt; GraphQLHTTPResponse`
-- `def encode_json(self, response_data: GraphQLHTTPResponse) -&gt; str`
-- `async def render_graphql_ide(self, request: Request) -&gt; Response`
+- `async def get_context(self, request: Request, response: Response) -> Any`
+- `async def get_root_value(self, request: Request) -> Any`
+- `async def process_result(self, result: ExecutionResult) -> GraphQLHTTPResponse`
+- `def encode_json(self, response_data: GraphQLHTTPResponse) -> str`
+- `async def render_graphql_ide(self, request: Request) -> Response`
 
 ### get_context
 
