@@ -6,6 +6,7 @@ import mdx from "@astrojs/mdx";
 import remarkComment from "remark-comment";
 import expressiveCode from "astro-expressive-code";
 import remarkGithubAlerts from "remark-github-alerts";
+import { mermaid } from "./src/utils/plugins/mermaid";
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,7 +30,7 @@ export default defineConfig({
       },
     }),
     mdx({
-      remarkPlugins: [remarkComment, remarkGithubAlerts],
+      remarkPlugins: [remarkComment, remarkGithubAlerts, mermaid],
     }),
   ],
   adapter: vercel({
