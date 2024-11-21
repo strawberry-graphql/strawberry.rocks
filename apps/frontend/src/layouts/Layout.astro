@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Blob from "../components/Blob.astro";
 import PreviewBanner from "../components/PreviewBanner.astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
@@ -88,6 +89,7 @@ if (prNumber) {
     <Header useDocsGrid={useDocsGrid} />
     <slot />
     <Footer />
+    <SpeedInsights />
     <script
       defer
       data-domain="strawberry.rocks"
