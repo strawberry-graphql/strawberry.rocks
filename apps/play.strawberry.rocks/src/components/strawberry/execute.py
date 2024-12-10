@@ -1,8 +1,8 @@
-import httpx
 import fastapi
-from strawberry.fastapi import GraphQLRouter
 import js
+from httpx import ASGITransport, AsyncClient
 from pyodide.ffi import to_js
+from strawberry.fastapi import GraphQLRouter
 
 app = fastapi.FastAPI()
 
@@ -26,7 +26,7 @@ app.include_router(router, prefix="")
 
 
 async def handle_request():
-    async with httpx.AsyncClient(app=app, base_url="http://testserver") as client:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://localhost") as client:
         response = await client.post("/", json={"query": query, "variables": variables})
 
     return response.json(), response.status_code, response.headers.items()
