@@ -26,7 +26,7 @@ app.include_router(router, prefix="")
 
 
 async def handle_request():
-    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://localhost") as client:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://testserver") as client:
         response = await client.post("/", json={"query": query, "variables": variables})
 
     return response.json(), response.status_code, response.headers.items()
