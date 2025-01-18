@@ -40,197 +40,60 @@ class HasSelectionSet(Protocol):
     selection_set: Optional[SelectionSetNode]
 
 
-def _get_arguments(arguments: Tuple[ArgumentNode, ...]) -> List[str]:
-    body = []
 
-    body.append("arguments = {}")
+def _generate_field_function(name: str, selection_set: SelectionSetNode, parent_type: StrawberryType) -> Tuple[str, List[str]]:
+    function_code = f"async def {name}(parent, info):\n"
+    sub_functions = []
+    field_assignments = []
+    return_fields = []
 
-    for argument in arguments:
-        if isinstance(argument.value, StringValueNode):
-            body.append(
-                f"arguments['{argument.name.value}'] = '{argument.value.value}'"
-            )
-        if isinstance(argument.value, IntValueNode):
-            body.append(f"arguments['{argument.name.value}'] = {argument.value.value}")
-        elif isinstance(argument.value, VariableNode):
-            body.append(
-                f"arguments['{argument.name.value}'] = variables['{argument.value.name.value}']"
-            )
-        else:
-            raise NotImplementedError(f"Argument {argument.value} not supported")
-
-    return body
-
-
-def _recurse(
-    definition: HasSelectionSet,
-    root_type: StrawberryType,
-    schema: Schema,
-    path: List[str],
-    level: int = 0,
-    indent: int = 1,
-    root_value_variable: str = "root_value",
-    parent_result_variable: Optional[str] = None,
-) -> str:
-    body = []
-
-    if hasattr(root_type, "__strawberry_definition__"):
-        root_type = root_type.__strawberry_definition__  # type: ignore
-
-    if isinstance(root_type, StrawberryList):
-        result = "[]"
-        body.append(f"{parent_result_variable} = {result}")
-        body.append(f"for item in value_{level - 1}:")
-
-        of_type = root_type.of_type
-
-        body.append(
-            _recurse(
-                definition,
-                of_type,
-                level=level + 1,
-                indent=1,
-                path=path,
-                schema=schema,
-                root_value_variable="item",
-                parent_result_variable=parent_result_variable,
-            )
-        )
-
-        # TODO: I HATE THIS :'D
-        body.append(f"    results_{level}.append(results_{level+1})")
-        body.append(f"results_{level-1}['{definition.name.value}'] = results_{level}")
-        body.append("")
-
-    elif isinstance(root_type, StrawberryUnion):
-        body.append("# TODO: unions")
-
-    elif isinstance(root_type, StrawberryObjectDefinition):
-        body.append(f"# Object: {root_type.name}")
-        result = "{}"
-        body.append(f"results_{level} = {result}")
-
-        info_value = "None"
-
-        body.append(f"root_type_{level} = {root_type.name}.__strawberry_definition__")
-        body.append(f"# {'.'.join(path)}")
-
-        if not definition.selection_set:
-            raise ValueError("This shouldn't happen")
-
-        for selection in definition.selection_set.selections:
-            body.append(f"# {'.'.join(path)}.{selection.name.value}")
-            assert isinstance(selection, FieldNode)
-
-            # get arguments
-            body.extend(_get_arguments(selection.arguments))
-
+    for selection in selection_set.selections:
+        if isinstance(selection, FieldNode):
             field_name = selection.name.value
+            return_fields.append(field_name)
 
-            field = next(
-                (field for field in root_type.fields if field.name == field_name), None
-            )
-
-            if not field:
-                body.append(
-                    f"# Field {field_name} not found in {root_type.name} {level}"
-                )
-                continue
-
-            index = root_type.fields.index(field)
-            resolver = field._resolver
-
-            body.append(f"field = root_type_{level}.fields[{index}]")
-
-            # append arguments
-            if iscoroutinefunction(resolver):
-                body.append(
-                    f"value_{level} = await field._resolver({root_value_variable}, {info_value}, **arguments)"
+            if selection.selection_set:
+                # Generate subfunction for nested field
+                sub_name = f"{name}_{field_name}"
+                sub_code, nested_functions = _generate_field_function(sub_name, selection.selection_set, parent_type)
+                sub_functions.extend(nested_functions)
+                sub_functions.append(sub_code)
+                field_assignments.append(
+                    f"    # selection: {field_name}\n"
+                    f"    parent = {parent_type.name}.{field_name}(parent, info=None)\n"
+                    f"    {field_name}_result = await {sub_name}(parent, info)"
                 )
             else:
-                if field.is_basic_field:
-                    body.append(f"value_{level} = {root_value_variable}.{field_name}")
-                else:
-                    body.append(
-                        f"value_{level} = field._resolver({root_value_variable}, {info_value}, **arguments)"
-                    )
-
-            body.append(f"print('value_{level}', value_{level})")
-
-            body.append(
-                _recurse(
-                    selection,
-                    field.type,
-                    root_value_variable=f"value_{level}",
-                    level=level + 1,
-                    indent=0,
-                    path=[*path, field_name],
-                    schema=schema,
-                    parent_result_variable=f"results_{level}",
+                # Simple field without nesting
+                field_assignments.append(
+                    f"    {field_name} = getattr(parent, '{field_name}')"
                 )
-            )
 
-        # TODO: this is wrong?
-        # test with more nesting :')
-        if level > 2:
-            body.append(
-                f"results_{level - 1}['{definition.name.value}'] = results_{level}"
-            )
+    # Add field assignments to function body
+    function_code += "\n".join(field_assignments) + "\n\n"
 
-    elif is_scalar(root_type, schema.schema_converter.scalar_registry):
-        body.append(f"# Scalar: {root_type}")
-        body.append(
-            f"{parent_result_variable}['{definition.name.value}'] = value_{level - 1}"
-        )
+    # Add return statement with all fields
+    return_dict = "{" + ", ".join(f'"{f}": {f}_result' if f"{f}_result" in function_code else f'"{f}": {f}' for f in return_fields) + "}"
+    function_code += f"    return {return_dict}\n"
 
-    else:
-        raise NotImplementedError(f"Type {root_type} not supported")
+    return function_code, sub_functions
 
-    return textwrap.indent("\n".join(body), "    " * indent).strip()
-
-
-def compile(operation: str, schema: Schema) -> ...:
+def compile(operation: str, schema: Schema) -> str:
     ast = parse(operation)
-
     assert isinstance(ast, DocumentNode)
-
-    # assuming only one definition (for now)
-
     definition = ast.definitions[0]
-
     assert isinstance(definition, OperationDefinitionNode)
-
-    # TODO: this is an assumption, but we go with query for now
-    # Mutations and subscriptions are also possible, but they need to be handled differently
-    # mutation are serial, subscriptions are more complex
-
     assert definition.operation == OperationType.QUERY
 
     root_type = get_object_definition(schema.query, strict=True)
+    root_function, sub_functions = _generate_field_function("root", definition.selection_set, root_type)
 
-    # TODO: we might want to think about root values too
-
-    function = textwrap.dedent(
+    return "\n".join(sub_functions) + "\n\n" +  root_function + "\n\n" + textwrap.dedent(
         """
         async def _compiled_operation(schema, root_value, variables):
-        __BODY__
-            print('results_0', results_0)
-            return results_0
+            return await root(root_value, variables)
         """
     )
-
-    function = function.replace(
-        "__BODY__",
-        _recurse(
-            definition,
-            root_type,
-            schema=schema,
-            path=["Query"],
-            parent_result_variable="results_0",
-        ),
-    ).strip()
-
-    return function
 
 schema = None
 query = None
@@ -267,6 +130,7 @@ if schema is None:
             }
         }
     """
+    variables = {}
 
 
 compiled_operation = compile(query, schema)
@@ -298,3 +162,6 @@ except ImportError:
 
     console = Console()
     console.print(Syntax(result["code"], "python"))
+
+    console.print(result.get("data", None))
+    console.print(result.get("error", None))
