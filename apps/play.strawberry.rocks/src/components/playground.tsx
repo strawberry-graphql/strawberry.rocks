@@ -76,13 +76,15 @@ export const Playground = forwardRef(
         return editorState;
       },
       compile: async () => {
-        const { result } = await compile({
+        const { result, ...rest } = await compile({
           schemaCode: editorState.code,
           query: editorState.query,
         });
 
-        if (result === null) {
+        if (result === null || typeof result === "undefined") {
           // TODO: handle error
+          console.log(rest);
+          alert("Error compiling code");
           return;
         }
 

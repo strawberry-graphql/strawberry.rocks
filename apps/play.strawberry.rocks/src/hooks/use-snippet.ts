@@ -11,13 +11,18 @@ class Article:
 @strawberry.type
 class User:
     name: str
-
+    age: int
     articles: list[Article]
+
 @strawberry.type
 class Query:
     @strawberry.field
+    def example(self, info: strawberry.Info) -> str:
+        return "example"
+
+    @strawberry.field
     def hello(self, info: strawberry.Info) -> User:
-        return User(name="patrick", articles=[])
+        return User(name="patrick", age=20, articles=[])
 
 schema = strawberry.Schema(Query)
 `.trim();

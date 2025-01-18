@@ -40,8 +40,9 @@ class HasSelectionSet(Protocol):
     selection_set: Optional[SelectionSetNode]
 
 
-
-def _generate_field_function(name: str, selection_set: SelectionSetNode, parent_type: StrawberryType) -> Tuple[str, List[str]]:
+def _generate_field_function(
+    name: str, selection_set: SelectionSetNode, parent_type: StrawberryType
+) -> Tuple[str, List[str]]:
     function_code = f"async def {name}(parent, info):\n"
     sub_functions = []
     field_assignments = []
@@ -51,11 +52,18 @@ def _generate_field_function(name: str, selection_set: SelectionSetNode, parent_
         if isinstance(selection, FieldNode):
             field_name = selection.name.value
             return_fields.append(field_name)
+            field = next(
+                (field for field in parent_type.fields if field.name == field_name),
+                None,
+            )
 
             if selection.selection_set:
                 # Generate subfunction for nested field
                 sub_name = f"{name}_{field_name}"
-                sub_code, nested_functions = _generate_field_function(sub_name, selection.selection_set, parent_type)
+                nested_parent_type = get_object_definition(field.type, strict=True)
+                sub_code, nested_functions = _generate_field_function(
+                    sub_name, selection.selection_set, nested_parent_type
+                )
                 sub_functions.extend(nested_functions)
                 sub_functions.append(sub_code)
                 field_assignments.append(
@@ -64,19 +72,40 @@ def _generate_field_function(name: str, selection_set: SelectionSetNode, parent_
                     f"    {field_name}_result = await {sub_name}(parent, info)"
                 )
             else:
-                # Simple field without nesting
                 field_assignments.append(
-                    f"    {field_name} = getattr(parent, '{field_name}')"
+                    f"    root_type = {parent_type.name}.__strawberry_definition__"
                 )
+
+                if field is None:
+                    raise Exception(
+                        f"Field {field_name} not found in {parent_type.name}"
+                    )
+                if field.is_basic_field:
+                    field_assignments.append(f"    {field_name} = parent.{field_name}")
+                else:
+                    index = parent_type.fields.index(field)
+                    field_assignments.append(f"    field = root_type.fields[{index}]")
+
+                    field_assignments.append(
+                        f"    {field_name} = field._resolver(parent, info=None)"
+                    )
 
     # Add field assignments to function body
     function_code += "\n".join(field_assignments) + "\n\n"
 
     # Add return statement with all fields
-    return_dict = "{" + ", ".join(f'"{f}": {f}_result' if f"{f}_result" in function_code else f'"{f}": {f}' for f in return_fields) + "}"
+    return_dict = (
+        "{"
+        + ", ".join(
+            f'"{f}": {f}_result' if f"{f}_result" in function_code else f'"{f}": {f}'
+            for f in return_fields
+        )
+        + "}"
+    )
     function_code += f"    return {return_dict}\n"
 
     return function_code, sub_functions
+
 
 def compile(operation: str, schema: Schema) -> str:
     ast = parse(operation)
@@ -86,14 +115,23 @@ def compile(operation: str, schema: Schema) -> str:
     assert definition.operation == OperationType.QUERY
 
     root_type = get_object_definition(schema.query, strict=True)
-    root_function, sub_functions = _generate_field_function("root", definition.selection_set, root_type)
+    root_function, sub_functions = _generate_field_function(
+        "root", definition.selection_set, root_type
+    )
 
-    return "\n".join(sub_functions) + "\n\n" +  root_function + "\n\n" + textwrap.dedent(
-        """
+    return (
+        "\n".join(sub_functions)
+        + "\n\n"
+        + root_function
+        + "\n\n"
+        + textwrap.dedent(
+            """
         async def _compiled_operation(schema, root_value, variables):
             return await root(root_value, variables)
         """
+        )
     )
+
 
 schema = None
 query = None
@@ -121,10 +159,15 @@ if schema is None:
         def hello(self, info: strawberry.Info) -> User:
             return User(name="patrick", articles=[])
 
+        @strawberry.field
+        def example(self, info: strawberry.Info) -> str:
+            return "example"
+
     schema = strawberry.Schema(Query)
 
     query = """
         query {
+            example
             hello {
                 name
             }
@@ -137,31 +180,36 @@ compiled_operation = compile(query, schema)
 
 result = {"code": compiled_operation}
 
-import asyncio
-
-
-try:
-    exec(compiled_operation, globals())
-
-    operation_result = asyncio.run(_compiled_operation(schema, None, variables))
-
-    result["data"] = {"data": operation_result, "jit": True}
-except Exception as e:
-    print("error", e)
-    result["error"] = str(e)
-
 
 try:
     import js
     from pyodide.ffi import to_js
 
-    to_js(result, dict_converter=js.Object.fromEntries)
 except ImportError:
+    import asyncio
     from rich.syntax import Syntax
     from rich.console import Console
+    import sys
 
     console = Console()
     console.print(Syntax(result["code"], "python"))
 
+    exec(compiled_operation, globals())
+
+    operation_result = asyncio.run(_compiled_operation(schema, None, variables))
+    result["data"] = {"data": operation_result, "jit": True}
+
     console.print(result.get("data", None))
-    console.print(result.get("error", None))
+
+    sys.exit(0)
+
+try:
+    exec(compiled_operation, globals())
+
+    # REMOVE_THISoperation_result = await _compiled_operation(schema, None, variables)
+except Exception as e:
+    print("error", e)
+    result["error"] = str(e)
+
+result["data"] = {"data": operation_result, "jit": True}
+to_js(result, dict_converter=js.Object.fromEntries)

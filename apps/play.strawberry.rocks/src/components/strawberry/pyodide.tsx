@@ -185,8 +185,8 @@ export const usePyodide = () => {
       const queryCode = `query = """${query}"""`;
       const code = compileCode
         .replace("# {{ schema }}", schemaCode)
-        .replace("# {{ query }}", queryCode);
-
+        .replace("# {{ query }}", queryCode)
+        .replace("# REMOVE_THIS", "");
       const { result, error } = await run<{
         code: string;
       }>(code);
