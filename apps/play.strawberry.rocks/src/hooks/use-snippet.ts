@@ -5,12 +5,29 @@ const STARTER_CODE = `
 import strawberry
 
 @strawberry.type
+class Article:
+    id: str
+
+@strawberry.type
+class User:
+    name: str
+
+    articles: list[Article]
+@strawberry.type
 class Query:
     @strawberry.field
-    def hello(self, info: strawberry.Info) -> str:
-        return "world"
+    def hello(self, info: strawberry.Info) -> User:
+        return User(name="patrick", articles=[])
 
 schema = strawberry.Schema(Query)
+`.trim();
+
+const STARTER_QUERY = `
+query {
+  hello {
+    name
+  }
+}
 `.trim();
 
 const GET_GIST = gql`
@@ -63,7 +80,7 @@ export const useSnippet = () => {
       ? JSON.stringify(data.gist.variables, null, 2)
       : "{}",
     strawberryVersion,
-    query: data.gist?.query || "{ hello }",
+    query: data.gist?.query || STARTER_QUERY,
   };
 
   return { snippet };

@@ -3,6 +3,7 @@ import { Playground } from "./components/playground";
 import { Share } from "./components/share";
 import { usePyodide } from "./components/strawberry/pyodide";
 import { ThemeToggle } from "./components/theme-toggle";
+import { Button } from "./components/ui/button";
 import { VersionSelector } from "./components/version-selector";
 import { useSnippet } from "./hooks/use-snippet";
 import clsx from "clsx";
@@ -49,6 +50,9 @@ function App() {
         </div>
         <div className="ml-auto flex gap-3">
           <Share playground={playgroundRef.current} version={currentVersion} />
+          <Button onClick={() => playgroundRef.current?.compile()}>
+            Compile & Run
+          </Button>
           <ThemeToggle />
         </div>
       </header>

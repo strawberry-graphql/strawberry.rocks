@@ -6,7 +6,9 @@ async function loadPyodideAndPackages(strawberryVersion) {
   await self.pyodide.loadPackage(["micropip"]);
 
   const versionSuffix =
-    strawberryVersion === "latest" ? "" : `==${strawberryVersion}`;
+    strawberryVersion === "latest"
+      ? "==0.257.0.dev.1735244504"
+      : `==${strawberryVersion}`;
 
   await self.pyodide.runPythonAsync(`
     import micropip

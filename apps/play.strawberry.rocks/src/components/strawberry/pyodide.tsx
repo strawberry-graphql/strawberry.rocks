@@ -1,3 +1,4 @@
+import compileCode from "./compile.py?raw";
 import execute from "./execute.py?raw";
 import {
   useContext,
@@ -179,11 +180,28 @@ export const usePyodide = () => {
     [run]
   );
 
+  const compile = useCallback(
+    async ({ schemaCode, query }: { schemaCode: string; query: string }) => {
+      const queryCode = `query = """${query}"""`;
+      const code = compileCode
+        .replace("# {{ schema }}", schemaCode)
+        .replace("# {{ query }}", queryCode);
+
+      const { result, error } = await run<{
+        code: string;
+      }>(code);
+
+      return { result, error };
+    },
+    [run]
+  );
+
   return {
     loading,
     error,
     initializing,
     executeQuery,
+    compile,
     setLibraryVersion,
   };
 };

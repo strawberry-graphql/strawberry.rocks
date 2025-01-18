@@ -1,4 +1,5 @@
 import { CodeEditor } from "./editor/editor";
+import { GraphView } from "./graph-view";
 import { ResizeHandler } from "./resize-handler";
 import { StatusBadge } from "./status-badge";
 import { usePyodide } from "./strawberry/pyodide";
@@ -30,9 +31,10 @@ export const Playground = forwardRef(
     },
     ref
   ) => {
-    const { executeQuery, initializing } = usePyodide();
+    const { executeQuery, compile, initializing } = usePyodide();
     const [editorState, setEditorState] = useState({
       code: defaultCode,
+      compiledCode: "",
       query: defaultQuery,
       variables: defaultVariables,
     });
@@ -73,6 +75,34 @@ export const Playground = forwardRef(
       getState: () => {
         return editorState;
       },
+      compile: async () => {
+        const { result } = await compile({
+          schemaCode: editorState.code,
+          query: editorState.query,
+        });
+
+        if (result === null) {
+          // TODO: handle error
+          return;
+        }
+
+        setEditorState((state) => ({
+          ...state,
+          compiledCode: result.code,
+        }));
+
+        if (result.data) {
+          setResult({
+            result: {
+              data: result.data,
+              status_code: 200,
+              headers: {},
+              schema: "not yet supported",
+            },
+            error: null,
+          });
+        }
+      },
     }));
 
     return (
@@ -86,6 +116,18 @@ export const Playground = forwardRef(
                   setEditorState({ ...editorState, code });
                 }}
                 language="python"
+              />
+            </Tab>
+          </Tabs>
+        </Panel>
+        <ResizeHandler direction="horizontal" />
+        <Panel minSize={20}>
+          <Tabs className="h-full">
+            <Tab title="Compiled Code">
+              <CodeEditor
+                source={editorState.compiledCode}
+                language="python"
+                readOnly
               />
             </Tab>
           </Tabs>
@@ -153,13 +195,15 @@ export const Playground = forwardRef(
                   readOnly
                 />
               </Tab>
-
               <Tab title="Schema">
                 <CodeEditor
                   source={result?.schema ?? ""}
                   language="graphql"
                   readOnly
                 />
+              </Tab>
+              <Tab title="Graph">
+                <GraphView />
               </Tab>
             </Tabs>
 

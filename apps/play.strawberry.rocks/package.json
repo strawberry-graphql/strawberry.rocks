@@ -27,6 +27,7 @@
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
     "react-resizable-panels": "^2.0.16",
+    "reactflow": "^11.11.4",
     "semver-sort": "^1.0.0",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.2.2",
