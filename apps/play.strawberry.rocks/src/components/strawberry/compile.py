@@ -9,7 +9,6 @@
 import textwrap
 from inspect import iscoroutinefunction
 from typing import List, Optional, Tuple
-from typing_extensions import Protocol
 
 from graphql import (
     ArgumentNode,
@@ -23,17 +22,17 @@ from graphql import (
 )
 from graphql.language import OperationType
 from graphql.language.parser import parse
-
 from strawberry.scalars import is_scalar
 from strawberry.schema import Schema
 from strawberry.types.base import (
-    StrawberryList,
+    StrawberryContainer,
     StrawberryObjectDefinition,
     StrawberryOptional,
     StrawberryType,
     get_object_definition,
 )
 from strawberry.types.union import StrawberryUnion
+from typing_extensions import Protocol
 
 
 class HasSelectionSet(Protocol):
@@ -46,6 +45,7 @@ def _generate_field_function(
     parent_type: StrawberryType,
     nodes: List[dict],
     edges: List[dict],
+    schema: Schema,
     parent_node_id: Optional[str] = None,
 ) -> Tuple[str, List[str]]:
     function_code = f"async def {name}(parent, info):\n"
@@ -62,12 +62,32 @@ def _generate_field_function(
                 None,
             )
 
+            assert field
+
+            field_type = field.type
+
+            # TODO support lists?
+            while isinstance(field_type, StrawberryContainer):
+                field_type = field_type.of_type
+
+            if is_scalar(field_type, schema.schema_converter.scalar_registry):
+                nested_parent_type = None
+            else:
+                # TODO: check if field.type is a list or strawberry optiona?
+                # TODO: not sure this should be called nested_parent_type
+                nested_parent_type = get_object_definition(field_type, strict=True)
+
             if selection.selection_set:
                 # Generate subfunction for nested field
                 sub_name = f"{name}_{field_name}"
-                nested_parent_type = get_object_definition(field.type, strict=True)
                 sub_code, nested_functions = _generate_field_function(
-                    sub_name, selection.selection_set, nested_parent_type, nodes, edges, parent_node_id=name
+                    sub_name,
+                    selection.selection_set,
+                    nested_parent_type,
+                    nodes,
+                    edges,
+                    schema,
+                    parent_node_id=name,
                 )
                 sub_functions.extend(nested_functions)
                 sub_functions.append(sub_code)
@@ -149,7 +169,7 @@ def compile(operation: str, schema: Schema) -> Tuple[str, dict]:
 
     root_type = get_object_definition(schema.query, strict=True)
     root_function, sub_functions = _generate_field_function(
-        "root", definition.selection_set, root_type, nodes, edges
+        "root", definition.selection_set, root_type, nodes, edges, schema
     )
 
     compiled_code = (
@@ -168,6 +188,7 @@ def compile(operation: str, schema: Schema) -> Tuple[str, dict]:
     graph_data = {"nodes": nodes, "edges": edges}
 
     return compiled_code, graph_data
+
 
 schema = None
 query = None
@@ -205,6 +226,9 @@ if schema is None:
         query {
             example
             hello {
+                articles {
+                    id
+                }
                 name
             }
         }
@@ -222,9 +246,10 @@ try:
 
 except ImportError:
     import asyncio
-    from rich.syntax import Syntax
-    from rich.console import Console
     import sys
+
+    from rich.console import Console
+    from rich.syntax import Syntax
 
     console = Console()
     console.print(Syntax(result["code"], "python"))
