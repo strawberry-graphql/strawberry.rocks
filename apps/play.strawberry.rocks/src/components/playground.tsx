@@ -4,6 +4,7 @@ import { ResizeHandler } from "./resize-handler";
 import { StatusBadge } from "./status-badge";
 import { usePyodide } from "./strawberry/pyodide";
 import { Tabs, Tab } from "./tabs";
+import { type Edge, type Node } from "@xyflow/react";
 import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { useDebouncedCallback } from "use-debounce";
@@ -15,6 +16,10 @@ type Result = {
     status_code: number;
     headers: { [key: string]: string };
     schema: string;
+    graph: {
+      nodes: Node[];
+      edges: Edge[];
+    };
   } | null;
 };
 
@@ -83,7 +88,6 @@ export const Playground = forwardRef(
 
         if (result === null || typeof result === "undefined") {
           // TODO: handle error
-          console.log(rest);
           alert("Error compiling code");
           return;
         }
@@ -93,6 +97,8 @@ export const Playground = forwardRef(
           compiledCode: result.code,
         }));
 
+        console.log(result.graph);
+
         if (result.data) {
           setResult({
             result: {
@@ -100,6 +106,7 @@ export const Playground = forwardRef(
               status_code: 200,
               headers: {},
               schema: "not yet supported",
+              graph: result.graph,
             },
             error: null,
           });
@@ -205,7 +212,7 @@ export const Playground = forwardRef(
                 />
               </Tab>
               <Tab title="Graph">
-                <GraphView />
+                <GraphView data={result?.graph} />
               </Tab>
             </Tabs>
 

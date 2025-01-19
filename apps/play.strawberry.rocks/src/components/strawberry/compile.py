@@ -41,7 +41,12 @@ class HasSelectionSet(Protocol):
 
 
 def _generate_field_function(
-    name: str, selection_set: SelectionSetNode, parent_type: StrawberryType
+    name: str,
+    selection_set: SelectionSetNode,
+    parent_type: StrawberryType,
+    nodes: List[dict],
+    edges: List[dict],
+    parent_node_id: Optional[str] = None,
 ) -> Tuple[str, List[str]]:
     function_code = f"async def {name}(parent, info):\n"
     sub_functions = []
@@ -62,7 +67,7 @@ def _generate_field_function(
                 sub_name = f"{name}_{field_name}"
                 nested_parent_type = get_object_definition(field.type, strict=True)
                 sub_code, nested_functions = _generate_field_function(
-                    sub_name, selection.selection_set, nested_parent_type
+                    sub_name, selection.selection_set, nested_parent_type, nodes, edges, parent_node_id=name
                 )
                 sub_functions.extend(nested_functions)
                 sub_functions.append(sub_code)
@@ -90,6 +95,19 @@ def _generate_field_function(
                         f"    {field_name} = field._resolver(parent, info=None)"
                     )
 
+                nodes.append(
+                    {"id": field_name, "data": {"label": field_name}, "type": "default"}
+                )
+
+                edges.append(
+                    {
+                        "id": f"{name}-{field_name}",
+                        "source": name,
+                        "target": field_name,
+                        "type": "default",
+                    }
+                )
+
     # Add field assignments to function body
     function_code += "\n".join(field_assignments) + "\n\n"
 
@@ -104,34 +122,52 @@ def _generate_field_function(
     )
     function_code += f"    return {return_dict}\n"
 
+    nodes.append({"id": name, "data": {"label": name}, "type": "default"})
+
+    if parent_node_id:
+        edges.append(
+            {
+                "id": f"{parent_node_id}-{name}",
+                "source": parent_node_id,
+                "target": name,
+                "type": "default",
+            }
+        )
+
     return function_code, sub_functions
 
 
-def compile(operation: str, schema: Schema) -> str:
+def compile(operation: str, schema: Schema) -> Tuple[str, dict]:
     ast = parse(operation)
     assert isinstance(ast, DocumentNode)
     definition = ast.definitions[0]
     assert isinstance(definition, OperationDefinitionNode)
     assert definition.operation == OperationType.QUERY
 
+    nodes = []
+    edges = []
+
     root_type = get_object_definition(schema.query, strict=True)
     root_function, sub_functions = _generate_field_function(
-        "root", definition.selection_set, root_type
+        "root", definition.selection_set, root_type, nodes, edges
     )
 
-    return (
+    compiled_code = (
         "\n".join(sub_functions)
         + "\n\n"
         + root_function
         + "\n\n"
         + textwrap.dedent(
             """
-        async def _compiled_operation(schema, root_value, variables):
-            return await root(root_value, variables)
-        """
+            async def _compiled_operation(schema, root_value, variables):
+                return await root(root_value, variables)
+            """
         )
     )
 
+    graph_data = {"nodes": nodes, "edges": edges}
+
+    return compiled_code, graph_data
 
 schema = None
 query = None
@@ -176,9 +212,8 @@ if schema is None:
     variables = {}
 
 
-compiled_operation = compile(query, schema)
-
-result = {"code": compiled_operation}
+compiled_operation, graph_data = compile(query, schema)
+result = {"code": compiled_operation, "graph": graph_data}
 
 
 try:
