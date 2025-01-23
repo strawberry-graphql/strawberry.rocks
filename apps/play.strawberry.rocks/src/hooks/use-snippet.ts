@@ -22,7 +22,11 @@ class Query:
 
     @strawberry.field
     def hello(self, info: strawberry.Info) -> User:
-        return User(name="patrick", age=20, articles=[])
+        return User(
+            name="patrick",
+            age=20,
+            articles=[Article(id="1"), Article(id="2")],
+        )
 
 schema = strawberry.Schema(Query)
 `.trim();

@@ -82,8 +82,9 @@ def _generate_field_function(
             )
 
             if selection.selection_set:
+                is_list = False
                 while isinstance(field_type, StrawberryList):
-                    field_assignments.append("# this is a list!")
+                    is_list = True
 
                     field_type = field_type.of_type
 
@@ -102,9 +103,18 @@ def _generate_field_function(
                 )
                 sub_functions.extend(nested_functions)
                 sub_functions.append(sub_code)
-                field_assignments.append(
-                    f"    {field_name}_result = await {sub_name}({field_name}_resolver_result, info)"
-                )
+                if is_list:
+                    field_assignments.append(
+                        f"    # {field_name}_resolver_result here is a list..."
+                    )
+
+                    field_assignments.append(
+                        f"    {field_name}_result = [await {sub_name}(item, info) for item in {field_name}_resolver_result]"
+                    )
+                else:
+                    field_assignments.append(
+                        f"    {field_name}_result = await {sub_name}({field_name}_resolver_result, info)"
+                    )
             elif field.is_basic_field:
                 field_assignments.append(f"    {field_name} = parent.{field_name}")
             else:
@@ -207,7 +217,13 @@ if schema is None:
     class Query:
         @strawberry.field
         def hello(self, info: strawberry.Info) -> User:
-            return User(name="patrick", articles=[])
+            return User(
+                name="patrick",
+                articles=[
+                    Article(id="1"),
+                    Article(id="2"),
+                ],
+            )
 
         @strawberry.field
         def example(self, info: strawberry.Info) -> str:
@@ -217,7 +233,7 @@ if schema is None:
 
     query = """
         query {
-            example
+            # example
             hello {
                 articles {
                     id
