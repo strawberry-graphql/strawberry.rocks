@@ -81,11 +81,7 @@ def _generate_field_function(
                 f"    {field_name}_resolver_result = field._resolver(parent, info=None)"
             )
 
-            if is_scalar(field_type, schema.schema_converter.scalar_registry):
-                nested_parent_type = None
-            else:
-                # TODO: check if this is a list
-                # TODO: not sure this should be called nested_parent_type
+            if selection.selection_set:
                 while isinstance(field_type, StrawberryList):
                     field_assignments.append("# this is a list!")
 
@@ -93,7 +89,6 @@ def _generate_field_function(
 
                 nested_parent_type = get_object_definition(field_type, strict=True)
 
-            if selection.selection_set:
                 # Generate subfunction for nested field
                 sub_name = f"{name}_{field_name}"
                 sub_code, nested_functions = _generate_field_function(
