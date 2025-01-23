@@ -28,6 +28,7 @@ from strawberry.types.base import (
     StrawberryContainer,
     StrawberryObjectDefinition,
     StrawberryOptional,
+    StrawberryList,
     StrawberryType,
     get_object_definition,
 )
@@ -62,19 +63,34 @@ def _generate_field_function(
                 None,
             )
 
-            assert field
+            if field is None:
+                raise Exception(
+                    f"Field {field_name} not found in {parent_type.name}"
+                )
 
+            field_index = parent_type.fields.index(field)
             field_type = field.type
 
-            # TODO support lists?
-            while isinstance(field_type, StrawberryContainer):
-                field_type = field_type.of_type
+            field_assignments.append(f"    # selection: {field_name}")
+            field_assignments.append(
+                f"    root_type = {parent_type.name}.__strawberry_definition__"
+            )
+
+            field_assignments.append(f"    field = root_type.fields[{field_index}]")
+            field_assignments.append(
+                f"    {field_name}_resolver_result = field._resolver(parent, info=None)"
+            )
 
             if is_scalar(field_type, schema.schema_converter.scalar_registry):
                 nested_parent_type = None
             else:
-                # TODO: check if field.type is a list or strawberry optiona?
+                # TODO: check if this is a list
                 # TODO: not sure this should be called nested_parent_type
+                while isinstance(field_type, StrawberryList):
+                    field_assignments.append("# this is a list!")
+
+                    field_type = field_type.of_type
+
                 nested_parent_type = get_object_definition(field_type, strict=True)
 
             if selection.selection_set:
@@ -92,29 +108,11 @@ def _generate_field_function(
                 sub_functions.extend(nested_functions)
                 sub_functions.append(sub_code)
                 field_assignments.append(
-                    f"    # selection: {field_name}\n"
-                    f"    parent = {parent_type.name}.{field_name}(parent, info=None)\n"
-                    f"    {field_name}_result = await {sub_name}(parent, info)"
+                    f"    {field_name}_result = await {sub_name}({field_name}_resolver_result, info)"
                 )
+            elif field.is_basic_field:
+                field_assignments.append(f"    {field_name} = parent.{field_name}")
             else:
-                field_assignments.append(
-                    f"    root_type = {parent_type.name}.__strawberry_definition__"
-                )
-
-                if field is None:
-                    raise Exception(
-                        f"Field {field_name} not found in {parent_type.name}"
-                    )
-                if field.is_basic_field:
-                    field_assignments.append(f"    {field_name} = parent.{field_name}")
-                else:
-                    index = parent_type.fields.index(field)
-                    field_assignments.append(f"    field = root_type.fields[{index}]")
-
-                    field_assignments.append(
-                        f"    {field_name} = field._resolver(parent, info=None)"
-                    )
-
                 nodes.append(
                     {"id": field_name, "data": {"label": field_name}, "type": "default"}
                 )
