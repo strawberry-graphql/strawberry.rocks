@@ -26,9 +26,9 @@ from strawberry.scalars import is_scalar
 from strawberry.schema import Schema
 from strawberry.types.base import (
     StrawberryContainer,
+    StrawberryList,
     StrawberryObjectDefinition,
     StrawberryOptional,
-    StrawberryList,
     StrawberryType,
     get_object_definition,
 )
@@ -64,9 +64,7 @@ def _generate_field_function(
             )
 
             if field is None:
-                raise Exception(
-                    f"Field {field_name} not found in {parent_type.name}"
-                )
+                raise Exception(f"Field {field_name} not found in {parent_type.name}")
 
             field_index = parent_type.fields.index(field)
             field_type = field.type
