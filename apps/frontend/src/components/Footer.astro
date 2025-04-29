@@ -5,7 +5,6 @@ import PlusIcon from "./Icons/Plus.astro";
 import FooterNav from "./FooterNav.astro";
 import FooterSocials from "./FooterSocials.astro";
 import Logo from "./Logo.astro";
-import VercelLogo from "./VercelLogo.astro";
 
 const url = new URL(Astro.request.url);
 const currentPath = url.pathname;
@@ -66,16 +65,6 @@ const registrationStatus = url.searchParams.get("registration");
 
     <div class="info">
       <Logo />
-
-      <p>
-        Website powered by <a
-          href="https://vercel.com/?utm_source=strawberry-graphql&utm_campaign=oss"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <VercelLogo />
-        </a>
-      </p>
     </div>
   </footer>
 </div>
