@@ -1,0 +1,112 @@
+---
+export interface Props {
+  href: string;
+  active?: boolean;
+}
+
+const { href, active } = Astro.props;
+---
+
+<a href={href} class:list={["animated-shop-link typography-paragraph-2", { active }]}>
+  Shop <span class="emoji" data-emojis='["👕", "🧢", "👚", "🧤", "🧣", "🍓", "👔", "🎽", "👟", "🩳"]'></span>
+
+  <span class="border"></span>
+  <span class="underline"></span>
+</a>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const emojiElements = document.querySelectorAll('.animated-shop-link .emoji');
+
+    emojiElements.forEach((element) => {
+      const htmlElement = element as HTMLElement;
+      const emojis = JSON.parse(htmlElement.dataset.emojis || '[]');
+      if (emojis.length === 0) return;
+
+      let currentIndex = 0;
+      htmlElement.textContent = emojis[0];
+
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % emojis.length;
+        htmlElement.textContent = emojis[currentIndex];
+      }, 2000);
+    });
+  });
+</script>
+
+<style>
+  .animated-shop-link {
+    padding: 16px 0;
+    color: var(--color-g-500);
+    display: block;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .animated-shop-link:hover {
+    color: var(--color-black);
+  }
+
+  :global(html.dark) .animated-shop-link {
+    color: var(--color-white);
+  }
+
+  :global(html.dark) .animated-shop-link:hover {
+    color: var(--color-white);
+  }
+
+  .animated-shop-link.active {
+    color: var(--color-black);
+  }
+
+  :global(html.dark) .animated-shop-link.active {
+    color: var(--color-white);
+  }
+
+  .border {
+    position: absolute;
+    border-radius: 0.25rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--color-g-100);
+  }
+
+  .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 0.25rem;
+    opacity: 0;
+
+    background: linear-gradient(
+      90deg,
+      var(--color-magenta),
+      var(--color-orange)
+    );
+  }
+
+  .animated-shop-link.active .underline,
+  .animated-shop-link:hover .underline {
+    opacity: 1;
+  }
+
+  .emoji {
+    display: inline-block;
+    min-width: 1.2em;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .animated-shop-link {
+      color: var(--color-black);
+    }
+    .border {
+      display: none;
+    }
+  }
+</style>
