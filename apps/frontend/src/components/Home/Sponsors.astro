@@ -9,14 +9,23 @@ function roundDownToNearest(num: number, nearest: number) {
   return Math.floor(num / nearest) * nearest;
 }
 
-const downloadsLastWeek = roundDownToNearest(downloads.lastWeek, 5000);
+const downloadsLastMonth = roundDownToNearest(downloads.lastMonth, 100_000);
 
-let message = `More than ${downloadsLastWeek.toLocaleString()} downloads last week.`;
+let message = "";
 
-if (downloadsLastWeek < 100_000) {
-  const downloadsLastMonth = roundDownToNearest(downloads.lastMonth, 100_000);
+if (downloadsLastMonth >= 2_000_000) {
+  // If more than 2M per month, show per month
+  const millionsPerMonth = Math.floor(downloadsLastMonth / 1_000_000);
+  message = `More than ${millionsPerMonth} million downloads per month.`;
+} else {
+  // Otherwise show weekly downloads
+  const downloadsLastWeek = roundDownToNearest(downloads.lastWeek, 5000);
 
-  message = `More than ${downloadsLastMonth.toLocaleString()} downloads last month.`;
+  if (downloadsLastWeek < 100_000) {
+    message = `More than ${downloadsLastMonth.toLocaleString()} downloads last month.`;
+  } else {
+    message = `More than ${downloadsLastWeek.toLocaleString()} downloads last week.`;
+  }
 }
 ---
 

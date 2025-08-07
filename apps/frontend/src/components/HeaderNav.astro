@@ -1,5 +1,6 @@
 ---
 import Link from "./HeaderNavLink.astro";
+import AnimatedShopLink from "./AnimatedShopLink.astro";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 
 import { fetchLatestRelease } from "../utils/fetch-latest-release";
@@ -41,6 +42,11 @@ const links = [
   //   slug: "blog",
   // },
   {
+    name: "Shop 👕",
+    href: "https://shop.strawberry.rocks/",
+    slug: "shop",
+  },
+  {
     name: "Playground",
     href: "https://play.strawberry.rocks",
     slug: "playground",
@@ -59,6 +65,8 @@ const isActive = (link: (typeof links)[number]) => {
 
   return currentPath.pathname === link.href;
 };
+
+const isHomePage = currentPath.pathname === "/" || currentPath.pathname === "";
 ---
 
 <nav>
@@ -66,9 +74,13 @@ const isActive = (link: (typeof links)[number]) => {
     {
       links.map((link) => (
         <li>
-          <Link href={link.href} active={isActive(link)}>
-            {link.name}
-          </Link>
+          {link.slug === "shop" && isHomePage ? (
+            <AnimatedShopLink href={link.href} active={isActive(link)} />
+          ) : (
+            <Link href={link.href} active={isActive(link)}>
+              {link.name}
+            </Link>
+          )}
         </li>
       ))
     }
