@@ -111,8 +111,8 @@ const isHomePage = currentPath.pathname === "/" || currentPath.pathname === "";
     display: inline-block;
     font-weight: bold;
     border-radius: 20px;
-
-    background-color: var(--color-g-50);
+    box-shadow: inset 0px 1px 1px 0px #ffffff94, 0px 0px 0px 1px #00000012;
+    background-color: #ffffff70;
     color: var(--color-g-700);
     padding: 8px 16px;
   }
@@ -156,7 +156,7 @@ const isHomePage = currentPath.pathname === "/" || currentPath.pathname === "";
       width: 1px;
       height: 48px;
       margin-right: -8px;
-      background: var(--color-g-100);
+      background-color: #00000012;
     }
 
     :global(html.dark) nav > ul::before,
