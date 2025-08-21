@@ -172,7 +172,7 @@ Song.objects.all().only(
 > Even though `album__release_date` field was not selected here, it got selected
 > in the prefetch query later. Since Django caches known objects, we have to select it here or
 > else it would trigger extra queries latter.
-> 
+>
 
 
 ## Optimization hints
@@ -359,7 +359,7 @@ requested in the GraphQL query in the same way that it does normally.
 > GraphQL interface type to filter out unwanted subtypes.
 > Otherwise you might receive an error like
 > `Abstract type 'ProjectType' must resolve to an Object type at runtime for field 'Query.projects'.`
-> 
+>
 
 
 ### Using Model-Utils InheritanceManager
@@ -420,7 +420,7 @@ in your schema.
 > GraphQL interface type to filter out unwanted subtypes.
 > Otherwise you might receive an error like
 > `Abstract type 'ProjectType' must resolve to an Object type at runtime for field 'Query.projects'.`
-> 
+>
 
 
 > [!NOTE]
@@ -430,7 +430,7 @@ in your schema.
 > by default, which is different from the standard `objects`.
 > Either change your base manager to also be an `InheritanceManager` or set Strawberry Django to use the default
 > manager: `DjangoOptimizerExtension(prefetch_custom_queryset=True)`.
-> 
+>
 
 
 ### Custom polymorphic solution
