@@ -9,7 +9,7 @@ title: Defining Types
 > [!NOTE]
 > It is highly recommended to enable the [Query Optimizer Extension](/docs/django/guide/optimizer)
 > for improved performance and avoid some common pitfalls (e.g. the `n+1` issue)
-> 
+>
 
 
 Output types are generated from models. The `auto` type is used for field type auto resolution.
@@ -97,7 +97,7 @@ on [How to define Fields](/docs/django/guide/fields) for that.
 > By doing this you are modifying all automatic `QuerySet` generation for any field
 > that returns this type. Ideally you will want to define your own [resolver](/docs/django/guide/resolvers)
 > instead, which gives you more control over it.
-> 
+>
 
 
 By default, a `strawberry_django` type will get data from the default manager for its Django Model.
@@ -137,7 +137,7 @@ class Berry:
 > [!NOTE]
 > Another way of limiting this is by using the [PermissionExtension](/docs/django/guide/permissions)
 > provided by this lib.
-> 
+>
 
 
 The `kwargs` dictionary can include other parameters that were added in a `@strawberry.django.type` definition
