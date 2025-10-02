@@ -2,15 +2,16 @@
 title: Pagination - Cursor based
 ---
 
-# Implementing Cursor Pagination
+import Note from '@/components/Pages/Callout/Note.astro';
+import Tip from '@/components/Pages/Callout/Tip.astro';
 
-Make sure to check our introduction to pagination [here](/docs/guides/pagination/overview)!
+
+Make sure to check our introduction to pagination [here](./overview.md)!
 
 Let us implement cursor based pagination in GraphQL. By the end of this
 tutorial, we should be able to return a paginated list of users when requested.
 
 <CodeGrid>
-
 
 ```graphql
 query getUsers {
@@ -55,7 +56,6 @@ query getUsers {
 ```
 
 </CodeGrid>
-
 
 The server needs to return a `cursor` along with the sliced user data, so that
 our client can know what to query for next. The client could also provide a
@@ -188,13 +188,11 @@ both criteria.
 
 <Tip>
 
-
 It is good practice to base64-encode cursors, to provide a unified interface to
 the end user. API clients need not bother about the type of data to paginate,
 and can pass unique IDs during pagination. It also makes the cursor opaque.
 
 </Tip>
-
 
 Let us define a couple of helper functions to encode and decode cursors as
 follows:
@@ -426,12 +424,10 @@ schema = strawberry.Schema(query=Query)
 
 <Note>
 
-
 Did you notice that cursor argument we defined is optional? That's because the
 client doesn't know the cursor initially, when it makes the first request.
 
 </Note>
-
 
 Now, let us start a debug server with our schema!
 

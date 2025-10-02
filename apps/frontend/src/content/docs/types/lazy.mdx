@@ -2,7 +2,8 @@
 title: Lazy Types
 ---
 
-# Lazy Types
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 Strawberry supports lazy types, which are useful when you have circular
 dependencies between types.
@@ -51,7 +52,6 @@ type hints, while preventing circular imports and preserving type safety by
 using `TYPE_CHECKING` to tell type checkers where to look for the type.
 
 <Note>
-
 
 `Annotated` is only available in Python 3.9+, if you are using an older version
 of Python you can use `typing_extensions.Annotated` instead.

@@ -2,7 +2,8 @@
 title: Private Strawberry Field Error
 ---
 
-# Private Strawberry Field Error
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 ## Description
 
@@ -33,7 +34,6 @@ in the GraphQL schema.
   strawberry.Private[list[str]] = strawberry.field(default_factory=list)
   (workaround is to use dataclasses.field, explained below)
 </Note>
-
 
 ## How to fix this error
 

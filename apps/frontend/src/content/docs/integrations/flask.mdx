@@ -2,7 +2,8 @@
 title: Flask
 ---
 
-# Flask
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 Strawberry comes with a basic Flask integration. It provides a view that you can
 use to serve your GraphQL schema:
@@ -61,13 +62,11 @@ methods:
 
 <Note>
 
-
 Note that the `AsyncGraphQLView` can also be extended in the same way, but the
 `get_context`, `get_root_value`, `process_result`, and `render_graphql_ide`
 methods are asynchronous.
 
 </Note>
-
 
 ### get_context
 

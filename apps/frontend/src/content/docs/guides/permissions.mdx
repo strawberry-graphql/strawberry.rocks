@@ -2,7 +2,8 @@
 title: Permissions
 ---
 
-# Permissions
+import Warning from '@/components/Pages/Callout/Warning.astro';
+
 
 Permissions can be managed using `Permission` classes. A `Permission` class
 extends `BasePermission` and has a `has_permission` method. It can be added to a
@@ -110,8 +111,8 @@ Beyond providing hooks, Authentication is not currently Strawberry's
 responsibility. You should provide your own helpers to figure out if a request
 has the permissions you expect.
 
-*For more discussion on Authentication see*
-*[Issue #830](https://github.com/strawberry-graphql/strawberry/issues/830).*
+_For more discussion on Authentication see_
+_[Issue #830](https://github.com/strawberry-graphql/strawberry/issues/830)._
 
 ## Custom Error Extensions & classes
 
@@ -184,7 +185,6 @@ client. To return `None` or `[]` instead of raising an error, the
   Note that this will only work if the field returns a type that is nullable or
   a list, e.g. `Optional[str]` or `List[str]`.
 </Warning>
-
 
 ```python
 import strawberry

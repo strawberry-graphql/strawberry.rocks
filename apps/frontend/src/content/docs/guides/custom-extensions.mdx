@@ -2,7 +2,6 @@
 title: Schema extensions
 ---
 
-# Schema extensions
 
 Strawberry provides support for adding extensions to your schema. Schema
 extensions can be used to hook into different parts of the GraphQL execution and
@@ -34,7 +33,7 @@ arguments to resolve need to be passed to `_next`, as they will be needed by the
 resolvers.
 
 If you need to wrap only certain field resolvers with additional logic, please
-check out [field extensions](/docs/guides/field-extensions).
+check out [field extensions](field-extensions.md).
 
 Note that `resolve` can also be implemented asynchronously.
 
@@ -83,7 +82,6 @@ class MyExtension(SchemaExtension):
 <details>
   <summary>Extend error response format</summary>
 
-
 ```python
 class ExtendErrorFormat(SchemaExtension):
     def on_operation(self):
@@ -115,7 +113,6 @@ schema = strawberry.Schema(query=Query, extensions=[ExtendErrorFormat])
 ```
 
 </details>
-
 
 #### Supported lifecycle hooks:
 
@@ -171,7 +168,6 @@ class MyExtension(SchemaExtension):
 <details>
   <summary>In memory cached execution</summary>
 
-
 ```python
 import json
 import strawberry
@@ -206,10 +202,8 @@ schema = strawberry.Schema(
 
 </details>
 
-
 <details>
   <summary>Rejecting an operation before executing it</summary>
-
 
 ```python
 import strawberry
@@ -237,10 +231,8 @@ schema = strawberry.Schema(
 
 </details>
 
-
 <details>
   <summary>Operation Extensions (Requires GraphQL 3.3)</summary>
-
 
 ```python
 import time
@@ -274,7 +266,6 @@ schema = strawberry.Schema(
 ```
 
 </details>
-
 
 ### Execution Context
 

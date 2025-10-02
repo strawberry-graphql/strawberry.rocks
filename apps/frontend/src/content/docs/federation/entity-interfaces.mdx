@@ -2,10 +2,9 @@
 title: Entity interfaces (Apollo Federation)
 ---
 
-# Extending interfaces
 
 [Entity interfaces](https://www.apollographql.com/docs/federation/federated-types/interfaces)
-are similar to [entities](/docs/federation/entities), but usually can't contribute new
+are similar to [entities](./entities.md), but usually can't contribute new
 fields to the supergraph (see below for how to use `@interfaceObject` to extend
 interfaces).
 
@@ -67,7 +66,7 @@ it would need to be reflected in all subgraphs declaring it).
 # Resolving references
 
 Entity interfaces are also used to resolve references to entities. The same
-rules as [entities](/docs/federation/entities) apply here. Here's a basic example:
+rules as [entities](./entities.md) apply here. Here's a basic example:
 
 ```python
 import strawberry

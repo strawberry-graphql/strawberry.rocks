@@ -1,0 +1,20 @@
+---
+title: Integrations
+---
+
+# Integration
+
+Strawberry can be used with a variety of web frameworks and libraries. Here is a
+list of the integrations along with the features they support.
+
+Note, this table is not up to date, and this page shouldn't be linked anywhere
+(yet).
+
+| name                        | Supports sync | Supports async       | Supports subscriptions via websockets | Supports subscriptions via multipart HTTP | Supports file uploads | Supports batch queries |
+| --------------------------- | ------------- | -------------------- | ------------------------------------- | ----------------------------------------- | --------------------- | ---------------------- |
+| [django](/docs/integrations/django)       | ✅            | ✅ (with Async view) | ❌ (use Channels for websockets)      | ✅ (From Django 4.2)                      | ✅                    | ❌                     |
+| [starlette](/docs/integrations/starlette) | ✅            | ✅                   | ✅                                    | ✅                                        | ✅                    | ✅                     |
+| [aiohttp](/docs/integrations/aiohttp)     | ✅            | ✅                   | ✅                                    | ✅                                        | ✅                    | ✅                     |
+| [flask](/docs/integrations/flask)         | ✅            | ✅                   | ❌                                    | ❌                                        | ✅                    | ✅                     |
+| [channels](/docs/integrations/channels)   | ✅            | ✅                   | ✅                                    | ❌                                        | ✅                    | ✅                     |
+| [fastapi](/docs/integrations/fastapi)     | ✅            | ✅                   | ✅                                    | ✅                                        | ✅                    | ✅                     |

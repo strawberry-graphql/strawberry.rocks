@@ -1,9 +1,8 @@
 ---
-slug: breaking-changes/0.180.0
 title: 0.180.0 Breaking changes
+slug: breaking-changes/0.180.0
 ---
 
-# v0.180.0 introduces a breaking change for the Django Channels HTTP integration
 
 The context object is now a `dict`. This means that you should access the
 context value using the `["key"]` syntax instead of the `.key` syntax.

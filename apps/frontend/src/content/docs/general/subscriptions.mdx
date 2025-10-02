@@ -2,7 +2,8 @@
 title: Subscriptions
 ---
 
-# Subscriptions
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 In GraphQL you can use subscriptions to stream data from a server. To enable
 this with Strawberry your server must support ASGI and websockets or use the
@@ -42,14 +43,12 @@ from 0 to the target sleeping between each loop iteration.
 
 <Note>
 
-
 The return type of `count` is `AsyncGenerator` where the first generic argument
 is the actual type of the response, in most cases the second argument should be
 left as `None` (more about Generator typing
 [here](https://docs.python.org/3/library/typing.html#typing.AsyncGenerator)).
 
 </Note>
-
 
 We would send the following GraphQL document to our server to subscribe to this
 data stream:
@@ -254,6 +253,8 @@ class Subscription:
 schema = strawberry.Schema(query=Query, subscription=Subscription)
 ```
 
+[pep-525]: https://www.python.org/dev/peps/pep-0525/
+
 ## Unsubscribing subscriptions
 
 In GraphQL, it is possible to unsubscribe from a subscription. Strawberry
@@ -313,13 +314,11 @@ sub-protocols.
 
 <Note>
 
-
 The `graphql-transport-ws` protocols repository is called `graphql-ws`. However,
 `graphql-ws` is also the name of the legacy protocol. This documentation always
 refers to the protocol names.
 
 </Note>
-
 
 Note that the `graphql-ws` sub-protocol is mainly supported for backwards
 compatibility. Read the
@@ -383,7 +382,7 @@ application = GraphQLProtocolTypeRouter(
 )
 ```
 
-Note: Check the [channels integraton](/docs/integrations/channels) page for more
+Note: Check the [channels integraton](../integrations/channels.md) page for more
 information regarding it.
 
 ### FastAPI
@@ -434,8 +433,8 @@ app.add_url_rule(
 
 ## Single result operations
 
-In addition to *streaming operations* (i.e. subscriptions), the
-`graphql-transport-ws` protocol supports so called *single result operations*
+In addition to _streaming operations_ (i.e. subscriptions), the
+`graphql-transport-ws` protocol supports so called _single result operations_
 (i.e. queries and mutations).
 
 This enables clients to use one protocol and one connection for queries,
@@ -446,5 +445,3 @@ correctly set up the graphql client of your choice.
 Strawberry supports single result operations out of the box when the
 `graphql-transport-ws` protocol is enabled. Single result operations are normal
 queries and mutations, so there is no need to adjust any resolvers.
-
-[pep-525]: https://www.python.org/dev/peps/pep-0525/

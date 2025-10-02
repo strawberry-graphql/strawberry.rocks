@@ -2,7 +2,6 @@
 title: Dealing with errors
 ---
 
-# Dealing with errors
 
 There are multiple different types of errors in GraphQL and each can be handled
 differently.
@@ -12,7 +11,7 @@ encounter when building a GraphQL server.
 
 **Note**: By default Strawberry will log all execution errors to a
 `strawberry.execution` logger:
-[/docs/types/schema#handling-execution-errors](../types/schema).
+[/docs/types/schema#handling-execution-errors](../types/schema#handling-execution-errors).
 
 ## GraphQL validation errors
 
@@ -21,7 +20,6 @@ executing them. If a query is invalid it isn’t executed and instead the respon
 contains an `errors` list:
 
 <CodeGrid>
-
 
 ```graphql
 {
@@ -48,7 +46,6 @@ contains an `errors` list:
 ```
 
 </CodeGrid>
-
 
 Each error has a message, line, column and path to help you identify what part
 of the query caused the error.
@@ -79,7 +76,6 @@ schema = strawberry.Schema(query=Query)
 
 <CodeGrid>
 
-
 ```graphql
 {
   hello
@@ -105,7 +101,6 @@ schema = strawberry.Schema(query=Query)
 ```
 
 </CodeGrid>
-
 
 Each error has a message, line, column and path to help you identify what part
 of the query caused the error.
@@ -137,7 +132,6 @@ schema = strawberry.Schema(query=Query)
 
 <CodeGrid>
 
-
 ```graphql
 {
   user {
@@ -165,7 +159,6 @@ schema = strawberry.Schema(query=Query)
 ```
 
 </CodeGrid>
-
 
 ## Partial responses for failed resolvers
 
@@ -196,7 +189,6 @@ schema = strawberry.Schema(query=Query)
 
 <CodeGrid>
 
-
 ```graphql
 {
   successfulField
@@ -221,7 +213,6 @@ schema = strawberry.Schema(query=Query)
 ```
 
 </CodeGrid>
-
 
 The response includes both successfully resolved data and error details,
 demonstrating GraphQL's ability to return partial results.
@@ -319,7 +310,7 @@ This approach allows you to express the possible error states in the schema and
 so provide a robust interface for your client to account for all the potential
 outcomes from a mutation.
 
-***
+---
 
 ## Additional resources:
 

@@ -2,7 +2,10 @@
 title: Field extensions
 ---
 
-# Field extensions
+import Note from '@/components/Pages/Callout/Note.astro';
+import Tip from '@/components/Pages/Callout/Tip.astro';
+import Warning from '@/components/Pages/Callout/Warning.astro';
+
 
 Field extensions are a great way to implement reusable logic such as permissions
 or pagination outside your resolvers. They wrap the underlying resolver and are
@@ -10,13 +13,11 @@ able to modify the field and all arguments passed to the resolver.
 
 <Note>
 
-
 The following examples only cover sync execution. To use extensions in async
 contexts, please have a look at
-[Async Extensions and Resolvers]()
+[Async Extensions and Resolvers](#async-extensions-and-resolvers)
 
 </Note>
-
 
 ```python
 import strawberry
@@ -46,7 +47,6 @@ passed to `next` in an incompatible way.
 
 <CodeGrid>
 
-
 ```graphql
 query {
   string
@@ -61,11 +61,9 @@ query {
 
 </CodeGrid>
 
-
 ## Modifying the field
 
 <Warning>
-
 
 Most of the `StrawberryField` API is not stable and might change in the future
 without warning. Stable features include: `StrawberryField.type`,
@@ -73,11 +71,10 @@ without warning. Stable features include: `StrawberryField.type`,
 
 </Warning>
 
-
 In some cases, the extended field needs to be compatible with the added
 extension. `FieldExtension` provides an `apply(field: StrawberryField)` method
-that can be overriden to modify the field. It is called during *Schema
-Conversion*. In the following example, we use `apply` to add a directive to the
+that can be overriden to modify the field. It is called during _Schema
+Conversion_. In the following example, we use `apply` to add a directive to the
 field:
 
 ```python
@@ -114,7 +111,6 @@ class CachingExtension(FieldExtension):
 
 <CodeGrid>
 
-
 ```python
 @strawberry.type
 class Client:
@@ -132,7 +128,6 @@ type Client {
 
 </CodeGrid>
 
-
 ## Combining multiple field extensions
 
 When chaining multiple field extensions, the last extension in the list is
@@ -149,14 +144,12 @@ def my_field():
 
 <Tip>
 
-
 **Order matters**: the last extension in the list will be executed first, while
 the first extension in the list extension will be applied to the field first.
 This enables cases like adding relay pagination in front of an extension that
 modifies the field's type.
 
 </Tip>
-
 
 ## Async Extensions and Resolvers
 
@@ -175,7 +168,6 @@ extension, you cannot wrap it with a sync-only extension anymore.
 
 <Tip>
 
-
 To optimize the performance of your resolvers, it's recommended that you
 implement both the `resolve` and `resolve_async` methods when using an extension
 on both sync and async fields. While the `SyncToAsyncExtension` is convenient,
@@ -183,7 +175,6 @@ it may add unnecessary overhead to your sync resolvers, leading to slightly
 decreased performance.
 
 </Tip>
-
 
 ```python
 import strawberry

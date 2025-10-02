@@ -2,7 +2,8 @@
 title: DataLoaders
 ---
 
-# DataLoaders
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 Strawberry comes with a built-in DataLoader, a generic utility that can be used
 to reduce the number of requests to databases or third party APIs by batching
@@ -10,11 +11,9 @@ and caching requests.
 
 <Note>
 
-
 DataLoaders provide an async API, so they only work in async context
 
 </Note>
-
 
 Refer the official DataLoaders
 [specification](https://github.com/graphql/dataloader) for an advanced guide on
@@ -201,7 +200,6 @@ For example:
 
 <CodeGrid>
 
-
 ```python
 @strawberry.type
 class Person:
@@ -240,7 +238,6 @@ class Query:
 ```
 
 </CodeGrid>
-
 
 ### Custom Cache
 
@@ -354,7 +351,6 @@ We can use this query by doing the following request:
 
 <CodeGrid>
 
-
 ```graphql
 {
   first: getUser(id: 1) {
@@ -380,7 +376,6 @@ We can use this query by doing the following request:
 ```
 
 </CodeGrid>
-
 
 Even if this query is fetching two users, it still results in one call to
 `load_users`.
@@ -437,7 +432,7 @@ app = MyGraphQL(schema)
 ```
 
 You can now run the example above with any ASGI server, you can read
-[ASGI](/docs/integrations/asgi)) to get more details on how to run the app. In
+[ASGI](../integrations/asgi.md)) to get more details on how to run the app. In
 case you choose uvicorn you can install it wih
 
 ```shell

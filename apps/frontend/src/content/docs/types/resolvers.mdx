@@ -2,13 +2,14 @@
 title: Resolvers
 ---
 
-# Resolvers
+import Note from '@/components/Pages/Callout/Note.astro';
+import Tip from '@/components/Pages/Callout/Tip.astro';
+
 
 When defining a GraphQL schema, you usually start with the definition of the
 schema for your API, for example, let's take a look at this schema:
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -36,7 +37,6 @@ type Query {
 
 </CodeGrid>
 
-
 We have defined a `User` type and a `Query` type. Next, to define how the data
 is returned from our server, we will attach resolvers to our fields.
 
@@ -61,7 +61,6 @@ Now when Strawberry executes the following query, it will call the
 
 <CodeGrid>
 
-
 ```graphql
 {
   lastUser {
@@ -82,7 +81,6 @@ Now when Strawberry executes the following query, it will call the
 
 </CodeGrid>
 
-
 ## Defining resolvers as methods
 
 The other way to define a resolver is to use `strawberry.field` as a decorator,
@@ -101,13 +99,11 @@ very small resolvers.
 
 <Note>
 
-
 If you're curious how the `self` parameter works in the resolver, you can read
 more about it in the
-[accessing parent data guide](/docs/guides/accessing-parent-data).
+[accessing parent data guide](../guides/accessing-parent-data.md).
 
 </Note>
-
 
 ## Defining arguments
 
@@ -116,7 +112,6 @@ defined on the resolver, as you would normally do in a Python function. Let's
 define a field on a Query that returns a user by ID:
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -147,7 +142,6 @@ type Query {
 
 </CodeGrid>
 
-
 ### Optional arguments
 
 Optional or nullable arguments can be expressed using `Optional`:
@@ -168,7 +162,7 @@ class Query:
 
 If you need to differentiate between `null` and no arguments being passed (for
 example, distinguishing between "set to null" vs "don't change"), you can use
-`strawberry.Maybe`. See the [Maybe documentation](/docs/types/maybe) for comprehensive
+`strawberry.Maybe`. See the [Maybe documentation](./maybe.md) for comprehensive
 usage examples and patterns.
 
 ### Annotated Arguments
@@ -223,12 +217,10 @@ class User:
 
 <Tip>
 
-
 You don't have to call this parameter `info`, its name can be anything.
 Strawberry uses the type to pass the correct value to the resolver.
 
 </Tip>
-
 
 ### API
 

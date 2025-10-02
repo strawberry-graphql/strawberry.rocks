@@ -2,7 +2,8 @@
 title: Defer and Stream
 ---
 
-# Defer and Stream
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 Strawberry provides experimental support for GraphQL's `@defer` and `@stream`
 directives, which enable incremental delivery of response data. These directives
@@ -10,7 +11,6 @@ allow parts of a GraphQL response to be delivered as they become available,
 rather than waiting for the entire response to be ready.
 
 <Note>
-
 
 This feature requires `graphql-core>=3.3.0a9` and is currently experimental. The
 API and behavior may change in future releases.
@@ -24,7 +24,6 @@ API and behavior may change in future releases.
   the initial response, not to deferred or streamed data.
 
 </Note>
-
 
 ## Enabling Defer and Stream
 

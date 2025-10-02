@@ -1,6 +1,5 @@
 # build output
 dist/
-
 # generated types
 .astro/
 
@@ -13,15 +12,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+
 # environment variables
 .env
 .env.production
 
 # macOS-specific files
 .DS_Store
-.vercel
-.env*.local
-
-__pycache__/
-
-*.0x/

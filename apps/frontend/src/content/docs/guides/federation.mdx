@@ -2,16 +2,15 @@
 title: Federation 2
 ---
 
-# Apollo Federation 2 Guide
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 <Note>
 
-
 This guide refers to Apollo Federation 2, if you're looking for the 1.0 guide,
-please see the [federation v1](/docs/guides/federation-v1) guide.
+please see the [federation v1](federation-v1.md) guide.
 
 </Note>
-
 
 Apollo Federation allows you to combine multiple GraphQL APIs into one. This can
 be extremely useful when working with a service oriented architecture.
@@ -42,12 +41,10 @@ my-app/
 
 <Note>
 
-
 This guide assumes you've installed strawberry in both the books and reviews
 service
 
 </Note>
-
 
 ### Books service
 
@@ -79,12 +76,10 @@ schema = strawberry.federation.Schema(query=Query, enable_federation_2=True)
 
 <Note>
 
-
 `enable_federation_2=True` is used to enable Apollo Federation 2 and currently
 defaults to `False`. This will change in a future version of Strawberry.
 
 </Note>
-
 
 We defined two types: `Book` and `Query`, where `Query` has only one field that
 allows us to fetch all the books.
@@ -98,13 +93,11 @@ uniquely-identifying key.
 
 <Note>
 
-
 Federation keys can be thought of as primary keys. They are used by the gateway
 to query types between multiple services and then join them into the augmented
 type.
 
 </Note>
-
 
 ### Reviews service
 
@@ -163,13 +156,11 @@ But we also have a `Book` which has 3 fields, `id`, `reviews_count` and
 
 <Note>
 
-
 In Apollo Federation 1 we'd need to mark the `Book` type as an extension and
 also we'd need to mark `id` as an external field, this is not the case in Apollo
 Federation 2.
 
 </Note>
-
 
 Finally, we also have a class method, `resolve_reference`, that allows us to
 instantiate types when they are referred to by other services. The
@@ -207,7 +198,6 @@ able to find them.
 
 <Note>
 
-
 If you don't need any custom logic for your resolve_reference, you can omit it
 and Strawberry will automatically instanciate the type for you. For example, if
 we had a `Book` type with only an `id` field, Strawberry would be able to
@@ -221,7 +211,6 @@ class Book:
 ```
 
 </Note>
-
 
 ## Let's run our services
 
@@ -253,13 +242,11 @@ to compose the schema.
 
 <Note>
 
-
 Composing the schema means combining all our service's schemas into a single
 schema. The composed schema will be used by the router to route requests to the
 appropriate services.
 
 </Note>
-
 
 Create a file called `supergraph.yaml` with the following contents:
 

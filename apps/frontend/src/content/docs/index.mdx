@@ -2,7 +2,8 @@
 title: Getting started with Strawberry
 ---
 
-# Getting started with Strawberry
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 This tutorial will help you:
 
@@ -107,12 +108,10 @@ Using `strawberry.field` allows us to specify a resolver for a particular field.
 
 <Note>
 
-
 We didn't have to specify any resolver for the Book's fields, this is because
 Strawberry adds a default for each field, returning the value of that field.
 
 </Note>
-
 
 ## Step 5: Create our schema and run it
 
@@ -177,13 +176,12 @@ title for each book.
 
 ## Next steps
 
-<!--alex ignore retext-equality -->
 
 
 Well done! You just created your first GraphQL API using Strawberry 🙌!
 
 Check out the following resources to learn more about GraphQL and Strawberry.
 
-- [Schema Basics](/docs/general/schema-basics)
-- [Resolvers](/docs/types/resolvers)
-- [Deployment](/docs/operations/deployment)
+- [Schema Basics](./general/schema-basics.md)
+- [Resolvers](./types/resolvers.md)
+- [Deployment](./operations/deployment.md)

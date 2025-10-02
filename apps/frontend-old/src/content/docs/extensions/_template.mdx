@@ -1,0 +1,61 @@
+---
+summary: A summary of the extension.
+tags: comma,separated,list,of,tags
+title: Extension Name
+---
+
+# `ExtensionName`
+
+This extension does ...
+
+## Usage example:
+
+```python
+import strawberry
+from strawberry.extensions import ExtensionName
+
+
+@strawberry.type
+class Query:
+    @strawberry.field
+    def hello(self) -> str:
+        return "Hello, world!"
+
+
+schema = strawberry.Schema(
+    Query,
+    extensions=[
+        ExtensionName(),
+    ],
+)
+```
+
+## API reference:
+
+```python
+class ExtensionName(an_argument=None): ...
+```
+
+#### `an_argument: Optional[str] = None`
+
+Description of the argument.
+
+## More examples:
+
+<details>
+  <summary>Using `an_argument`</summary>
+
+
+```python
+import strawberry
+from strawberry.extensions import ValidationCache
+
+schema = strawberry.Schema(
+    Query,
+    extensions=[
+        ExtensionName(an_argument="something"),
+    ],
+)
+```
+
+</details>

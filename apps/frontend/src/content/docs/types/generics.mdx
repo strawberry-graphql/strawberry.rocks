@@ -2,7 +2,6 @@
 title: Generics
 ---
 
-# Generics
 
 Strawberry supports using Python's `Generic` typing to dynamically create
 reusable types.
@@ -33,7 +32,6 @@ This example defines a generic type `Page` that can be used to represent a page
 of any type. For example, we can create a page of `User` objects:
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -66,12 +64,10 @@ type UserPage {
 
 </CodeGrid>
 
-
 It is also possible to use a specialized generic type directly. For example, the
 same example above could be written like this:
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -108,7 +104,6 @@ type UserPage {
 
 </CodeGrid>
 
-
 # Input and Argument Types
 
 Arguments to queries and mutations can also be made generic by creating Generic
@@ -117,7 +112,6 @@ anything, then create a specialization by using as a filled-in argument on a
 mutation.
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -182,18 +176,15 @@ type Mutation {
 
 </CodeGrid>
 
-
 > **Note**: Pay attention to the fact that both `CollectionInput` and
 > `PostInput` are Input types. Providing `posts: CollectionInput[Post]` to
 > `add_posts` (i.e. using the non-input `Post` type) would have resulted in an
 > error:
-> 
+>
 > ```
 > PostCollectionInput fields cannot be resolved. Input field type must be a
 > GraphQL input type
 > ```
-> 
-
 
 # Multiple Specializations
 
@@ -201,7 +192,6 @@ Using multiple specializations of a Generic type will work as expected. Here we
 define a `Point2D` type and then specialize it for both `int`s and `float`s.
 
 <CodeGrid>
-
 
 ```python
 from typing import Generic, TypeVar
@@ -246,7 +236,6 @@ input IntPoint2D {
 ```
 
 </CodeGrid>
-
 
 # Variadic Generics
 

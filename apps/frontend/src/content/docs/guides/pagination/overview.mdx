@@ -2,7 +2,8 @@
 title: Pagination - Overview
 ---
 
-# Pagination
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 Whenever we deal with lists in GraphQL, we usually need to limit the number of
 items returned. Surely, we don't want to send massive lists of items that take a
@@ -44,13 +45,11 @@ values.
 
 <Note>
 
-
 We are not sending GraphQL requests here, don't worry about the request format
 for now! We are looking into pagination conceptually. We'll implement pagination
 in GraphQL later!
 
 </Note>
-
 
 The response from the server would be:
 
@@ -137,13 +136,11 @@ consistent way to handle pagination.
 
 <Note>
 
-
 Strawberry provides a cursor based pagination implementing the
 [relay spec](https://relay.dev/docs/guides/graphql-server-specification/). You
 can read more about it in the [relay](../relay) page.
 
 </Note>
-
 
 Cursor based pagination, also known as keyset pagination, works by returning a
 pointer to a specific item in the dataset. On subsequent requests, the server
@@ -205,6 +202,6 @@ too!
 
 Let us look at how we can implement pagination in GraphQL.
 
-- [Implementing Offset Pagination](/docs/guides/pagination/offset-based)
-- [Implementing Cursor Pagination](/docs/guides/pagination/cursor-based)
-- [Implementing the Relay Connection Specification](/docs/guides/pagination/connections)
+- [Implementing Offset Pagination](./offset-based.md)
+- [Implementing Cursor Pagination](./cursor-based.md)
+- [Implementing the Relay Connection Specification](./connections.md)

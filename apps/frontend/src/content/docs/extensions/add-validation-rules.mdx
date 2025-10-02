@@ -1,10 +1,9 @@
 ---
+title: Add Validation Rules
 summary: Add GraphQL validation rules.
 tags: validation,security
-title: Add Validation Rules
 ---
 
-# `AddValidationRules`
 
 This extension allows you add custom validation rules.
 
@@ -53,7 +52,6 @@ List of GraphQL validation rules.
 <details>
   <summary>Adding a custom rule</summary>
 
-
 ```python
 import strawberry
 from strawberry.extensions import AddValidationRules
@@ -87,10 +85,8 @@ assert str(result.errors[0]) == "Can't query field 'example'"
 
 </details>
 
-
 <details>
   <summary>Adding the `NoDeprecatedCustomRule` from GraphQL-core</summary>
-
 
 ```python
 import strawberry
@@ -115,10 +111,8 @@ schema = strawberry.Schema(
 
 </details>
 
-
 <details>
   <summary>Adding the `NoSchemaIntrospectionCustomRule` from GraphQL-core</summary>
-
 
 ```python
 import strawberry

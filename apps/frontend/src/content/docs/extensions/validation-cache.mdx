@@ -1,10 +1,9 @@
 ---
+title: Validation Cache
 summary: Add in memory caching to the validation step of query execution.
 tags: performance,caching,validation
-title: Validation Cache
 ---
 
-# `ValidationCache`
 
 This extension adds LRU caching to the validation step of query execution to
 improve performance by caching the validation errors in memory.
@@ -48,7 +47,6 @@ More info: https://docs.python.org/3/library/functools.html#functools.lru_cache
 
 <details>
   <summary>Using maxsize</summary>
-
 
 ```python
 import strawberry

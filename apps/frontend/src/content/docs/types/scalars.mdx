@@ -2,14 +2,15 @@
 title: Scalars
 ---
 
-# Scalars
+import Note from '@/components/Pages/Callout/Note.astro';
+import Tip from '@/components/Pages/Callout/Tip.astro';
+
 
 Scalar types represent concrete values at the leaves of a query. For example in
 the following query the `name` field will resolve to a scalar type (in this case
 it's a `String` type):
 
 <CodeGrid>
-
 
 ```graphql "name"
 {
@@ -30,7 +31,6 @@ it's a `String` type):
 ```
 
 </CodeGrid>
-
 
 There are several built-in scalars, and you can define custom scalars too.
 ([Enums](/docs/types/enums) are also leaf values.) The built in scalars are:
@@ -64,7 +64,6 @@ There are several built-in scalars, and you can define custom scalars too.
 Fields can return built-in scalars by using the Python equivalent:
 
 <CodeGrid>
-
 
 ```python
 import datetime
@@ -101,7 +100,6 @@ type Product {
 ```
 
 </CodeGrid>
-
 
 Scalar types can also be used as inputs:
 
@@ -157,7 +155,6 @@ assert results.data == {"base64": "aGk="}
 
 <Note>
 
-
 The `Base16`, `Base32` and `Base64` scalar types are available in
 `strawberry.scalars`
 
@@ -166,7 +163,6 @@ from strawberry.scalars import Base16, Base32, Base64
 ```
 
 </Note>
-
 
 ## Example JSONScalar
 
@@ -196,7 +192,6 @@ class Query:
 
 <CodeGrid>
 
-
 ```graphql
 query ExampleDataQuery {
   data
@@ -216,9 +211,7 @@ query ExampleDataQuery {
 
 </CodeGrid>
 
-
 <Note>
-
 
 The `JSON` scalar type is available in `strawberry.scalars`
 
@@ -227,7 +220,6 @@ from strawberry.scalars import JSON
 ```
 
 </Note>
-
 
 ## Overriding built in scalars
 
@@ -336,7 +328,6 @@ using the `scalar_overrides` parameter
   can achieve this by annotating `BigInt` instead of `int` in your resolvers
   handling large python integers.
 </Tip>
-
 
 ```python
 user_schema = strawberry.Schema(

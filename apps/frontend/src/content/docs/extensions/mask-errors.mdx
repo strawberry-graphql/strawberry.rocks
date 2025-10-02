@@ -1,10 +1,11 @@
 ---
+title: Mask Errors
 summary: Hide error messages from the client.
 tags: security
-title: Mask Errors
 ---
 
-# `MaskErrors`
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 This extension hides error messages from the client to prevent exposing
 sensitive details. By default it masks all errors raised in any field resolver.
@@ -47,11 +48,9 @@ resolver.
 
 <Note>
 
-
 The `default_should_mask_error` function always returns `True`.
 
 </Note>
-
 
 #### `error_message: str = "Unexpected error."`
 
@@ -61,7 +60,6 @@ The error message to display to the client when there is an error.
 
 <details>
   <summary>Hide some exceptions</summary>
-
 
 ```python
 import strawberry
@@ -98,10 +96,8 @@ schema = strawberry.Schema(
 
 </details>
 
-
 <details>
   <summary>Change error message</summary>
-
 
 ```python
 import strawberry

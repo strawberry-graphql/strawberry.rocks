@@ -1,16 +1,16 @@
 ---
+title: Open Telemetry
 summary: Add Open Telemetry tracing to your GraphQL server.
 tags: tracing
-title: Open Telemetry
 ---
 
-# `OpenTelemetryExtension`
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 This extension adds tracing information that is compatible with
 [Open Telemetry](https://opentelemetry.io/).
 
 <Note>
-
 
 This extension requires additional requirements:
 
@@ -19,7 +19,6 @@ pip install 'strawberry-graphql[opentelemetry]'
 ```
 
 </Note>
-
 
 ## Usage example:
 
@@ -44,7 +43,6 @@ schema = strawberry.Schema(
 ```
 
 <Note>
-
 
 If you are not running in an Async context then you'll need to use the sync
 version:
@@ -71,7 +69,6 @@ schema = strawberry.Schema(
 
 </Note>
 
-
 ## API reference:
 
 ```python
@@ -91,7 +88,6 @@ ArgFilter = Callable[[Dict[str, Any], GraphQLResolveInfo], Dict[str, Any]]
 
 <details>
   <summary>Using `arg_filter`</summary>
-
 
 ```python
 import strawberry
@@ -128,10 +124,8 @@ schema = strawberry.Schema(
 
 </details>
 
-
 <details>
   <summary>Using `tracer_provider`</summary>
-
 
 ```python
 import strawberry

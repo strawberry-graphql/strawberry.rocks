@@ -1,15 +1,15 @@
 ---
+title: Datadog
 summary: Add Datadog tracing to your GraphQL server.
 tags: tracing
-title: Datadog
 ---
 
-# `DatadogExtension`
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 This extension adds support for tracing with Datadog.
 
 <Note>
-
 
 Make sure you have `ddtrace` installed before using this extension.
 
@@ -18,7 +18,6 @@ pip install ddtrace
 ```
 
 </Note>
-
 
 ## Usage example:
 
@@ -43,7 +42,6 @@ schema = strawberry.Schema(
 ```
 
 <Note>
-
 
 If you are not running in an Async context then you'll need to use the sync
 version:
@@ -70,10 +68,9 @@ schema = strawberry.Schema(
 
 </Note>
 
-
 ## API reference:
 
-*No arguments*
+_No arguments_
 
 ## Extending the extension
 

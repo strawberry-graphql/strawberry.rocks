@@ -2,7 +2,6 @@
 title: File Upload
 ---
 
-# File Upload
 
 All Strawberry integrations support multipart uploads as described in the
 [GraphQL multipart request specification](https://github.com/jaydenseric/graphql-multipart-request-spec).
@@ -55,7 +54,7 @@ schema = strawberry.Schema(
 
 ## ASGI / FastAPI / Starlette
 
-Since these integrations use asyncio for communication, the resolver *must* be
+Since these integrations use asyncio for communication, the resolver _must_ be
 async.
 
 Additionally, these servers rely on the `python-multipart` package, which is not

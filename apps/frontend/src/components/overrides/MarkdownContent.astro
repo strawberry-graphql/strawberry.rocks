@@ -1,0 +1,16 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/MarkdownContent.astro';
+import Note from '../Pages/Callout/Note.astro';
+import Tip from '../Pages/Callout/Tip.astro';
+import Warning from '../Pages/Callout/Warning.astro';
+
+// Make custom components available to MDX content
+const components = {
+  Note,
+  Tip,
+  Warning,
+};
+---
+
+<Default {...Astro.props} {components} />

@@ -2,7 +2,8 @@
 title: Input types
 ---
 
-# Input types
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 In addition to [object types](./object-types) GraphQL also supports input types.
 While being similar to object types, they are better suited for input data as
@@ -16,8 +17,6 @@ This is how the
 > contain references to interfaces and unions, neither of which is appropriate
 > for use as an input argument. For this reason, input objects have a separate
 > type in the system.
-> 
-
 
 ## Defining input types
 
@@ -25,7 +24,6 @@ In Strawberry, you can define input types by using the `@strawberry.input`
 decorator, like this:
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -46,7 +44,6 @@ input Point2D {
 
 </CodeGrid>
 
-
 Then you can use input types as argument for your fields or mutations:
 
 ```python
@@ -65,7 +62,6 @@ default. For example if we want to expand on the above example to allow optional
 labeling of our point we could do:
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -89,10 +85,9 @@ type Point2D {
 
 </CodeGrid>
 
-
 When you need to distinguish between a field being set to `null` versus being
 completely absent (common in update operations), you can use `strawberry.Maybe`.
-See the [Maybe documentation](/docs/types/maybe) for comprehensive examples and usage
+See the [Maybe documentation](./maybe.md) for comprehensive examples and usage
 patterns.
 
 ## API
@@ -117,7 +112,6 @@ To define a one of input type you can use the `one_of` flag on the
 
 <CodeGrid>
 
-
 ```python
 import strawberry
 
@@ -137,16 +131,13 @@ input SearchBy @oneOf {
 
 </CodeGrid>
 
-
 <Note>
-
 
 OneOf inputs use `strawberry.Maybe` to distinguish between fields that are
 explicitly not provided versus those that might be set to null. See the
-[Maybe documentation](/docs/types/maybe) for more details on this usage pattern.
+[Maybe documentation](./maybe.md) for more details on this usage pattern.
 
 </Note>
-
 
 ## Deprecating fields
 
@@ -154,16 +145,13 @@ Fields can be deprecated using the argument `deprecation_reason`.
 
 <Note>
 
-
 This does not prevent the field from being used, it's only for documentation.
 See:
 [GraphQL field deprecation](https://spec.graphql.org/June2018/#sec-Field-Deprecation).
 
 </Note>
 
-
 <CodeGrid>
-
 
 ```python
 import strawberry

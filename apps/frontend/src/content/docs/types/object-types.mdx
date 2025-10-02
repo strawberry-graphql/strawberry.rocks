@@ -2,7 +2,6 @@
 title: Object types
 ---
 
-# Object types
 
 Object types are the fundamentals of any GraphQL schema, they are used to define
 the kind of objects that exist in a schema. Object types are created by defining
@@ -28,7 +27,7 @@ schema (also referred as root types).
 - `Subscription` is the entry point for all the subscriptions.
 
 For a walk-through on how to define schemas, read the
-[schema basics](/docs/general/schema-basics).
+[schema basics](../general/schema-basics.md).
 
 ## Defining object types
 
@@ -36,7 +35,6 @@ In Strawberry, you can define object types by using the `@strawberry.type`
 decorator, like this:
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -57,11 +55,9 @@ type Character {
 
 </CodeGrid>
 
-
 You can also refer to other types, like this:
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -92,7 +88,6 @@ type Book {
 ```
 
 </CodeGrid>
-
 
 ## API
 

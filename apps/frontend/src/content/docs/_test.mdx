@@ -3,7 +3,10 @@ title: Test doc page
 toc: true
 ---
 
-# This is a test doc page
+import Note from '@/components/Pages/Callout/Note.astro';
+import Tip from '@/components/Pages/Callout/Tip.astro';
+import Warning from '@/components/Pages/Callout/Warning.astro';
+
 
 Some examples of things you can do in docs.
 
@@ -59,7 +62,6 @@ the GraphQL schema against the Python definition):
 
 <CodeGrid>
 
-
 ```python
 import strawberry
 
@@ -79,7 +81,6 @@ type Query {
 
 </CodeGrid>
 
-
 or when showing the request and response to a query:
 
 ```graphql+response
@@ -98,33 +99,25 @@ or when showing the request and response to a query:
 
 <Tip>
 
-
 This is a tip. Useful information is contained here.
 
 </Tip>
 
-
 <Note>
-
 
 This is a note. Something that you should know about.
 
 </Note>
 
-
 <Warning>
-
 
 This is a warning. Something that you should be careful about.
 
 </Warning>
 
-
 ## Blockquote
 
 > This is a quote
-> 
-
 
 ```mermaid
 sequenceDiagram

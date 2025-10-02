@@ -2,7 +2,8 @@
 title: Channels
 ---
 
-# Channels
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 Strawberry provides support for [Channels](https://channels.readthedocs.io/)
 with
@@ -17,7 +18,7 @@ the most common use case will be to run a normal Django project with GraphQL
 subscriptions support, typically taking advantage of the Channel Layers
 functionality which is exposed through the Strawberry integration.
 
-***
+---
 
 ## Getting Started
 
@@ -50,11 +51,11 @@ required dependencies by running:
 pip install 'strawberry-graphql[channels]'
 ```
 
-***
+---
 
 ## Tutorial
 
-*The following example will pick up where the Channels tutorials left off.*
+_The following example will pick up where the Channels tutorials left off._
 
 By the end of this tutorial, You will have a graphql chat subscription that will
 be able to talk with the channels chat consumer from the tutorial.
@@ -102,7 +103,7 @@ pattern, as we will see below.
 
 ### The chat subscription
 
-Now we will create the chat [subscription](/docs/general/subscriptions).
+Now we will create the chat [subscription](../general/subscriptions.md).
 
 ```python
 # mysite/gqlchat/subscription.py
@@ -154,12 +155,11 @@ class Subscription:
 ```
 
 Explanation: `Info.context["ws"]` or `Info.context["request"]` is a pointer to
-the [`ChannelsConsumer`]() instance. Here we have first sent a
+the [`ChannelsConsumer`](#channelsconsumer) instance. Here we have first sent a
 message to all the channel_layer groups (specified in the subscription argument
 `rooms`) that we have joined the chat.
 
 <Note>
-
 
 The `ChannelsConsumer` instance is shared between all subscriptions created in a
 single websocket connection. The `ws.listen_to_channel` context manager will
@@ -175,16 +175,13 @@ messages for the chat rooms requested in that subscription.
 
 </Note>
 
-
 <Note>
-
 
 We do not need to call `await channel_layer.group_add(room, ws.channel_name)` if
 we don't want to send an initial message while instantiating the subscription.
 It is handled by `ws.listen_to_channel`.
 
 </Note>
-
 
 ### Chat message mutation
 
@@ -222,7 +219,7 @@ class Mutation:
 
 All we did so far is useless without creating an asgi consumer for our schema.
 The easiest way to do that is to use the
-[`GraphQLProtocolTypeRouter`]() which will wrap your
+[`GraphQLProtocolTypeRouter`](#graphqlprotocoltyperouter) which will wrap your
 Django application, and route **HTTP and websockets** for `"/graphql"` to
 Strawberry, while sending all other requests to Django. You'll need to modify
 the `myproject.asgi.py` file from the Channels instructions to look something
@@ -311,7 +308,7 @@ Strawberry.
 
 ### Running our example
 
-First run your asgi application *(The ProtocolTypeRouter)* using your asgi
+First run your asgi application _(The ProtocolTypeRouter)_ using your asgi
 server. If you are coming from the channels tutorial, there is no difference.
 Then open three different tabs on your browser and go to the following URLs:
 
@@ -369,7 +366,7 @@ Look here for some more complete examples:
    [Strawberry Examples repo](https://github.com/strawberry-graphql/examples)
    contains a basic example app demonstrating subscriptions with Channels.
 
-***
+---
 
 ### Confirming GraphQL Subscriptions
 
@@ -411,8 +408,8 @@ after entering the `listen_to_channel` context manger.
 ## Testing
 
 We provide a minimal application communicator (`GraphQLWebsocketCommunicator`)
-for subscribing. Here is an example based on the tutorial above: *Make sure you
-have pytest-async installed*
+for subscribing. Here is an example based on the tutorial above: _Make sure you
+have pytest-async installed_
 
 ```python
 from channels.testing import WebsocketCommunicator
@@ -457,12 +454,10 @@ In order to test a real server connection we can use python
 
 <Note>
 
-
 This example is based on the extended `ChannelsLiveServerTestCase` class from
 channels tutorial part 4. **You cannot run this test with a pytest session.**
 
 </Note>
-
 
 Add this test in your `ChannelsLiveServerTestCase` extended class:
 
@@ -496,7 +491,7 @@ def test_send_message_via_channels_chat_joinChatRooms_recieves(self):
             self._close_all_new_windows()
 ```
 
-***
+---
 
 The HTTP and WebSockets protocol are handled by different base classes. HTTP
 uses `GraphQLHTTPConsumer` and WebSockets uses `GraphQLWSConsumer`. Both of them
@@ -729,7 +724,7 @@ class GraphQLWSConsumer(BaseGraphQLWSConsumer):
 You can import and use the extended `GraphQLHTTPConsumer` and
 `GraphQLWSConsumer` classes in your `myproject.asgi.py` file as shown before.
 
-***
+---
 
 ## API
 

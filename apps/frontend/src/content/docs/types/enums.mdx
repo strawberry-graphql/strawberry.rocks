@@ -2,7 +2,8 @@
 title: Enums
 ---
 
-# Enums
+import Note from '@/components/Pages/Callout/Note.astro';
+
 
 Enums are a special kind of type that is restricted to a particular set of
 values.
@@ -44,7 +45,6 @@ class IceCreamFlavour(Enum):
 
 <Note>
 
-
 In some cases you already have an enum defined elsewhere in your code. You can
 safely use it in your schema and strawberry will generate a default graphql
 implementation of it.
@@ -53,7 +53,6 @@ The only drawback is that it is not currently possible to configure it
 (documentation / renaming or using `strawberry.enum_value` on it).
 
 </Note>
-
 
 Let's see how we can use Enums in our schema.
 
@@ -136,12 +135,10 @@ Here is result of executed query:
 
 <Note>
 
-
 GraphQL types are not a map of name: value, like in python enums. Strawberry
 uses the name of the members of the enum to create the GraphQL type.
 
 </Note>
-
 
 You can also deprecate enum value. To do so you need more verbose syntax using
 `strawberry.enum_value` and `deprecation_reason`. You can mix and match string

@@ -2,14 +2,12 @@
 title: Accessing parent's data in resolvers
 ---
 
-# Accessing parent's data in resolvers
 
 It is quite common to want to be able to access the data from the field's parent
 in a resolver. For example let's say that we want to define a `fullName` field
 on our `User`. This would be our code:
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -31,7 +29,6 @@ type User {
 ```
 
 </CodeGrid>
-
 
 In this case `full_name` will need to access the `first_name` and `last_name`
 fields, and depending on whether we define the resolver as a function or as a
@@ -68,8 +65,6 @@ this case it would be the `User`.
 
 > **Note:** `strawberry.Parent` accepts a type argument, which will then be used
 > by your type checker to check your code!
-> 
-
 
 ### Using root
 

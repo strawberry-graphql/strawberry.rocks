@@ -1,9 +1,8 @@
 ---
-experimental: true
 title: Pydantic support
+experimental: true
 ---
 
-# Pydantic support
 
 Strawberry comes with support for
 [Pydantic](https://pydantic-docs.helpmanual.io/). This allows for the creation
@@ -147,7 +146,6 @@ Pydantic errors in GraphQL. Let's see an example:
 
 <CodeGrid>
 
-
 ```python
 from pydantic import BaseModel, constr
 import strawberry
@@ -177,7 +175,6 @@ type UserError {
 
 </CodeGrid>
 
-
 where each field will hold a list of error messages
 
 ## Extending types
@@ -186,7 +183,6 @@ You can use the usual Strawberry syntax to add additional new fields to the
 GraphQL type that aren't defined in the pydantic model
 
 <CodeGrid>
-
 
 ```python
 import strawberry
@@ -216,7 +212,6 @@ type User {
 ```
 
 </CodeGrid>
-
 
 ## Converting types
 
@@ -318,7 +313,6 @@ always working on the pydantic type such that the validation is enforced.
 
 <CodeGrid>
 
-
 ```python
 from pydantic import BaseModel, conlist
 import strawberry
@@ -357,7 +351,6 @@ type Query {
 ```
 
 </CodeGrid>
-
 
 ## Classes with `__get_validators__`
 

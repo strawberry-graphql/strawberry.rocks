@@ -2,10 +2,11 @@
 title: Pagination - Implementing the Relay Connection Specification
 ---
 
-# Implementing the Relay Connection Specification
+import Tip from '@/components/Pages/Callout/Tip.astro';
+
 
 We naively implemented cursor based pagination in the
-[previous tutorial](/docs/guides/pagination/cursor-based). To ensure a consistent implementation of
+[previous tutorial](./cursor-based.md). To ensure a consistent implementation of
 this pattern, the Relay project has a formal
 [specification](https://relay.dev/graphql/connections.htm) you can follow for
 building GraphQL APIs which use a cursor based connection pattern.
@@ -14,7 +15,6 @@ By the end of this tutorial, we should be able to return a connection of users
 when requested.
 
 <CodeGrid>
-
 
 ```graphql
 query getUsers {
@@ -74,7 +74,6 @@ query getUsers {
 ```
 
 </CodeGrid>
-
 
 ## Connections
 
@@ -299,14 +298,12 @@ both criteria.
 
 <Tip>
 
-
 While working with Connections, it is a convention to base64-encode cursors. It
 provides a unified interface to the end user. API clients need not bother about
 the type of data to paginate, and can pass unique IDs during pagination. It also
 makes the cursors opaque.
 
 </Tip>
-
 
 Let us define a couple of helper functions to encode and decode cursors as
 follows:

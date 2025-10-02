@@ -1,9 +1,8 @@
 ---
-faq: true
 title: FAQ
+faq: true
 ---
 
-# Frequently Asked Questions
 
 ## How can I hide a field from GraphQL?
 
@@ -65,7 +64,7 @@ class Post:
     author: Annotated["User", strawberry.lazy(".users")]
 ```
 
-For more information, see the [Lazy types](/docs/types/lazy) documentation.
+For more information, see the [Lazy types](./types/lazy.md) documentation.
 
 ## Can I reuse Object Types with Input Objects?
 
@@ -78,16 +77,14 @@ there is a difference between Objects Types and Inputs types:
 > or contain references to interfaces and unions, neither of which is
 > appropriate for use as an input argument. For this reason, input objects have
 > a separate type in the system.
-> 
-
 
 And this is also true for Input types' fields: you can only use Strawberry Input
 types or scalar.
 
-See our [Input Types](/docs/types/input-types) docs.
+See our [Input Types](./types/input-types.md) docs.
 
 ## Can I use asyncio with Strawberry and Django?
 
 Yes, Strawberry provides an async view that can be used with Django, you can
-Check [Async Django](/docs/integrations/django#async-django) for more
+Check [Async Django](./integrations/django.md#async-django) for more
 information.
