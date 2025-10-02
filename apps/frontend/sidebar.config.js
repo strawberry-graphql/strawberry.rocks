@@ -3,47 +3,43 @@
 
 export const sidebar = [
   {
-    "label": "Getting started",
-    "link": "index"
-  },
-  {
     "label": "General",
     "items": [
       {
         "label": "Schema basics",
-        "link": "general/schema-basics"
+        "link": "/docs/general/schema-basics"
       },
       {
         "label": "Queries",
-        "link": "general/queries"
+        "link": "/docs/general/queries"
       },
       {
         "label": "Mutations",
-        "link": "general/mutations"
+        "link": "/docs/general/mutations"
       },
       {
         "label": "Subscriptions",
-        "link": "general/subscriptions"
+        "link": "/docs/general/subscriptions"
       },
       {
         "label": "Multipart Subscriptions",
-        "link": "general/multipart-subscriptions"
+        "link": "/docs/general/multipart-subscriptions"
       },
       {
         "label": "Errors",
-        "link": "errors"
+        "link": "/docs/errors"
       },
       {
         "label": "Upgrading Strawberry",
-        "link": "general/upgrades"
+        "link": "/docs/general/upgrades"
       },
       {
         "label": "Breaking changes",
-        "link": "breaking-changes"
+        "link": "/docs/breaking-changes"
       },
       {
         "label": "FAQ",
-        "link": "faq"
+        "link": "/docs/faq"
       }
     ]
   },
@@ -52,67 +48,67 @@ export const sidebar = [
     "items": [
       {
         "label": "Schema",
-        "link": "types/schema"
+        "link": "/docs/types/schema"
       },
       {
         "label": "Operation Directives",
-        "link": "types/operation-directives"
+        "link": "/docs/types/operation-directives"
       },
       {
         "label": "Schema Directives",
-        "link": "types/schema-directives"
+        "link": "/docs/types/schema-directives"
       },
       {
         "label": "Schema configurations",
-        "link": "types/schema-configurations"
+        "link": "/docs/types/schema-configurations"
       },
       {
         "label": "Scalars",
-        "link": "types/scalars"
+        "link": "/docs/types/scalars"
       },
       {
         "label": "Object types",
-        "link": "types/object-types"
+        "link": "/docs/types/object-types"
       },
       {
         "label": "Interfaces",
-        "link": "types/interfaces"
+        "link": "/docs/types/interfaces"
       },
       {
         "label": "Input types",
-        "link": "types/input-types"
+        "link": "/docs/types/input-types"
       },
       {
         "label": "Enums",
-        "link": "types/enums"
+        "link": "/docs/types/enums"
       },
       {
         "label": "Generics",
-        "link": "types/generics"
+        "link": "/docs/types/generics"
       },
       {
         "label": "Resolvers",
-        "link": "types/resolvers"
+        "link": "/docs/types/resolvers"
       },
       {
         "label": "Union types",
-        "link": "types/union"
+        "link": "/docs/types/union"
       },
       {
         "label": "Lazy types",
-        "link": "types/lazy"
+        "link": "/docs/types/lazy"
       },
       {
         "label": "Exceptions",
-        "link": "types/exceptions"
+        "link": "/docs/types/exceptions"
       },
       {
         "label": "Private/External Fields",
-        "link": "types/private"
+        "link": "/docs/types/private"
       },
       {
         "label": "Defer and Stream",
-        "link": "types/defer-and-stream"
+        "link": "/docs/types/defer-and-stream"
       }
     ]
   },
@@ -121,11 +117,11 @@ export const sidebar = [
     "items": [
       {
         "label": "Schema codegen",
-        "link": "codegen/schema-codegen"
+        "link": "/docs/codegen/schema-codegen"
       },
       {
         "label": "Query codegen",
-        "link": "codegen/query-codegen"
+        "link": "/docs/codegen/query-codegen"
       }
     ]
   },
@@ -134,80 +130,80 @@ export const sidebar = [
     "items": [
       {
         "label": "Accessing parent data",
-        "link": "guides/accessing-parent-data"
+        "link": "/docs/guides/accessing-parent-data"
       },
       {
         "label": "Authentication",
-        "link": "guides/authentication"
+        "link": "/docs/guides/authentication"
       },
       {
         "label": "DataLoaders",
-        "link": "guides/dataloaders"
+        "link": "/docs/guides/dataloaders"
       },
       {
         "label": "Dealing with errors",
-        "link": "guides/errors"
+        "link": "/docs/guides/errors"
       },
       {
         "label": "Federation",
-        "link": "guides/federation"
+        "link": "/docs/guides/federation"
       },
       {
         "label": "Federation V1",
-        "link": "guides/federation-v1"
+        "link": "/docs/guides/federation-v1"
       },
       {
         "label": "Relay",
-        "link": "guides/relay"
+        "link": "/docs/guides/relay"
       },
       {
         "label": "File upload",
-        "link": "guides/file-upload"
+        "link": "/docs/guides/file-upload"
       },
       {
         "label": "Pagination",
         "items": [
           {
             "label": "Pagination",
-            "link": "guides/pagination/overview"
+            "link": "/docs/guides/pagination/overview"
           },
           {
             "label": "Implementing Offset Pagination",
-            "link": "guides/pagination/offset-based"
+            "link": "/docs/guides/pagination/offset-based"
           },
           {
             "label": "Implementing Cursor Pagination",
-            "link": "guides/pagination/cursor-based"
+            "link": "/docs/guides/pagination/cursor-based"
           },
           {
             "label": "Implementing the Connection specification",
-            "link": "guides/pagination/connections"
+            "link": "/docs/guides/pagination/connections"
           }
         ]
       },
       {
         "label": "Permissions",
-        "link": "guides/permissions"
+        "link": "/docs/guides/permissions"
       },
       {
         "label": "Built-in server",
-        "link": "guides/server"
+        "link": "/docs/guides/server"
       },
       {
         "label": "Tools",
-        "link": "guides/tools"
+        "link": "/docs/guides/tools"
       },
       {
         "label": "Schema export",
-        "link": "guides/schema-export"
+        "link": "/docs/guides/schema-export"
       },
       {
         "label": "Convert to dictionary",
-        "link": "guides/convert-to-dictionary"
+        "link": "/docs/guides/convert-to-dictionary"
       },
       {
         "label": "Query Batching",
-        "link": "guides/query-batching"
+        "link": "/docs/guides/query-batching"
       }
     ]
   },
@@ -216,15 +212,15 @@ export const sidebar = [
     "items": [
       {
         "label": "Introduction",
-        "link": "extensions"
+        "link": "/docs/extensions"
       },
       {
         "label": "Schema extensions",
-        "link": "guides/custom-extensions"
+        "link": "/docs/guides/custom-extensions"
       },
       {
         "label": "Field extensions",
-        "link": "guides/field-extensions"
+        "link": "/docs/guides/field-extensions"
       }
     ]
   },
@@ -233,11 +229,11 @@ export const sidebar = [
     "items": [
       {
         "label": "Mypy",
-        "link": "editors/mypy"
+        "link": "/docs/editors/mypy"
       },
       {
         "label": "Visual Studio Code",
-        "link": "editors/vscode"
+        "link": "/docs/editors/vscode"
       }
     ]
   },
@@ -246,11 +242,11 @@ export const sidebar = [
     "items": [
       {
         "label": "Async",
-        "link": "concepts/async"
+        "link": "/docs/concepts/async"
       },
       {
         "label": "Type hints",
-        "link": "concepts/typings"
+        "link": "/docs/concepts/typings"
       }
     ]
   },
@@ -259,55 +255,55 @@ export const sidebar = [
     "items": [
       {
         "label": "AIOHTTP",
-        "link": "integrations/aiohttp"
+        "link": "/docs/integrations/aiohttp"
       },
       {
         "label": "ASGI",
-        "link": "integrations/asgi"
+        "link": "/docs/integrations/asgi"
       },
       {
         "label": "Django",
-        "link": "integrations/django"
+        "link": "/docs/integrations/django"
       },
       {
         "label": "Channels",
-        "link": "integrations/channels"
+        "link": "/docs/integrations/channels"
       },
       {
         "label": "FastAPI",
-        "link": "integrations/fastapi"
+        "link": "/docs/integrations/fastapi"
       },
       {
         "label": "Flask",
-        "link": "integrations/flask"
+        "link": "/docs/integrations/flask"
       },
       {
         "label": "Quart",
-        "link": "integrations/quart"
+        "link": "/docs/integrations/quart"
       },
       {
         "label": "Sanic",
-        "link": "integrations/sanic"
+        "link": "/docs/integrations/sanic"
       },
       {
         "label": "Chalice",
-        "link": "integrations/chalice"
+        "link": "/docs/integrations/chalice"
       },
       {
         "label": "Starlette",
-        "link": "integrations/starlette"
+        "link": "/docs/integrations/starlette"
       },
       {
         "label": "Litestar",
-        "link": "integrations/litestar"
+        "link": "/docs/integrations/litestar"
       },
       {
         "label": "Creating an integration",
-        "link": "integrations/creating-an-integration"
+        "link": "/docs/integrations/creating-an-integration"
       },
       {
         "label": "Pydantic **experimental**",
-        "link": "integrations/pydantic"
+        "link": "/docs/integrations/pydantic"
       }
     ]
   },
@@ -316,19 +312,19 @@ export const sidebar = [
     "items": [
       {
         "label": "Introduction",
-        "link": "federation/introduction"
+        "link": "/docs/federation/introduction"
       },
       {
         "label": "Entities",
-        "link": "federation/entities"
+        "link": "/docs/federation/entities"
       },
       {
         "label": "Entity interfaces",
-        "link": "federation/entity-interfaces"
+        "link": "/docs/federation/entity-interfaces"
       },
       {
         "label": "Custom directives",
-        "link": "federation/custom_directives"
+        "link": "/docs/federation/custom_directives"
       }
     ]
   },
@@ -337,15 +333,15 @@ export const sidebar = [
     "items": [
       {
         "label": "Deployment",
-        "link": "operations/deployment"
+        "link": "/docs/operations/deployment"
       },
       {
         "label": "Testing",
-        "link": "operations/testing"
+        "link": "/docs/operations/testing"
       },
       {
         "label": "Tracing",
-        "link": "operations/tracing"
+        "link": "/docs/operations/tracing"
       }
     ]
   }

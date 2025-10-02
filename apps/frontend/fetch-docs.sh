@@ -11,7 +11,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 REPO_URL="https://github.com/strawberry-graphql/strawberry"
 DOCS_PATH="docs"
-TARGET_DIR="$SCRIPT_DIR/src/content/docs"
+TARGET_DIR="$SCRIPT_DIR/src/content/docs/docs"
 TEMP_DIR=$(mktemp -d)
 
 echo "Fetching latest docs from $REPO_URL..."
@@ -57,6 +57,13 @@ done
 echo "Removing HTML comments..."
 find "$TARGET_DIR" -name "*.mdx" -type f -exec sed -i 's/<!--.*-->//g' {} +
 
+# Fix markdown links - remove .md extensions and handle /index
+echo "Fixing markdown links..."
+find "$TARGET_DIR" -name "*.mdx" -type f -exec sed -i 's/\.md)/)/g' {} +
+find "$TARGET_DIR" -name "*.mdx" -type f -exec sed -i 's/(\.\/index)/(./g' {} +
+find "$TARGET_DIR" -name "*.mdx" -type f -exec sed -i 's/(\.\.\/index)/(..\//g' {} +
+find "$TARGET_DIR" -name "*.mdx" -type f -exec sed -i 's/(\.\.\/index#)/(..#/g' {} +
+
 # Remove first heading and add component imports
 echo "Processing MDX files..."
 find "$TARGET_DIR" -name "*.mdx" -type f | while read -r file; do
@@ -75,6 +82,14 @@ find "$TARGET_DIR" -name "*.mdx" -type f | while read -r file; do
     if grep -q "<Warning" "$file"; then
         needs_imports=true
         imports="${imports}import Warning from '@/components/Pages/Callout/Warning.astro';\n"
+    fi
+    if grep -q "<CodeGrid" "$file"; then
+        needs_imports=true
+        imports="${imports}import CodeGrid from '@/components/CodeGrid.astro';\n"
+    fi
+    if grep -q "<ExtensionsList" "$file"; then
+        needs_imports=true
+        imports="${imports}import ExtensionsList from '@/components/ExtensionsList.astro';\n"
     fi
 
     # Process file: add imports and remove first heading

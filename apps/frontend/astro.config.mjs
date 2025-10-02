@@ -7,15 +7,19 @@ import { sidebar } from "./sidebar.config.js";
 export default defineConfig({
   integrations: [
     starlight({
-      title: "My Docs",
+      title: "Strawberry GraphQL",
       social: [
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/withastro/starlight",
+          href: "https://github.com/strawberry-graphql/strawberry",
         },
       ],
       sidebar,
+      components: {
+        // Override Starlight components here
+        // Example: Header: './src/components/overrides/Header.astro',
+      },
     }),
   ],
   vite: {

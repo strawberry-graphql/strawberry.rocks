@@ -1,0 +1,47 @@
+---
+import ExtensionCard from "./ExtensionCard.astro";
+import { fetchExtensions } from "../utils/fetch-extensions";
+
+const extensions = await fetchExtensions();
+---
+
+<div class="extensions-list">
+  <ul>
+    {
+      extensions.map((extension) => (
+        <li>
+          <ExtensionCard
+            description={extension.summary}
+            href={extension.href}
+            name={extension.title}
+            tags={extension.tags}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  div {
+    container-type: inline-size;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    @container (min-width: 700px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    li {
+      min-width: 0;
+
+      > a {
+        height: 100%;
+      }
+    }
+  }
+</style>

@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const readmePath = path.join(__dirname, 'src/content/docs/README.mdx');
+const readmePath = path.join(__dirname, 'src/content/docs/docs/README.mdx');
 const content = fs.readFileSync(readmePath, 'utf-8');
 
 // Parse the README to extract sidebar structure
@@ -28,13 +28,28 @@ for (const line of lines) {
     continue;
   }
 
+  // Helper function to normalize link paths
+  const normalizeLink = (link) => {
+    let normalized = link
+      .replace(/\.mdx?$/, '')  // Remove .md or .mdx extension
+      .replace(/^\.\//, '')    // Remove leading ./
+      .replace(/\/index$/, ''); // Remove /index
+
+    // Handle . (current directory), index, or empty
+    if (normalized === '.' || normalized === 'index' || normalized === '') {
+      return '/docs';
+    }
+
+    return '/docs/' + normalized;
+  };
+
   // Top-level link without a group
   const topLevelLinkMatch = line.match(/^- \[(.+?)\]\((.+?)\)$/);
   if (topLevelLinkMatch && !currentGroup) {
     const [, label, link] = topLevelLinkMatch;
     sidebar.push({
       label,
-      link: link.replace(/\.mdx?$/, '').replace(/^\.\//, '')
+      link: normalizeLink(link)
     });
     continue;
   }
@@ -45,7 +60,7 @@ for (const line of lines) {
     const [, label, link] = linkMatch;
     currentGroup.items.push({
       label,
-      link: link.replace(/\.mdx?$/, '').replace(/^\.\//, '')
+      link: normalizeLink(link)
     });
     continue;
   }
@@ -70,7 +85,7 @@ for (const line of lines) {
 
     currentGroup.items[currentGroup.items.length - 1].items.push({
       label,
-      link: link.replace(/\.mdx?$/, '').replace(/^\.\//, '')
+      link: normalizeLink(link)
     });
   }
 }
