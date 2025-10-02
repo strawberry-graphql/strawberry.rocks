@@ -19,6 +19,7 @@
             nodePackages.pnpm
             python312
             python312Packages.pipx
+            just
           ];
 
           shellHook = ''
@@ -26,6 +27,7 @@
             echo "Node.js version: $(node --version)"
             echo "pnpm version: $(pnpm --version)"
             echo "Python version: $(python --version)"
+            echo "just version: $(just --version)"
           '';
         };
       }

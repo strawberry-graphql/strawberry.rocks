@@ -103,4 +103,9 @@ done
 # Cleanup
 rm -rf "$TEMP_DIR"
 
+# Regenerate sidebar from README.mdx
+echo "Regenerating sidebar configuration..."
+cd "$SCRIPT_DIR"
+node generate-sidebar.js
+
 echo "Done! Docs fetched and renamed to .mdx"

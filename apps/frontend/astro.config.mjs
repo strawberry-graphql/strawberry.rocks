@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import { sidebar } from "./sidebar.config.js";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +15,7 @@ export default defineConfig({
           href: "https://github.com/withastro/starlight",
         },
       ],
-      sidebar: [],
+      sidebar,
     }),
   ],
   vite: {

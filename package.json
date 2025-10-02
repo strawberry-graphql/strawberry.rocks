@@ -1,6 +1,10 @@
 {
   "name": "strawberry-monorepo",
   "private": true,
+  "scripts": {
+    "docs:fetch": "cd apps/frontend && ./fetch-docs.sh",
+    "docs:sidebar": "cd apps/frontend && node generate-sidebar.js"
+  },
   "devDependencies": {
     "typescript": "5.4.3"
   },
