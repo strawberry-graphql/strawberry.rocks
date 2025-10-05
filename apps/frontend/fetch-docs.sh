@@ -134,3 +134,8 @@ process_repo \
     "$SCRIPT_DIR/src/content/docs/django"
 
 echo "Done! Docs fetched and renamed to .mdx"
+
+# Generate sidebar configuration from README files
+echo "Generating sidebar configuration..."
+cd "$SCRIPT_DIR"
+node generate-sidebar.mjs

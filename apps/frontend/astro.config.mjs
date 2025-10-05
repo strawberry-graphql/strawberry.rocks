@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightUtils from "@lorenzo_lewis/starlight-utils";
+import { strawberrySidebar, djangoSidebar } from "./sidebar.generated.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,11 +26,11 @@ export default defineConfig({
       sidebar: [
         {
           label: "🍓 Strawberry",
-          autogenerate: { directory: "strawberry" },
+          items: strawberrySidebar,
         },
         {
           label: "🦄 Strawberry Django",
-          autogenerate: { directory: "django" },
+          items: djangoSidebar,
         },
       ],
       components: {
