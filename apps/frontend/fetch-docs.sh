@@ -125,17 +125,12 @@ process_repo() {
 process_repo \
     "https://github.com/strawberry-graphql/strawberry" \
     "docs" \
-    "$SCRIPT_DIR/src/content/docs/docs"
+    "$SCRIPT_DIR/src/content/docs/strawberry"
 
 # Process strawberry-django docs
 process_repo \
     "https://github.com/strawberry-graphql/strawberry-django" \
     "docs" \
-    "$SCRIPT_DIR/src/content/docs/docs/django"
-
-# Regenerate sidebar from README.mdx
-echo "Regenerating sidebar configuration..."
-cd "$SCRIPT_DIR"
-node generate-sidebar.js
+    "$SCRIPT_DIR/src/content/docs/django"
 
 echo "Done! Docs fetched and renamed to .mdx"

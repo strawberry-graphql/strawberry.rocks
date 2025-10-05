@@ -1,11 +1,19 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightUtils from "@lorenzo_lewis/starlight-utils";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     starlight({
+      plugins: [
+        starlightUtils({
+          multiSidebar: {
+            switcherStyle: "dropdown",
+          },
+        }),
+      ],
       title: "Strawberry GraphQL",
       social: [
         {
@@ -16,49 +24,16 @@ export default defineConfig({
       ],
       sidebar: [
         {
-          label: "General",
-          autogenerate: { directory: "docs/general" },
+          label: "Strawberry",
+          autogenerate: { directory: "strawberry" },
         },
         {
-          label: "Types",
-          autogenerate: { directory: "docs/types" },
-        },
-        {
-          label: "Codegen",
-          autogenerate: { directory: "docs/codegen" },
-        },
-        {
-          label: "Guides",
-          autogenerate: { directory: "docs/guides" },
-        },
-        {
-          label: "Extensions",
-          autogenerate: { directory: "docs/extensions" },
-        },
-        {
-          label: "Editor integration",
-          autogenerate: { directory: "docs/editors" },
-        },
-        {
-          label: "Concepts",
-          autogenerate: { directory: "docs/concepts" },
-        },
-        {
-          label: "Integrations",
-          autogenerate: { directory: "docs/integrations" },
-        },
-        {
-          label: "Federation",
-          autogenerate: { directory: "docs/federation" },
-        },
-        {
-          label: "Operations",
-          autogenerate: { directory: "docs/operations" },
+          label: "Strawberry Django",
+          autogenerate: { directory: "django" },
         },
       ],
       components: {
-        // Override Starlight components here
-        // Example: Header: './src/components/overrides/Header.astro',
+        Header: './src/components/Header.astro',
       },
     }),
   ],
