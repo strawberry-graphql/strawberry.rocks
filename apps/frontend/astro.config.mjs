@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import { sidebar } from "./sidebar.config.js";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +14,48 @@ export default defineConfig({
           href: "https://github.com/strawberry-graphql/strawberry",
         },
       ],
-      sidebar,
+      sidebar: [
+        {
+          label: "General",
+          autogenerate: { directory: "docs/general" },
+        },
+        {
+          label: "Types",
+          autogenerate: { directory: "docs/types" },
+        },
+        {
+          label: "Codegen",
+          autogenerate: { directory: "docs/codegen" },
+        },
+        {
+          label: "Guides",
+          autogenerate: { directory: "docs/guides" },
+        },
+        {
+          label: "Extensions",
+          autogenerate: { directory: "docs/extensions" },
+        },
+        {
+          label: "Editor integration",
+          autogenerate: { directory: "docs/editors" },
+        },
+        {
+          label: "Concepts",
+          autogenerate: { directory: "docs/concepts" },
+        },
+        {
+          label: "Integrations",
+          autogenerate: { directory: "docs/integrations" },
+        },
+        {
+          label: "Federation",
+          autogenerate: { directory: "docs/federation" },
+        },
+        {
+          label: "Operations",
+          autogenerate: { directory: "docs/operations" },
+        },
+      ],
       components: {
         // Override Starlight components here
         // Example: Header: './src/components/overrides/Header.astro',
