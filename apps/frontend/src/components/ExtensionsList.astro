@@ -1,8 +1,98 @@
 ---
 import ExtensionCard from "./ExtensionCard.astro";
-import { fetchExtensions } from "../utils/fetch-extensions";
 
-const extensions = await fetchExtensions();
+const extensions = [
+  {
+    href: "/docs/strawberry/extensions/apollo-tracing",
+    title: "Apollo Tracing",
+    summary: "Add Apollo tracing to your GraphQL server.",
+    tags: ["tracing"],
+  },
+  {
+    href: "/docs/strawberry/extensions/opentelemetry",
+    title: "OpenTelemetry",
+    summary: "Add OpenTelemetry tracing to your GraphQL server.",
+    tags: ["tracing"],
+  },
+  {
+    href: "/docs/strawberry/extensions/sentry-tracing",
+    title: "Sentry Tracing",
+    summary: "Add Sentry tracing to your GraphQL server.",
+    tags: ["tracing"],
+  },
+  {
+    href: "/docs/strawberry/extensions/datadog",
+    title: "Datadog",
+    summary: "Add Datadog tracing to your GraphQL server.",
+    tags: ["tracing"],
+  },
+  {
+    href: "/docs/strawberry/extensions/pyinstrument",
+    title: "Pyinstrument",
+    summary: "Profile your GraphQL queries with Pyinstrument.",
+    tags: ["profiling"],
+  },
+  {
+    href: "/docs/strawberry/extensions/parser-cache",
+    title: "Parser Cache",
+    summary: "Cache parsed GraphQL queries to improve performance.",
+    tags: ["performance"],
+  },
+  {
+    href: "/docs/strawberry/extensions/validation-cache",
+    title: "Validation Cache",
+    summary: "Cache GraphQL query validation to improve performance.",
+    tags: ["performance"],
+  },
+  {
+    href: "/docs/strawberry/extensions/query-depth-limiter",
+    title: "Query Depth Limiter",
+    summary: "Limit the depth of GraphQL queries.",
+    tags: ["security"],
+  },
+  {
+    href: "/docs/strawberry/extensions/max-tokens-limiter",
+    title: "Max Tokens Limiter",
+    summary: "Limit the number of tokens in GraphQL queries.",
+    tags: ["security"],
+  },
+  {
+    href: "/docs/strawberry/extensions/max-aliases-limiter",
+    title: "Max Aliases Limiter",
+    summary: "Limit the number of aliases in GraphQL queries.",
+    tags: ["security"],
+  },
+  {
+    href: "/docs/strawberry/extensions/disable-validation",
+    title: "Disable Validation",
+    summary: "Disable GraphQL query validation.",
+    tags: ["validation"],
+  },
+  {
+    href: "/docs/strawberry/extensions/disable-introspection",
+    title: "Disable Introspection",
+    summary: "Disable GraphQL introspection queries.",
+    tags: ["security"],
+  },
+  {
+    href: "/docs/strawberry/extensions/add-validation-rules",
+    title: "Add Validation Rules",
+    summary: "Add custom validation rules to your GraphQL server.",
+    tags: ["validation"],
+  },
+  {
+    href: "/docs/strawberry/extensions/mask-errors",
+    title: "Mask Errors",
+    summary: "Mask errors in your GraphQL responses.",
+    tags: ["security"],
+  },
+  {
+    href: "/docs/strawberry/extensions/input-mutation",
+    title: "Input Mutation",
+    summary: "Automatically generate input types for mutations.",
+    tags: ["mutation"],
+  },
+];
 ---
 
 <div class="extensions-list">

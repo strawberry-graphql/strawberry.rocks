@@ -1,0 +1,54 @@
+---
+import Tag from "./Tag.astro";
+
+export interface Props {
+  name: string;
+  description: string;
+  tags: string[];
+  href: string;
+}
+
+const { name, description, tags, href } = Astro.props;
+---
+
+<a href={href} class="card">
+  <div>
+    <div>
+      <h4 class="typography-heading-5">
+        {name}
+      </h4>
+      <p class="typography-paragraph-2">{description}</p>
+    </div>
+
+    <ul>
+      {tags.map((tag) => <Tag>{tag}</Tag>)}
+    </ul>
+  </div>
+</a>
+
+<style>
+  a {
+    :global(.dark) & {
+      border-color: var(--color-transparency-light);
+      background: var(--color-blog-card-dark);
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    :hover h4 {
+      color: var(--color-strawberry);
+    }
+  }
+
+  ul {
+    margin-top: 8px;
+
+    > * + * {
+      margin-left: 4px;
+    }
+  }
+</style>

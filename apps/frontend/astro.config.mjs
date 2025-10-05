@@ -24,16 +24,16 @@ export default defineConfig({
       ],
       sidebar: [
         {
-          label: "Strawberry",
+          label: "🍓 Strawberry",
           autogenerate: { directory: "strawberry" },
         },
         {
-          label: "Strawberry Django",
+          label: "🦄 Strawberry Django",
           autogenerate: { directory: "django" },
         },
       ],
       components: {
-        Header: './src/components/Header.astro',
+        // Header: './src/components/Header.astro',
       },
     }),
   ],
