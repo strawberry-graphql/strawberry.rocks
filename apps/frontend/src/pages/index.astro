@@ -1,93 +1,37 @@
 ---
-import { getCollection } from 'astro:content';
-
-const title = 'Strawberry GraphQL';
-const description = 'A GraphQL library for Python that leverages type annotations';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Home/Hero.astro";
+import Features from "../components/Home/Features.astro";
+import Sponsors from "../components/Home/Sponsors.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-  </head>
-  <body>
-    <main>
-      <h1>{title}</h1>
-      <p>{description}</p>
+<Layout title="A modern GraphQL library for Python" blob>
+  <main class="home-layout">
+    <Hero />
 
-      <div class="cta">
-        <a href="/docs">Get Started</a>
-        <a href="https://github.com/strawberry-graphql/strawberry" target="_blank" rel="noopener noreferrer">
-          View on GitHub
-        </a>
-      </div>
-    </main>
+    <Features />
 
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+    <Sponsors />
+  </main>
+</Layout>
 
-      body {
-        font-family: system-ui, -apple-system, sans-serif;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-      }
+<style>
+  main {
+    padding: 80px 0;
+    display: flex;
+    row-gap: 80px;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-      main {
-        text-align: center;
-        max-width: 600px;
-        padding: 2rem;
-      }
+  main :global(h1, h2) {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+    text-wrap: pretty;
 
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      p {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-      }
-
-      .cta {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .cta a {
-        display: inline-block;
-        padding: 0.75rem 2rem;
-        background: white;
-        color: #667eea;
-        text-decoration: none;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        transition: transform 0.2s, box-shadow 0.2s;
-      }
-
-      .cta a:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      }
-
-      .cta a:last-child {
-        background: transparent;
-        border: 2px solid white;
-        color: white;
-      }
-    </style>
-  </body>
-</html>
+    @media (max-width: 820px) {
+      padding: 0 16px;
+    }
+  }
+</style>

@@ -1,0 +1,125 @@
+.typography-display {
+  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 44px;
+  line-height: 1.2;
+
+  @media (min-width: 768px) {
+    font-size: 60px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  font-family: var(--font-display);
+  line-height: 1.25;
+
+  /* https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/ */
+
+  --min-fs: 1;
+  --max-fs: 1.5;
+  --min-vw: 20;
+  --max-vw: 45;
+
+  --min-fs-rem: var(--min-fs) * 1rem;
+  --max-fs-rem: var(--max-fs) * 1rem;
+  --min-vw-rem: var(--min-vw) * 1rem;
+
+  --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) /
+    (var(--max-vw) - var(--min-vw));
+
+  font-size: clamp(
+    var(--min-fs-rem),
+    var(--min-fs-rem) + var(--slope),
+    var(--max-fs-rem)
+  );
+}
+
+h1 {
+  /* 36 px, 48px */
+  --min-fs: 2.25;
+  --max-fs: 3;
+}
+
+h2 {
+  /* 32px, 40px */
+  --min-fs: 2;
+  --max-fs: 2.5;
+}
+
+h3 {
+  /* 28px, 36px */
+  --min-fs: 1.75;
+  --max-fs: 2.25;
+}
+
+h4 {
+  /* 24px, 32px */
+  --min-fs: 1.5;
+  --max-fs: 2;
+}
+
+h5 {
+  /* 20px, 28px */
+  --min-fs: 1.25;
+  --max-fs: 1.75;
+}
+
+h6 {
+  /* 16px, 24px */
+  --min-fs: 1;
+  --max-fs: 1.5;
+}
+
+article p,
+article > :not(.extensions-list) li,
+.typography-paragraph {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+article .mermaid p {
+  font-size: 16px;
+}
+
+.typography-paragraph-2 {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.typography-label {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.typography-label-2 {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.typography-caption {
+  font-family: var(--font-sans);
+  font-size: 14px;
+}
+
+article code,
+.typography-code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  line-height: 1.5;
+}

@@ -1,0 +1,45 @@
+---
+const links = [
+  { name: "docs", url: "/docs" },
+  // { name: "blog", url: "/blog" },
+  { name: "shop 👕", url: "https://shop.strawberry.rocks/" },
+  { name: "playground", url: "https://play.strawberry.rocks" },
+  { name: "benchmarks", url: "https://speed.strawberry.rocks" },
+  { name: "acknowledgements", url: "/acknowledgements" },
+  { name: "code of conduct", url: "/code-of-conduct" },
+];
+---
+
+<nav>
+  <ul>
+    {
+      links.map((link) => (
+        <li>
+          <a class="typography-label" href={link.url}>
+            {link.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  ul {
+    display: grid;
+    column-gap: 60px;
+    row-gap: 16px;
+
+    @media (min-width: 500px) {
+      grid-template-columns: max-content max-content;
+    }
+  }
+
+  a {
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+  }
+</style>

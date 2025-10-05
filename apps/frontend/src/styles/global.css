@@ -1,0 +1,182 @@
+@import url("./reset.css");
+@import url("./fonts.css");
+@import url("./typography.css");
+@import url("./pages.css");
+@import url("./doc-search.css");
+@import url("./markdown-alerts.css");
+
+:root {
+  /* Greyscale */
+  --color-black: #0d0e12;
+  --color-g-900: #1f1f1f;
+  --color-g-800: #28292c;
+  --color-g-700: #515254;
+  --color-g-600: #6f7073;
+  --color-g-500: #8b8b8d;
+  --color-g-400: #c5c5c6;
+  --color-g-300: #dcdcdc;
+  --color-g-200: #e5e5e5;
+  --color-g-100: #e2e2e3;
+  --color-g-50: #f0f1f1;
+  --color-white: #fff;
+
+  /* Accent */
+  --color-strawberry: #f7393d;
+  --color-yellow: #ffe500;
+  --color-yellow-light: #feab0a;
+  --color-green: #1eb589;
+  --color-pink: #ff9fa9;
+  --color-blue: #0094ff;
+  --color-magenta: #ee0a78;
+  --color-orange: #fe620a;
+
+  --code-color-green: #8ed287;
+  --code-color-blue: #aed5fb;
+  --code-color-purple: #cbabf9;
+  --code-color-pink: #ea8075;
+  --code-color-orange: #eaad75;
+
+  --shiki-color-text: #fff;
+  --shiki-color-background: transparent;
+  --shiki-token-constant: var(--code-color-blue);
+  --shiki-token-string: var(--code-color-blue);
+  --shiki-token-comment: var(--code-color-pink);
+  --shiki-token-keyword: var(--code-color-green);
+  --shiki-token-parameter: #fff;
+  --shiki-token-function: var(--code-color-purple);
+  --shiki-token-string-expression: var(--code-color-blue);
+  --shiki-token-punctuation: var(--code-color-purple);
+  --shiki-token-link: var(--code-color-orange);
+
+  /* Callout */
+  --color-callout-tip: rgba(142, 210, 135, 0.2);
+  --color-callout-warning: rgba(234, 173, 117, 0.2);
+  --color-callout-note: rgba(174, 213, 251, 0.2);
+
+  --font-display: "Ranade", sans-serif;
+  --font-sans: "Satoshi", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+@media screen and (max-device-width: 480px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+.dark body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+html,
+pre {
+  scrollbar-color: var(--color-strawberry) transparent;
+  scrollbar-width: thin !important;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+body > :is(header, footer) {
+  padding: 16px 0;
+}
+
+@media (min-width: 768px) {
+  body > :is(header, footer) {
+    padding: 16px 0 40px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.DocSearch-VisuallyHiddenForAccessibility,
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+section.footnotes {
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+section.footnotes::before {
+  content: "Footnotes:";
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
+
+form .status {
+  margin-top: 16px;
+  color: var(--color-green);
+}
+
+form .status-error {
+  color: var(--color-strawberry);
+}
+
+.card {
+  background: color-mix(in srgb, var(--color-white) 75%, transparent);
+  border-radius: 16px;
+  border: 1px solid var(--color-g-100);
+  padding: 16px;
+  display: flex;
+
+  .dark & {
+    background: color-mix(in srgb, var(--color-g-800) 75%, transparent);
+    border: 1px solid var(--color-g-700);
+  }
+}
+
+:not(pre) > code {
+  color: var(--color-strawberry);
+  border-radius: 4px;
+  padding-inline: 6px;
+  padding-block: 2px;
+  border: 1px solid var(--color-strawberry);
+  background-color: rgba(247, 57, 61, 0.1);
+}
+
+code .allow-copy {
+  display: inline-flex;
+  align-items: center;
+}
+
+button.copy-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+code :global(svg) {
+  stroke: var(--color-strawberry);
+  height: 16px;
+}

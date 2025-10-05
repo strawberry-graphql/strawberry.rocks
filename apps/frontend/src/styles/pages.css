@@ -1,0 +1,230 @@
+.docs-grid {
+  display: grid;
+  grid-template-columns: 20px [full-start nav-start content-start] 1fr [content-end full-end nav-end] 20px;
+}
+
+@media (min-width: 768px) {
+  .docs-grid {
+    display: grid;
+    grid-template-columns:
+      20px [full-start nav-start] 280px [nav-end] 16px [content-start page-nav-start] 1fr
+      [content-end page-nav-end full-end] 20px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .docs-grid {
+    grid-template-columns:
+      20px [full-start] 1fr
+      [nav-start] minmax(280px, 1fr) [nav-end] 16px [content-start] minmax(
+        500px,
+        80ch
+      )
+      [content-end] 32px [page-nav-start] minmax(250px, 300px)
+      [page-nav-end] 1fr [full-end] 20px;
+  }
+}
+
+#docs-content {
+  grid-column: content-start / content-end;
+  min-width: 0;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Pages with nav (docs, releases, etc) */
+
+.page-nav {
+  display: none;
+}
+
+#toggle-docs-nav {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .docs-nav {
+    position: fixed;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    z-index: 99;
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+
+    html.dark & {
+      background: rgba(0, 0, 0, 0.9);
+
+      label {
+        color: var(--color-white);
+      }
+    }
+
+    label {
+      cursor: pointer;
+      color: var(--color-g-900);
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+
+      svg {
+        stroke: currentColor;
+      }
+    }
+  }
+
+  .docs-nav-content {
+    display: none;
+  }
+
+  body:has(#toggle-docs-nav:checked) {
+    overflow: hidden;
+  }
+
+  #toggle-docs-nav:checked ~ .docs-nav {
+    height: 100dvh;
+  }
+
+  #toggle-docs-nav:checked ~ .docs-nav .docs-nav-content {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .docs-nav,
+  .page-nav {
+    display: none;
+    position: sticky;
+    top: 16px;
+    padding-bottom: 16px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .docs-nav {
+    padding-right: 16px;
+  }
+
+  .page-nav {
+    padding-left: 0;
+  }
+
+  article {
+    grid-column: content;
+  }
+
+  .page-nav {
+    grid-column: page-nav;
+  }
+
+  .docs-nav {
+    display: block;
+    grid-column: nav;
+  }
+}
+
+@media (min-width: 1100px) {
+  .page-nav {
+    display: block;
+  }
+}
+
+.content,
+.markdown-alert,
+article,
+details {
+  > * + * {
+    margin-top: 1em;
+    display: block;
+  }
+  > :is(h1, h2, h3, h4, h5, h6) {
+    text-wrap: pretty;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+main > article {
+  padding-bottom: 80px;
+}
+
+.expressive-code .frame {
+  max-width: 900px !important;
+}
+
+article > :not(.extensions-list) {
+  ul {
+    padding-inline-start: 2em;
+    list-style: decimal;
+  }
+
+  a {
+    font-weight: bold;
+    color: var(--strawberry);
+    transition: all 0.2s ease-in-out;
+
+    &:not(:has(code)) {
+      background: linear-gradient(
+        to right,
+        var(--color-magenta),
+        var(--color-orange)
+      );
+      background-size: 100% 2px;
+      background-position: 0 100%;
+      background-repeat: no-repeat;
+      padding: 0 4px 2px;
+      border-radius: 4px;
+      margin-left: -4px;
+      margin-right: -4px;
+
+      &:hover {
+        color: var(--color-white);
+        background-size: 100% 100%;
+      }
+    }
+
+    &:hover :global(code) {
+      background: transparent;
+      border-color: transparent;
+    }
+
+    &[data-footnote-ref] {
+      color: var(--color-magenta);
+      background: none;
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+      font-weight: bold;
+      font-size: 0.8em;
+      vertical-align: super;
+      line-height: 1;
+      position: relative;
+      top: -0.2em;
+      left: 0.2em;
+    }
+  }
+
+  blockquote {
+    padding: 10px 20px;
+    position: relative;
+  }
+
+  blockquote::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      var(--color-strawberry) 0%,
+      var(--color-orange) 100%
+    );
+  }
+}

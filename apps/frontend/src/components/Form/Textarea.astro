@@ -1,0 +1,61 @@
+---
+interface Props {
+  id?: string;
+  name?: string;
+  value?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  required?: boolean;
+}
+
+const { id, name, value, placeholder, disabled, required } = Astro.props;
+---
+
+<textarea
+  class="typography-paragraph-2"
+  id={id}
+  name={name}
+  value={value}
+  placeholder={placeholder}
+  required={required}
+  disabled={disabled}></textarea>
+
+<style>
+  textarea {
+    width: 100%;
+    border: 1.5px solid var(---color-g-100);
+    border-radius: 16px;
+    padding: 12px;
+    resize: none;
+    outline: none;
+    border-radius: 16px;
+    border: 1.5px solid var(--color-g-100);
+  }
+
+  textarea:disabled {
+    color: var(--color-g-400);
+  }
+
+  textarea:focus {
+    background:
+      linear-gradient(var(--color-white), var(--color-white)) padding-box,
+      linear-gradient(90deg, var(--color-strawberry), var(--color-orange))
+        border-box;
+    border: 1.5px solid transparent;
+  }
+
+  :global(html.dark) {
+    textarea {
+      border: 1.5px solid var(--color-g-900);
+      color: var(--color-g-100);
+    }
+
+    textarea:focus {
+      background:
+        linear-gradient(var(--color-black), var(--color-black)) padding-box,
+        linear-gradient(90deg, var(--color-strawberry), var(--color-orange))
+          border-box;
+      border: 1.5px solid transparent;
+    }
+  }
+</style>

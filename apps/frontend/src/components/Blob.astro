@@ -1,0 +1,55 @@
+<div id="blob">
+  <svg
+    width="672"
+    height="557"
+    viewBox="0 0 672 557"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      opacity="0.3"
+      d="M113.713 240.714C113.713 151.755 229.977 61.4378 293.208 61.4378C310.206 92.6754 360.657 155.15 426.472 155.15C508.74 155.15 416.953 1 580.81 1C744.667 1 648.121 284.175 580.81 351.404L426.472 505.554C327.885 604.02 367.318 532.717 113.713 505.554C-139.891 478.391 113.713 329.673 113.713 240.714Z"
+      fill="#F7393D"></path>
+  </svg>
+</div>
+
+<style>
+  div {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+  }
+
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    filter: blur(200px);
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    z-index: -9;
+  }
+</style>
+
+<script>
+  const svg = document.querySelector("#blob svg");
+
+  if (svg) {
+    const handleMouseMove = (e: any) => {
+      const { clientX, clientY } = e;
+
+      const { innerWidth, innerHeight } = window;
+      const top = clientY - innerHeight / 2;
+      const left = clientX - innerWidth / 2;
+
+      svg.animate(
+        {
+          transform: `translate(calc(-50% + ${left}px), calc(-50% + ${top}px))`,
+        },
+        { duration: 2000, fill: "forwards" },
+      );
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+  }
+</script>

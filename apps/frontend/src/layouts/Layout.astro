@@ -1,0 +1,129 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Blob from "../components/Blob.astro";
+import PreviewBanner from "../components/PreviewBanner.astro";
+
+interface Props {
+  title: string;
+  blob?: boolean;
+  prNumber?: string | undefined;
+  useDocsGrid?: boolean;
+  description?: string;
+}
+
+let {
+  title,
+  blob,
+  useDocsGrid = false,
+  prNumber,
+  description = "Strawberry GraphQL is a powerful and modern GraphQL framework for Python that allows developers to easily create robust and scalable APIs. With its intuitive and developer-friendly API, Strawberry makes it easy to define and query GraphQL schemas, while also providing advanced features such as type safety, code generation, and more.",
+} = Astro.props;
+
+title = `${title} | 🍓 Strawberry GraphQL`;
+
+let path = new URL(Astro.request.url).pathname;
+
+if (path.endsWith("/")) {
+  path = path.slice(0, -1);
+}
+
+let imagePath = path;
+
+if (path === "") {
+  imagePath = "/default";
+}
+
+imagePath += ".png";
+
+const url = `https://strawberry.rocks${path}`;
+const image = `https://strawberry.rocks/og${imagePath}`;
+
+let canonicalUrl = url;
+
+if (prNumber) {
+  // remove `/pr/number` from the path
+  canonicalUrl = url.replace(/\/pr\/\d+/, "");
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#e44b46" />
+
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+  </head>
+  <body>
+    {blob && <Blob />}
+    {prNumber && <PreviewBanner prNumber={prNumber} />}
+    <Header useDocsGrid={useDocsGrid} />
+    <slot />
+    <Footer />
+    <script
+      defer
+      data-domain="strawberry.rocks"
+      data-api="/plausible/api/event"
+      src="/plausible/js/script.js"></script>
+    <script>
+      // Source: https://github.com/JuanM04/portfolio/blob/983b0ed0eabdac37bf8b7912d3e8128a443192b9/src/pages/docs/%5B...documentSlug%5D.astro#L74-L103
+      // From this comment: https://github.com/withastro/astro/issues/4433#issuecomment-1584019991
+      /**
+       * @params {HTMLCollectionOf<HTMLElement>} graphs
+       */
+      async function renderDiagrams(graphs: any) {
+        const { default: mermaid } = await import("mermaid");
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: document.documentElement.classList.contains("dark")
+            ? "dark"
+            : "default",
+        });
+
+        for (const graph of graphs) {
+          const content = graph.querySelector(".mermaid-src").innerText;
+          if (!content) continue;
+          let svg = document.createElement("svg");
+          const id = (svg.id = "mermaid-" + Math.round(Math.random() * 100000));
+          graph.appendChild(svg);
+          mermaid.render(id, content).then((result) => {
+            graph.innerHTML = result.svg;
+          });
+        }
+      }
+
+      const graphs = document.getElementsByClassName("mermaid");
+      if (document.getElementsByClassName("mermaid").length > 0) {
+        renderDiagrams(graphs);
+      }
+    </script>
+  </body>
+</html>

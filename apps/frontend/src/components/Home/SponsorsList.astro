@@ -1,0 +1,120 @@
+---
+import { fetchSponsorsForHome } from "../../utils/fetch-sponsors";
+
+const sponsors = await fetchSponsorsForHome();
+
+const logoOverrides = {
+  xoflare: {
+    darkMode: "/images/sponsor-overrides/exoflare-white.png",
+    lightMode: "/images/sponsor-overrides/exoflare-black.png",
+  },
+  cinder: {
+    darkMode: "/images/sponsor-overrides/cinder-white.png",
+    lightMode: "/images/sponsor-overrides/cinder-black.png",
+  },
+  wedgworth: {
+    darkMode: "/images/sponsor-overrides/wedgworth-white.png",
+    lightMode: "/images/sponsor-overrides/wedgworth-black.png",
+  },
+  stellate: {
+    darkMode: "/images/sponsor-overrides/stellate-dark.png",
+    lightMode: "/images/sponsor-overrides/stellate-light.png",
+  },
+} as {
+  [key: string]: {
+    darkMode: string;
+    lightMode: string;
+  };
+};
+
+const getImage = (
+  sponsor: { id: string; logo: string },
+  theme: "dark" | "light",
+) => {
+  const name = sponsor.id;
+
+  const override = logoOverrides[name];
+
+  if (override) {
+    return {
+      dark: override.darkMode,
+      light: override.lightMode,
+    }[theme];
+  }
+  return {
+    dark: sponsor.logo,
+    light: sponsor.logo,
+  }[theme];
+};
+---
+
+<div>
+  <ul>
+    {
+      sponsors.map((sponsor) => (
+        <li>
+          <a href={sponsor.href}>
+            <img
+              src={getImage(sponsor, "dark")}
+              alt={sponsor.name}
+              class="dark"
+            />
+            <img
+              src={getImage(sponsor, "light")}
+              alt={sponsor.name}
+              class="light"
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  div {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    list-style: none;
+    gap: 80px;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+  }
+
+  li {
+    margin-bottom: 24px;
+    flex-shrink: 0;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    break-inside: avoid;
+    scroll-snap-align: center;
+  }
+  img {
+    max-width: 250px;
+    max-height: 120px;
+  }
+
+  .dark {
+    display: none;
+  }
+
+  :global(html.dark) {
+    .dark {
+      display: block;
+    }
+    .light {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+interface Props {
+  type: "text" | "email" | "password" | "number" | "tel" | "url";
+  id?: string;
+  name: string;
+  placeholder?: string;
+  value?: string;
+  required?: boolean;
+}
+
+const { type, name, placeholder, value, required } = Astro.props;
+---
+
+<input
+  type={type}
+  name={name}
+  id={name}
+  placeholder={placeholder}
+  value={value}
+  required={required}
+/>
+
+<style>
+  input {
+    border-radius: 30px;
+    border: 1.5px solid #e2e2e3;
+    background: transparent;
+    padding: 12px 24px;
+  }
+
+  input:hover {
+    border-color: #a1a1a4;
+  }
+
+  :global(html.dark) input {
+    border-color: #515254;
+  }
+
+  :global(html.dark) input:hover {
+      border-color: #a1a1a4;
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import { fetchDownloads } from "../../utils/fetch-downloads";
+import ButtonLink from "../ButtonLink.astro";
+import SponsorsList from "./SponsorsList.astro";
+
+const downloads = await fetchDownloads();
+
+function roundDownToNearest(num: number, nearest: number) {
+  return Math.floor(num / nearest) * nearest;
+}
+
+const downloadsLastMonth = roundDownToNearest(downloads.lastMonth, 100_000);
+
+let message = "";
+
+if (downloadsLastMonth >= 2_000_000) {
+  // If more than 2M per month, show per month
+  const millionsPerMonth = Math.floor(downloadsLastMonth / 1_000_000);
+  message = `More than ${millionsPerMonth} million downloads per month.`;
+} else {
+  // Otherwise show weekly downloads
+  const downloadsLastWeek = roundDownToNearest(downloads.lastWeek, 5000);
+
+  if (downloadsLastWeek < 100_000) {
+    message = `More than ${downloadsLastMonth.toLocaleString()} downloads last month.`;
+  } else {
+    message = `More than ${downloadsLastWeek.toLocaleString()} downloads last week.`;
+  }
+}
+---
+
+<section class="full">
+  <header>
+    <h1>Discover the sponsors that make Strawberry possible.</h1>
+    <h2 class="typography-heading-4">{message}</h2>
+  </header>
+
+  <ButtonLink href="https://opencollective.com/strawberry-graphql">
+    Become a sponsor
+  </ButtonLink>
+
+  <SponsorsList />
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 20px !important;
+    text-wrap: balance;
+  }
+
+  h2 {
+    text-align: center;
+    text-wrap: balance;
+    color: var(--color-g-700);
+  }
+
+  :global(html.dark) h1 {
+    color: #fff;
+  }
+
+  :global(html.dark) h2 {
+    color: var(--color-g-400);
+  }
+</style>
