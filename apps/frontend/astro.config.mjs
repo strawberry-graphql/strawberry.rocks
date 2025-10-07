@@ -35,6 +35,7 @@ export default defineConfig({
       ],
       components: {
         // Header: './src/components/Header.astro',
+        Footer: './src/components/overrides/Footer.astro',
       },
     }),
   ],

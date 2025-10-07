@@ -1,0 +1,95 @@
+---
+import contributorsData from "@/data/contributors.json";
+
+// Access page data from Starlight route
+const route = Astro.locals.starlightRoute;
+
+// Get contributors for this page
+let contributors = [];
+if (route?.entry?.id) {
+	const entryId = route.entry.id;
+
+	// The entry ID is like "docs/general/schema-basics"
+	// But our paths are like "docs/strawberry/general/schema-basics.mdx"
+	// We need to add the collection prefix and .mdx extension
+
+	// Check if this is a strawberry or django doc based on URL
+	const isStrawberry = !Astro.url.pathname.includes('/docs/django/');
+	const collection = isStrawberry ? 'strawberry' : 'django';
+
+	// Remove "docs/" prefix and add collection + .mdx
+	const pathWithoutDocs = entryId.replace(/^docs\//, '');
+	const fullPath = `docs/${collection}/${pathWithoutDocs}.mdx`;
+
+	contributors = contributorsData.contributors[fullPath] || [];
+}
+---
+
+{contributors.length > 0 && (
+  <section class="contributors">
+    <h3>Contributors</h3>
+    <ul>
+      {contributors.map((contributor) => (
+        <li>
+          <a
+            href={contributor.login ? `https://github.com/${contributor.login}` : undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={contributor.name}
+          >
+            <img
+              src={contributor.avatarUrl}
+              alt={contributor.name}
+              width="40"
+              height="40"
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .contributors {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--sl-color-hairline-light);
+  }
+
+  h3 {
+    font-size: var(--sl-text-sm);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--sl-color-text);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+
+  a:hover {
+    transform: scale(1.1);
+  }
+
+  img {
+    display: block;
+    border-radius: 50%;
+  }
+</style>

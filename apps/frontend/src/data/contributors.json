@@ -1,0 +1,4494 @@
+{
+  "contributors": {
+    "docs/strawberry/faq.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Ben Yarmis",
+        "login": "byarmis",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1594170?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Etty",
+        "login": "estyxx",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28976199?v=4"
+      }
+    ],
+    "docs/strawberry/README.mdx": [
+      {
+        "name": "Aryan Iyappan",
+        "login": "aryaniyaps",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69184573?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Matthieu MN",
+        "login": "gazorby",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/10926130?v=4"
+      },
+      {
+        "name": "Pierre Chapuis",
+        "login": "catwell",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/221332?v=4"
+      },
+      {
+        "name": "Marcelo Trylesinski",
+        "login": "Kludex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/7353520?v=4"
+      },
+      {
+        "name": "mgriffin10",
+        "login": "mgriffin10",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/26560738?v=4"
+      },
+      {
+        "name": "Michah Griffin",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/4001e7bb5e13bf0c8436be030d4ecd026b10a329acbdbbbd604baf7d3dc48788/68747470733a2f2f322e67726176617461722e636f6d2f6176617461722f36656264373937323038613637613761396261316632623036613531633131303f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Etty",
+        "login": "estyxx",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28976199?v=4"
+      },
+      {
+        "name": "Haze Lee",
+        "login": "Nebu1eto",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1115741?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      },
+      {
+        "name": "hrharkins",
+        "login": "hrharkins",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/224960?v=4"
+      },
+      {
+        "name": "Dan Sloan",
+        "login": "LucidDan",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/827555?v=4"
+      },
+      {
+        "name": "Nir",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Botberry",
+        "login": "botberry",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/50026275?v=4"
+      },
+      {
+        "name": "Hans Huber",
+        "login": "hans-brilliant",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69171298?v=4"
+      },
+      {
+        "name": "Mark Sheehan",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/712f4a889c778475d6c3228ea22b91ca5fc4d574bd3bf186e493087b9919e4d9/68747470733a2f2f302e67726176617461722e636f6d2f6176617461722f38313137666230666565343733353166663266343137373964616265643034373f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "peach lasagna",
+        "login": "uvicorn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/59787538?v=4"
+      },
+      {
+        "name": "Sebastian Hurtado",
+        "login": "sebassdc",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/13247182?v=4"
+      },
+      {
+        "name": "Shiny Brar",
+        "login": "shinybrar",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/4196481?v=4"
+      },
+      {
+        "name": "Chitrang Patel",
+        "login": "chitrangpatel",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11685590?v=4"
+      }
+    ],
+    "docs/strawberry/extensions.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/index.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Alexander",
+        "login": "devkral",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/658768?v=4"
+      },
+      {
+        "name": "Attila Sasvari",
+        "login": "asasvari",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/18190331?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Gary Donovan",
+        "login": "garyd203",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2515775?v=4"
+      },
+      {
+        "name": "Magnus Markling",
+        "login": "memark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/318504?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "Ambro",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/c08b31ca43edecfda1a527f6a471134385ecc97c387ea7b49af89d9f7ac2e50f/68747470733a2f2f312e67726176617461722e636f6d2f6176617461722f37646264636536623930343330653630356137333063303530373237666336363f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes.mdx": [
+      {
+        "name": "Ryan Petrello",
+        "login": "ryanpetrello",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/214912?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "\u05e0\u05d9\u05e8",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Christian Dr\u00f6ge",
+        "login": "cdroege",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/191739?v=4"
+      },
+      {
+        "name": "skilkis",
+        "login": "skilkis",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/29230371?v=4"
+      }
+    ],
+    "docs/strawberry/errors.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      }
+    ],
+    "docs/strawberry/_test.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Peyton Duncan",
+        "login": "Helithumper",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11335266?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/concepts/typings.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Kinuax",
+        "login": "kinuax",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/13321374?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Tommy Smith",
+        "login": "tsmith023",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/66489849?v=4"
+      }
+    ],
+    "docs/strawberry/concepts/async.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Ivana Kellyerova",
+        "login": "sentrivana",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/131587164?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/codegen/schema-codegen.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/codegen/query-codegen.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Matt Gilson",
+        "login": "mgilson",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5216702?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      }
+    ],
+    "docs/strawberry/editors/mypy.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Andrei",
+        "login": "Mukhametvaleev",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/8947056?v=4"
+      }
+    ],
+    "docs/strawberry/editors/vscode.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/creating-an-integration.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/aiohttp.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Kristj\u00e1n Valur J\u00f3nsson",
+        "login": "kristjanvalur",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6009543?v=4"
+      },
+      {
+        "name": "Matt Exact",
+        "login": "MattExact",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/70145864?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/django.mdx": [
+      {
+        "name": "Laurent",
+        "login": "superlevure",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/26854828?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "ash",
+        "login": "keysmashes",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9433472?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Erwin Feser",
+        "login": "erwinfeser",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/567788?v=4"
+      },
+      {
+        "name": "Kristj\u00e1n Valur J\u00f3nsson",
+        "login": "kristjanvalur",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6009543?v=4"
+      },
+      {
+        "name": "baseplate-admin",
+        "login": "baseplate-admin",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/61817579?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Dan Sloan",
+        "login": "LucidDan",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/827555?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Nir",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Botberry",
+        "login": "botberry",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/50026275?v=4"
+      },
+      {
+        "name": "Hans Huber",
+        "login": "hans-brilliant",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69171298?v=4"
+      },
+      {
+        "name": "Matt Exact",
+        "login": "MattExact",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/70145864?v=4"
+      },
+      {
+        "name": "Illia Volochii",
+        "login": "illia-v",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/17710133?v=4"
+      },
+      {
+        "name": "Lakshay Akula",
+        "login": "Kommandat",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/12615164?v=4"
+      },
+      {
+        "name": "pamaron",
+        "login": "ernestoarbitrio",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/4196091?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/chalice.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Kristj\u00e1n Valur J\u00f3nsson",
+        "login": "kristjanvalur",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6009543?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Mark Sheehan",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/712f4a889c778475d6c3228ea22b91ca5fc4d574bd3bf186e493087b9919e4d9/68747470733a2f2f302e67726176617461722e636f6d2f6176617461722f38313137666230666565343733353166663266343137373964616265643034373f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/fastapi.mdx": [
+      {
+        "name": "Diego Fern\u00e1ndez Giraldo",
+        "login": "aiguofer",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/780934?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Kristj\u00e1n Valur J\u00f3nsson",
+        "login": "kristjanvalur",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6009543?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Matt Exact",
+        "login": "MattExact",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/70145864?v=4"
+      },
+      {
+        "name": "Tommy Smith",
+        "login": "tsmith023",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/66489849?v=4"
+      },
+      {
+        "name": "Nina",
+        "login": "nina-j",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28903001?v=4"
+      },
+      {
+        "name": "Ji\u0159\u00ed Bire\u0161",
+        "login": "jiribires",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2394603?v=4"
+      },
+      {
+        "name": "Marcelo Trylesinski",
+        "login": "Kludex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/7353520?v=4"
+      },
+      {
+        "name": "Emil 'Skeen' Madsen",
+        "login": "Skeen",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/225151?v=4"
+      },
+      {
+        "name": "Anton Melser",
+        "login": "AntonOfTheWoods",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2504480?v=4"
+      },
+      {
+        "name": "Sebastian Hurtado",
+        "login": "sebassdc",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/13247182?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/asgi.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Kristj\u00e1n Valur J\u00f3nsson",
+        "login": "kristjanvalur",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6009543?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Matt Exact",
+        "login": "MattExact",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/70145864?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      },
+      {
+        "name": "Magnus Markling",
+        "login": "memark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/318504?v=4"
+      },
+      {
+        "name": "Marco Acierno",
+        "login": "marcoacierno",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/3382153?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Ambro",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/c08b31ca43edecfda1a527f6a471134385ecc97c387ea7b49af89d9f7ac2e50f/68747470733a2f2f312e67726176617461722e636f6d2f6176617461722f37646264636536623930343330653630356137333063303530373237666336363f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Joe Freeman",
+        "login": "joefreeman",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/535128?v=4"
+      },
+      {
+        "name": "Michael Ossareh",
+        "login": "ossareh",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/260015?v=4"
+      },
+      {
+        "name": "Emil 'Skeen' Madsen",
+        "login": "Skeen",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/225151?v=4"
+      },
+      {
+        "name": "A. Coady",
+        "login": "coady",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/7234196?v=4"
+      },
+      {
+        "name": "Matt Campbell",
+        "login": "mecampbellsoup",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2043821?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/quart.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Paul Dubs",
+        "login": "treo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/509379?v=4"
+      },
+      {
+        "name": "Pierre Chapuis",
+        "login": "catwell",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/221332?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/channels.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "selvarajrajkanna",
+        "login": "selvarajrajkanna",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/43948703?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Matteo Bilotta",
+        "login": "Byloth",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14953974?v=4"
+      },
+      {
+        "name": "Moritz Ulmer",
+        "login": "moritz89",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1592994?v=4"
+      },
+      {
+        "name": "Christian Dr\u00f6ge",
+        "login": "cdroege",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/191739?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "Z\u00e8D",
+        "login": "IMZihad21",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/47494608?v=4"
+      },
+      {
+        "name": "James Thorniley",
+        "login": "jthorniley",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/282776?v=4"
+      },
+      {
+        "name": "\u05e0\u05d9\u05e8",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Nir",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Dan Sloan",
+        "login": "LucidDan",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/827555?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Botberry",
+        "login": "botberry",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/50026275?v=4"
+      },
+      {
+        "name": "Hans Huber",
+        "login": "hans-brilliant",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69171298?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/flask.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Pierre Chapuis",
+        "login": "catwell",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/221332?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Kristj\u00e1n Valur J\u00f3nsson",
+        "login": "kristjanvalur",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6009543?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Scott Weitzner",
+        "login": "scottweitzner",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/10327538?v=4"
+      },
+      {
+        "name": "Etty",
+        "login": "estyxx",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28976199?v=4"
+      },
+      {
+        "name": "Artem Bulgakov",
+        "login": "ArtemSBulgakov",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/44732506?v=4"
+      },
+      {
+        "name": "Matt Exact",
+        "login": "MattExact",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/70145864?v=4"
+      },
+      {
+        "name": "Bas",
+        "login": "basvandriel",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5286260?v=4"
+      },
+      {
+        "name": "David Flores",
+        "login": "daveflr",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/87145713?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/litestar.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Matthieu MN",
+        "login": "gazorby",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/10926130?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/index.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/starlette.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Marcelo Trylesinski",
+        "login": "Kludex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/7353520?v=4"
+      }
+    ],
+    "docs/strawberry/integrations/pydantic.mdx": [
+      {
+        "name": "Magnus Markling",
+        "login": "memark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/318504?v=4"
+      },
+      {
+        "name": "Tyler Nisonoff",
+        "login": "tylernisonoff",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1152284?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "liuliu",
+        "login": "liuliuOD",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/44393673?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "James Chua",
+        "login": "thejaminator",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/30519287?v=4"
+      },
+      {
+        "name": "Matt Allen",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/69eada741dfa6d966581d4633640710feec5e839ead72079319703cf341ec60e/68747470733a2f2f302e67726176617461722e636f6d2f6176617461722f33626530336439653561353664386536643533376566373435386264323461323f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "Jerry Tsui",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/c177a098957ca66bdc1e84137ff8d3630baf06d00a40cfce0fc02f5e227c0aa4/68747470733a2f2f312e67726176617461722e636f6d2f6176617461722f35626530333564353864613631393235313831336664613631383335623931653f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      }
+    ],
+    "docs/strawberry/integrations/sanic.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Kristj\u00e1n Valur J\u00f3nsson",
+        "login": "kristjanvalur",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6009543?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Matt Exact",
+        "login": "MattExact",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/70145864?v=4"
+      },
+      {
+        "name": "Jerry Tsui",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/c177a098957ca66bdc1e84137ff8d3630baf06d00a40cfce0fc02f5e227c0aa4/68747470733a2f2f312e67726176617461722e636f6d2f6176617461722f35626530333564353864613631393235313831336664613631383335623931653f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Shiny Brar",
+        "login": "shinybrar",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/4196481?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Chitrang Patel",
+        "login": "chitrangpatel",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11685590?v=4"
+      }
+    ],
+    "docs/strawberry/general/upgrades.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Marcelo Trylesinski",
+        "login": "Kludex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/7353520?v=4"
+      }
+    ],
+    "docs/strawberry/general/subscriptions.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Paul Dubs",
+        "login": "treo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/509379?v=4"
+      },
+      {
+        "name": "\u05e0\u05d9\u05e8",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Bingdom",
+        "login": "Bingdom",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/19663343?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Kyle Kelley",
+        "login": "rgbkrk",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/836375?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Tommy Smith",
+        "login": "tsmith023",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/66489849?v=4"
+      },
+      {
+        "name": "Dan Sloan",
+        "login": "LucidDan",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/827555?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Nir",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Botberry",
+        "login": "botberry",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/50026275?v=4"
+      },
+      {
+        "name": "Hans Huber",
+        "login": "hans-brilliant",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69171298?v=4"
+      },
+      {
+        "name": "M.Yasoob Ullah Khalid \u263a",
+        "login": "yasoob",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/3696393?v=4"
+      },
+      {
+        "name": "Dominique Garmier",
+        "login": "dominiquegarmier",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/42445422?v=4"
+      },
+      {
+        "name": "Christian Clauss",
+        "login": "cclauss",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/3709715?v=4"
+      },
+      {
+        "name": "Michael Ossareh",
+        "login": "ossareh",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/260015?v=4"
+      }
+    ],
+    "docs/strawberry/general/multipart-subscriptions.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/general/schema-basics.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Kinuax",
+        "login": "kinuax",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/13321374?v=4"
+      },
+      {
+        "name": "Bryan Ricker",
+        "login": "bricker",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/978899?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Tommy Smith",
+        "login": "tsmith023",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/66489849?v=4"
+      },
+      {
+        "name": "Zbigniew Siciarz",
+        "login": "zsiciarz",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/182194?v=4"
+      },
+      {
+        "name": "Carl Bordum Hansen",
+        "login": "carlbordum",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/16287077?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/general/queries.mdx": [
+      {
+        "name": "Mark Larah",
+        "login": "magicmark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1590756?v=4"
+      },
+      {
+        "name": "Kevin Sylvestre",
+        "login": "ksylvest",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/73432?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Doctor",
+        "login": "notypecheck",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/50728601?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      }
+    ],
+    "docs/strawberry/general/mutations.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Magnus Markling",
+        "login": "memark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/318504?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Eudald Dachs",
+        "login": "eudago",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/809916?v=4"
+      },
+      {
+        "name": "Bradley Oesch",
+        "login": "bradleyoesch",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5394144?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Erik Wrede",
+        "login": "erikwrede",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9725143?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Paulo Costa",
+        "login": "paulo-raca",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1072660?v=4"
+      },
+      {
+        "name": "MattExact",
+        "login": "MattExact",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/70145864?v=4"
+      },
+      {
+        "name": "Etty",
+        "login": "estyxx",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28976199?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/validation-cache.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/parser-cache.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/sentry-tracing.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Marco Acierno",
+        "login": "marcoacierno",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/3382153?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/max-aliases-limiter.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "reka",
+        "login": "reka",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/382113?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/opentelemetry.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Chase Dorsey",
+        "login": "cdorsey",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/12650570?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Magnus Markling",
+        "login": "memark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/318504?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/mask-errors.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/apollo-tracing.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/input-mutation.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/pyinstrument.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Peyton Duncan",
+        "login": "Helithumper",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11335266?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/add-validation-rules.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/datadog.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Tejus Prasad",
+        "login": "tejusp",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6009613?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Ronald Williams",
+        "login": "ronaldnwilliams",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/13632749?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/disable-validation.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/_template.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/max-tokens-limiter.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "reka",
+        "login": "reka",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/382113?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/disable-introspection.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      }
+    ],
+    "docs/strawberry/extensions/query-depth-limiter.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Kai Benevento",
+        "login": "benesgarage",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/12433415?v=4"
+      },
+      {
+        "name": "Tommy Smith",
+        "login": "tsmith023",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/66489849?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/errors/conflicting-arguments.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "mattalbr",
+        "login": "mattalbr",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9680521?v=4"
+      }
+    ],
+    "docs/strawberry/errors/private-strawberry-field.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/errors/object-is-not-an-enum.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "ShipItParrot",
+        "login": "shipitparrotclemz",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/109913246?v=4"
+      },
+      {
+        "name": "Clement",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/ba5d05e2b3c8d6ff2616a29a3dfc361b2213167dff867e40168c8c96f86d61b4/68747470733a2f2f302e67726176617461722e636f6d2f6176617461722f31396137303166366633633264303736373736633231393761316636316138633f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      }
+    ],
+    "docs/strawberry/errors/duplicated-type-name.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      }
+    ],
+    "docs/strawberry/errors/missing-return-annotation.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/errors/unsupported-type.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/errors/relay-wrong-resolver-annotation.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/strawberry/errors/invalid-argument-type.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      }
+    ],
+    "docs/strawberry/errors/invalid-superclass-interface.mdx": [
+      {
+        "name": "Ivan Gonzalez",
+        "login": "scratchmex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/4014888?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/errors/scalar-already-registered.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/errors/unresolved-field-type.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      }
+    ],
+    "docs/strawberry/errors/missing-arguments-annotations.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      }
+    ],
+    "docs/strawberry/errors/invalid-union-type.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      }
+    ],
+    "docs/strawberry/errors/invalid-type-for-union-merge.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      }
+    ],
+    "docs/strawberry/errors/object-is-not-class.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/errors/node-id-annotation.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/strawberry/errors/_template.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/errors/permission-fail-silently-requires-optional.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Erik Wrede",
+        "login": "erikwrede",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9725143?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Etty",
+        "login": "estyxx",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28976199?v=4"
+      }
+    ],
+    "docs/strawberry/errors/relay-wrong-annotation.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/strawberry/errors/missing-field-annotation.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      }
+    ],
+    "docs/strawberry/cli/locate-definition.mdx": [
+      {
+        "name": "Sam Millar",
+        "login": "millar",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/19176?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/operations/deployment.mdx": [
+      {
+        "name": "Steven Loria",
+        "login": "sloria",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2379650?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Pierre Chapuis",
+        "login": "catwell",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/221332?v=4"
+      },
+      {
+        "name": "reka",
+        "login": "reka",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/382113?v=4"
+      },
+      {
+        "name": "MattExact",
+        "login": "MattExact",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/70145864?v=4"
+      }
+    ],
+    "docs/strawberry/operations/testing.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "MattExact",
+        "login": "MattExact",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/70145864?v=4"
+      },
+      {
+        "name": "bozzlab",
+        "login": "bozzlab",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/41643434?v=4"
+      },
+      {
+        "name": "Abhinav Sadhu",
+        "login": "sighclone",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/12183499?v=4"
+      },
+      {
+        "name": "Etty",
+        "login": "estyxx",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28976199?v=4"
+      }
+    ],
+    "docs/strawberry/operations/tracing.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Arthur",
+        "login": "Speedy1991",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/15920408?v=4"
+      },
+      {
+        "name": "Arthur Bayr",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/a297bb61f531f545483a25ce5c51fb69554a227214a30557522993c5699f6e6c/68747470733a2f2f322e67726176617461722e636f6d2f6176617461722f35393566623537306338396261663436666635316534653762393036363266373f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Magnus Markling",
+        "login": "memark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/318504?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.213.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.240.0.mdx": [
+      {
+        "name": "\u05e0\u05d9\u05e8",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.283.0.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.243.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.268.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.251.0.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.249.0.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.236.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.279.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.180.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Christian Dr\u00f6ge",
+        "login": "cdroege",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/191739?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.169.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Christian Dr\u00f6ge",
+        "login": "cdroege",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/191739?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.217.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.159.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "\u05e0\u05d9\u05e8",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "skilkis",
+        "login": "skilkis",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/29230371?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.233.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.278.1.mdx": [
+      {
+        "name": "Ryan Petrello",
+        "login": "ryanpetrello",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/214912?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/breaking-changes/0.146.0.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      }
+    ],
+    "docs/strawberry/guides/field-extensions.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Ray Sy",
+        "login": "fireteam99",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/17861378?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Erik Wrede",
+        "login": "erikwrede",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9725143?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/guides/permissions.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Erik Wrede",
+        "login": "erikwrede",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9725143?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Etty",
+        "login": "estyxx",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28976199?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "Ben Taylor",
+        "login": "taybenlor",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/137128?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/guides/authentication.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Matej \u0160nuderl",
+        "login": "Meemaw",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/8524109?v=4"
+      },
+      {
+        "name": "Christian Clauss",
+        "login": "cclauss",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/3709715?v=4"
+      },
+      {
+        "name": "Etty",
+        "login": "estyxx",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28976199?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/guides/accessing-parent-data.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/strawberry/guides/custom-extensions.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Matt Gilene",
+        "login": "mdgilene",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/22504060?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Erik Wrede",
+        "login": "erikwrede",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9725143?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "\u05e0\u05d9\u05e8",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "skilkis",
+        "login": "skilkis",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/29230371?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Niten Nashiki",
+        "login": "nnashiki",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14922132?v=4"
+      }
+    ],
+    "docs/strawberry/guides/schema-export.mdx": [
+      {
+        "name": "Alexey Pelykh",
+        "login": "alexey-pelykh",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/345102?v=4"
+      },
+      {
+        "name": "Nicol\u00e1s Daniel Palumbo",
+        "login": "shaggyz",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1447280?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Chris Hua",
+        "login": "stillmatic",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/4743676?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/guides/convert-to-dictionary.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Haze Lee",
+        "login": "Nebu1eto",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1115741?v=4"
+      }
+    ],
+    "docs/strawberry/guides/query-batching.mdx": [
+      {
+        "name": "Aryan Iyappan",
+        "login": "aryaniyaps",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69184573?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/guides/relay.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Eudald Dachs",
+        "login": "eudago",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/809916?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "David Lemayian \u2728",
+        "login": "DavidLemayian",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/877919?v=4"
+      }
+    ],
+    "docs/strawberry/guides/errors.mdx": [
+      {
+        "name": "sabrahul",
+        "login": "sabrahul",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/84013943?v=4"
+      },
+      {
+        "name": "Bryan Ricker",
+        "login": "bricker",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/978899?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/guides/tools.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Alexandru M\u0103r\u0103\u0219teanu",
+        "login": "alexei",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/96283?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/guides/federation.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Tyger Taco",
+        "login": "TygerTaco",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14984519?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Bradley Oesch",
+        "login": "bradleyoesch",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5394144?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "Andrei",
+        "login": "Mukhametvaleev",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/8947056?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jack Zhao",
+        "login": "bugzpodder",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14841421?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "Marco Acierno",
+        "login": "marcoacierno",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/3382153?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Ambro",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/c08b31ca43edecfda1a527f6a471134385ecc97c387ea7b49af89d9f7ac2e50f/68747470733a2f2f312e67726176617461722e636f6d2f6176617461722f37646264636536623930343330653630356137333063303530373237666336363f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      }
+    ],
+    "docs/strawberry/guides/federation-v1.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jack Zhao",
+        "login": "bugzpodder",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14841421?v=4"
+      }
+    ],
+    "docs/strawberry/guides/server.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/guides/dataloaders.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "Andrei",
+        "login": "Mukhametvaleev",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/8947056?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Aman Choudhary",
+        "login": "Techno-Tut",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9113802?v=4"
+      },
+      {
+        "name": "Paulo Costa",
+        "login": "paulo-raca",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1072660?v=4"
+      },
+      {
+        "name": "Gary Donovan",
+        "login": "garyd203",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2515775?v=4"
+      },
+      {
+        "name": "Huon Wilson",
+        "login": "huonw",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1203825?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      },
+      {
+        "name": "nbertagnolli",
+        "login": "nbertagnolli",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2716997?v=4"
+      },
+      {
+        "name": "Silas Sewell",
+        "login": "silas",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/18528?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "Jeffrey Whitehead",
+        "login": "SerenityCode",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1226581?v=4"
+      }
+    ],
+    "docs/strawberry/guides/file-upload.mdx": [
+      {
+        "name": "Martin Roy",
+        "login": "lindycoder",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/12926519?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Jon Finerty",
+        "login": "jonfinerty",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1330072?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Pierre Chapuis",
+        "login": "catwell",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/221332?v=4"
+      },
+      {
+        "name": "Christian Dr\u00f6ge",
+        "login": "cdroege",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/191739?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "Huon Wilson",
+        "login": "huonw",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1203825?v=4"
+      },
+      {
+        "name": "Etty",
+        "login": "estyxx",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28976199?v=4"
+      },
+      {
+        "name": "Tom Most",
+        "login": "twm",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/43662?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      }
+    ],
+    "docs/strawberry/federation/entities.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/federation/introduction.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/federation/entity-interfaces.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/federation/custom_directives.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/types/interfaces.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "DamonGuzman",
+        "login": "DamonGuzman",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/106456287?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Christian Clauss",
+        "login": "cclauss",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/3709715?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "2malh",
+        "login": "holtergram",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/42282368?v=4"
+      }
+    ],
+    "docs/strawberry/types/maybe.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/types/lazy.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      }
+    ],
+    "docs/strawberry/types/enums.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "\u05e0\u05d9\u05e8",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Kyle Putnam",
+        "login": "kyle-query",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/108306629?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Mateusz Sobas",
+        "login": "msobas",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9215905?v=4"
+      },
+      {
+        "name": "Gary Donovan",
+        "login": "garyd203",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2515775?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/types/operation-directives.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "mgriffin10",
+        "login": "mgriffin10",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/26560738?v=4"
+      },
+      {
+        "name": "Michah Griffin",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/4001e7bb5e13bf0c8436be030d4ecd026b10a329acbdbbbd604baf7d3dc48788/68747470733a2f2f322e67726176617461722e636f6d2f6176617461722f36656264373937323038613637613761396261316632623036613531633131303f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      }
+    ],
+    "docs/strawberry/types/schema.mdx": [
+      {
+        "name": "Emil 'Skeen' Madsen",
+        "login": "EmilMagenta",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/220177542?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Bruno Dantas",
+        "login": "brunodantas",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/4422988?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "hanbin",
+        "login": "hanbin8269",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/58972963?v=4"
+      },
+      {
+        "name": "Carl Bordum Hansen",
+        "login": "carlbordum",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/16287077?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      }
+    ],
+    "docs/strawberry/types/scalars.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Egor",
+        "login": "Birdi7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/18901754?v=4"
+      },
+      {
+        "name": "Jacob Allen",
+        "login": "enoua5",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/16809690?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Erik Wrede",
+        "login": "erikwrede",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9725143?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Ryan Noelk",
+        "login": "RyanNoelk",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11916338?v=4"
+      },
+      {
+        "name": "Gary Donovan",
+        "login": "garyd203",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2515775?v=4"
+      },
+      {
+        "name": "Paulo Costa",
+        "login": "paulo-raca",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1072660?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "Arthur",
+        "login": "Speedy1991",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/15920408?v=4"
+      }
+    ],
+    "docs/strawberry/types/union.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      },
+      {
+        "name": "Ben Yarmis",
+        "login": "byarmis",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1594170?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Justin Iven M\u00fcller",
+        "login": "JustinIven",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/53189020?v=4"
+      }
+    ],
+    "docs/strawberry/types/object-types.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "Carl Bordum Hansen",
+        "login": "carlbordum",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/16287077?v=4"
+      },
+      {
+        "name": "Matt Campbell",
+        "login": "mecampbellsoup",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2043821?v=4"
+      }
+    ],
+    "docs/strawberry/types/resolvers.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "\u05e0\u05d9\u05e8",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Bryan Ricker",
+        "login": "bricker",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/978899?v=4"
+      },
+      {
+        "name": "mattalbr",
+        "login": "mattalbr",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9680521?v=4"
+      },
+      {
+        "name": "thatguysimon",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/18439c0ba90af7172494d719563b6e6b67dc92e286e65e07d3e6ddb50c469c49/68747470733a2f2f312e67726176617461722e636f6d2f6176617461722f66373261663261656365356335656165373035356464303338633032316233343f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "San Kilkis",
+        "login": "skilkis",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/29230371?v=4"
+      },
+      {
+        "name": "Mark Larah",
+        "login": "magicmark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1590756?v=4"
+      },
+      {
+        "name": "Dominique Garmier",
+        "login": "dominiquegarmier",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/42445422?v=4"
+      },
+      {
+        "name": "Aryan Iyappan",
+        "login": "aryaniyaps",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69184573?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "Joe Freeman",
+        "login": "joefreeman",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/535128?v=4"
+      },
+      {
+        "name": "Emil 'Skeen' Madsen",
+        "login": "Skeen",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/225151?v=4"
+      },
+      {
+        "name": "A. Coady",
+        "login": "coady",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/7234196?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/types/schema-configurations.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "topher-g",
+        "login": "topher-g",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/183145641?v=4"
+      },
+      {
+        "name": "Chris Gill",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/92fa8c214f8e07385a3bda7e201c4443dc5f61698a4115c098a62a72b542a753/68747470733a2f2f312e67726176617461722e636f6d2f6176617461722f37373161366239333966306661663765383636623934363331366334643135323f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Ethan Henderson",
+        "login": "parafoxia",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/43846948?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Jonathan Kim",
+        "login": "jkimbo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/691952?v=4"
+      },
+      {
+        "name": "zerocewl",
+        "login": "zerocewl",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9155214?v=4"
+      },
+      {
+        "name": "peach lasagna",
+        "login": "uvicorn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/59787538?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/types/exceptions.mdx": [
+      {
+        "name": "Jakub Bacic",
+        "login": "jakub-bacic",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11598377?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Gary Donovan",
+        "login": "garyd203",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2515775?v=4"
+      },
+      {
+        "name": "Etty",
+        "login": "estyxx",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/28976199?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/types/input-types.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "\u05e0\u05d9\u05e8",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Bruno Dantas",
+        "login": "brunodantas",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/4422988?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "M.Yasoob Ullah Khalid \u263a",
+        "login": "yasoob",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/3696393?v=4"
+      },
+      {
+        "name": "Tymoteusz Paul",
+        "login": "AidaPaul",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/133171?v=4"
+      }
+    ],
+    "docs/strawberry/types/generics.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/types/schema-directives.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "M Sai Revanth",
+        "login": "sairevanth0007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/102522654?v=4"
+      },
+      {
+        "name": "Mark Larah",
+        "login": "magicmark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1590756?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      }
+    ],
+    "docs/strawberry/types/private.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "hrharkins",
+        "login": "hrharkins",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/224960?v=4"
+      }
+    ],
+    "docs/strawberry/types/defer-and-stream.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/strawberry/guides/pagination/offset-based.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "Keren Duchan",
+        "login": "kerenduchan",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/74910518?v=4"
+      },
+      {
+        "name": "Aryan Iyappan",
+        "login": "aryaniyaps",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69184573?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      }
+    ],
+    "docs/strawberry/guides/pagination/overview.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Daniel Hawkins",
+        "login": "hwkns",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/746123?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Keren Duchan",
+        "login": "kerenduchan",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/74910518?v=4"
+      },
+      {
+        "name": "Aryan Iyappan",
+        "login": "aryaniyaps",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69184573?v=4"
+      },
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      }
+    ],
+    "docs/strawberry/guides/pagination/cursor-based.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "Soraia Tavares",
+        "login": "soraia653",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/76966637?v=4"
+      },
+      {
+        "name": "Aryan Iyappan",
+        "login": "aryaniyaps",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69184573?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      }
+    ],
+    "docs/strawberry/guides/pagination/connections.mdx": [
+      {
+        "name": "Jonathan Ehwald",
+        "login": "DoctorJohn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/14076775?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Srikanth",
+        "login": "XChikuX",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5894493?v=4"
+      },
+      {
+        "name": "liuliu",
+        "login": "liuliuOD",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/44393673?v=4"
+      },
+      {
+        "name": "Christopher Watford",
+        "login": "watfordkcf",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/132389385?v=4"
+      },
+      {
+        "name": "Aryan Iyappan",
+        "login": "aryaniyaps",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/69184573?v=4"
+      },
+      {
+        "name": "ignormies",
+        "login": "BryceBeagle",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5437880?v=4"
+      },
+      {
+        "name": "Nahuel Ambrosini",
+        "login": "Ambro17",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11272260?v=4"
+      }
+    ],
+    "docs/django/faq.mdx": [
+      {
+        "name": "vidavida",
+        "login": "videvide",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/65022174?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "SD",
+        "login": "sdobbelaere",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/16462709?v=4"
+      },
+      {
+        "name": "Sascha Dobbelaere",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/8b98388766fdd3a0fcbf4b8ddddb3c23050f27336dda0f7e83c2d31fa00be342/68747470733a2f2f322e67726176617461722e636f6d2f6176617461722f35343032383265626361343539343334306466653036343865636335366531303f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Nir",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Auguste Baum",
+        "login": "augustebaum",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/52001167?v=4"
+      },
+      {
+        "name": "Lauri Hintsala",
+        "login": "la4de",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2537349?v=4"
+      }
+    ],
+    "docs/django/README.mdx": [
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      }
+    ],
+    "docs/django/community-projects.mdx": [
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Eraldo Energy",
+        "login": "Eraldo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/73378?v=4"
+      },
+      {
+        "name": "Tom Clark",
+        "login": "thclark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/7223170?v=4"
+      },
+      {
+        "name": "m4riok",
+        "login": "m4riok",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/57903917?v=4"
+      },
+      {
+        "name": "Nir",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      }
+    ],
+    "docs/django/index.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Tom Clark",
+        "login": "thclark",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/7223170?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      },
+      {
+        "name": "Fr\u00e9d\u00e9ric Lebel",
+        "login": "fredericlebel",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/227136?v=4"
+      },
+      {
+        "name": "Noelle Leigh",
+        "login": "noelleleigh",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/5957867?v=4"
+      },
+      {
+        "name": "sisocobacho",
+        "login": "sisocobacho",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/110941609?v=4"
+      },
+      {
+        "name": "Nir",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "nir",
+        "login": "nrbnlulu",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/88795475?v=4"
+      },
+      {
+        "name": "Lauri Hintsala",
+        "login": "la4de",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2537349?v=4"
+      }
+    ],
+    "docs/django/integrations/guardian.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/django/integrations/debug-toolbar.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/django/integrations/choices-field.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/django/integrations/channels.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "David Lemayian \u2728",
+        "login": "DavidLemayian",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/877919?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/django/guide/optimizer.mdx": [
+      {
+        "name": "Take Weiland",
+        "login": "diesieben07",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1915984?v=4"
+      },
+      {
+        "name": "Alain Burindi",
+        "login": "alainburindi",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/41288911?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      },
+      {
+        "name": "Javier \u00c1lvarez",
+        "login": "jalvarezz13",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/64201633?v=4"
+      },
+      {
+        "name": "Steven DeMartini",
+        "login": "sjdemartini",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1647130?v=4"
+      },
+      {
+        "name": "Fl\u00e1vio Juvenal da Silva Junior",
+        "login": "fjsj",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/397989?v=4"
+      },
+      {
+        "name": "Ray Sy",
+        "login": "fireteam99",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/17861378?v=4"
+      },
+      {
+        "name": "Martijn van Sloten",
+        "login": "Wartijn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/10060747?v=4"
+      }
+    ],
+    "docs/django/guide/subscriptions.mdx": [
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "SD",
+        "login": "sdobbelaere",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/16462709?v=4"
+      },
+      {
+        "name": "Sascha Dobbelaere",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/8b98388766fdd3a0fcbf4b8ddddb3c23050f27336dda0f7e83c2d31fa00be342/68747470733a2f2f322e67726176617461722e636f6d2f6176617461722f35343032383265626361343539343334306466653036343865636335366531303f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      }
+    ],
+    "docs/django/guide/fields.mdx": [
+      {
+        "name": "Roelzkie",
+        "login": "roelzkie15",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/20513403?v=4"
+      },
+      {
+        "name": "Roel Delos Reyes",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/39265284ce76970848074edec18cbe5d39299a42615e68b2ec4b06b35d20678c/68747470733a2f2f322e67726176617461722e636f6d2f6176617461722f37376230336631346333633033656436363730303638346664353032653765633f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Markus Amalthea Magnuson",
+        "login": "alimony",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/331091?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      },
+      {
+        "name": "coleshaw",
+        "login": "coleshaw",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/4930129?v=4"
+      },
+      {
+        "name": "David Lemayian \u2728",
+        "login": "DavidLemayian",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/877919?v=4"
+      }
+    ],
+    "docs/django/guide/permissions.mdx": [
+      {
+        "name": "ash",
+        "login": "keysmashes",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9433472?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Steven DeMartini",
+        "login": "sjdemartini",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1647130?v=4"
+      }
+    ],
+    "docs/django/guide/authentication.mdx": [
+      {
+        "name": "pkrakesh",
+        "login": "pkrakesh",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/783593?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/django/guide/pagination.mdx": [
+      {
+        "name": "Nicolas Delaby",
+        "login": "ticosax",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1174343?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      }
+    ],
+    "docs/django/guide/resolvers.mdx": [
+      {
+        "name": "Hermotimos",
+        "login": "Hermotimos",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/47171833?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Jared Lewis",
+        "login": "lewisjared",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1332673?v=4"
+      },
+      {
+        "name": "Hiroki",
+        "login": "hkfi",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/39700763?v=4"
+      },
+      {
+        "name": "David Lemayian \u2728",
+        "login": "DavidLemayian",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/877919?v=4"
+      }
+    ],
+    "docs/django/guide/unit-testing.mdx": [
+      {
+        "name": "Patryk Bratkowski",
+        "login": "pbratkowski",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/151854505?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "SD",
+        "login": "sdobbelaere",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/16462709?v=4"
+      },
+      {
+        "name": "Sascha Dobbelaere",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/8b98388766fdd3a0fcbf4b8ddddb3c23050f27336dda0f7e83c2d31fa00be342/68747470733a2f2f322e67726176617461722e636f6d2f6176617461722f35343032383265626361343539343334306466653036343865636335366531303f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      }
+    ],
+    "docs/django/guide/filters.mdx": [
+      {
+        "name": "Brian Soby",
+        "login": "soby",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/997334?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "SeongWoon Jeong",
+        "login": "OdysseyJ",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/23691933?v=4"
+      },
+      {
+        "name": "Eraldo Energy",
+        "login": "Eraldo",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/73378?v=4"
+      },
+      {
+        "name": "Christian Dr\u00f6ge",
+        "login": "cdroege",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/191739?v=4"
+      },
+      {
+        "name": "Kitefiko",
+        "login": "Kitefiko",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/48337541?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      },
+      {
+        "name": "\u661f",
+        "login": "star2000",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/42126168?v=4"
+      }
+    ],
+    "docs/django/guide/settings.mdx": [
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Noam Stolero",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/abfd334fde83385813845341e48ecccbee9f2a773c118339d6d02fd843953fee/68747470733a2f2f302e67726176617461722e636f6d2f6176617461722f66313238353830303664326536383431326537306631303834613662316636323f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Kitefiko",
+        "login": "Kitefiko",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/48337541?v=4"
+      },
+      {
+        "name": "Miyashita Yosuke",
+        "login": "miyashiiii",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/44266492?v=4"
+      },
+      {
+        "name": "David Lemayian \u2728",
+        "login": "DavidLemayian",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/877919?v=4"
+      }
+    ],
+    "docs/django/guide/relay.mdx": [
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Take Weiland",
+        "login": "diesieben07",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1915984?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "SD",
+        "login": "sdobbelaere",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/16462709?v=4"
+      },
+      {
+        "name": "David Lemayian \u2728",
+        "login": "DavidLemayian",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/877919?v=4"
+      }
+    ],
+    "docs/django/guide/legacy-ordering.mdx": [
+      {
+        "name": "Take Weiland",
+        "login": "diesieben07",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1915984?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/django/guide/types.mdx": [
+      {
+        "name": "Andrei Lozhkin",
+        "login": "lozhkinandrei",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/53591987?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      },
+      {
+        "name": "SD",
+        "login": "sdobbelaere",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/16462709?v=4"
+      },
+      {
+        "name": "Sascha Dobbelaere",
+        "login": null,
+        "avatarUrl": "https://camo.githubusercontent.com/8b98388766fdd3a0fcbf4b8ddddb3c23050f27336dda0f7e83c2d31fa00be342/68747470733a2f2f322e67726176617461722e636f6d2f6176617461722f35343032383265626361343539343334306466653036343865636335366531303f643d68747470732533412532462532466769746875622e6769746875626173736574732e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d67"
+      },
+      {
+        "name": "Walter Hardeman",
+        "login": "whardeman",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1666165?v=4"
+      },
+      {
+        "name": "David Lemayian \u2728",
+        "login": "DavidLemayian",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/877919?v=4"
+      }
+    ],
+    "docs/django/guide/queries.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Ray Sy",
+        "login": "fireteam99",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/17861378?v=4"
+      }
+    ],
+    "docs/django/guide/mutations.mdx": [
+      {
+        "name": "Keith",
+        "login": "keithhackbarth",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/309034?v=4"
+      },
+      {
+        "name": "Kye Russell",
+        "login": "KyeRussell",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/488182?v=4"
+      },
+      {
+        "name": "ldynia",
+        "login": "ldynia",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1820831?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      },
+      {
+        "name": "Ivan Kharlamov",
+        "login": "thepapermen",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/796137?v=4"
+      },
+      {
+        "name": "Walter Hardeman",
+        "login": "whardeman",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1666165?v=4"
+      },
+      {
+        "name": "Milan Oberkirch",
+        "login": "zvyn",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1493900?v=4"
+      },
+      {
+        "name": "baseplate-admin",
+        "login": "baseplate-admin",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/61817579?v=4"
+      },
+      {
+        "name": "Patrick Altman",
+        "login": "paltman",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1192?v=4"
+      }
+    ],
+    "docs/django/guide/views.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Miyashita Yosuke",
+        "login": "miyashiiii",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/44266492?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      }
+    ],
+    "docs/django/guide/export-schema.mdx": [
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Luis Gustavo",
+        "login": "Ckk3",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/62259205?v=4"
+      }
+    ],
+    "docs/django/guide/ordering.mdx": [
+      {
+        "name": "Take Weiland",
+        "login": "diesieben07",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1915984?v=4"
+      },
+      {
+        "name": "Thiago Bellini Ribeiro",
+        "login": "bellini666",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/134025?v=4"
+      },
+      {
+        "name": "Patrick Arminio",
+        "login": "patrick91",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/667029?v=4"
+      },
+      {
+        "name": "Drew Beno",
+        "login": "drewbeno1",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/123168576?v=4"
+      },
+      {
+        "name": "Kitefiko",
+        "login": "Kitefiko",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/48337541?v=4"
+      },
+      {
+        "name": "Archit Dubey",
+        "login": "ArcD7",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/46811622?v=4"
+      }
+    ]
+  },
+  "hashes": {
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/faq.mdx": "e6839888d751b647f0137fa932771dc2fcae1914e9355f7b31d5472b7e9d394f",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/README.mdx": "8c035e0bd29c1da50d57dece3218ae7e8c1f29fce7e69d3b1e3bf602c07eed61",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions.mdx": "58e3b1ec684b348dc3c14b7c1b1ba5f1102b6a05b5094f9a18a2eda9842fa900",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/index.mdx": "83392bf6f32cc05ff970232a32efd3d5097ba7fa9ed4ea65a80f25684b432ba1",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes.mdx": "6ff799240eadc1d8d13f4fc0cbbfa53bc35345e67c84d8381aebaa263ef36270",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors.mdx": "852cd68161f344926d558ff0e7aa87cb90a7b9baa1367af573b72ff521d47202",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/_test.mdx": "fdddf4e6e015dd2623ca7c104907dfbb0dd0f3828dbbd117ada79704bb933184",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/concepts/typings.mdx": "9ce394b437248c541fe26591cb2037dc5b33b8188e13b31da562accd960b3943",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/concepts/async.mdx": "1c6d0c79d5a4248c0a74aa140451a8138510fd125f2c806a909422bdbf6d3c43",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/codegen/schema-codegen.mdx": "e6459b5728bc5f9cf783a79e804aed3c147aff506d9b9642b2ca7d5e7c167466",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/codegen/query-codegen.mdx": "c5755135f9a8a9e8e3997bb91654b39f83c7cc8d298c8d905d03c3dd170730fd",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/editors/mypy.mdx": "3dcc34eeac3fbb02b2d4c7844c1be15f7e7c4b6dfd051dd395fb4c5dcb83b038",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/editors/vscode.mdx": "de200b297c58c27e5b3df74d0a639456004d55365c598544ce33cb71550f6f3d",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/creating-an-integration.mdx": "d75178a4a46077b23d64b8b29899cf8d75342cc05ef9fb38e49497d2ee0d9584",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/aiohttp.mdx": "8cd3c1e753e376319f265a2d14cd28ebf2595e871b66fabd5708a401f6c65ea2",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/django.mdx": "046b96b1bf4d8f68313defe4d47a054ebb1f80423f1dc06686d87927f82bfc4d",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/chalice.mdx": "d8411405088797e33934f15434a274789bdc8b2a8f9dad95f2c26a4b6bf4a401",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/fastapi.mdx": "109dace383933196686ae65f5a0b9dfdbfd3c773e77881b55b62e6efec148d5b",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/asgi.mdx": "c7e0e0f92f9bc1f9b67c1243542eaa3e98601a7f81ba5a7b39f244c705aa5b62",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/quart.mdx": "a04863d06ddd16d1d9bfb0df3c1e7b7f59f08cdcf9af7221fe0ea695dac05160",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/channels.mdx": "de043e8c685995522e3f735eff7fb367f11ff5c65f6542eb347c81db839bd34b",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/flask.mdx": "3b8828673af40f1479e96a2c2bb900d44d5b9b3504b56cae550ed2931f31dacd",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/litestar.mdx": "c5d840fc19a740c7c40105646051a2ab4757d09c43dd0dfbafe207397b05ecaf",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/index.mdx": "628d63e54c0b9369974113a4542774c04b27f3925018e930918b5baa4f1d1eca",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/starlette.mdx": "88b5762b9f8ba47342a1f0bc1d0ad561d5b6e926df1329fef6e239ad5fd24b12",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/pydantic.mdx": "f3b1effe0044ace946a2552d810e0e7a7f970a99f7bd9fea3380e56e2b807fe8",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/integrations/sanic.mdx": "4d4d4a2e1f6d014e01dfa4c70ea3ee5aa52c46eba38f68c343eda6d0a5f3edb8",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/general/upgrades.mdx": "a386dde6c5af5f68e90b2f9263461403c29da6407d5aa8dedb68ac187a3aa4f1",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/general/subscriptions.mdx": "4e3b967972a6aa1df5cf88a5330ac4c80bff57c8d6f5089d35b102ac0f6165ae",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/general/multipart-subscriptions.mdx": "141524b5ddef554d5dae58fcdd747ae181d83adb14209a35e08e14f47637adea",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/general/schema-basics.mdx": "e6b4250043053664c1f7c4b11bbf757e9c75db087eaab0b5aae55881de41c6eb",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/general/queries.mdx": "0cd610be8a0a85c2890a7da8cccae1d6728197b1c6172b2b3eab30db63713e61",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/general/mutations.mdx": "65238d0636a6cb398999dfcf325f7059943a0e0d22db5d016e061eba41f42773",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/validation-cache.mdx": "f771236305127229c65317a4268260c17e28ef143b80d0890b52b4bdd8177f05",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/parser-cache.mdx": "b825f4341d3980cf844902765656a1575fd534f9dcc2ea1f2ec5294739fccc60",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/sentry-tracing.mdx": "32b9d6cda15efd15e18b18d1910dda1de70e705abe04699f152a86dccb9ae2f0",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/max-aliases-limiter.mdx": "117d35407a81b64088c5c8a124e9393475979d95562792cf59016e4ef994ce27",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/opentelemetry.mdx": "7c5e38f95a2761074f42dae98d3b26302ee80c6cd0335c617b62cb835a1a7286",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/mask-errors.mdx": "845847d4c81b58274b5c3cafd23f3f57dce746b0e6c52f1cb8eaf78b9f90342d",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/apollo-tracing.mdx": "c8ac1c4988af1c0a3d71cb50941d02fd436a688720f2d40a3bf43f44835d790b",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/input-mutation.mdx": "7756ba946fd149ebd01f166e176932144c6a64501ed616e7e8198edd55ee5aa2",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/pyinstrument.mdx": "d457258bc8c826126746c6fe1eb002fa6d33e6ff4954afd20e3636cbcb462b0d",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/add-validation-rules.mdx": "a515830bfae841f012e8c090ac02bff77405c9920cc6ea7308785113f4794c7c",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/datadog.mdx": "385cc7e80e766494ff3e1e4fe93460a6e3d0b266da0a061293fe362fc3c0c4c3",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/disable-validation.mdx": "cbc39366009b394ff9db905ada65891e4daee05f313b0d3c62bf0ff4bf6712b1",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/_template.mdx": "1b78ae6e38ad34f44a9e12623da13e5605d9bc4bfd2d9b68041347ab22911913",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/max-tokens-limiter.mdx": "13c008167da2ac6ef41f74695054e62187ff891fe68ed229c751b4b1c65496a2",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/disable-introspection.mdx": "d3c73a188117391523ffd1491248c6354cc0936ff4e9309ec4fb6cd1d12f24d4",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/extensions/query-depth-limiter.mdx": "0958111e1c85a9321b17a58e6c6b001d2e2eada26f2e182f6604aa64dfa58b63",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/conflicting-arguments.mdx": "ce8eba6646ce94538f815e97c89f4300825a1efceddfe43d157f67bd41d1b36b",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/private-strawberry-field.mdx": "2342733ce3f203e16a0d75b4495073cce61b443184f405408b79f8014775bffc",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/object-is-not-an-enum.mdx": "dcdc982e6ad161f4affa2fc3f383a6059d61b3ed3b771086004f319ba138b917",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/duplicated-type-name.mdx": "2b45f37c0dcbdf827c67d2fa63af3713a29d78bf16e282b3557fdd416cec0adb",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/missing-return-annotation.mdx": "8b84c3d51d21e31db4decfa083141868bd17ecf070549f750c4cbf956520ecb9",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/unsupported-type.mdx": "43b97510aca1763d195f7b38d79cc8b62be3e7c193dea01c10e5e8141486a19c",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/relay-wrong-resolver-annotation.mdx": "8e301a2fb90583fdbe22e9265eabea002199f7354d117c83919a4ddd155c3256",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/invalid-argument-type.mdx": "314fe84e6fb673719dc912fb942a74bc18b3e63772bdc2a4c8fbdb45d98b5de6",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/invalid-superclass-interface.mdx": "95c37ed750a966f700dabb625b1ab91a037bf6d2d212682770f1d93d3312e5fc",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/scalar-already-registered.mdx": "13672dcd44582e286797fe778f2c5267631f39d484d438ed700f4d3144011c24",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/unresolved-field-type.mdx": "789cccba1f754d2744057e41f013397c901e0beeb9a897e02978d052eeb62b9e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/missing-arguments-annotations.mdx": "02629418cf1a3c5ae3fed1f7c1082d5d953166aeb8306205714663a705a269c3",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/invalid-union-type.mdx": "57a1b10c7c81ed179e582fd7e571e5b66d2c665d436e2fecc8431ed755b66030",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/invalid-type-for-union-merge.mdx": "7495533d6aabfb07865fa4ef4ebd09dd534f5155b34cf43bf0fc06a79a150754",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/object-is-not-class.mdx": "5799846b0608197cd530714f6fc18511598fca2f4695f8173c84990d60e966fd",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/node-id-annotation.mdx": "8241f45aa5da77beab2666c0e245ed097cb5c755dcdad529ac6db76e03b891c2",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/_template.mdx": "e32195110faff0517e9ed2b3e1d63e6e517ec92e5c42bc64d50b1c623ef81c9d",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/permission-fail-silently-requires-optional.mdx": "7b54a99e8de73d2e45367160f695207e7549b7c060e7fa6cff635ae315eb29d6",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/relay-wrong-annotation.mdx": "91fe01d6fa0364f7385d8e398540c63a70e1def59a476ecafe35b0c55c874ffb",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/errors/missing-field-annotation.mdx": "c8e155900a453a698e9395eb483bcf9c79b4a66090961664dab9fde6578dc0f4",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/cli/locate-definition.mdx": "d196895d4b9f8e55af74e5bc573db2c7e734d73af70617782ea0429cbf47121b",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/operations/deployment.mdx": "bcb631cd65d5bd5288e46e35fb7d27cc37270b16183a391aca57fca706c0d9ea",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/operations/testing.mdx": "97be178765b983ea11d04f75df2e8225a0247fe05468df2e013a0bbf50ebc2e4",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/operations/tracing.mdx": "ba232ee2f0b5c3c145444f3187cabd55b83bf640d49634f5d96f2697bfdf97c7",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.213.0.mdx": "4d88d0b55d99f1f203798a95b53a748445c6a4541c8d7968d4fdf93a6969fe4f",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.240.0.mdx": "1da18af58fab9829b30b572633d8b734463a47ef2777324043b762a03d4647c7",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.283.0.mdx": "30dea0008de4a73bd73d9ea50a1c41131d3c85fa44c82b81e3598a738be49e4e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.243.0.mdx": "5ff41b094c31962ecd7a7447569ff0e039c220e52e36867ad42afbfe4568e11d",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.268.0.mdx": "8cbfe2e534988477feed45eb57a0b9742e309e1f8f3944f53b8c605db8c2fe54",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.251.0.mdx": "a0897bbe7e78fc7021a186441b7fe8ce5ab50569891106557e480c0a9305b290",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.249.0.mdx": "892921f2f340ef2bd40092ab3f34b88ae57b55bc0f2178bf6137fd25de5562c8",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.236.0.mdx": "d7ee7306df23635546637edcda046c54706ca99208b4fdcb28d64c9757e1148e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.279.0.mdx": "89d4fb424ae6a88ced9bbc027cc87d2d9dfcfa8897d80d6f3b70bb3f221bc6ac",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.180.0.mdx": "1ecbc0302433b5a8fd1c52144c5637d9f3760ceb7350544341b4983fabaff4eb",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.169.0.mdx": "fbf35d33ee68e5dad3382f22c07a821d2ce6aaf470572688ec2a4a606d989812",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.217.0.mdx": "3f7bdf2c82d5c0e0f45a538334081d8c132e10f1ea743f5331ac23b695b7f53e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.159.0.mdx": "d936de2758b7b73e6a9d8da26b2c3e7e717487ed4418799bae7ecbe6aada69f6",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.233.0.mdx": "8ef73b2bfaf37a593aeb01cc8a741cf9ad7597a5fae7b1d33edb137e9bd5b57e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.278.1.mdx": "8241fb2d79b0931f5768eeb5752a61abdb77851326c7110c6af23c2fdd2f9672",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/breaking-changes/0.146.0.mdx": "24dfc78600bd10fd608f4a5b80642b496a02383015d5949843d90f3eeee36bb9",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/field-extensions.mdx": "a29aa4371baa237c180cd48b6f9d2efc6a33bbc303bca77be884acc7c14af940",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/permissions.mdx": "f50ba8a2751b79d37d29953498d2f95144ddb59ecb27a2602905aa7d247dcbce",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/authentication.mdx": "8cf1ae27cd45eecb127a3d5ecbaa352ddad0a800f667683f5c8c1ba5d14af356",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/accessing-parent-data.mdx": "4893d5231092cd06fd314b5e7459d77a8b43531f8bf23530a37c7c1889b17a2b",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/custom-extensions.mdx": "b9942c817ef845e90cd2910038fe13311775b4418bd524cf4efdd7fc5696c0c7",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/schema-export.mdx": "0dde2c8db6e3381c45eb5c973276dcd57d1b93523db784345844fdf07bcbf8af",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/convert-to-dictionary.mdx": "49dbd5d8e01a560c6fe0f08cb2512e92ea0cfe524ec966ff866263f939c792a2",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/query-batching.mdx": "07d86a9a60cda44558d942d971b8392cbbbc24f3b5277e2cbccda7dfc4d0af74",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/relay.mdx": "fca021bd337159156703fedfe7ce1384dff7409d5d882a82bea1ef154ae426df",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/errors.mdx": "172daa03c118cbf3e8d07e00149e158af1b54d46718399cc82f8768c0bbeac27",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/tools.mdx": "42a06d5b667d968e4972d431f649133ae1f3db5a9011d7a6aedf91dc083bbb6f",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/federation.mdx": "20df62a15f3ab24c36af76dc6205c7cc0faf752fe9f37330c6f46d58d4a0c1c1",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/federation-v1.mdx": "c68a9ceb76b5ff13f1a64999a9df40216cee48ae1d9bf06615f3bd0ee8a411a6",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/server.mdx": "11e1c492700f825ddf051d53753a040a2fb6abeea897ec603c2feb715082a7db",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/dataloaders.mdx": "d1021ff195d85f1dda4e984c9bc35b95ee58f66d5a8936071908076c507d7140",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/file-upload.mdx": "db1f689143df5ae8f84806daa4d80abae1eb1a5bfbce9cef448045240361ff2b",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/federation/entities.mdx": "2ab7c57437116fb77e1a47eb9935d4f85db32df627d17843ec098d000272d07d",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/federation/introduction.mdx": "afd3c40a12e62e9ab188444ac4cb0e54cdd1da036a25a09279703d176cfec136",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/federation/entity-interfaces.mdx": "3d6c535f0b62904a24c01eee88232276a649da7ebc6092de13829168d16a41fc",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/federation/custom_directives.mdx": "aefa21e8780d1d024e41500d6a8fd7bc4d4acf7c4bc81cd25de83dae01081464",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/interfaces.mdx": "a973722bba639c3eab4db565c85ba59b830a576609d1c69f0d434a6561060f2d",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/maybe.mdx": "3852cc4a628d56fd8e08b5aae4344bdda3fb115ab72d225a602e6e18c1b516f7",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/lazy.mdx": "382206be11ce0222cc05e5a3f8a40cc060361c099a5ad4fcfe2bdfc100abbd7e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/enums.mdx": "f4ce689601c704c4ed9b26694d699319de5b502b187cd3e572139f0dfa183296",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/operation-directives.mdx": "24872af4fa20e79265adfdc525d86abace6f03cfabeb432d6a3504664fe76608",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/schema.mdx": "58d9dcace1d5a6734e6adf467738dad981e0d6763cb6d2f83a133880eae7cb71",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/scalars.mdx": "dfcbdd20f983fa52811fc0c924e36f846b48cdf94de4e467eca17942dc0cb05a",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/union.mdx": "4dfa997ead6660df8d2e72ae109cc9dc411ec232323cc399e990537926714a3c",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/object-types.mdx": "270571c32174c97113202b7cb6d91a736791c5d569ff39e45ae5d2c767569de5",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/resolvers.mdx": "1c1554b38a4af8aa5e795f17d8f8e20a1b233a5bd00fa605f8b7a94dfa6c08e4",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/schema-configurations.mdx": "47ae25129db4befc4486b947378fb0baa1832888129f6382e73f0aff1d851a23",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/exceptions.mdx": "6000e5971df134c920962f8fba55d334ac7f553324336d6f43d4cd8aca44f37d",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/input-types.mdx": "200b7f7c9170fa1bc892d1aba37b41b979ded5c3cb4db0ee2f29967502f075a7",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/generics.mdx": "fc7243067d1d31895717a307eacdf0f5ce321ca58a418057c598c3bfa3a2cf04",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/schema-directives.mdx": "8e4f0384bb7134c887551b35f7b189a0a8082c8c348ea094224c01d248d8773e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/private.mdx": "095fe65cc45b73ac49b2ff6555e047a4635f781365b84f76101bc588452b5b54",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/types/defer-and-stream.mdx": "42cbf9a3fd88f26175e569b2dbff5376615affe91bb76e490aa7d202c8973070",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/pagination/offset-based.mdx": "9151646ca20b8eef356e719fda130371fa8cffb231bda7735f1f1486512b6548",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/pagination/overview.mdx": "1b8642cad88541cfe71aebd314c37b86cbc0c86ccc013614c823a1a921d3ea4c",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/pagination/cursor-based.mdx": "817371edf45b6ffb9c01698b372efbe642fc03be8bed91dfd113a03c75042b5c",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/strawberry/guides/pagination/connections.mdx": "860c10376e7ea90d465f81e6dde3afa03a6b67ce1a23785e82f155e0038e3a8a",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/faq.mdx": "8e7868ab48867d53b585dd2099d328f8dce8cd03fe84e583f99c9604f87c8d69",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/README.mdx": "f66f970667a6ad114604264210e282a55b7a0a275936ae89eeb73d133e1feaf5",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/community-projects.mdx": "e595c5fe01647c1b5f7b8fc9c0aff6467cf99aada64770ca964c2341a745b31e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/index.mdx": "486b65ca38ae4020216b2d17a6695434fa2abf740bc514f42f854a7c804c4c6e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/integrations/guardian.mdx": "49fdd8045e094dedbecf908621f65fb0ba4a584587e09f77d9bcb0c4d915102e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/integrations/debug-toolbar.mdx": "0736f03a4a0eed7ed52891af6985c4e6ae89828fd99a277ed837daab4caa41a6",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/integrations/choices-field.mdx": "c6005191867dd28ef7be8c160ea8dbfd111db7d9cbff3dcc6b1046d382f53277",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/integrations/channels.mdx": "a6db338c12d3c0bd287b0def85e1ad732326571f77cdc8509d944155b5ad5da4",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/optimizer.mdx": "e773e90311139467c75836271a66c1f0296887c278a759e07681f95c570e564d",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/subscriptions.mdx": "99caffdfad2db024caffcc6fc559f514da97d2c54ab9891dc69ae128dff80f0c",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/fields.mdx": "b72ea0679366e59d4bb30014090f115f40f326118d72eaae45fbe9fa67ab8baa",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/permissions.mdx": "7c9b1cf32aba76926695cb2f958648063ddcdd476bdcd2e8d1e82237ab1d9f63",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/authentication.mdx": "4d4b250b1139316c9392e5adbd8082a07d9ae1fafcfabc75db62a8174e312f49",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/pagination.mdx": "c60a00467b04cb1ed7ca092be89948410576bba3e7c7da8d2a3d3f1d5bd2f832",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/resolvers.mdx": "2be6a430d332975b04765266f40c5f5618452016fcc1f19fc085756e65f1582e",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/unit-testing.mdx": "7e382e2e5f33ceae27f8e9585805fb611657c98e9659399592e46adf78687a34",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/filters.mdx": "d763d6fbd445e8e0ee70f448058359a6c4eaa8f746f243951b131e3a4af3563a",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/settings.mdx": "1f8fe77b0d259c7dd7c2ceab8dd467cf70a0b1dc741e83fb16c6f1310e733b98",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/relay.mdx": "391ec56da574c55c7f5a3acbae5d5a9f5fb89b41dc16074832df873f7887481a",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/legacy-ordering.mdx": "fbce7be34d2060534f9894206520a34917faab8c7340f7d7e33a31960c0c992c",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/types.mdx": "cf2424d531871aebfc460814e7613927205b03dd9161eebeda4cd38e1650a7d8",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/queries.mdx": "ea3f37473edde9d16fc86e66c0b1063d9f176b967fb4a05d329a2540f0699a87",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/mutations.mdx": "b8ffa06ccbe7faf3112121062783bf3483dde7c0712052ddafb4684f2c0e833b",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/views.mdx": "555faf2f632dcc430835cced05ce69ac0d3ec7e560b95d5cd69ede3678000ae1",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/export-schema.mdx": "b2fc22061e61f77ce2db633e0436d449f1f45cd67b046aeeec6915e66bd90da1",
+    "/home/patrick/github/strawberry-graphql/strawberry.rocks/apps/frontend/src/content/docs/django/guide/ordering.mdx": "a8227da412e46e131caba69694b002fd2fbd1c96eed481cdba9004e5dfdd98db"
+  }
+}

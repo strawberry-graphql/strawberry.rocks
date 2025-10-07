@@ -19,6 +19,7 @@ This script:
 - Saves data as JSON for build-time consumption
 """
 
+import hashlib
 import json
 import os
 import re
@@ -473,6 +474,209 @@ def fetch_latest_release() -> dict[str, str]:
         }
 
 
+def compute_file_hash(file_path: Path) -> str:
+    """Compute SHA256 hash of a file."""
+    sha256 = hashlib.sha256()
+    with open(file_path, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            sha256.update(chunk)
+    return sha256.hexdigest()
+
+
+def is_bot(name: str) -> bool:
+    """Check if a contributor is a bot."""
+    if name.endswith("[bot]"):
+        return True
+    return name in ["botberry", "dependabot-support"]
+
+
+def fetch_contributors_for_files(
+    repo: str, files: list[tuple[Path, str]], existing_hashes: dict[str, str]
+) -> dict[str, Any]:
+    """
+    Fetch contributors for documentation files efficiently using GitHub GraphQL.
+
+    Args:
+        repo: Repository name (e.g., "strawberry-graphql/strawberry")
+        files: List of tuples (mdx_file_path, original_md_path_in_repo)
+        existing_hashes: Previously computed hashes to skip unchanged files
+
+    Returns:
+        Dict mapping mdx file paths to contributor info
+    """
+    print(f"Fetching contributors for {repo}...")
+
+    owner, name = repo.split("/")
+
+    # Filter files that need updating
+    files_to_fetch = []
+    new_hashes = {}
+
+    for mdx_path, original_path in files:
+        file_hash = compute_file_hash(mdx_path)
+        new_hashes[str(mdx_path)] = file_hash
+
+        # Skip if hash hasn't changed
+        if existing_hashes.get(str(mdx_path)) == file_hash:
+            continue
+
+        files_to_fetch.append((mdx_path, original_path))
+
+    if not files_to_fetch:
+        print(f"  ℹ️  No files changed, skipping contributor fetch")
+        return {"contributors": {}, "hashes": new_hashes}
+
+    print(f"  Fetching contributors for {len(files_to_fetch)} changed files...")
+
+    contributors_map = {}
+
+    # Process files one at a time (GitHub's commit history query doesn't support batching well)
+    with httpx.Client() as client:
+        for idx, (mdx_path, original_path) in enumerate(files_to_fetch):
+            if idx % 10 == 0:
+                print(f"  Progress: {idx}/{len(files_to_fetch)} files...")
+
+            query = f"""
+            query {{
+              repository(owner: "{owner}", name: "{name}") {{
+                defaultBranchRef {{
+                  target {{
+                    ... on Commit {{
+                      history(first: 100, path: "{original_path}") {{
+                        nodes {{
+                          authors(first: 100) {{
+                            nodes {{
+                              name
+                              user {{ login }}
+                              avatarUrl
+                            }}
+                          }}
+                        }}
+                      }}
+                    }}
+                  }}
+                }}
+              }}
+            }}
+            """
+
+            try:
+                response = client.post(
+                    "https://api.github.com/graphql",
+                    json={"query": query},
+                    headers={
+                        "Authorization": f"bearer {GITHUB_TOKEN}",
+                        "Content-Type": "application/json",
+                    },
+                    timeout=30,
+                )
+                response.raise_for_status()
+                data = response.json()
+
+                if "errors" in data:
+                    print(f"  ⚠️  GraphQL error for {original_path}: {data['errors']}")
+                    continue
+
+                # Process result
+                repo_data = data.get("data", {}).get("repository", {})
+                branch_data = repo_data.get("defaultBranchRef", {})
+                target_data = branch_data.get("target", {})
+                history_data = target_data.get("history", {})
+
+                if not history_data.get("nodes"):
+                    continue
+
+                seen_names = set()
+                contributors = []
+
+                for node in history_data["nodes"]:
+                    for author in node["authors"]["nodes"]:
+                        if is_bot(author["name"]) or author["name"] in seen_names:
+                            continue
+
+                        seen_names.add(author["name"])
+                        contributors.append({
+                            "name": author["name"],
+                            "login": author["user"]["login"] if author.get("user") else None,
+                            "avatarUrl": author["avatarUrl"],
+                        })
+
+                # Store with mdx path relative to content dir
+                contributors_map[str(mdx_path.relative_to(CONTENT_DIR))] = contributors
+
+            except Exception as e:
+                print(f"  ⚠️  Failed to fetch {original_path}: {e}")
+                continue
+
+    print(f"  ✅ Fetched contributors for {len(contributors_map)} files")
+
+    return {"contributors": contributors_map, "hashes": new_hashes}
+
+
+def fetch_all_contributors() -> dict[str, Any]:
+    """Fetch contributors for all documentation files."""
+    print("Fetching contributors for all docs...")
+
+    # Load existing data if available
+    contributors_file = DATA_DIR / "contributors.json"
+    existing_data = {}
+    if contributors_file.exists():
+        existing_data = json.loads(contributors_file.read_text())
+
+    existing_contributors = existing_data.get("contributors", {})
+    existing_hashes = existing_data.get("hashes", {})
+
+    # Collect all mdx files and their original paths
+    strawberry_files = []
+    strawberry_dir = CONTENT_DIR / "docs" / "strawberry"
+    if strawberry_dir.exists():
+        for mdx_file in strawberry_dir.rglob("*.mdx"):
+            # Convert back to original .md path
+            rel_path = mdx_file.relative_to(strawberry_dir)
+            original_path = f"docs/{rel_path}".replace(".mdx", ".md")
+            strawberry_files.append((mdx_file, original_path))
+
+    django_files = []
+    django_dir = CONTENT_DIR / "docs" / "django"
+    if django_dir.exists():
+        for mdx_file in django_dir.rglob("*.mdx"):
+            rel_path = mdx_file.relative_to(django_dir)
+            original_path = f"docs/{rel_path}".replace(".mdx", ".md")
+            django_files.append((mdx_file, original_path))
+
+    # Fetch contributors for both repos
+    strawberry_result = fetch_contributors_for_files(
+        "strawberry-graphql/strawberry",
+        strawberry_files,
+        existing_hashes
+    )
+
+    django_result = fetch_contributors_for_files(
+        "strawberry-graphql/strawberry-django",
+        django_files,
+        existing_hashes
+    )
+
+    # Merge results, preserving existing data for unchanged files
+    all_contributors = {**existing_contributors}
+    all_contributors.update(strawberry_result["contributors"])
+    all_contributors.update(django_result["contributors"])
+
+    all_hashes = {**existing_hashes}
+    all_hashes.update(strawberry_result["hashes"])
+    all_hashes.update(django_result["hashes"])
+
+    total_files = len(strawberry_files) + len(django_files)
+    updated_files = len(strawberry_result["contributors"]) + len(django_result["contributors"])
+
+    print(f"✅ Contributors data ready: {total_files} total files, {updated_files} updated")
+
+    return {
+        "contributors": all_contributors,
+        "hashes": all_hashes,
+    }
+
+
 def main():
     """Main execution."""
     print("=" * 60)
@@ -507,6 +711,10 @@ def main():
     release = fetch_latest_release()
     (DATA_DIR / "release.json").write_text(json.dumps(release, indent=2))
 
+    # Fetch and save contributors
+    contributors = fetch_all_contributors()
+    (DATA_DIR / "contributors.json").write_text(json.dumps(contributors, indent=2))
+
     print("\n" + "=" * 60)
     print("✅ Done! All data fetched and saved")
     print("=" * 60)
@@ -514,6 +722,7 @@ def main():
     print("  - sponsors.json")
     print("  - downloads.json")
     print("  - release.json")
+    print("  - contributors.json")
 
     # Generate sidebar configuration
     print("\nGenerating sidebar configuration...")
