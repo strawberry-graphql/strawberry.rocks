@@ -67,6 +67,11 @@ function getAllMdxFiles(dir, baseDir = '') {
   const entries = readdirSync(dir);
 
   for (const entry of entries) {
+    // Skip files/directories starting with underscore
+    if (entry.startsWith('_')) {
+      continue;
+    }
+
     const fullPath = join(dir, entry);
     const stat = statSync(fullPath);
 
@@ -152,9 +157,14 @@ function generateSidebarForSection(docsType) {
   for (const file of allFiles) {
     const slug = filePathToSlug(file, docsType);
 
-    // Skip index file if it's the main one
+    // Skip index files
     if (slug === 'docs' && docsType === 'strawberry') continue;
     if (slug === `docs/${docsType}` && docsType === 'django') continue;
+    if (slug.endsWith('/index')) continue;
+
+    // Skip files starting with underscore
+    const filename = file.split('/').pop();
+    if (filename.startsWith('_')) continue;
 
     if (!referencedSlugs.has(slug)) {
       const fullPath = join(sectionDir, `${file}.mdx`);
@@ -163,12 +173,29 @@ function generateSidebarForSection(docsType) {
     }
   }
 
-  // Add unreferenced files to sidebar
+  // Group unreferenced files by folder
   if (unreferencedFiles.length > 0) {
-    sidebar.push({
-      label: 'Other',
-      items: unreferencedFiles.sort((a, b) => a.label.localeCompare(b.label))
-    });
+    const groupedFiles = {};
+
+    for (const file of unreferencedFiles) {
+      // Extract folder from slug (e.g., "docs/extensions/foo" -> "extensions")
+      const slugParts = file.slug.split('/');
+      const folderName = slugParts.length > 2 ? slugParts[1] : 'other';
+
+      if (!groupedFiles[folderName]) {
+        groupedFiles[folderName] = [];
+      }
+      groupedFiles[folderName].push(file);
+    }
+
+    // Add each group as a separate section
+    for (const [folderName, files] of Object.entries(groupedFiles)) {
+      const label = folderName.charAt(0).toUpperCase() + folderName.slice(1).replace(/-/g, ' ');
+      sidebar.push({
+        label: `Other (${label})`,
+        items: files.sort((a, b) => a.label.localeCompare(b.label))
+      });
+    }
   }
 
   return sidebar;

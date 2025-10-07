@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+
+const allDocs = await getCollection('docs');
+const sortedDocs = allDocs.sort((a, b) => a.id.localeCompare(b.id));
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Pages - Strawberry GraphQL</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    h1 {
+      margin-bottom: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background: #f5f5f5;
+      font-weight: 600;
+    }
+    tr:hover {
+      background: #f9f9f9;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .count {
+      color: #666;
+      font-size: 0.9rem;
+      margin-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>All Pages <span class="count">({sortedDocs.length} total)</span></h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>File Path</th>
+      </tr>
+    </thead>
+    <tbody>
+      {sortedDocs.map((doc) => (
+        <tr>
+          <td><code>{doc.id}</code></td>
+          <td>
+            <a href={`/${doc.id}/`}>{doc.data.title || 'Untitled'}</a>
+          </td>
+          <td><small>{doc.id.replace('docs/', '')}</small></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</body>
+</html>

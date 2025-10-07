@@ -1,7 +1,5 @@
-// Temporary fake data for downloads
+import downloadsData from "../data/downloads.json";
+
 export const fetchDownloads = async () => {
-  return {
-    lastMonth: 1_200_000,
-    lastWeek: 300_000
-  };
+  return downloadsData;
 };

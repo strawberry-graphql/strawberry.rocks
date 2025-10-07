@@ -330,43 +330,93 @@ export const strawberrySidebar = [
     ]
   },
   {
-    "label": "Other",
+    "label": "Other (Breaking changes)",
     "items": [
       {
-        "label": "Add Validation Rules",
-        "slug": "docs/extensions/add-validation-rules"
+        "label": "0.146.0 Breaking Changes",
+        "slug": "docs/breaking-changes/0.146.0"
       },
       {
-        "label": "Apollo Tracing",
-        "slug": "docs/extensions/apollo-tracing"
+        "label": "0.159.0 Deprecations",
+        "slug": "docs/breaking-changes/0.159.0"
       },
+      {
+        "label": "0.169.0 Breaking changes",
+        "slug": "docs/breaking-changes/0.169.0"
+      },
+      {
+        "label": "0.180.0 Breaking changes",
+        "slug": "docs/breaking-changes/0.180.0"
+      },
+      {
+        "label": "0.213.0 Deprecation",
+        "slug": "docs/breaking-changes/0.213.0"
+      },
+      {
+        "label": "0.217 Breaking Changes",
+        "slug": "docs/breaking-changes/0.217.0"
+      },
+      {
+        "label": "0.233.0 Breaking Changes",
+        "slug": "docs/breaking-changes/0.233.0"
+      },
+      {
+        "label": "0.236.0 Breaking Changes",
+        "slug": "docs/breaking-changes/0.236.0"
+      },
+      {
+        "label": "0.240.0 Breaking Changes",
+        "slug": "docs/breaking-changes/0.240.0"
+      },
+      {
+        "label": "0.243.0 Breaking Changes",
+        "slug": "docs/breaking-changes/0.243.0"
+      },
+      {
+        "label": "0.249.0 Breaking Changes",
+        "slug": "docs/breaking-changes/0.249.0"
+      },
+      {
+        "label": "0.251.0 Breaking Changes",
+        "slug": "docs/breaking-changes/0.251.0"
+      },
+      {
+        "label": "0.268.0 Breaking Changes",
+        "slug": "docs/breaking-changes/0.268.0"
+      },
+      {
+        "label": "0.278.1 Breaking Changes",
+        "slug": "docs/breaking-changes/0.278.1"
+      },
+      {
+        "label": "0.279.0 Breaking Changes",
+        "slug": "docs/breaking-changes/0.279.0"
+      },
+      {
+        "label": "0.283.0 Breaking Changes",
+        "slug": "docs/breaking-changes/0.283.0"
+      }
+    ]
+  },
+  {
+    "label": "Other (Cli)",
+    "items": [
+      {
+        "label": "Locate definition",
+        "slug": "docs/cli/locate-definition"
+      }
+    ]
+  },
+  {
+    "label": "Other (Errors)",
+    "items": [
       {
         "label": "Conflicting Arguments Error",
         "slug": "docs/errors/conflicting-arguments"
       },
       {
-        "label": "Datadog",
-        "slug": "docs/extensions/datadog"
-      },
-      {
-        "label": "Disable Introspection",
-        "slug": "docs/extensions/disable-introspection"
-      },
-      {
-        "label": "Disable Validation",
-        "slug": "docs/extensions/disable-validation"
-      },
-      {
         "label": "Duplicated Type Name Error",
         "slug": "docs/errors/duplicated-type-name"
-      },
-      {
-        "label": "Input Mutation Extension",
-        "slug": "docs/extensions/input-mutation"
-      },
-      {
-        "label": "Integrations",
-        "slug": "docs/integrations"
       },
       {
         "label": "Invalid Argument Type Error",
@@ -383,26 +433,6 @@ export const strawberrySidebar = [
       {
         "label": "Invalid Type for Union Merge Error",
         "slug": "docs/errors/invalid-type-for-union-merge"
-      },
-      {
-        "label": "Locate definition",
-        "slug": "docs/cli/locate-definition"
-      },
-      {
-        "label": "Mask Errors",
-        "slug": "docs/extensions/mask-errors"
-      },
-      {
-        "label": "Max Aliases Limiter",
-        "slug": "docs/extensions/max-aliases-limiter"
-      },
-      {
-        "label": "Max Tokens Limiter",
-        "slug": "docs/extensions/max-tokens-limiter"
-      },
-      {
-        "label": "Maybe",
-        "slug": "docs/types/maybe"
       },
       {
         "label": "Missing arguments annotation Error",
@@ -429,36 +459,8 @@ export const strawberrySidebar = [
         "slug": "docs/errors/object-is-not-an-enum"
       },
       {
-        "label": "Open Telemetry",
-        "slug": "docs/extensions/opentelemetry"
-      },
-      {
-        "label": "Pagination - Cursor based",
-        "slug": "docs/guides/pagination/cursor-based"
-      },
-      {
-        "label": "Pagination - Implementing the Relay Connection Specification",
-        "slug": "docs/guides/pagination/connections"
-      },
-      {
-        "label": "Pagination - Offset based",
-        "slug": "docs/guides/pagination/offset-based"
-      },
-      {
-        "label": "Parser Cache",
-        "slug": "docs/extensions/parser-cache"
-      },
-      {
         "label": "Private Strawberry Field Error",
         "slug": "docs/errors/private-strawberry-field"
-      },
-      {
-        "label": "PyInstrument",
-        "slug": "docs/extensions/pyinstrument"
-      },
-      {
-        "label": "Query Depth Limiter",
-        "slug": "docs/extensions/query-depth-limiter"
       },
       {
         "label": "Relay wrong annotation Error",
@@ -473,10 +475,6 @@ export const strawberrySidebar = [
         "slug": "docs/errors/scalar-already-registered"
       },
       {
-        "label": "Sentry Tracing",
-        "slug": "docs/extensions/sentry-tracing"
-      },
-      {
         "label": "Unresolved Field Type Error",
         "slug": "docs/errors/unresolved-field-type"
       },
@@ -487,10 +485,106 @@ export const strawberrySidebar = [
       {
         "label": "Using silent permissions on optional fields",
         "slug": "docs/errors/permission-fail-silently-requires-optional"
+      }
+    ]
+  },
+  {
+    "label": "Other (Extensions)",
+    "items": [
+      {
+        "label": "Add Validation Rules",
+        "slug": "docs/extensions/add-validation-rules"
+      },
+      {
+        "label": "Apollo Tracing",
+        "slug": "docs/extensions/apollo-tracing"
+      },
+      {
+        "label": "Datadog",
+        "slug": "docs/extensions/datadog"
+      },
+      {
+        "label": "Disable Introspection",
+        "slug": "docs/extensions/disable-introspection"
+      },
+      {
+        "label": "Disable Validation",
+        "slug": "docs/extensions/disable-validation"
+      },
+      {
+        "label": "Input Mutation Extension",
+        "slug": "docs/extensions/input-mutation"
+      },
+      {
+        "label": "Mask Errors",
+        "slug": "docs/extensions/mask-errors"
+      },
+      {
+        "label": "Max Aliases Limiter",
+        "slug": "docs/extensions/max-aliases-limiter"
+      },
+      {
+        "label": "Max Tokens Limiter",
+        "slug": "docs/extensions/max-tokens-limiter"
+      },
+      {
+        "label": "Open Telemetry",
+        "slug": "docs/extensions/opentelemetry"
+      },
+      {
+        "label": "Parser Cache",
+        "slug": "docs/extensions/parser-cache"
+      },
+      {
+        "label": "PyInstrument",
+        "slug": "docs/extensions/pyinstrument"
+      },
+      {
+        "label": "Query Depth Limiter",
+        "slug": "docs/extensions/query-depth-limiter"
+      },
+      {
+        "label": "Sentry Tracing",
+        "slug": "docs/extensions/sentry-tracing"
       },
       {
         "label": "Validation Cache",
         "slug": "docs/extensions/validation-cache"
+      }
+    ]
+  },
+  {
+    "label": "Other (Guides)",
+    "items": [
+      {
+        "label": "Pagination - Cursor based",
+        "slug": "docs/guides/pagination/cursor-based"
+      },
+      {
+        "label": "Pagination - Implementing the Relay Connection Specification",
+        "slug": "docs/guides/pagination/connections"
+      },
+      {
+        "label": "Pagination - Offset based",
+        "slug": "docs/guides/pagination/offset-based"
+      }
+    ]
+  },
+  {
+    "label": "Other (Other)",
+    "items": [
+      {
+        "label": "Integrations",
+        "slug": "docs/integrations"
+      }
+    ]
+  },
+  {
+    "label": "Other (Types)",
+    "items": [
+      {
+        "label": "Maybe",
+        "slug": "docs/types/maybe"
       }
     ]
   }
@@ -609,12 +703,12 @@ export const djangoSidebar = [
     ]
   },
   {
-    "label": "Other",
+    "label": "Other (Django)",
     "items": [
       {
         "label": "Ordering",
         "slug": "docs/django/guide/legacy-ordering"
-      },
+      }
     ]
   }
 ];

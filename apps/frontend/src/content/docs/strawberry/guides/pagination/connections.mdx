@@ -5,7 +5,6 @@ title: Pagination - Implementing the Relay Connection Specification
 import Tip from '@/components/Pages/Callout/Tip.astro';
 import CodeGrid from '@/components/CodeGrid.astro';
 
-
 We naively implemented cursor based pagination in the
 [previous tutorial](./cursor-based). To ensure a consistent implementation of
 this pattern, the Relay project has a formal
@@ -597,10 +596,10 @@ class Query:
 schema = strawberry.Schema(query=Query)
 ```
 
-you can start the debug server with the following command:
+you can start the dev server with the following command:
 
 ```shell
-strawberry server example:schema
+strawberry dev example:schema
 ```
 
 Here's an example query to try out:

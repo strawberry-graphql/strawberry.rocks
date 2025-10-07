@@ -7,20 +7,22 @@ export const collections = {
 	docs: defineCollection({
 		loader: docsLoader({
 		generateId: ({entry, base }) => {
-		const entryURL = new URL(encodeURI(entry), base);
-			let { slug } = getContentEntryIdAndSlug({
-				entry: entryURL,
-				contentDir: base,
-				collection: '',
-			});
+			// Get the file path relative to the base
+			const entryURL = new URL(encodeURI(entry), base);
+			let relativePath = entryURL.pathname.replace(base.pathname, '');
 
+			// Remove leading slash and .mdx extension
+			relativePath = relativePath.replace(/^\//, '').replace(/\.mdx$/, '');
 
-			if (slug === 'strawberry') {
-			return 'docs'
+			if (relativePath === 'strawberry' || relativePath === 'strawberry/index') {
+				return 'docs';
 			}
 
-			slug = slug.replace(/^strawberry\//, '')
+			// Remove strawberry/ prefix
+			let slug = relativePath.replace(/^strawberry\//, '');
 
+			// Remove /index suffix to make integrations/index -> integrations
+			slug = slug.replace(/\/index$/, '');
 
 			return `docs/${slug}`;
 		}

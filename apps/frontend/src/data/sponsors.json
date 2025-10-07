@@ -1,0 +1,132 @@
+{
+  "all": [
+    {
+      "id": "soundtrackyourbrand",
+      "name": "Soundtrack",
+      "logo": "https://avatars.githubusercontent.com/u/3369764?v=4",
+      "href": "https://soundtrack.io",
+      "sponsorship": {
+        "monthlyPriceInDollars": 500
+      }
+    },
+    {
+      "id": "isometric",
+      "name": "Isometric",
+      "logo": "https://avatars.githubusercontent.com/u/1491297?v=4",
+      "href": "https://isometric.com/",
+      "sponsorship": {
+        "monthlyPriceInDollars": 100
+      }
+    },
+    {
+      "id": "wedgworth",
+      "name": "Wedgworth's, Inc",
+      "logo": "https://avatars.githubusercontent.com/u/120101163?v=4",
+      "href": "https://wedgworth.com/",
+      "sponsorship": {
+        "monthlyPriceInDollars": 100
+      }
+    },
+    {
+      "id": "arraypad",
+      "name": "Arpad Ray",
+      "logo": "https://avatars.githubusercontent.com/u/451166?u=051191980917b5a16bb9e51cf895998eb0520333&v=4",
+      "href": "https://arpad.pizza/",
+      "sponsorship": {
+        "monthlyPriceInDollars": 10
+      }
+    },
+    {
+      "id": "kalaspuff",
+      "name": "Carl Oscar Aaro",
+      "logo": "https://avatars.githubusercontent.com/u/89139?u=38b34c5782c55373dc50c56b2e525fca99adb2c2&v=4",
+      "href": "https://carloscar.com/",
+      "sponsorship": {
+        "monthlyPriceInDollars": 10
+      }
+    },
+    {
+      "id": "paulcwatts",
+      "name": "Paul Watts",
+      "logo": "https://avatars.githubusercontent.com/u/150269?u=1819e145d573b44f0ad74b87206d21cd60331d4e&v=4",
+      "href": "https://joulespersecond.com",
+      "sponsorship": {
+        "monthlyPriceInDollars": 10
+      }
+    },
+    {
+      "id": "celebritynewsag",
+      "name": "Celebrity News AG",
+      "logo": "https://avatars.githubusercontent.com/u/1352964?v=4",
+      "href": "https://github.com/celebritynewsag",
+      "sponsorship": {
+        "monthlyPriceInDollars": 10
+      }
+    },
+    {
+      "id": "parrotmac",
+      "name": "Isaac Parker",
+      "logo": "https://avatars.githubusercontent.com/u/1728260?u=83e398e89901785aa2edb30774bb94ff95b65fbf&v=4",
+      "href": "https://isaacparker.co",
+      "sponsorship": {
+        "monthlyPriceInDollars": 10
+      }
+    },
+    {
+      "id": "octue",
+      "name": "Octue",
+      "logo": "https://avatars.githubusercontent.com/u/16574396?v=4",
+      "href": "https://www.octue.com",
+      "sponsorship": {
+        "monthlyPriceInDollars": 10
+      }
+    },
+    {
+      "id": "guest-1e2e2e5f",
+      "name": "Claudia Sardi",
+      "logo": "https://images.opencollective.com/guest-1e2e2e5f/avatar.png",
+      "href": null,
+      "sponsorship": {
+        "monthlyPriceInDollars": 10
+      }
+    },
+    {
+      "id": "hyun-s-moon",
+      "name": "Hyun S. Moon",
+      "logo": "https://images.opencollective.com/hyun-s-moon/avatar.png",
+      "href": null,
+      "sponsorship": {
+        "monthlyPriceInDollars": 10
+      }
+    }
+  ],
+  "home": [
+    {
+      "id": "soundtrackyourbrand",
+      "name": "Soundtrack",
+      "logo": "https://avatars.githubusercontent.com/u/3369764?v=4",
+      "href": "https://soundtrack.io",
+      "sponsorship": {
+        "monthlyPriceInDollars": 500
+      }
+    },
+    {
+      "id": "isometric",
+      "name": "Isometric",
+      "logo": "https://avatars.githubusercontent.com/u/1491297?v=4",
+      "href": "https://isometric.com/",
+      "sponsorship": {
+        "monthlyPriceInDollars": 100
+      }
+    },
+    {
+      "id": "wedgworth",
+      "name": "Wedgworth's, Inc",
+      "logo": "https://avatars.githubusercontent.com/u/120101163?v=4",
+      "href": "https://wedgworth.com/",
+      "sponsorship": {
+        "monthlyPriceInDollars": 100
+      }
+    }
+  ]
+}

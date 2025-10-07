@@ -1,8 +1,19 @@
-// Temporary fake data for sponsors
-export const fetchSponsors = async () => {
-  return [];
+import sponsorsData from "../data/sponsors.json";
+
+type Sponsor = {
+  id: string;
+  name: string;
+  logo: string;
+  href: string | null;
+  sponsorship: {
+    monthlyPriceInDollars: number;
+  };
 };
 
-export const fetchSponsorsForHome = async () => {
-  return [];
+export const fetchSponsors = async (): Promise<Sponsor[]> => {
+  return sponsorsData.all;
+};
+
+export const fetchSponsorsForHome = async (): Promise<Sponsor[]> => {
+  return sponsorsData.home;
 };

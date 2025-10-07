@@ -1,12 +1,8 @@
 # Strawberry GraphQL documentation tasks
 
-# Fetch docs from the strawberry repository
-fetch-docs:
-    cd apps/frontend && ./fetch-docs.sh
-
-# Generate sidebar configuration from README.mdx
-generate-sidebar:
-    cd apps/frontend && node generate-sidebar.js
+# Fetch all data (docs, sponsors, downloads, release) and generate sidebar
+fetch-data:
+    cd apps/frontend && ./fetch-data.py
 
 # Install dependencies
 install:
