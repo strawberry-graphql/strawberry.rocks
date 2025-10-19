@@ -2,7 +2,7 @@
 
 # Fetch all data (docs, sponsors, downloads, release) and generate sidebar
 fetch-data:
-    cd apps/frontend && ./fetch-data.py
+    cd apps/strawberry.rocks && ./fetch-data.py
 
 # Install dependencies
 install:

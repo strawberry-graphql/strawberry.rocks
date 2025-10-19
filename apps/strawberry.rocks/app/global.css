@@ -1,0 +1,84 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+@import './fonts.css';
+
+:root {
+  /* Greyscale */
+  --color-black: #0d0e12;
+  --color-g-900: #1f1f1f;
+  --color-g-800: #28292c;
+  --color-g-700: #515254;
+  --color-g-600: #6f7073;
+  --color-g-500: #8b8b8d;
+  --color-g-400: #c5c5c6;
+  --color-g-300: #dcdcdc;
+  --color-g-200: #e5e5e5;
+  --color-g-100: #e2e2e3;
+  --color-g-50: #f0f1f1;
+  --color-white: #fff;
+
+  /* Accent */
+  --color-strawberry: #f7393d;
+  --color-yellow: #ffe500;
+  --color-yellow-light: #feab0a;
+  --color-green: #1eb589;
+  --color-pink: #ff9fa9;
+  --color-blue: #0094ff;
+  --color-magenta: #ee0a78;
+  --color-orange: #fe620a;
+
+  /* Fonts */
+  --font-display: "Ranade", sans-serif;
+  --font-sans: "Satoshi", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+}
+
+.dark body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* Typography classes used in components */
+.typography-label {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.typography-paragraph {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.typography-paragraph-2 {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.typography-heading-4 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Full width sections */
+.full {
+  width: 100%;
+}

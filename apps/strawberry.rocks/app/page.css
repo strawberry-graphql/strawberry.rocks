@@ -1,0 +1,22 @@
+main.home-layout {
+  padding: 80px 0;
+  display: flex;
+  row-gap: 80px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main.home-layout h1,
+main.home-layout h2 {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+@media (max-width: 820px) {
+  main.home-layout h1,
+  main.home-layout h2 {
+    padding: 0 16px;
+  }
+}

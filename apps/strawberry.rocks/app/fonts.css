@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Italic[wght].ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono[wght].ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ranade";
+  src: url("/fonts/Ranade-Variable.ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ranade";
+  src: url("/fonts/Ranade-VariableItalic.ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Variable.ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-VariableItalic.ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: italic;
+}

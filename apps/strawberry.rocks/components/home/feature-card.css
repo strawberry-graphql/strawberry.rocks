@@ -1,0 +1,40 @@
+.feature-card {
+  padding: 24px;
+  border: 1px solid;
+  border-radius: 16px;
+  border-color: var(--color-g-100);
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+}
+
+.dark .feature-card {
+  border: 1px solid rgba(54, 56, 60, 0.5);
+  background: rgba(27, 29, 33, 0.75);
+  color: white;
+}
+
+.feature-card .icon {
+  background-color: var(--color-strawberry);
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-card .icon svg {
+  stroke: white;
+}
+
+.feature-card .title {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.feature-card .description {
+  text-wrap: pretty;
+}

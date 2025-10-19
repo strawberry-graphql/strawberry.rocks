@@ -1,0 +1,76 @@
+.sponsors-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.sponsors-section h1 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 20px !important;
+  text-wrap: balance;
+}
+
+.sponsors-section h2 {
+  text-align: center;
+  text-wrap: balance;
+  color: var(--color-g-700);
+}
+
+html.dark .sponsors-section h1 {
+  color: #fff;
+}
+
+html.dark .sponsors-section h2 {
+  color: var(--color-g-400);
+}
+
+.sponsors-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sponsors-list ul {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  list-style: none;
+  gap: 80px;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+}
+
+.sponsors-list li {
+  margin-bottom: 24px;
+  flex-shrink: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  break-inside: avoid;
+  scroll-snap-align: center;
+}
+
+.sponsors-list img {
+  max-width: 250px;
+  max-height: 120px;
+}
+
+.sponsors-list .dark {
+  display: none;
+}
+
+html.dark .sponsors-list .dark {
+  display: block;
+}
+
+html.dark .sponsors-list .light {
+  display: none;
+}

@@ -1,0 +1,27 @@
+.button-link {
+  color: white;
+  padding: 16px 32px;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.button-link .background {
+  --rotation: 0deg;
+
+  position: absolute;
+  left: -5px;
+  right: -5px;
+  aspect-ratio: 1;
+  top: 50%;
+  transform: translateY(-50%) rotate(var(--rotation));
+  z-index: -1;
+
+  background: linear-gradient(90deg, var(--color-magenta), var(--color-orange));
+  transition: transform 0.3s ease-in-out;
+}
+
+.button-link:hover .background {
+  --rotation: 180deg;
+}
