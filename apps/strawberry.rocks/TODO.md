@@ -9,6 +9,7 @@
 - [ ] **Navigation**: Add any additional navigation elements (header, footer, etc.)
 - [ ] **SEO/Metadata**: Configure site metadata, OpenGraph images, etc.
 - [ ] **Deployment**: Set up deployment pipeline for strawberry.rocks
+- [ ] Discord link?
 
 ## Documentation Content
 
@@ -19,6 +20,4 @@
 
 ## Nice to Have
 
-- [ ] Add dark mode support verification
-- [ ] Performance optimization
 - [ ] Analytics setup (if needed)

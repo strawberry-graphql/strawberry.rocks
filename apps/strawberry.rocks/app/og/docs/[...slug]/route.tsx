@@ -1,4 +1,4 @@
-import { getPageImage, source } from '@/lib/source';
+import { getPageImage, strawberrySource, djangoSource } from '@/lib/source';
 import { notFound } from 'next/navigation';
 import { ImageResponse } from 'next/og';
 import { generate as DefaultImage } from 'fumadocs-ui/og';
@@ -10,7 +10,12 @@ export async function GET(
   { params }: RouteContext<'/og/docs/[...slug]'>,
 ) {
   const { slug } = await params;
-  const page = source.getPage(slug.slice(0, -1));
+
+  // Try to find the page in either source
+  let page = strawberrySource.getPage(slug.slice(0, -1));
+  if (!page) {
+    page = djangoSource.getPage(slug.slice(0, -1));
+  }
   if (!page) notFound();
 
   return new ImageResponse(
@@ -29,8 +34,15 @@ export async function GET(
 }
 
 export function generateStaticParams() {
-  return source.getPages().map((page) => ({
+  const strawberryPages = strawberrySource.getPages().map((page) => ({
     lang: page.locale,
     slug: getPageImage(page).segments,
   }));
+
+  const djangoPages = djangoSource.getPages().map((page) => ({
+    lang: page.locale,
+    slug: getPageImage(page).segments,
+  }));
+
+  return [...strawberryPages, ...djangoPages];
 }

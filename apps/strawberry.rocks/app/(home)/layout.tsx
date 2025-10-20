@@ -1,6 +1,11 @@
-import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { baseOptions } from '@/lib/layout.shared';
+import { HomeLayout } from "@/components/layout/home";
+import { baseOptions } from "@/lib/layout.shared";
+import type { ReactNode } from "react";
 
-export default function Layout({ children }: LayoutProps<'/'>) {
-  return <HomeLayout {...baseOptions()}>{children}</HomeLayout>;
+export default function Layout({ children }: { children: ReactNode }) {
+	return (
+		<HomeLayout {...baseOptions()}>
+			<div className="mt-24">{children}</div>
+		</HomeLayout>
+	);
 }

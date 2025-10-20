@@ -1,10 +1,10 @@
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-import { strawberrySource } from '@/lib/source';
+import { djangoSource } from '@/lib/source';
 
-export default function Layout({ children }: LayoutProps<'/docs'>) {
+export default function Layout({ children }: LayoutProps<'/docs/django'>) {
   return (
     <DocsLayout
-      tree={strawberrySource.pageTree}
+      tree={djangoSource.pageTree}
       nav={{ enabled: false }}
       sidebar={{
         tabs: [

@@ -19,7 +19,7 @@ importers:
     dependencies:
       '@astrojs/starlight':
         specifier: ^0.36.0
-        version: 0.36.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0))
+        version: 0.36.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0))
       '@docsearch/css':
         specifier: ^3.6.2
         version: 3.6.2
@@ -28,16 +28,16 @@ importers:
         version: 3.6.2(@algolia/client-search@5.9.1)(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(search-insights@2.17.2)
       '@lorenzo_lewis/starlight-utils':
         specifier: ^0.3.2
-        version: 0.3.2(@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)))(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0))
+        version: 0.3.2(@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)))(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0))
       '@vercel/speed-insights':
         specifier: ^1.1.0
         version: 1.1.0(next@15.5.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       astro:
         specifier: ^5.6.1
-        version: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)
+        version: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)
       astro-expressive-code:
         specifier: ^0.37.1
-        version: 0.37.1(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0))
+        version: 0.37.1(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0))
       mermaid:
         specifier: ^11.3.0
         version: 11.3.0
@@ -322,6 +322,27 @@ importers:
 
   apps/strawberry.rocks:
     dependencies:
+      '@radix-ui/react-collapsible':
+        specifier: ^1.1.12
+        version: 1.1.12(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@radix-ui/react-navigation-menu':
+        specifier: ^1.2.14
+        version: 1.2.14(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@radix-ui/react-popover':
+        specifier: ^1.1.15
+        version: 1.1.15(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@radix-ui/react-presence':
+        specifier: ^1.1.5
+        version: 1.1.5(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@radix-ui/react-scroll-area':
+        specifier: ^1.2.10
+        version: 1.2.10(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@strawberry-graphql/styleguide':
+        specifier: workspace:*
+        version: link:../../packages/styleguide
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
       fumadocs-core:
         specifier: 15.8.5
         version: 15.8.5(@types/react@19.2.0)(lucide-react@0.544.0(react@19.2.0))(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react-router@7.9.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
@@ -337,6 +358,9 @@ importers:
       next:
         specifier: 15.5.4
         version: 15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next-themes:
+        specifier: ^0.4.6
+        version: 0.4.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -346,6 +370,9 @@ importers:
       shiki:
         specifier: ^0.14.7
         version: 0.14.7
+      tailwind-merge:
+        specifier: ^3.3.1
+        version: 3.3.1
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.2.5
@@ -11912,12 +11939,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.6(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0))':
+  '@astrojs/mdx@4.3.6(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.7
       '@mdx-js/mdx': 3.1.1
       acorn: 8.15.0
-      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)
+      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -11951,17 +11978,17 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.25.76
 
-  '@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0))':
+  '@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.7
-      '@astrojs/mdx': 4.3.6(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0))
+      '@astrojs/mdx': 4.3.6(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0))
       '@astrojs/sitemap': 3.6.0
       '@pagefind/default-ui': 1.4.0
       '@types/hast': 3.0.4
       '@types/js-yaml': 4.0.9
       '@types/mdast': 4.0.4
-      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)
-      astro-expressive-code: 0.41.3(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0))
+      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)
+      astro-expressive-code: 0.41.3(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0))
       bcp-47: 2.1.0
       hast-util-from-html: 2.0.3
       hast-util-select: 6.0.3
@@ -14620,11 +14647,11 @@ snapshots:
 
   '@juggle/resize-observer@3.4.0': {}
 
-  '@lorenzo_lewis/starlight-utils@0.3.2(@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)))(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0))':
+  '@lorenzo_lewis/starlight-utils@0.3.2(@astrojs/starlight@0.36.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)))(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0))':
     dependencies:
-      '@astrojs/starlight': 0.36.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0))
-      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)
-      astro-integration-kit: 0.18.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0))
+      '@astrojs/starlight': 0.36.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0))
+      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)
+      astro-integration-kit: 0.18.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0))
 
   '@mailchimp/mailchimp_marketing@3.0.80':
     dependencies:
@@ -18048,19 +18075,19 @@ snapshots:
       astro: 4.16.13(@types/node@24.6.2)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.6.3)
       rehype-expressive-code: 0.37.1
 
-  astro-expressive-code@0.37.1(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)):
+  astro-expressive-code@0.37.1(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)):
     dependencies:
-      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)
+      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)
       rehype-expressive-code: 0.37.1
 
-  astro-expressive-code@0.41.3(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)):
+  astro-expressive-code@0.41.3(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)):
     dependencies:
-      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)
+      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)
       rehype-expressive-code: 0.41.3
 
-  astro-integration-kit@0.18.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)):
+  astro-integration-kit@0.18.0(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)):
     dependencies:
-      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0)
+      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0)
       pathe: 1.1.2
       recast: 0.23.9
 
@@ -18162,7 +18189,7 @@ snapshots:
       - terser
       - typescript
 
-  astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.4.3)(yaml@2.6.0):
+  astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.3)(terser@5.36.0)(typescript@5.9.3)(yaml@2.6.0):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.3
@@ -18212,7 +18239,7 @@ snapshots:
       smol-toml: 1.4.2
       tinyexec: 0.3.2
       tinyglobby: 0.2.15
-      tsconfck: 3.1.6(typescript@5.4.3)
+      tsconfck: 3.1.6(typescript@5.9.3)
       ultrahtml: 1.6.0
       unifont: 0.5.2
       unist-util-visit: 5.0.0
@@ -18225,7 +18252,7 @@ snapshots:
       yocto-spinner: 0.2.3
       zod: 3.25.76
       zod-to-json-schema: 3.24.6(zod@3.25.76)
-      zod-to-ts: 1.2.0(typescript@5.4.3)(zod@3.25.76)
+      zod-to-ts: 1.2.0(typescript@5.9.3)(zod@3.25.76)
     optionalDependencies:
       sharp: 0.34.4
     transitivePeerDependencies:
@@ -19773,7 +19800,7 @@ snapshots:
       eslint: 8.52.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-typescript@3.6.1)(eslint@8.52.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0))(eslint@8.52.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.52.0)
       eslint-plugin-react: 7.33.2(eslint@8.52.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.52.0)
@@ -19797,7 +19824,7 @@ snapshots:
       enhanced-resolve: 5.17.1
       eslint: 8.52.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0))(eslint@8.52.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-typescript@3.6.1)(eslint@8.52.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0))(eslint@8.52.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.2
       is-core-module: 2.15.1
@@ -19819,7 +19846,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-typescript@3.6.1)(eslint@8.52.0):
+  eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.52.0)(typescript@5.2.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.52.0))(eslint@8.52.0))(eslint@8.52.0):
     dependencies:
       array-includes: 3.1.7
       array.prototype.findlastindex: 1.2.3
@@ -25110,9 +25137,9 @@ snapshots:
     optionalDependencies:
       typescript: 5.6.3
 
-  tsconfck@3.1.6(typescript@5.4.3):
+  tsconfck@3.1.6(typescript@5.9.3):
     optionalDependencies:
-      typescript: 5.4.3
+      typescript: 5.9.3
 
   tsconfig-paths-webpack-plugin@4.1.0:
     dependencies:
@@ -25956,15 +25983,15 @@ snapshots:
     dependencies:
       zod: 3.25.76
 
-  zod-to-ts@1.2.0(typescript@5.4.3)(zod@3.25.76):
-    dependencies:
-      typescript: 5.4.3
-      zod: 3.25.76
-
   zod-to-ts@1.2.0(typescript@5.6.3)(zod@3.23.8):
     dependencies:
       typescript: 5.6.3
       zod: 3.23.8
+
+  zod-to-ts@1.2.0(typescript@5.9.3)(zod@3.25.76):
+    dependencies:
+      typescript: 5.9.3
+      zod: 3.25.76
 
   zod@3.23.8: {}
 

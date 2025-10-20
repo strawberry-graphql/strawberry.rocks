@@ -1,26 +1,40 @@
 import {
-  defineConfig,
-  defineDocs,
-  frontmatterSchema,
-  metaSchema,
-} from 'fumadocs-mdx/config';
+	defineConfig,
+	defineDocs,
+	frontmatterSchema,
+	metaSchema,
+} from "fumadocs-mdx/config";
 
-// You can customise Zod schemas for frontmatter and `meta.json` here
-// see https://fumadocs.dev/docs/mdx/collections
-export const docs = defineDocs({
-  docs: {
-    schema: frontmatterSchema,
-    postprocess: {
-      includeProcessedMarkdown: true,
-    },
-  },
-  meta: {
-    schema: metaSchema,
-  },
+// Strawberry docs (main docs at /docs)
+export const strawberryDocs = defineDocs({
+	dir: "content/docs/strawberry",
+	docs: {
+		schema: frontmatterSchema,
+		postprocess: {
+			includeProcessedMarkdown: true,
+		},
+	},
+	meta: {
+		schema: metaSchema,
+	},
+});
+
+// Django docs (at /docs/django)
+export const djangoDocs = defineDocs({
+	dir: "content/docs/django",
+	docs: {
+		schema: frontmatterSchema,
+		postprocess: {
+			includeProcessedMarkdown: true,
+		},
+	},
+	meta: {
+		schema: metaSchema,
+	},
 });
 
 export default defineConfig({
-  mdxOptions: {
-    // MDX options
-  },
+	mdxOptions: {
+		// MDX options
+	},
 });
