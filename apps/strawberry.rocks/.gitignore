@@ -6,11 +6,6 @@
 .content-collections
 .source
 
-# generated docs and data
-/content/docs/strawberry
-/content/docs/django
-/data
-
 # test & build
 /coverage
 /.next/

@@ -1,27 +1,25 @@
-import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-import { strawberrySource } from '@/lib/source';
+import { baseOptions } from "@/lib/layout.shared";
+import { source } from "@/lib/source";
+import { DocsLayout } from "fumadocs-ui/layouts/docs";
 
-export default function Layout({ children }: LayoutProps<'/docs'>) {
+export default function Layout({ children }: LayoutProps<"/docs">) {
   return (
     <DocsLayout
-      tree={strawberrySource.pageTree}
-      nav={{ enabled: false }}
+      {...baseOptions()}
+      tree={source.pageTree}
       sidebar={{
         tabs: [
           {
-            title: 'Strawberry GraphQL',
-            description: 'Core Strawberry GraphQL documentation',
-            url: '/docs',
-            icon: <span>🍓</span>,
+            icon: "🍓 ",
+            title: "Strawberry",
+            url: "/docs",
           },
           {
-            title: 'Strawberry Django',
-            description: 'Django integration for Strawberry GraphQL',
-            url: '/docs/django',
-            icon: <span>🦄</span>,
+            icon: "🦄 ",
+            title: "Strawberry Django",
+            url: "/docs/django",
           },
         ],
-        footer: null,
       }}
     >
       {children}

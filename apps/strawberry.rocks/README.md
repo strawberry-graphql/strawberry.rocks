@@ -34,30 +34,6 @@ A `source.config.ts` config file has been included, you can customise different 
 
 Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
 
-## Fetching Documentation and Data
-
-To fetch the latest documentation from strawberry and strawberry-django repositories, along with sponsors, downloads, and other data, run:
-
-```bash
-./fetch-data.py
-```
-
-This script will:
-- Clone and process docs from strawberry-graphql/strawberry and strawberry-graphql/strawberry-django
-- Fetch sponsors from GitHub and OpenCollective
-- Fetch download statistics from ClickHouse
-- Fetch latest release info from GitHub
-- Fetch contributors for all documentation files
-- Save all data to the `data/` directory
-
-**Requirements:**
-- Python 3.11+ with `uv` installed
-- Environment variables (create a `.env` file):
-  - `GITHUB_TOKEN` - GitHub personal access token
-  - `OPENCOLLECTIVE_TOKEN` - OpenCollective API token
-  - `CLICKHOUSE_HOST` (optional) - ClickHouse host URL
-  - `CLICKHOUSE_USERNAME` (optional) - ClickHouse username
-
 ## Learn More
 
 To learn more about Next.js and Fumadocs, take a look at the following
