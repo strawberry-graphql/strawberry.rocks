@@ -1,3 +1,47 @@
 @import "tailwindcss";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
+
+@theme {
+  --font-sans: var(--font-satoshi), system-ui, sans-serif;
+  --font-heading: var(--font-ranade), system-ui, sans-serif;
+
+  --strawberry-red: hsla(358.74, 92.233%, 59.608%);
+
+  --color-fd-background: white;
+  --color-fd-primary: var(--strawberry-red);
+  --color-fd-border: color-mix(
+    in oklch,
+    var(--strawberry-red),
+    transparent 80%
+  );
+  --color-fd-accent: color-mix(
+    in oklch,
+    var(--strawberry-red),
+    transparent 94%
+  );
+  --color-fd-accent-foreground: red;
+  --color-fd-muted: color-mix(in oklch, var(--strawberry-red), white 90%);
+  --color-fd-muted-foreground: black;
+  --color-fd-foreground: hsl(0, 33.33%, 1.76%);
+  --color-fd-secondary: hsl(7.5, 100%, 98%);
+  --color-fd-secondary-foreground: black;
+  --color-fd-card: color-mix(in oklch, var(--strawberry-red), white 99%);
+  --color-fd-popover-foreground: red;
+  /*--color-fd-popover: hsl(256, 60%, 96%);*/
+  --color-fd-primary-foreground: red;
+  --color-fd-ring: var(--strawberry-red);
+}
+
+.dark {
+  --color-fd-primary: var(--strawberry-red);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
