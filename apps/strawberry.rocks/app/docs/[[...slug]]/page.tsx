@@ -1,12 +1,12 @@
-import { getPageImage, source } from "@/lib/source";
-import { getMDXComponents } from "@/mdx-components";
-import { createRelativeLink } from "fumadocs-ui/mdx";
 import {
   DocsBody,
   DocsDescription,
   DocsPage,
   DocsTitle,
-} from "fumadocs-ui/page";
+} from "@/components/layout/page";
+import { getPageImage, source } from "@/lib/source";
+import { getMDXComponents } from "@/mdx-components";
+import { createRelativeLink } from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
