@@ -208,6 +208,7 @@ export function DocsLayout({
             {collapsible && (
               <SidebarCollapseTrigger
                 className={cn(
+                  "h-full",
                   buttonVariants({
                     color: "ghost",
                     size: "icon-sm",

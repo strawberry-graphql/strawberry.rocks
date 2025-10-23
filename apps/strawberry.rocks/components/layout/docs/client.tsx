@@ -70,6 +70,7 @@ export function CollapsibleControl() {
     >
       <SidebarCollapseTrigger
         className={cn(
+          "h-full",
           buttonVariants({
             color: "ghost",
             size: "icon-sm",

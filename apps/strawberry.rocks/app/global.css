@@ -31,7 +31,9 @@
 }
 
 :root {
-  --fd-nav-height: 80px !important;
+  @media all and (max-width: 767px) {
+    --fd-nav-height: 68px;
+  }
 }
 
 h1,
