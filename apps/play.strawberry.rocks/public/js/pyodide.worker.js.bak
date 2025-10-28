@@ -8,9 +8,6 @@ async function loadPyodideAndPackages(strawberryVersion) {
   const versionSuffix =
     strawberryVersion === "latest" ? "" : `==${strawberryVersion}`;
 
-  // Check if using local development version
-  const useLocalWheel = strawberryVersion === "local";
-
   await self.pyodide.runPythonAsync(`
     import micropip
 
@@ -18,24 +15,12 @@ async function loadPyodideAndPackages(strawberryVersion) {
         "typing_extensions>=4.11.0",
         "ssl",
     ])
-    ${
-      useLocalWheel
-        ? `print("Installing local strawberry-graphql wheel...")
-    import glob
-    await micropip.install([
-        "http://localhost:8001/strawberry_graphql-0.284.1-py3-none-any.whl",
-    ])
-    await micropip.install([
-        "fastapi",
-        "httpx",
-    ])`
-        : `print("Installing strawberry-graphql${versionSuffix}...")
+    print("Installing strawberry-graphql${versionSuffix}...")
     await micropip.install([
         "strawberry-graphql${versionSuffix}",
         "fastapi",
         "httpx",
-    ])`
-    }
+    ])
     print(micropip.list())
   `);
 }

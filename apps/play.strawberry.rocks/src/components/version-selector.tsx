@@ -18,8 +18,8 @@ export const VersionSelector = ({
 }) => {
   let versions = usePackageVersions(name);
 
-  // add latest version
-  versions = ["latest", ...versions];
+  // add latest and local versions
+  versions = ["local", "latest", ...versions];
 
   return (
     <div>

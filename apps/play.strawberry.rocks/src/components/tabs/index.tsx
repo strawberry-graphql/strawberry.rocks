@@ -26,11 +26,16 @@ export const Tabs = ({
   // all children should be Tab components
   // we need to pass the activeTab and setActiveTab to the Tab components
   // get all title props from the tabs
-  const tabsTitles = React.Children.map(children, (child) => {
-    return (child as React.ReactElement).props.title;
-  })!;
+  // Filter out falsy children (from conditional rendering)
+  const validChildren = React.Children.toArray(children).filter((child) =>
+    React.isValidElement(child)
+  );
 
-  const childrenArray = React.Children.toArray(children);
+  const tabsTitles = validChildren.map((child) => {
+    return (child as React.ReactElement).props.title;
+  });
+
+  const childrenArray = validChildren;
 
   const activeTabContent = childrenArray[activeTab];
   return (

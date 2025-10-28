@@ -14,6 +14,10 @@ type Result = {
     status_code: number;
     headers: { [key: string]: string };
     schema: string;
+    jit_source: string | null;
+    jit_warning: string | null;
+    standard_time_ms: number | null;
+    jit_time_ms: number | null;
   } | null;
 };
 
@@ -37,6 +41,8 @@ export const Playground = forwardRef(
       variables: defaultVariables,
     });
 
+    const [useJit, setUseJit] = useState(false);
+
     const [{ result, error }, setResult] = useState<Result>({
       error: null,
       result: null,
@@ -51,6 +57,7 @@ export const Playground = forwardRef(
         schemaCode: code,
         query,
         variables,
+        useJit,
       });
 
       setResult({ result, error });
@@ -66,6 +73,7 @@ export const Playground = forwardRef(
       editorState.code,
       editorState.query,
       editorState.variables,
+      useJit,
       initializing,
     ]);
 
@@ -95,17 +103,30 @@ export const Playground = forwardRef(
         <Panel minSize={20}>
           <PanelGroup direction="vertical" className="h-full">
             <Panel minSize={20}>
-              <Tabs className="h-full">
-                <Tab title="Query">
-                  <CodeEditor
-                    source={editorState.query}
-                    onChange={(query) => {
-                      setEditorState({ ...editorState, query });
-                    }}
-                    language="graphql"
-                  />
-                </Tab>
-              </Tabs>
+              <div className="h-full flex flex-col">
+                <div className="p-2 border-b dark:bg-dark">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={useJit}
+                      onChange={(e) => setUseJit(e.target.checked)}
+                      className="cursor-pointer"
+                    />
+                    <span className="text-sm">Use JIT Compiler ⚡</span>
+                  </label>
+                </div>
+                <Tabs className="flex-1">
+                  <Tab title="Query">
+                    <CodeEditor
+                      source={editorState.query}
+                      onChange={(query) => {
+                        setEditorState({ ...editorState, query });
+                      }}
+                      language="graphql"
+                    />
+                  </Tab>
+                </Tabs>
+              </div>
             </Panel>
             <ResizeHandler direction="vertical" />
             <Panel minSize={20}>
@@ -161,10 +182,38 @@ export const Playground = forwardRef(
                   readOnly
                 />
               </Tab>
+
+              {useJit && result?.jit_source && (
+                <Tab title="JIT Code ⚡">
+                  <CodeEditor
+                    source={result.jit_source}
+                    language="python"
+                    readOnly
+                  />
+                </Tab>
+              )}
             </Tabs>
 
-            <div className="p-2 border-t dark:bg-dark">
+            <div className="p-2 border-t dark:bg-dark flex items-center gap-4">
               <StatusBadge status={result?.status_code ?? 200} />
+
+              {useJit && result?.jit_warning && (
+                <span className="text-xs text-yellow-500">
+                  ⚠️ {result.jit_warning}
+                </span>
+              )}
+
+              {useJit && result?.jit_time_ms && result?.standard_time_ms && (
+                <div className="flex items-center gap-2 text-xs">
+                  <span>JIT: {result.jit_time_ms.toFixed(2)}ms</span>
+                  <span className="text-gray-400">|</span>
+                  <span>Standard: {result.standard_time_ms.toFixed(2)}ms</span>
+                  <span className="text-green-500 font-semibold">
+                    ({(result.standard_time_ms / result.jit_time_ms).toFixed(2)}
+                    x faster)
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </Panel>

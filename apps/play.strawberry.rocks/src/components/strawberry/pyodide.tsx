@@ -152,26 +152,34 @@ export const usePyodide = () => {
       schemaCode,
       query,
       variables,
+      useJit = false,
     }: {
       schemaCode: string;
       query: string;
       variables: string;
+      useJit?: boolean;
     }) => {
       const queryCode = `query = """${query}"""`;
       const variablesCode = variables?.trim()
         ? `variables = ${variables.trim()}`
         : `variables = {}`;
+      const useJitCode = `use_jit = ${useJit ? "True" : "False"}`;
 
       const code = execute
         .replace("# {{ schema }}", schemaCode)
         .replace("# {{ query }}", queryCode)
-        .replace("# {{ variables }}", variablesCode);
+        .replace("# {{ variables }}", variablesCode)
+        .replace("# {{ use_jit }}", useJitCode);
 
       const { result, error } = await run<{
         data: any;
         status_code: number;
         headers: { [key: string]: string };
         schema: string;
+        jit_source: string | null;
+        jit_warning: string | null;
+        standard_time_ms: number | null;
+        jit_time_ms: number | null;
       }>(code);
 
       return { result, error };
