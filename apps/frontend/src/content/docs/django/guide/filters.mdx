@@ -27,7 +27,7 @@ class Fruit:
 > `foo: Optional[SomeType] = strawberry.UNSET`
 > Above `auto` annotation is wrapped in `Optional` automatically.
 > `UNSET` is automatically used for fields without `field` or with `strawberry_django.filter_field`.
-> 
+>
 
 
 The code above would generate following schema:
@@ -48,7 +48,7 @@ input FruitFilter {
 > from `relay.Node` and `GlobalID` for identifying objects, you might want to set
 > `MAP_AUTO_ID_AS_GLOBAL_ID=True` in your [strawberry django settings](/docs/django/guide/settings)
 > to make sure `auto` fields gets mapped to `GlobalID` on types and filters.
-> 
+>
 
 
 ## AND, OR, NOT, DISTINCT ...
@@ -250,39 +250,39 @@ class FruitFilter:
 > [!WARNING]
 > It is discouraged to use `queryset.filter()` directly. When using more
 > complex filtering via `NOT`, `OR` & `AND` this might lead to undesired behaviour.
-> 
+>
 
 
 > [!TIP]
-> 
+>
 > #### process_filters
-> 
+>
 > As seen above `strawberry_django.process_filters` function is exposed and can be
 > reused in custom methods. Above it's used to resolve fields lookups
-> 
+>
 > #### null values
-> 
+>
 > By default `null` value is ignored for all filters & lookups. This applies to custom
 > filter methods as well. Those won't even be called (you don't have to check for `None`).
 > This can be modified using
 > `strawberry_django.filter_field(filter_none=True)`
-> 
+>
 > This also means that built in `exact` & `iExact` lookups cannot be used to filter for `None`
 > and `isNull` have to be used explicitly.
-> 
+>
 > #### value resolution
-> 
+>
 > - `value` parameter of type `relay.GlobalID` is resolved to its `node_id` attribute
 > - `value` parameter of type `Enum` is resolved to is's value
 > - `value` parameter wrapped in `strawberry.Some` (from [`Maybe`](https://strawberry.rocks/docs/types/maybe#maybe) type) is unwrapped and resolved
 > - above types are converted in `lists` as well
-> 
+>
 > resolution can modified via `strawberry_django.filter_field(resolve_value=...)`
-> 
+>
 > - True - always resolve
 > - False - never resolve
 > - UNSET (default) - resolves for filters without custom method only
-> 
+>
 
 
 The code above generates the following schema:
@@ -394,7 +394,7 @@ class FruitFilter:
 > As seen above `strawberry_django.process_filters` function is exposed and can be
 > reused in custom methods.
 > For filter method `filter` `skip_object_filter_method` was used to avoid endless recursion.
-> 
+>
 
 
 ## Adding filters to types
@@ -474,7 +474,7 @@ The previous version of filters can be enabled via [**USE_DEPRECATED_FILTERS**](
 > [!WARNING]
 > If **USE_DEPRECATED_FILTERS** is not set to `True` legacy custom filtering
 > methods will be *not* be called.
-> 
+>
 
 
 When using legacy filters it is important to use legacy
