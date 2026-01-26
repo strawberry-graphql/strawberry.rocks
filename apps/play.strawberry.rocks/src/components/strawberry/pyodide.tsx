@@ -1,4 +1,5 @@
 import execute from "./execute.py?raw";
+import { PYODIDE_VERSION } from "./pyodideVersion";
 import {
   useContext,
   useRef,
@@ -7,7 +8,6 @@ import {
   useState,
   useCallback,
 } from "react";
-import { PYODIDE_VERSION } from "./pyodideVersion";
 
 const PyodideContext = createContext({
   loading: false,
