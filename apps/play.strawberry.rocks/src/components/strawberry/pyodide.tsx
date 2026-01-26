@@ -7,6 +7,7 @@ import {
   useState,
   useCallback,
 } from "react";
+import { PYODIDE_VERSION } from "./pyodideVersion";
 
 const PyodideContext = createContext({
   loading: false,
@@ -25,7 +26,7 @@ export default class PyodideWorker extends Worker {
   onload: () => void = () => {};
 
   constructor(version: string) {
-    super("/js/pyodide.worker.js");
+    super(`/js/pyodide.worker.js?pyodide=${PYODIDE_VERSION}`);
 
     this.currentId = 0;
     this.callbacks = {};

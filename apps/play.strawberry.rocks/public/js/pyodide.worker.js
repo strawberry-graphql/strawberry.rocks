@@ -1,4 +1,7 @@
-importScripts("https://cdn.jsdelivr.net/pyodide/v0.29.2/full/pyodide.js");
+const params = new URL(self.location).searchParams;
+const PYODIDE_VERSION= params.get("pyodide");
+
+importScripts(`https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/pyodide.js`);
 
 async function loadPyodideAndPackages(strawberryVersion) {
   self.pyodide = await loadPyodide();
