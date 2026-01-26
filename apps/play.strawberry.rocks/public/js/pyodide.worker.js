@@ -1,4 +1,4 @@
-importScripts("https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js");
+importScripts("https://cdn.jsdelivr.net/pyodide/v0.29.2/full/pyodide.js");
 
 async function loadPyodideAndPackages(strawberryVersion) {
   self.pyodide = await loadPyodide();
