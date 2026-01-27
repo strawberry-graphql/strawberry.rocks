@@ -26,7 +26,7 @@ schema = strawberry.Schema(query=Query)
 
 > [!TIP]
 > You must name your query class "Query" or decorate it with `@strawberry.type(name="Query")` for the single query default primary filter to work
->
+> 
 
 
 For single queries (like `fruit` above), Strawberry Django automatically provides a primary key filter. The `fruits` query returns all objects by default.
@@ -166,7 +166,7 @@ class Query:
 
 > [!NOTE]
 > Returning `list[Fruit]` means the queryset is evaluated immediately. For paginated queries with metadata (total count, page info), use `OffsetPaginated[Fruit]` with `pagination=True` instead. See the [Pagination guide](/docs/django/guide/pagination) for details.
->
+> 
 
 
 ```graphql
@@ -283,7 +283,7 @@ class Query:
 
 > [!WARNING]
 > Always wrap Django ORM operations in `sync_to_async` when using async resolvers. The ORM is not async-native.
->
+> 
 
 
 ## Nested Queries and Relationships
