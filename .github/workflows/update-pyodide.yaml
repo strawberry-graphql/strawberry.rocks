@@ -1,0 +1,46 @@
+name: Pyodide Version Check
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest Pyodide version
+        run: |
+          set -e
+
+          VERSION_FILE="apps/play.strawberry.rocks/src/components/strawberry/pyodideVersion.ts"
+
+          LATEST=$(curl -fsS https://data.jsdelivr.com/v1/package/npm/pyodide | jq -r '.tags.latest')
+          CURRENT=$(grep -oE '[0-9]+\.[0-9]+\.[0-9]+' "$VERSION_FILE")
+
+          if [ "$LATEST" = "null" ] || [ -z "$LATEST" ]; then
+            echo "Failed to resolve latest Pyodide version"
+            exit 1
+          fi
+
+          if [ "$LATEST" = "$CURRENT" ]; then
+            echo "Already up to date"
+            exit 0
+          fi
+
+          sed -i "s/$CURRENT/$LATEST/" "$VERSION_FILE"
+          echo "LATEST=$LATEST" >> "$GITHUB_ENV"
+
+      - name: Create or update PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: dependabot/pyodide
+          title: "chore(deps): bump pyodide"
+          commit-message: "chore(deps): bump pyodide to ${{ env.LATEST }}"
+          body: |
+            Automated Pyodide version upgrade via jsDelivr npm metadata.
+            Dependabot-style single updating PR.
+          labels: dependencies
+          delete-branch: false

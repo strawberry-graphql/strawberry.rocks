@@ -1,0 +1,1 @@
+export const PYODIDE_VERSION = "0.29.2";

@@ -1,4 +1,5 @@
 import execute from "./execute.py?raw";
+import { PYODIDE_VERSION } from "./pyodideVersion";
 import {
   useContext,
   useRef,
@@ -25,7 +26,7 @@ export default class PyodideWorker extends Worker {
   onload: () => void = () => {};
 
   constructor(version: string) {
-    super("/js/pyodide.worker.js");
+    super(`/js/pyodide.worker.js?pyodide=${PYODIDE_VERSION}`);
 
     this.currentId = 0;
     this.callbacks = {};
