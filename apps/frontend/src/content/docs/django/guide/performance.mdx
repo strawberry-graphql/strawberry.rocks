@@ -329,7 +329,7 @@ def featured_books(self) -> List[BookType]:
 
 > [!WARNING]
 > Don't use `@lru_cache` on instance methods as it can lead to memory leaks. Use Django's cache framework or `cached_property` instead.
->
+> 
 
 
 For cache configuration and invalidation strategies, see [Django's cache documentation](https://docs.djangoproject.com/en/stable/topics/cache/).
@@ -372,7 +372,7 @@ class Query:
 
 > [!TIP]
 > For production, use the built-in pagination support instead of manual slicing. See the [Pagination guide](/docs/django/guide/pagination) for details.
->
+> 
 
 
 ### Cursor Pagination (Relay)
