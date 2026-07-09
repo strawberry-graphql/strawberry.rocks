@@ -122,7 +122,7 @@ class Order:
 
 1. **Always provide optimization hints**: If your property accesses model fields or relations, specify them in the decorator parameters.
 
-2. **Use cached_model_property for expensive operations**: If the calculation is expensive and doesn't depend on mutable data, use caching.
+2. **Use cached\_model\_property for expensive operations**: If the calculation is expensive and doesn't depend on mutable data, use caching.
 
 3. **Keep properties focused**: Complex business logic should be in separate service classes, not in model properties.
 
@@ -132,7 +132,7 @@ class Order:
 
 6. **Test with the optimizer**: Ensure your optimization hints actually work by checking the generated SQL queries.
 
-7. **Use `len()` instead of `.count()` with prefetch_related**: When accessing prefetched relationships, use `len()` to avoid bypassing the prefetch cache:
+7. **Use `len()` instead of `.count()` with prefetch\_related**: When accessing prefetched relationships, use `len()` to avoid bypassing the prefetch cache:
 
 ```python
 # ❌ Bad: .count() bypasses prefetch cache and hits database

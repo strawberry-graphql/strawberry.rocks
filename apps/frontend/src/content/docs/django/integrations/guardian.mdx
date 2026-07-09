@@ -207,7 +207,7 @@ class Mutation:
 
 ### Permissions Not Working
 
-1. **Check AUTHENTICATION_BACKENDS**: Ensure `guardian.backends.ObjectPermissionBackend` is in your settings
+1. **Check AUTHENTICATION\_BACKENDS**: Ensure `guardian.backends.ObjectPermissionBackend` is in your settings
 2. **Run migrations**: Make sure `python manage.py migrate guardian` was executed
 3. **Verify permission assignment**: Use Django shell to check if permissions are correctly assigned
 

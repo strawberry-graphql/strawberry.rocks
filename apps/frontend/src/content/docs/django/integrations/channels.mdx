@@ -230,7 +230,7 @@ application = ProtocolTypeRouter({
 
 ### Subscriptions not working
 
-1. **Check ASGI_APPLICATION** is correctly set in settings
+1. **Check ASGI\_APPLICATION** is correctly set in settings
 2. **Ensure schema is imported after** `get_asgi_application()` to avoid AppRegistryNotReady errors
 3. **Use an ASGI server** - standard `runserver` without Daphne uses WSGI
 

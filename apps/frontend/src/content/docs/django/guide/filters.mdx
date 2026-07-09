@@ -507,10 +507,10 @@ There is 7 already defined Generic Lookup `strawberry.input` classes importable 
 
 ## Legacy filtering
 
-The previous version of filters can be enabled via [**USE_DEPRECATED_FILTERS**](/docs/django/guide/settings#strawberry_django)
+The previous version of filters can be enabled via [**USE\_DEPRECATED\_FILTERS**](/docs/django/guide/settings#strawberry_django)
 
 > [!WARNING]
-> If **USE_DEPRECATED_FILTERS** is not set to `True` legacy custom filtering
+> If **USE\_DEPRECATED\_FILTERS** is not set to `True` legacy custom filtering
 > methods will be *not* be called.
 > 
 
@@ -526,7 +526,7 @@ fully functional including default `filter` method.
 
 Migration process could be composed of these steps:
 
-- enable **USE_DEPRECATED_FILTERS**
+- enable **USE\_DEPRECATED\_FILTERS**
 - gradually transform custom filter field methods to new version (do not forget to use old FilterLookup if applicable)
 - gradually transform default `filter` methods
-- disable **USE_DEPRECATED_FILTERS** - ***This is breaking change***
+- disable **USE\_DEPRECATED\_FILTERS** - ***This is breaking change***
