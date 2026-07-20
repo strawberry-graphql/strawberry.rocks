@@ -1,1 +1,1 @@
-export const PYODIDE_VERSION = "0.29.4";
+export const PYODIDE_VERSION = "314.0.2";
