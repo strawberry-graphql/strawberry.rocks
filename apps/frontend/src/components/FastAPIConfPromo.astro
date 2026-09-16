@@ -1,0 +1,195 @@
+---
+interface Props {
+  compact?: boolean;
+  banner?: boolean;
+}
+
+const { compact = false, banner = false } = Astro.props;
+---
+
+<div class:list={["conference-promo", { compact, banner }]}>
+  <a href="https://fastapiconf.com" class="promo-link">
+    <div class:list={["promo-grid", { "docs-grid": banner }]}>
+      <div class="promo-inner">
+        <div class="promo-copy">
+          <p class="title">
+            {banner && <span aria-hidden="true">🎫 </span>} FastAPI Conf <span
+              class="year">2026</span
+            >
+          </p>
+          {
+            !banner && (
+              <p class="description">
+                All about FastAPI, right from the source.
+              </p>
+            )
+          }
+        </div>
+        <div class="promo-details">
+          <p class="date">
+            <time datetime="2026-10-28">28 October</time> · Amsterdam
+          </p>
+          <p class="cta">
+            Get your ticket <span aria-hidden="true">↗</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<style>
+  .conference-promo {
+    container-type: inline-size;
+    width: 100%;
+  }
+
+  .promo-link {
+    display: block;
+    padding: 28px 32px;
+    border: 1px solid rgb(255 255 255 / 15%);
+    border-radius: 16px;
+    background: var(--color-g-900);
+    color: var(--color-white);
+    text-align: left;
+    text-decoration: none;
+  }
+
+  .promo-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-width: 0;
+  }
+
+  .promo-copy,
+  .promo-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .year {
+    color: var(--color-g-400);
+  }
+
+  .description,
+  .date {
+    color: var(--color-g-400);
+    font-size: 0.875rem;
+    text-wrap: pretty;
+  }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 8px;
+    color: var(--color-white);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .promo-link:hover {
+    background: var(--color-g-800);
+    border-color: var(--color-g-400);
+  }
+
+  .promo-link:hover .cta {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .promo-link:focus-visible {
+    outline: 3px solid var(--color-strawberry);
+    outline-offset: 4px;
+  }
+
+  :global(html.dark) .promo-link {
+    background: var(--color-g-900);
+  }
+
+  :global(html.dark) .promo-link:hover {
+    background: var(--color-g-800);
+  }
+
+  :global(html.dark) .year {
+    color: inherit;
+  }
+
+  .compact .promo-link {
+    padding: 20px;
+  }
+
+  .compact .title {
+    font-size: 1.5rem;
+  }
+
+  @container (max-width: 600px) {
+    .promo-inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+    }
+
+    .promo-details {
+      border-top: 1px solid rgb(255 255 255 / 15%);
+      padding-top: 16px;
+    }
+  }
+
+  .banner {
+    background: var(--color-g-900);
+  }
+  .banner .promo-link {
+    padding: 16px 0;
+    border: 0;
+    border-radius: 0;
+  }
+  .banner .promo-inner {
+    grid-column: nav;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+  }
+  @media (min-width: 768px) {
+    .banner .promo-inner {
+      grid-column-end: page-nav-end;
+    }
+  }
+  .banner .title {
+    font-size: 1.125rem;
+  }
+  .banner .promo-details {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+    padding: 0;
+    border: 0;
+  }
+  .banner .cta {
+    padding: 0;
+  }
+  .banner .promo-link:focus-visible {
+    outline-offset: -3px;
+  }
+  @media (max-width: 639px) {
+    .description,
+    .date,
+    .cta {
+      font-size: 1rem;
+    }
+  }
+</style>
