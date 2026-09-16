@@ -1,6 +1,7 @@
 ---
 import { getEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import FastAPIConfPromo from "../../components/FastAPIConfPromo.astro";
 import Sidebar from "../../components/Docs/Sidebar.astro";
 import DocsNav from "../../components/Docs/Nav.astro";
 import Footer from "../../components/Docs/Footer.astro";
@@ -93,6 +94,9 @@ const { Content, headings } = await page.render();
 ---
 
 <Layout title={title} useDocsGrid>
+  <div slot="before-header" class="mobile-conference-banner">
+    <FastAPIConfPromo banner />
+  </div>
   <main class="docs-grid">
     <Sidebar>
       <DocsNav integration={integration} />
@@ -136,7 +140,22 @@ const { Content, headings } = await page.render();
     </article>
 
     <aside class="page-nav">
+      <div class="conference-card">
+        <FastAPIConfPromo compact />
+      </div>
       <TableOfContents toc={headings} />
     </aside>
   </main>
 </Layout>
+
+<style>
+  @media (min-width: 1100px) {
+    .mobile-conference-banner {
+      display: none;
+    }
+  }
+
+  .conference-card {
+    margin-bottom: 32px;
+  }
+</style>

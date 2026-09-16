@@ -1,4 +1,5 @@
 ---
+import FastAPIConfPromo from "../components/FastAPIConfPromo.astro";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Home/Hero.astro";
 import Features from "../components/Home/Features.astro";
@@ -6,6 +7,7 @@ import Sponsors from "../components/Home/Sponsors.astro";
 ---
 
 <Layout title="A modern GraphQL library for Python" blob>
+  <FastAPIConfPromo slot="before-header" banner />
   <main class="home-layout">
     <Hero />
 

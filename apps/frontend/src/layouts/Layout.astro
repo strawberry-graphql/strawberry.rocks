@@ -86,6 +86,7 @@ if (prNumber) {
   <body>
     {blob && <Blob />}
     {prNumber && <PreviewBanner prNumber={prNumber} />}
+    <slot name="before-header" />
     <Header useDocsGrid={useDocsGrid} />
     <slot />
     <Footer />
