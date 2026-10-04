@@ -18,9 +18,18 @@ export const githubFetch = async (
   });
 
   if (!response.ok) {
-    console.error(response.body);
+    console.error("GitHub request failed", {
+      url,
+      status: response.status,
+      statusText: response.statusText,
+      rateLimitRemaining: response.headers.get("x-ratelimit-remaining"),
+      rateLimitReset: response.headers.get("x-ratelimit-reset"),
+      retryAfter: response.headers.get("retry-after"),
+    });
 
-    throw new Error("Network response was not ok");
+    throw new Error(
+      `GitHub request failed (${response.status} ${response.statusText})`
+    );
   }
 
   return response;
