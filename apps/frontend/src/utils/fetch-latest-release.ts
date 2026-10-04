@@ -2,8 +2,12 @@ import { githubFetch } from "./github-fetch";
 
 const OWNER = "strawberry-graphql";
 const REPO = "strawberry";
+const RELEASE_CACHE_MS = 60_000;
 
-export const fetchLatestRelease = async (): Promise<{
+let latestReleaseRequest: ReturnType<typeof requestLatestRelease> | undefined;
+let latestReleaseExpiresAt = 0;
+
+const requestLatestRelease = async (): Promise<{
   href: string;
   name: string;
 }> => {
@@ -22,4 +26,26 @@ export const fetchLatestRelease = async (): Promise<{
     href: data.html_url as string,
     name: data.tag_name as string,
   };
+};
+
+export const fetchLatestRelease = () => {
+  if (!latestReleaseRequest || Date.now() >= latestReleaseExpiresAt) {
+    latestReleaseExpiresAt = Infinity;
+
+    latestReleaseRequest = requestLatestRelease().then(
+      (release) => {
+        latestReleaseExpiresAt = Date.now() + RELEASE_CACHE_MS;
+
+        return release;
+      },
+      (error) => {
+        latestReleaseRequest = undefined;
+        latestReleaseExpiresAt = 0;
+
+        throw error;
+      }
+    );
+  }
+
+  return latestReleaseRequest;
 };
