@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import astroMetaTags from "astro-meta-tags";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import mdx from "@astrojs/mdx";
 import remarkComment from "remark-comment";
 import expressiveCode from "astro-expressive-code";
@@ -10,9 +10,9 @@ import { mermaid } from "./src/utils/plugins/mermaid";
 
 // https://astro.build/config
 export default defineConfig({
-  experimental: { contentLayer: true },
+  legacy: { collections: true },
   trailingSlash: "never",
-  output: "hybrid",
+  output: "static",
   site: "https://strawberry.rocks",
   integrations: [
     sitemap(),
