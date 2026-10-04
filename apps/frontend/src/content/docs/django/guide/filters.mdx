@@ -167,7 +167,7 @@ class FruitFilter:
 
 > [!WARNING]
 > Avoid using `FilterLookup[str]` directly. Use the specific lookup type (`StrFilterLookup`)
-> instead to prevent `DuplicatedTypeName` errors. See the [Generic Lookup reference]()
+> instead to prevent `DuplicatedTypeName` errors. See the [Generic Lookup reference](#generic-lookup-reference)
 > for the full list of available lookup types.
 >
 
@@ -486,7 +486,7 @@ There is 7 already defined Generic Lookup `strawberry.input` classes importable 
 - inherits `BaseFilterLookup`
 - additionally contains `iExact`, `contains`, `iContains`, `startsWith`, `iStartsWith`, `endsWith`, `iEndsWith`, `regex` & `iRegex`
 - used for string based fields and as default
-- see the [warning on `regex` / `iRegex`]() before exposing these on untrusted input
+- see the [warning on `regex` / `iRegex`](#lookups) before exposing these on untrusted input
 
 #### `DateFilterLookup`
 
