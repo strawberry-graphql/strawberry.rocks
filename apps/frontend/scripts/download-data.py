@@ -103,13 +103,14 @@ def clone_docs_from_repo(repo: str, destination_subpath: str, branch="main") -> 
             if url.startswith("http"):
                 return url
 
-            url, hash = url.split("#") if "#" in url else (url, None)
+            path, _, hash = url.partition("#")
 
-            if not url.endswith(".md"):
+            # leave same-page anchors (e.g. "#overview") and non-markdown links untouched
+            if not path.endswith(".md"):
                 return url
 
             destination_path = self.file_path.relative_to(working_dir).parent / Path(
-                url
+                path
             )
 
             # TODO: would be nice to check if the file exists
