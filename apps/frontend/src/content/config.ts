@@ -35,7 +35,7 @@ function gitHubPageLoader(): Loader {
       // @ts-ignore
       const processor = await createMarkdownProcessor(config.markdown);
 
-      store.clear();
+      const entries = [];
 
       for (const page of pages) {
         const pageData = await fetchDocPage({ filename: page });
@@ -44,11 +44,17 @@ function gitHubPageLoader(): Loader {
           frontmatter: {},
         });
 
-        store.set({
+        entries.push({
           id: page.toLowerCase().replace(/\.md$/, ""),
           rendered: { html: result.code },
           data: {},
         });
+      }
+
+      store.clear();
+
+      for (const entry of entries) {
+        store.set(entry);
       }
     },
   };
