@@ -1,11 +1,12 @@
 const params = new URL(self.location).searchParams;
 const PYODIDE_VERSION = params.get("pyodide");
 
-importScripts(
-  `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/pyodide.js`
-);
-
 async function loadPyodideAndPackages(strawberryVersion) {
+  // Pyodide 314+ only supports module workers, so load the ES module build
+  const { loadPyodide } = await import(
+    `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/pyodide.mjs`
+  );
+
   self.pyodide = await loadPyodide();
 
   await self.pyodide.loadPackage(["micropip"]);

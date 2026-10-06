@@ -26,7 +26,9 @@ export default class PyodideWorker extends Worker {
   onload: () => void = () => {};
 
   constructor(version: string) {
-    super(`/js/pyodide.worker.js?pyodide=${PYODIDE_VERSION}`);
+    super(`/js/pyodide.worker.js?pyodide=${PYODIDE_VERSION}`, {
+      type: "module",
+    });
 
     this.currentId = 0;
     this.callbacks = {};
