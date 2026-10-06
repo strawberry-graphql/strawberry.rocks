@@ -18,7 +18,6 @@ async function loadPyodideAndPackages(strawberryVersion) {
 
     await micropip.install([
         "typing_extensions>=4.11.0",
-        "ssl",
     ])
     print("Installing strawberry-graphql${versionSuffix}...")
     await micropip.install([
