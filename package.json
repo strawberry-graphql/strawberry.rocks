@@ -4,9 +4,5 @@
   "devDependencies": {
     "typescript": "5.4.3"
   },
-  "pnpm": {
-    "overrides": {
-      "marked": "11"
-    }
-  }
+  "packageManager": "pnpm@10.34.6"
 }
