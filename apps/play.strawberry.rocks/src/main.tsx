@@ -1,6 +1,5 @@
 import App from "./app.tsx";
 import { setupMonaco } from "./components/editor/setup-monaco";
-import { PyodideProvider } from "./components/strawberry/pyodide.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
 import "./index.css";
 import { loader } from "@monaco-editor/react";
@@ -14,12 +13,10 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <PyodideProvider>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
-      </QueryClientProvider>
-    </PyodideProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

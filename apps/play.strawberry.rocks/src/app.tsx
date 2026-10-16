@@ -1,36 +1,47 @@
 import { Logo } from "./components/logo";
 import { Playground } from "./components/playground";
 import { Share } from "./components/share";
-import { usePyodide } from "./components/strawberry/pyodide";
+import { PyodideProvider } from "./components/strawberry/pyodide";
+import { usePyodide } from "./components/strawberry/pyodide-context";
 import { ThemeToggle } from "./components/theme-toggle";
 import { VersionSelector } from "./components/version-selector";
+import type { EditorState } from "./editor-state";
 import { useSnippet } from "./hooks/use-snippet";
 import clsx from "clsx";
-import { Suspense, useEffect, useState, useRef } from "react";
+import { Suspense, useState } from "react";
 
 function App() {
-  const { initializing, setLibraryVersion, loading } = usePyodide();
   const { snippet } = useSnippet();
-  const previousVersion = useRef<string | null>(null);
-  const [currentVersion, setCurrentVersion] = useState<string>(
+  const [strawberryVersion, setStrawberryVersion] = useState(
     snippet.strawberryVersion
   );
-  const playgroundRef = useRef<any>(null);
 
-  useEffect(() => {
-    if (initializing) {
-      return;
-    }
+  return (
+    <PyodideProvider strawberryVersion={strawberryVersion}>
+      <PlaygroundApp
+        snippet={snippet}
+        strawberryVersion={strawberryVersion}
+        onStrawberryVersionChange={setStrawberryVersion}
+      />
+    </PyodideProvider>
+  );
+}
 
-    if (previousVersion.current !== currentVersion) {
-      setLibraryVersion({
-        name: "strawberry-graphql",
-        version: currentVersion,
-      });
-
-      previousVersion.current = currentVersion;
-    }
-  }, [initializing, setLibraryVersion, currentVersion]);
+function PlaygroundApp({
+  snippet,
+  strawberryVersion,
+  onStrawberryVersionChange,
+}: {
+  snippet: EditorState & { strawberryVersion: string };
+  strawberryVersion: string;
+  onStrawberryVersionChange: (version: string) => void;
+}) {
+  const { initializing, loading } = usePyodide();
+  const [editorState, setEditorState] = useState<EditorState>({
+    code: snippet.code,
+    query: snippet.query,
+    variables: snippet.variables,
+  });
 
   return (
     <>
@@ -48,18 +59,13 @@ function App() {
           Playground
         </div>
         <div className="ml-auto flex gap-3">
-          <Share playground={playgroundRef.current} version={currentVersion} />
+          <Share state={editorState} version={strawberryVersion} />
           <ThemeToggle />
         </div>
       </header>
 
       <Suspense fallback={<div>Loading...</div>}>
-        <Playground
-          ref={playgroundRef}
-          defaultCode={snippet.code}
-          defaultQuery={snippet.query}
-          defaultVariables={snippet.variables}
-        />
+        <Playground state={editorState} onChange={setEditorState} />
       </Suspense>
 
       <div className="border-t py-2 flex gap-4 px-4 dark:bg-dark">
@@ -75,8 +81,8 @@ function App() {
           <Suspense fallback={null}>
             <VersionSelector
               name="strawberry-graphql"
-              defaultVersion={snippet.strawberryVersion}
-              onVersionSelected={(version) => setCurrentVersion(version)}
+              defaultVersion={strawberryVersion}
+              onVersionSelected={onStrawberryVersionChange}
             />
           </Suspense>
         </div>

@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
+import type { EditorState } from "@/editor-state";
 import { CopyIcon } from "@radix-ui/react-icons";
 import { useMutation } from "@tanstack/react-query";
 import { gql, request } from "graphql-request";
@@ -16,39 +17,32 @@ const CREATE_GIST_DOCUMENT = gql`
   }
 `;
 
+type CreateGistInput = {
+  query: string;
+  schema: string;
+  variables: unknown;
+  requirements: string;
+};
+
+const parseVariables = (variables: string) => {
+  try {
+    return JSON.parse(variables);
+  } catch {
+    return {};
+  }
+};
+
 export function Share({
-  playground,
+  state,
   version,
 }: {
-  playground: any;
+  state: EditorState;
   version: string;
 }) {
-  const { data, isPending, mutate } = useMutation<
-    {
-      createGist: { id: string };
-    },
-    any,
-    {
-      input: {
-        query: string;
-        schema: string;
-        variables: string;
-        requirements: string;
-      };
-    }
-  >({
+  const { data, isPending, mutate } = useMutation({
     mutationKey: ["createGist"],
-    mutationFn: async (variables: {
-      input: {
-        query: string;
-        schema: string;
-        variables: string;
-        requirements: string;
-      };
-    }) =>
-      request<{
-        createGist: { id: string };
-      }>(
+    mutationFn: (variables: { input: CreateGistInput }) =>
+      request<{ createGist: { id: string } }>(
         "https://api.strawberry.rocks/graphql",
         CREATE_GIST_DOCUMENT,
         variables
@@ -56,22 +50,22 @@ export function Share({
   });
 
   const handleOpen = (open: boolean) => {
-    if (open) {
-      const state = playground.getState();
+    if (!open) {
+      return;
+    }
 
-      const input = {
+    mutate({
+      input: {
         query: state.query,
         schema: state.code,
-        variables: JSON.parse(state.variables),
+        variables: parseVariables(state.variables),
         // A local checkout can't be shared, so fall back to the latest release
         requirements:
           version === "latest" || version === LOCAL_STRAWBERRY_VERSION
             ? "strawberry-graphql"
             : `strawberry-graphql==${version}`,
-      };
-
-      mutate({ input });
-    }
+      },
+    });
   };
 
   const url = data?.createGist.id
@@ -97,7 +91,7 @@ export function Share({
             </Label>
             <Input
               id="link"
-              defaultValue={isPending ? "Loading..." : url}
+              value={isPending ? "Loading..." : url}
               readOnly
               className="h-9"
             />

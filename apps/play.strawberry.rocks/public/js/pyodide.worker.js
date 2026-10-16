@@ -93,7 +93,7 @@ self.onmessage = async (event) => {
     try {
       await self.pyodide.loadPackagesFromImports(python);
 
-      const result = await pyodide.runPythonAsync(python);
+      const result = await self.pyodide.runPythonAsync(python);
 
       self.postMessage({ result, id });
     } catch (error) {

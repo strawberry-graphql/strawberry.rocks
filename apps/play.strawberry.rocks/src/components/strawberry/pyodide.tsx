@@ -1,225 +1,76 @@
-import execute from "./execute.py?raw";
-import { PYODIDE_VERSION } from "./pyodideVersion";
-import {
-  DEFAULT_STRAWBERRY_VERSION,
-  LOCAL_STRAWBERRY_VERSION,
-} from "./strawberryVersion";
-import {
-  useContext,
-  useRef,
-  useEffect,
-  createContext,
-  useState,
-  useCallback,
-} from "react";
+import { PyodideContext } from "./pyodide-context";
+import { PyodideWorker } from "./pyodide-worker";
+import { LOCAL_STRAWBERRY_VERSION } from "./strawberryVersion";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-const PyodideContext = createContext({
-  loading: false,
-  error: null,
-  initializing: true,
-  setLibraryVersion: (_version: { name: string; version: string }) => {},
-  run: <Result,>(
-    _code: string
-    // @ts-ignore
-  ): Promise<{ result: Result | null; error: any }> => {},
-});
-
-export default class PyodideWorker extends Worker {
-  currentId: number;
-  callbacks: { [key: number]: (value: any) => void };
-  onload: () => void = () => {};
-
-  constructor(version: string) {
-    super(`/js/pyodide.worker.js?pyodide=${PYODIDE_VERSION}`, {
-      type: "module",
-    });
-
-    this.currentId = 0;
-    this.callbacks = {};
-
-    this.onmessage = (event) => {
-      if (event.data.ready) {
-        this.onload();
-      }
-
-      const { id, result, error } = event.data;
-
-      if (id in this.callbacks) {
-        this.callbacks[id]({ result, error });
-        delete this.callbacks[id];
-      }
-    };
-
-    this.postMessage({
-      type: "load",
-      version,
-    });
-  }
-
-  terminate() {
-    super.terminate();
-
-    for (const callback of Object.values(this.callbacks)) {
-      callback({ result: null, error: "Pyodide was restarted" });
-    }
-
-    this.callbacks = {};
-  }
-
-  // run the code in the worker
-  run(code: string) {
-    this.currentId = (this.currentId + 1) % Number.MAX_SAFE_INTEGER;
-    return new Promise((onSuccess) => {
-      this.callbacks[this.currentId] = onSuccess;
-      this.postMessage({
-        type: "run",
-        python: code,
-        id: this.currentId,
-      });
-    });
-  }
-}
-
-export const PyodideProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [loading, setLoading] = useState(false);
-  const [initializing, setInitializing] = useState(true);
-  const workerRef = useRef<PyodideWorker | null>(null);
-  const previousWorkerKey = useRef<string | null>(null);
-  const [strawberryVersion, setStrawberryVersion] = useState(
-    DEFAULT_STRAWBERRY_VERSION
-  );
-  // Bumped by the dev server whenever the local Strawberry checkout changes
-  const [localRevision, setLocalRevision] = useState(0);
+// Bumped by the dev server whenever the local Strawberry checkout changes,
+// see plugins/local-strawberry.ts
+const useLocalStrawberryRevision = () => {
+  const [revision, setRevision] = useState(0);
 
   useEffect(() => {
-    const onChange = () => setLocalRevision((revision) => revision + 1);
+    const onChange = () => setRevision((revision) => revision + 1);
 
     import.meta.hot?.on("local-strawberry:changed", onChange);
 
     return () => import.meta.hot?.off("local-strawberry:changed", onChange);
   }, []);
 
+  return revision;
+};
+
+export const PyodideProvider = ({
+  strawberryVersion,
+  children,
+}: {
+  strawberryVersion: string;
+  children: React.ReactNode;
+}) => {
+  const workerRef = useRef<PyodideWorker | null>(null);
+  const [readyKey, setReadyKey] = useState<string | null>(null);
+  const [pendingRuns, setPendingRuns] = useState(0);
+  const localRevision = useLocalStrawberryRevision();
+
+  // A new worker is started whenever this changes
   const workerKey =
     strawberryVersion === LOCAL_STRAWBERRY_VERSION
       ? `${strawberryVersion}@${localRevision}`
       : strawberryVersion;
 
   useEffect(() => {
-    if (workerRef.current && previousWorkerKey.current === workerKey) {
-      return;
-    }
-
-    setInitializing(true);
-
-    console.log("creating a new worker");
-
-    workerRef.current?.terminate();
-
     const worker = new PyodideWorker(strawberryVersion);
 
-    console.log("worker created");
-
-    worker.onload = () => {
-      setInitializing(false);
-    };
-
+    worker.onload = () => setReadyKey(workerKey);
     workerRef.current = worker;
-    previousWorkerKey.current = workerKey;
+
+    return () => worker.terminate();
   }, [strawberryVersion, workerKey]);
 
-  const run = useCallback(async <Result,>(code: string) => {
-    if (!workerRef.current) {
-      return { result: null, error: "Pyodide not initialized" };
+  const run = useCallback(async <Result,>(python: string) => {
+    const worker = workerRef.current;
+
+    if (!worker) {
+      return { result: null, error: "Pyodide not initialized" } as const;
     }
 
-    setLoading(true);
+    setPendingRuns((count) => count + 1);
 
-    const data = (await workerRef.current.run(code)) as Promise<{
-      result: Result;
-      error: any;
-    }>;
-
-    setLoading(false);
-
-    return data;
+    try {
+      return await worker.run<Result>(python);
+    } finally {
+      setPendingRuns((count) => count - 1);
+    }
   }, []);
-
-  const setLibraryVersion = ({
-    name,
-    version,
-  }: {
-    name: string;
-    version: string;
-  }) => {
-    if (name !== "strawberry-graphql") {
-      throw new Error(`Unknown library: ${name}`);
-    }
-
-    console.log("setting strawberry version", version);
-
-    setStrawberryVersion(version);
-  };
 
   return (
     <PyodideContext.Provider
       value={{
-        loading,
-        error: null,
-        initializing,
-        setLibraryVersion,
+        initializing: readyKey !== workerKey,
+        loading: pendingRuns > 0,
         run,
       }}
     >
       {children}
     </PyodideContext.Provider>
   );
-};
-
-export const usePyodide = () => {
-  const { loading, error, initializing, run, setLibraryVersion } =
-    useContext(PyodideContext);
-
-  const executeQuery = useCallback(
-    async ({
-      schemaCode,
-      query,
-      variables,
-    }: {
-      schemaCode: string;
-      query: string;
-      variables: string;
-    }) => {
-      const queryCode = `query = """${query}"""`;
-      const variablesCode = variables?.trim()
-        ? `variables = ${variables.trim()}`
-        : `variables = {}`;
-
-      const code = execute
-        .replace("# {{ schema }}", schemaCode)
-        .replace("# {{ query }}", queryCode)
-        .replace("# {{ variables }}", variablesCode);
-
-      const { result, error } = await run<{
-        data: any;
-        status_code: number;
-        headers: { [key: string]: string };
-        schema: string;
-      }>(code);
-
-      return { result, error };
-    },
-    [run]
-  );
-
-  return {
-    loading,
-    error,
-    initializing,
-    executeQuery,
-    setLibraryVersion,
-  };
 };
