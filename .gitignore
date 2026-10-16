@@ -80,3 +80,6 @@ tsconfig.tsbuildinfo
 .yalc
 yalc.lock
 .vercel
+
+# pnpm store
+.pnpm-store/
