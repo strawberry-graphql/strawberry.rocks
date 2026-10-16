@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { LOCAL_STRAWBERRY_VERSION } from "./strawberry/strawberryVersion";
 import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { CopyIcon } from "@radix-ui/react-icons";
 import { useMutation } from "@tanstack/react-query";
@@ -62,8 +63,9 @@ export function Share({
         query: state.query,
         schema: state.code,
         variables: JSON.parse(state.variables),
+        // A local checkout can't be shared, so fall back to the latest release
         requirements:
-          version === "latest"
+          version === "latest" || version === LOCAL_STRAWBERRY_VERSION
             ? "strawberry-graphql"
             : `strawberry-graphql==${version}`,
       };

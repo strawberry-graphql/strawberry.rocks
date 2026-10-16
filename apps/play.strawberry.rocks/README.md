@@ -1,5 +1,18 @@
 # React + TypeScript + Vite
 
+## Running a local Strawberry checkout
+
+To try unreleased Strawberry changes in the playground, point the dev server
+at your checkout in `.env.local` (git-ignored):
+
+```sh
+STRAWBERRY_PATH=../../../strawberry
+```
+
+`pnpm dev` then adds a "local" version (selected by default) that installs a
+wheel built with `uv build`, and reloads Pyodide whenever a `.py` file in the
+checkout changes. This is dev only and needs [uv](https://docs.astral.sh/uv/).
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
