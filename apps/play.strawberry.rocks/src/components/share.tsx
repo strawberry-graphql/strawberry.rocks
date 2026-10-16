@@ -1,7 +1,7 @@
+import { LOCAL_STRAWBERRY_VERSION } from "./strawberry/strawberryVersion";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { LOCAL_STRAWBERRY_VERSION } from "./strawberry/strawberryVersion";
 import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { CopyIcon } from "@radix-ui/react-icons";
 import { useMutation } from "@tanstack/react-query";

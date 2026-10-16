@@ -40,9 +40,7 @@ export function localStrawberry(strawberryPath: string | undefined): Plugin {
 
     await execFileAsync("uv", ["build", "--wheel", "--out-dir", outDir, root]);
 
-    const wheel = (await readdir(outDir)).find((file) =>
-      file.endsWith(".whl")
-    );
+    const wheel = (await readdir(outDir)).find((file) => file.endsWith(".whl"));
 
     if (!wheel) {
       throw new Error(`uv build did not produce a wheel in ${outDir}`);
@@ -62,7 +60,9 @@ export function localStrawberry(strawberryPath: string | undefined): Plugin {
     config(_, { command }) {
       return {
         define: {
-          __LOCAL_STRAWBERRY__: JSON.stringify(command === "serve" && available),
+          __LOCAL_STRAWBERRY__: JSON.stringify(
+            command === "serve" && available
+          ),
         },
       };
     },
