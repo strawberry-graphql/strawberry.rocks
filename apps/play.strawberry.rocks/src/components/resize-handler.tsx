@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { PanelResizeHandle } from "react-resizable-panels";
+import { Separator } from "react-resizable-panels";
 
 export const ResizeHandler = ({
   direction = "horizontal",
@@ -7,14 +7,11 @@ export const ResizeHandler = ({
   direction?: "horizontal" | "vertical";
 }) => {
   return (
-    <div
-      className={clsx({
-        "bg-red-200": true,
+    <Separator
+      className={clsx("bg-red-200 dark:bg-gray-800", {
         "w-0.5 h-full": direction === "horizontal",
         "h-0.5 w-full": direction === "vertical",
       })}
-    >
-      <PanelResizeHandle className="bg-red-200 w-full h-full dark:bg-gray-800" />
-    </div>
+    />
   );
 };

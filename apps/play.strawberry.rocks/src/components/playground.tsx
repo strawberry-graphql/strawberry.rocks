@@ -4,7 +4,7 @@ import { StatusBadge } from "./status-badge";
 import { usePyodide } from "./strawberry/pyodide";
 import { Tabs, Tab } from "./tabs";
 import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
-import { Panel, PanelGroup } from "react-resizable-panels";
+import { Group, Panel } from "react-resizable-panels";
 import { useDebouncedCallback } from "use-debounce";
 
 type Result = {
@@ -76,8 +76,8 @@ export const Playground = forwardRef(
     }));
 
     return (
-      <PanelGroup direction="horizontal" className="h-full">
-        <Panel minSize={20}>
+      <Group orientation="horizontal" className="h-full">
+        <Panel minSize="20%">
           <Tabs className="h-full">
             <Tab title="Code">
               <CodeEditor
@@ -92,9 +92,9 @@ export const Playground = forwardRef(
         </Panel>
         <ResizeHandler />
 
-        <Panel minSize={20}>
-          <PanelGroup direction="vertical" className="h-full">
-            <Panel minSize={20}>
+        <Panel minSize="20%">
+          <Group orientation="vertical" className="h-full">
+            <Panel minSize="20%">
               <Tabs className="h-full">
                 <Tab title="Query">
                   <CodeEditor
@@ -108,7 +108,7 @@ export const Playground = forwardRef(
               </Tabs>
             </Panel>
             <ResizeHandler direction="vertical" />
-            <Panel minSize={20}>
+            <Panel minSize="20%">
               <Tabs className="h-full">
                 <Tab title="Variables">
                   <CodeEditor
@@ -121,10 +121,10 @@ export const Playground = forwardRef(
                 </Tab>
               </Tabs>
             </Panel>
-          </PanelGroup>
+          </Group>
         </Panel>
         <ResizeHandler />
-        <Panel minSize={20}>
+        <Panel minSize="20%">
           <div className="h-full flex flex-col">
             <Tabs className="flex-1 w-full h-full">
               <Tab title="Result">
@@ -168,7 +168,7 @@ export const Playground = forwardRef(
             </div>
           </div>
         </Panel>
-      </PanelGroup>
+      </Group>
     );
   }
 );

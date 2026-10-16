@@ -27,7 +27,7 @@ export const Tabs = ({
   // we need to pass the activeTab and setActiveTab to the Tab components
   // get all title props from the tabs
   const tabsTitles = React.Children.map(children, (child) => {
-    return (child as React.ReactElement).props.title;
+    return (child as React.ReactElement<{ title: string }>).props.title;
   })!;
 
   const childrenArray = React.Children.toArray(children);
@@ -73,7 +73,7 @@ export const TabTitle = ({
   return (
     <button
       type="button"
-      className="relative flex py-3 text-sm leading-6 font-semibold focus:outline-none text-gray-700 hover:text-gray-900 focus:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+      className="relative flex py-3 text-sm leading-6 font-semibold focus:outline-hidden text-gray-700 hover:text-gray-900 focus:text-gray-900 dark:text-gray-300 dark:hover:text-white"
       onClick={() => index !== undefined && setActiveTab(index)}
     >
       <span
