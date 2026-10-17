@@ -75,7 +75,7 @@ const TabTitle = ({
       role="tab"
       aria-selected={active}
       className={clsx(
-        "relative flex h-full items-center text-[13px] font-medium transition-colors focus-visible:outline-hidden focus-visible:text-foreground",
+        "relative flex h-full items-center text-[13px] font-bold transition-colors focus-visible:outline-hidden focus-visible:text-foreground",
         active
           ? "text-foreground"
           : "text-muted-foreground hover:text-foreground"
@@ -85,7 +85,7 @@ const TabTitle = ({
       {children}
       <span
         className={clsx(
-          "absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-strawberry transition-opacity",
+          "absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-linear-to-r from-magenta to-orange transition-opacity",
           active ? "opacity-100" : "opacity-0"
         )}
       />

@@ -37,7 +37,7 @@ export const VersionSelector = ({
       >
         <SelectTrigger
           aria-label="Strawberry version"
-          className="h-8 w-auto gap-2 bg-background font-medium"
+          className="h-8 w-auto gap-2 bg-background px-3 font-bold"
         >
           <SelectValue placeholder="Version" />
         </SelectTrigger>

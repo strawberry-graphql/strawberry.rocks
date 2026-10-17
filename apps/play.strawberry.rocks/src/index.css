@@ -10,6 +10,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Ranade";
+  src: url("/fonts/Ranade-Variable.ttf") format("truetype");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
 /* Colors from the strawberry.rocks styleguide */
 :root {
   --background: #ffffff;
@@ -40,30 +47,34 @@
   --background: #0d0e12;
   --foreground: #f0f1f1;
   --chrome: #121318;
-  --muted: #1f1f23;
+  --muted: #1f1f1f;
   --muted-foreground: #8b8b8d;
-  --border: #23242a;
-  --input: #2c2d33;
+  --border: #1f1f1f;
+  --input: #28292c;
   --ring: #f7393d;
   --primary: #f7393d;
   --primary-foreground: #ffffff;
-  --secondary: #1f1f23;
+  --secondary: #1f1f1f;
   --secondary-foreground: #f0f1f1;
-  --accent: #1f1f23;
+  --accent: #28292c;
   --accent-foreground: #f0f1f1;
   --destructive: #ff6369;
   --destructive-foreground: #0d0e12;
-  --popover: #16171c;
+  --popover: #1f1f1f;
   --popover-foreground: #f0f1f1;
-  --card: #16171c;
+  --card: #1f1f1f;
   --card-foreground: #f0f1f1;
 }
 
 @theme inline {
   --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Ranade", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --color-strawberry: #f7393d;
+  /* The site's buttons and active links go from magenta to orange */
+  --color-magenta: #ee0a78;
+  --color-orange: #fe620a;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-chrome: var(--chrome);

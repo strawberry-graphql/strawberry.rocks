@@ -102,7 +102,7 @@ export const CodeEditor = ({
         scrollBeyondLastLine: false,
         contextmenu: false,
       }}
-      theme={actualTheme === "dark" ? "TomorrowNight" : "Tomorrow"}
+      theme={actualTheme === "dark" ? "strawberry-dark" : "strawberry-light"}
       language={language}
       // Editable editors are uncontrolled: @monaco-editor/react replaces the
       // whole content whenever `value` differs from it, so a keystroke typed
