@@ -53,7 +53,9 @@ export const Playground = ({
         setSdl(result.result.schema);
       }
     }
-  }, 100);
+    // Long enough to wait for a pause in typing, so half-written code
+    // doesn't flash errors
+  }, 500);
 
   useEffect(() => {
     if (!initializing) {
