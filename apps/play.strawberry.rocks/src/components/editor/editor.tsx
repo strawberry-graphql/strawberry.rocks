@@ -104,7 +104,11 @@ export const CodeEditor = ({
       }}
       theme={actualTheme === "dark" ? "TomorrowNight" : "Tomorrow"}
       language={language}
-      value={source}
+      // Editable editors are uncontrolled: @monaco-editor/react replaces the
+      // whole content whenever `value` differs from it, so a keystroke typed
+      // before React re-renders would be undone and the cursor moved
+      defaultValue={source}
+      value={readOnly ? source : undefined}
       onChange={(value) => onChange?.(value ?? "")}
       onMount={(editor) => {
         setEditor(editor);
