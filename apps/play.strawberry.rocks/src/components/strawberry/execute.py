@@ -204,7 +204,9 @@ async def execute(variables):
         )
 
     return {
-        "response": response.json(),
+        # Parsed in JavaScript: to_js would turn nulls into undefined, which
+        # JSON.stringify then leaves out
+        "response": response.text,
         "status_code": response.status_code,
         "headers": dict(response.headers.items()),
         "schema": str(schema),

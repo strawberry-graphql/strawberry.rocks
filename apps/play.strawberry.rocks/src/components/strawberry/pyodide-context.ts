@@ -74,6 +74,19 @@ type PyodideContextValue = {
 
 export const PyodideContext = createContext<PyodideContextValue | null>(null);
 
+/** The response body, which isn't JSON for e.g. internal server errors */
+const parseResponse = (body: string | null): GraphQLResponse | null => {
+  if (!body) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(body);
+  } catch {
+    return null;
+  }
+};
+
 export const usePyodide = () => {
   const context = useContext(PyodideContext);
 
@@ -84,7 +97,7 @@ export const usePyodide = () => {
   const { initializing, loadingStatus, loading, run } = context;
 
   const executeQuery = useCallback(
-    ({
+    async ({
       schemaCode,
       query,
       variables,
@@ -92,12 +105,24 @@ export const usePyodide = () => {
       schemaCode: string;
       query: string;
       variables: string;
-    }) =>
-      run<ExecutionResult>(execute, {
+    }) => {
+      const { result, error } = await run<
+        Omit<ExecutionResult, "response"> & { response: string | null }
+      >(execute, {
         schema_code: schemaCode,
         query,
         variables,
-      }),
+      });
+
+      if (!result) {
+        return { result, error };
+      }
+
+      return {
+        result: { ...result, response: parseResponse(result.response) },
+        error,
+      };
+    },
     [run]
   );
 
