@@ -34,14 +34,32 @@ self.onmessage = async (event) => {
   if (event.data.type === "load") {
     const strawberryVersion = event.data.version;
 
-    loadPyodideAndPackages(strawberryVersion).then(() => {
-      self.postMessage({ ready: true });
-    });
+    self.loading = loadPyodideAndPackages(strawberryVersion);
+
+    // Report ready even when loading failed, so the UI stops waiting; the
+    // error is returned when running code instead
+    self.loading.then(
+      () => self.postMessage({ ready: true }),
+      (error) => {
+        console.error(error);
+        self.postMessage({ ready: true });
+      }
+    );
     return;
   }
 
   if (event.data.type === "run") {
     const { id, python, ...context } = event.data;
+
+    try {
+      await self.loading;
+    } catch (error) {
+      self.postMessage({
+        error: `Failed to load Pyodide: ${error.message}`,
+        id,
+      });
+      return;
+    }
 
     for (const key of Object.keys(context)) {
       self[key] = context[key];

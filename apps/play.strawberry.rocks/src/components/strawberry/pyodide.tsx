@@ -52,6 +52,16 @@ export default class PyodideWorker extends Worker {
     });
   }
 
+  terminate() {
+    super.terminate();
+
+    for (const callback of Object.values(this.callbacks)) {
+      callback({ result: null, error: "Pyodide was restarted" });
+    }
+
+    this.callbacks = {};
+  }
+
   // run the code in the worker
   run(code: string) {
     this.currentId = (this.currentId + 1) % Number.MAX_SAFE_INTEGER;
@@ -85,6 +95,8 @@ export const PyodideProvider = ({
     setInitializing(true);
 
     console.log("creating a new worker");
+
+    workerRef.current?.terminate();
 
     const worker = new PyodideWorker(strawberryVersion);
 
