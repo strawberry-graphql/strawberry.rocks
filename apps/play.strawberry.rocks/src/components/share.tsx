@@ -40,7 +40,13 @@ export function Share({
   state: EditorState;
   version: string;
 }) {
-  const { data, isPending, mutate } = useMutation({
+  const {
+    data,
+    error,
+    isPending,
+    mutate,
+    variables: shared,
+  } = useMutation({
     mutationKey: ["createGist"],
     mutationFn: (variables: { input: CreateGistInput }) =>
       request<{ createGist: { id: string } }>(
@@ -48,25 +54,34 @@ export function Share({
         CREATE_GIST_DOCUMENT,
         variables
       ),
+    onError: (error) => console.error("Could not create a share link", error),
   });
 
-  const handleOpen = (open: boolean) => {
-    if (!open) {
+  const share = () => {
+    const input: CreateGistInput = {
+      query: state.query,
+      schema: state.code,
+      variables: parseVariables(state.variables),
+      // A local checkout can't be shared, so fall back to the latest release
+      requirements:
+        version === "latest" || version === LOCAL_STRAWBERRY_VERSION
+          ? "strawberry-graphql"
+          : `strawberry-graphql==${version}`,
+    };
+
+    // Nothing changed since the last link was created, so it can be reused
+    // instead of creating another gist
+    if (data && JSON.stringify(shared?.input) === JSON.stringify(input)) {
       return;
     }
 
-    mutate({
-      input: {
-        query: state.query,
-        schema: state.code,
-        variables: parseVariables(state.variables),
-        // A local checkout can't be shared, so fall back to the latest release
-        requirements:
-          version === "latest" || version === LOCAL_STRAWBERRY_VERSION
-            ? "strawberry-graphql"
-            : `strawberry-graphql==${version}`,
-      },
-    });
+    mutate({ input });
+  };
+
+  const handleOpen = (open: boolean) => {
+    if (open) {
+      share();
+    }
   };
 
   const url = data?.createGist.id
@@ -98,7 +113,7 @@ export function Share({
             </Label>
             <Input
               id="link"
-              value={isPending ? "Loading..." : url}
+              value={isPending ? "Creating link…" : url}
               readOnly
               className="h-9"
             />
@@ -113,6 +128,14 @@ export function Share({
             <CopyIcon className="h-4 w-4" />
           </Button>
         </div>
+        {error ? (
+          <div className="mt-3 flex items-center justify-between gap-3 text-sm text-destructive">
+            <p>Couldn't create a link, please try again.</p>
+            <Button type="button" onClick={share}>
+              Retry
+            </Button>
+          </div>
+        ) : null}
       </PopoverContent>
     </Popover>
   );
