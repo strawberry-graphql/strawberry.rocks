@@ -5,6 +5,7 @@ import io
 import json
 import linecache
 import logging
+import os
 import sys
 import traceback
 import types
@@ -81,6 +82,64 @@ class LogCollector(logging.Handler):
         self.logs.append(entry)
 
 
+def is_schema_file(path):
+    return os.path.abspath(path) == os.path.abspath(SCHEMA_FILENAME)
+
+
+async def strawberry_exception_details(exc):
+    """Details of Strawberry's own exceptions, e.g. a missing annotation,
+    including the location of the code that caused them."""
+
+    try:
+        from strawberry.exceptions import StrawberryException
+    except ImportError:
+        return None
+
+    if not isinstance(exc, StrawberryException):
+        return None
+
+    # Only needed for these errors, so they're loaded on demand
+    await pyodide_js.loadPackage(["libcst", "rich"])
+
+    from rich.text import Text
+
+    def plain(markup):
+        return Text.from_markup(markup).plain if markup else None
+
+    try:
+        source = exc.exception_source
+    except Exception:
+        source = None
+
+    location = None
+    snippet = []
+
+    if source is not None and is_schema_file(source.path):
+        # Strawberry's columns are 0-based
+        location = {
+            "line": source.error_line,
+            "column": source.error_column + 1,
+            "end_column": source.error_column_end + 1,
+        }
+
+        lines = schema_code.splitlines()
+        first = max(1, source.error_line - 2)
+        last = min(len(lines), source.error_line + 2)
+        snippet = [
+            {"line": number, "text": lines[number - 1]}
+            for number in range(first, last + 1)
+        ]
+
+    return {
+        "title": plain(getattr(exc, "rich_message", None)) or str(exc),
+        "annotation": getattr(exc, "annotation_message", None),
+        "suggestion": plain(getattr(exc, "suggestion", None)),
+        "documentation_url": getattr(exc, "documentation_url", None),
+        "location": location,
+        "snippet": snippet,
+    }
+
+
 async def load_schema():
     await pyodide_js.loadPackagesFromImports(schema_code)
 
@@ -89,6 +148,12 @@ async def load_schema():
     module = types.ModuleType(SCHEMA_MODULE)
     module.__file__ = SCHEMA_FILENAME
     sys.modules[SCHEMA_MODULE] = module
+
+    # Strawberry's exceptions find where they come from by reading the
+    # module's file with libcst, so the code needs to exist on disk too
+    # (Pyodide's in-memory filesystem)
+    with open(SCHEMA_FILENAME, "w") as file:
+        file.write(schema_code)
 
     # Lets tracebacks show the source of each line
     linecache.cache[SCHEMA_FILENAME] = (
@@ -177,6 +242,13 @@ async def main():
                 result.update(await execute(parsed_variables))
     except Exception as exc:
         result["error"] = format_exception(exc)
+        details = await strawberry_exception_details(exc)
+
+        if details:
+            result["error"]["strawberry"] = details
+
+            if details["location"]:
+                result["error"]["line"] = details["location"]["line"]
     finally:
         root_logger.removeHandler(collector)
 

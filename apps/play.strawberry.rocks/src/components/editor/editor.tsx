@@ -8,6 +8,8 @@ export type EditorMarker = {
   line: number;
   /** Underlines the word at this column, or the whole line when not set */
   column?: number;
+  /** Underlines up to this column instead of to the end of the word */
+  endColumn?: number;
   message: string;
 };
 
@@ -43,6 +45,17 @@ export const CodeEditor = ({
       (markers ?? [])
         .filter((marker) => marker.line <= model.getLineCount())
         .map((marker) => {
+          if (marker.column && marker.endColumn) {
+            return {
+              severity: monaco.MarkerSeverity.Error,
+              message: marker.message,
+              startLineNumber: marker.line,
+              endLineNumber: marker.line,
+              startColumn: marker.column,
+              endColumn: marker.endColumn,
+            };
+          }
+
           const word =
             marker.column &&
             model.getWordAtPosition({

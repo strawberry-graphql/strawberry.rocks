@@ -76,11 +76,26 @@ export const Playground = ({
       ...(result?.logs ?? []).map((log) => log.error),
     ];
 
-    return errors.flatMap((error): EditorMarker[] =>
-      error?.line
+    return errors.flatMap((error): EditorMarker[] => {
+      const location = error?.strawberry?.location;
+
+      if (location) {
+        return [
+          {
+            line: location.line,
+            column: location.column,
+            endColumn: location.end_column,
+            message: error.strawberry!.annotation
+              ? `${error.strawberry!.title}: ${error.strawberry!.annotation}`
+              : error.strawberry!.title,
+          },
+        ];
+      }
+
+      return error?.line
         ? [{ line: error.line, message: `${error.type}: ${error.message}` }]
-        : []
-    );
+        : [];
+    });
   }, [result]);
 
   const queryMarkers = useMemo(
