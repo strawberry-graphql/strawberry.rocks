@@ -1,4 +1,5 @@
 import type { EditorState } from "../editor-state";
+import { useGraphQLSchema } from "../hooks/use-graphql-schema";
 import {
   CodeEditor,
   type EditorInstance,
@@ -26,6 +27,10 @@ export const Playground = ({
     error: string | null;
   }>({ result: null, error: null });
   const latestRun = useRef(0);
+  // Kept from the last successful run, so the schema explorer and query
+  // autocompletion keep working while the code is being edited
+  const [sdl, setSdl] = useState<string | null>(null);
+  const schema = useGraphQLSchema(sdl);
 
   const runQuery = useDebouncedCallback(async (state: EditorState) => {
     const run = ++latestRun.current;
@@ -39,6 +44,10 @@ export const Playground = ({
     // Ignore results of runs that were superseded while executing
     if (run === latestRun.current) {
       setResult(result);
+
+      if (result.result?.schema) {
+        setSdl(result.result.schema);
+      }
     }
   }, 100);
 
@@ -137,6 +146,8 @@ export const Playground = ({
         <ResultPanel
           result={result}
           error={error}
+          schema={schema}
+          sdl={sdl}
           onJumpToCode={(line) => jumpTo(codeEditor.current, line)}
           onJumpToQuery={(line, column) =>
             jumpTo(queryEditor.current, line, column)

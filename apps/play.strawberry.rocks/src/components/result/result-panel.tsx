@@ -1,4 +1,5 @@
 import { CodeEditor } from "../editor/editor";
+import { SchemaView } from "../schema/schema-view";
 import { StatusBadge } from "../status-badge";
 import type { ExecutionResult } from "../strawberry/pyodide-context";
 import { Tab, Tabs } from "../tabs";
@@ -6,6 +7,7 @@ import { ConsoleView } from "./console-view";
 import { GraphQLErrors } from "./graphql-errors";
 import { consoleLogs } from "./logs";
 import { PythonErrorView } from "./python-error";
+import type { GraphQLSchema } from "graphql";
 
 const Count = ({ count }: { count: number }) =>
   count > 0 ? (
@@ -17,12 +19,16 @@ const Count = ({ count }: { count: number }) =>
 export const ResultPanel = ({
   result,
   error,
+  schema,
+  sdl,
   onJumpToCode,
   onJumpToQuery,
 }: {
   result: ExecutionResult | null;
   /** Set when the playground itself failed, e.g. Pyodide didn't load */
   error: string | null;
+  schema: GraphQLSchema | null;
+  sdl: string | null;
   onJumpToCode: (line: number) => void;
   onJumpToQuery: (line: number, column: number) => void;
 }) => {
@@ -93,11 +99,7 @@ export const ResultPanel = ({
           />
         </Tab>
         <Tab title="Schema">
-          <CodeEditor
-            source={result?.schema ?? ""}
-            language="graphql"
-            readOnly
-          />
+          <SchemaView schema={schema} sdl={sdl} />
         </Tab>
       </Tabs>
 
