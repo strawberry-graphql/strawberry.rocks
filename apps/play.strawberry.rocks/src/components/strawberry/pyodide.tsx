@@ -1,6 +1,10 @@
 import execute from "./execute.py?raw";
 import { PYODIDE_VERSION } from "./pyodideVersion";
 import {
+  DEFAULT_STRAWBERRY_VERSION,
+  LOCAL_STRAWBERRY_VERSION,
+} from "./strawberryVersion";
+import {
   useContext,
   useRef,
   useEffect,
@@ -84,11 +88,28 @@ export const PyodideProvider = ({
   const [loading, setLoading] = useState(false);
   const [initializing, setInitializing] = useState(true);
   const workerRef = useRef<PyodideWorker | null>(null);
-  const previousVersion = useRef<string | null>(null);
-  const [strawberryVersion, setStrawberryVersion] = useState("latest");
+  const previousWorkerKey = useRef<string | null>(null);
+  const [strawberryVersion, setStrawberryVersion] = useState(
+    DEFAULT_STRAWBERRY_VERSION
+  );
+  // Bumped by the dev server whenever the local Strawberry checkout changes
+  const [localRevision, setLocalRevision] = useState(0);
 
   useEffect(() => {
-    if (workerRef.current && previousVersion.current === strawberryVersion) {
+    const onChange = () => setLocalRevision((revision) => revision + 1);
+
+    import.meta.hot?.on("local-strawberry:changed", onChange);
+
+    return () => import.meta.hot?.off("local-strawberry:changed", onChange);
+  }, []);
+
+  const workerKey =
+    strawberryVersion === LOCAL_STRAWBERRY_VERSION
+      ? `${strawberryVersion}@${localRevision}`
+      : strawberryVersion;
+
+  useEffect(() => {
+    if (workerRef.current && previousWorkerKey.current === workerKey) {
       return;
     }
 
@@ -107,8 +128,8 @@ export const PyodideProvider = ({
     };
 
     workerRef.current = worker;
-    previousVersion.current = strawberryVersion;
-  }, [strawberryVersion]);
+    previousWorkerKey.current = workerKey;
+  }, [strawberryVersion, workerKey]);
 
   const run = useCallback(async <Result,>(code: string) => {
     if (!workerRef.current) {

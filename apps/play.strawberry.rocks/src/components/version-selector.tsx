@@ -1,4 +1,5 @@
 import { usePackageVersions } from "../hooks/use-package-versions";
+import { LOCAL_STRAWBERRY_VERSION } from "./strawberry/strawberryVersion";
 import {
   Select,
   SelectContent,
@@ -18,8 +19,12 @@ export const VersionSelector = ({
 }) => {
   let versions = usePackageVersions(name);
 
-  // add latest version
-  versions = ["latest", ...versions];
+  // add latest version, and the local checkout when the dev server has one
+  versions = [
+    ...(__LOCAL_STRAWBERRY__ ? [LOCAL_STRAWBERRY_VERSION] : []),
+    "latest",
+    ...versions,
+  ];
 
   return (
     <div>

@@ -1,3 +1,4 @@
+import { DEFAULT_STRAWBERRY_VERSION } from "@/components/strawberry/strawberryVersion";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { gql, request } from "graphql-request";
 
@@ -47,7 +48,7 @@ export const useSnippet = () => {
         : Promise.resolve({ gist: undefined }),
   });
 
-  let strawberryVersion = "latest";
+  let strawberryVersion = DEFAULT_STRAWBERRY_VERSION;
 
   if (data.gist?.requirements) {
     const match = data.gist.requirements.match(/strawberry-graphql==(.*)/);

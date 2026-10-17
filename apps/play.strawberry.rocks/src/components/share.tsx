@@ -1,3 +1,4 @@
+import { LOCAL_STRAWBERRY_VERSION } from "./strawberry/strawberryVersion";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -62,8 +63,9 @@ export function Share({
         query: state.query,
         schema: state.code,
         variables: JSON.parse(state.variables),
+        // A local checkout can't be shared, so fall back to the latest release
         requirements:
-          version === "latest"
+          version === "latest" || version === LOCAL_STRAWBERRY_VERSION
             ? "strawberry-graphql"
             : `strawberry-graphql==${version}`,
       };

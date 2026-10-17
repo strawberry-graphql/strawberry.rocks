@@ -1,6 +1,30 @@
 const params = new URL(self.location).searchParams;
 const PYODIDE_VERSION = params.get("pyodide");
 
+async function getStrawberryRequirement(strawberryVersion) {
+  if (strawberryVersion === "latest") {
+    return "strawberry-graphql";
+  }
+
+  // Wheel built from a local checkout by the dev server, see
+  // plugins/local-strawberry.ts
+  if (strawberryVersion === "local") {
+    const response = await fetch("/__local-strawberry/wheel");
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to build local strawberry: ${await response.text()}`
+      );
+    }
+
+    const { url } = await response.json();
+
+    return new URL(url, self.location.origin).href;
+  }
+
+  return `strawberry-graphql==${strawberryVersion}`;
+}
+
 async function loadPyodideAndPackages(strawberryVersion) {
   // Pyodide 314+ only supports module workers, so load the ES module build
   const { loadPyodide } = await import(
@@ -11,8 +35,9 @@ async function loadPyodideAndPackages(strawberryVersion) {
 
   await self.pyodide.loadPackage(["micropip"]);
 
-  const versionSuffix =
-    strawberryVersion === "latest" ? "" : `==${strawberryVersion}`;
+  const requirement = JSON.stringify(
+    await getStrawberryRequirement(strawberryVersion)
+  );
 
   await self.pyodide.runPythonAsync(`
     import micropip
@@ -20,9 +45,9 @@ async function loadPyodideAndPackages(strawberryVersion) {
     await micropip.install([
         "typing_extensions>=4.11.0",
     ])
-    print("Installing strawberry-graphql${versionSuffix}...")
+    print("Installing " + ${requirement} + "...")
     await micropip.install([
-        "strawberry-graphql${versionSuffix}",
+        ${requirement},
         "fastapi",
         "httpx",
     ])
