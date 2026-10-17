@@ -122,3 +122,51 @@
     cursor: pointer;
   }
 }
+
+/* Dockable panes, see components/dock/dock-layout.tsx */
+.playground-dock .dockview-theme-light,
+.playground-dock .dockview-theme-dark {
+  --dv-group-view-background-color: var(--background);
+  --dv-tabs-and-actions-container-background-color: var(--chrome);
+  --dv-tabs-and-actions-container-height: 36px;
+  --dv-tabs-and-actions-container-font-size: 13px;
+  --dv-activegroup-visiblepanel-tab-background-color: transparent;
+  --dv-activegroup-hiddenpanel-tab-background-color: transparent;
+  --dv-inactivegroup-visiblepanel-tab-background-color: transparent;
+  --dv-inactivegroup-hiddenpanel-tab-background-color: transparent;
+  --dv-activegroup-visiblepanel-tab-color: var(--foreground);
+  --dv-inactivegroup-visiblepanel-tab-color: var(--foreground);
+  --dv-activegroup-hiddenpanel-tab-color: var(--muted-foreground);
+  --dv-inactivegroup-hiddenpanel-tab-color: var(--muted-foreground);
+  --dv-tab-divider-color: transparent;
+  --dv-separator-border: var(--border);
+  --dv-paneview-header-border-color: var(--border);
+  --dv-sash-color: transparent;
+  --dv-active-sash-color: var(--color-strawberry);
+  --dv-active-sash-transition-delay: 0.1s;
+  --dv-drag-over-background-color: color-mix(
+    in srgb,
+    var(--color-strawberry) 10%,
+    transparent
+  );
+  --dv-drag-over-border-color: var(--color-strawberry);
+  --dv-icon-hover-background-color: var(--muted);
+  font-family: var(--font-sans);
+}
+
+.playground-dock .dv-tabs-and-actions-container {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Our tabs pad themselves, so their underline can sit on the border */
+.playground-dock .dv-tab {
+  padding: 0;
+}
+
+.playground-dock .dv-tab > .dv-react-part {
+  height: 100%;
+}
+
+.playground-dock .dv-tab:hover {
+  color: var(--foreground);
+}

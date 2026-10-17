@@ -207,6 +207,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      dockview-react:
+        specifier: 8.4.1
+        version: 8.4.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
@@ -225,9 +228,6 @@ importers:
       react-dom:
         specifier: ^19.3.0
         version: 19.3.0(react@19.3.0)
-      react-resizable-panels:
-        specifier: ^4.14.5
-        version: 4.14.5(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       semver-sort:
         specifier: ^1.0.0
         version: 1.0.0
@@ -6002,6 +6002,18 @@ packages:
   dlv@1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
 
+  dockview-core@8.5.1:
+    resolution: {integrity: sha512-lUNJj4uvE36ks59pMeLeinzvVr0EVkGiA/c1kuUdR2V49CAIGx+bhiu0FuZNh8iqcggu/5h1v1U0KC0JrUuPSw==}
+
+  dockview-react@8.4.1:
+    resolution: {integrity: sha512-6C5FV5Y0n0S3IljnKNn9stLm45SkbzZzlLnV2286sm1W2cnZXPmqDuZOWq3wWj9tZ2MvuV1q0c9hLT9NT6H+NQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  dockview@8.4.1:
+    resolution: {integrity: sha512-6CrXwfDkhTL0N8stgnur8E/WYFZqltAtHaAV96Ia9lA1JGWwWMw5MWZznWckIMocS2Il5rgaqP/i/l2ltYaTqw==}
+
   doctrine@2.1.0:
     resolution: {integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==}
     engines: {node: '>=0.10.0'}
@@ -9171,12 +9183,6 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
-
-  react-resizable-panels@4.14.5:
-    resolution: {integrity: sha512-AoHgoq3sGOfciPn2ahddFrBCqsitZLse8cJIYWblvE3kQ9z39IrhdlHCjnVRrDL8XcWqvA0u/t9nLZTfWePJ5A==}
-    peerDependencies:
-      react: ^18.0.0 || ^19.0.0
-      react-dom: ^18.0.0 || ^19.0.0
 
   react-style-singleton@2.2.1:
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
@@ -17289,6 +17295,18 @@ snapshots:
 
   dlv@1.1.3: {}
 
+  dockview-core@8.5.1: {}
+
+  dockview-react@8.4.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+    dependencies:
+      dockview: 8.4.1
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
+
+  dockview@8.4.1:
+    dependencies:
+      dockview-core: 8.5.1
+
   doctrine@2.1.0:
     dependencies:
       esutils: 2.0.3
@@ -21376,11 +21394,6 @@ snapshots:
       use-sidecar: 1.1.3(@types/react@19.3.0)(react@19.3.0)
     optionalDependencies:
       '@types/react': 19.3.0
-
-  react-resizable-panels@4.14.5(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
-    dependencies:
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
 
   react-style-singleton@2.2.1(@types/react@18.2.31)(react@18.2.0):
     dependencies:

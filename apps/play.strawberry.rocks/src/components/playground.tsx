@@ -1,26 +1,40 @@
 import type { EditorState } from "../editor-state";
 import { useGraphQLSchema } from "../hooks/use-graphql-schema";
 import { useMediaQuery } from "../hooks/use-media-query";
+import { DockLayout } from "./dock/dock-layout";
+import type { PanelId } from "./dock/layout";
 import {
   CodeEditor,
   type EditorInstance,
   type EditorMarker,
 } from "./editor/editor";
-import { ResizeHandler } from "./resize-handler";
-import { ResultPanel } from "./result/result-panel";
+import { consoleCount } from "./result/logs";
+import {
+  Count,
+  ResponseView,
+  ResultConsole,
+  ResultHeaders,
+  ResultPanel,
+  ResultStatus,
+  type ResultProps,
+} from "./result/result-panel";
+import { SchemaView } from "./schema/schema-view";
 import { usePyodide } from "./strawberry/pyodide-context";
 import type { ExecutionResult } from "./strawberry/pyodide-context";
 import { Tabs, Tab } from "./tabs";
+import type { DockviewApi } from "dockview-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Group, Panel } from "react-resizable-panels";
 import { useDebouncedCallback } from "use-debounce";
 
 export const Playground = ({
   state,
   onChange,
+  dockApiRef,
 }: {
   state: EditorState;
   onChange: React.Dispatch<React.SetStateAction<EditorState>>;
+  /** Set once the desktop layout is ready, e.g. to reset it */
+  dockApiRef: React.RefObject<DockviewApi | null>;
 }) => {
   const { executeQuery, initializing } = usePyodide();
   const [{ result, error, duration }, setResult] = useState<{
@@ -66,10 +80,18 @@ export const Playground = ({
   const codeEditor = useRef<EditorInstance | null>(null);
   const queryEditor = useRef<EditorInstance | null>(null);
 
-  const jumpTo = (editor: EditorInstance | null, line: number, column = 1) => {
+  const jumpTo = (
+    panel: PanelId,
+    editor: EditorInstance | null,
+    line: number,
+    column = 1
+  ) => {
+    // The editor can be in a tab that isn't shown
+    dockApiRef.current?.getPanel(panel)?.api.setActive();
     editor?.revealLineInCenter(line);
     editor?.setPosition({ lineNumber: line, column });
-    editor?.focus();
+    // After dockview has moved focus to the newly shown tab
+    requestAnimationFrame(() => editor?.focus());
   };
 
   const codeMarkers = useMemo(() => {
@@ -137,19 +159,16 @@ export const Playground = ({
       language="json"
     />
   );
-  const resultPanelElement = (
-    <ResultPanel
-      result={result}
-      error={error}
-      duration={duration}
-      schema={schema}
-      sdl={sdl}
-      onJumpToCode={(line) => jumpTo(codeEditor.current, line)}
-      onJumpToQuery={(line, column) =>
-        jumpTo(queryEditor.current, line, column)
-      }
-    />
-  );
+  const resultProps: ResultProps = {
+    result,
+    error,
+    duration,
+    schema,
+    sdl,
+    onJumpToCode: (line) => jumpTo("code", codeEditor.current, line),
+    onJumpToQuery: (line, column) =>
+      jumpTo("query", queryEditor.current, line, column),
+  };
 
   // On small screens, show one pane at a time
   if (!isDesktop) {
@@ -158,39 +177,27 @@ export const Playground = ({
         <Tab title="schema.py">{codeEditorElement}</Tab>
         <Tab title="Query">{queryEditorElement}</Tab>
         <Tab title="Variables">{variablesEditorElement}</Tab>
-        <Tab title="Result">{resultPanelElement}</Tab>
+        <Tab title="Result">
+          <ResultPanel {...resultProps} />
+        </Tab>
       </Tabs>
     );
   }
 
   return (
-    <Group orientation="horizontal" className="h-full">
-      <Panel defaultSize="38%" minSize="20%">
-        <Tabs className="h-full">
-          <Tab title="schema.py">{codeEditorElement}</Tab>
-        </Tabs>
-      </Panel>
-      <ResizeHandler />
-
-      <Panel defaultSize="28%" minSize="20%">
-        <Group orientation="vertical" className="h-full">
-          <Panel defaultSize="65%" minSize="20%">
-            <Tabs className="h-full">
-              <Tab title="Query">{queryEditorElement}</Tab>
-            </Tabs>
-          </Panel>
-          <ResizeHandler direction="vertical" />
-          <Panel minSize="20%">
-            <Tabs className="h-full">
-              <Tab title="Variables">{variablesEditorElement}</Tab>
-            </Tabs>
-          </Panel>
-        </Group>
-      </Panel>
-      <ResizeHandler />
-      <Panel defaultSize="34%" minSize="20%">
-        {resultPanelElement}
-      </Panel>
-    </Group>
+    <DockLayout
+      panels={{
+        code: codeEditorElement,
+        query: queryEditorElement,
+        variables: variablesEditorElement,
+        response: <ResponseView {...resultProps} />,
+        console: <ResultConsole {...resultProps} />,
+        headers: <ResultHeaders {...resultProps} />,
+        schema: <SchemaView schema={schema} sdl={sdl} />,
+      }}
+      badges={{ console: <Count count={consoleCount(result)} /> }}
+      status={<ResultStatus {...resultProps} />}
+      onReady={(api) => (dockApiRef.current = api)}
+    />
   );
 };

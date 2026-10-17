@@ -1,3 +1,4 @@
+import { applyDefaultLayout } from "./components/dock/layout";
 import { Logo } from "./components/logo";
 import { Playground } from "./components/playground";
 import { Share } from "./components/share";
@@ -8,7 +9,9 @@ import { Button } from "./components/ui/button";
 import { VersionSelector } from "./components/version-selector";
 import type { EditorState } from "./editor-state";
 import { useSnippet } from "./hooks/use-snippet";
-import { Suspense, useState } from "react";
+import type { DockviewApi } from "dockview-react";
+import { LayoutPanelLeft } from "lucide-react";
+import { Suspense, useRef, useState } from "react";
 
 function App() {
   const { snippet } = useSnippet();
@@ -41,6 +44,7 @@ function PlaygroundApp({
     query: snippet.query,
     variables: snippet.variables,
   });
+  const dockApiRef = useRef<DockviewApi | null>(null);
 
   return (
     <>
@@ -69,6 +73,18 @@ function PlaygroundApp({
         <StatusIndicator />
 
         <div className="ml-auto flex items-center gap-1.5">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hidden md:inline-flex"
+            title="Reset layout"
+            aria-label="Reset layout"
+            onClick={() =>
+              dockApiRef.current && applyDefaultLayout(dockApiRef.current)
+            }
+          >
+            <LayoutPanelLeft className="size-4" />
+          </Button>
           <Button variant="ghost" asChild className="hidden md:inline-flex">
             <a href="https://strawberry.rocks/docs">Docs</a>
           </Button>
@@ -78,7 +94,11 @@ function PlaygroundApp({
       </header>
 
       <main className="min-h-0 flex-1">
-        <Playground state={editorState} onChange={setEditorState} />
+        <Playground
+          state={editorState}
+          onChange={setEditorState}
+          dockApiRef={dockApiRef}
+        />
       </main>
     </>
   );
