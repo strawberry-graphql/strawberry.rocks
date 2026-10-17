@@ -8,10 +8,13 @@ export const ResizeHandler = ({
 }) => {
   return (
     <Separator
-      className={clsx("bg-red-200 dark:bg-gray-800", {
-        "w-0.5 h-full": direction === "horizontal",
-        "h-0.5 w-full": direction === "vertical",
-      })}
+      className={clsx(
+        "bg-border transition-colors data-[separator=active]:bg-strawberry data-[separator=hover]:bg-strawberry/60",
+        {
+          "w-px": direction === "horizontal",
+          "h-px": direction === "vertical",
+        }
+      )}
     />
   );
 };

@@ -48,6 +48,8 @@ export type ExecutionResult = {
 
 type PyodideContextValue = {
   initializing: boolean;
+  /** What's happening while initializing, e.g. "Installing Strawberry" */
+  loadingStatus: string;
   loading: boolean;
   run: <Result>(
     python: string,
@@ -64,7 +66,7 @@ export const usePyodide = () => {
     throw new Error("usePyodide must be used within a PyodideProvider");
   }
 
-  const { initializing, loading, run } = context;
+  const { initializing, loadingStatus, loading, run } = context;
 
   const executeQuery = useCallback(
     ({
@@ -84,5 +86,5 @@ export const usePyodide = () => {
     [run]
   );
 
-  return { initializing, loading, executeQuery };
+  return { initializing, loadingStatus, loading, executeQuery };
 };

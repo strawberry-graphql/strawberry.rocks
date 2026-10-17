@@ -6,26 +6,21 @@ const TabsContext = createContext({
   setActiveTab: (_index: number) => {},
 });
 
-const useTabs = () => {
-  const context = useContext(TabsContext);
-  if (!context) {
-    throw new Error("useTabs must be used within a TabsProvider");
-  }
-  return context;
-};
+const useTabs = () => useContext(TabsContext);
 
 export const Tabs = ({
   children,
   className,
+  actions,
 }: {
   children: React.ReactNode;
   className?: string;
+  /** Shown at the end of the tab bar */
+  actions?: React.ReactNode;
 }) => {
   const [activeTab, setActiveTab] = useState(0);
 
-  // all children should be Tab components
-  // we need to pass the activeTab and setActiveTab to the Tab components
-  // get all title props from the tabs
+  // all children should be Tab components, get their titles for the header
   const tabsTitles = React.Children.map(children, (child) => {
     return (child as React.ReactElement<{ title: React.ReactNode }>).props
       .title;
@@ -39,16 +34,22 @@ export const Tabs = ({
       <div
         className={clsx(
           className,
-          "grid min-h-0 grid-rows-[50px_1fr] dark:bg-dark"
+          "grid min-h-0 grid-rows-[auto_1fr] bg-background"
         )}
       >
-        <TabsHeader>
+        <div
+          role="tablist"
+          className="flex h-9 items-center gap-4 border-b bg-chrome px-4"
+        >
           {tabsTitles.map((title, index) => (
             <TabTitle key={index} index={index}>
               {title}
             </TabTitle>
           ))}
-        </TabsHeader>
+          {actions ? (
+            <div className="ml-auto flex items-center">{actions}</div>
+          ) : null}
+        </div>
         <div className="min-h-0 min-w-0 overflow-hidden">
           {activeTabContent}
         </div>
@@ -57,20 +58,12 @@ export const Tabs = ({
   );
 };
 
-export const TabsHeader = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="flex items-center flex-none pl-5 sm:pl-6 pr-4 lg:pr-6 z-10 border-b">
-      <div className="flex space-x-5">{children}</div>
-    </div>
-  );
-};
-
-export const TabTitle = ({
+const TabTitle = ({
   children,
   index,
 }: {
   children: React.ReactNode;
-  index?: number;
+  index: number;
 }) => {
   const { activeTab, setActiveTab } = useTabs();
 
@@ -79,16 +72,23 @@ export const TabTitle = ({
   return (
     <button
       type="button"
-      className="relative flex items-center py-3 text-sm leading-6 font-semibold focus:outline-hidden text-gray-700 hover:text-gray-900 focus:text-gray-900 dark:text-gray-300 dark:hover:text-white"
-      onClick={() => index !== undefined && setActiveTab(index)}
+      role="tab"
+      aria-selected={active}
+      className={clsx(
+        "relative flex h-full items-center text-[13px] font-medium transition-colors focus-visible:outline-hidden focus-visible:text-foreground",
+        active
+          ? "text-foreground"
+          : "text-muted-foreground hover:text-foreground"
+      )}
+      onClick={() => setActiveTab(index)}
     >
+      {children}
       <span
         className={clsx(
-          "absolute bottom-0 inset-x-0 bg-red-500 h-0.5 rounded-full transition-opacity duration-150",
-          { "opacity-0": !active, "opacity-1": active }
+          "absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-strawberry transition-opacity",
+          active ? "opacity-100" : "opacity-0"
         )}
-      ></span>
-      {children}
+      />
     </button>
   );
 };

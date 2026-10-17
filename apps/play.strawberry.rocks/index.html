@@ -33,9 +33,23 @@
       property="twitter:image"
       content="https://play.strawberry.rocks/social-card.png"
     />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Variable.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
   </head>
   <body>
-    <div id="root" class="flex w-screen h-screen flex-col"></div>
+    <div id="root" class="flex h-dvh w-screen flex-col overflow-hidden"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -25,7 +25,14 @@ async function getStrawberryRequirement(strawberryVersion) {
   return `strawberry-graphql==${strawberryVersion}`;
 }
 
+// Progress shown while loading, before the worker reports ready
+function reportStatus(status) {
+  self.postMessage({ status });
+}
+
 async function loadPyodideAndPackages(strawberryVersion) {
+  reportStatus("Loading Python");
+
   // Pyodide 314+ only supports module workers, so load the ES module build
   const { loadPyodide } = await import(
     `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/pyodide.mjs`
@@ -35,9 +42,19 @@ async function loadPyodideAndPackages(strawberryVersion) {
 
   await self.pyodide.loadPackage(["micropip"]);
 
+  reportStatus(
+    strawberryVersion === "local"
+      ? "Building local Strawberry"
+      : "Installing Strawberry"
+  );
+
   const requirement = JSON.stringify(
     await getStrawberryRequirement(strawberryVersion)
   );
+
+  if (strawberryVersion === "local") {
+    reportStatus("Installing Strawberry");
+  }
 
   await self.pyodide.runPythonAsync(`
     import micropip

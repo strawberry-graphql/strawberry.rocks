@@ -7,6 +7,7 @@ import type { EditorState } from "@/editor-state";
 import { CopyIcon } from "@radix-ui/react-icons";
 import { useMutation } from "@tanstack/react-query";
 import { gql, request } from "graphql-request";
+import { Share2 } from "lucide-react";
 
 const CREATE_GIST_DOCUMENT = gql`
   mutation CreateGist($input: CreateGistInput!) {
@@ -75,9 +76,12 @@ export function Share({
   return (
     <Popover onOpenChange={handleOpen}>
       <PopoverTrigger asChild>
-        <Button>Share</Button>
+        <Button variant="primary" aria-label="Share">
+          <Share2 />
+          <span className="hidden sm:inline">Share</span>
+        </Button>
       </PopoverTrigger>
-      <PopoverContent align="end" className="w-[520px]">
+      <PopoverContent align="end" className="w-[min(520px,calc(100vw-2rem))]">
         <div className="flex flex-col space-y-2 text-center sm:text-left">
           <h3 className="text-lg font-semibold">Share playground link</h3>
           <p className="text-sm text-muted-foreground">
@@ -97,8 +101,9 @@ export function Share({
             />
           </div>
           <Button
-            type="submit"
-            className="px-3"
+            type="button"
+            size="icon"
+            disabled={!url}
             onClick={() => window.navigator.clipboard.writeText(url)}
           >
             <span className="sr-only">Copy</span>
