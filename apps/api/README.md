@@ -40,4 +40,7 @@ The API is deployed on Vercel as its own project, with `apps/api` as the root
 directory. Vercel loads `app` from `main.py` (see `tool.vercel` in
 `pyproject.toml`) and installs the dependencies from `uv.lock`.
 
+Builds are skipped when a commit doesn't change `apps/api`, with
+`git diff --quiet HEAD^ HEAD -- .` as the project's ignored build step.
+
 The origins that can call the API from a browser are listed in `main.py`.
