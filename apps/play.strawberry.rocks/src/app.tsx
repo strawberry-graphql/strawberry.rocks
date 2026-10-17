@@ -3,17 +3,16 @@ import { ExamplesMenu } from "./components/examples-menu";
 import { Logo } from "./components/logo";
 import { Playground } from "./components/playground";
 import { Share } from "./components/share";
-import { StatusIndicator } from "./components/status-indicator";
+import { StatusBar } from "./components/status-bar";
 import { PyodideProvider } from "./components/strawberry/pyodide";
 import { ThemeToggle } from "./components/theme-toggle";
 import { Button } from "./components/ui/button";
-import { VersionSelector } from "./components/version-selector";
 import type { EditorState } from "./editor-state";
 import type { Example } from "./examples";
 import { useSnippet } from "./hooks/use-snippet";
 import type { DockviewApi } from "dockview-react";
 import { LayoutPanelLeft } from "lucide-react";
-import { Suspense, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 /** Like the separators in the strawberry.rocks header */
 const Separator = () => (
@@ -91,26 +90,25 @@ function PlaygroundApp({
           title="Strawberry GraphQL"
         >
           <Logo className="h-9 w-auto" />
-          <span className="hidden font-display text-xl font-bold tracking-tight sm:inline">
+          <span className="font-display text-lg font-bold tracking-tight sm:text-xl">
             Playground
           </span>
         </a>
 
+        <nav className="ml-auto flex items-center gap-1">
+          <ExamplesMenu onSelect={loadExample} />
+          <Button
+            variant="ghost"
+            asChild
+            className="hidden text-foreground md:inline-flex"
+          >
+            <a href="https://strawberry.rocks/docs">Docs</a>
+          </Button>
+        </nav>
+
         <Separator />
 
-        <ExamplesMenu onSelect={loadExample} />
-
-        <Suspense fallback={null}>
-          <VersionSelector
-            name="strawberry-graphql"
-            defaultVersion={strawberryVersion}
-            onVersionSelected={onStrawberryVersionChange}
-          />
-        </Suspense>
-
-        <StatusIndicator />
-
-        <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-1">
           <Button
             variant="ghost"
             size="icon"
@@ -123,17 +121,10 @@ function PlaygroundApp({
           >
             <LayoutPanelLeft className="size-4" />
           </Button>
-          <Button
-            variant="ghost"
-            asChild
-            className="hidden text-foreground md:inline-flex"
-          >
-            <a href="https://strawberry.rocks/docs">Docs</a>
-          </Button>
-          <Share state={editorState} version={strawberryVersion} />
-          <Separator />
           <ThemeToggle />
         </div>
+
+        <Share state={editorState} version={strawberryVersion} />
       </header>
 
       <main className="min-h-0 flex-1">
@@ -144,6 +135,11 @@ function PlaygroundApp({
           revision={revision}
         />
       </main>
+
+      <StatusBar
+        strawberryVersion={strawberryVersion}
+        onStrawberryVersionChange={onStrawberryVersionChange}
+      />
     </>
   );
 }

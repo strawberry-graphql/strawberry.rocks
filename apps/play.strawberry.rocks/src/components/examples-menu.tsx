@@ -16,13 +16,17 @@ export const ExamplesMenu = ({
 }) => (
   <DropdownMenu>
     <DropdownMenuTrigger asChild>
-      <Button variant="ghost" className="px-2 text-foreground sm:px-3">
-        <LibraryBig />
+      <Button
+        variant="ghost"
+        className="px-2 text-foreground sm:px-3"
+        aria-label="Examples"
+      >
+        <LibraryBig className="sm:hidden" />
         <span className="hidden sm:inline">Examples</span>
-        <ChevronDown className="hidden opacity-50 sm:block" />
+        <ChevronDown className="-mr-1 hidden opacity-50 sm:block" />
       </Button>
     </DropdownMenuTrigger>
-    <DropdownMenuContent align="start" className="w-72">
+    <DropdownMenuContent align="end" className="w-72">
       <DropdownMenuLabel className="text-xs font-medium text-muted-foreground">
         Start from an example
       </DropdownMenuLabel>
