@@ -7,8 +7,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Suspense } from "react";
 
-export const VersionSelector = ({
+const TRIGGER_CLASS =
+  "h-6 w-auto gap-1 rounded-md border-none bg-transparent px-2 text-xs font-bold shadow-none hover:bg-muted";
+
+const Label = () => (
+  <span className="font-medium text-muted-foreground">Strawberry</span>
+);
+
+const Versions = ({
   name,
   onVersionSelected,
   defaultVersion,
@@ -27,28 +35,39 @@ export const VersionSelector = ({
   ];
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="hidden text-xs text-muted-foreground lg:inline">
-        strawberry-graphql
-      </span>
-      <Select
-        defaultValue={defaultVersion}
-        onValueChange={(value) => onVersionSelected?.(value)}
-      >
-        <SelectTrigger
-          aria-label="Strawberry version"
-          className="h-8 w-auto gap-2 bg-background px-3 font-bold"
-        >
-          <SelectValue placeholder="Version" />
-        </SelectTrigger>
-        <SelectContent className="max-h-80">
-          {versions.map((version) => (
-            <SelectItem key={version} value={version}>
-              {version}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
+    <Select
+      defaultValue={defaultVersion}
+      onValueChange={(value) => onVersionSelected?.(value)}
+    >
+      <SelectTrigger aria-label="Strawberry version" className={TRIGGER_CLASS}>
+        <Label />
+        <SelectValue placeholder="Version" />
+      </SelectTrigger>
+      <SelectContent className="max-h-80">
+        {versions.map((version) => (
+          <SelectItem key={version} value={version}>
+            {version}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 };
+
+export const VersionSelector = (props: {
+  name: string;
+  defaultVersion: string;
+  onVersionSelected?: (version: string) => void;
+}) => (
+  // Shows the version while the list of versions loads
+  <Suspense
+    fallback={
+      <div className={`flex items-center ${TRIGGER_CLASS}`}>
+        <Label />
+        {props.defaultVersion}
+      </div>
+    }
+  >
+    <Versions {...props} />
+  </Suspense>
+);

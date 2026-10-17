@@ -30,11 +30,17 @@ export const Playground = ({
   state,
   onChange,
   dockApiRef,
+  revision,
 }: {
   state: EditorState;
   onChange: React.Dispatch<React.SetStateAction<EditorState>>;
   /** Set once the desktop layout is ready, e.g. to reset it */
   dockApiRef: React.RefObject<DockviewApi | null>;
+  /**
+   * Changed when the code is replaced from outside, e.g. by an example. The
+   * editors are uncontrolled, so they're created again with the new code
+   */
+  revision: number;
 }) => {
   const { executeQuery, initializing } = usePyodide();
   const [{ result, error, duration }, setResult] = useState<{
@@ -57,6 +63,7 @@ export const Playground = ({
       schemaCode: state.code,
       query: state.query,
       variables: state.variables,
+      headers: state.headers,
     });
 
     // Ignore results of runs that were superseded while executing
@@ -136,6 +143,7 @@ export const Playground = ({
 
   const codeEditorElement = (
     <CodeEditor
+      key={revision}
       source={state.code}
       onChange={(code) => onChange((state) => ({ ...state, code }))}
       language="python"
@@ -145,6 +153,7 @@ export const Playground = ({
   );
   const queryEditorElement = (
     <CodeEditor
+      key={revision}
       source={state.query}
       onChange={(query) => onChange((state) => ({ ...state, query }))}
       language="graphql"
@@ -154,8 +163,17 @@ export const Playground = ({
   );
   const variablesEditorElement = (
     <CodeEditor
+      key={revision}
       source={state.variables}
       onChange={(variables) => onChange((state) => ({ ...state, variables }))}
+      language="json"
+    />
+  );
+  const headersEditorElement = (
+    <CodeEditor
+      key={revision}
+      source={state.headers}
+      onChange={(headers) => onChange((state) => ({ ...state, headers }))}
       language="json"
     />
   );
@@ -177,6 +195,7 @@ export const Playground = ({
         <Tab title="schema.py">{codeEditorElement}</Tab>
         <Tab title="Query">{queryEditorElement}</Tab>
         <Tab title="Variables">{variablesEditorElement}</Tab>
+        <Tab title="Headers">{headersEditorElement}</Tab>
         <Tab title="Result">
           <ResultPanel {...resultProps} />
         </Tab>
@@ -190,6 +209,7 @@ export const Playground = ({
         code: codeEditorElement,
         query: queryEditorElement,
         variables: variablesEditorElement,
+        requestHeaders: headersEditorElement,
         response: <ResponseView {...resultProps} />,
         console: <ResultConsole {...resultProps} />,
         headers: <ResultHeaders {...resultProps} />,

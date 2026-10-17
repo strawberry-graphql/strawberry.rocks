@@ -1,0 +1,11 @@
+mutation AddTodo($input: AddTodoInput!) {
+  addTodo(input: $input) {
+    id
+    text
+    done
+  }
+  toggleTodo(id: "1") {
+    id
+    done
+  }
+}

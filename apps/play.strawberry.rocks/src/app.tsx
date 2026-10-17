@@ -1,17 +1,18 @@
 import { applyDefaultLayout } from "./components/dock/layout";
+import { ExamplesMenu } from "./components/examples-menu";
 import { Logo } from "./components/logo";
 import { Playground } from "./components/playground";
 import { Share } from "./components/share";
-import { StatusIndicator } from "./components/status-indicator";
+import { StatusBar } from "./components/status-bar";
 import { PyodideProvider } from "./components/strawberry/pyodide";
 import { ThemeToggle } from "./components/theme-toggle";
 import { Button } from "./components/ui/button";
-import { VersionSelector } from "./components/version-selector";
 import type { EditorState } from "./editor-state";
+import type { Example } from "./examples";
 import { useSnippet } from "./hooks/use-snippet";
 import type { DockviewApi } from "dockview-react";
 import { LayoutPanelLeft } from "lucide-react";
-import { Suspense, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 /** Like the separators in the strawberry.rocks header */
 const Separator = () => (
@@ -48,8 +49,40 @@ function PlaygroundApp({
     code: snippet.code,
     query: snippet.query,
     variables: snippet.variables,
+    headers: snippet.headers,
   });
   const dockApiRef = useRef<DockviewApi | null>(null);
+  const [revision, setRevision] = useState(0);
+  // What the editors had when last loaded, to know if there are edits to lose
+  const [loadedState, setLoadedState] = useState(editorState);
+
+  const loadExample = (example: Example) => {
+    const hasEdits =
+      editorState.code !== loadedState.code ||
+      editorState.query !== loadedState.query ||
+      editorState.variables !== loadedState.variables ||
+      editorState.headers !== loadedState.headers;
+
+    if (
+      hasEdits &&
+      !window.confirm(`Replace your code with the “${example.title}” example?`)
+    ) {
+      return;
+    }
+
+    const state = {
+      code: example.code,
+      query: example.query,
+      variables: example.variables,
+      headers: example.headers,
+    };
+
+    setEditorState(state);
+    setLoadedState(state);
+    setRevision((revision) => revision + 1);
+    // So the page can be reloaded or linked to
+    window.history.replaceState(null, "", `?example=${example.slug}`);
+  };
 
   return (
     <>
@@ -60,24 +93,25 @@ function PlaygroundApp({
           title="Strawberry GraphQL"
         >
           <Logo className="h-9 w-auto" />
-          <span className="hidden font-display text-xl font-bold tracking-tight sm:inline">
+          <span className="font-display text-lg font-bold tracking-tight sm:text-xl">
             Playground
           </span>
         </a>
 
+        <nav className="ml-auto flex items-center gap-1">
+          <ExamplesMenu onSelect={loadExample} />
+          <Button
+            variant="ghost"
+            asChild
+            className="hidden text-foreground md:inline-flex"
+          >
+            <a href="https://strawberry.rocks/docs">Docs</a>
+          </Button>
+        </nav>
+
         <Separator />
 
-        <Suspense fallback={null}>
-          <VersionSelector
-            name="strawberry-graphql"
-            defaultVersion={strawberryVersion}
-            onVersionSelected={onStrawberryVersionChange}
-          />
-        </Suspense>
-
-        <StatusIndicator />
-
-        <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-1">
           <Button
             variant="ghost"
             size="icon"
@@ -90,17 +124,10 @@ function PlaygroundApp({
           >
             <LayoutPanelLeft className="size-4" />
           </Button>
-          <Button
-            variant="ghost"
-            asChild
-            className="hidden text-foreground md:inline-flex"
-          >
-            <a href="https://strawberry.rocks/docs">Docs</a>
-          </Button>
-          <Share state={editorState} version={strawberryVersion} />
-          <Separator />
           <ThemeToggle />
         </div>
+
+        <Share state={editorState} version={strawberryVersion} />
       </header>
 
       <main className="min-h-0 flex-1">
@@ -108,8 +135,14 @@ function PlaygroundApp({
           state={editorState}
           onChange={setEditorState}
           dockApiRef={dockApiRef}
+          revision={revision}
         />
       </main>
+
+      <StatusBar
+        strawberryVersion={strawberryVersion}
+        onStrawberryVersionChange={onStrawberryVersionChange}
+      />
     </>
   );
 }

@@ -1,18 +1,7 @@
 import { DEFAULT_STRAWBERRY_VERSION } from "@/components/strawberry/strawberryVersion";
+import { DEFAULT_EXAMPLE, findExample } from "@/examples";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { gql, request } from "graphql-request";
-
-const STARTER_CODE = `
-import strawberry
-
-@strawberry.type
-class Query:
-    @strawberry.field
-    def hello(self, info: strawberry.Info) -> str:
-        return "world"
-
-schema = strawberry.Schema(Query)
-`.trim();
 
 const GET_GIST = gql`
   query GetGist($id: ID!) {
@@ -30,6 +19,8 @@ export const useSnippet = () => {
   const search = window.location.search;
   const params = new URLSearchParams(search);
   const gistId = params.get("gist");
+  // e.g. ?example=relay, see src/examples
+  const example = findExample(params.get("example")) ?? DEFAULT_EXAMPLE;
 
   const { data } = useSuspenseQuery<{
     gist?: {
@@ -58,14 +49,24 @@ export const useSnippet = () => {
     }
   }
 
-  const snippet = {
-    code: data.gist?.code || STARTER_CODE,
-    variables: data.gist?.variables
-      ? JSON.stringify(data.gist.variables, null, 2)
-      : "{}",
-    strawberryVersion,
-    query: data.gist?.query || "{ hello }",
-  };
+  const snippet = data.gist
+    ? {
+        code: data.gist.code,
+        variables: data.gist.variables
+          ? JSON.stringify(data.gist.variables, null, 2)
+          : "{}",
+        strawberryVersion,
+        query: data.gist.query,
+        // Gists don't store headers
+        headers: "{}",
+      }
+    : {
+        code: example.code,
+        variables: example.variables,
+        strawberryVersion,
+        query: example.query,
+        headers: example.headers,
+      };
 
   return { snippet };
 };

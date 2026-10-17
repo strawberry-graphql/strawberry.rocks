@@ -171,7 +171,7 @@ export const ResultPanel = (props: ResultProps) => (
       >
         <ResultConsole {...props} />
       </Tab>
-      <Tab title="Headers">
+      <Tab title="Response headers">
         <ResultHeaders {...props} />
       </Tab>
       <Tab title="Schema">

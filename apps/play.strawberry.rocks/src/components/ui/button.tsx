@@ -10,7 +10,7 @@ const buttonVariants = cva(
       variant: {
         // Like the buttons on strawberry.rocks
         primary:
-          "bg-linear-to-r from-magenta to-orange text-white uppercase tracking-wide hover:from-orange hover:to-magenta",
+          "bg-linear-to-r from-magenta to-orange text-white hover:from-orange hover:to-magenta",
         secondary: "bg-muted text-foreground hover:bg-muted/70",
         ghost: "text-muted-foreground hover:bg-muted hover:text-foreground",
       },

@@ -4,9 +4,10 @@ export const PANELS = {
   code: "schema.py",
   query: "Query",
   variables: "Variables",
+  requestHeaders: "Headers",
   response: "Response",
   console: "Console",
-  headers: "Headers",
+  headers: "Response headers",
   schema: "Schema",
 } as const;
 
@@ -30,7 +31,7 @@ const addPanel = (
     inactive: position?.direction === "within",
   });
 
-/** schema.py | Query over Variables | the results as tabs */
+/** schema.py | Query over Variables and Headers | the results as tabs */
 export const applyDefaultLayout = (api: DockviewApi) => {
   api.clear();
 
@@ -43,6 +44,10 @@ export const applyDefaultLayout = (api: DockviewApi) => {
   const variables = addPanel(api, "variables", {
     referencePanel: "query",
     direction: "below",
+  });
+  addPanel(api, "requestHeaders", {
+    referencePanel: "variables",
+    direction: "within",
   });
   addPanel(api, "console", { referencePanel: "response", direction: "within" });
   addPanel(api, "headers", { referencePanel: "response", direction: "within" });

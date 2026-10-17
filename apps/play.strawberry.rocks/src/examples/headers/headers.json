@@ -1,0 +1,4 @@
+{
+  "Authorization": "Bearer secret-token",
+  "User-Agent": "Strawberry Playground"
+}

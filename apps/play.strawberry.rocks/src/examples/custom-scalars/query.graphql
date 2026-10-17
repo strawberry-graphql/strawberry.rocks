@@ -1,0 +1,8 @@
+query Event($color: Color!) {
+  event(color: $color) {
+    name
+    startsAt
+    price
+    color
+  }
+}

@@ -1,0 +1,16 @@
+query Fruits($first: Int!, $after: String) {
+  fruits(first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      cursor
+      node {
+        id
+        name
+        color
+      }
+    }
+  }
+}
