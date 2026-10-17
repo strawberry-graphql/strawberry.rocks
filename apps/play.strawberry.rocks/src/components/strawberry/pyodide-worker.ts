@@ -59,14 +59,17 @@ export class PyodideWorker extends Worker {
     this.callbacks.clear();
   }
 
-  run<Result>(python: string): Promise<RunResult<Result>> {
+  run<Result>(
+    python: string,
+    globals: Record<string, unknown> = {}
+  ): Promise<RunResult<Result>> {
     this.currentId = (this.currentId + 1) % Number.MAX_SAFE_INTEGER;
 
     const id = this.currentId;
 
     return new Promise((resolve) => {
       this.callbacks.set(id, resolve as (result: RunResult<unknown>) => void);
-      this.postMessage({ type: "run", python, id });
+      this.postMessage({ type: "run", python, globals, id });
     });
   }
 }

@@ -74,7 +74,7 @@ self.onmessage = async (event) => {
   }
 
   if (event.data.type === "run") {
-    const { id, python, ...context } = event.data;
+    const { id, python, globals = {} } = event.data;
 
     try {
       await self.loading;
@@ -86,18 +86,20 @@ self.onmessage = async (event) => {
       return;
     }
 
-    for (const key of Object.keys(context)) {
-      self[key] = context[key];
-    }
+    const pythonGlobals = self.pyodide.toPy(globals);
 
     try {
       await self.pyodide.loadPackagesFromImports(python);
 
-      const result = await self.pyodide.runPythonAsync(python);
+      const result = await self.pyodide.runPythonAsync(python, {
+        globals: pythonGlobals,
+      });
 
       self.postMessage({ result, id });
     } catch (error) {
       self.postMessage({ error: error.message, id });
+    } finally {
+      pythonGlobals.destroy();
     }
   }
 };
