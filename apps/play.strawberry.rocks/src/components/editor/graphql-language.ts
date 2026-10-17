@@ -51,7 +51,10 @@ export function registerGraphQLLanguage(monaco: Monaco) {
     new Position(position.lineNumber - 1, position.column - 1);
 
   monaco.languages.registerCompletionItemProvider("graphql", {
-    triggerCharacters: [" ", "(", ":", "$", "@", "{", "\n"],
+    // Not `{`, space or newline: Enter would then accept a suggestion
+    // (usually `__typename`) instead of starting a new line. Typing a
+    // letter or Ctrl+Space still shows the field suggestions
+    triggerCharacters: ["(", "$", "@"],
     provideCompletionItems(model, position) {
       if (!currentSchema) {
         return { suggestions: [] };
@@ -79,6 +82,8 @@ export function registerGraphQLLanguage(monaco: Monaco) {
 
           return {
             label: item.label,
+            // Introspection fields like `__typename` after the schema's own
+            sortText: `${item.label.startsWith("__") ? 1 : 0}${item.label}`,
             kind: monaco.languages.CompletionItemKind[kind ?? "Field"],
             detail: item.detail ?? undefined,
             documentation: item.documentation
