@@ -1,0 +1,22 @@
+query Animals($diet: Diet) {
+  animals(diet: $diet) {
+    __typename
+    name
+    diet
+    ... on Dog {
+      goodBoy
+    }
+    ... on Cat {
+      lives
+    }
+  }
+  search {
+    __typename
+    ... on Animal {
+      name
+    }
+    ... on Plant {
+      species
+    }
+  }
+}

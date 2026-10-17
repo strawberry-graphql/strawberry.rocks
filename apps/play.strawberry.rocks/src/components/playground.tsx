@@ -30,11 +30,17 @@ export const Playground = ({
   state,
   onChange,
   dockApiRef,
+  revision,
 }: {
   state: EditorState;
   onChange: React.Dispatch<React.SetStateAction<EditorState>>;
   /** Set once the desktop layout is ready, e.g. to reset it */
   dockApiRef: React.RefObject<DockviewApi | null>;
+  /**
+   * Changed when the code is replaced from outside, e.g. by an example. The
+   * editors are uncontrolled, so they're created again with the new code
+   */
+  revision: number;
 }) => {
   const { executeQuery, initializing } = usePyodide();
   const [{ result, error, duration }, setResult] = useState<{
@@ -136,6 +142,7 @@ export const Playground = ({
 
   const codeEditorElement = (
     <CodeEditor
+      key={revision}
       source={state.code}
       onChange={(code) => onChange((state) => ({ ...state, code }))}
       language="python"
@@ -145,6 +152,7 @@ export const Playground = ({
   );
   const queryEditorElement = (
     <CodeEditor
+      key={revision}
       source={state.query}
       onChange={(query) => onChange((state) => ({ ...state, query }))}
       language="graphql"
@@ -154,6 +162,7 @@ export const Playground = ({
   );
   const variablesEditorElement = (
     <CodeEditor
+      key={revision}
       source={state.variables}
       onChange={(variables) => onChange((state) => ({ ...state, variables }))}
       language="json"

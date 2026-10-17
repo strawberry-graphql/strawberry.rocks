@@ -1,0 +1,13 @@
+query Books($after: Int) {
+  books(publishedAfter: $after) {
+    title
+    subtitle
+    year
+    author {
+      name
+    }
+  }
+  dune: book(title: "Dune") {
+    year
+  }
+}

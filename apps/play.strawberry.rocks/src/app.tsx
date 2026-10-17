@@ -1,4 +1,5 @@
 import { applyDefaultLayout } from "./components/dock/layout";
+import { ExamplesMenu } from "./components/examples-menu";
 import { Logo } from "./components/logo";
 import { Playground } from "./components/playground";
 import { Share } from "./components/share";
@@ -8,6 +9,7 @@ import { ThemeToggle } from "./components/theme-toggle";
 import { Button } from "./components/ui/button";
 import { VersionSelector } from "./components/version-selector";
 import type { EditorState } from "./editor-state";
+import type { Example } from "./examples";
 import { useSnippet } from "./hooks/use-snippet";
 import type { DockviewApi } from "dockview-react";
 import { LayoutPanelLeft } from "lucide-react";
@@ -50,6 +52,35 @@ function PlaygroundApp({
     variables: snippet.variables,
   });
   const dockApiRef = useRef<DockviewApi | null>(null);
+  const [revision, setRevision] = useState(0);
+  // What the editors had when last loaded, to know if there are edits to lose
+  const [loadedState, setLoadedState] = useState(editorState);
+
+  const loadExample = (example: Example) => {
+    const hasEdits =
+      editorState.code !== loadedState.code ||
+      editorState.query !== loadedState.query ||
+      editorState.variables !== loadedState.variables;
+
+    if (
+      hasEdits &&
+      !window.confirm(`Replace your code with the “${example.title}” example?`)
+    ) {
+      return;
+    }
+
+    const state = {
+      code: example.code,
+      query: example.query,
+      variables: example.variables,
+    };
+
+    setEditorState(state);
+    setLoadedState(state);
+    setRevision((revision) => revision + 1);
+    // So the page can be reloaded or linked to
+    window.history.replaceState(null, "", `?example=${example.slug}`);
+  };
 
   return (
     <>
@@ -66,6 +97,8 @@ function PlaygroundApp({
         </a>
 
         <Separator />
+
+        <ExamplesMenu onSelect={loadExample} />
 
         <Suspense fallback={null}>
           <VersionSelector
@@ -108,6 +141,7 @@ function PlaygroundApp({
           state={editorState}
           onChange={setEditorState}
           dockApiRef={dockApiRef}
+          revision={revision}
         />
       </main>
     </>
