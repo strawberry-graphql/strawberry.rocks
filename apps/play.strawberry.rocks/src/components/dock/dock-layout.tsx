@@ -36,10 +36,10 @@ const PanelTab = ({ api }: IDockviewPanelHeaderProps) => {
   const { badges } = useDockContent();
 
   return (
-    <div className="relative flex h-full items-center px-3 font-medium">
+    <div className="relative flex h-full items-center px-3 font-bold">
       {api.title}
       {badges[api.id as PanelId]}
-      <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-strawberry opacity-0 in-[.dv-active-tab]:opacity-100" />
+      <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-linear-to-r from-magenta to-orange opacity-0 in-[.dv-active-tab]:opacity-100" />
     </div>
   );
 };

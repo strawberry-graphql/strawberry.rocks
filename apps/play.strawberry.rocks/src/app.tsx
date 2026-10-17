@@ -13,6 +13,11 @@ import type { DockviewApi } from "dockview-react";
 import { LayoutPanelLeft } from "lucide-react";
 import { Suspense, useRef, useState } from "react";
 
+/** Like the separators in the strawberry.rocks header */
+const Separator = () => (
+  <div className="mx-1 hidden h-6 w-px shrink-0 bg-border sm:block" />
+);
+
 function App() {
   const { snippet } = useSnippet();
   const [strawberryVersion, setStrawberryVersion] = useState(
@@ -48,19 +53,19 @@ function PlaygroundApp({
 
   return (
     <>
-      <header className="flex h-12 shrink-0 items-center gap-3 border-b bg-chrome px-3 sm:px-4">
+      <header className="flex h-14 shrink-0 items-center gap-3 border-b bg-background px-3 sm:px-5">
         <a
           href="https://strawberry.rocks"
-          className="flex shrink-0 items-center gap-2"
+          className="flex shrink-0 items-center gap-2.5"
+          title="Strawberry GraphQL"
         >
-          <Logo className="h-6 w-auto" />
-          <span className="font-semibold tracking-tight">Strawberry</span>
+          <Logo className="h-9 w-auto" />
+          <span className="hidden font-display text-xl font-bold tracking-tight sm:inline">
+            Playground
+          </span>
         </a>
-        <span className="-ml-1 hidden font-medium text-muted-foreground sm:inline">
-          Playground
-        </span>
 
-        <div className="mx-1 hidden h-5 w-px bg-border sm:block" />
+        <Separator />
 
         <Suspense fallback={null}>
           <VersionSelector
@@ -72,7 +77,7 @@ function PlaygroundApp({
 
         <StatusIndicator />
 
-        <div className="ml-auto flex items-center gap-1.5">
+        <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
           <Button
             variant="ghost"
             size="icon"
@@ -85,10 +90,15 @@ function PlaygroundApp({
           >
             <LayoutPanelLeft className="size-4" />
           </Button>
-          <Button variant="ghost" asChild className="hidden md:inline-flex">
+          <Button
+            variant="ghost"
+            asChild
+            className="hidden text-foreground md:inline-flex"
+          >
             <a href="https://strawberry.rocks/docs">Docs</a>
           </Button>
           <Share state={editorState} version={strawberryVersion} />
+          <Separator />
           <ThemeToggle />
         </div>
       </header>
