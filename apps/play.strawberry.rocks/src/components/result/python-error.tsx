@@ -25,7 +25,7 @@ export const PythonErrorView = ({
 }) => (
   <div className="space-y-2">
     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-      <span className="font-mono text-sm font-semibold text-red-600 dark:text-red-400">
+      <span className="font-mono text-sm font-semibold text-destructive">
         {error.type}
       </span>
       {error.line ? (

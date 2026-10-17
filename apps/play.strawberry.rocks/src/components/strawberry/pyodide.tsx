@@ -28,6 +28,9 @@ export const PyodideProvider = ({
 }) => {
   const workerRef = useRef<PyodideWorker | null>(null);
   const [readyKey, setReadyKey] = useState<string | null>(null);
+  const [status, setStatus] = useState<{ key: string; text: string } | null>(
+    null
+  );
   const [pendingRuns, setPendingRuns] = useState(0);
   const localRevision = useLocalStrawberryRevision();
 
@@ -41,6 +44,7 @@ export const PyodideProvider = ({
     const worker = new PyodideWorker(strawberryVersion);
 
     worker.onload = () => setReadyKey(workerKey);
+    worker.onstatus = (text) => setStatus({ key: workerKey, text });
     workerRef.current = worker;
 
     return () => worker.terminate();
@@ -69,6 +73,8 @@ export const PyodideProvider = ({
     <PyodideContext.Provider
       value={{
         initializing: readyKey !== workerKey,
+        loadingStatus:
+          status?.key === workerKey ? status.text : "Loading Python",
         loading: pendingRuns > 0,
         run,
       }}

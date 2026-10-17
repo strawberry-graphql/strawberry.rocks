@@ -6,6 +6,7 @@ export type RunResult<Result> =
 
 type WorkerResponse =
   | { ready: true }
+  | { status: string }
   | { id: number; result: unknown; error?: undefined }
   | { id: number; error: string; result?: undefined };
 
@@ -18,6 +19,7 @@ export class PyodideWorker extends Worker {
   private callbacks = new Map<number, (result: RunResult<unknown>) => void>();
 
   onload: () => void = () => {};
+  onstatus: (status: string) => void = () => {};
 
   constructor(strawberryVersion: string) {
     super(`/js/pyodide.worker.js?pyodide=${PYODIDE_VERSION}`, {
@@ -29,6 +31,11 @@ export class PyodideWorker extends Worker {
 
       if ("ready" in data) {
         this.onload();
+        return;
+      }
+
+      if ("status" in data) {
+        this.onstatus(data.status);
         return;
       }
 

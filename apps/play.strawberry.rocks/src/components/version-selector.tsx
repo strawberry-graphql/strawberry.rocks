@@ -27,15 +27,21 @@ export const VersionSelector = ({
   ];
 
   return (
-    <div>
+    <div className="flex items-center gap-2">
+      <span className="hidden text-xs text-muted-foreground lg:inline">
+        strawberry-graphql
+      </span>
       <Select
         defaultValue={defaultVersion}
         onValueChange={(value) => onVersionSelected?.(value)}
       >
-        <SelectTrigger className="w-[80px]">
+        <SelectTrigger
+          aria-label="Strawberry version"
+          className="h-8 w-auto gap-2 bg-background font-medium"
+        >
           <SelectValue placeholder="Version" />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="max-h-80">
           {versions.map((version) => (
             <SelectItem key={version} value={version}>
               {version}

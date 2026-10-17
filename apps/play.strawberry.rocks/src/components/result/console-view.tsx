@@ -33,7 +33,7 @@ export const ConsoleView = ({
             <p className="font-mono text-xs">
               <span
                 className={clsx("mr-2 font-semibold", {
-                  "text-red-600 dark:text-red-400":
+                  "text-destructive":
                     log.level === "ERROR" || log.level === "CRITICAL",
                   "text-amber-600 dark:text-amber-400": log.level === "WARNING",
                   "text-muted-foreground":

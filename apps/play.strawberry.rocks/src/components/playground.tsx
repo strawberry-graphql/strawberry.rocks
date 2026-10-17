@@ -1,5 +1,6 @@
 import type { EditorState } from "../editor-state";
 import { useGraphQLSchema } from "../hooks/use-graphql-schema";
+import { useMediaQuery } from "../hooks/use-media-query";
 import {
   CodeEditor,
   type EditorInstance,
@@ -22,10 +23,12 @@ export const Playground = ({
   onChange: React.Dispatch<React.SetStateAction<EditorState>>;
 }) => {
   const { executeQuery, initializing } = usePyodide();
-  const [{ result, error }, setResult] = useState<{
+  const [{ result, error, duration }, setResult] = useState<{
     result: ExecutionResult | null;
     error: string | null;
-  }>({ result: null, error: null });
+    /** How long the last run took, in milliseconds */
+    duration: number | null;
+  }>({ result: null, error: null, duration: null });
   const latestRun = useRef(0);
   // Kept from the last successful run, so the schema explorer and query
   // autocompletion keep working while the code is being edited
@@ -34,6 +37,7 @@ export const Playground = ({
 
   const runQuery = useDebouncedCallback(async (state: EditorState) => {
     const run = ++latestRun.current;
+    const start = performance.now();
 
     const result = await executeQuery({
       schemaCode: state.code,
@@ -43,7 +47,7 @@ export const Playground = ({
 
     // Ignore results of runs that were superseded while executing
     if (run === latestRun.current) {
-      setResult(result);
+      setResult({ ...result, duration: performance.now() - start });
 
       if (result.result?.schema) {
         setSdl(result.result.schema);
@@ -89,70 +93,86 @@ export const Playground = ({
     [result]
   );
 
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  const codeEditorElement = (
+    <CodeEditor
+      source={state.code}
+      onChange={(code) => onChange((state) => ({ ...state, code }))}
+      language="python"
+      markers={codeMarkers}
+      onMount={(editor) => (codeEditor.current = editor)}
+    />
+  );
+  const queryEditorElement = (
+    <CodeEditor
+      source={state.query}
+      onChange={(query) => onChange((state) => ({ ...state, query }))}
+      language="graphql"
+      markers={queryMarkers}
+      onMount={(editor) => (queryEditor.current = editor)}
+    />
+  );
+  const variablesEditorElement = (
+    <CodeEditor
+      source={state.variables}
+      onChange={(variables) => onChange((state) => ({ ...state, variables }))}
+      language="json"
+    />
+  );
+  const resultPanelElement = (
+    <ResultPanel
+      result={result}
+      error={error}
+      duration={duration}
+      schema={schema}
+      sdl={sdl}
+      onJumpToCode={(line) => jumpTo(codeEditor.current, line)}
+      onJumpToQuery={(line, column) =>
+        jumpTo(queryEditor.current, line, column)
+      }
+    />
+  );
+
+  // On small screens, show one pane at a time
+  if (!isDesktop) {
+    return (
+      <Tabs className="h-full">
+        <Tab title="schema.py">{codeEditorElement}</Tab>
+        <Tab title="Query">{queryEditorElement}</Tab>
+        <Tab title="Variables">{variablesEditorElement}</Tab>
+        <Tab title="Result">{resultPanelElement}</Tab>
+      </Tabs>
+    );
+  }
+
   return (
     <Group orientation="horizontal" className="h-full">
-      <Panel minSize="20%">
+      <Panel defaultSize="38%" minSize="20%">
         <Tabs className="h-full">
-          <Tab title="Code">
-            <CodeEditor
-              source={state.code}
-              onChange={(code) => {
-                onChange((state) => ({ ...state, code }));
-              }}
-              language="python"
-              markers={codeMarkers}
-              onMount={(editor) => (codeEditor.current = editor)}
-            />
-          </Tab>
+          <Tab title="schema.py">{codeEditorElement}</Tab>
         </Tabs>
       </Panel>
       <ResizeHandler />
 
-      <Panel minSize="20%">
+      <Panel defaultSize="28%" minSize="20%">
         <Group orientation="vertical" className="h-full">
-          <Panel minSize="20%">
+          <Panel defaultSize="65%" minSize="20%">
             <Tabs className="h-full">
-              <Tab title="Query">
-                <CodeEditor
-                  source={state.query}
-                  onChange={(query) => {
-                    onChange((state) => ({ ...state, query }));
-                  }}
-                  language="graphql"
-                  markers={queryMarkers}
-                  onMount={(editor) => (queryEditor.current = editor)}
-                />
-              </Tab>
+              <Tab title="Query">{queryEditorElement}</Tab>
             </Tabs>
           </Panel>
           <ResizeHandler direction="vertical" />
           <Panel minSize="20%">
             <Tabs className="h-full">
-              <Tab title="Variables">
-                <CodeEditor
-                  source={state.variables}
-                  onChange={(variables) => {
-                    onChange((state) => ({ ...state, variables }));
-                  }}
-                  language="json"
-                />
-              </Tab>
+              <Tab title="Variables">{variablesEditorElement}</Tab>
             </Tabs>
           </Panel>
         </Group>
       </Panel>
       <ResizeHandler />
-      <Panel minSize="20%">
-        <ResultPanel
-          result={result}
-          error={error}
-          schema={schema}
-          sdl={sdl}
-          onJumpToCode={(line) => jumpTo(codeEditor.current, line)}
-          onJumpToQuery={(line, column) =>
-            jumpTo(queryEditor.current, line, column)
-          }
-        />
+      <Panel defaultSize="34%" minSize="20%">
+        {resultPanelElement}
       </Panel>
     </Group>
   );

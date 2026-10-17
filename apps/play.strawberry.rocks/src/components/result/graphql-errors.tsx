@@ -39,7 +39,7 @@ export const GraphQLErrors = ({
 
       return (
         <li key={index} className="space-y-2 px-4 py-3">
-          <p className="text-sm font-medium text-red-600 dark:text-red-400">
+          <p className="text-sm font-medium text-destructive">
             {error.message}
           </p>
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">

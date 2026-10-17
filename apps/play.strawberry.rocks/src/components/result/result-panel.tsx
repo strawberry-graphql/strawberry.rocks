@@ -1,13 +1,17 @@
 import { CodeEditor } from "../editor/editor";
 import { SchemaView } from "../schema/schema-view";
 import { StatusBadge } from "../status-badge";
-import type { ExecutionResult } from "../strawberry/pyodide-context";
+import {
+  usePyodide,
+  type ExecutionResult,
+} from "../strawberry/pyodide-context";
 import { Tab, Tabs } from "../tabs";
 import { ConsoleView } from "./console-view";
 import { GraphQLErrors } from "./graphql-errors";
 import { consoleLogs } from "./logs";
 import { PythonErrorView } from "./python-error";
 import type { GraphQLSchema } from "graphql";
+import { LoaderCircle } from "lucide-react";
 
 const Count = ({ count }: { count: number }) =>
   count > 0 ? (
@@ -19,6 +23,7 @@ const Count = ({ count }: { count: number }) =>
 export const ResultPanel = ({
   result,
   error,
+  duration,
   schema,
   sdl,
   onJumpToCode,
@@ -27,11 +32,13 @@ export const ResultPanel = ({
   result: ExecutionResult | null;
   /** Set when the playground itself failed, e.g. Pyodide didn't load */
   error: string | null;
+  duration: number | null;
   schema: GraphQLSchema | null;
   sdl: string | null;
   onJumpToCode: (line: number) => void;
   onJumpToQuery: (line: number, column: number) => void;
 }) => {
+  const { initializing, loadingStatus } = usePyodide();
   const response = result?.response;
   const errors = response?.errors ?? [];
   const logs = result?.logs ?? [];
@@ -42,8 +49,24 @@ export const ResultPanel = ({
     <div className="flex h-full flex-col">
       <Tabs className="flex-1">
         <Tab title="Response">
-          {error ? (
-            <pre className="h-full overflow-auto p-4 font-mono text-xs text-red-600 dark:text-red-400">
+          {!result && !error ? (
+            <div className="flex h-full flex-col items-center justify-center gap-3 p-6 text-center">
+              <LoaderCircle className="size-5 animate-spin text-strawberry" />
+              <div>
+                <p className="text-sm font-medium">
+                  {initializing
+                    ? "Setting up Python in your browser"
+                    : "Running your query"}
+                </p>
+                <p className="mt-1 max-w-64 text-xs text-muted-foreground">
+                  {initializing
+                    ? `${loadingStatus}… The first load downloads Pyodide and takes a few seconds.`
+                    : "Results show up here."}
+                </p>
+              </div>
+            </div>
+          ) : error ? (
+            <pre className="h-full overflow-auto p-4 font-mono text-xs text-destructive">
               {error}
             </pre>
           ) : result?.error ? (
@@ -103,15 +126,22 @@ export const ResultPanel = ({
         </Tab>
       </Tabs>
 
-      <div className="flex items-center gap-3 border-t p-2 text-xs dark:bg-dark">
+      <div className="flex h-9 shrink-0 items-center gap-3 border-t bg-chrome px-4 text-xs text-muted-foreground">
         {result?.status_code ? (
           <StatusBadge status={result.status_code} />
         ) : result?.error || error ? (
           <StatusBadge status={null} />
         ) : null}
         {errors.length > 0 ? (
-          <span className="text-red-600 dark:text-red-400">
+          <span className="font-medium text-destructive">
             {errors.length === 1 ? "1 error" : `${errors.length} errors`}
+          </span>
+        ) : null}
+        {duration !== null && (result || error) ? (
+          <span className="ml-auto tabular-nums">
+            {duration < 1000
+              ? `${Math.round(duration)} ms`
+              : `${(duration / 1000).toFixed(1)} s`}
           </span>
         ) : null}
       </div>

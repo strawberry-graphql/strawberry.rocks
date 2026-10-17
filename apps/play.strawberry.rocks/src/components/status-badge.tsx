@@ -2,14 +2,17 @@ import { clsx } from "clsx";
 
 /** `null` means the code failed before a response was produced */
 export const StatusBadge = ({ status }: { status: number | null }) => {
+  const ok = status !== null && status < 400;
+
   return (
-    <span
-      className={clsx(`px-2 py-1 text-xs font-semibold rounded-sm`, {
-        "bg-green-100 text-green-800": status === 200,
-        "bg-red-100 text-red-800": status !== 200,
-      })}
-    >
-      {status === null ? "Error" : `Status: ${status}`}
+    <span className="inline-flex items-center gap-1.5 font-medium text-foreground">
+      <span
+        className={clsx(
+          "size-2 rounded-full",
+          ok ? "bg-emerald-500" : "bg-destructive"
+        )}
+      />
+      {status === null ? "Error" : status}
     </span>
   );
 };
