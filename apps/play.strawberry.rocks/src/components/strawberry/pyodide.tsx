@@ -46,21 +46,24 @@ export const PyodideProvider = ({
     return () => worker.terminate();
   }, [strawberryVersion, workerKey]);
 
-  const run = useCallback(async <Result,>(python: string) => {
-    const worker = workerRef.current;
+  const run = useCallback(
+    async <Result,>(python: string, globals?: Record<string, unknown>) => {
+      const worker = workerRef.current;
 
-    if (!worker) {
-      return { result: null, error: "Pyodide not initialized" } as const;
-    }
+      if (!worker) {
+        return { result: null, error: "Pyodide not initialized" } as const;
+      }
 
-    setPendingRuns((count) => count + 1);
+      setPendingRuns((count) => count + 1);
 
-    try {
-      return await worker.run<Result>(python);
-    } finally {
-      setPendingRuns((count) => count - 1);
-    }
-  }, []);
+      try {
+        return await worker.run<Result>(python, globals);
+      } finally {
+        setPendingRuns((count) => count - 1);
+      }
+    },
+    []
+  );
 
   return (
     <PyodideContext.Provider

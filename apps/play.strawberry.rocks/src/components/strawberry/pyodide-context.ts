@@ -2,17 +2,57 @@ import execute from "./execute.py?raw";
 import type { RunResult } from "./pyodide-worker";
 import { createContext, useCallback, useContext } from "react";
 
+// Python's None arrives as undefined, so nullable fields are also optional
+
+/** An exception raised by the user's code, see `format_exception` in execute.py */
+export type PythonError = {
+  type: string;
+  message: string;
+  traceback?: string | null;
+  line?: number | null;
+};
+
+export type LogEntry = {
+  level: string;
+  logger: string;
+  message: string;
+  error?: PythonError | null;
+  /** Set for errors logged by Strawberry while executing the query */
+  graphql_message?: string | null;
+  path?: (string | number)[] | null;
+};
+
+export type GraphQLError = {
+  message: string;
+  locations?: { line: number; column: number }[];
+  path?: (string | number)[];
+  extensions?: Record<string, unknown>;
+};
+
+export type GraphQLResponse = {
+  data?: unknown;
+  errors?: GraphQLError[];
+  extensions?: Record<string, unknown>;
+};
+
 export type ExecutionResult = {
-  data: unknown;
-  status_code: number;
+  /** Not set when the schema code (or the variables) failed */
+  response?: GraphQLResponse | null;
+  status_code?: number | null;
   headers: Record<string, string>;
-  schema: string;
+  schema?: string | null;
+  error?: PythonError | null;
+  stdout: string;
+  logs: LogEntry[];
 };
 
 type PyodideContextValue = {
   initializing: boolean;
   loading: boolean;
-  run: <Result>(python: string) => Promise<RunResult<Result>>;
+  run: <Result>(
+    python: string,
+    globals?: Record<string, unknown>
+  ) => Promise<RunResult<Result>>;
 };
 
 export const PyodideContext = createContext<PyodideContextValue | null>(null);
@@ -35,19 +75,12 @@ export const usePyodide = () => {
       schemaCode: string;
       query: string;
       variables: string;
-    }) => {
-      const queryCode = `query = """${query}"""`;
-      const variablesCode = variables.trim()
-        ? `variables = ${variables.trim()}`
-        : `variables = {}`;
-
-      const code = execute
-        .replace("# {{ schema }}", schemaCode)
-        .replace("# {{ query }}", queryCode)
-        .replace("# {{ variables }}", variablesCode);
-
-      return run<ExecutionResult>(code);
-    },
+    }) =>
+      run<ExecutionResult>(execute, {
+        schema_code: schemaCode,
+        query,
+        variables,
+      }),
     [run]
   );
 
