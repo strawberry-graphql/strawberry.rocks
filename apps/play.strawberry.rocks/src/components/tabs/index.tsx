@@ -36,7 +36,10 @@ export const Tabs = ({
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
       <div
-        className={clsx(className, "grid grid-rows-[50px_1fr] dark:bg-dark")}
+        className={clsx(
+          className,
+          "grid min-h-0 grid-rows-[50px_1fr] dark:bg-dark"
+        )}
       >
         <TabsHeader>
           {tabsTitles.map((title, index) => (
@@ -45,7 +48,9 @@ export const Tabs = ({
             </TabTitle>
           ))}
         </TabsHeader>
-        <div className="min-h-0 min-w-0">{activeTabContent}</div>
+        <div className="min-h-0 min-w-0 overflow-hidden">
+          {activeTabContent}
+        </div>
       </div>
     </TabsContext.Provider>
   );

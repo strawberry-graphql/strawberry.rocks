@@ -1,4 +1,6 @@
-export const TOMORROW_NIGHT = {
+import type { ThemeData } from "./setup-monaco";
+
+export const TOMORROW_NIGHT: ThemeData = {
   base: "vs-dark",
   inherit: true,
   rules: [
@@ -243,7 +245,7 @@ export const TOMORROW_NIGHT = {
   },
 };
 
-export const TOMORROW = {
+export const TOMORROW: ThemeData = {
   base: "vs",
   inherit: true,
   rules: [
