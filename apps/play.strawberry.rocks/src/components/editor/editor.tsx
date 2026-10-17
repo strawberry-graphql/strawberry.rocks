@@ -13,6 +13,25 @@ export type EditorMarker = {
   message: string;
 };
 
+let overflowWidgetsNode: HTMLElement | null = null;
+
+/**
+ * Suggestions, hovers and other popups are rendered here, outside the editor,
+ * so the panels don't clip them. It has to be outside the dock as well: its
+ * panes use transforms, which would offset the popups' fixed positions
+ */
+function getOverflowWidgetsNode() {
+  if (!overflowWidgetsNode) {
+    overflowWidgetsNode = document.createElement("div");
+    // Monaco's theme variables and styles apply inside .monaco-editor
+    overflowWidgetsNode.className = "monaco-editor";
+    overflowWidgetsNode.style.zIndex = "50";
+    document.body.appendChild(overflowWidgetsNode);
+  }
+
+  return overflowWidgetsNode;
+}
+
 export const CodeEditor = ({
   source,
   onChange,
@@ -87,6 +106,7 @@ export const CodeEditor = ({
       options={{
         automaticLayout: true,
         fixedOverflowWidgets: true,
+        overflowWidgetsDomNode: getOverflowWidgetsNode(),
         readOnly,
         minimap: { enabled: false },
         fontFamily: "'JetBrains Mono', ui-monospace, Menlo, monospace",
