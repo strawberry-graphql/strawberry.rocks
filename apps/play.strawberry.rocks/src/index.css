@@ -111,6 +111,12 @@
     @apply bg-background font-sans text-foreground antialiased;
   }
 
+  /* Show code exactly as written, e.g. `->` instead of an arrow ligature */
+  code,
+  pre {
+    font-variant-ligatures: none;
+  }
+
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;

@@ -4,12 +4,27 @@ import { createContext, useCallback, useContext } from "react";
 
 // Python's None arrives as undefined, so nullable fields are also optional
 
+/**
+ * Details of Strawberry's own exceptions (e.g. a missing annotation), see
+ * `strawberry_exception_details` in execute.py
+ */
+export type StrawberryExceptionDetails = {
+  title: string;
+  annotation?: string | null;
+  suggestion?: string | null;
+  documentation_url?: string | null;
+  location?: { line: number; column: number; end_column: number } | null;
+  /** The lines around the location */
+  snippet: { line: number; text: string }[];
+};
+
 /** An exception raised by the user's code, see `format_exception` in execute.py */
 export type PythonError = {
   type: string;
   message: string;
   traceback?: string | null;
   line?: number | null;
+  strawberry?: StrawberryExceptionDetails | null;
 };
 
 export type LogEntry = {
