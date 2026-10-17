@@ -63,6 +63,7 @@ export const Playground = ({
       schemaCode: state.code,
       query: state.query,
       variables: state.variables,
+      headers: state.headers,
     });
 
     // Ignore results of runs that were superseded while executing
@@ -168,6 +169,14 @@ export const Playground = ({
       language="json"
     />
   );
+  const headersEditorElement = (
+    <CodeEditor
+      key={revision}
+      source={state.headers}
+      onChange={(headers) => onChange((state) => ({ ...state, headers }))}
+      language="json"
+    />
+  );
   const resultProps: ResultProps = {
     result,
     error,
@@ -186,6 +195,7 @@ export const Playground = ({
         <Tab title="schema.py">{codeEditorElement}</Tab>
         <Tab title="Query">{queryEditorElement}</Tab>
         <Tab title="Variables">{variablesEditorElement}</Tab>
+        <Tab title="Headers">{headersEditorElement}</Tab>
         <Tab title="Result">
           <ResultPanel {...resultProps} />
         </Tab>
@@ -199,6 +209,7 @@ export const Playground = ({
         code: codeEditorElement,
         query: queryEditorElement,
         variables: variablesEditorElement,
+        requestHeaders: headersEditorElement,
         response: <ResponseView {...resultProps} />,
         console: <ResultConsole {...resultProps} />,
         headers: <ResultHeaders {...resultProps} />,

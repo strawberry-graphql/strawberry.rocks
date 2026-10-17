@@ -39,7 +39,7 @@ export const Tabs = ({
       >
         <div
           role="tablist"
-          className="flex h-9 items-center gap-4 border-b bg-chrome px-4"
+          className="flex h-9 items-center gap-4 overflow-x-auto border-b bg-chrome px-4 [scrollbar-width:none]"
         >
           {tabsTitles.map((title, index) => (
             <TabTitle key={index} index={index}>
@@ -75,7 +75,7 @@ const TabTitle = ({
       role="tab"
       aria-selected={active}
       className={clsx(
-        "relative flex h-full items-center text-[13px] font-bold transition-colors focus-visible:outline-hidden focus-visible:text-foreground",
+        "relative flex h-full shrink-0 items-center text-[13px] font-bold transition-colors focus-visible:outline-hidden focus-visible:text-foreground",
         active
           ? "text-foreground"
           : "text-muted-foreground hover:text-foreground"

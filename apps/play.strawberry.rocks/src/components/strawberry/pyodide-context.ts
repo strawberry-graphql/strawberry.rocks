@@ -101,10 +101,12 @@ export const usePyodide = () => {
       schemaCode,
       query,
       variables,
+      headers,
     }: {
       schemaCode: string;
       query: string;
       variables: string;
+      headers: string;
     }) => {
       const { result, error } = await run<
         Omit<ExecutionResult, "response"> & { response: string | null }
@@ -112,6 +114,7 @@ export const usePyodide = () => {
         schema_code: schemaCode,
         query,
         variables,
+        headers,
       });
 
       if (!result) {

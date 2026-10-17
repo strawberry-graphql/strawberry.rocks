@@ -49,6 +49,7 @@ function PlaygroundApp({
     code: snippet.code,
     query: snippet.query,
     variables: snippet.variables,
+    headers: snippet.headers,
   });
   const dockApiRef = useRef<DockviewApi | null>(null);
   const [revision, setRevision] = useState(0);
@@ -59,7 +60,8 @@ function PlaygroundApp({
     const hasEdits =
       editorState.code !== loadedState.code ||
       editorState.query !== loadedState.query ||
-      editorState.variables !== loadedState.variables;
+      editorState.variables !== loadedState.variables ||
+      editorState.headers !== loadedState.headers;
 
     if (
       hasEdits &&
@@ -72,6 +74,7 @@ function PlaygroundApp({
       code: example.code,
       query: example.query,
       variables: example.variables,
+      headers: example.headers,
     };
 
     setEditorState(state);

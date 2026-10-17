@@ -1,14 +1,15 @@
 import type { EditorState } from "@/editor-state";
 
-// Each example is a folder with schema.py, query.graphql and variables.json
+// Each example is a folder with schema.py, query.graphql and variables.json,
+// and optionally headers.json
 const files = import.meta.glob<string>("./*/*", {
   query: "?raw",
   import: "default",
   eager: true,
 });
 
-const file = (slug: string, name: string) => {
-  const content = files[`./${slug}/${name}`];
+const file = (slug: string, name: string, fallback?: string) => {
+  const content = files[`./${slug}/${name}`] ?? fallback;
 
   if (content === undefined) {
     throw new Error(`Example ${slug} has no ${name}`);
@@ -30,6 +31,7 @@ const example = (slug: string, title: string, description: string) => ({
   code: file(slug, "schema.py"),
   query: file(slug, "query.graphql"),
   variables: file(slug, "variables.json"),
+  headers: file(slug, "headers.json", "{}"),
 });
 
 export const EXAMPLES: Example[] = [
@@ -54,6 +56,11 @@ export const EXAMPLES: Example[] = [
     "permissions-and-errors",
     "Permissions and errors",
     "Permission classes and errors in resolvers"
+  ),
+  example(
+    "headers",
+    "Request and response headers",
+    "Authentication with an Authorization header"
   ),
   example("relay", "Relay", "Nodes, global ids and paginated connections"),
   example("custom-scalars", "Scalars", "Dates, decimals and a custom scalar"),

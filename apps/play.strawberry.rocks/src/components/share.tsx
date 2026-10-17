@@ -86,6 +86,9 @@ export function Share({
           <h3 className="text-lg font-semibold">Share playground link</h3>
           <p className="text-sm text-muted-foreground">
             Anyone with this link will be able to view this.
+            {state.headers.trim() && state.headers.trim() !== "{}"
+              ? " Headers aren't included, so tokens stay private."
+              : null}
           </p>
         </div>
         <div className="flex items-center space-x-2 pt-4">

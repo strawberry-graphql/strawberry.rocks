@@ -57,12 +57,15 @@ export const useSnippet = () => {
           : "{}",
         strawberryVersion,
         query: data.gist.query,
+        // Gists don't store headers
+        headers: "{}",
       }
     : {
         code: example.code,
         variables: example.variables,
         strawberryVersion,
         query: example.query,
+        headers: example.headers,
       };
 
   return { snippet };

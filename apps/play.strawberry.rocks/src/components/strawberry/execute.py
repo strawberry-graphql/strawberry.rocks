@@ -18,8 +18,8 @@ from httpx import ASGITransport, AsyncClient
 from pyodide.ffi import to_js
 from strawberry.fastapi import GraphQLRouter
 
-# `schema_code`, `query` and `variables` are passed in as globals by the
-# playground.
+# `schema_code`, `query`, `variables` and `headers` are passed in as globals
+# by the playground.
 
 SCHEMA_MODULE = "schema"
 SCHEMA_FILENAME = "schema.py"
@@ -181,7 +181,7 @@ async def load_schema():
     return namespace["schema"], namespace
 
 
-async def execute(variables):
+async def execute(variables, request_headers):
     schema, namespace = await load_schema()
     user_context_getter = namespace.get("context_getter")
 
@@ -200,7 +200,9 @@ async def execute(variables):
         transport=ASGITransport(app=app), base_url="http://testserver"
     ) as client:
         response = await client.post(
-            "/", json={"query": query, "variables": variables}
+            "/",
+            json={"query": query, "variables": variables},
+            headers=request_headers,
         )
 
     return {
@@ -211,6 +213,28 @@ async def execute(variables):
         "headers": dict(response.headers.items()),
         "schema": str(schema),
     }
+
+
+def invalid_input_error(type, message):
+    return {"type": type, "message": message, "traceback": None, "line": None}
+
+
+def parse_headers(text):
+    """The request headers, or None when they aren't a JSON object of strings"""
+    if not text.strip():
+        return {}
+
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError:
+        return None
+
+    if not isinstance(parsed, dict) or not all(
+        isinstance(value, str) for value in parsed.values()
+    ):
+        return None
+
+    return parsed
 
 
 async def main():
@@ -231,17 +255,22 @@ async def main():
         parsed_variables = json.loads(variables) if variables.strip() else {}
     except json.JSONDecodeError as exc:
         parsed_variables = None
-        result["error"] = {
-            "type": "InvalidVariables",
-            "message": f"Variables are not valid JSON: {exc}",
-            "traceback": None,
-            "line": None,
-        }
+        result["error"] = invalid_input_error(
+            "InvalidVariables", f"Variables are not valid JSON: {exc}"
+        )
+
+    parsed_headers = parse_headers(headers)
+
+    if parsed_headers is None:
+        result["error"] = invalid_input_error(
+            "InvalidHeaders",
+            'Headers must be a JSON object of strings, like {"Authorization": "Bearer token"}',
+        )
 
     try:
-        if parsed_variables is not None:
+        if parsed_variables is not None and parsed_headers is not None:
             with contextlib.redirect_stdout(stdout):
-                result.update(await execute(parsed_variables))
+                result.update(await execute(parsed_variables, parsed_headers))
     except Exception as exc:
         result["error"] = format_exception(exc)
         details = await strawberry_exception_details(exc)
