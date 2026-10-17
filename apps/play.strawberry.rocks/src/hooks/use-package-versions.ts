@@ -1,22 +1,18 @@
-import { useMemo } from "react";
-// @ts-ignore
+import { useSuspenseQuery } from "@tanstack/react-query";
+// @ts-expect-error semver-sort has no type declarations
 import semverSort from "semver-sort";
-import useSWR from "swr";
-
-// @ts-ignore
-const fetcher = (...args: any) => fetch(...args).then((res) => res.json());
 
 export const usePackageVersions = (packageName: string) => {
-  const { data } = useSWR(
-    `https://pypi.org/pypi/${packageName}/json`,
-    fetcher,
-    { suspense: true }
-  );
+  const { data: versions } = useSuspenseQuery({
+    queryKey: ["package-versions", packageName],
+    queryFn: async () => {
+      const response = await fetch(`https://pypi.org/pypi/${packageName}/json`);
+      const data: { releases: Record<string, unknown> } = await response.json();
 
-  const versions = useMemo(() => {
-    const v = Object.keys(data?.releases || {});
-    return semverSort.desc(v) as string[];
-  }, [data]);
+      return semverSort.desc(Object.keys(data.releases)) as string[];
+    },
+    staleTime: Infinity,
+  });
 
   return versions;
 };

@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       {initializing && (
-        <div className="absolute flex items-center justify-center bg-yellow-200 bg-opacity-90 z-50 px-10 py-6 bottom-10 right-10">
+        <div className="absolute flex items-center justify-center bg-yellow-200/90 z-50 px-10 py-6 bottom-10 right-10">
           Loading pyodide...
         </div>
       )}

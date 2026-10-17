@@ -10,8 +10,8 @@ const Button = React.forwardRef<
   return (
     <Comp
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
-        "bg-slate-200 text-black shadow-sm hover:bg-slate-950 hover:text-white dark:bg-strawberry dark:text-white dark:hover:bg-strawberry/70",
+        "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+        "bg-slate-200 text-black shadow-xs hover:bg-slate-950 hover:text-white dark:bg-strawberry dark:text-white dark:hover:bg-strawberry/70",
         "h-9 px-4 py-2",
         { className }
       )}

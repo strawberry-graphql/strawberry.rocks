@@ -1,4 +1,5 @@
 import { localStrawberry } from "./plugins/local-strawberry";
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig, loadEnv } from "vite";
@@ -9,6 +10,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       react(),
+      tailwindcss(),
       // Dev only: set STRAWBERRY_PATH=/path/to/strawberry (e.g. in
       // .env.local) to run a local Strawberry checkout in the playground
       localStrawberry(
