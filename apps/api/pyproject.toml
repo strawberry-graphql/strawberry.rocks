@@ -1,0 +1,24 @@
+[project]
+name = "strawberry-rocks-api"
+version = "0.1.0"
+description = "The API for strawberry.rocks and play.strawberry.rocks"
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.28.1",
+    "starlette>=0.48.0",
+    "strawberry-graphql>=0.336.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx2>=2.13.1",
+    "pytest>=8.4.0",
+    "uvicorn>=0.37.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.vercel]
+entrypoint = "main:app"
