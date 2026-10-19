@@ -90,7 +90,7 @@ query {
 }
 ```
 
-**Without optimization**: 1 + N queries (if 100 books = 101 queries!)
+**Without optimization**: 1 + N queries (if 100 books = 101 queries\!)
 
 ### Solution: Query Optimizer Extension
 
@@ -338,7 +338,7 @@ def featured_books(self) -> List[BookType]:
     return books
 ```
 
-> [!WARNING]
+> [\!WARNING]
 > Don't use `@lru_cache` on instance methods as it can lead to memory leaks. Use Django's cache framework or `cached_property` instead.
 > 
 
@@ -382,7 +382,7 @@ class Query:
     books: OffsetPaginated[BookType] = strawberry_django.field(pagination=True)
 ```
 
-> [!TIP]
+> [\!TIP]
 > For production, use the built-in pagination support instead of manual slicing. See the [Pagination guide](/docs/django/guide/pagination) for details.
 > 
 

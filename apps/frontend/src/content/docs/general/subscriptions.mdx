@@ -80,7 +80,7 @@ functionality to pass information from the client to the server at the point of
 websocket connection initialisation. In this way, information that is relevant
 to the websocket connection initialisation and to the lifetime of the connection
 overall can be passed to the server before any data is streamed back by the
-server. As such, it is not limited to only authentication credentials!
+server. As such, it is not limited to only authentication credentials\!
 
 Strawberry's implementation follows that of Apollo's, which as documentation for
 [client](https://www.apollographql.com/docs/react/data/subscriptions/#5-authenticate-over-websocket-optional)
@@ -150,7 +150,7 @@ Strawberry expects the `connection_params` object to be any type, so the client
 is free to send any valid JSON object as the initial message of the websocket
 connection, which is abstracted as `connectionParams` in Apollo-client, and it
 will be successfully injected into the `info.context` object. It is then up to
-you to handle it correctly!
+you to handle it correctly\!
 
 ## Using SSE Subscriptions
 

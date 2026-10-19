@@ -35,7 +35,7 @@ type User {
 
 In this case `full_name` will need to access the `first_name` and `last_name`
 fields, and depending on whether we define the resolver as a function or as a
-method, we'll have a few options! Let's start with the defining a resolver as a
+method, we'll have a few options\! Let's start with the defining a resolver as a
 function.
 
 ## Accessing parent's data in function resolvers
@@ -67,7 +67,7 @@ def get_full_name(parent: strawberry.Parent[User]) -> str:
 this case it would be the `User`.
 
 > **Note:** `strawberry.Parent` accepts a type argument, which will then be used
-> by your type checker to check your code!
+> by your type checker to check your code\!
 > 
 
 
@@ -112,7 +112,7 @@ class User:
 
 But, here's where things get more interesting. If this was a pure Python class,
 we would use `self` directly, right? Turns out that Strawberry also supports
-this!
+this\!
 
 Let's update our resolver:
 
@@ -187,7 +187,7 @@ class Query:
 ```
 
 In this case our pseudo code would break, since `UserModel` doesn't have a
-`full_name` function! But it does work when using Strawberry (provided that the
+`full_name` function\! But it does work when using Strawberry (provided that the
 `UserModel` has both `first_name` and `last_name` fields).
 
 As mentioned, this is because Strawberry class the resolvers as if they were
@@ -201,7 +201,7 @@ full_name = User.full_name(user)
 ```
 
 You're probably thinking of `staticmethod`s and that's pretty much what we are
-dealing with now! If you want to keep the resolver as a method on your class but
+dealing with now\! If you want to keep the resolver as a method on your class but
 also want to remove some of the magic around `self`, you can use the
 `@staticmethod` decorator in combination with `strawberry.Parent`:
 
@@ -222,4 +222,4 @@ class User:
 
 Combining `@staticmethod` with `strawberry.Parent` is a good way to make sure
 that your code is clear and that you are aware of what's happening under the
-hood, and it will keep your linters and type checkers happy!
+hood, and it will keep your linters and type checkers happy\!

@@ -141,7 +141,7 @@ is transformed to the field's SRID when saved or used in a lookup.
 All geometry scalars are output as coordinate arrays, as shown above
 (e.g. `[2.2945, 48.8584]` for a point).
 
-> [!WARNING]
+> [\!WARNING]
 > `Geometry` values are output as coordinate arrays as well, so the output doesn't
 > say which kind of geometry it is, and a queried `Geometry` value can't be sent
 > back as input as is.
@@ -186,7 +186,7 @@ The available lookups are `exact`, `isNull`, `contains`, `disjoint`, `equals`,
 `intersects`, `overlaps`, `touches` and `within`. Only lookups supported by every
 GeoDjango backend are included.
 
-> [!NOTE]
+> [\!NOTE]
 > Lookup values use the `Geometry` scalar whatever the type of the field, so they
 > accept any geometry type in WKT, EWKT, HEXEWKB or GeoJSON (see [Input](#input)),
 > but not coordinate arrays. For example, filter a `PointField` with

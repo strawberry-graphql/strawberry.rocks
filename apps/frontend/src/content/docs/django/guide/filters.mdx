@@ -23,7 +23,7 @@ class FruitFilter:
 class Fruit: ...
 ```
 
-> [!TIP]
+> [\!TIP]
 > In most cases filter fields should have `Optional` annotations and default value `strawberry.UNSET` like so:
 > `foo: Optional[SomeType] = strawberry.UNSET`
 > Above `auto` annotation is wrapped in `Optional` automatically.
@@ -44,7 +44,7 @@ input FruitFilter {
 }
 ```
 
-> [!TIP]
+> [\!TIP]
 > If you are using the [relay integration](/docs/django/guide/relay) and working with types inheriting
 > from `relay.Node` and `GlobalID` for identifying objects, you might want to set
 > `MAP_AUTO_ID_AS_GLOBAL_ID=True` in your [strawberry django settings](/docs/django/guide/settings)
@@ -54,7 +54,7 @@ input FruitFilter {
 
 ## AND, OR, NOT, DISTINCT ...
 
-To every filter `AND`, `OR`, `NOT` & `DISTINCT` fields are added to allow more complex filtering
+To every filter `AND`, `OR`, `NOT` \& `DISTINCT` fields are added to allow more complex filtering
 
 ```graphql
 {
@@ -165,14 +165,14 @@ class FruitFilter:
     name: StrFilterLookup | None
 ```
 
-> [!WARNING]
+> [\!WARNING]
 > Avoid using `FilterLookup[str]` directly. Use the specific lookup type (`StrFilterLookup`)
 > instead to prevent `DuplicatedTypeName` errors. See the [Generic Lookup reference](#generic-lookup-reference)
 > for the full list of available lookup types.
 > 
 
 
-> [!WARNING]
+> [\!WARNING]
 > `StrFilterLookup` and `FilterLookup` expose `regex` and `iRegex`, which forward the
 > pattern to Django's [`__regex` / `__iregex`](https://docs.djangoproject.com/en/stable/ref/models/querysets/#regex)
 > lookups. Regex execution is provided by the database backend. Crafted patterns can cause
@@ -261,13 +261,13 @@ class FruitFilter:
         )
 ```
 
-> [!WARNING]
+> [\!WARNING]
 > It is discouraged to use `queryset.filter()` directly. When using more
-> complex filtering via `NOT`, `OR` & `AND` this might lead to undesired behaviour.
+> complex filtering via `NOT`, `OR` \& `AND` this might lead to undesired behaviour.
 > 
 
 
-> [!TIP]
+> [\!TIP]
 > 
 > #### process_filters
 > 
@@ -276,12 +276,12 @@ class FruitFilter:
 > 
 > #### null values
 > 
-> By default `null` value is ignored for all filters & lookups. This applies to custom
+> By default `null` value is ignored for all filters \& lookups. This applies to custom
 > filter methods as well. Those won't even be called (you don't have to check for `None`).
 > This can be modified using
 > `strawberry_django.filter_field(filter_none=True)`
 > 
-> This also means that built in `exact` & `iExact` lookups cannot be used to filter for `None`
+> This also means that built in `exact` \& `iExact` lookups cannot be used to filter for `None`
 > and `isNull` have to be used explicitly.
 > 
 > #### value resolution
@@ -427,7 +427,7 @@ class FruitFilter:
         )
 ```
 
-> [!TIP]
+> [\!TIP]
 > As seen above `strawberry_django.process_filters` function is exposed and can be
 > reused in custom methods.
 > For filter method `filter` `skip_object_filter_method` was used to avoid endless recursion.
@@ -468,8 +468,8 @@ There is 8 already defined Generic Lookup `strawberry.input` classes importable 
 
 #### `BaseFilterLookup`
 
-- contains `exact`, `isNull` & `inList`
-- used for `ID` & `bool` fields
+- contains `exact`, `isNull` \& `inList`
+- used for `ID` \& `bool` fields
 
 #### `RangeLookup`
 
@@ -478,38 +478,38 @@ There is 8 already defined Generic Lookup `strawberry.input` classes importable 
 #### `ComparisonFilterLookup`
 
 - inherits `BaseFilterLookup`
-- additionaly contains `gt`, `gte`, `lt`, `lte`, & `range`
+- additionaly contains `gt`, `gte`, `lt`, `lte`, \& `range`
 - used for Numberical fields
 
 #### `FilterLookup`
 
 - inherits `BaseFilterLookup`
-- additionally contains `iExact`, `contains`, `iContains`, `startsWith`, `iStartsWith`, `endsWith`, `iEndsWith`, `regex` & `iRegex`
+- additionally contains `iExact`, `contains`, `iContains`, `startsWith`, `iStartsWith`, `endsWith`, `iEndsWith`, `regex` \& `iRegex`
 - used for string based fields and as default
 - see the [warning on `regex` / `iRegex`](#lookups) before exposing these on untrusted input
 
 #### `DateFilterLookup`
 
 - inherits `ComparisonFilterLookup`
-- additionally contains `year`,`month`,`day`,`weekDay`,`isoWeekDay`,`week`,`isoYear` & `quarter`
+- additionally contains `year`,`month`,`day`,`weekDay`,`isoWeekDay`,`week`,`isoYear` \& `quarter`
 - used for date based fields
 
 #### `TimeFilterLookup`
 
 - inherits `ComparisonFilterLookup`
-- additionally contains `hour`,`minute`,`second`,`date` & `time`
+- additionally contains `hour`,`minute`,`second`,`date` \& `time`
 - used for time based fields
 
 #### `DatetimeFilterLookup`
 
-- inherits `DateFilterLookup` & `TimeFilterLookup`
+- inherits `DateFilterLookup` \& `TimeFilterLookup`
 - used for timedate based fields
 
 #### `GeometryFilterLookup`
 
 - only available when [GeoDjango](https://docs.djangoproject.com/en/stable/ref/contrib/gis/) is installed (`None` otherwise)
-- contains `exact`, `isNull` and the spatial lookups `contains`, `disjoint`, `equals`, `intersects`, `overlaps`, `touches` & `within`
-- only includes spatial lookups supported by every GeoDjango backend (PostGIS, SpatiaLite, MySQL/MariaDB & Oracle)
+- contains `exact`, `isNull` and the spatial lookups `contains`, `disjoint`, `equals`, `intersects`, `overlaps`, `touches` \& `within`
+- only includes spatial lookups supported by every GeoDjango backend (PostGIS, SpatiaLite, MySQL/MariaDB \& Oracle)
 - used for geometry fields (`PointField`, `PolygonField`, `GeometryField`, etc.)
 
 ```python title="types.py"
@@ -537,7 +537,7 @@ See the [GeoDjango integration](/docs/django/integrations/geodjango) for more de
 
 The previous version of filters can be enabled via [**USE\_DEPRECATED\_FILTERS**](/docs/django/guide/settings#strawberry_django)
 
-> [!WARNING]
+> [\!WARNING]
 > If **USE\_DEPRECATED\_FILTERS** is not set to `True` legacy custom filtering
 > methods will be *not* be called.
 > 

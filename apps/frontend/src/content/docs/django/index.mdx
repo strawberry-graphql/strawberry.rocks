@@ -25,7 +25,7 @@ poetry add django-choices-field  # Not required but recommended
 
 We'll build an example database of fruit and their colours.
 
-> [!TIP]
+> [\!TIP]
 > You'll notice that for `Fruit.category`, we use `TextChoicesField` instead of `TextField(choices=...)`.
 > This allows strawberry-django to automatically use an enum in the graphQL schema, instead of
 > a string which would be the default behaviour for TextField.
@@ -77,16 +77,16 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-Now use the django shell, the admin, the loaddata command or whatever tool you like to load some fruits and colors. I've loaded a red strawberry (predictable, right?!) ready for later.
+Now use the django shell, the admin, the loaddata command or whatever tool you like to load some fruits and colors. I've loaded a red strawberry (predictable, right?\!) ready for later.
 
 ## Define types
 
 Before creating queries, you have to define a `type` for each model. A `type` is a fundamental unit of the [schema](https://strawberry.rocks/docs/types/schema)
 which describes the shape of the data that can be queried from the GraphQL server. Types can represent scalar values (like String, Int, Boolean, Float, and ID), enums, or complex objects that consist of many fields.
 
-> [!TIP]
+> [\!TIP]
 > A key feature of `strawberry-graphql-django` is that it provides helpers to create types from django models,
-> by automatically inferring types (and even documentation!!) from the model fields.
+> by automatically inferring types (and even documentation\!\!) from the model fields.
 > 
 > See the [fields guide](/docs/django/guide/fields) for more information.
 > 
@@ -120,7 +120,7 @@ class Color:
 
 Next we want to assemble the [schema](https://strawberry.rocks/docs/types/schema) from its building block types.
 
-> [!WARNING]
+> [\!WARNING]
 > You'll notice a familiar statement, `fruits: list[Fruit]`. We already used this statement in the previous step in `types.py`.
 > Seeing it twice can be a point of confusion when you're first getting to grips with GraphQL and Strawberry.
 > 
@@ -129,7 +129,7 @@ Next we want to assemble the [schema](https://strawberry.rocks/docs/types/schema
 > 
 
 
-> [!TIP]
+> [\!TIP]
 > We add the `DjangoOptimizerExtension` here. Don't worry about why for now, but you're almost certain to want it.
 > 
 > See the [optimizer guide](/docs/django/guide/optimizer) for more information.
@@ -671,13 +671,13 @@ Now that you have a working GraphQL API with common features, explore these guid
 4. [Filters](/docs/django/guide/filters) - Advanced filtering capabilities
 5. [Pagination](/docs/django/guide/pagination) - Efficient data pagination strategies
 
-### Performance & Optimization
+### Performance \& Optimization
 
 6. [Query Optimizer](/docs/django/guide/optimizer) - Prevent N+1 queries automatically
 7. [Performance](/docs/django/guide/performance) - Database optimization and caching
 8. [DataLoaders](/docs/django/guide/dataloaders) - Custom data loading patterns
 
-### Security & Validation
+### Security \& Validation
 
 9. [Permissions](/docs/django/guide/permissions) - Protect your API with authorization
 10. [Validation](/docs/django/guide/validation) - Input validation and error handling
@@ -691,7 +691,7 @@ Now that you have a working GraphQL API with common features, explore these guid
 15. [Nested Mutations](/docs/django/guide/nested-mutations) - Handle complex relationships
 16. [Unit Testing](/docs/django/guide/unit-testing) - Test your GraphQL API
 
-### Help & Resources
+### Help \& Resources
 
 - [FAQ](/docs/django/faq) - Frequently asked questions
 - [Troubleshooting](/docs/django/guide/troubleshooting) - Common issues and solutions

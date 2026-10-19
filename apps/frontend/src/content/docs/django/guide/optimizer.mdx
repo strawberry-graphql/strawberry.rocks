@@ -64,7 +64,7 @@ DjangoOptimizerExtension(
 | `enable_nested_relations_prefetch`     | `True`  | Enable prefetch of nested relations with filters/pagination    |
 | `prefetch_custom_queryset`             | `False` | Use default manager instead of base manager for prefetches     |
 
-> [!NOTE]
+> [\!NOTE]
 > Setting `prefetch_custom_queryset=True` is useful when using `InheritanceManager` from django-model-utils,
 > as it ensures the correct manager is used for polymorphic queries.
 > 
@@ -200,7 +200,7 @@ Song.objects.all().only(
 )
 ```
 
-> [!NOTE]
+> [\!NOTE]
 > Even though `album__release_date` field was not selected here, it got selected
 > in the prefetch query later. Since Django caches known objects, we have to select it here or
 > else it would trigger extra queries latter.
@@ -392,7 +392,7 @@ The `projects` field will return either ResearchProjectType or ArtProjectType, m
 ResearchProject or ArtProject. The optimizer will make sure to only select those fields from subclasses which are
 requested in the GraphQL query in the same way that it does normally.
 
-> [!WARNING]
+> [\!WARNING]
 > The optimizer does not filter your QuerySet and Django will return
 > all instances of your model, regardless of whether their type exists in your GraphQL schema or not.
 > Make sure you have a corresponding type for every model subclass or add a `get_queryset` method to your
@@ -456,7 +456,7 @@ The `projects` field will return either ResearchProjectType or ArtProjectType, m
 ResearchProject or ArtProject. The optimizer automatically calls `select_subclasses`, passing in any subtypes present
 in your schema.
 
-> [!WARNING]
+> [\!WARNING]
 > The optimizer does not filter your QuerySet and Django will return
 > all instances of your model, regardless of whether their type exists in your GraphQL schema or not.
 > Make sure you have a corresponding type for every model subclass or add a `get_queryset` method to your
@@ -466,7 +466,7 @@ in your schema.
 > 
 
 
-> [!NOTE]
+> [\!NOTE]
 > If you have polymorphic relations (as in: a field that points to a model with subclasses), you need to make sure
 > the manager being used to look up the related model is an `InheritanceManager`.
 > Strawberry Django uses the model's [base manager](https://docs.djangoproject.com/en/5.1/topics/db/managers/#base-managers)
@@ -531,7 +531,7 @@ class Query:
     projects: list[ProjectType] = strawberry_django.field()
 ```
 
-> [!WARNING]
+> [\!WARNING]
 > Make sure to add `get_queryset` to your interface type, to force the optimizer to use
 > `prefetch_related`, otherwise this technique will not work for relation fields.
 > 
