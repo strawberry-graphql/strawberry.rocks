@@ -1,0 +1,6 @@
+{
+  book {
+    title
+    author
+  }
+}

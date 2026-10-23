@@ -20,13 +20,14 @@ export const Tabs = ({
 }) => {
   const [activeTab, setActiveTab] = useState(0);
 
-  // all children should be Tab components, get their titles for the header
-  const tabsTitles = React.Children.map(children, (child) => {
-    return (child as React.ReactElement<{ title: React.ReactNode }>).props
-      .title;
-  })!;
-
+  // Without the tabs left out with null
   const childrenArray = React.Children.toArray(children);
+
+  // all children should be Tab components, get their titles for the header
+  const tabsTitles = childrenArray.map(
+    (child) =>
+      (child as React.ReactElement<{ title: React.ReactNode }>).props.title
+  );
 
   const activeTabContent = childrenArray[activeTab];
   return (
@@ -75,7 +76,7 @@ const TabTitle = ({
       role="tab"
       aria-selected={active}
       className={clsx(
-        "relative flex h-full shrink-0 items-center text-[13px] font-bold transition-colors focus-visible:outline-hidden focus-visible:text-foreground",
+        "relative flex h-full shrink-0 items-center text-[14px] font-bold transition-colors focus-visible:outline-hidden focus-visible:text-foreground",
         active
           ? "text-foreground"
           : "text-muted-foreground hover:text-foreground"

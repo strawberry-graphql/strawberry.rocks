@@ -132,7 +132,7 @@ export const ResultStatus = ({
   const errors = result?.response?.errors ?? [];
 
   return (
-    <div className="flex items-center gap-3 text-xs text-muted-foreground">
+    <div className="flex items-center gap-3 whitespace-nowrap text-xs text-muted-foreground">
       {result?.status_code ? (
         <StatusBadge status={result.status_code} />
       ) : result?.error || error ? (

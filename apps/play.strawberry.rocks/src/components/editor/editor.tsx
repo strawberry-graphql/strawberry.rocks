@@ -1,6 +1,6 @@
 import { useTheme } from "../theme-context";
 import Editor, { useMonaco, type OnMount } from "@monaco-editor/react";
-import { useEffect, useState } from "react";
+import { useEffect, useEffectEvent, useState } from "react";
 
 export type EditorInstance = Parameters<OnMount>[0];
 
@@ -39,8 +39,14 @@ export const CodeEditor = ({
   readOnly = false,
   language,
   markers,
+  revision,
 }: {
   source: string;
+  /**
+   * Changed when `source` is replaced from outside, e.g. by an example, to
+   * update the editor without creating it again
+   */
+  revision?: number;
   language: "python" | "graphql" | "json";
   readOnly?: boolean;
   onChange?: (source: string) => void;
@@ -101,6 +107,25 @@ export const CodeEditor = ({
     );
   }, [monaco, editor, markers, source]);
 
+  const replaceSource = useEffectEvent(() => {
+    const model = editor?.getModel();
+
+    if (!editor || !model || readOnly || model.getValue() === source) {
+      return;
+    }
+
+    // As an edit, so it can be undone
+    editor.pushUndoStop();
+    editor.executeEdits("playground", [
+      { range: model.getFullModelRange(), text: source },
+    ]);
+    editor.pushUndoStop();
+  });
+
+  useEffect(() => {
+    replaceSource();
+  }, [revision]);
+
   return (
     <Editor
       options={{
@@ -110,8 +135,8 @@ export const CodeEditor = ({
         readOnly,
         minimap: { enabled: false },
         fontFamily: "'JetBrains Mono', ui-monospace, Menlo, monospace",
-        fontSize: 13,
-        lineHeight: 20,
+        fontSize: 14,
+        lineHeight: 22,
         padding: { top: 12 },
         lineNumbersMinChars: 3,
         renderLineHighlightOnlyWhenFocus: true,
