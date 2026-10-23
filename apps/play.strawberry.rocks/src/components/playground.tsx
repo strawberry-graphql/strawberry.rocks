@@ -31,6 +31,7 @@ export const Playground = ({
   onChange,
   dockApiRef,
   revision,
+  lesson,
 }: {
   state: EditorState;
   onChange: React.Dispatch<React.SetStateAction<EditorState>>;
@@ -38,9 +39,11 @@ export const Playground = ({
   dockApiRef: React.RefObject<DockviewApi | null>;
   /**
    * Changed when the code is replaced from outside, e.g. by an example. The
-   * editors are uncontrolled, so they're created again with the new code
+   * editors are uncontrolled, so they only take the new code then
    */
   revision: number;
+  /** The tutorial's lesson pane, shown next to the editors */
+  lesson?: React.ReactNode;
 }) => {
   const { executeQuery, initializing } = usePyodide();
   const [{ result, error, duration }, setResult] = useState<{
@@ -143,7 +146,7 @@ export const Playground = ({
 
   const codeEditorElement = (
     <CodeEditor
-      key={revision}
+      revision={revision}
       source={state.code}
       onChange={(code) => onChange((state) => ({ ...state, code }))}
       language="python"
@@ -153,7 +156,7 @@ export const Playground = ({
   );
   const queryEditorElement = (
     <CodeEditor
-      key={revision}
+      revision={revision}
       source={state.query}
       onChange={(query) => onChange((state) => ({ ...state, query }))}
       language="graphql"
@@ -163,7 +166,7 @@ export const Playground = ({
   );
   const variablesEditorElement = (
     <CodeEditor
-      key={revision}
+      revision={revision}
       source={state.variables}
       onChange={(variables) => onChange((state) => ({ ...state, variables }))}
       language="json"
@@ -171,7 +174,7 @@ export const Playground = ({
   );
   const headersEditorElement = (
     <CodeEditor
-      key={revision}
+      revision={revision}
       source={state.headers}
       onChange={(headers) => onChange((state) => ({ ...state, headers }))}
       language="json"
@@ -192,6 +195,7 @@ export const Playground = ({
   if (!isDesktop) {
     return (
       <Tabs className="h-full">
+        {lesson ? <Tab title="Lesson">{lesson}</Tab> : null}
         <Tab title="schema.py">{codeEditorElement}</Tab>
         <Tab title="Query">{queryEditorElement}</Tab>
         <Tab title="Variables">{variablesEditorElement}</Tab>
@@ -205,7 +209,11 @@ export const Playground = ({
 
   return (
     <DockLayout
+      // The tutorial has its own layout, so it's created again when switching
+      key={lesson ? "tutorial" : "playground"}
+      mode={lesson ? "tutorial" : "playground"}
       panels={{
+        lesson,
         code: codeEditorElement,
         query: queryEditorElement,
         variables: variablesEditorElement,

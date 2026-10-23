@@ -1,5 +1,10 @@
 import { useTheme } from "../theme-context";
-import { restoreLayout, saveLayout, type PanelId } from "./layout";
+import {
+  restoreLayout,
+  saveLayout,
+  type LayoutMode,
+  type PanelId,
+} from "./layout";
 import {
   DockviewReact,
   themeDark,
@@ -13,7 +18,9 @@ import "dockview-react/dist/styles/dockview.css";
 import { createContext, useContext } from "react";
 
 type DockContent = {
-  panels: Record<PanelId, React.ReactNode>;
+  /** The lesson is only there in the tutorial */
+  panels: Record<Exclude<PanelId, "lesson">, React.ReactNode> &
+    Partial<Record<"lesson", React.ReactNode>>;
   /** Shown next to a tab's title, e.g. the number of console entries */
   badges: Partial<Record<PanelId, React.ReactNode>>;
   /** Shown at the end of the tab bar that holds the response */
@@ -55,9 +62,14 @@ const HeaderActions = ({ panels }: IDockviewHeaderActionsProps) => {
 const components = { panel: PanelContent };
 
 export const DockLayout = ({
+  mode,
   onReady,
   ...content
-}: DockContent & { onReady: (api: DockviewApi) => void }) => {
+}: DockContent & {
+  /** Read once: the layout has to be created again to change it */
+  mode: LayoutMode;
+  onReady: (api: DockviewApi) => void;
+}) => {
   const { actualTheme } = useTheme();
 
   return (
@@ -73,8 +85,8 @@ export const DockLayout = ({
           defaultRenderer="always"
           disableFloatingGroups
           onReady={({ api }) => {
-            restoreLayout(api);
-            api.onDidLayoutChange(() => saveLayout(api));
+            restoreLayout(api, mode);
+            api.onDidLayoutChange(() => saveLayout(api, mode));
             onReady(api);
           }}
         />
