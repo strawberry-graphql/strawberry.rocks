@@ -1,0 +1,6 @@
+{
+  searchBooks(input: { text: "the" }) {
+    title
+    author
+  }
+}

@@ -1,0 +1,9 @@
+{
+  authors {
+    name
+    books {
+      title
+      year
+    }
+  }
+}

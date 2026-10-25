@@ -1,0 +1,15 @@
+mutation AddBook($input: AddBookInput!) {
+  addBook(input: $input) {
+    ... on Book {
+      title
+      isbn
+    }
+    ... on ValidationError {
+      errors {
+        location
+        message
+        type
+      }
+    }
+  }
+}

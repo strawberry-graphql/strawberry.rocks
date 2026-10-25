@@ -1,0 +1,7 @@
+mutation AddAuthor($input: AddAuthorInput!) {
+  addAuthor(input: $input) {
+    name
+    website
+    born
+  }
+}

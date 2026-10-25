@@ -1,0 +1,6 @@
+mutation AddBook($input: AddBookInput!) {
+  addBook(input: $input) {
+    title
+    isbn
+  }
+}
