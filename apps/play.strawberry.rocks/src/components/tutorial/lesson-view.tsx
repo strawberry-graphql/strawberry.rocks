@@ -35,7 +35,13 @@ const LessonBody = ({ html }: { html: string }) => {
       monaco.editor
         .colorize((code.textContent ?? "").trimEnd(), language, { tabSize: 4 })
         .then((colorized) => {
-          code.innerHTML = colorized;
+          // Parsed in an inert document, where nothing in it can run
+          const parsed = new DOMParser().parseFromString(
+            colorized,
+            "text/html"
+          );
+
+          code.replaceChildren(...parsed.body.childNodes);
           applyMarks(code, marks);
         });
     }
