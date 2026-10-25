@@ -5,7 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  marked: '11'
+  strawberry-frontend>marked: '11'
+  astro-remote>marked: '11'
+  mermaid>marked: '11'
 
 importers:
 
@@ -7896,12 +7898,12 @@ packages:
   marked-footnote@1.2.4:
     resolution: {integrity: sha512-DB2Kl+wFh6YwZd70qABMY6WUkG1UuyqoNTFoDfGyG79Pz24neYtLBkB+45a7o72V7gkfvbC3CGzIYFobxfMT1Q==}
     peerDependencies:
-      marked: '11'
+      marked: '>=7.0.0'
 
   marked-smartypants@1.1.8:
     resolution: {integrity: sha512-2n8oSjL2gSkH6M0dSdRIyLgqqky03iKQkdmoaylmIzwIhYTW204S7ry6zP2iqwSl0zSlJH2xmWgxlZ/4XB1CdQ==}
     peerDependencies:
-      marked: '11'
+      marked: '>=4 <15'
 
   marked@11.2.0:
     resolution: {integrity: sha512-HR0m3bvu0jAPYiIvLUUQtdg1g6D247//lvcekpHO1WMvbwDlwSkZAX9Lw4F4YHE1T0HaaNve0tuAWuV1UJ6vtw==}
