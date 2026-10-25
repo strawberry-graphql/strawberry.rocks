@@ -5,7 +5,10 @@ import type { EditorState } from "@/editor-state";
 // with a README.md, the code to start from in app-a and the solution in
 // app-b. Folders are sorted by their number prefix, which is left out of
 // the lesson's URL. Files missing from app-a are the same as at the end of
-// the previous lesson, and files missing from app-b are the same as in app-a
+// the previous lesson, and files missing from app-b are the same as in app-a.
+// Chapters about features that aren't released yet have `"unreleased": true`
+// in their meta.json, and are only shown when running a local Strawberry
+// checkout in the dev server
 const files = import.meta.glob<string>(
   ["./*/meta.json", "./*/*/README.md", "./*/*/app-*/*"],
   { query: "?raw", import: "default", eager: true }
@@ -36,9 +39,16 @@ export type Lesson = {
   start: EditorState;
   /** Not set for lessons that don't ask for changes */
   solution: EditorState | null;
+  /** Uses features from an upcoming Strawberry release */
+  unreleased: boolean;
 };
 
-export type Chapter = { title: string; lessons: Lesson[] };
+export type Chapter = {
+  title: string;
+  lessons: Lesson[];
+  /** Uses features from an upcoming Strawberry release */
+  unreleased: boolean;
+};
 
 const parseFrontmatter = (text: string) => {
   const match = text.match(/^---\n([\s\S]*?)\n---\n/);
@@ -87,7 +97,16 @@ const loadChapters = () => {
 
   for (const chapterDir of subfolders(".")) {
     const meta = JSON.parse(files[`./${chapterDir}/meta.json`]);
-    const chapter: Chapter = { title: meta.title, lessons: [] };
+
+    if (meta.unreleased && !__LOCAL_STRAWBERRY__) {
+      continue;
+    }
+
+    const chapter: Chapter = {
+      title: meta.title,
+      lessons: [],
+      unreleased: !!meta.unreleased,
+    };
 
     for (const lessonDir of subfolders(`./${chapterDir}`)) {
       const dir = `./${chapterDir}/${lessonDir}`;
@@ -109,6 +128,7 @@ const loadChapters = () => {
         path: `${chapterDir}/${lessonDir}`,
         start,
         solution,
+        unreleased: !!meta.unreleased,
       });
       previous = solution ?? start;
     }

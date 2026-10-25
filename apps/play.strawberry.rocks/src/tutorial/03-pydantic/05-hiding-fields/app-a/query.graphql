@@ -1,0 +1,6 @@
+{
+  members {
+    name
+    maskedEmail
+  }
+}

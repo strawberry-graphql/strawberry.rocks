@@ -1,0 +1,15 @@
+{
+  books(offset: 2) {
+    items {
+      title
+    }
+    total
+    hasMore
+  }
+  authors {
+    items {
+      name
+    }
+    hasMore
+  }
+}

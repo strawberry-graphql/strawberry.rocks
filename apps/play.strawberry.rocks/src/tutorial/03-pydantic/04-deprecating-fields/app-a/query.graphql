@@ -1,0 +1,15 @@
+{
+  books {
+    title
+    isbn
+    isbn10
+  }
+  __type(name: "Book") {
+    fields(includeDeprecated: true) {
+      name
+      description
+      isDeprecated
+      deprecationReason
+    }
+  }
+}

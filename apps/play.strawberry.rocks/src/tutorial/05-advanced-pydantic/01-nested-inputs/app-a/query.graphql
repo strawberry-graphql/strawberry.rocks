@@ -1,0 +1,17 @@
+mutation Borrow($input: BorrowInput!) {
+  borrow(input: $input) {
+    ... on Receipt {
+      member
+      loans {
+        isbn
+        due
+      }
+    }
+    ... on ValidationError {
+      errors {
+        location
+        message
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+query Library($id: ID!) {
+  node(id: $id) {
+    id
+    ... on Book {
+      title
+    }
+  }
+  books(first: 2) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}

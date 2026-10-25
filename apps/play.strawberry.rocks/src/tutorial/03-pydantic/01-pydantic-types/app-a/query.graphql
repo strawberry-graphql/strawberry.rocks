@@ -1,0 +1,7 @@
+{
+  books {
+    title
+    author
+    year
+  }
+}

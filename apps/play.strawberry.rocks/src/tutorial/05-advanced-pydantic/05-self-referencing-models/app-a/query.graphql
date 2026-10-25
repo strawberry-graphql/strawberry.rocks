@@ -1,0 +1,11 @@
+{
+  genres {
+    name
+    subgenres {
+      name
+      subgenres {
+        name
+      }
+    }
+  }
+}

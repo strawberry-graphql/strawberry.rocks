@@ -57,7 +57,9 @@ const LessonBody = ({ html }: { html: string }) => {
 };
 
 const lessonSiblings = (lesson: Lesson) => {
-  const index = LESSONS.indexOf(lesson);
+  // By slug: the lessons are loaded again when they change in development,
+  // while the current one is kept
+  const index = LESSONS.findIndex((item) => item.slug === lesson.slug);
 
   return {
     previous: LESSONS[index - 1] as Lesson | undefined,
@@ -142,22 +144,45 @@ export const TutorialNav = ({
           align="start"
           className="max-h-[70vh] w-72 overflow-y-auto"
         >
-          {CHAPTERS.map((chapter) => (
-            <div key={chapter.title}>
-              <DropdownMenuLabel className="text-xs font-medium text-muted-foreground">
+          {CHAPTERS.map((chapter, index) => (
+            <div
+              key={chapter.title}
+              className={clsx(index > 0 && "mt-1 border-t pt-1")}
+            >
+              <DropdownMenuLabel className="flex items-center gap-2 pt-2 text-xs font-bold tracking-wider uppercase">
+                <span className="w-4 text-center text-strawberry tabular-nums">
+                  {index + 1}
+                </span>
                 {chapter.title}
+                {chapter.unreleased ? (
+                  <span className="ml-auto rounded-full bg-strawberry/10 px-2 py-0.5 text-[11px] tracking-normal text-strawberry normal-case">
+                    Preview
+                  </span>
+                ) : null}
               </DropdownMenuLabel>
-              {chapter.lessons.map((item) => (
-                <DropdownMenuItem
-                  key={item.slug}
-                  onSelect={() => onNavigate(item)}
-                  className={clsx(
-                    item === lesson && "font-bold text-strawberry"
-                  )}
-                >
-                  {item.title}
-                </DropdownMenuItem>
-              ))}
+              {/* The line is centered under the number: 8px of padding,
+                  plus half its 16px */}
+              <div className="mb-1 ml-[15.5px] border-l pl-1.5">
+                {chapter.lessons.map((item) => (
+                  <DropdownMenuItem
+                    key={item.slug}
+                    onSelect={() => onNavigate(item)}
+                    // Shows where we are in long tutorials
+                    ref={
+                      item.slug === lesson.slug
+                        ? (element) => {
+                            element?.scrollIntoView({ block: "center" });
+                          }
+                        : undefined
+                    }
+                    className={clsx(
+                      item.slug === lesson.slug && "font-bold text-strawberry"
+                    )}
+                  >
+                    {item.title}
+                  </DropdownMenuItem>
+                ))}
+              </div>
             </div>
           ))}
         </DropdownMenuContent>
@@ -231,6 +256,14 @@ export const LessonView = ({
         <h1 className="mb-5 font-display text-3xl font-bold tracking-tight">
           {lesson.title}
         </h1>
+
+        {lesson.unreleased ? (
+          <p className="mb-5 rounded-lg border border-strawberry/30 bg-strawberry/5 px-4 py-3 text-sm">
+            This lesson uses features from an upcoming Strawberry release. It
+            only works with the <strong>local</strong> Strawberry version,
+            picked at the bottom right.
+          </p>
+        ) : null}
 
         <LessonBody html={lesson.html} />
 

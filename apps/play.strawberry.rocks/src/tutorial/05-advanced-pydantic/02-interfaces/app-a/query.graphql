@@ -1,0 +1,12 @@
+{
+  items {
+    id
+    title
+    ... on Book {
+      author
+    }
+    ... on Magazine {
+      issue
+    }
+  }
+}
