@@ -96,6 +96,20 @@
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
+  /* A step bigger than Tailwind's, for comfortable reading next to code */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: calc(1.125 / 0.8125);
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: calc(1.375 / 0.9375);
+  --text-base: 1.0625rem;
+  --text-base--line-height: calc(1.625 / 1.0625);
+  --text-lg: 1.1875rem;
+  --text-lg--line-height: calc(1.75 / 1.1875);
+  --text-xl: 1.3125rem;
+  --text-xl--line-height: calc(1.875 / 1.3125);
+  --text-2xl: 1.625rem;
+  --text-2xl--line-height: calc(2 / 1.625);
+
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
@@ -140,7 +154,7 @@
   --dv-group-view-background-color: var(--background);
   --dv-tabs-and-actions-container-background-color: var(--chrome);
   --dv-tabs-and-actions-container-height: 36px;
-  --dv-tabs-and-actions-container-font-size: 13px;
+  --dv-tabs-and-actions-container-font-size: 14px;
   --dv-activegroup-visiblepanel-tab-background-color: transparent;
   --dv-activegroup-hiddenpanel-tab-background-color: transparent;
   --dv-inactivegroup-visiblepanel-tab-background-color: transparent;
@@ -180,4 +194,67 @@
 
 .playground-dock .dv-tab:hover {
   color: var(--foreground);
+}
+
+/* The tutorial's lessons, see components/tutorial/lesson-view.tsx */
+.lesson-prose {
+  @apply text-[17px] leading-[1.7];
+
+  & > * + * {
+    @apply mt-4;
+  }
+
+  & h2 {
+    @apply mt-8 font-display text-xl font-bold;
+  }
+
+  & h3 {
+    @apply mt-6 font-bold;
+  }
+
+  & a {
+    @apply text-strawberry underline underline-offset-2;
+  }
+
+  & ul {
+    @apply list-disc space-y-1.5 pl-5;
+  }
+
+  & ol {
+    @apply list-decimal space-y-1.5 pl-5;
+  }
+
+  & :not(pre) > code {
+    @apply rounded bg-muted px-1.5 py-0.5 font-mono text-[14px];
+  }
+
+  /* Code blocks, see tutorial/markdown.ts */
+  & .code-block {
+    @apply my-6 overflow-hidden rounded-lg border bg-chrome;
+  }
+
+  & .code-file {
+    @apply flex items-center gap-1.5 border-b px-4 py-2 text-[13px] text-muted-foreground;
+
+    & svg {
+      @apply size-3.5;
+    }
+  }
+
+  & pre {
+    @apply overflow-x-auto px-4 py-3 font-mono text-[14px] leading-[24px];
+  }
+
+  & mark {
+    @apply py-0.5 text-inherit;
+  }
+
+  & mark.code-add {
+    background: color-mix(in srgb, #22c55e 20%, transparent);
+  }
+
+  & mark.code-remove {
+    @apply line-through opacity-70;
+    background: color-mix(in srgb, #ef4444 18%, transparent);
+  }
 }

@@ -3,7 +3,11 @@ packages:
   - "packages/*"
 
 overrides:
-  marked: "11"
+  # Only for the frontend and its dependencies: the playground uses a newer
+  # version
+  strawberry-frontend>marked: "11"
+  astro-remote>marked: "11"
+  mermaid>marked: "11"
 
 onlyBuiltDependencies:
   - "@swc/core"
