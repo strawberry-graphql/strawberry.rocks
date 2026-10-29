@@ -83,3 +83,6 @@ yalc.lock
 
 # pnpm store
 .pnpm-store/
+
+# Orb portal metadata
+.amp/portals/*

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root"
+
+# Amp's orb image includes Nix. Use the repository's locked development shell
+# rather than duplicating its toolchain or relying on the image's Node version.
+export PATH="$HOME/.nix-profile/bin:$PATH"
+echo "Preparing the locked Nix development environment"
+SECONDS=0
+dev_env="$(nix --extra-experimental-features 'nix-command flakes' print-dev-env --no-write-lock-file "$repo_root")"
+eval "$dev_env"
+echo "Nix environment ready in ${SECONDS}s"
+
+# Services and Amp run in separate login shells. Preserve the entire Nix
+# environment (including NODE_PATH), not just its executable paths.
+marker="# strawberry.rocks orb development environment"
+if ! grep -Fqx "$marker" "$HOME/.bash_profile" 2>/dev/null; then
+  cat >> "$HOME/.bash_profile" <<EOF
+
+$marker
+if [[ -z "\${IN_NIX_SHELL:-}" && ( "\$PWD" == "$repo_root" || "\$PWD" == "$repo_root/"* ) ]]; then
+  eval "\$("$HOME/.nix-profile/bin/nix" --extra-experimental-features 'nix-command flakes' print-dev-env --no-write-lock-file "$repo_root")"
+fi
+EOF
+fi
+
+echo "Installing workspace dependencies (pnpm honors package.json's packageManager)"
+SECONDS=0
+CI=true pnpm install --frozen-lockfile
+echo "Workspace dependencies ready in ${SECONDS}s"
+
+echo "Installing API Python and dependencies from its version pin and lockfile"
+SECONDS=0
+uv sync --project apps/api --locked
+echo "API dependencies ready in ${SECONDS}s"
