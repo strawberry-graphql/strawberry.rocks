@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Dependencies are preserved in the snapshot; login shells activate Nix via
+# the hook installed by setup. No authentication or backing services to repair.
+echo "Orb ready; dependencies restored from setup."
