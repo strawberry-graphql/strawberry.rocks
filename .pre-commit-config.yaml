@@ -11,7 +11,7 @@ repos:
         args: ["--maxkb=128"]
         exclude: \.(lockb|ttf|tmLanguage.json|graphql|yaml)$
       - id: check-ast
-      - id: check-byte-order-marker
+      - id: fix-byte-order-marker
       - id: check-case-conflict
       - id: check-docstring-first
       - id: check-executables-have-shebangs
