@@ -1,11 +1,11 @@
 repos:
   - repo: https://gitlab.com/bmares/check-json5
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: check-json5
         exclude: apps/frontend/src/content/api/strawberry.json
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v6.0.0
     hooks:
       - id: check-added-large-files
         args: ["--maxkb=128"]
