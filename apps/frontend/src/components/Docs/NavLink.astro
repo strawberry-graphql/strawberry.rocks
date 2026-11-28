@@ -2,9 +2,14 @@
 interface Props {
   href: string;
   text: string;
+  /**
+   * Overrides the default active state, which only matches when the current
+   * page is exactly `href`
+   */
+  active?: boolean;
 }
 
-let { href, text } = Astro.props;
+let { href, text, active } = Astro.props;
 
 let isExperimental = text.includes("**experimental**");
 
@@ -15,7 +20,8 @@ if (isExperimental) {
 const pathname = new URL(Astro.request.url).pathname;
 
 // remove slashes from both
-const isActive = pathname.replace(/\//g, "") === href.replace(/\//g, "");
+const isActive =
+  active ?? pathname.replace(/\//g, "") === href.replace(/\//g, "");
 ---
 
 <a href={href} class:list={[{ active: isActive }]}

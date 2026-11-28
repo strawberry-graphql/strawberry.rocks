@@ -2,6 +2,37 @@
 import Search from "../../components/Search.astro";
 import IndexIcon from "../Icons/Index.astro";
 import NavLink from "./NavLink.astro";
+
+const pathname = new URL(Astro.request.url).pathname.replace(/\/+$/, "");
+
+const isWithin = (path: string) =>
+  pathname === path || pathname.startsWith(`${path}/`);
+
+const links = [
+  {
+    href: "/docs",
+    text: "🍓 Documentation",
+    active: isWithin("/docs") && !isWithin("/docs/django"),
+  },
+  {
+    href: "/changelog",
+    text: "📜 Changelog",
+    active: isWithin("/changelog") || isWithin("/release"),
+  },
+  {
+    href: "/docs/django",
+    text: "🦄 Strawberry Django",
+    active: isWithin("/docs/django"),
+  },
+  {
+    href: "https://github.com/strawberry-graphql/strawberry-sqlalchemy",
+    text: "🧪 Strawberry SQLAlchemy",
+  },
+  {
+    href: "/discord",
+    text: "💬 Discord",
+  },
+];
 ---
 
 <input type="checkbox" id="toggle-docs-nav" />
@@ -17,12 +48,13 @@ import NavLink from "./NavLink.astro";
     <Search />
 
     <ul>
-      <li>
-        <NavLink href="/docs" text="🍓 Documentation" />
-      </li>
-      <li>
-        <NavLink href="/docs/django" text="🦄 Strawberry Django" />
-      </li>
+      {
+        links.map((link) => (
+          <li>
+            <NavLink {...link} />
+          </li>
+        ))
+      }
     </ul>
 
     <slot />
